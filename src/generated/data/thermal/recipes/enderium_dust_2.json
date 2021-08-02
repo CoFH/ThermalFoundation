@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/lead"
+    },
+    {
+      "tag": "forge:dusts/lead"
+    },
+    {
+      "tag": "forge:dusts/lead"
+    },
+    {
+      "tag": "forge:dusts/diamond"
+    },
+    [
+      {
+        "tag": "forge:ender_pearls"
+      },
+      {
+        "tag": "forge:dusts/ender_pearl"
+      }
+    ],
+    [
+      {
+        "tag": "forge:ender_pearls"
+      },
+      {
+        "tag": "forge:dusts/ender_pearl"
+      }
+    ]
+  ],
+  "result": {
+    "item": "thermal:enderium_dust",
+    "count": 2
+  }
+}

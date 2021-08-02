@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:latex_bucket"
+    }
+  ],
+  "result": {
+    "item": "thermal:rubber",
+    "count": 3
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:charcoal"
+    }
+  },
+  "result": {
+    "item": "thermal:charcoal_block"
+  },
+  "conditions": [
+    {
+      "flag": "vanilla_blocks",
+      "type": "thermal:flag"
+    }
+  ]
+}

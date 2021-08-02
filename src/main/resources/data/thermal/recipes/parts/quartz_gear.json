@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#i#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:gems/quartz"
+    },
+    "i": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "result": {
+    "item": "thermal:quartz_gear"
+  }
+}

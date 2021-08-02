@@ -1,0 +1,25 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "byg:cika_sapling"
+  },
+  "result": [
+    {
+      "item": "byg:cika_log",
+      "chance": 6.0
+    },
+    {
+      "item": "byg:cika_sapling",
+      "chance": 1.1
+    }
+
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

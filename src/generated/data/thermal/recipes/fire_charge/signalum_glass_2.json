@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:obsidian_glass"
+    },
+    {
+      "item": "thermal:obsidian_glass"
+    },
+    [
+      {
+        "tag": "forge:dusts/signalum"
+      },
+      {
+        "tag": "forge:ingots/signalum"
+      }
+    ],
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "thermal:signalum_glass",
+    "count": 2
+  }
+}

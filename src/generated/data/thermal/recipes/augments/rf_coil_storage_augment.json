@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "GXG",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "S": {
+      "tag": "forge:ingots/silver"
+    },
+    "X": {
+      "item": "thermal:rf_coil"
+    }
+  },
+  "result": {
+    "item": "thermal:rf_coil_storage_augment"
+  },
+  "conditions": [
+    {
+      "flag": "storage_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "PGP",
+    "GPG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "result": {
+    "item": "thermal:fire_tnt"
+  },
+  "conditions": [
+    {
+      "flag": "elemental_explosives",
+      "type": "thermal:flag"
+    }
+  ]
+}

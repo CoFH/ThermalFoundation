@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "PIP",
+    "GPG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "tag": "forge:ender_pearls"
+    }
+  },
+  "result": {
+    "item": "thermal:ender_grenade",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "flag": "basic_explosives",
+      "type": "thermal:flag"
+    }
+  ]
+}

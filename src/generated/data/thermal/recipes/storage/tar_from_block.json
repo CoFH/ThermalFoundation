@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:tar_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:tar",
+    "count": 9
+  }
+}

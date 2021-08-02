@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:storage_blocks/apatite",
+    "#forge:storage_blocks/bamboo",
+    "#forge:storage_blocks/bronze",
+    "#forge:storage_blocks/charcoal",
+    "#forge:storage_blocks/cinnabar",
+    "#forge:storage_blocks/coal_coke",
+    "#forge:storage_blocks/constantan",
+    "#forge:storage_blocks/copper",
+    "#forge:storage_blocks/electrum",
+    "#forge:storage_blocks/enderium",
+    "#forge:storage_blocks/gunpowder",
+    "#forge:storage_blocks/invar",
+    "#forge:storage_blocks/lead",
+    "#forge:storage_blocks/lumium",
+    "#forge:storage_blocks/nickel",
+    "#forge:storage_blocks/niter",
+    "#forge:storage_blocks/ruby",
+    "#forge:storage_blocks/sapphire",
+    "#forge:storage_blocks/signalum",
+    "#forge:storage_blocks/silver",
+    "#forge:storage_blocks/sugar_cane",
+    "#forge:storage_blocks/sulfur",
+    "#forge:storage_blocks/tin"
+  ]
+}

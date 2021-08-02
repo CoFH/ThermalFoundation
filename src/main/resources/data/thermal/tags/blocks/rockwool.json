@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "thermal:white_rockwool",
+    "thermal:orange_rockwool",
+    "thermal:magenta_rockwool",
+    "thermal:light_blue_rockwool",
+    "thermal:yellow_rockwool",
+    "thermal:lime_rockwool",
+    "thermal:pink_rockwool",
+    "thermal:gray_rockwool",
+    "thermal:light_gray_rockwool",
+    "thermal:cyan_rockwool",
+    "thermal:purple_rockwool",
+    "thermal:blue_rockwool",
+    "thermal:brown_rockwool",
+    "thermal:green_rockwool",
+    "thermal:red_rockwool",
+    "thermal:black_rockwool"
+  ]
+}

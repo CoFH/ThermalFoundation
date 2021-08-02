@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "PIP",
+    "GPG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "item": "thermal:basalz_powder"
+    }
+  },
+  "result": {
+    "item": "thermal:earth_grenade",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "flag": "elemental_explosives",
+      "type": "thermal:flag"
+    }
+  ]
+}

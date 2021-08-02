@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "RXR",
+    "IGI"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gems/quartz"
+    },
+    "I": {
+      "tag": "forge:ingots/electrum"
+    },
+    "R": {
+      "tag": "forge:gears/signalum"
+    },
+    "X": {
+      "item": "thermal:upgrade_augment_1"
+    }
+  },
+  "result": {
+    "item": "thermal:upgrade_augment_2"
+  },
+  "conditions": [
+    {
+      "flag": "upgrade_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

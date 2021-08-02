@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "thermal:block/workbenches/tinker_bench_top",
+    "down": "thermal:block/workbenches/tinker_bench_bottom",
+    "up": "thermal:block/workbenches/tinker_bench_top",
+    "north": "thermal:block/workbenches/tinker_bench_n",
+    "east": "thermal:block/workbenches/tinker_bench_ew",
+    "south": "thermal:block/workbenches/tinker_bench_s",
+    "west": "thermal:block/workbenches/tinker_bench_ew"
+  }
+}

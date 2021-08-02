@@ -1,0 +1,181 @@
+{
+  "block.device_water_gen": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/device/water_gen"
+    ],
+    "subtitle": "subtitle.thermal.block.device_water_gen"
+  },
+
+  "block.machine_bottler": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/machine/bottler"
+    ],
+    "subtitle": "subtitle.thermal.block.machine_bottler"
+  },
+  "block.machine_crucible": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/machine/crucible"
+    ],
+    "subtitle": "subtitle.thermal.block.machine_crucible"
+  },
+  "block.machine_furnace": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/machine/furnace"
+    ],
+    "subtitle": "subtitle.thermal.block.machine_furnace"
+  },
+  "block.machine_pulverizer": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/machine/pulverizer"
+    ],
+    "subtitle": "subtitle.thermal.block.machine_pulverizer"
+  },
+  "block.machine_sawmill": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/machine/sawmill"
+    ],
+    "subtitle": "subtitle.thermal.block.machine_sawmill"
+  },
+  "block.machine_smelter": {
+    "category": "block",
+    "sounds": [
+      "thermal:block/machine/smelter"
+    ],
+    "subtitle": "subtitle.thermal.block.machine_smelter"
+  },
+
+  "entity.basalz.ambient": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/basalz/breathe0",
+      "thermal:mob/basalz/breathe1"
+    ],
+    "subtitle": "subtitle.thermal.entity.basalz.ambient"
+  },
+  "entity.basalz.death": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/basalz/death"
+    ],
+    "subtitle": "subtitle.thermal.entity.basalz.death"
+  },
+  "entity.basalz.hurt": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/basalz/hurt"
+    ],
+    "subtitle": "subtitle.thermal.entity.basalz.hurt"
+  },
+  "entity.basalz.roam": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/basalz/roam"
+    ],
+    "subtitle": "subtitle.thermal.entity.basalz.roam"
+  },
+  "entity.basalz.shoot": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/basalz/shoot"
+    ],
+    "subtitle": "subtitle.thermal.entity.basalz.shoot"
+  },
+
+  "entity.blitz.ambient": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blitz/breathe0",
+      "thermal:mob/blitz/breathe1",
+      "thermal:mob/blitz/breathe2"
+    ],
+    "subtitle": "subtitle.thermal.entity.blitz.ambient"
+  },
+  "entity.blitz.death": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blitz/death"
+    ],
+    "subtitle": "subtitle.thermal.entity.blitz.death"
+  },
+  "entity.blitz.hurt": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blitz/hurt"
+    ],
+    "subtitle": "subtitle.thermal.entity.blitz.hurt"
+  },
+  "entity.blitz.roam": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blitz/roam"
+    ],
+    "subtitle": "subtitle.thermal.entity.blitz.roam"
+  },
+  "entity.blitz.shoot": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blitz/shoot"
+    ],
+    "subtitle": "subtitle.thermal.entity.blitz.shoot"
+  },
+
+  "entity.blizz.ambient": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blizz/breathe0",
+      "thermal:mob/blizz/breathe1",
+      "thermal:mob/blizz/breathe2"
+    ],
+    "subtitle": "subtitle.thermal.entity.blizz.ambient"
+  },
+  "entity.blizz.death": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blizz/death"
+    ],
+    "subtitle": "subtitle.thermal.entity.blizz.death"
+  },
+  "entity.blizz.hurt": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blizz/hurt"
+    ],
+    "subtitle": "subtitle.thermal.entity.blizz.hurt"
+  },
+  "entity.blizz.roam": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blizz/roam"
+    ],
+    "subtitle": "subtitle.thermal.entity.blizz.roam"
+  },
+  "entity.blizz.shoot": {
+    "category": "entity",
+    "sounds": [
+      "thermal:mob/blizz/shoot"
+    ],
+    "subtitle": "subtitle.thermal.entity.blizz.shoot"
+  },
+
+  "item.magnet": {
+    "category": "neutral",
+    "sounds": [
+      "minecraft:mob/endermen/portal2"
+    ],
+    "subtitle": "subtitle.thermal.item.magnet"
+  },
+
+  "misc.tinker": {
+    "category": "block",
+    "sounds": [
+      "thermal:misc/tinker"
+    ],
+    "subtitle": "subtitle.thermal.misc.tinker"
+  }
+}

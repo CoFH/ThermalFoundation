@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "bloomful:blue_wisteria_sapling"
+  },
+  "result": [
+    {
+      "item": "bloomful:wisteria_log",
+      "chance": 6.0
+    },
+    {
+      "item": "bloomful:blue_wisteria_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "bloomful"
+    }
+  ]
+}

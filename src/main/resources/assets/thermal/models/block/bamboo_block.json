@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "thermal:block/storage/bamboo_block_side",
+    "end": "thermal:block/storage/bamboo_block_end"
+  }
+}

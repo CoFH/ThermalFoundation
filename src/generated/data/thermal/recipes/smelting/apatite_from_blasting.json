@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "thermal:apatite_ore"
+  },
+  "result": "thermal:apatite",
+  "experience": 0.5,
+  "cookingtime": 100
+}

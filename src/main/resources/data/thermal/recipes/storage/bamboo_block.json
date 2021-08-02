@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "result": {
+    "item": "thermal:bamboo_block"
+  },
+  "conditions": [
+    {
+      "flag": "vanilla_blocks",
+      "type": "thermal:flag"
+    }
+  ]
+}

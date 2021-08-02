@@ -1,0 +1,7 @@
+{
+  "parent": "thermal:block/device_tree_extractor",
+  "textures": {
+    "up": "thermal:block/devices/device_tree_extractor_top_active",
+    "north": "thermal:block/devices/device_tree_extractor_active"
+  }
+}

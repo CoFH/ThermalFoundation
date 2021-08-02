@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "atmospheric:kousa_sapling"
+  },
+  "result": [
+    {
+      "item": "atmospheric:kousa_log",
+      "chance": 6.0
+    },
+    {
+      "item": "atmospheric:kousa_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ]
+}

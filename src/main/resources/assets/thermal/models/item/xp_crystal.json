@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "thermal:item/tools/xp_crystal_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "stored": 0.00000
+      },
+      "model": "thermal:item/xp_crystal_0"
+    },
+    {
+      "predicate": {
+        "stored": 0.00001
+      },
+      "model": "thermal:item/xp_crystal_1"
+    },
+    {
+      "predicate": {
+        "stored": 0.25000
+      },
+      "model": "thermal:item/xp_crystal_2"
+    },
+    {
+      "predicate": {
+        "stored": 0.50000
+      },
+      "model": "thermal:item/xp_crystal_3"
+    },
+    {
+      "predicate": {
+        "stored": 0.75000
+      },
+      "model": "thermal:item/xp_crystal_4"
+    }
+  ]
+}

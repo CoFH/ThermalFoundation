@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "thermal:signalum_dust"
+  },
+  "result": "thermal:signalum_ingot",
+  "experience": 0.0,
+  "cookingtime": 100
+}

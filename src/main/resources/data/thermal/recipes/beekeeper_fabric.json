@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SHS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:string"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    }
+  },
+  "result": {
+    "item": "thermal:beekeeper_fabric"
+  },
+  "conditions": [
+    {
+      "flag": "beekeeper_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

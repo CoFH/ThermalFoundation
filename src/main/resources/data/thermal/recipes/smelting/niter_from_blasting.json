@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "thermal:niter_ore"
+  },
+  "result": "thermal:niter",
+  "experience": 0.5,
+  "cookingtime": 100
+}

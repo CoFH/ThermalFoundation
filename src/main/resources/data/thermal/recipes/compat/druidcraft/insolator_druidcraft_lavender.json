@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "druidcraft:lavender"
+  },
+  "result": [
+    {
+      "item": "druidcraft:lavender",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "druidcraft"
+    }
+  ]
+}

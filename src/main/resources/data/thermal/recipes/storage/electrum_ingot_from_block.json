@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:electrum_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:electrum_ingot",
+    "count": 9
+  }
+}

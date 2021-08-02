@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RXR",
+    "ICI",
+    "RPR"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:fluid_cell_frame"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "item": "thermal:redstone_servo"
+    },
+    "R": {
+      "item": "thermal:cured_rubber"
+    },
+    "X": {
+      "tag": "thermal:glass/hardened"
+    }
+  },
+  "result": {
+    "item": "thermal:fluid_cell"
+  },
+  "conditions": [
+    {
+      "flag": "fluid_cell",
+      "type": "thermal:flag"
+    }
+  ]
+}

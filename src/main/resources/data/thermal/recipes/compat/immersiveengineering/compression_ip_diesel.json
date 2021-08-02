@@ -1,0 +1,14 @@
+{
+  "type": "thermal:compression_fuel",
+  "ingredient": {
+    "fluid": "immersivepetroleum:diesel",
+    "amount": 1000
+  },
+  "energy": 435000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersivepetroleum"
+    }
+  ]
+}

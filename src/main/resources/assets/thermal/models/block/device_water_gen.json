@@ -1,0 +1,12 @@
+{
+  "parent": "thermal:block/device_base",
+  "textures": {
+    "particle": "thermal:block/devices/device_water_gen_side",
+    "down": "thermal:block/devices/device_water_gen_bottom",
+    "up": "thermal:block/devices/device_water_gen_top",
+    "east": "thermal:block/devices/device_water_gen_side",
+    "west": "thermal:block/devices/device_water_gen_side",
+    "north": "thermal:block/devices/device_water_gen",
+    "south": "thermal:block/devices/device_water_gen_side"
+  }
+}

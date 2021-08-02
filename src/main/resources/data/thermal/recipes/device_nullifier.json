@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:lava_bucket"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "forge:ingots/tin"
+    },
+    "P": {
+      "item": "thermal:redstone_servo"
+    },
+    "X": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "result": {
+    "item": "thermal:device_nullifier"
+  },
+  "conditions": [
+    {
+      "flag": "device_nullifier",
+      "type": "thermal:flag"
+    }
+  ]
+}

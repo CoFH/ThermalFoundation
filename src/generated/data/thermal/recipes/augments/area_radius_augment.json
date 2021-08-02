@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+    "IXI",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gears/iron"
+    },
+    "I": {
+      "tag": "forge:ingots/tin"
+    },
+    "X": {
+      "item": "thermal:redstone_servo"
+    }
+  },
+  "result": {
+    "item": "thermal:area_radius_augment"
+  },
+  "conditions": [
+    {
+      "flag": "area_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

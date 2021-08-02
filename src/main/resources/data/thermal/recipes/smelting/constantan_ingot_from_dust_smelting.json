@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "thermal:constantan_dust"
+  },
+  "result": "thermal:constantan_ingot",
+  "experience": 0.0,
+  "cookingtime": 200
+}

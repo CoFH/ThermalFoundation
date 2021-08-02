@@ -1,0 +1,80 @@
+modLoader = "javafml"
+loaderVersion = "[34,)"
+issueTrackerURL = "https://github.com/cofh/feedback"
+license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
+
+[[mods]]
+modId = "thermal"
+version = "${file.jarVersion}"
+displayName = "Thermal Series"
+updateJSONURL = "https://raw.github.com/cofh/version/master/thermal/update.json"
+displayURL = "https://teamcofh.com/"
+logoFile = "thermal_series.png"
+credits = "Team CoFH"
+authors = "King Lemming"
+description = '''
+Parent mod for all Thermal modules. For convenience, packaged alongside Thermal Foundation.
+
+Contains all of the common components for the Thermal Series, such as materials and basic tools.
+'''
+[[dependencies.thermal]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.5,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal]]
+modId = "forge"
+mandatory = true
+versionRange = "[36.2.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal]]
+modId = "cofh_core"
+mandatory = true
+versionRange = "[1.3,1.4]"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mods]]
+modId = "thermal_foundation"
+version = "${file.jarVersion}"
+displayName = "Thermal Foundation"
+displayURL = "https://teamcofh.com/"
+logoFile = "thermal_foundation.png"
+credits = "Team CoFH"
+authors = "King Lemming"
+description = '''
+The Foundation of a Thermally Expanding World!
+
+Contains the ores and world generation for the Thermal Series.
+'''
+[[dependencies.thermal_foundation]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.5,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal_foundation]]
+modId = "forge"
+mandatory = true
+versionRange = "[36.2.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal_foundation]]
+modId = "cofh_core"
+mandatory = true
+versionRange = "[1.3,1.4]"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal_foundation]]
+modId = "thermal"
+mandatory = true
+versionRange = "[1.3,1.4]"
+ordering = "AFTER"
+side = "BOTH"

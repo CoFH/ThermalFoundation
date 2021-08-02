@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LDL",
+    "RPR",
+    "DLD"
+  ],
+  "key": {
+    "D": {
+      "tag": "forge:dusts/redstone"
+    },
+    "L": {
+      "tag": "forge:nuggets/lead"
+    },
+    "P": {
+      "tag": "forge:crops/potato"
+    },
+    "R": {
+      "item": "thermal:cured_rubber"
+    }
+  },
+  "result": {
+    "item": "thermal:rf_potato"
+  }
+}

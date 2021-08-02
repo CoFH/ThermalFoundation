@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:bucket"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "minecraft:planks"
+    },
+    "P": {
+      "item": "thermal:redstone_servo"
+    },
+    "X": {
+      "tag": "forge:gears/iron"
+    }
+  },
+  "result": {
+    "item": "thermal:device_tree_extractor"
+  },
+  "conditions": [
+    {
+      "flag": "device_tree_extractor",
+      "type": "thermal:flag"
+    }
+  ]
+}

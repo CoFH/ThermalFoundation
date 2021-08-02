@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:piston"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "forge:ingots/invar"
+    },
+    "P": {
+      "item": "thermal:redstone_servo"
+    },
+    "X": {
+      "tag": "forge:gears/constantan"
+    }
+  },
+  "result": {
+    "item": "thermal:device_rock_gen"
+  },
+  "conditions": [
+    {
+      "flag": "device_rock_gen",
+      "type": "thermal:flag"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:gems/apatite",
+    "#forge:gems/cinnabar",
+    "#forge:gems/niter",
+    "#forge:gems/ruby",
+    "#forge:gems/sapphire",
+    "#forge:gems/sulfur"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "biomesoplenty:glowshroom"
+  },
+  "result": [
+    {
+      "item": "biomesoplenty:glowshroom",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

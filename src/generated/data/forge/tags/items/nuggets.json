@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/bronze",
+    "#forge:nuggets/constantan",
+    "#forge:nuggets/copper",
+    "#forge:nuggets/electrum",
+    "#forge:nuggets/enderium",
+    "#forge:nuggets/invar",
+    "#forge:nuggets/lead",
+    "#forge:nuggets/lumium",
+    "#forge:nuggets/nickel",
+    "#forge:nuggets/signalum",
+    "#forge:nuggets/silver",
+    "#forge:nuggets/tin"
+  ]
+}

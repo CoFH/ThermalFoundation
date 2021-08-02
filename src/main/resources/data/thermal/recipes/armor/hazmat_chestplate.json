@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "IXI",
+    "XXX"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "X": {
+      "item": "thermal:hazmat_fabric"
+    }
+  },
+  "result": {
+    "item": "thermal:hazmat_chestplate"
+  },
+  "conditions": [
+    {
+      "flag": "hazmat_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

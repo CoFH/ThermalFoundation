@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:item/detonator",
+  "textures": {
+    "layer0": "thermal:item/tools/detonator_armed"
+  }
+}

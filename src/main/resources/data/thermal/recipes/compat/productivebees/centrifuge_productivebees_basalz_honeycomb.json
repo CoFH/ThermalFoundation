@@ -1,0 +1,22 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "productivebees:honeycomb_basalz"
+  },
+  "result": [
+    {
+      "item": "thermal:basalz_powder",
+      "chance": 0.9
+    },
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 100
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ]
+}

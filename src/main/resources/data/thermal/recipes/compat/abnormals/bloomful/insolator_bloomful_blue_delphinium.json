@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "bloomful:blue_delphinium"
+  },
+  "result": [
+    {
+      "item": "bloomful:blue_delphinium",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "bloomful"
+    }
+  ]
+}

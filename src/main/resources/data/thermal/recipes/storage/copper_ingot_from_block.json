@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:copper_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:copper_ingot",
+    "count": 9
+  }
+}

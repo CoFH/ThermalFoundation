@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:water_bucket"
+    },
+    "#": {
+      "item": "minecraft:vine"
+    }
+  },
+  "result": {
+    "item": "thermal:rubber"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:plates/bronze",
+    "#forge:plates/constantan",
+    "#forge:plates/copper",
+    "#forge:plates/electrum",
+    "#forge:plates/enderium",
+    "#forge:plates/gold",
+    "#forge:plates/invar",
+    "#forge:plates/iron",
+    "#forge:plates/lead",
+    "#forge:plates/lumium",
+    "#forge:plates/nickel",
+    "#forge:plates/signalum",
+    "#forge:plates/silver",
+    "#forge:plates/tin"
+  ]
+}

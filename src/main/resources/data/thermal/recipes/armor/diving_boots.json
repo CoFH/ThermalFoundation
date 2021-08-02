@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "LIL"
+  ],
+  "key": {
+    "L": {
+      "tag": "forge:leather"
+    },
+    "I": {
+      "tag": "forge:ingots/gold"
+    },
+    "X": {
+      "item": "thermal:diving_fabric"
+    }
+  },
+  "result": {
+    "item": "thermal:diving_boots"
+  },
+  "conditions": [
+    {
+      "flag": "diving_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

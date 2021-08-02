@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "biomesoplenty:hellbark_log",
+  "leaves": "biomesoplenty:hellbark_leaves",
+  "result": {
+    "fluid": "minecraft:lava",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

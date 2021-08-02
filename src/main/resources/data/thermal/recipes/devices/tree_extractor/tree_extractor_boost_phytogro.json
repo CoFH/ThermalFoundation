@@ -1,0 +1,8 @@
+{
+  "type": "thermal:tree_extractor_boost",
+  "ingredient": {
+    "item": "thermal:phytogro"
+  },
+  "output": 2.0,
+  "cycles": 16
+}

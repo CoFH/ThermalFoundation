@@ -1,0 +1,23 @@
+{
+  "type": "thermal:bottler",
+  "ingredients": [
+    {
+      "item": "dyenamics:fluorescent_concrete_powder"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "result": [
+    {
+      "item": "dyenamics:fluorescent_concrete"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "dyenamics"
+    }
+  ]
+}

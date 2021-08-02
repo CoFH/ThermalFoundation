@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:item/redstone_grenade",
+  "textures": {
+    "layer0": "thermal:item/tools/redstone_grenade_thrown"
+  }
+}

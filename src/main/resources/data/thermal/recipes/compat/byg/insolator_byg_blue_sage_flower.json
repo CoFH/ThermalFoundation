@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "byg:blue_sage"
+  },
+  "result": [
+    {
+      "item": "byg:blue_sage",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:blizz_rod"
+    }
+  ],
+  "result": {
+    "item": "thermal:blizz_powder",
+    "count": 2
+  }
+}

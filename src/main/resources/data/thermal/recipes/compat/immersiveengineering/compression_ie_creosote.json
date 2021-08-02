@@ -1,0 +1,14 @@
+{
+  "type": "thermal:compression_fuel",
+  "ingredient": {
+    "fluid": "immersiveengineering:creosote",
+    "amount": 1000
+  },
+  "energy": 20000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

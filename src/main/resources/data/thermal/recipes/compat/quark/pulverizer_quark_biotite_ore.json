@@ -1,0 +1,23 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "item": "quark:biotite_ore"
+  },
+  "result": [
+    {
+      "item": "quark:biotite",
+      "chance": 2.0
+    },
+    {
+      "item": "minecraft:end_stone",
+      "chance": 0.2
+    }
+  ],
+  "experience": 0.2,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ]
+}

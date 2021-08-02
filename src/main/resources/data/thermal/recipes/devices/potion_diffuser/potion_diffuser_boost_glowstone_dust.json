@@ -1,0 +1,8 @@
+{
+  "type": "thermal:potion_diffuser_boost",
+  "ingredient": {
+    "tag": "forge:dusts/glowstone"
+  },
+  "amplifier": 1,
+  "duration_mod": -0.25
+}

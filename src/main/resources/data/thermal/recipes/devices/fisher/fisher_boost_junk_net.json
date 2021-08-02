@@ -1,0 +1,8 @@
+{
+  "type": "thermal:fisher_boost",
+  "ingredient": {
+    "item": "thermal:junk_net"
+  },
+  "loot_table": "gameplay/fishing/junk",
+  "use_chance": 0.0
+}

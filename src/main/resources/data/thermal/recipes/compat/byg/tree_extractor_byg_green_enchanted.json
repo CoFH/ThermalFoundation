@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "byg:green_enchanted_log",
+  "leaves": "byg:green_enchanted_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

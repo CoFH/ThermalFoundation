@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:bronze_ingot"
+    },
+    "#": {
+      "tag": "forge:ingots/bronze"
+    }
+  },
+  "result": {
+    "item": "thermal:bronze_block"
+  }
+}

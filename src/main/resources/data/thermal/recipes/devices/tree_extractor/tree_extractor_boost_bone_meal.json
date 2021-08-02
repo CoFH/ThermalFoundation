@@ -1,0 +1,8 @@
+{
+  "type": "thermal:tree_extractor_boost",
+  "ingredient": {
+    "item": "minecraft:bone_meal"
+  },
+  "output": 1.5,
+  "cycles": 8
+}

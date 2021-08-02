@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "minecraft:oak_log",
+  "leaves": "biomesoplenty:maple_leaves",
+  "result": {
+    "fluid": "thermal:sap",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

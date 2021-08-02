@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:signalum_ingot"
+    },
+    "#": {
+      "tag": "forge:ingots/signalum"
+    }
+  },
+  "result": {
+    "item": "thermal:signalum_block"
+  }
+}

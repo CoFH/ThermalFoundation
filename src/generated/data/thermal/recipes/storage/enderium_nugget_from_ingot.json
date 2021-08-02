@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:enderium_ingot"
+    }
+  ],
+  "result": {
+    "item": "thermal:enderium_nugget",
+    "count": 9
+  }
+}

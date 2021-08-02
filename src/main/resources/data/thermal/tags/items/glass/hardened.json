@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "thermal:obsidian_glass",
+    "thermal:signalum_glass",
+    "thermal:lumium_glass",
+    "thermal:enderium_glass"
+  ]
+}

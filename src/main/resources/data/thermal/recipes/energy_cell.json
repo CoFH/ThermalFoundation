@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RXR",
+    "ICI",
+    "RPR"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:energy_cell_frame"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "R": {
+      "item": "thermal:cured_rubber"
+    },
+    "X": {
+      "tag": "forge:storage_blocks/redstone"
+    }
+  },
+  "result": {
+    "item": "thermal:energy_cell"
+  },
+  "conditions": [
+    {
+      "flag": "energy_cell",
+      "type": "thermal:flag"
+    }
+  ]
+}

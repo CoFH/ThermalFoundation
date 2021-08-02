@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gunpowder"
+    },
+    {
+      "item": "thermal:blizz_powder"
+    },
+    [
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
+    ]
+  ],
+  "result": {
+    "item": "thermal:ice_charge",
+    "count": 3
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " t ",
+    "tSt",
+    " t "
+  ],
+  "key": {
+    "t": {
+      "tag": "forge:nuggets/tin"
+    },
+    "S": {
+      "tag": "forge:ingots/signalum"
+    }
+  },
+  "result": {
+    "item": "thermal:item_filter_augment"
+  },
+  "conditions": [
+    {
+      "flag": "filter_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

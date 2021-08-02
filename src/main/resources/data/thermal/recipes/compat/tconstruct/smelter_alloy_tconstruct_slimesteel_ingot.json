@@ -1,0 +1,30 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 1
+    },
+    {
+      "item": "tconstruct:sky_slime_ball",
+      "count": 1
+    },
+    {
+      "item": "tconstruct:seared_brick",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:slimesteel_ingot",
+      "count": 2
+    }
+  ],
+  "energy": 4000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

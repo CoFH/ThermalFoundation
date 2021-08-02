@@ -1,0 +1,51 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/bismuth"
+        },
+        {
+          "tag": "forge:dusts/bismuth"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/copper"
+        },
+        {
+          "tag": "forge:dusts/copper"
+        }
+      ],
+      "count": 2
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/zinc"
+        },
+        {
+          "tag": "forge:dusts/zinc"
+        }
+      ],
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "silents_mechanisms:bismuth_brass_ingot",
+      "count": 4
+    }
+  ],
+  "energy": 6400,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "silents_mechanisms"
+    }
+  ]
+} 

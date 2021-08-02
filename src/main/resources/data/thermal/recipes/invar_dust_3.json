@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/iron"
+    },
+    {
+      "tag": "forge:dusts/iron"
+    },
+    {
+      "tag": "forge:dusts/nickel"
+    }
+  ],
+  "result": {
+    "item": "thermal:invar_dust",
+    "count": 3
+  }
+}

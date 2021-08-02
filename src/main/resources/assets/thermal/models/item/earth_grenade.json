@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "thermal:item/tools/earth_grenade"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "thrown": 1
+      },
+      "model": "thermal:item/earth_grenade_thrown"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "thermal:rock_gen",
+  "adjacent": "minecraft:blue_ice",
+  "below": "minecraft:soul_soil",
+  "result": {
+    "item": "minecraft:basalt"
+  }
+}

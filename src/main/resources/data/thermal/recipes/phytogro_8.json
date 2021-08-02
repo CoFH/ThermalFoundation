@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:sand"
+    },
+    [
+      {
+        "tag": "forge:gems/apatite"
+      },
+      {
+        "tag": "forge:dusts/apatite"
+      }
+    ],
+    [
+      {
+        "tag": "forge:gems/apatite"
+      },
+      {
+        "tag": "forge:dusts/apatite"
+      }
+    ],
+    [
+      {
+        "tag": "forge:gems/niter"
+      },
+      {
+        "tag": "forge:dusts/niter"
+      }
+    ]
+  ],
+  "result": {
+    "item": "thermal:phytogro",
+    "count": 8
+  }
+}

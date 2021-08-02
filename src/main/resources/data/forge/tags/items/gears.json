@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:gears/bronze",
+    "#forge:gears/constantan",
+    "#forge:gears/copper",
+    "#forge:gears/diamond",
+    "#forge:gears/electrum",
+    "#forge:gears/emerald",
+    "#forge:gears/enderium",
+    "#forge:gears/gold",
+    "#forge:gears/invar",
+    "#forge:gears/iron",
+    "#forge:gears/lapis",
+    "#forge:gears/lead",
+    "#forge:gears/lumium",
+    "#forge:gears/nickel",
+    "#forge:gears/quartz",
+    "#forge:gears/ruby",
+    "#forge:gears/sapphire",
+    "#forge:gears/signalum",
+    "#forge:gears/silver",
+    "#forge:gears/tin"
+  ]
+}

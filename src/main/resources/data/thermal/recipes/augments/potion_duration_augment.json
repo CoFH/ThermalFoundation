@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+    "IXI",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gears/lumium"
+    },
+    "I": {
+      "tag": "forge:ingots/copper"
+    },
+    "X": {
+      "tag": "thermal:glass/hardened"
+    }
+  },
+  "result": {
+    "item": "thermal:potion_duration_augment"
+  },
+  "conditions": [
+    {
+      "flag": "potion_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

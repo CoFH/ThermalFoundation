@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:zucchini_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:zucchini",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:zucchini_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}

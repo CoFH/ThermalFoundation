@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:charcoal_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:charcoal",
+    "count": 9
+  },
+  "conditions": [
+    {
+      "flag": "vanilla_blocks",
+      "type": "thermal:flag"
+    }
+  ]
+}

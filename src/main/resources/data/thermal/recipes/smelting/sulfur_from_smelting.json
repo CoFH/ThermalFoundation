@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "thermal:sulfur_ore"
+  },
+  "result": "thermal:sulfur",
+  "experience": 0.5,
+  "cookingtime": 200
+}

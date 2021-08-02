@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/tin"
+      },
+      {
+        "tag": "forge:ingots/tin"
+      }
+    ],
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "thermal:bronze_ingot",
+    "count": 4
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "minecraft:jungle_log",
+  "leaves": "minecraft:jungle_leaves",
+  "result": {
+    "fluid": "thermal:latex",
+    "amount": 50
+  }
+}

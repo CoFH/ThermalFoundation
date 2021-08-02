@@ -1,0 +1,56 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/silver"
+      },
+      {
+        "tag": "forge:ingots/silver"
+      }
+    ],
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "thermal:signalum_ingot",
+    "count": 4
+  }
+}

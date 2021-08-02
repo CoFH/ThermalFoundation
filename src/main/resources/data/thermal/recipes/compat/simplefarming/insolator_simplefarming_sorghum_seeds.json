@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:sorghum_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:sorghum",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:sorghum_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}

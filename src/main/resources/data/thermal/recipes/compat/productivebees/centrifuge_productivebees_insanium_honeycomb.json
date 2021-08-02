@@ -1,0 +1,26 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "productivebees:honeycomb_insanium"
+  },
+  "result": [
+    {
+      "item": "mysticalagradditions:insanium_essence",
+      "chance": 0.7
+    },
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 100
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivebees"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagradditions"
+    }
+  ]
+}

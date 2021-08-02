@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:cinnabar_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:cinnabar",
+    "count": 9
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "PGP",
+    "GPG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "P": {
+      "item": "thermal:basalz_powder"
+    }
+  },
+  "result": {
+    "item": "thermal:earth_tnt"
+  },
+  "conditions": [
+    {
+      "flag": "elemental_explosives",
+      "type": "thermal:flag"
+    }
+  ]
+}

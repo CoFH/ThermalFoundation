@@ -1,0 +1,32 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "thermal:item/plates/enderium_plate_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "count": 0.00000
+      },
+      "model": "thermal:item/enderium_plate_0"
+    },
+    {
+      "predicate": {
+        "count": 0.25000
+      },
+      "model": "thermal:item/enderium_plate_1"
+    },
+    {
+      "predicate": {
+        "count": 0.50000
+      },
+      "model": "thermal:item/enderium_plate_2"
+    },
+    {
+      "predicate": {
+        "count": 1.00000
+      },
+      "model": "thermal:item/enderium_plate_3"
+    }
+  ]
+}

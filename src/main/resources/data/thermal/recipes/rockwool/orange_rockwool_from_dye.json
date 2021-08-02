@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:white_rockwool"
+    },
+    {
+      "tag": "forge:dyes/orange"
+    }
+  ],
+  "result": {
+    "item": "thermal:orange_rockwool"
+  },
+  "conditions": [
+    {
+      "flag": "rockwool",
+      "type": "thermal:flag"
+    }
+  ]
+}

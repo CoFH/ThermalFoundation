@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:ginger_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:ginger",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:ginger_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}

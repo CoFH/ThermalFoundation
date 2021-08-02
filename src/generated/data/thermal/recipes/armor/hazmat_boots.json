@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "LRL"
+  ],
+  "key": {
+    "L": {
+      "tag": "forge:leather"
+    },
+    "R": {
+      "item": "thermal:cured_rubber"
+    },
+    "X": {
+      "item": "thermal:hazmat_fabric"
+    }
+  },
+  "result": {
+    "item": "thermal:hazmat_boots"
+  },
+  "conditions": [
+    {
+      "flag": "hazmat_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

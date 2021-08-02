@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:item/ender_tuner",
+  "textures": {
+    "layer0": "thermal:item/tools/ender_tuner_with_data"
+  }
+}

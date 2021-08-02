@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:charcoal"
+    },
+    [
+      {
+        "tag": "forge:gems/niter"
+      },
+      {
+        "tag": "forge:dusts/niter"
+      }
+    ],
+    [
+      {
+        "tag": "forge:gems/niter"
+      },
+      {
+        "tag": "forge:dusts/niter"
+      }
+    ],
+    [
+      {
+        "tag": "forge:gems/sulfur"
+      },
+      {
+        "tag": "forge:dusts/sulfur"
+      }
+    ]
+  ],
+  "result": {
+    "item": "minecraft:gunpowder",
+    "count": 4
+  }
+}

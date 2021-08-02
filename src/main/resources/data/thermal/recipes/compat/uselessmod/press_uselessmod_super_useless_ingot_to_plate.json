@@ -1,0 +1,17 @@
+{
+  "type": "thermal:press",
+  "ingredient": {
+    "tag": "forge:ingots/super_useless"
+  },
+  "result": [
+    {
+      "item": "uselessmod:super_useless_plate"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "uselessmod"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "type": "thermal:stirling_fuel",
+  "ingredient": {
+    "item": "minecraft:coal_block"
+  },
+  "energy": 240000
+}

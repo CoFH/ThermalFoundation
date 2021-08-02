@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "RXR",
+    "IGI"
+  ],
+  "key": {
+    "G": {
+      "tag": "thermal:glass/hardened"
+    },
+    "I": {
+      "tag": "forge:ingots/enderium"
+    },
+    "R": {
+      "tag": "forge:gears/lumium"
+    },
+    "X": {
+      "item": "thermal:upgrade_augment_2"
+    }
+  },
+  "result": {
+    "item": "thermal:upgrade_augment_3"
+  },
+  "conditions": [
+    {
+      "flag": "upgrade_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

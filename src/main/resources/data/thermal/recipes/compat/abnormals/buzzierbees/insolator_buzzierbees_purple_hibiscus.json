@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "buzzierbees:purple_hibiscus"
+  },
+  "result": [
+    {
+      "item": "buzzierbees:purple_hibiscus",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "buzzierbees"
+    }
+  ]
+}

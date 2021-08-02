@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "pamhc2crops:okraseeditem"
+  },
+  "result": [
+    {
+      "item": "pamhc2crops:okraitem",
+      "chance": 2.0
+    },
+    {
+      "item": "pamhc2crops:okraseeditem",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2crops"
+    }
+  ]
+}

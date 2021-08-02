@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "thermal:block/redstone_tnt"
+    }
+  }
+}

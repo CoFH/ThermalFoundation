@@ -1,0 +1,30 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "tconstruct:cobalt_ingot",
+      "count": 1
+    },
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 1
+    },
+    {
+      "item": "minecraft:magma_cream",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:queens_slime_ingot",
+      "count": 2
+    }
+  ],
+  "energy": 4000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

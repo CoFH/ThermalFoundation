@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:bitumen_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:bitumen",
+    "count": 9
+  }
+}

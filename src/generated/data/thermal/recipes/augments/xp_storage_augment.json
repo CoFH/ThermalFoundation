@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i ",
+    "iCi",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:nuggets/gold"
+    },
+    "C": {
+      "item": "thermal:xp_crystal"
+    }
+  },
+  "result": {
+    "item": "thermal:xp_storage_augment"
+  },
+  "conditions": [
+    {
+      "flag": "xp_storage_augment",
+      "type": "thermal:flag"
+    }
+  ]
+}

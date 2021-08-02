@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "upgrade_aquatic:pickerel_weed_blue"
+  },
+  "result": [
+    {
+      "item": "upgrade_aquatic:pickerel_weed_blue",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "upgrade_aquatic"
+    }
+  ]
+}

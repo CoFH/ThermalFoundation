@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ender_pearls"
+    },
+    {
+      "item": "thermal:earth_charge"
+    }
+  ],
+  "result": {
+    "item": "thermal:ender_pearl_dust"
+  }
+}

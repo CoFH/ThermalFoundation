@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "thermal:block/devices/device_soil_infuser",
+    "down": "thermal:block/devices/device_soil_infuser_bottom",
+    "up": "thermal:block/devices/device_soil_infuser_top_active",
+    "east": "thermal:block/devices/device_soil_infuser_side_active",
+    "west": "thermal:block/devices/device_soil_infuser_side_active",
+    "north": "thermal:block/devices/device_soil_infuser_active",
+    "south": "thermal:block/devices/device_soil_infuser_side_active"
+  }
+}

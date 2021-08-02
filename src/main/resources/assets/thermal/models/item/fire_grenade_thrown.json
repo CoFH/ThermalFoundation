@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:item/fire_grenade",
+  "textures": {
+    "layer0": "thermal:item/tools/fire_grenade_thrown"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "item": "rftoolsbase:dimensionalshard_nether"
+  },
+  "result": [
+    {
+      "item": "rftoolsbase:dimensionalshard",
+      "chance": 2.0
+    },
+    {
+      "item": "minecraft:gravel",
+      "chance": 0.2
+    }
+  ],
+  "experience": 0.2,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "rftoolsbase"
+    }
+  ]
+}

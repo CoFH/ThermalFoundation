@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "LXL",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:gears/constantan"
+    },
+    "L": {
+      "tag": "forge:plates/lead"
+    },
+    "X": {
+      "item": "thermal:redstone_servo"
+    }
+  },
+  "result": {
+    "item": "thermal:machine_catalyst_augment"
+  },
+  "conditions": [
+    {
+      "flag": "machine_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

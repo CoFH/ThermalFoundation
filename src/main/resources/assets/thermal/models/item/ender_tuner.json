@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "thermal:item/tools/ender_tuner"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "has_data": 1
+      },
+      "model": "thermal:item/ender_tuner_with_data"
+    }
+  ]
+}

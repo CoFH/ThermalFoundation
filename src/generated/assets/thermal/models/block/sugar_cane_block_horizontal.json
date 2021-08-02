@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "thermal:block/storage/sugar_cane_block_side",
+    "end": "thermal:block/storage/sugar_cane_block_end"
+  }
+}

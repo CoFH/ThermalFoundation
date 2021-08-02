@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "GEG",
+    "IGI"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "forge:ingots/lead"
+    },
+    "E": {
+      "tag": "forge:gears/electrum"
+    }
+  },
+  "result": {
+    "item": "thermal:energy_cell_frame"
+  },
+  "conditions": [
+    {
+      "flag": "energy_cell_frame",
+      "type": "thermal:flag"
+    }
+  ]
+}

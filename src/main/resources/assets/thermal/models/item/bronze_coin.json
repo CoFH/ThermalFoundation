@@ -1,0 +1,38 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "thermal:item/coins/bronze_coin_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "count": 0.00000
+      },
+      "model": "thermal:item/bronze_coin_0"
+    },
+    {
+      "predicate": {
+        "count": 0.03125
+      },
+      "model": "thermal:item/bronze_coin_1"
+    },
+    {
+      "predicate": {
+        "count": 0.25000
+      },
+      "model": "thermal:item/bronze_coin_2"
+    },
+    {
+      "predicate": {
+        "count": 0.50000
+      },
+      "model": "thermal:item/bronze_coin_3"
+    },
+    {
+      "predicate": {
+        "count": 1.00000
+      },
+      "model": "thermal:item/bronze_coin_4"
+    }
+  ]
+}

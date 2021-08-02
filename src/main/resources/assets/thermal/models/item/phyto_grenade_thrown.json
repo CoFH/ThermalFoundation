@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:item/phyto_grenade",
+  "textures": {
+    "layer0": "thermal:item/tools/phyto_grenade_thrown"
+  }
+}

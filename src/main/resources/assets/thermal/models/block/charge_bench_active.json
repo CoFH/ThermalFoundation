@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/charge_bench",
+  "textures": {
+    "side": "thermal:block/workbenches/charge_bench_active"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "thermal:lumium_dust"
+  },
+  "result": "thermal:lumium_ingot",
+  "experience": 0.0,
+  "cookingtime": 100
+}

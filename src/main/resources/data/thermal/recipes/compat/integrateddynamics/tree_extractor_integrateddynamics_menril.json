@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "integrateddynamics:menril_log",
+  "leaves": "integrateddynamics:menril_leaves",
+  "result": {
+    "fluid": "integrateddynamics:menril_resin",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "integrateddynamics"
+    }
+  ]
+}

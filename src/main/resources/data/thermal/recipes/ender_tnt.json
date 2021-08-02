@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "PGP",
+    "GPG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "P": {
+      "tag": "forge:ender_pearls"
+    }
+  },
+  "result": {
+    "item": "thermal:ender_tnt"
+  },
+  "conditions": [
+    {
+      "flag": "basic_explosives",
+      "type": "thermal:flag"
+    }
+  ]
+}

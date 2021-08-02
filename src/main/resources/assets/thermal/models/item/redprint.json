@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "thermal:item/tools/redprint"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "has_data": 1
+      },
+      "model": "thermal:item/redprint_with_data"
+    }
+  ]
+}

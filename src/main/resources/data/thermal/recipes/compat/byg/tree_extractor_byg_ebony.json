@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "byg:ebony_log",
+  "leaves": "byg:ebony_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

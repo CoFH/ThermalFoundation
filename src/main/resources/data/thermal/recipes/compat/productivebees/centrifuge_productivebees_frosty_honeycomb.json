@@ -1,0 +1,26 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "productivebees:honeycomb_frosty"
+  },
+  "result": [
+    {
+      "item": "minecraft:snowball",
+      "count": 4.0
+    },
+    {
+      "item": "minecraft:ice",
+      "chance": 0.4
+    },
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 100
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ]
+}

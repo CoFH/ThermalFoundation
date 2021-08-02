@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "II ",
+    "ICI",
+    " II"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/copper"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "thermal:saw_blade"
+  },
+  "conditions": [
+    {
+      "flag": "tool_components",
+      "type": "thermal:flag"
+    }
+  ]
+}

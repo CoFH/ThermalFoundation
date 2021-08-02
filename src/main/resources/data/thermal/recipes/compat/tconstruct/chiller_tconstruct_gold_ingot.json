@@ -1,0 +1,25 @@
+{
+  "type": "thermal:chiller",
+  "ingredients": [
+    {
+      "fluid": "tconstruct:molten_gold",
+      "amount": 144
+    },
+    {
+      "item": "thermal:chiller_ingot_cast"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 1
+    }
+  ],
+  "energy": 5000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

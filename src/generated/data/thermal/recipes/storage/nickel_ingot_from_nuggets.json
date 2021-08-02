@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:nickel_nugget"
+    },
+    "#": {
+      "tag": "forge:nuggets/nickel"
+    }
+  },
+  "result": {
+    "item": "thermal:nickel_ingot"
+  }
+}

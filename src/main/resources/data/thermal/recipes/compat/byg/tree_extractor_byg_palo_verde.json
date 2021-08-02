@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "byg:palo_verde_log",
+  "leaves": "byg:palo_verde_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

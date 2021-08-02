@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "IXI",
+    "XXX"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/gold"
+    },
+    "X": {
+      "item": "thermal:diving_fabric"
+    }
+  },
+  "result": {
+    "item": "thermal:diving_chestplate"
+  },
+  "conditions": [
+    {
+      "flag": "diving_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

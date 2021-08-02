@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:invar_ingot"
+    }
+  ],
+  "result": {
+    "item": "thermal:invar_nugget",
+    "count": 9
+  }
+}

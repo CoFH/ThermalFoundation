@@ -1,0 +1,26 @@
+{
+  "loader": "thermal:reconfigurable",
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": {"texture": "#down", "cullface": "down"},
+        "up": {"texture": "#up", "cullface": "up"},
+        "north": {"texture": "#north", "cullface": "north"},
+        "south": {"texture": "#south", "cullface": "south"},
+        "west": {"texture": "#west", "cullface": "west"},
+        "east": {"texture": "#east", "cullface": "east"}
+      }
+    }
+  ],
+  "textures": {
+    "particle": "thermal:block/machines/machine_top",
+    "down": "thermal:block/machines/machine_bottom",
+    "up": "thermal:block/machines/machine_top",
+    "east": "thermal:block/machines/machine_side",
+    "west": "thermal:block/machines/machine_side",
+    "south": "thermal:block/machines/machine_side"
+  }
+}

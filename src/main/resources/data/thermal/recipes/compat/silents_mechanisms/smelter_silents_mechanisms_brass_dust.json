@@ -1,0 +1,19 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:dusts/brass"
+  },
+  "result": [
+    {
+      "item": "silents_mechanisms:brass_ingot",
+      "count": 1
+    }
+  ],
+  "energy_mod": 0.5,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "silents_mechanisms"
+    }
+  ]
+}

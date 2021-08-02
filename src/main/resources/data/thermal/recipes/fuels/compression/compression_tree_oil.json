@@ -1,0 +1,8 @@
+{
+  "type": "thermal:compression_fuel",
+  "ingredient": {
+    "fluid": "thermal:tree_oil",
+    "amount": 1000
+  },
+  "energy": 100000
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "L L"
+  ],
+  "key": {
+    "L": {
+      "tag": "forge:leather"
+    },
+    "X": {
+      "item": "thermal:beekeeper_fabric"
+    }
+  },
+  "result": {
+    "item": "thermal:beekeeper_boots"
+  },
+  "conditions": [
+    {
+      "flag": "beekeeper_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

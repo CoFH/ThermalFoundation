@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:dusts/apatite",
+    "#forge:dusts/bronze",
+    "#forge:dusts/cinnabar",
+    "#forge:dusts/constantan",
+    "#forge:dusts/copper",
+    "#forge:dusts/diamond",
+    "#forge:dusts/electrum",
+    "#forge:dusts/emerald",
+    "#forge:dusts/ender_pearl",
+    "#forge:dusts/enderium",
+    "#forge:dusts/gold",
+    "#forge:dusts/invar",
+    "#forge:dusts/iron",
+    "#forge:dusts/lapis",
+    "#forge:dusts/lead",
+    "#forge:dusts/lumium",
+    "#forge:dusts/nickel",
+    "#forge:dusts/niter",
+    "#forge:dusts/quartz",
+    "#forge:dusts/ruby",
+    "#forge:dusts/sapphire",
+    "#forge:dusts/signalum",
+    "#forge:dusts/silver",
+    "#forge:dusts/sulfur",
+    "#forge:dusts/tin"
+  ]
+}

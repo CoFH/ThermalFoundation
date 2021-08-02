@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:slag_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:slag",
+    "count": 9
+  }
+}

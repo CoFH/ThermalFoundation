@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "IGI",
+    "III"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gears/signalum"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "tag": "forge:ingots/silver"
+    }
+  },
+  "result": {
+    "item": "thermal:detonator"
+  }
+}

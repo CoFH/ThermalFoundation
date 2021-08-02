@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "thermal:block/apple_block"
+      },
+      {
+        "model": "thermal:block/apple_block",
+        "y": 90
+      },
+      {
+        "model": "thermal:block/apple_block",
+        "y": 180
+      },
+      {
+        "model": "thermal:block/apple_block",
+        "y": 270
+      }
+    ]
+  }
+}

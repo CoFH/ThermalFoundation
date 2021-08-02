@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RIR",
+    "IXI",
+    "RIR"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "R": {
+      "item": "thermal:cured_rubber"
+    },
+    "X": {
+      "tag": "thermal:glass/hardened"
+    }
+  },
+  "result": {
+    "item": "thermal:fluid_tank_augment"
+  },
+  "conditions": [
+    {
+      "flag": "storage_augments",
+      "type": "thermal:flag"
+    }
+  ]
+}

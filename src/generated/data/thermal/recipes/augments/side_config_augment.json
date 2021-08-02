@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i ",
+    "iGi",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:nuggets/tin"
+    },
+    "G": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "result": {
+    "item": "thermal:side_config_augment"
+  },
+  "conditions": [
+    {
+      "flag": "side_config_augment",
+      "type": "thermal:flag"
+    }
+  ]
+}

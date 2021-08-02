@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "thermal:beekeeper_fabric"
+    }
+  },
+  "result": {
+    "item": "thermal:beekeeper_helmet"
+  },
+  "conditions": [
+    {
+      "flag": "beekeeper_armor",
+      "type": "thermal:flag"
+    }
+  ]
+}

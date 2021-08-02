@@ -1,0 +1,22 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "productivebees:honeycomb_powdery"
+  },
+  "result": [
+    {
+      "item": "minecraft:gunpowder",
+      "chance": 1.0
+    },
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 100
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ]
+}

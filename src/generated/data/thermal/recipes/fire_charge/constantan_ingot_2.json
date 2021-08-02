@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:dusts/copper"
+      },
+      {
+        "tag": "forge:ingots/copper"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/nickel"
+      },
+      {
+        "tag": "forge:ingots/nickel"
+      }
+    ],
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "thermal:constantan_ingot",
+    "count": 2
+  }
+}

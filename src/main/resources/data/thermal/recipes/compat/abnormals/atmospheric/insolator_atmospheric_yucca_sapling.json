@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "atmospheric:yucca_sapling"
+  },
+  "result": [
+    {
+      "item": "atmospheric:yucca_log",
+      "chance": 6.0
+    },
+    {
+      "item": "atmospheric:yucca_sapling",
+      "chance": 1.1
+    },
+    {
+      "item": "atmospheric:yucca_bundle",
+      "chance": 0.25
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ]
+}

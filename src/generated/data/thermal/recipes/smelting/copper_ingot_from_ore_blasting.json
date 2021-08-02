@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "thermal:copper_ore"
+  },
+  "result": "thermal:copper_ingot",
+  "experience": 0.6,
+  "cookingtime": 100
+}

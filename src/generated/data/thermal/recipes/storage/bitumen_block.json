@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "thermal:bitumen"
+    }
+  },
+  "result": {
+    "item": "thermal:bitumen_block"
+  }
+}

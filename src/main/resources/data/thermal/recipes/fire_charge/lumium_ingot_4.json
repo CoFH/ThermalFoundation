@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:dusts/tin"
+      },
+      {
+        "tag": "forge:ingots/tin"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/tin"
+      },
+      {
+        "tag": "forge:ingots/tin"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/tin"
+      },
+      {
+        "tag": "forge:ingots/tin"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/silver"
+      },
+      {
+        "tag": "forge:ingots/silver"
+      }
+    ],
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "thermal:lumium_ingot",
+    "count": 4
+  }
+}
