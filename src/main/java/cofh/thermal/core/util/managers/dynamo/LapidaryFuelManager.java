@@ -15,7 +15,7 @@ import java.util.Map;
 public class LapidaryFuelManager extends SingleItemFuelManager {
 
     private static final LapidaryFuelManager INSTANCE = new LapidaryFuelManager();
-    protected static int DEFAULT_ENERGY = 16000;
+    protected static final int DEFAULT_ENERGY = 16000;
 
     public static LapidaryFuelManager instance() {
 

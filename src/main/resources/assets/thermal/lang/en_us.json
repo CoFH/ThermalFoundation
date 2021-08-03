@@ -762,10 +762,9 @@
   "_comment": "Thermal Expansion",
   "_comment": "========================================================================================================",
 
-  "block.thermal.device_fluid_buffer": "Fluid Allocator",
-  "block.thermal.device_item_buffer": "Item Allocator",
-
   "block.thermal.dynamo_compression": "Compression Dynamo",
+  "block.thermal.dynamo_disenchantment": "Disenchantment Dynamo",
+  "block.thermal.dynamo_gourmand": "Gourmand Dynamo",
   "block.thermal.dynamo_lapidary": "Lapidary Dynamo",
   "block.thermal.dynamo_magmatic": "Magmatic Dynamo",
   "block.thermal.dynamo_numismatic": "Numismatic Dynamo",
@@ -797,6 +796,13 @@
   "info.thermal.dynamo.throttle": "Output rate throttles based on local feedback.",
 
   "info.thermal.dynamo_compression.0": "Generates Redstone Flux using combustible fluids.",
+
+  "info.thermal.dynamo_disenchantment.0": "Generates Redstone Flux using enchanted items.",
+  "info.thermal.dynamo_disenchantment.1": "The item is destroyed along with the enchantment. That's why it works.",
+
+  "info.thermal.dynamo_gourmand.0": "Generates Redstone Flux using food!",
+  "info.thermal.dynamo_gourmand.1": "Who knows what sort of beast you may be feeding.",
+  "info.thermal.dynamo_gourmand.2": "It's calorific!",
 
   "info.thermal.dynamo_lapidary.0": "Generates Redstone Flux using gems!",
   "info.thermal.dynamo_lapidary.1": "Probably a portal to an alternate dimension of sparkle-obsessed goblins.",

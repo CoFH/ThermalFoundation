@@ -51,6 +51,8 @@ public class TCoreRecipeSerializers {
         RECIPE_SERIALIZERS.register(ID_FUEL_MAGMATIC, () -> new DynamoFuelSerializer<>(MagmaticFuel::new, MagmaticFuelManager.instance().getDefaultEnergy(), MagmaticFuelManager.MIN_ENERGY, MagmaticFuelManager.MAX_ENERGY));
         RECIPE_SERIALIZERS.register(ID_FUEL_NUMISMATIC, () -> new DynamoFuelSerializer<>(NumismaticFuel::new, NumismaticFuelManager.instance().getDefaultEnergy(), NumismaticFuelManager.MIN_ENERGY, NumismaticFuelManager.MAX_ENERGY));
         RECIPE_SERIALIZERS.register(ID_FUEL_LAPIDARY, () -> new DynamoFuelSerializer<>(LapidaryFuel::new, LapidaryFuelManager.instance().getDefaultEnergy(), LapidaryFuelManager.MIN_ENERGY, LapidaryFuelManager.MAX_ENERGY));
+        RECIPE_SERIALIZERS.register(ID_FUEL_DISENCHANTMENT, () -> new DynamoFuelSerializer<>(DisenchantmentFuel::new, DisenchantmentFuelManager.instance().getDefaultEnergy(), DisenchantmentFuelManager.MIN_ENERGY, DisenchantmentFuelManager.MAX_ENERGY));
+        RECIPE_SERIALIZERS.register(ID_FUEL_GOURMAND, () -> new DynamoFuelSerializer<>(GourmandFuel::new, GourmandFuelManager.instance().getDefaultEnergy(), GourmandFuelManager.MIN_ENERGY, GourmandFuelManager.MAX_ENERGY));
     }
 
 }

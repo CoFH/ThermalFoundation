@@ -116,11 +116,15 @@ public class TCoreRecipeTypes {
     public static final ResourceLocation ID_FUEL_MAGMATIC = new ResourceLocation(ID_THERMAL, "magmatic_fuel");
     public static final ResourceLocation ID_FUEL_NUMISMATIC = new ResourceLocation(ID_THERMAL, "numismatic_fuel");
     public static final ResourceLocation ID_FUEL_LAPIDARY = new ResourceLocation(ID_THERMAL, "lapidary_fuel");
+    public static final ResourceLocation ID_FUEL_DISENCHANTMENT = new ResourceLocation(ID_THERMAL, "disenchantment_fuel");
+    public static final ResourceLocation ID_FUEL_GOURMAND = new ResourceLocation(ID_THERMAL, "gourmand_fuel");
 
     public static final SerializableRecipeType<StirlingFuel> FUEL_STIRLING = new SerializableRecipeType<>(ID_FUEL_STIRLING);
     public static final SerializableRecipeType<CompressionFuel> FUEL_COMPRESSION = new SerializableRecipeType<>(ID_FUEL_COMPRESSION);
     public static final SerializableRecipeType<MagmaticFuel> FUEL_MAGMATIC = new SerializableRecipeType<>(ID_FUEL_MAGMATIC);
     public static final SerializableRecipeType<NumismaticFuel> FUEL_NUMISMATIC = new SerializableRecipeType<>(ID_FUEL_NUMISMATIC);
     public static final SerializableRecipeType<LapidaryFuel> FUEL_LAPIDARY = new SerializableRecipeType<>(ID_FUEL_LAPIDARY);
+    public static final SerializableRecipeType<DisenchantmentFuel> FUEL_DISENCHANTMENT = new SerializableRecipeType<>(ID_FUEL_DISENCHANTMENT);
+    public static final SerializableRecipeType<GourmandFuel> FUEL_GOURMAND = new SerializableRecipeType<>(ID_FUEL_GOURMAND);
     // endregion
 }

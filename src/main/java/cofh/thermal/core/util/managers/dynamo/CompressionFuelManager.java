@@ -15,7 +15,7 @@ import java.util.Map;
 public class CompressionFuelManager extends SingleFluidFuelManager {
 
     private static final CompressionFuelManager INSTANCE = new CompressionFuelManager();
-    protected static int DEFAULT_ENERGY = 100000;
+    protected static final int DEFAULT_ENERGY = 100000;
 
     public static CompressionFuelManager instance() {
 

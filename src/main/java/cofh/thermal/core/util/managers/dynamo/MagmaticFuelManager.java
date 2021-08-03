@@ -15,7 +15,7 @@ import java.util.Map;
 public class MagmaticFuelManager extends SingleFluidFuelManager {
 
     private static final MagmaticFuelManager INSTANCE = new MagmaticFuelManager();
-    protected static int DEFAULT_ENERGY = 100000;
+    protected static final int DEFAULT_ENERGY = 100000;
 
     public static MagmaticFuelManager instance() {
 

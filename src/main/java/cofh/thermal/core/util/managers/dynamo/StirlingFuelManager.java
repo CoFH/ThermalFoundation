@@ -29,7 +29,7 @@ import static java.util.Collections.singletonList;
 public class StirlingFuelManager extends SingleItemFuelManager {
 
     private static final StirlingFuelManager INSTANCE = new StirlingFuelManager();
-    protected static int DEFAULT_ENERGY = 16000;
+    protected static final int DEFAULT_ENERGY = 16000;
 
     public static StirlingFuelManager instance() {
 

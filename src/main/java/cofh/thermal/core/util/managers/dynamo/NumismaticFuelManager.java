@@ -15,7 +15,7 @@ import java.util.Map;
 public class NumismaticFuelManager extends SingleItemFuelManager {
 
     private static final NumismaticFuelManager INSTANCE = new NumismaticFuelManager();
-    protected static int DEFAULT_ENERGY = 16000;
+    protected static final int DEFAULT_ENERGY = 16000;
 
     public static NumismaticFuelManager instance() {
 
