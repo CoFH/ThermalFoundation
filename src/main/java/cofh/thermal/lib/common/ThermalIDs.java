@@ -96,6 +96,16 @@ public class ThermalIDs {
     public static final String ID_GREEN_ROCKWOOL = "green_rockwool";
     public static final String ID_RED_ROCKWOOL = "red_rockwool";
     public static final String ID_BLACK_ROCKWOOL = "black_rockwool";
+
+    public static final String ID_POLISHED_SLAG = "polished_slag";
+    public static final String ID_CHISELED_SLAG = "chiseled_slag";
+    public static final String ID_SLAG_BRICKS = "slag_bricks";
+    public static final String ID_CRACKED_SLAG_BRICKS = "cracked_slag_bricks";
+
+    public static final String ID_POLISHED_RICH_SLAG = "polished_rich_slag";
+    public static final String ID_CHISELED_RICH_SLAG = "chiseled_rich_slag";
+    public static final String ID_RICH_SLAG_BRICKS = "rich_slag_bricks";
+    public static final String ID_CRACKED_RICH_SLAG_BRICKS = "cracked_rich_slag_bricks";
     // endregion
 
     // region DEVICES

@@ -67,6 +67,15 @@
   "block.thermal.red_rockwool": "Red Rockwool",
   "block.thermal.black_rockwool": "Black Rockwool",
 
+  "block.thermal.chiseled_rich_slag": "Chiseled Rich Slag",
+  "block.thermal.chiseled_slag": "Chiseled Slag",
+  "block.thermal.cracked_rich_slag_bricks": "Cracked Rich Slag Bricks",
+  "block.thermal.cracked_slag_bricks": "Cracked Slag Bricks",
+  "block.thermal.polished_rich_slag": "Polished Rich Slag",
+  "block.thermal.polished_slag": "Polished Slag",
+  "block.thermal.rich_slag_bricks": "Rich Slag Bricks",
+  "block.thermal.slag_bricks": "Slag Bricks",
+
   "block.thermal.bitumen_block": "Block of Bitumen",
   "block.thermal.coal_coke_block": "Block of Coke",
   "block.thermal.cured_rubber_block": "Block of Cured Rubber",

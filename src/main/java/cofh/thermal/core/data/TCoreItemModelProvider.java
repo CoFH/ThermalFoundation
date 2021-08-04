@@ -315,6 +315,15 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         blockItem(reg.getSup(ID_GREEN_ROCKWOOL));
         blockItem(reg.getSup(ID_RED_ROCKWOOL));
         blockItem(reg.getSup(ID_BLACK_ROCKWOOL));
+
+        blockItem(reg.getSup(ID_POLISHED_SLAG));
+        blockItem(reg.getSup(ID_CHISELED_SLAG));
+        blockItem(reg.getSup(ID_SLAG_BRICKS));
+        blockItem(reg.getSup(ID_CRACKED_SLAG_BRICKS));
+        blockItem(reg.getSup(ID_POLISHED_RICH_SLAG));
+        blockItem(reg.getSup(ID_CHISELED_RICH_SLAG));
+        blockItem(reg.getSup(ID_RICH_SLAG_BRICKS));
+        blockItem(reg.getSup(ID_CRACKED_RICH_SLAG_BRICKS));
     }
 
     private void registerMiscBlocks(DeferredRegisterCoFH<Block> reg) {

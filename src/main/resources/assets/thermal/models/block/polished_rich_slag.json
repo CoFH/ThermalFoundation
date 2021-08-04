@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "thermal:block/deco/polished_rich_slag"
+  }
+}

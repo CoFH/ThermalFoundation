@@ -112,6 +112,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_NITER_ORE), reg.get("niter"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_SULFUR_ORE), reg.get("sulfur"), 0.5F, "smelting");
 
+        generateSmeltingRecipe(reg, consumer, Items.GRAVEL, reg.get("slag"), 0.1F, "smelting");
         generateSmeltingRecipe(reg, consumer, reg.get("rubber"), reg.get("cured_rubber"), 0.2F, "smelting");
 
         generateAlloyRecipes(consumer);
@@ -122,6 +123,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateComponentRecipes(consumer);
         generateExplosiveRecipes(consumer);
         generateRockwoolRecipes(withConditions(consumer).flag(FLAG_ROCKWOOL));
+        generateSlagRecipes(consumer);
         generateTileRecipes(consumer);
     }
 
@@ -1424,6 +1426,34 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .addIngredient(Tags.Items.DYES_BLACK)
                 .addCriterion("has_" + name(rockwool), hasItem(rockwool))
                 .build(consumer, recipeId);
+    }
+
+    private void generateSlagRecipes(Consumer<IFinishedRecipe> consumer) {
+
+        DeferredRegisterCoFH<Item> reg = ITEMS;
+
+        generateSmeltingRecipe(reg, consumer, reg.get(ID_SLAG_BLOCK), reg.get(ID_POLISHED_SLAG), 0.1F, "smelting");
+        generateSmeltingRecipe(reg, consumer, reg.get(ID_RICH_SLAG_BLOCK), reg.get(ID_POLISHED_RICH_SLAG), 0.1F, "smelting");
+
+        generateSmeltingRecipe(reg, consumer, reg.get(ID_SLAG_BRICKS), reg.get(ID_CRACKED_SLAG_BRICKS), 0.1F, "smelting");
+        generateSmeltingRecipe(reg, consumer, reg.get(ID_RICH_SLAG_BRICKS), reg.get(ID_CRACKED_RICH_SLAG_BRICKS), 0.1F, "smelting");
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get(ID_SLAG_BRICKS))
+                .key('#', reg.get(ID_POLISHED_SLAG))
+                .patternLine("##")
+                .patternLine("##")
+                .addCriterion("has_slag", hasItem(reg.get("slag")))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get(ID_RICH_SLAG_BRICKS))
+                .key('#', reg.get(ID_POLISHED_RICH_SLAG))
+                .patternLine("##")
+                .patternLine("##")
+                .addCriterion("has_rich_slag", hasItem(reg.get("rich_slag")))
+                .build(consumer);
+
+        generateStonecuttingRecipe(reg, consumer, reg.get(ID_POLISHED_SLAG), reg.get(ID_CHISELED_SLAG), "stonecutting");
+        generateStonecuttingRecipe(reg, consumer, reg.get(ID_POLISHED_RICH_SLAG), reg.get(ID_CHISELED_RICH_SLAG), "stonecutting");
     }
 
     private void generateTileRecipes(Consumer<IFinishedRecipe> consumer) {

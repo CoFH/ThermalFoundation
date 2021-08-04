@@ -116,6 +116,15 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_RED_ROCKWOOL));
         createSimpleDropTable(regBlocks.get(ID_BLACK_ROCKWOOL));
 
+        createSimpleDropTable(regBlocks.get(ID_POLISHED_SLAG));
+        createSimpleDropTable(regBlocks.get(ID_CHISELED_SLAG));
+        createSimpleDropTable(regBlocks.get(ID_SLAG_BRICKS));
+        createSimpleDropTable(regBlocks.get(ID_CRACKED_SLAG_BRICKS));
+        createSimpleDropTable(regBlocks.get(ID_POLISHED_RICH_SLAG));
+        createSimpleDropTable(regBlocks.get(ID_CHISELED_RICH_SLAG));
+        createSimpleDropTable(regBlocks.get(ID_RICH_SLAG_BRICKS));
+        createSimpleDropTable(regBlocks.get(ID_CRACKED_RICH_SLAG_BRICKS));
+
         createSyncDropTable(regBlocks.get(ID_DEVICE_HIVE_EXTRACTOR));
         createSyncDropTable(regBlocks.get(ID_DEVICE_TREE_EXTRACTOR));
         createSyncDropTable(regBlocks.get(ID_DEVICE_FISHER));

@@ -226,8 +226,8 @@ public class TCoreBlocks {
 
         registerBlock(ID_RUBBER_BLOCK, () -> new RubberBlock(create(Material.CLAY, MaterialColor.WHITE_TERRACOTTA).hardnessAndResistance(3.0F, 3.0F).jumpFactor(1.25F).sound(SoundType.FUNGUS)));
         registerBlock(ID_CURED_RUBBER_BLOCK, () -> new RubberBlock(create(Material.CLAY, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(3.0F, 3.0F).jumpFactor(1.25F).sound(SoundType.FUNGUS)));
-        registerBlock(ID_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
-        registerBlock(ID_RICH_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_RICH_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
     }
 
     private static void registerBuildingBlocks() {
@@ -270,6 +270,15 @@ public class TCoreBlocks {
         registerBlock(ID_GREEN_ROCKWOOL, () -> new Block(create(Material.ROCK, MaterialColor.GREEN).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.CLOTH)), getFlag(FLAG_ROCKWOOL));
         registerBlock(ID_RED_ROCKWOOL, () -> new Block(create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.CLOTH)), getFlag(FLAG_ROCKWOOL));
         registerBlock(ID_BLACK_ROCKWOOL, () -> new Block(create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.CLOTH)), getFlag(FLAG_ROCKWOOL));
+
+        registerBlock(ID_POLISHED_SLAG, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_CHISELED_SLAG, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_SLAG_BRICKS, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_CRACKED_SLAG_BRICKS, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_POLISHED_RICH_SLAG, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_CHISELED_RICH_SLAG, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_RICH_SLAG_BRICKS, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+        registerBlock(ID_CRACKED_RICH_SLAG_BRICKS, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
     }
 
     private static void registerMisc() {
