@@ -1,0 +1,7 @@
+{
+  "parent": "forge:item/default",
+  "textures": {
+    "base": "thermal:item/tools/florb",
+    "fluid": "thermal:item/tools/florb_mask"
+  }
+}

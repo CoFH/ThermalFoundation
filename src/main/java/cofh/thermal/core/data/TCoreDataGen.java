@@ -33,6 +33,7 @@ public class TCoreDataGen {
         gen.addProvider(new TCoreTagsProvider.Item(gen, blockTags, exFileHelper));
         gen.addProvider(new TCoreTagsProvider.Fluid(gen, exFileHelper));
 
+        // gen.addProvider(new TCoreAdvancementProvider(gen));
         gen.addProvider(new TCoreLootTableProvider(gen));
         gen.addProvider(new TCoreRecipeProvider(gen));
     }

@@ -29,6 +29,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.util.helpers.FluidHelper.fluidsEqual;
+import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.constants.Constants.BASE_CHANCE;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.*;
@@ -50,10 +51,12 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     protected int baseProcessTick = getBaseProcessTick();
     protected int processTick = baseProcessTick;
 
+    protected TimeTracker timeTracker = new TimeTracker();
+    public boolean wasActive;
+
     public MachineTileProcess(TileEntityType<?> tileEntityTypeIn) {
 
         super(tileEntityTypeIn);
-        timeTracker = new TimeTracker();
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
         xpStorage = new XpStorage(getBaseXpStorage());
     }
@@ -90,6 +93,28 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         }
         updateActiveState(curActive);
         chargeEnergy();
+    }
+
+    @Override
+    protected void updateActiveState(boolean prevActive) {
+
+        // If not active but WAS active this tick.
+        if (!isActive && prevActive) {
+            wasActive = true;
+            if (world != null) {
+                timeTracker.markTime(world);
+            }
+            return;
+        }
+        // Otherwise if IS active but was not, or WAS & delayed off OR Empty Tracker (Instant)
+        if (prevActive != isActive || wasActive && (timeTracker.hasDelayPassed(world, 40) || timeTracker.notSet())) {
+            // TODO: Config time delay
+            wasActive = false;
+            if (getBlockState().hasProperty(ACTIVE)) {
+                world.setBlockState(pos, getBlockState().with(ACTIVE, isActive));
+            }
+            TileStatePacket.sendToClient(this);
+        }
     }
 
     // region PROCESS
@@ -408,6 +433,8 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
         super.read(state, nbt);
 
+        wasActive = nbt.getBoolean(TAG_ACTIVE_PREV);
+
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
         processTick = nbt.getInt(TAG_PROCESS_TICK);
@@ -417,6 +444,8 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     public CompoundNBT write(CompoundNBT nbt) {
 
         super.write(nbt);
+
+        nbt.putBoolean(TAG_ACTIVE_PREV, wasActive);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);

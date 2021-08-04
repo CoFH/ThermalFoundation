@@ -1,6 +1,5 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.network.packet.client.TileStatePacket;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,7 +16,6 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_BASE_MOD;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_NO_FLUID_VALIDATOR;
@@ -39,17 +37,6 @@ public abstract class DeviceTileBase extends ThermalTileBase {
         boolean curActive = isActive;
         isActive = redstoneControl.getState() && isValid();
         updateActiveState(curActive);
-    }
-
-    @Override
-    protected void updateActiveState(boolean prevActive) {
-
-        if (prevActive != isActive) {
-            if (getBlockState().hasProperty(ACTIVE)) {
-                world.setBlockState(pos, getBlockState().with(ACTIVE, isActive));
-            }
-            TileStatePacket.sendToClient(this);
-        }
     }
 
     protected boolean isValid() {

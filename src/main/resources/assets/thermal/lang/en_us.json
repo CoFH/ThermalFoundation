@@ -3,6 +3,11 @@
   "_comment": "Thermal Core",
   "_comment": "========================================================================================================",
 
+  "advancements.thermal.root.title": "Thermal Series",
+  "advancements.thermal.root.description": "The beginnings of a thermally expanded world!",
+  "advancements.thermal.wrench.title": "Looks Like a Wrench",
+  "advancements.thermal.wrench.description": "Craft a Crescent Hammer.",
+
   "block.thermal.apatite_ore": "Apatite Ore",
   "block.thermal.cinnabar_ore": "Cinnabar Ore",
   "block.thermal.niter_ore": "Niter Ore",

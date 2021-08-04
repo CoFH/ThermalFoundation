@@ -4,7 +4,6 @@ import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.TimeTracker;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
@@ -52,7 +51,6 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
     public DeviceSoilInfuserTile() {
 
         super(TCoreReferences.DEVICE_SOIL_INFUSER_TILE);
-        timeTracker = new TimeTracker();
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
 
         inventory.addSlot(chargeSlot, INTERNAL);

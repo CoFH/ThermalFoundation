@@ -14,8 +14,6 @@ import cofh.lib.fluid.ManagedTankInv;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.ManagedItemInv;
 import cofh.lib.item.IAugmentableItem;
-import cofh.lib.util.EmptyTimeTracker;
-import cofh.lib.util.TimeTracker;
 import cofh.lib.util.Utils;
 import cofh.lib.util.filter.IFilter;
 import cofh.lib.util.filter.IFilterableTile;
@@ -82,7 +80,6 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     protected static final int BASE_PROCESS_TICK = 20;
     protected static final int BASE_XP_STORAGE = 2500;
 
-    protected TimeTracker timeTracker = EmptyTimeTracker.INSTANCE;
     protected ManagedItemInv inventory = new ManagedItemInv(this, TAG_ITEM_INV);
     protected ManagedTankInv tankInv = new ManagedTankInv(this, TAG_TANK_INV);
     protected EnergyStorageCoFH energyStorage = EmptyEnergyStorage.INSTANCE;
@@ -97,7 +94,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     protected ListNBT enchantments = new ListNBT();
 
     public boolean isActive;
-    public boolean wasActive;
+
     protected FluidStack renderFluid = FluidStack.EMPTY;
 
     public ThermalTileBase(TileEntityType<?> tileEntityTypeIn) {
@@ -170,18 +167,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
 
     protected void updateActiveState(boolean prevActive) {
 
-        // If not active but WAS active this tick.
-        if (!isActive && prevActive) {
-            wasActive = true;
-            if (world != null) {
-                timeTracker.markTime(world);
-            }
-            return;
-        }
-        // Otherwise if IS active but was not, or WAS & delayed off OR Empty Tracker (Instant)
-        if (prevActive != isActive || wasActive && (timeTracker.hasDelayPassed(world, 40) || timeTracker.notSet())) {
-            // TODO: Config time delay
-            wasActive = false;
+        if (prevActive != isActive) {
             if (getBlockState().hasProperty(ACTIVE)) {
                 world.setBlockState(pos, getBlockState().with(ACTIVE, isActive));
             }
@@ -552,7 +538,6 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         super.read(state, nbt);
 
         isActive = nbt.getBoolean(TAG_ACTIVE);
-        wasActive = nbt.getBoolean(TAG_ACTIVE_PREV);
 
         enchantments = nbt.getList(TAG_ENCHANTMENTS, 10);
 
@@ -580,7 +565,6 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         super.write(nbt);
 
         nbt.putBoolean(TAG_ACTIVE, isActive);
-        nbt.putBoolean(TAG_ACTIVE_PREV, wasActive);
 
         nbt.put(TAG_ENCHANTMENTS, enchantments);
 
