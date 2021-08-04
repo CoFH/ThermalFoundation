@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.init.TCoreIDs.ID_FLUID_GLOWSTONE;
+import static cofh.thermal.lib.common.ThermalIDs.ID_FLUID_GLOWSTONE;
 
 public class GlowstoneFluid extends FluidCoFH {
 

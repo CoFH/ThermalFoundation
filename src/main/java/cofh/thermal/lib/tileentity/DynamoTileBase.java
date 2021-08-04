@@ -67,12 +67,7 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
     // region BASE PARAMETERS
     protected int getBaseEnergyStorage() {
 
-        return BASE_PROCESS_TICK * 100;
-    }
-
-    protected int getBaseProcessTick() {
-
-        return BASE_PROCESS_TICK;
+        return getBaseProcessTick() * 100;
     }
     // endregion
 

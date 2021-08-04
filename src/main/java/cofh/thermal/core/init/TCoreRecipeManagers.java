@@ -43,8 +43,8 @@ public class TCoreRecipeManagers {
         registerManager(NumismaticFuelManager.instance());
         registerManager(LapidaryFuelManager.instance());
 
-        //        registerManager(DisenchantmentFuelManager.instance());
-        //        registerManager(GourmandFuelManager.instance());
+        registerManager(DisenchantmentFuelManager.instance());
+        registerManager(GourmandFuelManager.instance());
     }
 
 }

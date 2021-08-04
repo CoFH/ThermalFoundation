@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreIDs.ID_ENDER_TNT;
 import static cofh.thermal.core.init.TCoreReferences.ENDER_TNT_ENTITY;
+import static cofh.thermal.lib.common.ThermalIDs.ID_ENDER_TNT;
 
 public class EnderTNTEntity extends AbstractTNTEntity {
 

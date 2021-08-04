@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreIDs.ID_SLIME_TNT;
 import static cofh.thermal.core.init.TCoreReferences.SLIME_TNT_ENTITY;
+import static cofh.thermal.lib.common.ThermalIDs.ID_SLIME_TNT;
 
 public class SlimeTNTEntity extends AbstractTNTEntity {
 

@@ -11,8 +11,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.world.gen.Heightmap;
 
 import static cofh.thermal.core.ThermalCore.ENTITIES;
-import static cofh.thermal.core.init.TCoreIDs.*;
 import static cofh.thermal.core.init.TCoreReferences.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreEntities {
 

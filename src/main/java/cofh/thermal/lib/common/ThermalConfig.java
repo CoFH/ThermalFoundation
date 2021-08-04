@@ -2,6 +2,7 @@ package cofh.thermal.lib.common;
 
 import cofh.thermal.core.tileentity.device.DeviceFisherTile;
 import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
+import cofh.thermal.core.util.managers.dynamo.*;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
@@ -10,9 +11,8 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import static cofh.thermal.core.init.TCoreIDs.ID_DEVICE_FISHER;
-import static cofh.thermal.core.init.TCoreIDs.ID_DEVICE_TREE_EXTRACTOR;
 import static cofh.thermal.lib.common.ThermalFlags.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class ThermalConfig {
 
@@ -122,6 +122,7 @@ public class ThermalConfig {
         SERVER_CONFIG.pop();
 
         genDeviceConfig();
+        genDynamoConfig();
         genWorldConfig();
 
         serverSpec = SERVER_CONFIG.build();
@@ -193,24 +194,104 @@ public class ThermalConfig {
         SERVER_CONFIG.push("Devices");
 
         if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
+            SERVER_CONFIG.push("TreeExtractor");
+
             deviceTreeExtractorTimeConstant = SERVER_CONFIG
                     .comment("This sets the base time constant (in ticks) for the Arboreal Extractor.")
                     .defineInRange("Time Constant", 500, 20, 72000);
+
+            SERVER_CONFIG.pop();
         }
         if (getFlag(ID_DEVICE_FISHER).getAsBoolean()) {
+            SERVER_CONFIG.push("Fisher");
+
             deviceFisherTimeConstant = SERVER_CONFIG
                     .comment("This sets the base time constant (in ticks) for the Aquatic Entangler.")
                     .defineInRange("Time Constant", 4800, 400, 72000);
             deviceFisherTimeReductionWater = SERVER_CONFIG
                     .comment("This sets the time constant reduction (in ticks) per nearby Water source block for the Aquatic Entangler.")
                     .defineInRange("Water Source Time Constant Reduction", 20, 1, 1000);
-        }
 
+            SERVER_CONFIG.pop();
+        }
+        SERVER_CONFIG.pop();
+    }
+
+    private static void genDynamoConfig() {
+
+        SERVER_CONFIG.push("Dynamos");
+
+        if (getFlag(ID_DYNAMO_STIRLING).getAsBoolean()) {
+            SERVER_CONFIG.push("Stirling");
+
+            dynamoStirlingPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Stirling Dynamo.")
+                    .defineInRange("Base Power", StirlingFuelManager.instance().getBasePower(), StirlingFuelManager.instance().getMinPower(), StirlingFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_COMPRESSION).getAsBoolean()) {
+            SERVER_CONFIG.push("Compression");
+
+            dynamoCompressionPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Compression Dynamo.")
+                    .defineInRange("Base Power", CompressionFuelManager.instance().getBasePower(), CompressionFuelManager.instance().getMinPower(), CompressionFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_MAGMATIC).getAsBoolean()) {
+            SERVER_CONFIG.push("Magmatic");
+
+            dynamoMagmaticPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Magmatic Dynamo.")
+                    .defineInRange("Base Power", MagmaticFuelManager.instance().getBasePower(), MagmaticFuelManager.instance().getMinPower(), MagmaticFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_NUMISMATIC).getAsBoolean()) {
+            SERVER_CONFIG.push("Numismatic");
+
+            dynamoNumismaticPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Numismatic Dynamo.")
+                    .defineInRange("Base Power", NumismaticFuelManager.instance().getBasePower(), NumismaticFuelManager.instance().getMinPower(), NumismaticFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_LAPIDARY).getAsBoolean()) {
+            SERVER_CONFIG.push("Lapidary");
+
+            dynamoLapidaryPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Lapidary Dynamo.")
+                    .defineInRange("Base Power", LapidaryFuelManager.instance().getBasePower(), LapidaryFuelManager.instance().getMinPower(), LapidaryFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_DISENCHANTMENT).getAsBoolean()) {
+            SERVER_CONFIG.push("Disenchantment");
+
+            dynamoDisenchantmentPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Disenchantment Dynamo.")
+                    .defineInRange("Base Power", DisenchantmentFuelManager.instance().getBasePower(), DisenchantmentFuelManager.instance().getMinPower(), DisenchantmentFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_GOURMAND).getAsBoolean()) {
+            SERVER_CONFIG.push("Gourmand");
+
+            dynamoGourmandPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Gourmand Dynamo.")
+                    .defineInRange("Base Power", GourmandFuelManager.instance().getBasePower(), GourmandFuelManager.instance().getMinPower(), GourmandFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
         SERVER_CONFIG.pop();
     }
 
     private static void genMachineConfig() {
 
+        SERVER_CONFIG.push("Machines");
+
+        SERVER_CONFIG.pop();
     }
 
     private static void refreshServerConfig() {
@@ -227,6 +308,7 @@ public class ThermalConfig {
         setFlag(FLAG_XP_STORAGE_AUGMENT, !flagXPStorage.get());
 
         refreshDeviceConfig();
+        refreshDynamoConfig();
         refreshWorldConfig();
     }
 
@@ -238,6 +320,31 @@ public class ThermalConfig {
         if (deviceFisherTimeConstant != null) {
             DeviceFisherTile.setTimeConstant(deviceFisherTimeConstant.get());
             DeviceFisherTile.setTimeReductionWater(deviceFisherTimeReductionWater.get());
+        }
+    }
+
+    private static void refreshDynamoConfig() {
+
+        if (dynamoStirlingPower != null) {
+            StirlingFuelManager.instance().setBasePower(dynamoStirlingPower.get());
+        }
+        if (dynamoCompressionPower != null) {
+            CompressionFuelManager.instance().setBasePower(dynamoCompressionPower.get());
+        }
+        if (dynamoMagmaticPower != null) {
+            MagmaticFuelManager.instance().setBasePower(dynamoMagmaticPower.get());
+        }
+        if (dynamoNumismaticPower != null) {
+            NumismaticFuelManager.instance().setBasePower(dynamoNumismaticPower.get());
+        }
+        if (dynamoLapidaryPower != null) {
+            LapidaryFuelManager.instance().setBasePower(dynamoLapidaryPower.get());
+        }
+        if (dynamoDisenchantmentPower != null) {
+            DisenchantmentFuelManager.instance().setBasePower(dynamoDisenchantmentPower.get());
+        }
+        if (dynamoGourmandPower != null) {
+            GourmandFuelManager.instance().setBasePower(dynamoGourmandPower.get());
         }
     }
 
@@ -320,6 +427,14 @@ public class ThermalConfig {
     private static IntValue deviceTreeExtractorTimeConstant;
     private static IntValue deviceFisherTimeConstant;
     private static IntValue deviceFisherTimeReductionWater;
+
+    private static IntValue dynamoStirlingPower;
+    private static IntValue dynamoCompressionPower;
+    private static IntValue dynamoMagmaticPower;
+    private static IntValue dynamoNumismaticPower;
+    private static IntValue dynamoLapidaryPower;
+    private static IntValue dynamoDisenchantmentPower;
+    private static IntValue dynamoGourmandPower;
     // endregion
 
     // region CLIENT VARIABLES

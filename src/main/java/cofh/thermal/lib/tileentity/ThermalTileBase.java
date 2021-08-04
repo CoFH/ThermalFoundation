@@ -114,7 +114,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
 
     protected int getBaseEnergyXfer() {
 
-        return BASE_PROCESS_TICK * 10;
+        return getBaseProcessTick() * 10;
     }
 
     protected int getBaseProcessTick() {
@@ -552,6 +552,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         super.read(state, nbt);
 
         isActive = nbt.getBoolean(TAG_ACTIVE);
+        wasActive = nbt.getBoolean(TAG_ACTIVE_PREV);
 
         enchantments = nbt.getList(TAG_ENCHANTMENTS, 10);
 
@@ -579,6 +580,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         super.write(nbt);
 
         nbt.putBoolean(TAG_ACTIVE, isActive);
+        nbt.putBoolean(TAG_ACTIVE_PREV, wasActive);
 
         nbt.put(TAG_ENCHANTMENTS, enchantments);
 

@@ -1,8 +1,8 @@
-package cofh.thermal.core.init;
+package cofh.thermal.lib.common;
 
-public class TCoreIDs {
+public class ThermalIDs {
 
-    private TCoreIDs() {
+    private ThermalIDs() {
 
     }
 
@@ -37,7 +37,7 @@ public class TCoreIDs {
     public static final String ID_OIL_RED_SAND = "oil_red_sand";
     // endregion
 
-    // region STORAGE
+    // region BLOCKS
     public static final String ID_SAWDUST_BLOCK = "sawdust_block";
     public static final String ID_COAL_COKE_BLOCK = "coal_coke_block";
     public static final String ID_BITUMEN_BLOCK = "bitumen_block";
@@ -70,9 +70,7 @@ public class TCoreIDs {
     public static final String ID_SIGNALUM_BLOCK = "signalum_block";
     public static final String ID_LUMIUM_BLOCK = "lumium_block";
     public static final String ID_ENDERIUM_BLOCK = "enderium_block";
-    // endregion
 
-    // region BLOCKS
     public static final String ID_OBSIDIAN_GLASS = "obsidian_glass";
     public static final String ID_SIGNALUM_GLASS = "signalum_glass";
     public static final String ID_LUMIUM_GLASS = "lumium_glass";
@@ -110,6 +108,34 @@ public class TCoreIDs {
     public static final String ID_DEVICE_COLLECTOR = "device_collector";
     public static final String ID_DEVICE_NULLIFIER = "device_nullifier";
     public static final String ID_DEVICE_POTION_DIFFUSER = "device_potion_diffuser";
+    // endregion
+
+    // region DYNAMOS
+    public static final String ID_DYNAMO_STIRLING = "dynamo_stirling";
+    public static final String ID_DYNAMO_COMPRESSION = "dynamo_compression";
+    public static final String ID_DYNAMO_MAGMATIC = "dynamo_magmatic";
+    public static final String ID_DYNAMO_NUMISMATIC = "dynamo_numismatic";
+    public static final String ID_DYNAMO_LAPIDARY = "dynamo_lapidary";
+    public static final String ID_DYNAMO_DISENCHANTMENT = "dynamo_disenchantment";
+    public static final String ID_DYNAMO_GOURMAND = "dynamo_gourmand";
+    // endregion
+
+    // region MACHINES
+    public static final String ID_MACHINE_FURNACE = "machine_furnace";
+    public static final String ID_MACHINE_SAWMILL = "machine_sawmill";
+    public static final String ID_MACHINE_PULVERIZER = "machine_pulverizer";
+    public static final String ID_MACHINE_SMELTER = "machine_smelter";
+    public static final String ID_MACHINE_INSOLATOR = "machine_insolator";
+    public static final String ID_MACHINE_CENTRIFUGE = "machine_centrifuge";
+    public static final String ID_MACHINE_PRESS = "machine_press";
+    public static final String ID_MACHINE_CRUCIBLE = "machine_crucible";
+    public static final String ID_MACHINE_CHILLER = "machine_chiller";
+    public static final String ID_MACHINE_REFINERY = "machine_refinery";
+    public static final String ID_MACHINE_PYROLYZER = "machine_pyrolyzer";
+    public static final String ID_MACHINE_BOTTLER = "machine_bottler";
+    public static final String ID_MACHINE_BREWER = "machine_brewer";
+    public static final String ID_MACHINE_ENCHANTER = "machine_enchanter";
+    public static final String ID_MACHINE_CRAFTER = "machine_crafter";
     // endregion
 
     // region STORAGE

@@ -71,7 +71,7 @@ public class StirlingFuelManager extends SingleItemFuelManager {
         if (stack.getItem().hasContainerItem(stack)) {
             return 0;
         }
-        int energy = ForgeHooks.getBurnTime(stack) * RF_PER_FURNACE_UNIT;
+        int energy = ForgeHooks.getBurnTime(stack, null) * RF_PER_FURNACE_UNIT;
         return energy >= MIN_ENERGY ? energy : 0;
     }
 

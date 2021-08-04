@@ -11,12 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import java.util.Map;
-
-import static cofh.lib.util.constants.Constants.RF_PER_FURNACE_UNIT;
 
 public class DisenchantmentFuelManager extends SingleItemFuelManager {
 

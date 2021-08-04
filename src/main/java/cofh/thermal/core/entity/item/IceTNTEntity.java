@@ -16,10 +16,10 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreIDs.ID_ICE_TNT;
 import static cofh.thermal.core.init.TCoreReferences.ICE_TNT_ENTITY;
 import static cofh.thermal.lib.common.ThermalConfig.permanentLava;
 import static cofh.thermal.lib.common.ThermalConfig.permanentWater;
+import static cofh.thermal.lib.common.ThermalIDs.ID_ICE_TNT;
 
 public class IceTNTEntity extends AbstractTNTEntity {
 

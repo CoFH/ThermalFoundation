@@ -9,7 +9,7 @@ import cofh.thermal.core.inventory.container.workbench.TinkerBenchContainer;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 
 import static cofh.thermal.core.ThermalCore.CONTAINERS;
-import static cofh.thermal.core.init.TCoreIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreContainers {
 
