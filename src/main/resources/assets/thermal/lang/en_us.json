@@ -915,13 +915,16 @@
   "info.thermal.infuser.use": "Use on a mob to infuse it.",
   "info.thermal.infuser.use.sneak": "Use while sneaking to infuse yourself.",
 
+  "info.thermal.reservoir.mode.0": "Mode: Fill",
+  "info.thermal.reservoir.mode.1": "Mode: Empty",
+
   "info.thermal.quiver.mode.0": "Imbuing Disabled",
   "info.thermal.quiver.mode.1": "Imbuing Enabled",
   "info.thermal.quiver.use": "Use to place arrows into the quiver.",
   "info.thermal.quiver.use.sneak": "Use while sneaking to remove arrows.",
 
   "item.thermal.fluid_reservoir": "Reservoir",
-  "item.thermal.fluid_reservoir.desc": "",
+  "item.thermal.fluid_reservoir.desc": "Stores fluid and refills equipped items. Can also be used to pick up and place fluids.",
 
   "item.thermal.flux_capacitor": "Flux Capacitor",
   "item.thermal.flux_capacitor.desc": "Stores Redstone Flux and recharges other items.",
