@@ -23,6 +23,7 @@ public class CrucibleRecipeManager extends SingleItemRecipeManager {
     private CrucibleRecipeManager() {
 
         super(DEFAULT_ENERGY, 0, 1);
+        this.basePower = 80;
     }
 
     // region IManager

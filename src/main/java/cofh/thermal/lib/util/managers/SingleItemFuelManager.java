@@ -4,7 +4,6 @@ import cofh.lib.fluid.IFluidStackAccess;
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.lib.inventory.ItemStackHolder;
 import cofh.lib.util.ComparableItemStack;
-import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.BaseDynamoFuel;
@@ -23,16 +22,12 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
     public static final int MIN_ENERGY = 1000;
     public static final int MAX_ENERGY = 20000000;
 
-    public static final int MIN_POWER = 10;
-    public static final int MAX_POWER = 100;
-
-    protected int basePower = 40;
-
     protected Map<ComparableItemStack, IDynamoFuel> fuelMap = new Object2ObjectOpenHashMap<>();
 
     protected SingleItemFuelManager(int defaultEnergy) {
 
         super(defaultEnergy);
+        this.basePower = 40;
     }
 
     public void addFuel(ThermalFuel recipe) {
@@ -50,26 +45,6 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
     protected void clear() {
 
         fuelMap.clear();
-    }
-
-    public void setBasePower(int rate) {
-
-        basePower = MathHelper.clamp(rate, MIN_POWER, MAX_POWER);
-    }
-
-    public int getBasePower() {
-
-        return basePower;
-    }
-
-    public int getMinPower() {
-
-        return MIN_POWER;
-    }
-
-    public int getMaxPower() {
-
-        return MAX_POWER;
     }
 
     protected IDynamoFuel getFuel(ItemStack input) {
@@ -102,6 +77,12 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
         BaseDynamoFuel fuel = new BaseDynamoFuel(energy, inputItems, inputFluids);
         fuelMap.put(convert(input), fuel);
         return fuel;
+    }
+
+    @Override
+    public int getMinPower() {
+
+        return 10;
     }
 
     // region IFuelManager

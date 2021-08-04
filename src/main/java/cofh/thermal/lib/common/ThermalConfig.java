@@ -3,6 +3,7 @@ package cofh.thermal.lib.common;
 import cofh.thermal.core.tileentity.device.DeviceFisherTile;
 import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
 import cofh.thermal.core.util.managers.dynamo.*;
+import cofh.thermal.core.util.managers.machine.*;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
@@ -123,6 +124,7 @@ public class ThermalConfig {
 
         genDeviceConfig();
         genDynamoConfig();
+        genMachineConfig();
         genWorldConfig();
 
         serverSpec = SERVER_CONFIG.build();
@@ -291,6 +293,120 @@ public class ThermalConfig {
 
         SERVER_CONFIG.push("Machines");
 
+        if (getFlag(ID_MACHINE_FURNACE).getAsBoolean()) {
+            SERVER_CONFIG.push("Furnace");
+
+            machineFurnacePower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Redstone Furnace.")
+                    .defineInRange("Base Power", FurnaceRecipeManager.instance().getBasePower(), FurnaceRecipeManager.instance().getMinPower(), FurnaceRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Sawmill");
+
+            machineSawmillPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Sawmill.")
+                    .defineInRange("Base Power", SawmillRecipeManager.instance().getBasePower(), SawmillRecipeManager.instance().getMinPower(), SawmillRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Pulverizer");
+
+            machinePulverizerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Pulverizer.")
+                    .defineInRange("Base Power", PulverizerRecipeManager.instance().getBasePower(), PulverizerRecipeManager.instance().getMinPower(), PulverizerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Smelter");
+
+            machineSmelterPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Induction Smelter.")
+                    .defineInRange("Base Power", SmelterRecipeManager.instance().getBasePower(), SmelterRecipeManager.instance().getMinPower(), SmelterRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Insolator");
+
+            machineInsolatorPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Phytogenic Insolator.")
+                    .defineInRange("Base Power", InsolatorRecipeManager.instance().getBasePower(), InsolatorRecipeManager.instance().getMinPower(), InsolatorRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Centrifuge");
+
+            machineCentrifugePower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Centrifugal Separator.")
+                    .defineInRange("Base Power", CentrifugeRecipeManager.instance().getBasePower(), CentrifugeRecipeManager.instance().getMinPower(), CentrifugeRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Press");
+
+            machinePressPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Multiservo Press.")
+                    .defineInRange("Base Power", PressRecipeManager.instance().getBasePower(), PressRecipeManager.instance().getMinPower(), PressRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Crucible");
+
+            machineCruciblePower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Magma Crucible.")
+                    .defineInRange("Base Power", CrucibleRecipeManager.instance().getBasePower(), CrucibleRecipeManager.instance().getMinPower(), CrucibleRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Chiller");
+
+            machineChillerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Blast Chiller.")
+                    .defineInRange("Base Power", ChillerRecipeManager.instance().getBasePower(), ChillerRecipeManager.instance().getMinPower(), ChillerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Refinery");
+
+            machineRefineryPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Fractionating Still.")
+                    .defineInRange("Base Power", RefineryRecipeManager.instance().getBasePower(), RefineryRecipeManager.instance().getMinPower(), RefineryRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Pyrolyzer");
+
+            machinePyrolyzerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Pyrolyzer.")
+                    .defineInRange("Base Power", PyrolyzerRecipeManager.instance().getBasePower(), PyrolyzerRecipeManager.instance().getMinPower(), PyrolyzerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Bottler");
+
+            machineBottlerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Fluid Encapsulator.")
+                    .defineInRange("Base Power", BottlerRecipeManager.instance().getBasePower(), BottlerRecipeManager.instance().getMinPower(), BottlerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Brewer");
+
+            machineBrewerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Alchemical Imbuer.")
+                    .defineInRange("Base Power", BrewerRecipeManager.instance().getBasePower(), BrewerRecipeManager.instance().getMinPower(), BrewerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+
+            SERVER_CONFIG.push("Crafter");
+
+            machineCrafterPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Sequential Fabricator.")
+                    .defineInRange("Base Power", CrafterRecipeManager.instance().getBasePower(), CrafterRecipeManager.instance().getMinPower(), CrafterRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+
         SERVER_CONFIG.pop();
     }
 
@@ -309,6 +425,7 @@ public class ThermalConfig {
 
         refreshDeviceConfig();
         refreshDynamoConfig();
+        refreshMachineConfig();
         refreshWorldConfig();
     }
 
@@ -345,6 +462,52 @@ public class ThermalConfig {
         }
         if (dynamoGourmandPower != null) {
             GourmandFuelManager.instance().setBasePower(dynamoGourmandPower.get());
+        }
+    }
+
+    private static void refreshMachineConfig() {
+
+        if (machineFurnacePower != null) {
+            FurnaceRecipeManager.instance().setBasePower(machineFurnacePower.get());
+        }
+        if (machineSawmillPower != null) {
+            SawmillRecipeManager.instance().setBasePower(machineSawmillPower.get());
+        }
+        if (machinePulverizerPower != null) {
+            PulverizerRecipeManager.instance().setBasePower(machinePulverizerPower.get());
+        }
+        if (machineSmelterPower != null) {
+            SmelterRecipeManager.instance().setBasePower(machineSmelterPower.get());
+        }
+        if (machineInsolatorPower != null) {
+            InsolatorRecipeManager.instance().setBasePower(machineInsolatorPower.get());
+        }
+        if (machineCentrifugePower != null) {
+            CentrifugeRecipeManager.instance().setBasePower(machineCentrifugePower.get());
+        }
+        if (machinePressPower != null) {
+            PressRecipeManager.instance().setBasePower(machinePressPower.get());
+        }
+        if (machineCruciblePower != null) {
+            CrucibleRecipeManager.instance().setBasePower(machineCruciblePower.get());
+        }
+        if (machineChillerPower != null) {
+            ChillerRecipeManager.instance().setBasePower(machineChillerPower.get());
+        }
+        if (machineRefineryPower != null) {
+            RefineryRecipeManager.instance().setBasePower(machineRefineryPower.get());
+        }
+        if (machinePyrolyzerPower != null) {
+            PyrolyzerRecipeManager.instance().setBasePower(machinePyrolyzerPower.get());
+        }
+        if (machineBottlerPower != null) {
+            BottlerRecipeManager.instance().setBasePower(machineBottlerPower.get());
+        }
+        if (machineBrewerPower != null) {
+            BrewerRecipeManager.instance().setBasePower(machineBrewerPower.get());
+        }
+        if (machineCrafterPower != null) {
+            CrafterRecipeManager.instance().setBasePower(machineCrafterPower.get());
         }
     }
 
@@ -435,6 +598,21 @@ public class ThermalConfig {
     private static IntValue dynamoLapidaryPower;
     private static IntValue dynamoDisenchantmentPower;
     private static IntValue dynamoGourmandPower;
+
+    private static IntValue machineFurnacePower;
+    private static IntValue machineSawmillPower;
+    private static IntValue machinePulverizerPower;
+    private static IntValue machineSmelterPower;
+    private static IntValue machineInsolatorPower;
+    private static IntValue machineCentrifugePower;
+    private static IntValue machinePressPower;
+    private static IntValue machineCruciblePower;
+    private static IntValue machineChillerPower;
+    private static IntValue machineRefineryPower;
+    private static IntValue machinePyrolyzerPower;
+    private static IntValue machineBottlerPower;
+    private static IntValue machineBrewerPower;
+    private static IntValue machineCrafterPower;
     // endregion
 
     // region CLIENT VARIABLES

@@ -1,6 +1,7 @@
 package cofh.thermal.core.util.managers.machine;
 
 import cofh.thermal.core.util.recipes.machine.CrafterRecipe;
+import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IManager;
 import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
 import net.minecraft.item.ItemStack;
@@ -10,7 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.IdentityHashMap;
 
-public class CrafterRecipeManager implements IManager {
+public class CrafterRecipeManager extends AbstractManager implements IManager {
 
     private static final CrafterRecipeManager INSTANCE = new CrafterRecipeManager();
     protected static final int DEFAULT_ENERGY = 400;
@@ -20,6 +21,11 @@ public class CrafterRecipeManager implements IManager {
     public static CrafterRecipeManager instance() {
 
         return INSTANCE;
+    }
+
+    private CrafterRecipeManager() {
+
+        super(DEFAULT_ENERGY);
     }
 
     public boolean validItem(ItemStack item, IMachineRecipe recipe) {

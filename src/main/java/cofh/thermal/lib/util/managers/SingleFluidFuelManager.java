@@ -4,7 +4,6 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStackHolder;
 import cofh.lib.fluid.IFluidStackAccess;
 import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.BaseDynamoFuel;
@@ -25,19 +24,15 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
     public static final int MIN_ENERGY = 10000;
     public static final int MAX_ENERGY = 200000000;
 
-    public static final int MIN_POWER = 10;
-    public static final int MAX_POWER = 200;
-
     public static final int FLUID_FUEL_AMOUNT = 100;
     public static final int ENERGY_FACTOR = BUCKET_VOLUME / FLUID_FUEL_AMOUNT;
-
-    protected int basePower = 40;
 
     protected Map<Integer, IDynamoFuel> fuelMap = new Object2ObjectOpenHashMap<>();
 
     protected SingleFluidFuelManager(int defaultEnergy) {
 
         super(defaultEnergy);
+        this.basePower = 40;
     }
 
     public void addFuel(ThermalFuel recipe) {
@@ -53,26 +48,6 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
     protected void clear() {
 
         fuelMap.clear();
-    }
-
-    public void setBasePower(int rate) {
-
-        basePower = MathHelper.clamp(rate, MIN_POWER, MAX_POWER);
-    }
-
-    public int getBasePower() {
-
-        return basePower;
-    }
-
-    public int getMinPower() {
-
-        return MIN_POWER;
-    }
-
-    public int getMaxPower() {
-
-        return MAX_POWER;
     }
 
     protected IDynamoFuel getFuel(FluidStack input) {
@@ -114,6 +89,12 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
         BaseDynamoFuel fuel = new BaseDynamoFuel(energy, inputItems, inputFluids);
         fuelMap.put(FluidHelper.fluidHashcode(input), fuel);
         return fuel;
+    }
+
+    @Override
+    public int getMinPower() {
+
+        return 10;
     }
 
     // region IFuelManager

@@ -23,6 +23,7 @@ public class PyrolyzerRecipeManager extends SingleItemRecipeManager {
     private PyrolyzerRecipeManager() {
 
         super(DEFAULT_ENERGY, 4, 1);
+        basePower = 5;
     }
 
     // region IManager

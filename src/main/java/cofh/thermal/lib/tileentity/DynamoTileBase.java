@@ -37,8 +37,6 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 
 public abstract class DynamoTileBase extends ThermalTileBase implements ITickableTileEntity {
 
-    protected static final int BASE_PROCESS_TICK = 40;
-
     protected Direction facing;
 
     protected int fuel;
