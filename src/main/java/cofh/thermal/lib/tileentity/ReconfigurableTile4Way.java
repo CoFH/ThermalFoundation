@@ -5,11 +5,11 @@ import cofh.core.util.control.IReconfigurableTile;
 import cofh.core.util.control.ITransferControllableTile;
 import cofh.core.util.control.ReconfigControlModule;
 import cofh.core.util.control.TransferControlModule;
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.InventoryHelper;
+import cofh.thermal.lib.util.recipes.IThermalInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -26,12 +26,12 @@ import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
@@ -44,9 +44,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class ReconfigurableTile4Way extends ThermalTileBase implements IReconfigurableTile, ITransferControllableTile {
-
-    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+public abstract class ReconfigurableTile4Way extends ThermalTileBase implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {
 
     protected int inputTracker;
     protected int outputTracker;
@@ -100,6 +98,28 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
                 .build();
     }
 
+    @Override
+    public List<? extends ItemStorageCoFH> inputSlots() {
+
+        return inventory.getInputSlots();
+    }
+
+    @Override
+    public List<? extends FluidStorageCoFH> inputTanks() {
+
+        return tankInv.getInputTanks();
+    }
+
+    protected List<? extends ItemStorageCoFH> outputSlots() {
+
+        return inventory.getOutputSlots();
+    }
+
+    protected List<? extends FluidStorageCoFH> outputTanks() {
+
+        return tankInv.getOutputTanks();
+    }
+
     // region HELPERS
     protected void updateSideCache() {
 
@@ -129,15 +149,6 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
             reconfigControl.setSideConfig(sides);
         }
         updateHandlers();
-    }
-
-    protected void chargeEnergy() {
-
-        if (!chargeSlot.isEmpty()) {
-            chargeSlot.getItemStack()
-                    .getCapability(CapabilityEnergy.ENERGY, null)
-                    .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
-        }
     }
 
     protected void transferInput() {

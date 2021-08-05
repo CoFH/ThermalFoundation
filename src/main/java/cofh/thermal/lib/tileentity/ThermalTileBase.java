@@ -11,8 +11,10 @@ import cofh.lib.energy.EmptyEnergyStorage;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.fluid.ManagedTankInv;
+import cofh.lib.fluid.SimpleTankInv;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.ManagedItemInv;
+import cofh.lib.inventory.SimpleItemInv;
 import cofh.lib.item.IAugmentableItem;
 import cofh.lib.util.Utils;
 import cofh.lib.util.filter.IFilter;
@@ -23,7 +25,6 @@ import cofh.lib.util.helpers.SoundHelper;
 import cofh.lib.xp.EmptyXpStorage;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.lib.common.ThermalConfig;
-import cofh.thermal.lib.util.recipes.IThermalInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -59,6 +60,7 @@ import net.minecraftforge.items.IItemHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -74,7 +76,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.lib.util.references.CoreReferences.HOLDING;
 import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
 
-public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, INamedContainerProvider, IFilterableTile, IThermalInventory {
+public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, INamedContainerProvider, IFilterableTile {
 
     protected static final int BASE_ENERGY = 50000;
     protected static final int BASE_PROCESS_TICK = 20;
@@ -89,12 +91,10 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     protected SecurityControlModule securityControl = new SecurityControlModule(this);
     protected RedstoneControlModule redstoneControl = new RedstoneControlModule(this);
 
-    protected List<ItemStorageCoFH> augments = new ArrayList<>();
-
+    protected List<ItemStorageCoFH> augments = Collections.emptyList();
     protected ListNBT enchantments = new ListNBT();
 
     public boolean isActive;
-
     protected FluidStack renderFluid = FluidStack.EMPTY;
 
     public ThermalTileBase(TileEntityType<?> tileEntityTypeIn) {
@@ -149,12 +149,12 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         return augments.size();
     }
 
-    public ManagedItemInv getItemInv() {
+    public SimpleItemInv getItemInv() {
 
         return inventory;
     }
 
-    public ManagedTankInv getTankInv() {
+    public SimpleTankInv getTankInv() {
 
         return tankInv;
     }
@@ -178,38 +178,6 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     protected boolean cacheRenderFluid() {
 
         return false;
-    }
-
-    @Override
-    public List<? extends ItemStorageCoFH> inputSlots() {
-
-        return inventory.getInputSlots();
-    }
-
-    @Override
-    public List<? extends FluidStorageCoFH> inputTanks() {
-
-        return tankInv.getInputTanks();
-    }
-
-    protected List<? extends ItemStorageCoFH> outputSlots() {
-
-        return inventory.getOutputSlots();
-    }
-
-    protected List<? extends FluidStorageCoFH> outputTanks() {
-
-        return tankInv.getOutputTanks();
-    }
-
-    protected List<? extends ItemStorageCoFH> internalSlots() {
-
-        return inventory.getInternalSlots();
-    }
-
-    protected List<? extends FluidStorageCoFH> internalTanks() {
-
-        return tankInv.getInternalTanks();
     }
 
     @Override
@@ -603,6 +571,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
      */
     protected final void addAugmentSlots(int numAugments) {
 
+        augments = new ArrayList<>(numAugments);
         for (int i = 0; i < numAugments; ++i) {
             ItemStorageCoFH slot = new ItemStorageCoFH(1, augValidator());
             augments.add(slot);

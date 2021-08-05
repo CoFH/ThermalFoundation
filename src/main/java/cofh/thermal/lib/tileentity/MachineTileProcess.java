@@ -1,6 +1,7 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
@@ -20,6 +21,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -39,6 +41,8 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALID
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
 public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ITickableTileEntity, IMachineInventory {
+
+    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
 
     protected IMachineRecipe curRecipe;
     protected IRecipeCatalyst curCatalyst;
@@ -179,6 +183,15 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     // endregion
 
     // region HELPERS
+    protected void chargeEnergy() {
+
+        if (!chargeSlot.isEmpty()) {
+            chargeSlot.getItemStack()
+                    .getCapability(CapabilityEnergy.ENERGY, null)
+                    .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
+        }
+    }
+
     protected boolean cacheRecipe() {
 
         return false;
