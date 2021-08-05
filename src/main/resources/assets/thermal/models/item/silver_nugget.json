@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/nuggets/silver_nugget"
+    "layer0": "thermal:item/silver_nugget"
   }
 }

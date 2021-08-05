@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/crafting/saw_blade"
+    "layer0": "thermal:item/saw_blade"
   }
 }

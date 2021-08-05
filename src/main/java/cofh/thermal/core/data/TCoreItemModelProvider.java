@@ -14,6 +14,8 @@ import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
+    public static final String AUGMENTS = "augments";
+
     public TCoreItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
 
         super(generator, ID_THERMAL, existingFileHelper);
@@ -51,63 +53,63 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         gemSet(reg, "emerald", true);
         gemSet(reg, "quartz", true);
 
-        generated(reg.getSup("ender_pearl_dust"), DUSTS);
+        generated(reg.getSup("ender_pearl_dust"));
     }
 
     private void registerResources(DeferredRegisterCoFH<Item> reg) {
 
-        generated(reg.getSup("sawdust"), RESOURCES);
-        generated(reg.getSup("coal_coke"), RESOURCES);
-        generated(reg.getSup("bitumen"), RESOURCES);
-        generated(reg.getSup("tar"), RESOURCES);
-        generated(reg.getSup("rosin"), RESOURCES);
-        generated(reg.getSup("rubber"), RESOURCES);
-        generated(reg.getSup("cured_rubber"), RESOURCES);
-        generated(reg.getSup("slag"), RESOURCES);
-        generated(reg.getSup("rich_slag"), RESOURCES);
+        generated(reg.getSup("sawdust"));
+        generated(reg.getSup("coal_coke"));
+        generated(reg.getSup("bitumen"));
+        generated(reg.getSup("tar"));
+        generated(reg.getSup("rosin"));
+        generated(reg.getSup("rubber"));
+        generated(reg.getSup("cured_rubber"));
+        generated(reg.getSup("slag"));
+        generated(reg.getSup("rich_slag"));
 
-        generated(reg.getSup("junk_net"), TOOLS);
-        generated(reg.getSup("aquachow"), TOOLS);
-        generated(reg.getSup("deep_aquachow"), TOOLS);
-        //        generated(reg.getSup("rich_aquachow"), TOOLS);
-        //        generated(reg.getSup("fluxed_aquachow"), TOOLS);
+        generated(reg.getSup("junk_net"));
+        generated(reg.getSup("aquachow"));
+        generated(reg.getSup("deep_aquachow"));
+        //        generated(reg.getSup("rich_aquachow"));
+        //        generated(reg.getSup("fluxed_aquachow"));
 
-        generated(reg.getSup("beekeeper_fabric"), CRAFTING);
-        generated(reg.getSup("diving_fabric"), CRAFTING);
-        generated(reg.getSup("hazmat_fabric"), CRAFTING);
+        generated(reg.getSup("beekeeper_fabric"));
+        generated(reg.getSup("diving_fabric"));
+        generated(reg.getSup("hazmat_fabric"));
 
-        generated(reg.getSup("apatite_dust"), DUSTS);
-        generated(reg.getSup("cinnabar_dust"), DUSTS);
-        generated(reg.getSup("niter_dust"), DUSTS);
-        generated(reg.getSup("sulfur_dust"), DUSTS);
+        generated(reg.getSup("apatite_dust"));
+        generated(reg.getSup("cinnabar_dust"));
+        generated(reg.getSup("niter_dust"));
+        generated(reg.getSup("sulfur_dust"));
 
-        generated(reg.getSup("apatite"), RESOURCES);
-        generated(reg.getSup("cinnabar"), RESOURCES);
-        generated(reg.getSup("niter"), RESOURCES);
-        generated(reg.getSup("sulfur"), RESOURCES);
+        generated(reg.getSup("apatite"));
+        generated(reg.getSup("cinnabar"));
+        generated(reg.getSup("niter"));
+        generated(reg.getSup("sulfur"));
 
-        generated(reg.getSup("basalz_rod"), RESOURCES);
-        generated(reg.getSup("basalz_powder"), RESOURCES);
-        generated(reg.getSup("blitz_rod"), RESOURCES);
-        generated(reg.getSup("blitz_powder"), RESOURCES);
-        generated(reg.getSup("blizz_rod"), RESOURCES);
-        generated(reg.getSup("blizz_powder"), RESOURCES);
+        generated(reg.getSup("basalz_rod"));
+        generated(reg.getSup("basalz_powder"));
+        generated(reg.getSup("blitz_rod"));
+        generated(reg.getSup("blitz_powder"));
+        generated(reg.getSup("blizz_rod"));
+        generated(reg.getSup("blizz_powder"));
 
-        generated(reg.getSup("redstone_bucket"), RESOURCES);
-        generated(reg.getSup("glowstone_bucket"), RESOURCES);
-        generated(reg.getSup("ender_bucket"), RESOURCES);
+        generated(reg.getSup("redstone_bucket"));
+        generated(reg.getSup("glowstone_bucket"));
+        generated(reg.getSup("ender_bucket"));
 
-        generated(reg.getSup("creosote_bucket"), RESOURCES);
-        generated(reg.getSup("crude_oil_bucket"), RESOURCES);
-        generated(reg.getSup("heavy_oil_bucket"), RESOURCES);
-        generated(reg.getSup("light_oil_bucket"), RESOURCES);
-        generated(reg.getSup("refined_fuel_bucket"), RESOURCES);
+        generated(reg.getSup("creosote_bucket"));
+        generated(reg.getSup("crude_oil_bucket"));
+        generated(reg.getSup("heavy_oil_bucket"));
+        generated(reg.getSup("light_oil_bucket"));
+        generated(reg.getSup("refined_fuel_bucket"));
 
-        generated(reg.getSup("latex_bucket"), RESOURCES);
-        generated(reg.getSup("resin_bucket"), RESOURCES);
-        generated(reg.getSup("sap_bucket"), RESOURCES);
-        generated(reg.getSup("syrup_bucket"), RESOURCES);
-        generated(reg.getSup("tree_oil_bucket"), RESOURCES);
+        generated(reg.getSup("latex_bucket"));
+        generated(reg.getSup("resin_bucket"));
+        generated(reg.getSup("sap_bucket"));
+        generated(reg.getSup("syrup_bucket"));
+        generated(reg.getSup("tree_oil_bucket"));
 
         metalSet(reg, "copper");
         metalSet(reg, "lead");
@@ -130,45 +132,45 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
     private void registerParts(DeferredRegisterCoFH<Item> reg) {
 
-        generated(reg.getSup("redstone_servo"), CRAFTING);
-        generated(reg.getSup("rf_coil"), CRAFTING);
+        generated(reg.getSup("redstone_servo"));
+        generated(reg.getSup("rf_coil"));
 
-        generated(reg.getSup("drill_head"), CRAFTING);
-        generated(reg.getSup("saw_blade"), CRAFTING);
-        generated(reg.getSup("laser_diode"), CRAFTING);
+        generated(reg.getSup("drill_head"));
+        generated(reg.getSup("saw_blade"));
+        generated(reg.getSup("laser_diode"));
     }
 
     private void registerTools(DeferredRegisterCoFH<Item> reg) {
 
-        handheld(reg.getSup("wrench"), TOOLS);
-        // handheld(reg.getSup("redprint"), TOOLS);
-        // handheld(reg.getSup("xp_crystal"), TOOLS);
-        generated(reg.getSup("rf_potato"), TOOLS);
-        generated(reg.getSup("lock"), TOOLS);
-        generated(reg.getSup("phytogro"), TOOLS);
-        // generated(reg.getSup("fluxed_phytogro"), TOOLS);
+        handheld(reg.getSup("wrench"));
+        // handheld(reg.getSup("redprint"));
+        // handheld(reg.getSup("xp_crystal"));
+        generated(reg.getSup("rf_potato"));
+        generated(reg.getSup("lock"));
+        generated(reg.getSup("phytogro"));
+        // generated(reg.getSup("fluxed_phytogro"));
 
-        generated(reg.getSup("earth_charge"), TOOLS);
-        generated(reg.getSup("ice_charge"), TOOLS);
-        generated(reg.getSup("lightning_charge"), TOOLS);
+        generated(reg.getSup("earth_charge"));
+        generated(reg.getSup("ice_charge"));
+        generated(reg.getSup("lightning_charge"));
     }
 
     private void registerArmor(DeferredRegisterCoFH<Item> reg) {
 
-        generated(reg.getSup(ID_BEEKEEPER_HELMET), ARMOR);
-        generated(reg.getSup(ID_BEEKEEPER_CHESTPLATE), ARMOR);
-        generated(reg.getSup(ID_BEEKEEPER_LEGGINGS), ARMOR);
-        generated(reg.getSup(ID_BEEKEEPER_BOOTS), ARMOR);
+        generated(reg.getSup(ID_BEEKEEPER_HELMET));
+        generated(reg.getSup(ID_BEEKEEPER_CHESTPLATE));
+        generated(reg.getSup(ID_BEEKEEPER_LEGGINGS));
+        generated(reg.getSup(ID_BEEKEEPER_BOOTS));
 
-        generated(reg.getSup(ID_DIVING_HELMET), ARMOR);
-        generated(reg.getSup(ID_DIVING_CHESTPLATE), ARMOR);
-        generated(reg.getSup(ID_DIVING_LEGGINGS), ARMOR);
-        generated(reg.getSup(ID_DIVING_BOOTS), ARMOR);
+        generated(reg.getSup(ID_DIVING_HELMET));
+        generated(reg.getSup(ID_DIVING_CHESTPLATE));
+        generated(reg.getSup(ID_DIVING_LEGGINGS));
+        generated(reg.getSup(ID_DIVING_BOOTS));
 
-        generated(reg.getSup(ID_HAZMAT_HELMET), ARMOR);
-        generated(reg.getSup(ID_HAZMAT_CHESTPLATE), ARMOR);
-        generated(reg.getSup(ID_HAZMAT_LEGGINGS), ARMOR);
-        generated(reg.getSup(ID_HAZMAT_BOOTS), ARMOR);
+        generated(reg.getSup(ID_HAZMAT_HELMET));
+        generated(reg.getSup(ID_HAZMAT_CHESTPLATE));
+        generated(reg.getSup(ID_HAZMAT_LEGGINGS));
+        generated(reg.getSup(ID_HAZMAT_BOOTS));
     }
 
     private void registerAugments(DeferredRegisterCoFH<Item> reg) {

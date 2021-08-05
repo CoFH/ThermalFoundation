@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/coins/constantan_coin_2"
+    "layer0": "thermal:item/constantan_coin_2"
   }
 }

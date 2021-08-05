@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/dusts/ender_pearl_dust"
+    "layer0": "thermal:item/ender_pearl_dust"
   }
 }

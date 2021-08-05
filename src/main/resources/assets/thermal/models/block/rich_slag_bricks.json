@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "thermal:block/deco/rich_slag_bricks"
+    "all": "thermal:block/rich_slag_bricks"
   }
 }

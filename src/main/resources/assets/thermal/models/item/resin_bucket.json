@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/resources/resin_bucket"
+    "layer0": "thermal:item/resin_bucket"
   }
 }

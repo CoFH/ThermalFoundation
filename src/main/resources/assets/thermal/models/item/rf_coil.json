@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/crafting/rf_coil"
+    "layer0": "thermal:item/rf_coil"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "thermal:item/earth_grenade",
   "textures": {
-    "layer0": "thermal:item/tools/earth_grenade_thrown"
+    "layer0": "thermal:item/earth_grenade_thrown"
   }
 }

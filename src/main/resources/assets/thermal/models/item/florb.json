@@ -2,7 +2,7 @@
   "loader": "cofh_core:dynamic_fluid",
   "parent": "forge:item/default",
   "textures": {
-    "base": "thermal:item/tools/florb",
-    "fluid": "thermal:item/tools/florb_mask"
+    "base": "thermal:item/florb",
+    "fluid": "thermal:item/florb_mask"
   }
 }

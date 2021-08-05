@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/phyto_grenade"
+    "layer0": "thermal:item/phyto_grenade"
   },
   "overrides": [
     {

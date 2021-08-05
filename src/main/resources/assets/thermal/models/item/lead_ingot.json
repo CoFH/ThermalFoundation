@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/ingots/lead_ingot"
+    "layer0": "thermal:item/lead_ingot"
   }
 }

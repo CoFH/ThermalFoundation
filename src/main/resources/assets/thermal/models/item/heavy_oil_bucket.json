@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/resources/heavy_oil_bucket"
+    "layer0": "thermal:item/heavy_oil_bucket"
   }
 }

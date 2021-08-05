@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/deep_aquachow"
+    "layer0": "thermal:item/deep_aquachow"
   }
 }

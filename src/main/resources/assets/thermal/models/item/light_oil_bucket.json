@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/resources/light_oil_bucket"
+    "layer0": "thermal:item/light_oil_bucket"
   }
 }

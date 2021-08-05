@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/detonator"
+    "layer0": "thermal:item/detonator"
   },
   "overrides": [
     {

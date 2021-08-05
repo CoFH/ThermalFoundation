@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/plates/silver_plate_0"
+    "layer0": "thermal:item/silver_plate_0"
   },
   "overrides": [
     {

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/gems/sapphire"
+    "layer0": "thermal:item/sapphire"
   }
 }

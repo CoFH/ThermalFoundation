@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/plates/copper_plate_3"
+    "layer0": "thermal:item/copper_plate_3"
   }
 }

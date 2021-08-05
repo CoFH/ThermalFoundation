@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/resources/sap_bucket"
+    "layer0": "thermal:item/sap_bucket"
   }
 }

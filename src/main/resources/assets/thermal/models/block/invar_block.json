@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "thermal:block/storage/invar_block"
+    "all": "thermal:block/invar_block"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/resources/refined_fuel_bucket"
+    "layer0": "thermal:item/refined_fuel_bucket"
   }
 }

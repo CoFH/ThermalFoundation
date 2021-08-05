@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/lock"
+    "layer0": "thermal:item/lock"
   }
 }

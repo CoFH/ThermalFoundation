@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/coins/electrum_coin_0"
+    "layer0": "thermal:item/electrum_coin_0"
   },
   "overrides": [
     {

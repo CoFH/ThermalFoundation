@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermal:item/gems/ruby"
+    "layer0": "thermal:item/ruby"
   }
 }

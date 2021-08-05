@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/redstone_grenade"
+    "layer0": "thermal:item/redstone_grenade"
   },
   "overrides": [
     {
