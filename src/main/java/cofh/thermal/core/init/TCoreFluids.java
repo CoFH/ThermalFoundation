@@ -21,7 +21,7 @@ public class TCoreFluids {
         LatexFluid.create();
 
         //        SeedOilFluid.create();
-        //        BiocrudeFluid.create();
+        BiocrudeFluid.create();
         //        BiofuelFluid.create();
 
         CreosoteFluid.create();

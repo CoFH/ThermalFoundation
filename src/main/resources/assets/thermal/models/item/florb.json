@@ -1,4 +1,5 @@
 {
+  "loader": "cofh_core:dynamic_fluid",
   "parent": "forge:item/default",
   "textures": {
     "base": "thermal:item/tools/florb",

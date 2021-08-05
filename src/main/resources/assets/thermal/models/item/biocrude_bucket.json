@@ -1,5 +1,4 @@
 {
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
+  "parent": "thermal:item/florb",
   "fluid": "thermal:biocrude"
 }
