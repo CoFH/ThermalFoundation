@@ -12,7 +12,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class ChargeBenchScreen extends ThermalTileScreenBase<ChargeBenchContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/workbenches/charge_bench.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/charge_bench.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public ChargeBenchScreen(ChargeBenchContainer container, PlayerInventory inv, ITextComponent titleIn) {

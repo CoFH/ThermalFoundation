@@ -25,7 +25,7 @@ import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/storage/fluid_cell.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/fluid_cell.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public static final String TEX_INCREMENT = ID_COFH_CORE + ":textures/gui/elements/button_increment.png";

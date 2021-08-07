@@ -17,11 +17,11 @@ import static cofh.lib.util.constants.Constants.PATH_ELEMENTS;
 
 public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/workbenches/tinker_bench.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/tinker_bench.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public static final String TEX_AUGMENT = ID_THERMAL + ":textures/gui/workbenches/tinker_bench_mode_augment.png";
-    public static final String TEX_REPLENISH = ID_THERMAL + ":textures/gui/workbenches/tinker_bench_mode_replenish.png";
+    public static final String TEX_AUGMENT = ID_THERMAL + ":textures/gui/container/tinker_bench_mode_augment.png";
+    public static final String TEX_REPLENISH = ID_THERMAL + ":textures/gui/container/tinker_bench_mode_replenish.png";
 
     public TinkerBenchScreen(TinkerBenchContainer container, PlayerInventory inv, ITextComponent titleIn) {
 
@@ -40,7 +40,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
         addElement(new ElementAugmentSlots(this, 80, 17, container::getNumTinkerAugmentSlots, container.getTinkerAugmentSlots(),
                 PATH_ELEMENTS + "disable_underlay_slot.png", () -> !container.tile.allowAugmentation()));
 
-        addElement(new ElementButton(this, 43, 52) {
+        addElement(new ElementButton(this, 42, 51) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
@@ -49,12 +49,12 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
                 return true;
             }
         }
-                .setSize(18, 18)
-                .setTexture(TEX_AUGMENT, 36, 18)
+                .setSize(20, 20)
+                .setTexture(TEX_AUGMENT, 40, 20)
                 .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.tinker_bench_mode_augment")))
                 .setVisible(container.tile::allowAugmentation));
 
-        addElement(new ElementButton(this, 43, 52) {
+        addElement(new ElementButton(this, 42, 51) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
@@ -63,8 +63,8 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
                 return true;
             }
         }
-                .setSize(18, 18)
-                .setTexture(TEX_REPLENISH, 36, 18)
+                .setSize(20, 20)
+                .setTexture(TEX_REPLENISH, 40, 20)
                 .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.tinker_bench_mode_charge")))
                 .setVisible(() -> !container.tile.allowAugmentation()));
     }

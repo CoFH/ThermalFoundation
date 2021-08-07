@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class DevicePotionDiffuserScreen extends ThermalTileScreenBase<DevicePotionDiffuserContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/devices/potion_diffuser.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/potion_diffuser.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public DevicePotionDiffuserScreen(DevicePotionDiffuserContainer container, PlayerInventory inv, ITextComponent titleIn) {

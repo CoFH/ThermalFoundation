@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class DeviceWaterGenScreen extends ThermalTileScreenBase<DeviceWaterGenContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/devices/water_gen.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/water_gen.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public DeviceWaterGenScreen(DeviceWaterGenContainer container, PlayerInventory inv, ITextComponent titleIn) {

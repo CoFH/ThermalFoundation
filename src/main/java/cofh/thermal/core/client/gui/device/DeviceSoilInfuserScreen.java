@@ -19,7 +19,7 @@ import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInfuserContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/devices/soil_infuser.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/soil_infuser.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     protected DeviceSoilInfuserTile tile;

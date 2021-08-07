@@ -20,7 +20,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class DeviceRockGenScreen extends ThermalTileScreenBase<DeviceRockGenContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/devices/rock_gen.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/rock_gen.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public static final FluidStack LAVA = new FluidStack(Fluids.LAVA, BUCKET_VOLUME);

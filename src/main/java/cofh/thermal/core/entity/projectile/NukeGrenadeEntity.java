@@ -34,8 +34,8 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
     public static int effectAmplifier = 2;
     public static int effectDuration = 400;
 
-    public static double explosionStrength = 8.0;
-    public static boolean explosionsBreakBlocks = true;
+    public static double explosionStrength = 12.0;
+    public static boolean explosionsDestroyBlocks = true;
 
     public NukeGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
 
@@ -63,9 +63,9 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
 
         if (Utils.isServerWorld(world)) {
             world.setBlockState(this.getPosition(), Blocks.AIR.getDefaultState());
-            affectNearbyEntities(this, world, this.getPosition(), radius * 2, func_234616_v_());
-            destroyBlocks(this, world, this.getPosition(), radius + radius / 2);
-            world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float) explosionStrength, true, explosionsBreakBlocks ? Explosion.Mode.BREAK : Explosion.Mode.NONE);
+            affectNearbyEntities(this, world, this.getPosition(), radius * 3, func_234616_v_());
+            destroyBlocks(this, world, this.getPosition(), radius * 2);
+            world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float) explosionStrength, true, explosionsDestroyBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
             this.world.setEntityState(this, (byte) 3);
             this.remove();
         }
