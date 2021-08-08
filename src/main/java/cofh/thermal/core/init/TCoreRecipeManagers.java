@@ -1,9 +1,6 @@
 package cofh.thermal.core.init;
 
-import cofh.thermal.core.util.managers.device.FisherManager;
-import cofh.thermal.core.util.managers.device.PotionDiffuserManager;
-import cofh.thermal.core.util.managers.device.RockGenManager;
-import cofh.thermal.core.util.managers.device.TreeExtractorManager;
+import cofh.thermal.core.util.managers.device.*;
 import cofh.thermal.core.util.managers.dynamo.*;
 import cofh.thermal.core.util.managers.machine.*;
 
@@ -17,6 +14,7 @@ public class TCoreRecipeManagers {
 
     public static void register() {
 
+        registerManager(HiveExtractorManager.instance());
         registerManager(TreeExtractorManager.instance());
         registerManager(FisherManager.instance());
         registerManager(RockGenManager.instance());
@@ -42,7 +40,6 @@ public class TCoreRecipeManagers {
         registerManager(MagmaticFuelManager.instance());
         registerManager(NumismaticFuelManager.instance());
         registerManager(LapidaryFuelManager.instance());
-
         registerManager(DisenchantmentFuelManager.instance());
         registerManager(GourmandFuelManager.instance());
     }

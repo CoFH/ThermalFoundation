@@ -219,6 +219,7 @@
 
   "item.thermal.junk_net": "Junk Net",
   "item.thermal.junk_net.desc": "Use in the §e§oAquatic Entangler§r§6 to catch junk. Not consumable.",
+
   "item.thermal.aquachow": "Aqua-Chow",
   "item.thermal.aquachow.desc": "Use in the §e§oAquatic Entangler§r§6 to catch more fish.",
   "item.thermal.deep_aquachow": "Benthic Aqua-Chow",
@@ -396,7 +397,7 @@
   "item.thermal.dynamo_fuel_augment": "Multi-cycle Injectors",
   "item.thermal.dynamo_fuel_augment.desc": "Increases fuel efficiency.",
   "item.thermal.dynamo_output_augment": "Auxiliary Reaction Chamber",
-  "item.thermal.dynamo_output_augment.desc": "Increases generation rate but reduces efficiency",
+  "item.thermal.dynamo_output_augment.desc": "Increases generation rate but reduces efficiency.",
 
   "item.thermal.fluid_tank_augment": "Expanded Tank Construction",
 
@@ -742,17 +743,17 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
-  "block.thermal.logistics_ender_tunnel": "Ender Tunnel",
-  "block.thermal.logistics_fluid_buffer": "Logistical Fluid Buffer",
-  "block.thermal.logistics_item_buffer": "Logistical Item Buffer",
+  "block.thermal.ender_tunnel": "Ender Tunnel",
+  "block.thermal.fluid_buffer": "Logistical Fluid Buffer",
+  "block.thermal.item_buffer": "Logistical Item Buffer",
 
-  "info.thermal.logistics_item_buffer.0": "Restricts quantity and flow of items.",
-  "info.thermal.logistics_item_buffer.1": "Set desired items and quantities using the left grid.",
-  "info.thermal.logistics_item_buffer.2": "Latch I/O requires all items to be present before extraction is allowed.",
-  "info.thermal.logistics_item_buffer.3": "Very useful for maintaining specific item ratios.",
+  "info.thermal.item_buffer.0": "Restricts quantity and flow of items.",
+  "info.thermal.item_buffer.1": "Set desired items and quantities using the left grid.",
+  "info.thermal.item_buffer.2": "Latch I/O requires all items to be present before extraction is allowed.",
+  "info.thermal.item_buffer.3": "Very useful for maintaining specific item ratios.",
 
-  "info.thermal.logistics_item_buffer.mode.0": "I/O: Normal",
-  "info.thermal.logistics_item_buffer.mode.1": "I/O: Latch",
+  "info.thermal.item_buffer.mode.0": "I/O: Normal",
+  "info.thermal.item_buffer.mode.1": "I/O: Latch",
 
   "item.thermal.ender_tuner": "Ender Tuning Fork",
   "item.thermal.ender_tuner.desc": "Used to tune various spacetime manipulation devices.",
@@ -972,17 +973,161 @@
 
   "item.thermal.underwater_minecart": "Underwater Minecart",
 
-  "item.thermal.slime_tnt_minecart": "Minecart with Slime Explosive",
-  "item.thermal.redstone_tnt_minecart": "Minecart with Redstone Explosive",
-  "item.thermal.glowstone_tnt_minecart": "Minecart with Glowstone Explosive",
-  "item.thermal.ender_tnt_minecart": "Minecart with Ender Explosive",
-
-  "item.thermal.phyto_tnt_minecart": "Minecart with PNT",
-
   "item.thermal.earth_tnt_minecart": "Minecart with Tectonic Explosive",
+  "item.thermal.ender_tnt_minecart": "Minecart with Ender Explosive",
   "item.thermal.fire_tnt_minecart": "Minecart with Inferno Explosive",
+  "item.thermal.glowstone_tnt_minecart": "Minecart with Glowstone Explosive",
   "item.thermal.ice_tnt_minecart": "Minecart with Glacial Explosive",
   "item.thermal.lightning_tnt_minecart": "Minecart with Fulminating Explosive",
+  "item.thermal.nuke_tnt_minecart": "Minecart with Nuclear Explosive",
+  "item.thermal.phyto_tnt_minecart": "Minecart with PNT",
+  "item.thermal.redstone_tnt_minecart": "Minecart with Redstone Explosive",
+  "item.thermal.slime_tnt_minecart": "Minecart with Slime Explosive",
 
-  "item.thermal.nuke_tnt_minecart": "Minecart with Nuclear Explosive"
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.earth_tnt.keyword": "basalz earth tnt",
+  "block.thermal.ender_tnt.keyword": "tnt",
+  "block.thermal.fire_tnt.keyword": "blaze fire tnt",
+  "block.thermal.glowstone_tnt.keyword": "tnt",
+  "block.thermal.ice_tnt.keyword": "blizz ice tnt",
+  "block.thermal.lightning_tnt.keyword": "blitz lightning tnt",
+  "block.thermal.nuke_tnt.keyword": "tnt",
+  "block.thermal.phyto_tnt.keyword": "fertilizer tnt",
+  "block.thermal.redstone_tnt.keyword": "tnt",
+  "block.thermal.slime_tnt.keyword": "tnt",
+
+  "block.thermal.energy_cell.keyword": "energy rf storage",
+  "block.thermal.fluid_cell.keyword": "fluid storage tank",
+
+  "block.thermal.charge_bench.keyword": "energy recharger rf",
+  "block.thermal.tinker_bench.keyword": "augment filler recharger upgrade",
+
+  "block.thermal.phytosoil.keyword": "crop farm mushroom",
+  "block.thermal.phytosoil_tilled.keyword": "crop farm",
+
+  "block.thermal.device_collector.keyword": "collector magnet",
+  "block.thermal.device_fisher.keyword": "autofisher bait fishing",
+  "block.thermal.device_hive_extractor.keyword": "bee honey honeycomb",
+  "block.thermal.device_nullifier.keyword": "can trash",
+  "block.thermal.device_potion_diffuser.keyword": "potion",
+  "block.thermal.device_rock_gen.keyword": "cobblegenerator cobblestone",
+  "block.thermal.device_soil_infuser.keyword": "crop farm fertilizer",
+  "block.thermal.device_tree_extractor.keyword": "extractor latex tree",
+  "block.thermal.device_water_gen.keyword": "pump source water",
+
+  "block.thermal.dynamo_compression.keyword": "engine fuel generator power",
+  "block.thermal.dynamo_disenchantment.keyword": "book engine generator power",
+  "block.thermal.dynamo_gourmand.keyword": "engine food generator power",
+  "block.thermal.dynamo_lapidary.keyword": "engine gem generator power",
+  "block.thermal.dynamo_magmatic.keyword": "engine generator lava power",
+  "block.thermal.dynamo_numismatic.keyword": "coin engine generator power",
+  "block.thermal.dynamo_stirling.keyword": "charcoal coke engine generator power",
+
+  "block.thermal.ender_tunnel.keyword": "entangloporter quantum tesseract",
+
+  "block.thermal.machine_bottler.keyword": "bucket filler machine transposer",
+  "block.thermal.machine_brewer.keyword": "brewer brewing machine potion",
+  "block.thermal.machine_centrifuge.keyword": "centrifuge machine",
+  "block.thermal.machine_chiller.keyword": "freezer machine obsidian",
+  "block.thermal.machine_crafter.keyword": "assembler autocrafter autocrafting crafter crafting machine table workbench",
+  "block.thermal.machine_crucible.keyword": "machine melter",
+  "block.thermal.machine_furnace.keyword": "cooking furnace machine",
+  "block.thermal.machine_insolator.keyword": "catalyst cloche crop farm fertilizer machine plant sapling tree",
+  "block.thermal.machine_press.keyword": "coin gear machine",
+  "block.thermal.machine_pulverizer.keyword": "catalyst crusher macerator machine ore",
+  "block.thermal.machine_pyrolyzer.keyword": "charcoal coke creosote machine oven",
+  "block.thermal.machine_refinery.keyword": "machine oil refinery",
+  "block.thermal.machine_sawmill.keyword": "log machine plank",
+  "block.thermal.machine_smelter.keyword": "alloy catalyst machine ore",
+
+  "item.thermal.area_depth_augment.keyword": "augment",
+  "item.thermal.area_radius_augment.keyword": "augment drill tool saw",
+
+  "item.thermal.dynamo_fuel_augment.keyword": "augment dynamo",
+  "item.thermal.dynamo_output_augment.keyword": "augment dynamo",
+
+  "item.thermal.fluid_tank_augment.keyword": "augment fluid storage tank",
+  "item.thermal.fluid_tank_creative_augment.keyword": "augment creative fluid storage tank",
+
+  "item.thermal.dual_filter_augment.keyword": "augment filter",
+  "item.thermal.fluid_filter_augment.keyword": "augment filter",
+  "item.thermal.item_filter_augment.keyword": "augment filter",
+
+  "item.thermal.machine_catalyst_augment.keyword": "augment catalyst machine",
+  "item.thermal.machine_catalyst_creative_augment.keyword": "augment catalyst creative machine",
+  "item.thermal.machine_cycle_augment.keyword": "augment machine",
+  "item.thermal.machine_efficiency_augment.keyword": "augment machine",
+  "item.thermal.machine_efficiency_creative_augment.keyword": "augment creative machine",
+  "item.thermal.machine_output_augment.keyword": "augment machine",
+  "item.thermal.machine_speed_augment.keyword": "augment machine overclock speed",
+
+  "item.thermal.potion_amplifier_augment.keyword": "augment potion",
+  "item.thermal.potion_duration_augment.keyword": "augment potion",
+
+  "item.thermal.rf_coil_augment.keyword": "augment energy rf storage",
+  "item.thermal.rf_coil_creative_augment.keyword": "augment creative energy rf storage",
+  "item.thermal.rf_coil_storage_augment.keyword": "augment energy rf storage",
+  "item.thermal.rf_coil_xfer_augment.keyword": "augment energy rf storage",
+
+  "item.thermal.rs_control_augment.keyword": "augment redstone",
+  "item.thermal.side_config_augment.keyword": "augment",
+
+  "item.thermal.upgrade_augment_1.keyword": "augment kit upgrade",
+  "item.thermal.upgrade_augment_2.keyword": "augment kit upgrade",
+  "item.thermal.upgrade_augment_3.keyword": "augment kit upgrade",
+  "item.thermal.upgrade_augment_4.keyword": "augment kit upgrade",
+
+  "item.thermal.xp_storage_augment.keyword": "augment experience xp",
+
+  "item.thermal.beekeeper_helmet.keyword": "armor helmet honey sting",
+  "item.thermal.beekeeper_chestplate.keyword": "armor chestplate honey sting",
+  "item.thermal.beekeeper_leggings.keyword": "armor honey leggings sting",
+  "item.thermal.beekeeper_boots.keyword": "armor honey sting",
+
+  "item.thermal.diving_helmet.keyword": "armor underwater",
+  "item.thermal.diving_chestplate.keyword": "armor chestplate underwater",
+  "item.thermal.diving_leggings.keyword": "armor swim underwater",
+  "item.thermal.diving_boots.keyword": "armor boots swim underwater",
+
+  "item.thermal.hazmat_helmet.keyword": "armor radiation",
+  "item.thermal.hazmat_chestplate.keyword": "armor chestplate radiation",
+  "item.thermal.hazmat_leggings.keyword": "armor leggings radiation",
+  "item.thermal.hazmat_boots.keyword": "armor radiation",
+
+  "item.thermal.deep_aquachow.keyword": "bait",
+  "item.thermal.aquachow.keyword": "bait",
+  "item.thermal.junk_net.keyword": "bait",
+
+  "item.thermal.glowstone_mushroom.keyword": "glowstone",
+  "item.thermal.glowstone_mushroom_spores.keyword": "glowstone",
+  "item.thermal.gunpowder_mushroom.keyword": "gunpowder",
+  "item.thermal.gunpowder_mushroom_spores.keyword": "gunpowder",
+  "item.thermal.redstone_mushroom.keyword": "redstone",
+  "item.thermal.redstone_mushroom_spores.keyword": "redstone",
+  "item.thermal.slime_mushroom.keyword": "slime",
+  "item.thermal.slime_mushroom_spores.keyword": "slime",
+
+  "item.thermal.earth_tnt_minecart.keyword": "basalz earth tnt",
+  "item.thermal.ender_tnt_minecart.keyword": "tnt",
+  "item.thermal.fire_tnt_minecart.keyword": "blaze fire tnt",
+  "item.thermal.glowstone_tnt_minecart.keyword": "tnt",
+  "item.thermal.ice_tnt_minecart.keyword": "blizz ice tnt",
+  "item.thermal.lightning_tnt_minecart.keyword": "blitz lightning tnt",
+  "item.thermal.nuke_tnt_minecart.keyword": "tnt",
+  "item.thermal.phyto_tnt_minecart.keyword": "fertilizer tnt",
+  "item.thermal.redstone_tnt_minecart.keyword": "tnt",
+  "item.thermal.slime_tnt_minecart.keyword": "tnt",
+
+  "item.thermal.detonator.keyword": "tnt",
+  "item.thermal.rf_potato.keyword": "battery",
+
+  "item.thermal.flux_capacitor.keyword": "battery recharger",
+  "item.thermal.flux_drill.keyword": "drill pickaxe shovel tool",
+  "item.thermal.flux_saw.keyword": "axe tool",
+  "item.thermal.potion_infuser.keyword": "potion",
+  "item.thermal.potion_quiver.keyword": "potion",
+  "item.thermal.watering_can.keyword": "crop farm fertilizer"
 }

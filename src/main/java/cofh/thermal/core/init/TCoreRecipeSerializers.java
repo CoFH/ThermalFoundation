@@ -20,6 +20,7 @@ public class TCoreRecipeSerializers {
 
     public static void register() {
 
+        RECIPE_SERIALIZERS.register(ID_MAPPING_HIVE_EXTRACTOR, HiveExtractorMappingSerializer::new);
         RECIPE_SERIALIZERS.register(ID_BOOST_TREE_EXTRACTOR, TreeExtractorBoostSerializer::new);
         RECIPE_SERIALIZERS.register(ID_MAPPING_TREE_EXTRACTOR, TreeExtractorMappingSerializer::new);
         RECIPE_SERIALIZERS.register(ID_BOOST_FISHER, FisherBoostSerializer::new);

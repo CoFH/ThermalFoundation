@@ -25,6 +25,9 @@ import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_BLOCK;
 import static cofh.thermal.lib.common.ThermalConfig.jeiBucketTanks;
+import static cofh.thermal.lib.common.ThermalFlags.getFlag;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_ROCK_GEN;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;
 
 @JeiPlugin
 public class TCoreJeiPlugin implements IModPlugin {
@@ -37,8 +40,12 @@ public class TCoreJeiPlugin implements IModPlugin {
             // TODO: Log an error.
             return;
         }
-        registration.addRecipes(recipeManager.getRecipes(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
-        registration.addRecipes(recipeManager.getRecipes(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
+        if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
+            registration.addRecipes(recipeManager.getRecipes(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
+        }
+        if (getFlag(ID_DEVICE_ROCK_GEN).getAsBoolean()) {
+            registration.addRecipes(recipeManager.getRecipes(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
+        }
     }
 
     @Override

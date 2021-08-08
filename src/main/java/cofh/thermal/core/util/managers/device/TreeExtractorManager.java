@@ -56,9 +56,9 @@ public class TreeExtractorManager extends AbstractManager {
         return leafMap.get(trunk);
     }
 
-    public boolean validTrunk(BlockState state) {
+    public boolean validTrunk(BlockState trunk) {
 
-        return trunkMap.containsKey(state);
+        return trunkMap.containsKey(trunk);
     }
 
     public FluidStack getFluid(BlockState trunk) {
@@ -123,7 +123,6 @@ public class TreeExtractorManager extends AbstractManager {
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : mappings.entrySet()) {
             addMapping((TreeExtractorMapping) entry.getValue());
         }
-
         Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.getRecipes(TCoreRecipeTypes.BOOST_TREE_EXTRACTOR);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((TreeExtractorBoost) entry.getValue());

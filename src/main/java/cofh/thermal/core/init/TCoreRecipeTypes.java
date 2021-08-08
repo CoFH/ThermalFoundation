@@ -18,6 +18,7 @@ public class TCoreRecipeTypes {
 
         // TODO: Convert when a ForgeRegistry is added.
         // Recipes are self-registered as they do not currently have a proper Forge Registry.
+        MAPPING_HIVE_EXTRACTOR.register();
         MAPPING_TREE_EXTRACTOR.register();
         BOOST_TREE_EXTRACTOR.register();
         BOOST_FISHER.register();
@@ -51,12 +52,14 @@ public class TCoreRecipeTypes {
     }
 
     // region DEVICES
+    public static final ResourceLocation ID_MAPPING_HIVE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "hive_extractor");
     public static final ResourceLocation ID_MAPPING_TREE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "tree_extractor");
     public static final ResourceLocation ID_BOOST_TREE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "tree_extractor_boost");
     public static final ResourceLocation ID_BOOST_FISHER = new ResourceLocation(ID_THERMAL, "fisher_boost");
     public static final ResourceLocation ID_MAPPING_ROCK_GEN = new ResourceLocation(ID_THERMAL, "rock_gen");
     public static final ResourceLocation ID_BOOST_POTION_DIFFUSER = new ResourceLocation(ID_THERMAL, "potion_diffuser_boost");
 
+    public static final SerializableRecipeType<HiveExtractorMapping> MAPPING_HIVE_EXTRACTOR = new SerializableRecipeType<>(ID_MAPPING_HIVE_EXTRACTOR);
     public static final SerializableRecipeType<TreeExtractorMapping> MAPPING_TREE_EXTRACTOR = new SerializableRecipeType<>(ID_MAPPING_TREE_EXTRACTOR);
     public static final SerializableRecipeType<TreeExtractorBoost> BOOST_TREE_EXTRACTOR = new SerializableRecipeType<>(ID_BOOST_TREE_EXTRACTOR);
     public static final SerializableRecipeType<FisherBoost> BOOST_FISHER = new SerializableRecipeType<>(ID_BOOST_FISHER);
