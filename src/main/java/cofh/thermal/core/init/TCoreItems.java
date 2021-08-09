@@ -152,6 +152,7 @@ public class TCoreItems {
 
         registerVanillaMetalSet("iron", group);
         registerVanillaMetalSet("gold", group);
+        // registerVanillaMetalSet("netherite", group);
 
         registerVanillaGemSet("lapis", group);
         registerVanillaGemSet("diamond", group);

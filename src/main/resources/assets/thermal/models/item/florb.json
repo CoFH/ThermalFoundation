@@ -3,6 +3,6 @@
   "parent": "forge:item/default",
   "textures": {
     "base": "thermal:item/florb",
-    "fluid": "thermal:item/florb_mask"
+    "fluid_mask": "thermal:item/florb_mask"
   }
 }
