@@ -4,7 +4,6 @@ import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageAdjustable;
 import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.util.StorageGroup;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
@@ -28,6 +27,7 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
+import static cofh.lib.util.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.thermal.core.init.TCoreReferences.FLUID_CELL_TILE;
@@ -49,7 +49,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         amountInput = BUCKET_VOLUME;
         amountOutput = BUCKET_VOLUME;
 
-        tankInv.addTank(fluidStorage, StorageGroup.ACCESSIBLE);
+        tankInv.addTank(fluidStorage, ACCESSIBLE);
 
         transferControl.initControl(false, true);
 

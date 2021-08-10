@@ -45,6 +45,7 @@ import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_BLOCKS;
 import static net.minecraft.block.AbstractBlock.Properties.create;
 import static net.minecraft.block.AbstractBlock.Properties.from;
+import static net.minecraft.block.Blocks.createLogBlock;
 
 public class TCoreBlocks {
 
@@ -143,6 +144,10 @@ public class TCoreBlocks {
 
         registerBlockAndItem(ID_OIL_RED_SAND, () -> new OreBlockCoFH(from(Blocks.RED_SAND).harvestTool(ToolType.SHOVEL)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), new Item.Properties().group(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
+
+        //registerBlock(ID_RUBBER_LOG, () -> createLogBlock(MaterialColor.WOOD, MaterialColor.OBSIDIAN));
+        //registerBlock(ID_RUBBER_LEAVES, Blocks::createLeavesBlock);
+        //registerBlock(ID_RUBBER_SAPLING, () -> new )
     }
 
     private static void registerStorage() {

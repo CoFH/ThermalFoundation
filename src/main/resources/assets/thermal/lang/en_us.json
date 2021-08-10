@@ -104,7 +104,6 @@
   "entity.thermal.blizz_projectile": "Glacial Bolt",
 
   "fluid.thermal.biocrude": "Bio-crude Oil",
-  "fluid.thermal.biofuel": "Grassoline",
   "fluid.thermal.creosote": "Creosote Oil",
   "fluid.thermal.crude_oil": "Crude Oil",
   "fluid.thermal.ender": "Resonant Ender",
@@ -113,6 +112,7 @@
   "fluid.thermal.latex": "Latex",
   "fluid.thermal.light_oil": "Light Oil",
   "fluid.thermal.redstone": "Destabilized Redstone",
+  "fluid.thermal.refined_biofuel": "Grassoline",
   "fluid.thermal.refined_fuel": "Refined Fuel",
   "fluid.thermal.resin": "Resin",
   "fluid.thermal.sap": "Sap",
@@ -157,7 +157,6 @@
   "item.thermal.rf_coil": "Redstone Flux Coil",
 
   "item.thermal.biocrude_bucket": "Bio-crude Oil Bucket",
-  "item.thermal.biofuel_bucket": "Grassoline Bucket",
   "item.thermal.creosote_bucket": "Creosote Oil Bucket",
   "item.thermal.crude_oil_bucket": "Crude Oil Bucket",
   "item.thermal.ender_bucket": "Resonant Ender Bucket",
@@ -166,10 +165,12 @@
   "item.thermal.latex_bucket": "Latex Bucket",
   "item.thermal.light_oil_bucket": "Light Oil Bucket",
   "item.thermal.redstone_bucket": "Destabilized Redstone Bucket",
+  "item.thermal.refined_biofuel_bucket": "Grassoline Bucket",
   "item.thermal.refined_fuel_bucket": "Refined Fuel Bucket",
   "item.thermal.resin_bucket": "Resin Bucket",
   "item.thermal.sap_bucket": "Sap Bucket",
   "item.thermal.seed_oil_bucket": "Seed Oil Bucket",
+  "item.thermal.syrup_bottle": "Syrup Bottle",
   "item.thermal.syrup_bucket": "Syrup Bucket",
   "item.thermal.tree_oil_bucket": "Tree Oil Bucket",
 

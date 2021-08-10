@@ -91,10 +91,10 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateStorageRecipes(consumer, reg.get(ID_BITUMEN_BLOCK), reg.get("bitumen"));
         generateStorageRecipes(consumer, reg.get(ID_TAR_BLOCK), reg.get("tar"));
         generateStorageRecipes(consumer, reg.get(ID_ROSIN_BLOCK), reg.get("rosin"));
-        generateStorageRecipes(consumer, reg.get(ID_RUBBER_BLOCK), reg.get("rubber"));
-        generateStorageRecipes(consumer, reg.get(ID_CURED_RUBBER_BLOCK), reg.get("cured_rubber"));
-        generateStorageRecipes(consumer, reg.get(ID_SLAG_BLOCK), reg.get("slag"));
-        generateStorageRecipes(consumer, reg.get(ID_RICH_SLAG_BLOCK), reg.get("rich_slag"));
+        generateSmallStorageRecipes(consumer, reg.get(ID_RUBBER_BLOCK), reg.get("rubber"));
+        generateSmallStorageRecipes(consumer, reg.get(ID_CURED_RUBBER_BLOCK), reg.get("cured_rubber"));
+        generateSmallStorageRecipes(consumer, reg.get(ID_SLAG_BLOCK), reg.get("slag"));
+        generateSmallStorageRecipes(consumer, reg.get(ID_RICH_SLAG_BLOCK), reg.get("rich_slag"));
 
         generateTypeRecipes(reg, consumer, "signalum");
         generateTypeRecipes(reg, consumer, "lumium");

@@ -35,6 +35,10 @@ public class ThermalIDs {
 
     public static final String ID_OIL_SAND = "oil_sand";
     public static final String ID_OIL_RED_SAND = "oil_red_sand";
+
+    public static final String ID_RUBBER_LOG = "rubber_log";
+    public static final String ID_RUBBER_LEAVES = "rubber_leaves";
+    public static final String ID_RUBBER_SAPLING = "rubber_sapling";
     // endregion
 
     // region BLOCKS
@@ -169,7 +173,7 @@ public class ThermalIDs {
 
     public static final String ID_FLUID_SEED_OIL = "seed_oil";
     public static final String ID_FLUID_BIOCRUDE = "biocrude";
-    public static final String ID_FLUID_BIOFUEL = "biofuel";
+    public static final String ID_FLUID_REFINED_BIOFUEL = "refined_biofuel";
 
     public static final String ID_FLUID_CREOSOTE = "creosote";
     public static final String ID_FLUID_CRUDE_OIL = "crude_oil";

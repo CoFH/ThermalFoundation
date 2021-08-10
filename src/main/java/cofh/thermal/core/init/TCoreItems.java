@@ -13,9 +13,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Rarity;
+import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
@@ -31,6 +29,7 @@ import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_ITEMS;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_TOOLS;
+import static net.minecraft.item.Items.GLASS_BOTTLE;
 
 public class TCoreItems {
 
@@ -110,6 +109,11 @@ public class TCoreItems {
         registerItem("cured_rubber", group);
         registerItem("slag", group);
         registerItem("rich_slag", group);
+
+        registerItem("syrup_bottle", () -> new HoneyBottleItem(new Item.Properties().group(group).containerItem(GLASS_BOTTLE).food(Foods.HONEY).maxStackSize(16)));
+
+        //        registerItem("biomass", group);
+        //        registerItem("rich_biomass", group);
 
         registerItem("basalz_rod", group);
         registerItem("basalz_powder", group);

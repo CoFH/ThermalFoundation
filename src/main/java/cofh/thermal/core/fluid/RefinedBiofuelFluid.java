@@ -11,16 +11,16 @@ import net.minecraftforge.fluids.FluidAttributes;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.lib.common.ThermalIDs.ID_FLUID_BIOFUEL;
+import static cofh.thermal.lib.common.ThermalIDs.ID_FLUID_REFINED_BIOFUEL;
 
-public class BiofuelFluid extends FluidCoFH {
+public class RefinedBiofuelFluid extends FluidCoFH {
 
-    public static BiofuelFluid create() {
+    public static RefinedBiofuelFluid create() {
 
-        return new BiofuelFluid(ID_FLUID_BIOFUEL, "thermal:block/fluids/biofuel_still", "thermal:block/fluids/biofuel_flow");
+        return new RefinedBiofuelFluid(ID_FLUID_REFINED_BIOFUEL, "thermal:block/fluids/refined_biofuel_still", "thermal:block/fluids/refined_biofuel_flow");
     }
 
-    protected BiofuelFluid(String key, String stillTexture, String flowTexture) {
+    protected RefinedBiofuelFluid(String key, String stillTexture, String flowTexture) {
 
         super(FLUIDS, key, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .density(750)

@@ -38,7 +38,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.INPUT;
+import static cofh.lib.util.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
@@ -74,9 +74,9 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
         super(DEVICE_POTION_DIFFUSER_TILE);
 
-        inventory.addSlot(inputSlot, INPUT);
+        inventory.addSlot(inputSlot, ACCESSIBLE);
 
-        tankInv.addTank(inputTank, INPUT);
+        tankInv.addTank(inputTank, ACCESSIBLE);
 
         addAugmentSlots(deviceAugments);
         initHandlers();
@@ -94,7 +94,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     @Override
     protected boolean isValid() {
 
-        return inputTank.getAmount() > FLUID_AMOUNT;
+        return inputTank.getAmount() >= FLUID_AMOUNT;
     }
 
     @Override
