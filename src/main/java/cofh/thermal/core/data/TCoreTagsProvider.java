@@ -34,17 +34,31 @@ public class TCoreTagsProvider {
         @Override
         protected void registerTags() {
 
+            getOrCreateBuilder(BlockTags.SAPLINGS).add(
+                    BLOCKS.get(ID_RUBBER_SAPLING)
+            );
+
+            getOrCreateBuilder(BlockTags.LOGS_THAT_BURN).add(
+                    BLOCKS.get(ID_RUBBER_LOG)
+            );
+
+            getOrCreateBuilder(BlockTags.LEAVES).add(
+                    BLOCKS.get(ID_RUBBER_LEAVES)
+            );
+
             getOrCreateBuilder(BlockTagsCoFH.HARDENED_GLASS).add(
                     BLOCKS.get(ID_OBSIDIAN_GLASS),
                     BLOCKS.get(ID_SIGNALUM_GLASS),
                     BLOCKS.get(ID_LUMIUM_GLASS),
-                    BLOCKS.get(ID_ENDERIUM_GLASS));
+                    BLOCKS.get(ID_ENDERIUM_GLASS)
+            );
 
             getOrCreateBuilder(BlockTags.IMPERMEABLE).add(
                     BLOCKS.get(ID_OBSIDIAN_GLASS),
                     BLOCKS.get(ID_SIGNALUM_GLASS),
                     BLOCKS.get(ID_LUMIUM_GLASS),
-                    BLOCKS.get(ID_ENDERIUM_GLASS));
+                    BLOCKS.get(ID_ENDERIUM_GLASS)
+            );
 
             getOrCreateBuilder(BlockTagsCoFH.ROCKWOOL).add(
                     BLOCKS.get(ID_WHITE_ROCKWOOL),
@@ -62,7 +76,8 @@ public class TCoreTagsProvider {
                     BLOCKS.get(ID_BROWN_ROCKWOOL),
                     BLOCKS.get(ID_GREEN_ROCKWOOL),
                     BLOCKS.get(ID_RED_ROCKWOOL),
-                    BLOCKS.get(ID_BLACK_ROCKWOOL));
+                    BLOCKS.get(ID_BLACK_ROCKWOOL)
+            );
 
             getOrCreateBuilder(BlockTagsCoFH.ORES_APATITE).add(BLOCKS.get(ID_APATITE_ORE));
             getOrCreateBuilder(BlockTagsCoFH.ORES_CINNABAR).add(BLOCKS.get(ID_CINNABAR_ORE));

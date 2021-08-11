@@ -1,0 +1,9 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "thermal:rubber_log",
+  "leaves": "thermal:rubber_leaves",
+  "result": {
+    "fluid": "thermal:latex",
+    "amount": 50
+  }
+}

@@ -25,6 +25,10 @@
   "block.thermal.oil_sand": "Bituminous Sand",
   "block.thermal.oil_red_sand": "Bituminous Red Sand",
 
+  "block.thermal.rubber_leaves": "Rubber Leaves",
+  "block.thermal.rubber_log": "Rubber Log",
+  "block.thermal.rubber_sapling": "Rubber Sapling",
+
   "block.thermal.apatite_block": "Block of Apatite",
   "block.thermal.cinnabar_block": "Block of Cinnabar",
   "block.thermal.niter_block": "Block of Niter",

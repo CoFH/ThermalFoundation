@@ -13,6 +13,7 @@ import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.core.tileentity.workbench.ChargeBenchTile;
 import cofh.thermal.core.tileentity.workbench.TinkerBenchTile;
+import cofh.thermal.core.world.gen.feature.tree.RubberTree;
 import cofh.thermal.lib.block.TileBlockCell;
 import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.block.*;
@@ -45,7 +46,6 @@ import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_BLOCKS;
 import static net.minecraft.block.AbstractBlock.Properties.create;
 import static net.minecraft.block.AbstractBlock.Properties.from;
-import static net.minecraft.block.Blocks.createLogBlock;
 
 public class TCoreBlocks {
 
@@ -145,9 +145,9 @@ public class TCoreBlocks {
         registerBlockAndItem(ID_OIL_RED_SAND, () -> new OreBlockCoFH(from(Blocks.RED_SAND).harvestTool(ToolType.SHOVEL)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), new Item.Properties().group(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
 
-        //registerBlock(ID_RUBBER_LOG, () -> createLogBlock(MaterialColor.WOOD, MaterialColor.OBSIDIAN));
-        //registerBlock(ID_RUBBER_LEAVES, Blocks::createLeavesBlock);
-        //registerBlock(ID_RUBBER_SAPLING, () -> new )
+        registerBlock(ID_RUBBER_LOG, () -> Blocks.createLogBlock(MaterialColor.WOOD, MaterialColor.QUARTZ));
+        registerBlock(ID_RUBBER_LEAVES, Blocks::createLeavesBlock);
+        registerBlock(ID_RUBBER_SAPLING, () -> new SaplingBlock(new RubberTree(), create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
     }
 
     private static void registerStorage() {

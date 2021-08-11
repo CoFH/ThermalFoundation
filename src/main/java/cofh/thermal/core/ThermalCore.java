@@ -167,6 +167,8 @@ public class ThermalCore {
 
         RenderType cutout = RenderType.getCutout();
 
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_RUBBER_SAPLING), cutout);
+
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_OBSIDIAN_GLASS), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_SIGNALUM_GLASS), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_LUMIUM_GLASS), cutout);
