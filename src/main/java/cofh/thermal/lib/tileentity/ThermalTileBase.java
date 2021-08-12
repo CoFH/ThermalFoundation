@@ -7,6 +7,7 @@ import cofh.core.tileentity.TileCoFH;
 import cofh.core.util.control.*;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
+import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EmptyEnergyStorage;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
@@ -49,7 +50,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -727,7 +727,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
 
-        if (cap == CapabilityEnergy.ENERGY && energyStorage.getMaxEnergyStored() > 0) {
+        if (cap == EnergyHelper.getEnergySystem() && energyStorage.getMaxEnergyStored() > 0) {
             return getEnergyCapability(side);
         }
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && inventory.hasAccessibleSlots()) {

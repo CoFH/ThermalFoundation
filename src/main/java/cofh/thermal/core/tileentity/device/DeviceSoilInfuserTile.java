@@ -18,7 +18,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -172,7 +171,7 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
         if (!chargeSlot.isEmpty()) {
             chargeSlot.getItemStack()
-                    .getCapability(CapabilityEnergy.ENERGY, null)
+                    .getCapability(EnergyHelper.getEnergySystem(), null)
                     .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
         }
     }

@@ -1,6 +1,7 @@
 package cofh.thermal.core;
 
 import cofh.core.init.CoreEnchantments;
+import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
@@ -124,7 +125,9 @@ public class ThermalCore {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
-        ThermalConfig.setup();
+        CapabilityRedstoneFlux.register();
+
+        event.enqueueWork(ThermalConfig::setup);
 
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);

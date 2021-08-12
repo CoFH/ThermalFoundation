@@ -21,7 +21,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -187,7 +186,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
         if (!chargeSlot.isEmpty()) {
             chargeSlot.getItemStack()
-                    .getCapability(CapabilityEnergy.ENERGY, null)
+                    .getCapability(EnergyHelper.getEnergySystem(), null)
                     .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
         }
     }

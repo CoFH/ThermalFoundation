@@ -55,6 +55,10 @@ public class ThermalConfig {
 
         SERVER_CONFIG.push("Global Options");
 
+        //        standaloneRedstoneFlux = SERVER_CONFIG
+        //                .comment("If TRUE, Redstone Flux will act as its own energy system and will NOT be interoperable with 'Forge Energy' - only enable this if you absolutely know what you are doing and want the Thermal Series to use a unique energy system.")
+        //                .define("Standalone Redstone Flux", false);
+
         keepEnergy = SERVER_CONFIG
                 .comment("If TRUE, most Thermal Blocks will retain Energy when dropped.\nThis setting does not control ALL blocks.")
                 .define("Blocks Retain Energy", true);
@@ -548,6 +552,8 @@ public class ThermalConfig {
 
     public static boolean permanentLava = true;
     public static boolean permanentWater = true;
+
+    public static BooleanValue standaloneRedstoneFlux;
 
     public static BooleanValue enableVillagerTrades;
 

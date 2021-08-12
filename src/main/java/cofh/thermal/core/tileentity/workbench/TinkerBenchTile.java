@@ -19,7 +19,6 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
@@ -104,11 +103,11 @@ public class TinkerBenchTile extends ThermalTileBase implements ITickableTileEnt
 
         if (!chargeSlot.isEmpty()) {
             int maxTransfer = Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace());
-            chargeSlot.getItemStack().getCapability(CapabilityEnergy.ENERGY, null).ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(maxTransfer, false), false));
+            chargeSlot.getItemStack().getCapability(EnergyHelper.getEnergySystem(), null).ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(maxTransfer, false), false));
         }
         if (!tinkerSlot.isEmpty() && mode == REPLENISH && !pause) {
             int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-            tinkerSlot.getItemStack().getCapability(CapabilityEnergy.ENERGY, null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
+            tinkerSlot.getItemStack().getCapability(EnergyHelper.getEnergySystem(), null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
         }
     }
 

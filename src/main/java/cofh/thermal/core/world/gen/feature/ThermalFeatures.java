@@ -10,9 +10,11 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.JungleFoliagePlacer;
 import net.minecraft.world.gen.placement.DepthAverageConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraft.world.gen.trunkplacer.MegaJungleTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -102,21 +104,19 @@ public class ThermalFeatures {
                         new SimpleBlockStateProvider(BLOCKS.get(ID_RUBBER_LEAVES).getDefaultState()),
                         new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)),
                         new StraightTrunkPlacer(3, 2, 0),
-                        new TwoLayerFeature(1, 0, 2)))
+                        new TwoLayerFeature(1, 0, 1)))
                         .setIgnoreVines()
                         .build()));
 
-        //        MEGA_RUBBER_TREE = register("mega_rubber_tree",
-        //                Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(
-        //                        new SimpleBlockStateProvider(BLOCKS.get(ID_RUBBER_LOG).getDefaultState()),
-        //                        new SimpleBlockStateProvider(BLOCKS.get(ID_RUBBER_LEAVES).getDefaultState()),
-        //                        new DarkOakFoliagePlacer(FeatureSpread.func_242252_a(0), FeatureSpread.func_242252_a(0)),
-        //                        new DarkOakTrunkPlacer(5, 3, 1),
-        //                        new ThreeLayerFeature(1, 1, 0, 1, 2, OptionalInt.empty())))
-        //                        .setMaxWaterDepth(1)
-        //                        .func_236702_a_(Heightmap.Type.MOTION_BLOCKING)
-        //                        .setIgnoreVines()
-        //                        .build()));
+        MEGA_RUBBER_TREE = register("mega_rubber_tree",
+                Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(BLOCKS.get(ID_RUBBER_LOG).getDefaultState()),
+                        new SimpleBlockStateProvider(BLOCKS.get(ID_RUBBER_LEAVES).getDefaultState()),
+                        new JungleFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
+                        new MegaJungleTrunkPlacer(7, 2, 2),
+                        new TwoLayerFeature(1, 1, 2)))
+                        .setIgnoreVines()
+                        .build()));
     }
 
     private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String key, ConfiguredFeature<FC, ?> configuredFeature) {

@@ -1,6 +1,7 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.tileentity.TileCoFH;
+import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
@@ -20,7 +21,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -156,7 +156,7 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
         if (adjTile != null) {
             Direction opposite = getFacing().getOpposite();
             int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-            adjTile.getCapability(CapabilityEnergy.ENERGY, opposite)
+            adjTile.getCapability(EnergyHelper.getEnergySystem(), opposite)
                     .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
         }
     }

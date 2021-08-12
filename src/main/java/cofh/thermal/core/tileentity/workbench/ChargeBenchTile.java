@@ -11,7 +11,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -67,7 +66,7 @@ public class ChargeBenchTile extends ThermalTileBase implements ITickableTileEnt
 
         if (!chargeSlot.isEmpty()) {
             int maxTransfer = Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace());
-            chargeSlot.getItemStack().getCapability(CapabilityEnergy.ENERGY, null).ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(maxTransfer, false), false));
+            chargeSlot.getItemStack().getCapability(EnergyHelper.getEnergySystem(), null).ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(maxTransfer, false), false));
         }
     }
 
@@ -77,7 +76,7 @@ public class ChargeBenchTile extends ThermalTileBase implements ITickableTileEnt
             if (!benchSlot.isEmpty()) {
                 if (!energyStorage.isEmpty()) {
                     int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-                    benchSlot.getItemStack().getCapability(CapabilityEnergy.ENERGY, null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
+                    benchSlot.getItemStack().getCapability(EnergyHelper.getEnergySystem(), null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
                 }
                 isActive = true;
             }

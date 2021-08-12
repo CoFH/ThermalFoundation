@@ -4,8 +4,10 @@ import cofh.core.util.ProxyUtils;
 import cofh.lib.client.model.SimpleModel;
 import cofh.lib.client.renderer.entity.model.ArmorModelFullSuit;
 import cofh.thermal.core.client.renderer.model.*;
+import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +22,14 @@ public class TCoreClientSetupEvents {
 
     private TCoreClientSetupEvents() {
 
+    }
+
+    @SubscribeEvent
+    public static void colorSetupBlock(final ColorHandlerEvent.Block event) {
+
+        BlockColors colors = event.getBlockColors();
+
+        // colors.register((state, reader, pos, tintIndex) -> (reader == null || pos == null) ? FoliageColors.getDefault() : BiomeColors.getFoliageColor(reader, pos), BLOCKS.get(ID_RUBBER_LEAVES));
     }
 
     @SubscribeEvent

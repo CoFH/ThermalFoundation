@@ -58,6 +58,7 @@ public class TCoreBlocks {
         registerVanilla();
         registerResources();
         registerStorage();
+        registerPlants();
         registerBuildingBlocks();
         registerMisc();
 
@@ -144,10 +145,6 @@ public class TCoreBlocks {
 
         registerBlockAndItem(ID_OIL_RED_SAND, () -> new OreBlockCoFH(from(Blocks.RED_SAND).harvestTool(ToolType.SHOVEL)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), new Item.Properties().group(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
-
-        registerBlock(ID_RUBBER_LOG, () -> Blocks.createLogBlock(MaterialColor.WOOD, MaterialColor.QUARTZ));
-        registerBlock(ID_RUBBER_LEAVES, Blocks::createLeavesBlock);
-        registerBlock(ID_RUBBER_SAPLING, () -> new SaplingBlock(new RubberTree(), create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
     }
 
     private static void registerStorage() {
@@ -233,6 +230,13 @@ public class TCoreBlocks {
         registerBlock(ID_CURED_RUBBER_BLOCK, () -> new RubberBlock(create(Material.CLAY, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(3.0F, 3.0F).jumpFactor(1.25F).sound(SoundType.FUNGUS)));
         registerBlock(ID_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
         registerBlock(ID_RICH_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+    }
+
+    private static void registerPlants() {
+
+        registerBlock(ID_RUBBER_SAPLING, () -> new SaplingBlock(new RubberTree(), create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+        registerBlock(ID_RUBBER_LOG, () -> Blocks.createLogBlock(MaterialColor.WOOD, MaterialColor.QUARTZ));
+        registerBlock(ID_RUBBER_LEAVES, Blocks::createLeavesBlock);
     }
 
     private static void registerBuildingBlocks() {
