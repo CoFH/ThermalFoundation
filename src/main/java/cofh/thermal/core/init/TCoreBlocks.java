@@ -80,6 +80,12 @@ public class TCoreBlocks {
         fire.setFireInfo(BLOCKS.get(ID_TAR_BLOCK), 5, 5);
         fire.setFireInfo(BLOCKS.get(ID_ROSIN_BLOCK), 5, 5);
 
+        fire.setFireInfo(BLOCKS.get(ID_RUBBER_LOG), 5, 5);
+        fire.setFireInfo(BLOCKS.get(ID_RUBBER_LEAVES), 30, 60);
+
+        ComposterBlock.registerCompostable(0.3F, ITEMS.get(ID_RUBBER_LEAVES));
+        ComposterBlock.registerCompostable(0.3F, ITEMS.get(ID_RUBBER_SAPLING));
+
         DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_SLIME_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_REDSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_GLOWSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
