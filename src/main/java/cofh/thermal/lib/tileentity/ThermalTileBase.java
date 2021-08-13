@@ -371,7 +371,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
             return false;
         }
         if (inventory.getSlot(slot).clear()) {
-            onInventoryChange(slot);
+            onInventoryChanged(slot);
             return true;
         }
         return false;
@@ -384,7 +384,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
             return false;
         }
         if (tankInv.getTank(tank).clear()) {
-            onTankChange(tank);
+            onTankChanged(tank);
             return true;
         }
         return false;
@@ -809,7 +809,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
 
     // region ITileCallback
     @Override
-    public void onInventoryChange(int slot) {
+    public void onInventoryChanged(int slot) {
 
         /* Implicit requirement here that augments always come LAST in slot order.
         This isn't a bad assumption/rule though, as it's a solid way to handle it.*/

@@ -522,9 +522,9 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region ITileCallback
     @Override
-    public void onInventoryChange(int slot) {
+    public void onInventoryChanged(int slot) {
 
-        super.onInventoryChange(slot);
+        super.onInventoryChanged(slot);
 
         if (world != null && Utils.isServerWorld(world) && isActive) {
             if (slot >= invSize() - augSize()) {
@@ -542,7 +542,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    public void onTankChange(int tank) {
+    public void onTankChanged(int tank) {
 
         if (Utils.isServerWorld(world) && tank < tankInv.getInputTanks().size()) {
             if (isActive) {
@@ -553,7 +553,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
                 }
             }
         }
-        super.onTankChange(tank);
+        super.onTankChanged(tank);
     }
     // endregion
 }
