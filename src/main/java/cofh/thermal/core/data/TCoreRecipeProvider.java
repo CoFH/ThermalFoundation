@@ -766,6 +766,17 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_signalum_ingot", hasItem(ItemTagsCoFH.INGOTS_SIGNALUM))
                 .build(consumer, this.modid + ":" + folder + "/" + name(result));
 
+        result = reg.get("satchel");
+        ShapedRecipeBuilder.shapedRecipe(result)
+                .key('I', ItemTagsCoFH.INGOTS_TIN)
+                .key('L', Tags.Items.LEATHER)
+                .key('W', ItemTagsCoFH.ROCKWOOL)
+                .patternLine("LWL")
+                .patternLine("WIW")
+                .patternLine("LWL")
+                .addCriterion("has_leather", hasItem(Tags.Items.LEATHER))
+                .build(consumer, this.modid + ":" + folder + "/" + name(result));
+
         result = reg.get("detonator");
         ShapedRecipeBuilder.shapedRecipe(result)
                 .key('G', ItemTagsCoFH.GEARS_SIGNALUM)

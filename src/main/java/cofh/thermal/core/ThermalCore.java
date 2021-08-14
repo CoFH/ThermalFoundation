@@ -8,6 +8,7 @@ import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
+import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.gui.workbench.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.workbench.TinkerBenchScreen;
 import cofh.thermal.core.client.renderer.entity.*;
@@ -161,6 +162,8 @@ public class ThermalCore {
 
         ScreenManager.registerFactory(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
         ScreenManager.registerFactory(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
+
+        ScreenManager.registerFactory(SATCHEL_CONTAINER, SatchelScreen::new);
 
         ScreenManager.registerFactory(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
         ScreenManager.registerFactory(FLUID_CELL_CONTAINER, FluidCellScreen::new);

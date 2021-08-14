@@ -518,6 +518,9 @@ public class TCoreTagsProvider {
             getOrCreateBuilder(ItemTagsCoFH.DUSTS_WOOD).add(ITEMS.get("sawdust"));
 
             getOrCreateBuilder(ItemTagsCoFH.DUSTS_ENDER_PEARL).add(ITEMS.get("ender_pearl_dust"));
+
+            getOrCreateBuilder(ItemTagsCoFH.LOCKS).add(ITEMS.get("lock"));
+            getOrCreateBuilder(ItemTagsCoFH.SECURABLE).add(ITEMS.get("satchel"));
         }
 
     }

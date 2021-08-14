@@ -8,6 +8,7 @@ import cofh.thermal.core.entity.projectile.*;
 import cofh.thermal.core.inventory.container.device.*;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
+import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.inventory.container.workbench.ChargeBenchContainer;
 import cofh.thermal.core.inventory.container.workbench.ProjectBenchContainer;
 import cofh.thermal.core.inventory.container.workbench.TinkerBenchContainer;
@@ -196,6 +197,9 @@ public class TCoreReferences {
     // endregion
 
     // region STORAGE
+    @ObjectHolder(ID_SATCHEL)
+    public static final ContainerType<SatchelContainer> SATCHEL_CONTAINER = null;
+
     @ObjectHolder(ID_ENERGY_CELL)
     public static final Block ENERGY_CELL_BLOCK = null;
     @ObjectHolder(ID_ENERGY_CELL)

@@ -153,6 +153,8 @@ public class ThermalIDs {
     // endregion
 
     // region STORAGE
+    public static final String ID_SATCHEL = "satchel";
+
     public static final String ID_ENERGY_CELL = "energy_cell";
     public static final String ID_FLUID_CELL = "fluid_cell";
     public static final String ID_ITEM_CELL = "item_cell";

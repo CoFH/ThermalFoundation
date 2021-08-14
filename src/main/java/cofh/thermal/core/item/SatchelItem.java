@@ -1,12 +1,12 @@
 package cofh.thermal.core.item;
 
-import cofh.core.inventory.container.HeldInventoryContainer;
 import cofh.core.item.InventoryContainerItemAugmentable;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.inventory.SimpleItemInv;
+import cofh.lib.item.IColorableItem;
 import cofh.lib.item.IMultiModeItem;
 import cofh.lib.util.Utils;
 import cofh.lib.util.filter.IFilter;
@@ -15,6 +15,7 @@ import cofh.lib.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
+import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
@@ -42,7 +43,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentStr
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class SatchelItem extends InventoryContainerItemAugmentable implements IFilterableItem, IMultiModeItem, INamedContainerProvider {
+public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, IFilterableItem, IMultiModeItem, INamedContainerProvider {
 
     protected static final WeakHashMap<ItemStack, IFilter> FILTERS = new WeakHashMap<>(MAP_CAPACITY);
 
@@ -92,6 +93,9 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IF
             if (!canPlayerAccess(stack, player)) {
                 ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.cofh.secure_warning", SecurityHelper.getOwnerName(stack)));
                 return false;
+            } else if (SecurityHelper.attemptClaimItem(stack, player)) {
+                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.cofh.secure_item"));
+                return false;
             }
             if (player.isSecondaryUseActive()) {
                 if (FilterHelper.hasFilter(stack)) {
@@ -107,7 +111,6 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IF
 
     public static boolean onItemPickup(EntityItemPickupEvent event, ItemStack container) {
 
-        // TODO: Player access control
         SatchelItem satchelItem = (SatchelItem) container.getItem();
         if (satchelItem.getMode(container) <= 0 || !satchelItem.canPlayerAccess(container, event.getPlayer())) {
             return false;
@@ -147,14 +150,22 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IF
     @Override
     public ITextComponent getDisplayName() {
 
-        return new TranslationTextComponent("Satchel");
+        return new TranslationTextComponent("item.thermal.satchel");
     }
 
     @Nullable
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new HeldInventoryContainer(i, inventory, player);
+        return new SatchelContainer(i, inventory, player);
+    }
+    // endregion
+
+    // region IColorableItem
+    @Override
+    public int getColor(ItemStack stack, int tintIndex) {
+
+        return 0;
     }
     // endregion
 

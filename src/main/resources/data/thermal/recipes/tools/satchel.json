@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LWL",
+    "WIW",
+    "LWL"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/tin"
+    },
+    "L": {
+      "tag": "forge:leather"
+    },
+    "W": {
+      "tag": "thermal:rockwool"
+    }
+  },
+  "result": {
+    "item": "thermal:satchel"
+  }
+}

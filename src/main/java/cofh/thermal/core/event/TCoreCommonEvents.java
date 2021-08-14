@@ -1,7 +1,7 @@
 package cofh.thermal.core.event;
 
-import cofh.core.inventory.container.HeldInventoryContainer;
 import cofh.lib.util.filter.IFilterOptions;
+import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.item.DivingArmorItem;
 import cofh.thermal.core.item.SatchelItem;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -47,20 +47,6 @@ public class TCoreCommonEvents {
         }
     }
 
-    //    @SubscribeEvent(priority = EventPriority.LOW)
-    //    public static void handleItemFishedEvent(ItemFishedEvent event) {
-    //
-    //        if (event.isCanceled()) {
-    //            return;
-    //        }
-    //        FishingBobberEntity hook = event.getHookEntity();
-    //        Entity angler = hook.func_234616_v_();
-    //        if (!(angler instanceof PlayerEntity)) {
-    //            return;
-    //        }
-    //        PlayerEntity player = (PlayerEntity) angler;
-    //    }
-
     @SubscribeEvent
     public static void handleEntityItemPickup(final EntityItemPickupEvent event) {
 
@@ -68,7 +54,7 @@ public class TCoreCommonEvents {
             return;
         }
         PlayerEntity player = event.getPlayer();
-        if (player.openContainer instanceof HeldInventoryContainer || player.openContainer instanceof IFilterOptions) {
+        if (player.openContainer instanceof SatchelContainer || player.openContainer instanceof IFilterOptions) {
             return;
         }
         PlayerInventory inventory = player.inventory;

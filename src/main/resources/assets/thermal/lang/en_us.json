@@ -137,6 +137,9 @@
   "info.thermal.detonator.use.1": "Use to detonate primed TNT.",
   "info.thermal.detonator.use.sneak": "Use while sneaking to clear.",
 
+  "info.thermal.lock.use": "Use on a compatible block to secure it.",
+  "info.thermal.lock.use.sneak": "Use while sneaking to secure a compatible item held in the offhand.",
+
   "info.thermal.redprint.contents": "Contents:",
   "info.thermal.redprint.unknown": "Unknown Data",
   "info.thermal.redprint.data.RSControl": "Redstone Control",
@@ -146,6 +149,9 @@
   "info.thermal.redprint.use.contents": "Use on a block to apply settings.",
   "info.thermal.redprint.use.sneak": "Use while sneaking to clear.",
 
+  "info.thermal.satchel.0": "Stores and collects items. Can be secured.",
+  "info.thermal.satchel.1": "If a filter is installed, use while sneaking to configure.",
+  "info.thermal.satchel.2": "Filter settings apply only to auto-store.",
   "info.thermal.satchel.mode.0": "Auto-Store Disabled",
   "info.thermal.satchel.mode.1": "Auto-Store Enabled",
   "info.thermal.satchel.use": "Use to open the satchel.",
@@ -217,7 +223,7 @@
   "item.thermal.ice_charge": "Ice Charge",
   "item.thermal.lightning_charge": "Lightning Charge",
   "item.thermal.lock": "Signalum Security Lock",
-  "item.thermal.lock.desc": "Used to enable security on a block.",
+  "item.thermal.lock.desc": "Used to enable security on compatible blocks and items.",
   "item.thermal.phytogro": "Phyto-Gro",
   "item.thermal.phytogro.desc": "Extremely potent fertilizer.",
   "item.thermal.redprint": "Redprint",
