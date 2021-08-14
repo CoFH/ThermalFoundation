@@ -146,6 +146,11 @@
   "info.thermal.redprint.use.contents": "Use on a block to apply settings.",
   "info.thermal.redprint.use.sneak": "Use while sneaking to clear.",
 
+  "info.thermal.satchel.mode.0": "Auto-Store Disabled",
+  "info.thermal.satchel.mode.1": "Auto-Store Enabled",
+  "info.thermal.satchel.use": "Use to open the satchel.",
+  "info.thermal.satchel.use.sneak": "Use while sneaking to configure.",
+
   "info.thermal.xp_crystal.mode.0": "Auto-Collect Disabled",
   "info.thermal.xp_crystal.mode.1": "Auto-Collect Enabled",
   "info.thermal.xp_crystal.use": "Use to transfer experience to the crystal.",
@@ -217,6 +222,8 @@
   "item.thermal.phytogro.desc": "Extremely potent fertilizer.",
   "item.thermal.redprint": "Redprint",
   "item.thermal.redprint.desc": "Copies and transfers settings between blocks.",
+  "item.thermal.satchel": "Satchel",
+  "item.thermal.satchel.desc": "Stores items. Can be configured with a filter.",
   "item.thermal.wrench": "Crescent Hammer",
   "item.thermal.wrench.desc": "Rotates many blocks. Also known as a Wrench.",
   "item.thermal.xp_crystal": "Insightful Crystal",

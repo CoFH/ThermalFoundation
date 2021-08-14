@@ -1,10 +1,16 @@
 package cofh.thermal.core.event;
 
+import cofh.core.inventory.container.HeldInventoryContainer;
+import cofh.lib.util.filter.IFilterOptions;
 import cofh.thermal.core.item.DivingArmorItem;
+import cofh.thermal.core.item.SatchelItem;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tags.FluidTags;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -54,5 +60,26 @@ public class TCoreCommonEvents {
     //        }
     //        PlayerEntity player = (PlayerEntity) angler;
     //    }
+
+    @SubscribeEvent
+    public static void handleEntityItemPickup(final EntityItemPickupEvent event) {
+
+        if (event.isCanceled()) {
+            return;
+        }
+        PlayerEntity player = event.getPlayer();
+        if (player.openContainer instanceof HeldInventoryContainer || player.openContainer instanceof IFilterOptions) {
+            return;
+        }
+        PlayerInventory inventory = player.inventory;
+        boolean cancel = false;
+        for (int i = 0; i < inventory.getSizeInventory(); ++i) {
+            ItemStack stack = inventory.getStackInSlot(i);
+            if (stack.getItem() instanceof SatchelItem) {
+                cancel |= SatchelItem.onItemPickup(event, stack);
+            }
+        }
+        event.setCanceled(cancel);
+    }
 
 }

@@ -193,6 +193,8 @@ public class TCoreItems {
         registerItem("rf_potato", () -> new EnergyContainerItem(new Item.Properties().maxStackSize(1).group(group), 100000, 40));
         registerItem("xp_crystal", () -> new XpCrystalItem(new Item.Properties().maxStackSize(1).group(group), 10000));
         registerItem("lock", () -> new LockItem(new Item.Properties().group(group)));
+        registerItem("satchel", () -> new SatchelItem(new Item.Properties().maxStackSize(1).group(group), 9));
+
         registerItem("phytogro", () -> new PhytoGroItem(new Item.Properties().group(group)));
         // registerItem("fluxed_phytogro", () -> new PhytoGroItem(new Item.Properties().group(group), 5));
 
