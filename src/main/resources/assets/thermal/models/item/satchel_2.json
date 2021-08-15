@@ -1,0 +1,8 @@
+{
+  "parent": "thermal:item/satchel",
+  "textures": {
+    "layer0": "thermal:item/satchel_clasp",
+    "layer1": "thermal:item/satchel_bottom_c",
+    "layer2": "thermal:item/satchel_top_c"
+  }
+}

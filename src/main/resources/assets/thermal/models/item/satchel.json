@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "thermal:item/satchel"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "color": 0.3
+      },
+      "model": "thermal:item/satchel_0"
+    },
+    {
+      "predicate": {
+        "color": 0.6
+      },
+      "model": "thermal:item/satchel_1"
+    },
+    {
+      "predicate": {
+        "color": 0.9
+      },
+      "model": "thermal:item/satchel_2"
+    }
+  ]
+}

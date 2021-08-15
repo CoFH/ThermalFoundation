@@ -51,7 +51,8 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
         super(builder, slots);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("active"), (stack, world, entity) -> getMode(stack) > 0 ? 1F : 0F);
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity) -> (getColor(stack, 1) != 0xFFFFFF ? 0.33F : 0) + (getColor(stack, 2) != 0xFFFFFF ? 0.66F : 0));
+        ProxyUtils.registerColorable(this);
 
         numSlots = () -> ThermalConfig.storageAugments;
         augValidator = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
@@ -163,9 +164,15 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
     // region IColorableItem
     @Override
-    public int getColor(ItemStack stack, int tintIndex) {
+    public int getColor(ItemStack item, int colorIndex) {
 
-        return 0;
+        if (colorIndex > 0) {
+            CompoundNBT colorTag = item.getChildTag(TAG_COLORS);
+            if (colorTag != null) {
+                return colorTag.getInt(TAG_INDEX + colorIndex);
+            }
+        }
+        return 0xFFFFFF;
     }
     // endregion
 

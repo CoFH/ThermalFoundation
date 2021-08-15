@@ -1,13 +1,13 @@
 package cofh.thermal.core.inventory.container.storage;
 
 import cofh.core.network.packet.server.SecurityPacket;
-import cofh.core.util.ProxyUtils;
 import cofh.lib.inventory.IInventoryContainerItem;
 import cofh.lib.inventory.SimpleItemInv;
 import cofh.lib.inventory.container.ContainerCoFH;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotLocked;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
+import cofh.lib.util.Utils;
 import cofh.lib.util.control.ISecurable;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
@@ -91,7 +91,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
 
     public int getExtraRows() {
 
-        return MathHelper.clamp((rows + (slots % 9 > 0 ? 1 : 0)) - 3, 0, 3);
+        return MathHelper.clamp((rows + (slots % 9 > 0 ? 1 : 0)) - 3, 0, (MAX_ROWS - 3));
     }
 
     public int getContainerInventorySize() {
@@ -135,10 +135,8 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     @Override
     public void setAccess(AccessMode access) {
 
-        System.out.println("in here");
-
         SecurityHelper.setAccess(containerStack, access);
-        if (ProxyUtils.isClient()) {
+        if (Utils.isClientWorld(player.world)) {
             SecurityPacket.sendToServer(access);
         }
     }
