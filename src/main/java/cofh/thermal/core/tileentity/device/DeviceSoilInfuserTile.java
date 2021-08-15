@@ -4,6 +4,7 @@ import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
 import javax.annotation.Nullable;
@@ -32,7 +34,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableTileEntity {
+public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT);
 
@@ -42,6 +44,7 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
     protected static final int RADIUS = 2;
     protected int radius = RADIUS;
+    protected AxisAlignedBB area;
 
     protected int process;
     protected int processMax = BASE_PROCESS_MAX * radius * radius;
@@ -208,6 +211,18 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
         processMax = BASE_PROCESS_MAX * (1 + radius);
         processTick = Math.round(getBaseProcessTick() * baseMod);
+        area = null;
+    }
+    // endregion
+
+    // region IAreaEffectTile
+    @Override
+    public AxisAlignedBB getArea() {
+
+        if (area == null) {
+            area = new AxisAlignedBB(pos.add(-radius, -1, -radius), pos.add(1 + radius, 1, 1 + radius));
+        }
+        return area;
     }
     // endregion
 }

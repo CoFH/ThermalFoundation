@@ -2,6 +2,7 @@ package cofh.thermal.core.tileentity.device;
 
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemHandler;
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
@@ -11,6 +12,7 @@ import cofh.thermal.core.inventory.container.device.DeviceFisherContainer;
 import cofh.thermal.core.util.managers.device.FisherManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.fluid.FluidState;
@@ -24,6 +26,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.server.ServerWorld;
@@ -31,6 +34,7 @@ import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
@@ -43,7 +47,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEntity {
+public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
@@ -59,6 +63,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
 
     protected static final int RADIUS = 2;
     public int radius = RADIUS;
+    protected AxisAlignedBB area;
 
     protected int process = timeConstant / 2;
 
@@ -97,6 +102,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     @Override
     protected void updateValidity() {
 
+        area = null;
         if (world == null || !world.isAreaLoaded(pos, 1 + radius) || Utils.isClientWorld(world)) {
             return;
         }
@@ -263,6 +269,26 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         super.setAttributesFromAugment(augmentData);
 
         radius += getAttributeMod(augmentData, TAG_AUGMENT_RADIUS);
+    }
+
+    @Override
+    protected void finalizeAttributes(Map<Enchantment, Integer> enchantmentMap) {
+
+        super.finalizeAttributes(enchantmentMap);
+
+        area = null;
+    }
+    // endregion
+
+    // region IAreaEffectTile
+    @Override
+    public AxisAlignedBB getArea() {
+
+        if (area == null) {
+            BlockPos areaPos = pos.offset(getBlockState().get(FACING_HORIZONTAL), radius);
+            area = new AxisAlignedBB(areaPos.add(-radius, -1 - radius, -radius), areaPos.add(1 + radius, -1 + radius, 1 + radius));
+        }
+        return area;
     }
     // endregion
 }
