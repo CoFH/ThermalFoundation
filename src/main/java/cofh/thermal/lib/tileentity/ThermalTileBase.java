@@ -214,7 +214,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
             }
         }
         if (xpStorage.getStored() > 0) {
-            spawnXpOrbs(xpStorage.getStored(), Vector3d.copyCenteredHorizontally(pos));
+            spawnXpOrbs(world, xpStorage.getStored(), Vector3d.copyCenteredHorizontally(pos));
         }
     }
 
@@ -300,12 +300,6 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     public EnergyStorageCoFH getEnergyStorage() {
 
         return energyStorage;
-    }
-
-    @Override
-    public XpStorage getXpStorage() {
-
-        return xpStorage;
     }
 
     public FluidStack getRenderFluid() {
@@ -658,7 +652,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         int storedXp = xpStorage.getStored();
         xpStorage.applyModifiers(xpStorageMod * (xpStorageFeature ? 1 : 0));
         if (storedXp > 0 && xpStorage.getStored() < storedXp) {
-            spawnXpOrbs(storedXp - xpStorage.getStored(), Vector3d.copyCenteredHorizontally(pos));
+            spawnXpOrbs(world, storedXp - xpStorage.getStored(), Vector3d.copyCenteredHorizontally(pos));
         }
 
         CompoundNBT filterNBT = filter.write(new CompoundNBT());
@@ -824,6 +818,14 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         updateHandlers();
         callNeighborStateChange();
         TileControlPacket.sendToClient(this);
+    }
+    // endregion
+
+    // region ITileXpHandler
+    @Override
+    public XpStorage getXpStorage() {
+
+        return xpStorage;
     }
     // endregion
 
