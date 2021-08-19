@@ -128,7 +128,8 @@ public class ThermalCore {
 
         CapabilityRedstoneFlux.register();
 
-        event.enqueueWork(ThermalConfig::setup);
+        // DO NOT ENQUEUE
+        ThermalConfig.setup();
 
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);
@@ -167,6 +168,7 @@ public class ThermalCore {
 
         ScreenManager.registerFactory(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
         ScreenManager.registerFactory(FLUID_CELL_CONTAINER, FluidCellScreen::new);
+        // ScreenManager.registerFactory(ITEM_CELL_CONTAINER, ItemCellScreen::new);
     }
 
     private void registerRenderLayers() {

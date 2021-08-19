@@ -555,7 +555,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     protected boolean creativeSlots = false;
 
     // This is CLEARED after augments are finalized.
-    protected CompoundNBT augmentNBT = new CompoundNBT();
+    protected CompoundNBT augmentNBT;
 
     /**
      * This should be called AFTER all other slots have been added.
@@ -617,14 +617,16 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         xpStorageFeature |= getAttributeMod(augmentData, TAG_AUGMENT_FEATURE_XP_STORAGE) > 0;
 
         setAttributeFromAugmentMax(augmentNBT, augmentData, TAG_AUGMENT_BASE_MOD);
-        setAttributeFromAugmentMax(augmentNBT, augmentData, TAG_AUGMENT_RF_STORAGE);
         setAttributeFromAugmentMax(augmentNBT, augmentData, TAG_AUGMENT_RF_XFER);
+        setAttributeFromAugmentMax(augmentNBT, augmentData, TAG_AUGMENT_RF_STORAGE);
         setAttributeFromAugmentMax(augmentNBT, augmentData, TAG_AUGMENT_FLUID_STORAGE);
+        setAttributeFromAugmentMax(augmentNBT, augmentData, TAG_AUGMENT_ITEM_STORAGE);
 
         setAttributeFromAugmentString(augmentNBT, augmentData, TAG_FILTER_TYPE);
 
         creativeEnergy |= getAttributeMod(augmentData, TAG_AUGMENT_RF_CREATIVE) > 0;
         creativeTanks |= getAttributeMod(augmentData, TAG_AUGMENT_FLUID_CREATIVE) > 0;
+        creativeSlots |= getAttributeMod(augmentData, TAG_AUGMENT_ITEM_CREATIVE) > 0;
     }
 
     protected void finalizeAttributes(Map<Enchantment, Integer> enchantmentMap) {

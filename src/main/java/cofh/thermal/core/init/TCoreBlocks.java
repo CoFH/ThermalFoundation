@@ -8,9 +8,11 @@ import cofh.lib.block.impl.*;
 import cofh.thermal.core.entity.item.*;
 import cofh.thermal.core.item.BlockItemEnergyCell;
 import cofh.thermal.core.item.BlockItemFluidCell;
+import cofh.thermal.core.item.BlockItemItemCell;
 import cofh.thermal.core.tileentity.device.*;
 import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
+import cofh.thermal.core.tileentity.storage.ItemCellTile;
 import cofh.thermal.core.tileentity.workbench.ChargeBenchTile;
 import cofh.thermal.core.tileentity.workbench.TinkerBenchTile;
 import cofh.thermal.core.world.gen.feature.tree.RubberTree;
@@ -334,10 +336,13 @@ public class TCoreBlocks {
         registerAugBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), ChargeBenchTile::new), storageAugs, ChargeBenchTile.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));
 
         BLOCKS.register(ID_ENERGY_CELL, () -> new TileBlockCell(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid(), EnergyCellTile::new));
-        ITEMS.register(ID_ENERGY_CELL, (Supplier<Item>) () -> new BlockItemEnergyCell(BLOCKS.get(ID_ENERGY_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ENERGY_VALIDATOR).setShowInGroups(getFlag(ID_ENERGY_CELL)));
+        ITEMS.register(ID_ENERGY_CELL, (Supplier<Item>) () -> new BlockItemEnergyCell(BLOCKS.get(ID_ENERGY_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ENERGY_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ENERGY_CELL)));
 
         BLOCKS.register(ID_FLUID_CELL, () -> new TileBlockCell(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid(), FluidCellTile::new));
-        ITEMS.register(ID_FLUID_CELL, (Supplier<Item>) () -> new BlockItemFluidCell(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(FLUID_VALIDATOR).setShowInGroups(getFlag(ID_FLUID_CELL)));
+        ITEMS.register(ID_FLUID_CELL, (Supplier<Item>) () -> new BlockItemFluidCell(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(FLUID_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_FLUID_CELL)));
+
+        BLOCKS.register(ID_ITEM_CELL, () -> new TileBlockCell(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid(), ItemCellTile::new));
+        ITEMS.register(ID_ITEM_CELL, (Supplier<Item>) () -> new BlockItemItemCell(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ITEM_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ITEM_CELL)));
     }
 
     private static void registerTileEntities() {
@@ -357,6 +362,7 @@ public class TCoreBlocks {
 
         TILE_ENTITIES.register(ID_ENERGY_CELL, () -> TileEntityType.Builder.create(EnergyCellTile::new, ENERGY_CELL_BLOCK).build(null));
         TILE_ENTITIES.register(ID_FLUID_CELL, () -> TileEntityType.Builder.create(FluidCellTile::new, FLUID_CELL_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_ITEM_CELL, () -> TileEntityType.Builder.create(ItemCellTile::new, ITEM_CELL_BLOCK).build(null));
     }
 
     private static Block storageBlock(int harvestLevel) {

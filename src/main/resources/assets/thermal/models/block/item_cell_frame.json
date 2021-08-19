@@ -1,0 +1,13 @@
+{
+  "parent": "thermal:block/frame_base",
+  "textures": {
+    "particle": "thermal:block/cells/energy_cell_top",
+    "down": "thermal:block/cells/energy_cell_bottom",
+    "up": "thermal:block/cells/energy_cell_top",
+    "north": "thermal:block/cells/energy_cell_side",
+    "east": "thermal:block/cells/energy_cell_side",
+    "south": "thermal:block/cells/energy_cell_side",
+    "west": "thermal:block/cells/energy_cell_side",
+    "inner": "thermal:block/cells/energy_cell_inner"
+  }
+}

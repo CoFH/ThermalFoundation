@@ -85,8 +85,8 @@ minecraft {
                 CoFHCore {
                     source findProject(':CoFHCore').sourceSets.main
                 }
-                ThermalCore {
-                    source findProject(':ThermalCore').sourceSets.main
+                Thermal {
+                    source findProject(':Thermal').sourceSets.main
                 }
             }
         }

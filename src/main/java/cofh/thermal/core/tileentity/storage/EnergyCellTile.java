@@ -25,7 +25,7 @@ import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
 import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
-import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_VALIDATOR;
+import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
 public class EnergyCellTile extends CellTileBase implements ITickableTileEntity {
@@ -210,7 +210,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && ENERGY_VALIDATOR.test(item, getAugmentsAsList());
+        return item -> AugmentDataHelper.hasAugmentData(item) && ENERGY_STORAGE_VALIDATOR.test(item, getAugmentsAsList());
     }
     // endregion
 
@@ -218,6 +218,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     @Override
     protected void updateHandlers() {
 
+        // Optimization to prevent callback logic as contents may change rapidly.
         LazyOptional<?> prevCap = energyCap;
         energyCap = LazyOptional.of(() -> energyStorage);
         prevCap.invalidate();

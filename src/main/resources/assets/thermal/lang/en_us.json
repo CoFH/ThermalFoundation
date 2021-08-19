@@ -53,6 +53,7 @@
   "block.thermal.signalum_block": "Block of Signalum",
 
   "block.thermal.machine_frame": "Machine Frame",
+  "block.thermal.strongbox": "Strongbox",
 
   "block.thermal.enderium_glass": "Enderium Glass",
   "block.thermal.lumium_glass": "Lumium Glass",
@@ -156,6 +157,9 @@
   "info.thermal.satchel.mode.1": "Auto-Store Enabled",
   "info.thermal.satchel.use": "Use to open the satchel.",
   "info.thermal.satchel.use.sneak": "Use while sneaking to configure.",
+
+  "info.thermal.wrench.mode.0": "Engineer Vision Disabled",
+  "info.thermal.wrench.mode.1": "Engineer Vision Enabled",
 
   "info.thermal.xp_crystal.mode.0": "Auto-Collect Disabled",
   "info.thermal.xp_crystal.mode.1": "Auto-Collect Enabled",

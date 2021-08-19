@@ -31,7 +31,7 @@ import static cofh.lib.util.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.thermal.core.init.TCoreReferences.FLUID_CELL_TILE;
-import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_VALIDATOR;
+import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
@@ -207,11 +207,13 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         }
     }
 
+    // region AUGMENTS
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && FLUID_VALIDATOR.test(item, getAugmentsAsList());
+        return item -> AugmentDataHelper.hasAugmentData(item) && FLUID_STORAGE_VALIDATOR.test(item, getAugmentsAsList());
     }
+    // endregion
 
     // region CAPABILITIES
     @Override

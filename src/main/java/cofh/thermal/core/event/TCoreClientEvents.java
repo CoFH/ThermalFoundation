@@ -1,13 +1,30 @@
 package cofh.thermal.core.event;
 
+import cofh.core.client.CoreRenderType;
+import cofh.core.util.ProxyClient;
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.core.item.WrenchItem;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Matrix4f;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -79,4 +96,76 @@ public class TCoreClientEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void handleRenderWorldLast(RenderWorldLastEvent event) {
+
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+
+        if (player != null) {
+            Item heldItem = player.getHeldItemMainhand().getItem();
+            if (heldItem instanceof WrenchItem && ((WrenchItem) heldItem).getMode(player.getHeldItemMainhand()) > 0) {
+                renderOperationalAreas(player, event.getMatrixStack());
+            }
+        }
+    }
+
+    // region HELPERS
+    private static boolean playerWithinDistance(BlockPos pos, PlayerEntity player, double distanceSq) {
+
+        return pos.distanceSq(player.getPositionVec(), true) <= distanceSq;
+    }
+
+    private static void blueLine(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, float dx1, float dy1, float dz1, float dx2, float dy2, float dz2) {
+
+        builder.pos(positionMatrix, pos.getX() + dx1, pos.getY() + dy1, pos.getZ() + dz1)
+                .color(0.0f, 0.0f, 1.0f, 1.0f)
+                .endVertex();
+        builder.pos(positionMatrix, pos.getX() + dx2, pos.getY() + dy2, pos.getZ() + dz2)
+                .color(0.0f, 0.0f, 1.0f, 1.0f)
+                .endVertex();
+    }
+
+    private static void renderOperationalAreas(ClientPlayerEntity player, MatrixStack matrixStack) {
+
+        IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
+        IVertexBuilder builder = buffer.getBuffer(CoreRenderType.OVERLAY_LINES);
+        matrixStack.push();
+
+        Vector3d projectedView = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
+        matrixStack.translate(-projectedView.x, -projectedView.y, -projectedView.z);
+
+        Matrix4f positionMatrix = matrixStack.getLast().getMatrix();
+        BlockPos.Mutable pos = new BlockPos.Mutable();
+
+        for (IAreaEffectTile tile : ProxyClient.getAreaEffectTiles()) {
+            if (!tile.canPlayerAccess(player) || !playerWithinDistance(tile.pos(), player, 576)) {
+                continue;
+            }
+            AxisAlignedBB area = tile.getArea();
+
+            pos.setPos(area.minX, area.minY, area.minZ);
+            float lenX = (float) (area.maxX - area.minX);
+            float lenY = (float) (area.maxY - area.minY);
+            float lenZ = (float) (area.maxZ - area.minZ);
+
+            blueLine(builder, positionMatrix, pos, 0, 0, 0, lenX, 0, 0);
+            blueLine(builder, positionMatrix, pos, 0, lenY, 0, lenX, lenY, 0);
+            blueLine(builder, positionMatrix, pos, 0, 0, lenZ, lenX, 0, lenZ);
+            blueLine(builder, positionMatrix, pos, 0, lenY, lenZ, lenX, lenY, lenZ);
+
+            blueLine(builder, positionMatrix, pos, 0, 0, 0, 0, 0, lenZ);
+            blueLine(builder, positionMatrix, pos, lenX, 0, 0, lenX, 0, lenZ);
+            blueLine(builder, positionMatrix, pos, 0, lenY, 0, 0, lenY, lenZ);
+            blueLine(builder, positionMatrix, pos, lenX, lenY, 0, lenX, lenY, lenZ);
+
+            blueLine(builder, positionMatrix, pos, 0, 0, 0, 0, lenY, 0);
+            blueLine(builder, positionMatrix, pos, lenX, 0, 0, lenX, lenY, 0);
+            blueLine(builder, positionMatrix, pos, 0, 0, lenZ, 0, lenY, lenZ);
+            blueLine(builder, positionMatrix, pos, lenX, 0, lenZ, lenX, lenY, lenZ);
+        }
+        matrixStack.pop();
+        RenderSystem.disableDepthTest();
+        buffer.finish(CoreRenderType.OVERLAY_LINES);
+    }
+    // endregion
 }
