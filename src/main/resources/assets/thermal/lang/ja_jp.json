@@ -203,6 +203,13 @@
   "item.thermal.xp_crystal": "洞察に満ちるクリスタル",
   "item.thermal.xp_crystal.desc": "経験値を溜め込みます。",
 
+  "item.thermal.junk_net": "ガラクタ収集網",
+  "item.thermal.junk_net.desc": "§e§o水資源投網機§r§6でガラクタを集めるために使用します。耐久値はありませn。",
+  "item.thermal.aquachow": "アクア・チャウ",
+  "item.thermal.aquachow.desc": "§e§o水資源投網機§r§6で漁獲量を向上するために使用します。",
+  "item.thermal.deep_aquachow": "深海アクア・チャウ",
+  "item.thermal.deep_aquachow.desc": "§e§o水資源投網機§r§6で深海のものを捕らえるために使用します。海洋バイオームにおいて効果的です。",
+
   "item.thermal.copper_coin": "銅のコイン",
   "item.thermal.copper_dust": "銅の粉",
   "item.thermal.copper_gear": "銅の歯車",
@@ -438,6 +445,7 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.device_collector": "アイテム吸引器",
+  "block.thermal.device_fisher": "水資源投網機",
   "block.thermal.device_hive_extractor": "巣箱ホッパー",
   "block.thermal.device_nullifier": "消滅機",
   "block.thermal.device_potion_diffuser": "浸出散布機",
@@ -458,6 +466,10 @@
   "info.thermal.device_collector.0": "周辺のエリアからアイテムを拾います。",
   "info.thermal.device_collector.1": "この動作にはフィルター設定を適用できます。",
   "info.thermal.device_collector.2": "床をきれいにしましょう",
+
+  "info.thermal.device_fisher.0": "様々な水産物を捕まえます。餌を用意すると漁獲量と質がよくなります。",
+  "info.thermal.device_fisher.1": "水中に設置する必要があります。",
+  "info.thermal.device_fisher.2": "釣り竿を吊るし上げよう。",
 
   "info.thermal.device_hive_extractor.0": "生産物を養蜂箱から慎重に抽出します。",
   "info.thermal.device_hive_extractor.1": "ミツバチにも、養蜂家にも助けとなります。",
@@ -532,37 +544,49 @@
   "item.thermal.rf_potato": "バッテリイモ",
   "item.thermal.rf_potato.desc": "レッドストーンフラックスを溜めます。",
 
-  "item.thermal.phyto_grenade": "フィト・グレネード",
-  "item.thermal.phyto_grenade.desc": "広範囲に使用できる投げられるフィト・グローです。",
-
   "item.thermal.explosive_grenade": "グレネード",
   "item.thermal.explosive_grenade.desc": "小さな投げられるTNTです。",
   "item.thermal.earth_grenade": "地動グレネード",
   "item.thermal.earth_grenade.desc": "岩や土を破壊します。採掘に大変便利です。",
+  "item.thermal.ender_grenade": "混乱グレネード",
+  "item.thermal.ender_grenade.desc": "物をテレポートさせる混乱したエリアを作ります。",
   "item.thermal.fire_grenade": "灼熱グレネード",
   "item.thermal.fire_grenade.desc": "爆風と共に範囲を炎上させます。",
+  "item.thermal.glowstone_grenade": "輻射グレネード",
+  "item.thermal.glowstone_grenade.desc": "衝撃とともに周囲を明るくします。アンデッドにダメージを与えます。",
   "item.thermal.ice_grenade": "氷冷グレネード",
   "item.thermal.ice_grenade.desc": "爆風と共に範囲を凍結させます。",
   "item.thermal.lightning_grenade": "雷轟グレネード",
   "item.thermal.lightning_grenade.desc": "爆風と共に範囲に雷撃をもたらします。落雷を引き起こすでしょう。",
-
   "item.thermal.nuke_grenade": "核グレネード",
   "item.thermal.nuke_grenade.desc": "近接での使用に適しません。",
-
-  "block.thermal.phyto_tnt": "PNT",
-  "block.thermal.phyto_tnt.desc": "広大な範囲にフィト・グローを散布しますが、投げられません。",
+  "item.thermal.phyto_grenade": "フィト・グレネード",
+  "item.thermal.phyto_grenade.desc": "広範囲に使用できる投げられるフィト・グローです。",
+  "item.thermal.redstone_grenade": "レッドストーングレネード",
+  "item.thermal.redstone_grenade.desc": "衝撃とともにレッドストーン信号を発するエリアを作ります。",
+  "item.thermal.slime_grenade": "スライムグレネード",
+  "item.thermal.slime_grenade.desc": "範囲内のターゲットをべとべとにします。高いノックバックを与えます。",
 
   "block.thermal.earth_tnt": "地動爆弾",
   "block.thermal.earth_tnt.desc": "岩や土を破壊します。採掘に大変便利です。",
+  "block.thermal.ender_tnt": "混乱爆弾",
+  "block.thermal.ender_tnt.desc": "物をテレポートさせる、大きな混乱したエリアを作ります。",
   "block.thermal.fire_tnt": "灼熱爆弾",
   "block.thermal.fire_tnt.desc": "広大な範囲を炎上させます。",
+  "block.thermal.glowstone_tnt": "輻射爆弾",
+  "block.thermal.glowstone_tnt.desc": "衝撃とともに周囲を明るくします。アンデッドにダメージを与えます。",
   "block.thermal.ice_tnt": "氷冷爆弾",
   "block.thermal.ice_tnt.desc": "広大な範囲を凍結させます。",
   "block.thermal.lightning_tnt": "雷轟爆弾",
   "block.thermal.lightning_tnt.desc": "爆風と共に広大な範囲に雷撃をもたらします。落雷を引き起こすでしょう。",
-
   "block.thermal.nuke_tnt": "核爆弾",
   "block.thermal.nuke_tnt.desc": "近くに立ち入ってはなりません!",
+  "block.thermal.phyto_tnt": "PNT",
+  "block.thermal.phyto_tnt.desc": "広大な範囲にフィト・グローを散布しますが、投げられません。",
+  "block.thermal.redstone_tnt": "レッドストーン爆弾",
+  "block.thermal.redstone_tnt.desc": "レッドストーン信号を発する大きなエリアを作ります。",
+  "block.thermal.slime_tnt": "スライム爆弾",
+  "block.thermal.slime_tnt.desc": "広い範囲内のターゲットをベタベタにします。高いノックバックを与えます。",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Vanilla",
@@ -635,6 +659,7 @@
   "block.thermal.coffee_block": "コーヒー袋",
   "block.thermal.corn_block": "とうもろこしクレート",
   "block.thermal.eggplant_block": "ナスクレート",
+  "block.thermal.flax_block": "亜麻の俵",
   "block.thermal.green_bean_block": "サヤインゲンクレート",
   "block.thermal.hops_block": "ホップクレート",
   "block.thermal.onion_block": "タマネギクレート",
@@ -658,6 +683,8 @@
   "item.thermal.dough": "生地",
   "item.thermal.eggplant": "ナス",
   "item.thermal.eggplant_seeds": "ナスの種",
+  "item.thermal.flax": "亜麻",
+  "item.thermal.flax_seeds": "亜麻の種",
   "item.thermal.flour": "小麦粉",
   "item.thermal.frost_melon_seeds": "フロストメロンの種",
   "item.thermal.frost_melon_slice": "フロストメロンスライス",
@@ -685,12 +712,36 @@
   "item.thermal.tomato_seeds": "トマトの種",
   "item.thermal.xp_stew": "慧眼のシチュー",
 
+  "item.thermal.glowstone_mushroom": "ヨアカリタケ",
+  "item.thermal.glowstone_mushroom_spores": "ヨアカリタケの胞子",
+  "item.thermal.gunpowder_mushroom": "ブームッシュルーム",
+  "item.thermal.gunpowder_mushroom_spores": "ブームッシュルームの胞子",
+  "item.thermal.redstone_mushroom": "フラックスハリタケ",
+  "item.thermal.redstone_mushroom_spores": "フラックスハリタケの胞子",
+  "item.thermal.slime_mushroom": "スライタケ",
+  "item.thermal.slime_mushroom_spores": "スライタケの胞子",
+
   "item.thermal.watering_can": "ジョウロ",
   "item.thermal.watering_can.desc": "水をやって植物の成長を促進します。",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
+
+  "block.thermal.logistics_ender_tunnel": "エンダートンネル",
+  "block.thermal.logistics_fluid_buffer": "ロジスティカル流体バッファ",
+  "block.thermal.logistics_item_buffer": "ロジスティカルアイテムバッファ",
+
+  "info.thermal.logistics_item_buffer.0": "アイテムの量や流れを制限します。",
+  "info.thermal.logistics_item_buffer.1": "左側のグリッドにて、必要なアイテム及びその量を設定します。",
+  "info.thermal.logistics_item_buffer.2": "ラッチモードでアイテムを取り出すには、すべてのアイテムが揃っている必要があります。",
+  "info.thermal.logistics_item_buffer.3": "特定のアイテムの数量比を維持するのに有用です。",
+
+  "info.thermal.logistics_item_buffer.mode.0": "I/O: ノーマル",
+  "info.thermal.logistics_item_buffer.mode.1": "I/O: ラッチ",
+
+  "item.thermal.ender_tuner": "エンダー調音叉",
+  "item.thermal.ender_tuner.desc": "時空を操作する様々な装置の調整に使用します。",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Essentials",
@@ -897,6 +948,11 @@
   "block.thermal.prismarine_rail": "プリズマリンレール",
 
   "item.thermal.underwater_minecart": "潜水トロッコ",
+
+  "item.thermal.slime_tnt_minecart": "スライム爆弾付きトロッコ",
+  "item.thermal.redstone_tnt_minecart": "レッドストーン爆弾付きトロッコ",
+  "item.thermal.glowstone_tnt_minecart": "グロウストーン爆弾付きトロッコ",
+  "item.thermal.ender_tnt_minecart": "エンダー爆弾付きトロッコ",
 
   "item.thermal.phyto_tnt_minecart": "PNT付きトロッコ",
 
