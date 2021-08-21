@@ -5,21 +5,23 @@ import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
 import cofh.thermal.core.entity.projectile.*;
+import cofh.thermal.core.inventory.container.ChargeBenchContainer;
+import cofh.thermal.core.inventory.container.ChunkLoaderContainer;
+import cofh.thermal.core.inventory.container.ProjectBenchContainer;
+import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.core.inventory.container.device.*;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.core.inventory.container.storage.ItemCellContainer;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
-import cofh.thermal.core.inventory.container.workbench.ChargeBenchContainer;
-import cofh.thermal.core.inventory.container.workbench.ProjectBenchContainer;
-import cofh.thermal.core.inventory.container.workbench.TinkerBenchContainer;
+import cofh.thermal.core.tileentity.ChargeBenchTile;
+import cofh.thermal.core.tileentity.ChunkLoaderTile;
+import cofh.thermal.core.tileentity.ProjectBenchTile;
+import cofh.thermal.core.tileentity.TinkerBenchTile;
 import cofh.thermal.core.tileentity.device.*;
 import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.core.tileentity.storage.ItemCellTile;
-import cofh.thermal.core.tileentity.workbench.ChargeBenchTile;
-import cofh.thermal.core.tileentity.workbench.ProjectBenchTile;
-import cofh.thermal.core.tileentity.workbench.TinkerBenchTile;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
@@ -224,7 +226,7 @@ public class TCoreReferences {
     public static final ContainerType<ItemCellContainer> ITEM_CELL_CONTAINER = null;
     // endregion
 
-    // region WORKBENCHES
+    // region MISC TILES
     @ObjectHolder(ID_CHARGE_BENCH)
     public static final Block CHARGE_BENCH_BLOCK = null;
     @ObjectHolder(ID_CHARGE_BENCH)
@@ -245,5 +247,12 @@ public class TCoreReferences {
     public static final TileEntityType<TinkerBenchTile> TINKER_BENCH_TILE = null;
     @ObjectHolder(ID_TINKER_BENCH)
     public static final ContainerType<TinkerBenchContainer> TINKER_BENCH_CONTAINER = null;
+
+    @ObjectHolder(ID_CHUNK_LOADER)
+    public static final Block CHUNK_LOADER_BLOCK = null;
+    @ObjectHolder(ID_CHUNK_LOADER)
+    public static final TileEntityType<ChunkLoaderTile> CHUNK_LOADER_TILE = null;
+    @ObjectHolder(ID_CHUNK_LOADER)
+    public static final ContainerType<ChunkLoaderContainer> CHUNK_LOADER_CONTAINER = null;
     // endregion
 }

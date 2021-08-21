@@ -83,6 +83,7 @@ public class ThermalIDs {
     public static final String ID_MACHINE_FRAME = "machine_frame";
     public static final String ID_ENERGY_CELL_FRAME = "energy_cell_frame";
     public static final String ID_FLUID_CELL_FRAME = "fluid_cell_frame";
+    public static final String ID_ITEM_CELL_FRAME = "item_cell_frame";
 
     public static final String ID_WHITE_ROCKWOOL = "white_rockwool";
     public static final String ID_ORANGE_ROCKWOOL = "orange_rockwool";
@@ -162,10 +163,11 @@ public class ThermalIDs {
     public static final String ID_ITEM_CELL = "item_cell";
     // endregion
 
-    // region WORKBENCHES
+    // region MISC TILES
     public static final String ID_CHARGE_BENCH = "charge_bench";
     public static final String ID_PROJECT_BENCH = "project_bench";
     public static final String ID_TINKER_BENCH = "tinker_bench";
+    public static final String ID_CHUNK_LOADER = "chunk_loader";
     // endregion
 
     // region FLUIDS

@@ -1,4 +1,4 @@
-package cofh.thermal.core.tileentity.workbench;
+package cofh.thermal.core.tileentity;
 
 import cofh.core.fluid.PotionFluid;
 import cofh.core.util.helpers.EnergyHelper;
@@ -8,7 +8,7 @@ import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.AugmentableHelper;
-import cofh.thermal.core.inventory.container.workbench.TinkerBenchContainer;
+import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileBase;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

@@ -308,7 +308,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
         }
         if (boostCycles > 0) {
             --boostCycles;
-        } else if (!inputSlot.isEmpty()) {
+        } else if (PotionDiffuserManager.instance().validBoost(inputSlot.getItemStack())) {
             boostCycles = PotionDiffuserManager.instance().getBoostCycles(inputSlot.getItemStack());
             boostMax = boostCycles;
             boostAmplifier = PotionDiffuserManager.instance().getBoostAmplifier(inputSlot.getItemStack());

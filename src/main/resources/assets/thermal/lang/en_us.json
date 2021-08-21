@@ -487,6 +487,8 @@
   "block.thermal.energy_cell_frame": "Redstone Flux Cell Frame",
   "block.thermal.fluid_cell": "Fluid Cell",
   "block.thermal.fluid_cell_frame": "Fluid Cell Frame",
+  "block.thermal.item_cell": "Item Cell",
+  "block.thermal.item_cell_frame": "Item Cell Frame",
 
   "block.thermal.charge_bench": "Energetic Infuser",
   "block.thermal.tinker_bench": "Tinker's Workbench",

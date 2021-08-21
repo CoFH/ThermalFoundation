@@ -1,10 +1,10 @@
-package cofh.thermal.core.tileentity.workbench;
+package cofh.thermal.core.tileentity;
 
 import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.thermal.core.inventory.container.workbench.ChargeBenchContainer;
+import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

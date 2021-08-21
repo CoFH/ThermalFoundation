@@ -75,19 +75,19 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
     @Override
     public boolean handleElementButtonClick(String buttonName, int mouseButton) {
 
-        int change = 1000;
+        int change = 4;
         float pitch = 0.7F;
 
         if (hasShiftDown()) {
-            change *= 10;
+            change = 64;
             pitch += 0.1F;
         }
         if (hasControlDown()) {
-            change /= 100;
+            change /= 2;
             pitch -= 0.2F;
         }
         if (mouseButton == 1) {
-            change /= 10;
+            change = 1;
             pitch -= 0.1F;
         }
         int curInput = tile.amountInput;
@@ -125,18 +125,18 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
                 .setTooltipFactory((element, mouseX, mouseY) -> {
 
                     if (element.enabled()) {
-                        int change = 1000;
+                        int change = 4;
 
                         if (hasShiftDown()) {
-                            change *= 10;
+                            change = 64;
                         }
                         if (hasControlDown()) {
-                            change /= 100;
+                            change /= 2;
                         }
                         return Collections.singletonList(new StringTextComponent(
                                 localize("info.cofh.decrease_by")
                                         + " " + format(change)
-                                        + "/" + format(change / 10)));
+                                        + "/" + format(1)));
                     }
                     return Collections.emptyList();
                 })
@@ -149,18 +149,18 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
                 .setTooltipFactory((element, mouseX, mouseY) -> {
 
                     if (element.enabled()) {
-                        int change = 1000;
+                        int change = 4;
 
                         if (hasShiftDown()) {
-                            change *= 10;
+                            change = 64;
                         }
                         if (hasControlDown()) {
-                            change /= 100;
+                            change /= 2;
                         }
                         return Collections.singletonList(new StringTextComponent(
                                 localize("info.cofh.increase_by")
                                         + " " + format(change)
-                                        + "/" + format(change / 10)));
+                                        + "/" + format(1)));
                     }
                     return Collections.emptyList();
                 })
@@ -173,18 +173,18 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
                 .setTooltipFactory((element, mouseX, mouseY) -> {
 
                     if (element.enabled()) {
-                        int change = 1000;
+                        int change = 4;
 
                         if (hasShiftDown()) {
-                            change *= 10;
+                            change = 64;
                         }
                         if (hasControlDown()) {
-                            change /= 100;
+                            change /= 2;
                         }
                         return Collections.singletonList(new StringTextComponent(
                                 localize("info.cofh.decrease_by")
                                         + " " + format(change)
-                                        + "/" + format(change / 10)));
+                                        + "/" + format(1)));
                     }
                     return Collections.emptyList();
                 })
@@ -197,18 +197,18 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
                 .setTooltipFactory((element, mouseX, mouseY) -> {
 
                     if (element.enabled()) {
-                        int change = 1000;
+                        int change = 4;
 
                         if (hasShiftDown()) {
-                            change *= 10;
+                            change = 64;
                         }
                         if (hasControlDown()) {
-                            change /= 100;
+                            change /= 2;
                         }
                         return Collections.singletonList(new StringTextComponent(
                                 localize("info.cofh.increase_by")
                                         + " " + format(change)
-                                        + "/" + format(change / 10)));
+                                        + "/" + format(1)));
                     }
                     return Collections.emptyList();
                 })

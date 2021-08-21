@@ -1,4 +1,4 @@
-package cofh.thermal.core.inventory.container.workbench;
+package cofh.thermal.core.inventory.container;
 
 import cofh.core.inventory.container.TileContainer;
 import cofh.core.network.packet.server.ContainerPacket;
@@ -6,7 +6,7 @@ import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperItem;
 import cofh.lib.util.helpers.AugmentableHelper;
-import cofh.thermal.core.tileentity.workbench.TinkerBenchTile;
+import cofh.thermal.core.tileentity.TinkerBenchTile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;

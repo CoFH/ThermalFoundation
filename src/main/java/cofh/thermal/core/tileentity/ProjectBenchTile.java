@@ -1,6 +1,6 @@
-package cofh.thermal.core.tileentity.workbench;
+package cofh.thermal.core.tileentity;
 
-import cofh.thermal.core.inventory.container.workbench.ProjectBenchContainer;
+import cofh.thermal.core.inventory.container.ProjectBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

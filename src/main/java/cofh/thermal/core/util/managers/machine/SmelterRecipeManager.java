@@ -30,7 +30,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     private static final SmelterRecipeManager INSTANCE = new SmelterRecipeManager();
     protected static final int DEFAULT_ENERGY = 3200;
 
-    protected Object2ObjectOpenHashMap<SmelterMapWrapper, IMachineRecipe> recipeMap = new Object2ObjectOpenHashMap<>();
+    protected Map<SmelterMapWrapper, IMachineRecipe> recipeMap = new Object2ObjectOpenHashMap<>();
     protected Map<ComparableItemStack, IRecipeCatalyst> catalystMap = new Object2ObjectOpenHashMap<>();
     protected Set<ComparableItemStack> validItems = new ObjectOpenHashSet<>();
 

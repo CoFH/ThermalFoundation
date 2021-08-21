@@ -1,10 +1,10 @@
-package cofh.thermal.core.client.gui.workbench;
+package cofh.thermal.core.client.gui;
 
 import cofh.core.client.gui.element.ElementAugmentSlots;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.SimpleTooltip;
 import cofh.lib.util.helpers.StringHelper;
-import cofh.thermal.core.inventory.container.workbench.TinkerBenchContainer;
+import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;

@@ -1,9 +1,9 @@
-package cofh.thermal.core.inventory.container.workbench;
+package cofh.thermal.core.inventory.container;
 
 import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
-import cofh.thermal.core.tileentity.workbench.ChargeBenchTile;
+import cofh.thermal.core.tileentity.ChargeBenchTile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.math.BlockPos;

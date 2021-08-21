@@ -9,12 +9,12 @@ import cofh.thermal.core.entity.item.*;
 import cofh.thermal.core.item.BlockItemEnergyCell;
 import cofh.thermal.core.item.BlockItemFluidCell;
 import cofh.thermal.core.item.BlockItemItemCell;
+import cofh.thermal.core.tileentity.ChargeBenchTile;
+import cofh.thermal.core.tileentity.TinkerBenchTile;
 import cofh.thermal.core.tileentity.device.*;
 import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.core.tileentity.storage.ItemCellTile;
-import cofh.thermal.core.tileentity.workbench.ChargeBenchTile;
-import cofh.thermal.core.tileentity.workbench.TinkerBenchTile;
 import cofh.thermal.core.world.gen.feature.tree.RubberTree;
 import cofh.thermal.lib.block.TileBlockCell;
 import cofh.thermal.lib.common.ThermalConfig;
@@ -252,6 +252,7 @@ public class TCoreBlocks {
         registerBlock(ID_MACHINE_FRAME, () -> new Block(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid()), getFlag(ID_MACHINE_FRAME));
         registerBlock(ID_ENERGY_CELL_FRAME, () -> new Block(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid()), getFlag(ID_ENERGY_CELL_FRAME));
         registerBlock(ID_FLUID_CELL_FRAME, () -> new Block(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid()), getFlag(ID_FLUID_CELL_FRAME));
+        registerBlock(ID_ITEM_CELL_FRAME, () -> new Block(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid()), getFlag(ID_ITEM_CELL_FRAME));
 
         registerBlock(ID_OBSIDIAN_GLASS, () -> new HardenedGlassBlock(create(Material.GLASS, MaterialColor.OBSIDIAN).hardnessAndResistance(5.0F, 1000.0F).sound(SoundType.GLASS).notSolid()));
         registerBlock(ID_SIGNALUM_GLASS, () -> new HardenedGlassBlock(create(Material.GLASS, MaterialColor.RED).hardnessAndResistance(5.0F, 1000.0F).sound(SoundType.GLASS).setLightLevel(lightValue(7)).notSolid()) {
@@ -342,7 +343,7 @@ public class TCoreBlocks {
         ITEMS.register(ID_FLUID_CELL, (Supplier<Item>) () -> new BlockItemFluidCell(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(FLUID_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_FLUID_CELL)));
 
         BLOCKS.register(ID_ITEM_CELL, () -> new TileBlockCell(create(Material.IRON).sound(SoundType.LANTERN).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).notSolid(), ItemCellTile::new));
-        ITEMS.register(ID_ITEM_CELL, (Supplier<Item>) () -> new BlockItemItemCell(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ITEM_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ITEM_CELL)));
+        ITEMS.register(ID_ITEM_CELL, (Supplier<Item>) () -> new BlockItemItemCell(BLOCKS.get(ID_ITEM_CELL), new Item.Properties().group(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ITEM_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ITEM_CELL)));
     }
 
     private static void registerTileEntities() {

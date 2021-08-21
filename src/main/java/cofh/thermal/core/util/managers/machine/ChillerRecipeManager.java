@@ -6,6 +6,7 @@ import cofh.lib.inventory.FalseIInventory;
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.lib.util.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
@@ -87,7 +88,7 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
             ItemStack inputItem = inputSlots.get(0).getItemStack();
             return recipeMap.get(Collections.singletonList(convert(inputItem).hashCode()));
         }
-        if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
+        if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty() || inputSlots.get(0).getItemStack().getItem() instanceof SlotSealItem) {
             FluidStack inputFluid = inputTanks.get(0).getFluidStack();
             return recipeMap.get(Collections.singletonList(FluidHelper.fluidHashcode(inputFluid)));
         }

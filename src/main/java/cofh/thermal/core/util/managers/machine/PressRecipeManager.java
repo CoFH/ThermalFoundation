@@ -5,6 +5,7 @@ import cofh.lib.inventory.FalseIInventory;
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.lib.util.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
@@ -84,7 +85,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
 
         ArrayList<ComparableItemStack> key = new ArrayList<>();
         for (IItemStackAccess slot : inputSlots) {
-            if (!slot.isEmpty()) {
+            if (!slot.isEmpty() && !(slot.getItemStack().getItem() instanceof SlotSealItem)) {
                 key.add(convert(slot.getItemStack()));
             }
         }
@@ -95,7 +96,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
 
         ArrayList<ComparableItemStack> key = new ArrayList<>();
         for (ItemStack stack : inputStacks) {
-            if (!stack.isEmpty()) {
+            if (!stack.isEmpty() && !(stack.getItem() instanceof SlotSealItem)) {
                 key.add(convert(stack));
             }
         }

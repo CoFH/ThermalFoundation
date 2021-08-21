@@ -5,7 +5,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.StorageGroup;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.lib.util.helpers.BlockHelper;
+import cofh.lib.util.helpers.InventoryHelper;
 import cofh.thermal.core.inventory.container.storage.ItemCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,12 +13,10 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -73,15 +71,15 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         if (!transferControl.getTransferIn()) {
             return;
         }
-        if (amountInput <= 0 || energyStorage.isFull()) {
+        if (amountInput <= 0 || itemStorage.isFull()) {
             return;
         }
-        for (int i = inputTracker; i < 6 && energyStorage.getSpace() > 0; ++i) {
+        for (int i = inputTracker; i < 6 && itemStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
                 attemptTransferIn(Direction.byIndex(i));
             }
         }
-        for (int i = 0; i < inputTracker && energyStorage.getSpace() > 0; ++i) {
+        for (int i = 0; i < inputTracker && itemStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
                 attemptTransferIn(Direction.byIndex(i));
             }
@@ -95,15 +93,15 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         if (!transferControl.getTransferOut()) {
             return;
         }
-        if (amountOutput <= 0 || energyStorage.isEmpty()) {
+        if (amountOutput <= 0 || itemStorage.isEmpty()) {
             return;
         }
-        for (int i = outputTracker; i < 6 && energyStorage.getEnergyStored() > 0; ++i) {
+        for (int i = outputTracker; i < 6 && itemStorage.getCount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
                 attemptTransferOut(Direction.byIndex(i));
             }
         }
-        for (int i = 0; i < outputTracker && energyStorage.getEnergyStored() > 0; ++i) {
+        for (int i = 0; i < outputTracker && itemStorage.getCount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
                 attemptTransferOut(Direction.byIndex(i));
             }
@@ -114,24 +112,12 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
 
     protected void attemptTransferIn(Direction side) {
 
-        TileEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
-        if (adjTile != null) {
-            Direction opposite = side.getOpposite();
-            int maxTransfer = Math.min(amountInput, energyStorage.getSpace());
-            adjTile.getCapability(CapabilityEnergy.ENERGY, opposite)
-                    .ifPresent(e -> energyStorage.modify(e.extractEnergy(maxTransfer, false)));
-        }
+        InventoryHelper.extractFromAdjacent(this, itemStorage, Math.min(amountInput, itemStorage.getSpace()), side);
     }
 
     protected void attemptTransferOut(Direction side) {
 
-        TileEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
-        if (adjTile != null) {
-            Direction opposite = side.getOpposite();
-            int maxTransfer = Math.min(amountOutput, energyStorage.getEnergyStored());
-            adjTile.getCapability(CapabilityEnergy.ENERGY, opposite)
-                    .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
-        }
+        InventoryHelper.insertIntoAdjacent(this, itemStorage, amountOutput, side);
     }
 
     @Override

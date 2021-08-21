@@ -5,12 +5,13 @@ import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
+import cofh.thermal.core.client.gui.ChargeBenchScreen;
+import cofh.thermal.core.client.gui.TinkerBenchScreen;
 import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
+import cofh.thermal.core.client.gui.storage.ItemCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
-import cofh.thermal.core.client.gui.workbench.ChargeBenchScreen;
-import cofh.thermal.core.client.gui.workbench.TinkerBenchScreen;
 import cofh.thermal.core.client.renderer.entity.*;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.init.*;
@@ -168,7 +169,7 @@ public class ThermalCore {
 
         ScreenManager.registerFactory(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
         ScreenManager.registerFactory(FLUID_CELL_CONTAINER, FluidCellScreen::new);
-        // ScreenManager.registerFactory(ITEM_CELL_CONTAINER, ItemCellScreen::new);
+        ScreenManager.registerFactory(ITEM_CELL_CONTAINER, ItemCellScreen::new);
     }
 
     private void registerRenderLayers() {
@@ -189,6 +190,9 @@ public class ThermalCore {
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLUID_CELL_FRAME), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLUID_CELL), cutout);
+
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL_FRAME), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL), cutout);
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_WATER_GEN), cutout);
