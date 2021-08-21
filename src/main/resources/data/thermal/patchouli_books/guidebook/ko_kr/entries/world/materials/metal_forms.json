@@ -1,0 +1,28 @@
+{
+  "name": "기어, 동전, 가루 등등",
+  "icon": "thermal:enderium_coin",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "5_item_page",
+      "title": "Gears, Coins, Dusts, etc.",
+      "item1": "thermal:copper_gear,thermal:tin_gear,thermal:lead_gear,thermal:silver_gear,thermal:nickel_gear,thermal:bronze_gear,thermal:invar_gear,thermal:electrum_gear,thermal:constantan_gear,thermal:signalum_gear,thermal:lumium_gear,thermal:enderium_gear,thermal:iron_gear,thermal:gold_gear,thermal:lapis_gear,thermal:diamond_gear,thermal:emerald_gear",
+      "item2": "thermal:copper_plate,thermal:tin_plate,thermal:lead_plate,thermal:silver_plate,thermal:nickel_plate,thermal:bronze_plate,thermal:invar_plate,thermal:electrum_plate,thermal:constantan_plate,thermal:signalum_plate,thermal:lumium_plate,thermal:enderium_plate,thermal:iron_plate,thermal:gold_plate",
+      "item3": "thermal:copper_coin,thermal:tin_coin,thermal:lead_coin,thermal:silver_coin,thermal:nickel_coin,thermal:bronze_coin,thermal:invar_coin,thermal:electrum_coin,thermal:constantan_coin,thermal:signalum_coin,thermal:lumium_coin,thermal:enderium_coin,thermal:iron_coin,thermal:gold_coin",
+      "item4": "thermal:copper_dust,thermal:tin_dust,thermal:lead_dust,thermal:silver_dust,thermal:nickel_dust,thermal:bronze_dust,thermal:invar_dust,thermal:electrum_dust,thermal:constantan_dust,thermal:signalum_dust,thermal:lumium_dust,thermal:enderium_dust,thermal:iron_dust,thermal:gold_dust,thermal:lapis_dust,thermal:diamond_dust,thermal:emerald_dust",
+      "item5": "thermal:copper_nugget,thermal:tin_nugget,thermal:lead_nugget,thermal:silver_nugget,thermal:nickel_nugget,thermal:bronze_nugget,thermal:invar_nugget,thermal:electrum_nugget,thermal:constantan_nugget,thermal:signalum_nugget,thermal:lumium_nugget,thermal:enderium_nugget",
+      "text": "써멀은 다양한 제작법에 사용되는 다양한 형태의 금속과 보석을 추가합니다. 가장 기본적인것은 금속 조각으로 바닐라의 철 조각과 금 조각과 동일한 형태입니다."
+    },
+    {
+      "flag": "!mod:thermal_expansion",
+      "type": "text",
+      "text": "가루는 $(l:thermal:equipment/charges/earth_charge)대지구$(/l)를 주괴와 조합하여 얻을 수 있으며 제작(주로 합금) 또는 제련(금속 가루만 해당)에 사용됩니다. 특정 재료의 주괴/보석 4개로 철 조각을 둘러싸 기어를 제작할 수 있습니다."
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "text",
+      "text": "가루는 일반적으로 $(l:thermal:technology/machines/pulverizer)분쇄기$(/l)를 통해 생산되며 제작(주로 합금) 또는 제련(금속 가루만 해당)에 사용됩니다. 판금과 동전은 $(l:thermal:technology/machines/press)멀티 서보 압착기$(/l)에서만 만들수 있으며 다양한 조합법에 사용됩니다. 특정 재료의 주괴/보석 4개로 철 조각을 둘러싸 기어를 제작할 수 있으며 멀티 서보 압착기에서 4개의 주괴만 사용하여 제작할수도 있습니다."
+    }
+  ]
+}

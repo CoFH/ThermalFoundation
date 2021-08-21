@@ -1,0 +1,1 @@
+{  "name": "순환 처리 장치",  "icon": "thermal:machine_cycle_augment",  "category": "thermal:augments",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "crafting",      "recipe": "thermal:augments/machine_cycle_augment",      "title": "순환 처리 장치",      "text": "순환 처리 장치 부착물은 기계의 유효한 출력을 입력 슬롯으로 재입력할 수 있습니다. 자동화에 유용합니다."    }  ]}

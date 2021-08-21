@@ -1,0 +1,1 @@
+{  "name": "갑옷",  "flag": "|mod:thermal_innovation,mod:thermal_cultivation",  "description": "아마도 패션 아이템으로써는 부적절하겠지만, 제 몫은 합니다.",  "icon": "thermal:hazmat_boots",  "parent": "thermal:equipment",  "sortnum": 2}

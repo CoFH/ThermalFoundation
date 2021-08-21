@@ -1,0 +1,1 @@
+{  "name": "수류탄",  "icon": "thermal:explosive_grenade",  "read_by_default": true,  "category": "thermal:explosives",  "pages": [    {      "type": "text",      "text": "수류탄은 TNT와 똑같지만 던질수 있고, 반경 5 블록의 범위로 폭발합니다!"    },    {      "type": "crafting",      "recipe": "thermal:explosive_grenade_4"    }  ]}
