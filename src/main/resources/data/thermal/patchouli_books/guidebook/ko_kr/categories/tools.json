@@ -1,0 +1,1 @@
+{  "name": "도구",  "description": "도구를 강화하는 법:$(li)강화가 가능한 아이템 또는 블록을 작업대에 놓습니다.$(li)작업대 모드를 부착물 모드로 설정합니다.$(li)부착물을 $(li)작업대 모드를 다시 충전 및 채우기모드로 설정합니다.$(li)작업대에서 아이템을 꺼냅니다.$(li)끝!",  "icon": "thermal:wrench",  "parent": "thermal:equipment",  "sortnum": 1}

@@ -1,0 +1,7 @@
+{
+  "name": "모드팩 메이커",
+  "description": "재미를 위해 모드팩을 만들거나, 써멀 아이템의 다양한 측면을 변경하고 싶나요? 이 파트에서 써멀 모드의 설정 및 구성 변경을 지원하는 모든 멋진 방법을 살펴봅시다.",
+  "icon": "thermal:wrench",
+  "parent": "thermal:guides",
+  "sortnum": 4
+}
