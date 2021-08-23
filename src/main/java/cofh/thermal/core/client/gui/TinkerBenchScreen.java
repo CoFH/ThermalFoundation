@@ -37,45 +37,45 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
 
         addElement(setClearable(createDefaultEnergyStorage(this, 8, 8, tile.getEnergyStorage()), tile, 0));
         addElement(setClearable(createMediumFluidStorage(this, 151, 8, tile.getTank(0)), tile, 0));
-        addElement(new ElementAugmentSlots(this, 80, 17, container::getNumTinkerAugmentSlots, container.getTinkerAugmentSlots(),
-                PATH_ELEMENTS + "disable_underlay_slot.png", () -> !container.tile.allowAugmentation()));
+        addElement(new ElementAugmentSlots(this, 80, 17, menu::getNumTinkerAugmentSlots, menu.getTinkerAugmentSlots(),
+                PATH_ELEMENTS + "disable_underlay_slot.png", () -> !menu.tile.allowAugmentation()));
 
         addElement(new ElementButton(this, 42, 51) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                container.onModeChange();
+                menu.onModeChange();
                 return true;
             }
         }
                 .setSize(20, 20)
                 .setTexture(TEX_AUGMENT, 40, 20)
                 .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.tinker_bench_mode_augment")))
-                .setVisible(container.tile::allowAugmentation));
+                .setVisible(menu.tile::allowAugmentation));
 
         addElement(new ElementButton(this, 42, 51) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                container.onModeChange();
+                menu.onModeChange();
                 return true;
             }
         }
                 .setSize(20, 20)
                 .setTexture(TEX_REPLENISH, 40, 20)
                 .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.tinker_bench_mode_charge")))
-                .setVisible(() -> !container.tile.allowAugmentation()));
+                .setVisible(() -> !menu.tile.allowAugmentation()));
     }
 
     @Override
-    protected boolean itemStackMoved(int keyCode, int scanCode) {
+    protected boolean checkHotbarKeyPressed(int keyCode, int scanCode) {
 
-        if (container.isTinkerSlot(hoveredSlot)) {
+        if (menu.isTinkerSlot(hoveredSlot)) {
             return false;
         }
-        return super.itemStackMoved(keyCode, scanCode);
+        return super.checkHotbarKeyPressed(keyCode, scanCode);
     }
 
 }

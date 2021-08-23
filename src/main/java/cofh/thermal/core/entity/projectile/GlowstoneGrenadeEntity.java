@@ -50,45 +50,45 @@ public class GlowstoneGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
-        if (Utils.isServerWorld(world)) {
+        if (Utils.isServerWorld(level)) {
             if (!this.isInWater()) {
-                affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
-                AreaUtils.transformGlowAir(this, world, this.getPosition(), radius);
+                affectNearbyEntities(this, level, this.blockPosition(), radius, getOwner());
+                AreaUtils.transformGlowAir(this, level, this.blockPosition(), radius);
                 makeAreaOfEffectCloud();
             }
-            this.world.setEntityState(this, (byte) 3);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.ticksExisted < 10) {
+        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.INSTANT_EFFECT);
+        cloud.setParticle(ParticleTypes.INSTANT_EFFECT);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        level.addFreshEntity(cloud);
     }
 
     public static void affectNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
-        List<LivingEntity> mobs = worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE);
+        AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
+        List<LivingEntity> mobs = worldIn.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
         for (LivingEntity mob : mobs) {
-            mob.addPotionEffect(new EffectInstance(GLOWING, effectDuration * 20, 0, false, false));
-            if (mob.getCreatureAttribute() == CreatureAttribute.UNDEAD) {
-                mob.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 4.0F);
-                mob.setFire(effectDuration);
+            mob.addEffect(new EffectInstance(GLOWING, effectDuration * 20, 0, false, false));
+            if (mob.getMobType() == CreatureAttribute.UNDEAD) {
+                mob.hurt(DamageSource.explosion(source instanceof LivingEntity ? (LivingEntity) source : null), 4.0F);
+                mob.setSecondsOnFire(effectDuration);
             }
         }
     }

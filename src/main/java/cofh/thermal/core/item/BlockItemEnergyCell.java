@@ -44,7 +44,7 @@ public class BlockItemEnergyCell extends BlockItemAugmentable implements IEnergy
 
     protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
 
-        CompoundNBT subTag = container.getChildTag(TAG_PROPERTIES);
+        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -64,11 +64,11 @@ public class BlockItemEnergyCell extends BlockItemAugmentable implements IEnergy
     @Override
     public CompoundNBT getOrCreateEnergyTag(ItemStack container) {
 
-        CompoundNBT blockTag = container.getOrCreateChildTag(TAG_BLOCK_ENTITY);
+        CompoundNBT blockTag = container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         if (!blockTag.contains(TAG_ENERGY_MAX)) {
-            new EnergyStorageCoFH(BASE_CAPACITY, BASE_RECV, BASE_SEND).writeWithParams(container.getOrCreateChildTag(TAG_BLOCK_ENTITY));
+            new EnergyStorageCoFH(BASE_CAPACITY, BASE_RECV, BASE_SEND).writeWithParams(container.getOrCreateTagElement(TAG_BLOCK_ENTITY));
         }
-        return container.getOrCreateChildTag(TAG_BLOCK_ENTITY);
+        return container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
     }
 
     @Override

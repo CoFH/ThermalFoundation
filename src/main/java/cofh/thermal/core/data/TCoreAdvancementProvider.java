@@ -33,8 +33,8 @@ public class TCoreAdvancementProvider extends AdvancementProviderCoFH implements
     @Override
     public void accept(Consumer<Advancement> advancementConsumer) {
 
-        Advancement root = Advancement.Builder.builder().withDisplay(BLOCKS.get(ID_TINKER_BENCH), new TranslationTextComponent("advancements.thermal.root.title"), new TranslationTextComponent("advancements.thermal.root.description"), new ResourceLocation("thermal:textures/gui/advancements/backgrounds/blueprint.png"), FrameType.TASK, false, false, false).withCriterion("has_tinker_bench", InventoryChangeTrigger.Instance.forItems(BLOCKS.get(ID_TINKER_BENCH))).register(advancementConsumer, "thermal:root");
-        Advancement wrench = Advancement.Builder.builder().withParent(root).withDisplay(ITEMS.get("wrench"), new TranslationTextComponent("advancements.thermal.wrench.title"), new TranslationTextComponent("advancements.thermal.wrench.description"), null, FrameType.TASK, true, true, false).withCriterion("has_wrench", InventoryChangeTrigger.Instance.forItems(ITEMS.get("wrench"))).register(advancementConsumer, "thermal:wrench");
+        Advancement root = Advancement.Builder.advancement().display(BLOCKS.get(ID_TINKER_BENCH), new TranslationTextComponent("advancements.thermal.root.title"), new TranslationTextComponent("advancements.thermal.root.description"), new ResourceLocation("thermal:textures/gui/advancements/backgrounds/blueprint.png"), FrameType.TASK, false, false, false).addCriterion("has_tinker_bench", InventoryChangeTrigger.Instance.hasItems(BLOCKS.get(ID_TINKER_BENCH))).save(advancementConsumer, "thermal:root");
+        Advancement wrench = Advancement.Builder.advancement().parent(root).display(ITEMS.get("wrench"), new TranslationTextComponent("advancements.thermal.wrench.title"), new TranslationTextComponent("advancements.thermal.wrench.description"), null, FrameType.TASK, true, true, false).addCriterion("has_wrench", InventoryChangeTrigger.Instance.hasItems(ITEMS.get("wrench"))).save(advancementConsumer, "thermal:wrench");
     }
 
 }

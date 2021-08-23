@@ -31,17 +31,17 @@ public class TCoreCommonEvents {
             return;
         }
         PlayerEntity player = event.getPlayer();
-        if (player.areEyesInFluid(FluidTags.WATER)) {
-            boolean diveChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() instanceof DivingArmorItem;
+        if (player.isEyeInFluid(FluidTags.WATER)) {
+            boolean diveChest = player.getItemBySlot(EquipmentSlotType.CHEST).getItem() instanceof DivingArmorItem;
             if (!EnchantmentHelper.hasAquaAffinity(player) && diveChest) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
-            boolean diveLegs = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() instanceof DivingArmorItem;
+            boolean diveLegs = player.getItemBySlot(EquipmentSlotType.LEGS).getItem() instanceof DivingArmorItem;
             if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, AIR_AFFINITY) <= 0)) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
         } else if (player.isInWater()) {
-            boolean diveLegs = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() instanceof DivingArmorItem;
+            boolean diveLegs = player.getItemBySlot(EquipmentSlotType.LEGS).getItem() instanceof DivingArmorItem;
             if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, AIR_AFFINITY) <= 0)) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
@@ -55,13 +55,13 @@ public class TCoreCommonEvents {
             return;
         }
         PlayerEntity player = event.getPlayer();
-        if (player.openContainer instanceof SatchelContainer || player.openContainer instanceof IFilterOptions) {
+        if (player.containerMenu instanceof SatchelContainer || player.containerMenu instanceof IFilterOptions) {
             return;
         }
         PlayerInventory inventory = player.inventory;
         final boolean[] cancel = {false};
-        for (int i = 0; i < inventory.getSizeInventory(); ++i) {
-            ItemStack stack = inventory.getStackInSlot(i);
+        for (int i = 0; i < inventory.getContainerSize(); ++i) {
+            ItemStack stack = inventory.getItem(i);
             if (stack.getItem() instanceof SatchelItem) {
                 cancel[0] |= SatchelItem.onItemPickup(event, stack);
             }

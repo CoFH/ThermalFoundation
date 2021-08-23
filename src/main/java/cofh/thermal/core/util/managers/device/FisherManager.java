@@ -39,14 +39,14 @@ public class FisherManager extends AbstractManager {
 
     public void addBoost(FisherBoost boost) {
 
-        for (ItemStack ingredient : boost.getIngredient().getMatchingStacks()) {
+        for (ItemStack ingredient : boost.getIngredient().getItems()) {
             boostMap.put(convert(ingredient), Triple.of(boost.getLootTable(), boost.getOutputMod(), boost.getUseChance()));
         }
     }
 
     public ResourceLocation getBoostLootTable(ItemStack item) {
 
-        return validBoost(item) ? boostMap.get(convert(item)).getLeft() : LootTables.GAMEPLAY_FISHING_FISH;
+        return validBoost(item) ? boostMap.get(convert(item)).getLeft() : LootTables.FISHING_FISH;
     }
 
     public float getBoostOutputMod(ItemStack item) {
@@ -65,7 +65,7 @@ public class FisherManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.getRecipes(TCoreRecipeTypes.BOOST_FISHER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_FISHER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((FisherBoost) entry.getValue());
         }

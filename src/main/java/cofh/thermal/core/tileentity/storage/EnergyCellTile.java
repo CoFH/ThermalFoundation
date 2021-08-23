@@ -64,7 +64,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(world)) {
+        if (Utils.timeCheck(level)) {
             updateTrackers(true);
         }
     }
@@ -85,12 +85,12 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         }
         for (int i = inputTracker; i < 6 && energyStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < inputTracker && energyStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         ++inputTracker;
@@ -107,12 +107,12 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         }
         for (int i = outputTracker; i < 6 && energyStorage.getEnergyStored() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < outputTracker && energyStorage.getEnergyStored() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         ++outputTracker;
@@ -167,7 +167,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new EnergyCellContainer(i, world, pos, inventory, player);
+        return new EnergyCellContainer(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull
@@ -190,7 +190,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (curScale != compareTracker) {
             compareTracker = curScale;
             if (send) {
-                markDirty();
+                setChanged();
             }
         }
         if (energyStorage.isCreative()) {

@@ -18,7 +18,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 public class BlitzProjectileRenderer extends EntityRenderer<BlitzProjectileEntity> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/blitz_projectile.png");
-    private static final RenderType RENDER_TYPE = RenderType.getEntityTranslucent(TEXTURE);
+    private static final RenderType RENDER_TYPE = RenderType.entityTranslucent(TEXTURE);
     private final ElementalProjectileModel<BlitzProjectileEntity> model = new ElementalProjectileModel<>();
 
     public BlitzProjectileRenderer(EntityRendererManager manager) {
@@ -29,22 +29,22 @@ public class BlitzProjectileRenderer extends EntityRenderer<BlitzProjectileEntit
     @Override
     public void render(BlitzProjectileEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
 
-        matrixStackIn.push();
-        float f = MathHelper.rotLerp(entityIn.prevRotationYaw, entityIn.rotationYaw, partialTicks);
-        float f1 = MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch);
-        float f2 = (float) entityIn.ticksExisted + partialTicks;
-        matrixStackIn.rotate(Vector3f.YP.rotationDegrees(MathHelper.sin(f2 * 0.1F) * 180.0F));
-        matrixStackIn.rotate(Vector3f.XP.rotationDegrees(MathHelper.cos(f2 * 0.1F) * 180.0F));
+        matrixStackIn.pushPose();
+        float f = MathHelper.rotlerp(entityIn.yRotO, entityIn.yRot, partialTicks);
+        float f1 = MathHelper.lerp(partialTicks, entityIn.xRotO, entityIn.xRot);
+        float f2 = (float) entityIn.tickCount + partialTicks;
+        matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(MathHelper.sin(f2 * 0.1F) * 180.0F));
+        matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(MathHelper.cos(f2 * 0.1F) * 180.0F));
         matrixStackIn.scale(0.5F, 0.5F, 0.5F);
-        this.model.setRotationAngles(entityIn, 0.0F, 0.0F, 0.0F, f, f1);
+        this.model.setupAnim(entityIn, 0.0F, 0.0F, 0.0F, f, f1);
         IVertexBuilder ivertexbuilder = bufferIn.getBuffer(RENDER_TYPE);
-        this.model.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
-        matrixStackIn.pop();
+        this.model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
+        matrixStackIn.popPose();
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
     @Override
-    public ResourceLocation getEntityTexture(BlitzProjectileEntity entity) {
+    public ResourceLocation getTextureLocation(BlitzProjectileEntity entity) {
 
         return TEXTURE;
     }

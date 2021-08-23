@@ -17,7 +17,7 @@ public class ProjectBenchContainer extends TileContainer {
     public ProjectBenchContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(PROJECT_BENCH_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ProjectBenchTile) world.getTileEntity(pos);
+        this.tile = (ProjectBenchTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         bindAugmentSlots(tileInv, 3, this.tile.augSize());

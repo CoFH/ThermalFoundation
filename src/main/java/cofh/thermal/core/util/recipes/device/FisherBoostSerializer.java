@@ -15,10 +15,10 @@ import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<FisherBoost> {
 
     @Override
-    public FisherBoost read(ResourceLocation recipeId, JsonObject json) {
+    public FisherBoost fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Ingredient ingredient;
-        ResourceLocation lootTable = LootTables.GAMEPLAY_FISHING_FISH;
+        ResourceLocation lootTable = LootTables.FISHING_FISH;
         float outputMod = 1.0F;
         float useChance = 1.0F;
 
@@ -27,7 +27,7 @@ public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<
 
         if (json.has(LOOT_TABLE)) {
             String lootTableString = json.get(LOOT_TABLE).getAsString();
-            lootTable = ResourceLocation.tryCreate(lootTableString);
+            lootTable = ResourceLocation.tryParse(lootTableString);
         }
         if (json.has(OUTPUT)) {
             outputMod = json.get(OUTPUT).getAsFloat();
@@ -42,9 +42,9 @@ public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<
 
     @Nullable
     @Override
-    public FisherBoost read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public FisherBoost fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
-        Ingredient ingredient = Ingredient.read(buffer);
+        Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
         ResourceLocation lootTable = buffer.readResourceLocation();
         float outputMod = buffer.readFloat();
@@ -54,9 +54,9 @@ public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<
     }
 
     @Override
-    public void write(PacketBuffer buffer, FisherBoost recipe) {
+    public void toNetwork(PacketBuffer buffer, FisherBoost recipe) {
 
-        recipe.ingredient.write(buffer);
+        recipe.ingredient.toNetwork(buffer);
 
         buffer.writeResourceLocation(recipe.lootTable);
         buffer.writeFloat(recipe.outputMod);

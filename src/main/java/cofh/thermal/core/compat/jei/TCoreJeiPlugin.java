@@ -41,10 +41,10 @@ public class TCoreJeiPlugin implements IModPlugin {
             return;
         }
         if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
-            registration.addRecipes(recipeManager.getRecipes(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
+            registration.addRecipes(recipeManager.byType(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
         }
         if (getFlag(ID_DEVICE_ROCK_GEN).getAsBoolean()) {
-            registration.addRecipes(recipeManager.getRecipes(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
+            registration.addRecipes(recipeManager.byType(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
         }
     }
 
@@ -83,7 +83,7 @@ public class TCoreJeiPlugin implements IModPlugin {
     private RecipeManager getRecipeManager() {
 
         RecipeManager recipeManager = null;
-        ClientWorld world = Minecraft.getInstance().world;
+        ClientWorld world = Minecraft.getInstance().level;
         if (world != null) {
             recipeManager = world.getRecipeManager();
         }

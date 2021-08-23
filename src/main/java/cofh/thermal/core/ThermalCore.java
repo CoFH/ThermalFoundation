@@ -125,9 +125,9 @@ public class ThermalCore {
     // region INITIALIZATION
     private void entitySetup(final EntityAttributeCreationEvent event) {
 
-        event.put(BASALZ_ENTITY, BasalzEntity.registerAttributes().create());
-        event.put(BLITZ_ENTITY, BasalzEntity.registerAttributes().create());
-        event.put(BLIZZ_ENTITY, BasalzEntity.registerAttributes().create());
+        event.put(BASALZ_ENTITY, BasalzEntity.registerAttributes().build());
+        event.put(BLITZ_ENTITY, BasalzEntity.registerAttributes().build());
+        event.put(BLIZZ_ENTITY, BasalzEntity.registerAttributes().build());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -157,31 +157,31 @@ public class ThermalCore {
     // region HELPERS
     private void registerGuiFactories() {
 
-        ScreenManager.registerFactory(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
-        ScreenManager.registerFactory(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
-        ScreenManager.registerFactory(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
-        ScreenManager.registerFactory(DEVICE_FISHER_CONTAINER, DeviceFisherScreen::new);
-        ScreenManager.registerFactory(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
-        ScreenManager.registerFactory(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
-        ScreenManager.registerFactory(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
-        ScreenManager.registerFactory(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
-        ScreenManager.registerFactory(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
+        ScreenManager.register(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
+        ScreenManager.register(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
+        ScreenManager.register(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
+        ScreenManager.register(DEVICE_FISHER_CONTAINER, DeviceFisherScreen::new);
+        ScreenManager.register(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
+        ScreenManager.register(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
+        ScreenManager.register(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
+        ScreenManager.register(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
+        ScreenManager.register(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
 
-        ScreenManager.registerFactory(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
+        ScreenManager.register(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
 
-        ScreenManager.registerFactory(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
-        ScreenManager.registerFactory(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
+        ScreenManager.register(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
+        ScreenManager.register(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
 
-        ScreenManager.registerFactory(SATCHEL_CONTAINER, SatchelScreen::new);
+        ScreenManager.register(SATCHEL_CONTAINER, SatchelScreen::new);
 
-        ScreenManager.registerFactory(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
-        ScreenManager.registerFactory(FLUID_CELL_CONTAINER, FluidCellScreen::new);
-        ScreenManager.registerFactory(ITEM_CELL_CONTAINER, ItemCellScreen::new);
+        ScreenManager.register(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
+        ScreenManager.register(FLUID_CELL_CONTAINER, FluidCellScreen::new);
+        ScreenManager.register(ITEM_CELL_CONTAINER, ItemCellScreen::new);
     }
 
     private void registerRenderLayers() {
 
-        RenderType cutout = RenderType.getCutout();
+        RenderType cutout = RenderType.cutout();
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_OBSIDIAN_GLASS), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_SIGNALUM_GLASS), cutout);

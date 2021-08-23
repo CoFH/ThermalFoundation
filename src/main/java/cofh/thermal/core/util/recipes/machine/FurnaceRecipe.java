@@ -27,7 +27,7 @@ public class FurnaceRecipe extends ThermalRecipe {
 
     public FurnaceRecipe(ResourceLocation recipeId, int energy, float experience, AbstractCookingRecipe recipe) {
 
-        this(recipeId, energy, experience, recipe.getIngredients(), Collections.emptyList(), Collections.singletonList(recipe.getRecipeOutput()), Collections.singletonList(BASE_CHANCE_LOCKED), Collections.emptyList());
+        this(recipeId, energy, experience, recipe.getIngredients(), Collections.emptyList(), Collections.singletonList(recipe.getResultItem()), Collections.singletonList(BASE_CHANCE_LOCKED), Collections.emptyList());
     }
 
     @Nonnull

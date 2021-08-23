@@ -33,7 +33,7 @@ public class SatchelScreen extends ContainerScreenCoFH<SatchelContainer> {
         info = generatePanelInfo("info.thermal.satchel");
 
         renderExtension = container.getExtraRows() * 18;
-        ySize += renderExtension;
+        imageHeight += renderExtension;
     }
 
     @Override
@@ -41,26 +41,26 @@ public class SatchelScreen extends ContainerScreenCoFH<SatchelContainer> {
 
         super.init();
 
-        for (int i = 0; i < container.getContainerInventorySize(); ++i) {
-            Slot slot = container.inventorySlots.get(i);
-            addElement(createSlot(this, slot.xPos, slot.yPos));
+        for (int i = 0; i < menu.getContainerInventorySize(); ++i) {
+            Slot slot = menu.slots.get(i);
+            addElement(createSlot(this, slot.x, slot.y));
         }
-        addPanel(new SecurityPanel(this, container, SecurityHelper.getID(player)));
+        addPanel(new SecurityPanel(this, menu, SecurityHelper.getID(player)));
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
 
         RenderHelper.resetColor();
         RenderHelper.bindTexture(texture);
 
-        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+        drawTexturedModalRect(leftPos, topPos, 0, 0, imageWidth, imageHeight);
         if (renderExtension > 0) {
             RenderHelper.bindTexture(TEXTURE_EXT);
-            drawTexturedModalRect(guiLeft, guiTop + renderExtension, 0, 0, xSize, ySize);
+            drawTexturedModalRect(leftPos, topPos + renderExtension, 0, 0, imageWidth, imageHeight);
         }
         RenderSystem.pushMatrix();
-        RenderSystem.translatef(guiLeft, guiTop, 0.0F);
+        RenderSystem.translatef(leftPos, topPos, 0.0F);
 
         drawPanels(matrixStack, false);
         drawElements(matrixStack, false);

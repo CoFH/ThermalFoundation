@@ -60,7 +60,7 @@ public class DisenchantmentFuelManager extends SingleItemFuelManager {
         int energy = 0;
 
         for (Enchantment enchant : enchants.keySet()) {
-            energy += enchant.getMinEnchantability(enchants.get(enchant));
+            energy += enchant.getMinCost(enchants.get(enchant));
         }
         energy += (enchants.size() * (enchants.size() + 1)) / 2;
         energy *= (DEFAULT_ENERGY / 2);
@@ -73,7 +73,7 @@ public class DisenchantmentFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.FUEL_DISENCHANTMENT);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_DISENCHANTMENT);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addFuel((ThermalFuel) entry.getValue());
         }

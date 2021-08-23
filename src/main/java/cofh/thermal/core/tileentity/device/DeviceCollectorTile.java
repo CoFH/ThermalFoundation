@@ -48,7 +48,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
             .build();
 
     protected static final Predicate<ItemEntity> VALID_ITEM_ENTITY = item -> {
-        if (!item.isAlive() || item.cannotPickup()) {
+        if (!item.isAlive() || item.hasPickUpDelay()) {
             return false;
         }
         CompoundNBT data = item.getPersistentData();
@@ -109,7 +109,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceCollectorContainer(i, world, pos, inventory, player);
+        return new DeviceCollectorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region HELPERS
@@ -135,7 +135,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
     protected void collectItems(AxisAlignedBB area) {
 
         IItemHandler handler = inventory.getHandler(ACCESSIBLE);
-        List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, area, VALID_ITEM_ENTITY);
+        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, area, VALID_ITEM_ENTITY);
 
         Predicate<ItemStack> filterRules = filter.getItemRules();
         for (ItemEntity item : items) {
@@ -154,11 +154,11 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     protected void collectXpOrbs(AxisAlignedBB area) {
 
-        List<ExperienceOrbEntity> orbs = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, area, EntityPredicates.IS_ALIVE);
+        List<ExperienceOrbEntity> orbs = level.getEntitiesOfClass(ExperienceOrbEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
 
         for (ExperienceOrbEntity orb : orbs) {
-            orb.xpValue -= xpStorage.receiveXp(orb.getXpValue(), false);
-            if (orb.xpValue <= 0) {
+            orb.value -= xpStorage.receiveXp(orb.getValue(), false);
+            if (orb.value <= 0) {
                 orb.remove();
             }
         }
@@ -202,7 +202,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
     public AxisAlignedBB getArea() {
 
         if (area == null) {
-            area = new AxisAlignedBB(pos.add(-radius, -1, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
+            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
         }
         return area;
     }

@@ -40,29 +40,29 @@ public class FireTNTEntity extends AbstractTNTEntity {
     @Override
     protected void explode() {
 
-        if (Utils.isServerWorld(world)) {
+        if (Utils.isServerWorld(level)) {
             if (!this.isInWater()) {
-                AreaUtils.igniteNearbyEntities(this, world, this.getPosition(), radius, FireGrenadeEntity.effectDuration);
-                AreaUtils.igniteSpecial(this, world, this.getPosition(), radius, true, true, tntPlacedBy);
-                AreaUtils.igniteNearbyGround(this, world, this.getPosition(), radius, 0.2);
+                AreaUtils.igniteNearbyEntities(this, level, this.blockPosition(), radius, FireGrenadeEntity.effectDuration);
+                AreaUtils.igniteSpecial(this, level, this.blockPosition(), radius, true, true, owner);
+                AreaUtils.igniteNearbyGround(this, level, this.blockPosition(), radius, 0.2);
                 makeAreaOfEffectCloud();
             }
             this.remove();
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY() + 0.5D, getPosZ());
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY() + 0.5D, getZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.FLAME);
+        cloud.setParticle(ParticleTypes.FLAME);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        level.addFreshEntity(cloud);
     }
 
 }

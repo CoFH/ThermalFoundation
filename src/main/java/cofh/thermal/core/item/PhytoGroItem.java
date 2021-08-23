@@ -42,14 +42,14 @@ public class PhytoGroItem extends ItemCoFH {
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
+        World world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
 
         if (attemptGrowPlant(world, pos, context, strength)) {
-            if (!world.isRemote) {
-                world.playEvent(2005, pos, 0);
+            if (!world.isClientSide) {
+                world.levelEvent(2005, pos, 0);
             }
             return ActionResultType.SUCCESS;
         }
@@ -58,7 +58,7 @@ public class PhytoGroItem extends ItemCoFH {
 
     protected static boolean attemptGrowPlant(World world, BlockPos pos, ItemUseContext context, int strength) {
 
-        ItemStack stack = context.getItem();
+        ItemStack stack = context.getItemInHand();
         BlockState state = world.getBlockState(pos);
         PlayerEntity player = context.getPlayer();
         if (player != null) {
@@ -69,8 +69,8 @@ public class PhytoGroItem extends ItemCoFH {
         }
         boolean used;
         used = growPlant(world, pos, state, strength);
-        used |= growSeagrass(world, pos, context.getFace());
-        if (Utils.isServerWorld(world) && used && world.rand.nextInt(strength) == 0) {
+        used |= growSeagrass(world, pos, context.getClickedFace());
+        if (Utils.isServerWorld(world) && used && world.random.nextInt(strength) == 0) {
             stack.shrink(1);
         }
         return used;
@@ -81,16 +81,16 @@ public class PhytoGroItem extends ItemCoFH {
         if (state.getBlock() instanceof IGrowable) {
             IGrowable growable = (IGrowable) state.getBlock();
             boolean used = false;
-            if (growable.canGrow(worldIn, pos, state, worldIn.isRemote)) {
+            if (growable.isValidBonemealTarget(worldIn, pos, state, worldIn.isClientSide)) {
                 if (worldIn instanceof ServerWorld) {
                     boolean canUse = false;
                     for (int i = 0; i < strength; ++i) {
-                        canUse |= growable.canUseBonemeal(worldIn, worldIn.rand, pos, state);
+                        canUse |= growable.isBonemealSuccess(worldIn, worldIn.random, pos, state);
                     }
                     if (canUse) {
                         // TODO: Remove try/catch when Mojang fixes base issue.
                         try {
-                            growable.grow((ServerWorld) worldIn, worldIn.rand, pos, state);
+                            growable.performBonemeal((ServerWorld) worldIn, worldIn.random, pos, state);
                         } catch (Exception e) {
                             // Vanilla issue causes bamboo to crash if grown close to world height
                             if (!(growable instanceof BambooBlock)) {
@@ -108,40 +108,40 @@ public class PhytoGroItem extends ItemCoFH {
 
     public static boolean growSeagrass(World worldIn, BlockPos pos, @Nullable Direction side) {
 
-        if (worldIn.getBlockState(pos).isIn(Blocks.WATER) && worldIn.getFluidState(pos).getLevel() == 8) {
+        if (worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getFluidState(pos).getAmount() == 8) {
             if (!(worldIn instanceof ServerWorld)) {
                 return true;
             } else {
                 label79:
                 for (int i = 0; i < 128; ++i) {
                     BlockPos blockpos = pos;
-                    BlockState blockstate = Blocks.SEAGRASS.getDefaultState();
+                    BlockState blockstate = Blocks.SEAGRASS.defaultBlockState();
 
                     for (int j = 0; j < i / 16; ++j) {
-                        blockpos = blockpos.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
-                        if (worldIn.getBlockState(blockpos).hasOpaqueCollisionShape(worldIn, blockpos)) {
+                        blockpos = blockpos.offset(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
+                        if (worldIn.getBlockState(blockpos).isCollisionShapeFullBlock(worldIn, blockpos)) {
                             continue label79;
                         }
                     }
-                    Optional<RegistryKey<Biome>> optional = worldIn.func_242406_i(blockpos);
+                    Optional<RegistryKey<Biome>> optional = worldIn.getBiomeName(blockpos);
                     if (Objects.equals(optional, Optional.of(Biomes.WARM_OCEAN)) || Objects.equals(optional, Optional.of(Biomes.DEEP_WARM_OCEAN))) {
                         if (i == 0 && side != null && side.getAxis().isHorizontal()) {
-                            blockstate = (BlockTags.WALL_CORALS.getRandomElement(worldIn.rand)).getDefaultState().with(DeadCoralWallFanBlock.FACING, side);
+                            blockstate = (BlockTags.WALL_CORALS.getRandomElement(worldIn.random)).defaultBlockState().setValue(DeadCoralWallFanBlock.FACING, side);
                         } else if (random.nextInt(4) == 0) {
-                            blockstate = (BlockTags.UNDERWATER_BONEMEALS.getRandomElement(random)).getDefaultState();
+                            blockstate = (BlockTags.UNDERWATER_BONEMEALS.getRandomElement(random)).defaultBlockState();
                         }
                     }
-                    if (blockstate.getBlock().isIn(BlockTags.WALL_CORALS)) {
-                        for (int k = 0; !blockstate.isValidPosition(worldIn, blockpos) && k < 4; ++k) {
-                            blockstate = blockstate.with(DeadCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.random(random));
+                    if (blockstate.getBlock().is(BlockTags.WALL_CORALS)) {
+                        for (int k = 0; !blockstate.canSurvive(worldIn, blockpos) && k < 4; ++k) {
+                            blockstate = blockstate.setValue(DeadCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
                         }
                     }
-                    if (blockstate.isValidPosition(worldIn, blockpos)) {
+                    if (blockstate.canSurvive(worldIn, blockpos)) {
                         BlockState blockstate1 = worldIn.getBlockState(blockpos);
-                        if (blockstate1.isIn(Blocks.WATER) && worldIn.getFluidState(blockpos).getLevel() == 8) {
-                            worldIn.setBlockState(blockpos, blockstate, 3);
-                        } else if (blockstate1.isIn(Blocks.SEAGRASS) && random.nextInt(10) == 0) {
-                            ((IGrowable) Blocks.SEAGRASS).grow((ServerWorld) worldIn, random, blockpos, blockstate1);
+                        if (blockstate1.is(Blocks.WATER) && worldIn.getFluidState(blockpos).getAmount() == 8) {
+                            worldIn.setBlock(blockpos, blockstate, 3);
+                        } else if (blockstate1.is(Blocks.SEAGRASS) && random.nextInt(10) == 0) {
+                            ((IGrowable) Blocks.SEAGRASS).performBonemeal((ServerWorld) worldIn, random, blockpos, blockstate1);
                         }
                     }
                 }
@@ -157,12 +157,12 @@ public class PhytoGroItem extends ItemCoFH {
         boolean isPlant = world.getBlockState(pos).getBlock() instanceof IPlantable;
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, pos.getX() + 0.5D, pos.getY() + (isPlant ? 0.0D : 1.0D), pos.getZ() + 0.5D);
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.HAPPY_VILLAGER);
+        cloud.setParticle(ParticleTypes.HAPPY_VILLAGER);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((1 + radius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        world.addFreshEntity(cloud);
     }
 
 }

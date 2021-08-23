@@ -66,7 +66,7 @@ public class ThermalItemGroups {
 
         @Override
         @OnlyIn(Dist.CLIENT)
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get("enderium_block"));
         }
@@ -76,7 +76,7 @@ public class ThermalItemGroups {
 
         @Override
         @OnlyIn(Dist.CLIENT)
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get("signalum_gear"));
         }
@@ -86,7 +86,7 @@ public class ThermalItemGroups {
 
         @Override
         @OnlyIn(Dist.CLIENT)
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get("wrench"));
         }

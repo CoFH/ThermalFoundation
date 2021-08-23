@@ -51,13 +51,13 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
     public void addRecipe(ThermalRecipe recipe) {
 
         if (recipe.getInputItems().size() == 1) {
-            for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
+            for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
                 addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
             }
         } else {
             // The die should never have multiple variations but eh, who knows?
-            for (ItemStack dieInput : recipe.getInputItems().get(1).getMatchingStacks()) {
-                for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
+            for (ItemStack dieInput : recipe.getInputItems().get(1).getItems()) {
+                for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
                     addRecipe(recipe.getEnergy(), recipe.getXp(), asList(recipeInput, dieInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
                 }
             }
@@ -167,7 +167,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         //                addRecipe(recipe);
         //            }
         //        }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_PRESS);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PRESS);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }

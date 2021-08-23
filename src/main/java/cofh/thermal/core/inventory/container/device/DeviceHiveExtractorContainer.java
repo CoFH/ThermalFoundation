@@ -18,7 +18,7 @@ public class DeviceHiveExtractorContainer extends TileContainer {
     public DeviceHiveExtractorContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(DEVICE_HIVE_EXTRACTOR_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ThermalTileAugmentable) world.getTileEntity(pos);
+        this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotRemoveOnly(tileInv, 0, 44, 35));

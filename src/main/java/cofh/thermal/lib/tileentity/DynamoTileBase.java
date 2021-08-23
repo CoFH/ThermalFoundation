@@ -70,16 +70,16 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     @Override
     public TileCoFH worldContext(BlockState state, IBlockReader world) {
 
-        facing = state.get(FACING_ALL);
+        facing = state.getValue(FACING_ALL);
         updateHandlers();
 
         return this;
     }
 
     @Override
-    public void updateContainingBlockInfo() {
+    public void clearCache() {
 
-        super.updateContainingBlockInfo();
+        super.clearCache();
         updateFacing();
     }
 
@@ -105,7 +105,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
                     processStart();
                 }
             }
-        } else if (Utils.timeCheckQuarter(world)) {
+        } else if (Utils.timeCheckQuarter(level)) {
             if (redstoneControl.getState() && canProcessStart()) {
                 processStart();
                 processTick();
@@ -171,7 +171,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     protected void updateFacing() {
 
-        facing = getBlockState().get(FACING_ALL);
+        facing = getBlockState().getValue(FACING_ALL);
         updateHandlers();
     }
     // endregion
@@ -259,9 +259,9 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         fuelMax = nbt.getInt(TAG_FUEL_MAX);
         fuel = nbt.getInt(TAG_FUEL);
@@ -273,9 +273,9 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_FUEL_MAX, fuelMax);
         nbt.putInt(TAG_FUEL, fuel);

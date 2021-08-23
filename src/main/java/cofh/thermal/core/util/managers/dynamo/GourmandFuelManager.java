@@ -73,24 +73,24 @@ public class GourmandFuelManager extends SingleItemFuelManager {
         if (stack.getItem().hasContainerItem(stack)) {
             return 0;
         }
-        Food food = stack.getItem().getFood();
+        Food food = stack.getItem().getFoodProperties();
         if (food == null) {
             return 0;
         }
-        int energy = food.getHealing() * DEFAULT_ENERGY;
+        int energy = food.getNutrition() * DEFAULT_ENERGY;
 
         if (food.getEffects().size() > 0) {
             for (Pair<EffectInstance, Float> effect : food.getEffects()) {
-                if (effect.getFirst().getPotion().getEffectType() == EffectType.HARMFUL) {
+                if (effect.getFirst().getEffect().getCategory() == EffectType.HARMFUL) {
                     return 0;
                 }
             }
             energy *= 2;
         }
-        if (food.getSaturation() > 1.0F) {
+        if (food.getSaturationModifier() > 1.0F) {
             energy *= 4;
         }
-        if (food.isFastEating()) {
+        if (food.isFastFood()) {
             energy *= 2;
         }
         return energy >= MIN_ENERGY ? energy : 0;
@@ -101,7 +101,7 @@ public class GourmandFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.FUEL_GOURMAND);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_GOURMAND);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addFuel((ThermalFuel) entry.getValue());
         }
@@ -134,7 +134,7 @@ public class GourmandFuelManager extends SingleItemFuelManager {
 
     protected GourmandFuel convert(ItemStack item, int energy) {
 
-        return new GourmandFuel(new ResourceLocation(ID_THERMAL, "gourmand_" + item.getItem().getRegistryName().getPath()), energy, singletonList(Ingredient.fromStacks(item)), emptyList());
+        return new GourmandFuel(new ResourceLocation(ID_THERMAL, "gourmand_" + item.getItem().getRegistryName().getPath()), energy, singletonList(Ingredient.of(item)), emptyList());
     }
     // endregion
 }

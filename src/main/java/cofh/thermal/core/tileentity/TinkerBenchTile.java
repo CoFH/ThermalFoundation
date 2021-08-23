@@ -143,7 +143,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new TinkerBenchContainer(i, world, pos, inventory, player);
+        return new TinkerBenchContainer(i, level, worldPosition, inventory, player);
     }
 
     // region GUI
@@ -176,17 +176,17 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         mode = nbt.getByte(TAG_MODE);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putByte(TAG_MODE, mode);
 

@@ -23,13 +23,13 @@ public class BlitzRenderer extends MobRenderer<BlitzEntity, BlitzModel<BlitzEnti
     }
 
     @Override
-    protected int getBlockLight(BlitzEntity entityIn, BlockPos partialTicks) {
+    protected int getBlockLightLevel(BlitzEntity entityIn, BlockPos partialTicks) {
 
-        return entityIn.isAngry() ? 12 : super.getBlockLight(entityIn, partialTicks);
+        return entityIn.isAngry() ? 12 : super.getBlockLightLevel(entityIn, partialTicks);
     }
 
     @Override
-    public ResourceLocation getEntityTexture(BlitzEntity entity) {
+    public ResourceLocation getTextureLocation(BlitzEntity entity) {
 
         return entity.isAngry() ? ANGRY_TEXTURE : CALM_TEXTURE;
     }

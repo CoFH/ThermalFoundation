@@ -60,15 +60,15 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderLabels(MatrixStack matrixStack, int mouseX, int mouseY) {
 
         String input = format(tile.amountInput);
         String output = format(tile.amountOutput);
 
-        getFontRenderer().drawString(matrixStack, input, getCenteredOffset(input, 34), 42, 0x404040);
-        getFontRenderer().drawString(matrixStack, output, getCenteredOffset(output, 142), 42, 0x404040);
+        getFontRenderer().draw(matrixStack, input, getCenteredOffset(input, 34), 42, 0x404040);
+        getFontRenderer().draw(matrixStack, output, getCenteredOffset(output, 142), 42, 0x404040);
 
-        super.drawGuiContainerForegroundLayer(matrixStack, mouseX, mouseY);
+        super.renderLabels(matrixStack, mouseX, mouseY);
     }
 
     // region ELEMENTS

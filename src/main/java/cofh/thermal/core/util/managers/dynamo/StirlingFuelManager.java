@@ -80,7 +80,7 @@ public class StirlingFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.FUEL_STIRLING);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_STIRLING);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addFuel((ThermalFuel) entry.getValue());
         }
@@ -113,7 +113,7 @@ public class StirlingFuelManager extends SingleItemFuelManager {
 
     protected StirlingFuel convert(ItemStack item, int energy) {
 
-        return new StirlingFuel(new ResourceLocation(ID_THERMAL, "stirling_" + item.getItem().getRegistryName().getPath()), energy, singletonList(Ingredient.fromStacks(item)), emptyList());
+        return new StirlingFuel(new ResourceLocation(ID_THERMAL, "stirling_" + item.getItem().getRegistryName().getPath()), energy, singletonList(Ingredient.of(item)), emptyList());
     }
     // endregion
 }

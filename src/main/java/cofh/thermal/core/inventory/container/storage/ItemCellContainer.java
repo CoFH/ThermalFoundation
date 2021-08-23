@@ -17,7 +17,7 @@ public class ItemCellContainer extends TileContainer {
     public ItemCellContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(ITEM_CELL_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ItemCellTile) world.getTileEntity(pos);
+        this.tile = (ItemCellTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         bindAugmentSlots(tileInv, 1, this.tile.augSize());

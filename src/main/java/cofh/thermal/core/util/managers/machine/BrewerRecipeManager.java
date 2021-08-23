@@ -64,7 +64,7 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
 
     public void addRecipe(ThermalRecipe recipe) {
 
-        for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
+        for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
             addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
         }
     }
@@ -153,7 +153,7 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
                 addRecipe(recipe);
             }
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_BREWER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BREWER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
@@ -170,7 +170,7 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
 
     protected void createConvertedRecipes() {
 
-        for (Object mixpredicate : PotionBrewing.POTION_TYPE_CONVERSIONS) {
+        for (Object mixpredicate : PotionBrewing.POTION_MIXES) {
             createConvertedRecipe(mixpredicate);
         }
 

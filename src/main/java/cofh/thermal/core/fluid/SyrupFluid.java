@@ -25,10 +25,10 @@ public class SyrupFluid extends FluidCoFH {
         super(FLUIDS, key, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .density(1400)
                 .viscosity(2500)
-                .sound(SoundEvents.ITEM_BOTTLE_FILL, SoundEvents.ITEM_BOTTLE_EMPTY)
+                .sound(SoundEvents.BOTTLE_FILL, SoundEvents.BOTTLE_EMPTY)
         );
 
-        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_ITEMS)));
+        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ThermalItemGroups.THERMAL_ITEMS)));
         properties.bucket(bucket);
     }
 

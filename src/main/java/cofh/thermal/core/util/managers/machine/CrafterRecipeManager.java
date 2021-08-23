@@ -40,7 +40,7 @@ public class CrafterRecipeManager extends AbstractManager implements IManager {
 
     public CrafterRecipe getRecipe(IRecipe<?> recipe) {
 
-        if (recipe == null || recipe.isDynamic() || recipe.getRecipeOutput().isEmpty()) {
+        if (recipe == null || recipe.isSpecial() || recipe.getResultItem().isEmpty()) {
             return null;
         }
         if (!recipeMap.containsKey(recipe)) {

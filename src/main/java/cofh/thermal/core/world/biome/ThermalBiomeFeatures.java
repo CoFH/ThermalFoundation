@@ -81,73 +81,73 @@ public class ThermalBiomeFeatures {
     // region ORES
     public static void withApatiteOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_APATITE);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_APATITE);
     }
 
     public static void withCinnabarOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_CINNABAR);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_CINNABAR);
     }
 
     public static void withNiterOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_NITER);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_NITER);
     }
 
     public static void withSulfurOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_SULFUR);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_SULFUR);
     }
 
     // TODO: 1.17 remove.
     public static void withCopperOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_COPPER);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_COPPER);
     }
 
     public static void withTinOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_TIN);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_TIN);
     }
 
     public static void withLeadOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_LEAD);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_LEAD);
     }
 
     public static void withSilverOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_SILVER);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_SILVER);
     }
 
     public static void withNickelOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_NICKEL);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_NICKEL);
     }
     // endregion
 
     // region OIL
     public static void withOilSand(BiomeGenerationSettings.Builder builder) {
 
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OIL_SAND);
-        builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OIL_RED_SAND);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OIL_SAND);
+        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OIL_RED_SAND);
     }
     // endregion
 
     // region MOBS
     public static void withBasalz(MobSpawnInfoBuilder builder) {
 
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BASALZ_ENTITY, 10, 1, 3));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BASALZ_ENTITY, 10, 1, 3));
     }
 
     public static void withBlitz(MobSpawnInfoBuilder builder) {
 
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BLITZ_ENTITY, 10, 1, 3));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BLITZ_ENTITY, 10, 1, 3));
     }
 
     public static void withBlizz(MobSpawnInfoBuilder builder) {
 
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BLIZZ_ENTITY, 10, 1, 3));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BLIZZ_ENTITY, 10, 1, 3));
     }
     // endregion
 

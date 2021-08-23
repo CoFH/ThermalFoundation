@@ -58,7 +58,7 @@ public class BlockItemFluidCell extends BlockItemAugmentable implements IFluidCo
 
     protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
 
-        CompoundNBT subTag = container.getChildTag(TAG_PROPERTIES);
+        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -77,7 +77,7 @@ public class BlockItemFluidCell extends BlockItemAugmentable implements IFluidCo
     @Override
     public CompoundNBT getOrCreateTankTag(ItemStack container) {
 
-        CompoundNBT blockTag = container.getOrCreateChildTag(TAG_BLOCK_ENTITY);
+        CompoundNBT blockTag = container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         ListNBT tanks = blockTag.getList(TAG_TANK_INV, TAG_COMPOUND);
         if (tanks.isEmpty()) {
             CompoundNBT tag = new CompoundNBT();

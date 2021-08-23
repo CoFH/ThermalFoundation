@@ -59,18 +59,18 @@ public class TCoreClientEvents {
             }
             String type = augmentData.getString(TAG_TYPE);
             if (!type.isEmpty()) {
-                IFormattableTextComponent typeText = getTextComponent("info.thermal.augment.type." + type).mergeStyle(TextFormatting.WHITE);
+                IFormattableTextComponent typeText = getTextComponent("info.thermal.augment.type." + type).withStyle(TextFormatting.WHITE);
 
                 //                if (isTypeExclusive(type)) {
                 //                    typeText.mergeStyle(TextFormatting.UNDERLINE);
                 //                }
                 tooltip.add(getTextComponent("info.cofh.type")
-                        .mergeStyle(TextFormatting.YELLOW)
-                        .appendString(": ")
+                        .withStyle(TextFormatting.YELLOW)
+                        .append(": ")
                         .append(typeText)
                 );
             }
-            for (String mod : augmentData.keySet()) {
+            for (String mod : augmentData.getAllKeys()) {
                 if (mod.equals(TAG_TYPE) || !canLocalize("info.thermal.augment.attr." + mod)) {
                     continue;
                 }
@@ -82,14 +82,14 @@ public class TCoreClientEvents {
                 IFormattableTextComponent modText = new StringTextComponent("" +
                         (isAdditive(mod) && value > 0 ? "+" : "") +
                         (isInteger(mod) ? DF0.format(value) : isMultiplicative(mod) ? DF2.format(value) + "x" : DF0.format(value * 100) + "%"))
-                        .mergeStyle(bad ? TextFormatting.RED : TextFormatting.GREEN);
+                        .withStyle(bad ? TextFormatting.RED : TextFormatting.GREEN);
 
                 if (isMaximized(mod)) {
-                    modText.mergeStyle(TextFormatting.UNDERLINE);
+                    modText.withStyle(TextFormatting.UNDERLINE);
                 }
                 tooltip.add(getTextComponent("info.thermal.augment.attr." + mod)
-                        .appendString(": ")
-                        .mergeStyle(TextFormatting.GRAY)
+                        .append(": ")
+                        .withStyle(TextFormatting.GRAY)
                         .append(modText)
                 );
             }
@@ -102,8 +102,8 @@ public class TCoreClientEvents {
         ClientPlayerEntity player = Minecraft.getInstance().player;
 
         if (player != null) {
-            Item heldItem = player.getHeldItemMainhand().getItem();
-            if (heldItem instanceof WrenchItem && ((WrenchItem) heldItem).getMode(player.getHeldItemMainhand()) > 0) {
+            Item heldItem = player.getMainHandItem().getItem();
+            if (heldItem instanceof WrenchItem && ((WrenchItem) heldItem).getMode(player.getMainHandItem()) > 0) {
                 renderOperationalAreas(player, event.getMatrixStack());
             }
         }
@@ -112,29 +112,29 @@ public class TCoreClientEvents {
     // region HELPERS
     private static boolean playerWithinDistance(BlockPos pos, PlayerEntity player, double distanceSq) {
 
-        return pos.distanceSq(player.getPositionVec(), true) <= distanceSq;
+        return pos.distSqr(player.position(), true) <= distanceSq;
     }
 
     private static void blueLine(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, float dx1, float dy1, float dz1, float dx2, float dy2, float dz2) {
 
-        builder.pos(positionMatrix, pos.getX() + dx1, pos.getY() + dy1, pos.getZ() + dz1)
+        builder.vertex(positionMatrix, pos.getX() + dx1, pos.getY() + dy1, pos.getZ() + dz1)
                 .color(0.0f, 0.0f, 1.0f, 1.0f)
                 .endVertex();
-        builder.pos(positionMatrix, pos.getX() + dx2, pos.getY() + dy2, pos.getZ() + dz2)
+        builder.vertex(positionMatrix, pos.getX() + dx2, pos.getY() + dy2, pos.getZ() + dz2)
                 .color(0.0f, 0.0f, 1.0f, 1.0f)
                 .endVertex();
     }
 
     private static void renderOperationalAreas(ClientPlayerEntity player, MatrixStack matrixStack) {
 
-        IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
+        IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().renderBuffers().bufferSource();
         IVertexBuilder builder = buffer.getBuffer(CoreRenderType.OVERLAY_LINES);
-        matrixStack.push();
+        matrixStack.pushPose();
 
-        Vector3d projectedView = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
+        Vector3d projectedView = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
         matrixStack.translate(-projectedView.x, -projectedView.y, -projectedView.z);
 
-        Matrix4f positionMatrix = matrixStack.getLast().getMatrix();
+        Matrix4f positionMatrix = matrixStack.last().pose();
         BlockPos.Mutable pos = new BlockPos.Mutable();
 
         for (IAreaEffectTile tile : ProxyClient.getAreaEffectTiles()) {
@@ -143,7 +143,7 @@ public class TCoreClientEvents {
             }
             AxisAlignedBB area = tile.getArea();
 
-            pos.setPos(area.minX, area.minY, area.minZ);
+            pos.set(area.minX, area.minY, area.minZ);
             float lenX = (float) (area.maxX - area.minX);
             float lenY = (float) (area.maxY - area.minY);
             float lenZ = (float) (area.maxZ - area.minZ);
@@ -163,9 +163,9 @@ public class TCoreClientEvents {
             blueLine(builder, positionMatrix, pos, 0, 0, lenZ, 0, lenY, lenZ);
             blueLine(builder, positionMatrix, pos, lenX, 0, lenZ, lenX, lenY, lenZ);
         }
-        matrixStack.pop();
+        matrixStack.popPose();
         RenderSystem.disableDepthTest();
-        buffer.finish(CoreRenderType.OVERLAY_LINES);
+        buffer.endBatch(CoreRenderType.OVERLAY_LINES);
     }
     // endregion
 }

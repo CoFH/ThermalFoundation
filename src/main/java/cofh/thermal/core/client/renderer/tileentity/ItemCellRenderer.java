@@ -25,15 +25,15 @@ public class ItemCellRenderer extends TileEntityRenderer<ItemCellTile> {
         ItemStack item = tile.getRenderItem();
 
         if (!item.isEmpty()) {
-            matrixStackIn.push();
+            matrixStackIn.pushPose();
             float spin = (float) ((CoreClientEvents.renderTime + partialTicks) / Math.PI);
             float bob = (float) (Math.sin(((float) CoreClientEvents.renderTime + spin) / 20.0F) * 0.1F + 0.1F);
 
             matrixStackIn.translate(0.5, bob + 0.25, 0.5);
-            matrixStackIn.rotate(Vector3f.YP.rotation(((float) CoreClientEvents.renderTime + spin) / 30.0F));
+            matrixStackIn.mulPose(Vector3f.YP.rotation(((float) CoreClientEvents.renderTime + spin) / 30.0F));
 
-            Minecraft.getInstance().getItemRenderer().renderItem(item, ItemCameraTransforms.TransformType.GROUND, combinedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn);
-            matrixStackIn.pop();
+            Minecraft.getInstance().getItemRenderer().renderStatic(item, ItemCameraTransforms.TransformType.GROUND, combinedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn);
+            matrixStackIn.popPose();
         }
     }
 

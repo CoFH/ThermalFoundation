@@ -42,41 +42,41 @@ public class BlitzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected boolean isFireballFiery() {
+    protected boolean shouldBurn() {
 
         return false;
     }
 
     @Override
-    protected IParticleData getParticle() {
+    protected IParticleData getTrailParticle() {
 
         return ParticleTypes.INSTANT_EFFECT;
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
             if (!entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addPotionEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false));
+                living.addEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false));
             }
-            entity.attackEntityFrom(BlitzDamageSource.causeDamage(this, func_234616_v_()), entity.isWet() ? baseDamage + 3.0F : baseDamage);
+            entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), entity.isInWaterOrRain() ? baseDamage + 3.0F : baseDamage);
         }
-        if (Utils.isServerWorld(world)) {
-            this.world.setEntityState(this, (byte) 3);
+        if (Utils.isServerWorld(level)) {
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
     }
 
     @Override
-    protected void registerData() {
+    protected void defineSynchedData() {
 
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }

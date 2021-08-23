@@ -39,25 +39,25 @@ public class SlimeTNTEntity extends AbstractTNTEntity {
     @Override
     protected void explode() {
 
-        if (Utils.isServerWorld(world)) {
-            SlimeGrenadeEntity.affectNearbyEntities(this, world, this.getPosition(), radius, tntPlacedBy);
+        if (Utils.isServerWorld(level)) {
+            SlimeGrenadeEntity.affectNearbyEntities(this, level, this.blockPosition(), radius, owner);
             makeAreaOfEffectCloud();
             this.remove();
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY() + 0.5D, getPosZ());
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY() + 0.5D, getZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.ITEM_SLIME);
+        cloud.setParticle(ParticleTypes.ITEM_SLIME);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        level.addFreshEntity(cloud);
     }
 
 }

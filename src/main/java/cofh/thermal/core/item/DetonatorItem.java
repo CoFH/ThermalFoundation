@@ -54,11 +54,11 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
     @Override
     protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.detonator.use." + getMode(stack)).mergeStyle(TextFormatting.GRAY));
-        tooltip.add(getTextComponent("info.thermal.detonator.primed").mergeStyle(TextFormatting.GRAY).append(getTextComponent(" " + getPrimedCount(stack) + "/" + MAX_PRIMED).mergeStyle(getPrimedCount(stack) <= 0 ? TextFormatting.RED : getMode(stack) == 0 ? TextFormatting.YELLOW : TextFormatting.GREEN)));
-        tooltip.add(getTextComponent("info.thermal.detonator.use.sneak").mergeStyle(TextFormatting.DARK_GRAY));
+        tooltip.add(getTextComponent("info.thermal.detonator.use." + getMode(stack)).withStyle(TextFormatting.GRAY));
+        tooltip.add(getTextComponent("info.thermal.detonator.primed").withStyle(TextFormatting.GRAY).append(getTextComponent(" " + getPrimedCount(stack) + "/" + MAX_PRIMED).withStyle(getPrimedCount(stack) <= 0 ? TextFormatting.RED : getMode(stack) == 0 ? TextFormatting.YELLOW : TextFormatting.GREEN)));
+        tooltip.add(getTextComponent("info.thermal.detonator.use.sneak").withStyle(TextFormatting.DARK_GRAY));
 
-        tooltip.add(getTextComponent("info.thermal.detonator.mode." + getMode(stack)).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.detonator.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
         if (getPrimedCount(stack) > 0) {
             addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
         }
@@ -67,14 +67,14 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
     protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
 
         if (getMode(stack) == 0) {
-            return primeTNT(stack, context.getWorld(), context.getPos(), context.getPlayer());
+            return primeTNT(stack, context.getLevel(), context.getClickedPos(), context.getPlayer());
         }
-        return detonateTNT(stack, context.getWorld(), context.getPlayer());
+        return detonateTNT(stack, context.getLevel(), context.getPlayer());
     }
 
     protected boolean primeTNT(ItemStack stack, World world, BlockPos pos, PlayerEntity player) {
 
-        if (player == null || world.isAirBlock(pos)) {
+        if (player == null || world.isEmptyBlock(pos)) {
             return false;
         }
         if (TNT_MAP.containsKey(world.getBlockState(pos).getBlock())) {
@@ -101,7 +101,7 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
                 BlockPos tntPos = NBTUtil.readBlockPos(primedTNT.getCompound(i));
                 attemptDetonate(world, tntPos, player, 0);
             }
-            stack.removeChildTag(TAG_PRIMED);
+            stack.removeTagKey(TAG_PRIMED);
         }
         setMode(stack, 0);
         return true;
@@ -109,7 +109,7 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
 
     protected void attemptDetonate(World world, BlockPos pos, PlayerEntity player, int fuse) {
 
-        if (!world.isBlockPresent(pos)) {
+        if (!world.isLoaded(pos)) {
             return;
         }
         Block block = world.getBlockState(pos).getBlock();
@@ -117,8 +117,8 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
             world.removeBlock(pos, false);
             TNTEntity tnt = TNT_MAP.get(block).createTNT(world, pos.getX(), pos.getY(), pos.getZ(), player);
             tnt.setFuse(fuse);
-            world.addEntity(tnt);
-            world.playSound(null, tnt.getPosX(), tnt.getPosY(), tnt.getPosZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.addFreshEntity(tnt);
+            world.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
     }
 
@@ -132,13 +132,13 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
         if (player == null) {
             return ActionResultType.FAIL;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), context.getItem()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
     }
 
     @Override
@@ -148,24 +148,24 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         if (player == null) {
             return ActionResultType.PASS;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 
-        ItemStack stack = player.getHeldItem(hand);
+        ItemStack stack = player.getItemInHand(hand);
         if (player.isSecondaryUseActive()) {
-            stack.removeChildTag(TAG_PRIMED);
-            player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 0.3F);
-            return ActionResult.resultSuccess(stack);
+            stack.removeTagKey(TAG_PRIMED);
+            player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, 0.3F);
+            return ActionResult.success(stack);
         }
         if (getMode(stack) == 1 && detonateTNT(stack, world, player)) {
-            player.swingArm(hand);
-            player.playSound(SoundEvents.BLOCK_LEVER_CLICK, 0.4F, 1.0F);
-            return ActionResult.resultSuccess(stack);
+            player.swing(hand);
+            player.playSound(SoundEvents.LEVER_CLICK, 0.4F, 1.0F);
+            return ActionResult.success(stack);
         }
-        return ActionResult.resultPass(stack);
+        return ActionResult.pass(stack);
     }
 
     // region IMultiModeItem
@@ -178,7 +178,7 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
     @Override
     public void onModeChange(PlayerEntity player, ItemStack stack) {
 
-        player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.PLAYERS, 0.4F, 1.0F - 0.3F * getMode(stack));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.LEVER_CLICK, SoundCategory.PLAYERS, 0.4F, 1.0F - 0.3F * getMode(stack));
         ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.detonator.mode." + getMode(stack)));
     }
     // endregion

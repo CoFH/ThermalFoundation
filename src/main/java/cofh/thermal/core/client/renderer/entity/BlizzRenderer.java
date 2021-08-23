@@ -23,13 +23,13 @@ public class BlizzRenderer extends MobRenderer<BlizzEntity, BlizzModel<BlizzEnti
     }
 
     @Override
-    protected int getBlockLight(BlizzEntity entityIn, BlockPos partialTicks) {
+    protected int getBlockLightLevel(BlizzEntity entityIn, BlockPos partialTicks) {
 
-        return entityIn.isAngry() ? 7 : super.getBlockLight(entityIn, partialTicks);
+        return entityIn.isAngry() ? 7 : super.getBlockLightLevel(entityIn, partialTicks);
     }
 
     @Override
-    public ResourceLocation getEntityTexture(BlizzEntity entity) {
+    public ResourceLocation getTextureLocation(BlizzEntity entity) {
 
         return entity.isAngry() ? CALM_TEXTURE : CALM_TEXTURE;
     }

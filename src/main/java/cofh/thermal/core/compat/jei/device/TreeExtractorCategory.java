@@ -49,7 +49,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
         background = guiHelper.drawableBuilder(DeviceTreeExtractorScreen.TEXTURE, 86, 11, 80, 62)
                 .addPadding(0, 0, 16, 68)
                 .build();
-        name = getTextComponent(DEVICE_TREE_EXTRACTOR_BLOCK.getTranslationKey());
+        name = getTextComponent(DEVICE_TREE_EXTRACTOR_BLOCK.getDescriptionId());
 
         tankBackground = Drawables.getDrawables(guiHelper).getTank(Drawables.TANK_MEDIUM);
         tankOverlay = Drawables.getDrawables(guiHelper).getTankOverlay(Drawables.TANK_MEDIUM);

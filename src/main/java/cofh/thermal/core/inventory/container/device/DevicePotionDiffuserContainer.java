@@ -18,7 +18,7 @@ public class DevicePotionDiffuserContainer extends TileContainer {
     public DevicePotionDiffuserContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(DEVICE_POTION_DIFFUSER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ThermalTileAugmentable) world.getTileEntity(pos);
+        this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 44, 35));

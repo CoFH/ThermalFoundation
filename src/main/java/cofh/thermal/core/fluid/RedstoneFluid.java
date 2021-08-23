@@ -39,14 +39,14 @@ public class RedstoneFluid extends FluidCoFH {
         flowingFluid = FLUIDS.register(flowing(key), () -> new ForgeFlowingFluid.Flowing(properties));
 
         // block = BLOCKS.register(key, () -> new RedstoneFluidBlock(stillFluid, AbstractBlock.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()));
-        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
+        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
 
         properties = new ForgeFlowingFluid.Properties(stillFluid, flowingFluid, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .luminosity(7)
                 .density(1200)
                 .viscosity(1500)
                 .rarity(Rarity.UNCOMMON)
-                .sound(SoundEvents.ITEM_BUCKET_FILL, SoundEvents.ITEM_BUCKET_EMPTY)
+                .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY)
         ).bucket(bucket);//.block(block);
     }
 
@@ -58,15 +58,15 @@ public class RedstoneFluid extends FluidCoFH {
         }
 
         @Override
-        public boolean canProvidePower(BlockState state) {
+        public boolean isSignalSource(BlockState state) {
 
             return signal;
         }
 
         @Override
-        public int getWeakPower(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side) {
+        public int getSignal(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side) {
 
-            return signal ? MathHelper.clamp(blockState.get(LEVEL) * 2 - 1, 1, 15) : 0;
+            return signal ? MathHelper.clamp(blockState.getValue(LEVEL) * 2 - 1, 1, 15) : 0;
         }
 
     }

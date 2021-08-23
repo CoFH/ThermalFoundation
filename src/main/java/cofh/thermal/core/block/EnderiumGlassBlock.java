@@ -30,10 +30,10 @@ public class EnderiumGlassBlock extends HardenedGlassBlock {
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 
         if (entityIn instanceof LivingEntity) {
-            ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(ENDERFERENCE, duration, 0, false, false));
+            ((LivingEntity) entityIn).addEffect(new EffectInstance(ENDERFERENCE, duration, 0, false, false));
         }
     }
 

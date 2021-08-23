@@ -18,7 +18,7 @@ import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 public class HiveExtractorMappingSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<HiveExtractorMapping> {
 
     @Override
-    public HiveExtractorMapping read(ResourceLocation recipeId, JsonObject json) {
+    public HiveExtractorMapping fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Block hive = Blocks.AIR;
         ItemStack item = ItemStack.EMPTY;
@@ -38,20 +38,20 @@ public class HiveExtractorMappingSerializer extends ForgeRegistryEntry<IRecipeSe
 
     @Nullable
     @Override
-    public HiveExtractorMapping read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public HiveExtractorMapping fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         Block hive = ForgeRegistries.BLOCKS.getValue(buffer.readResourceLocation());
-        ItemStack item = buffer.readItemStack();
+        ItemStack item = buffer.readItem();
         FluidStack fluid = buffer.readFluidStack();
 
         return new HiveExtractorMapping(recipeId, hive, item, fluid);
     }
 
     @Override
-    public void write(PacketBuffer buffer, HiveExtractorMapping recipe) {
+    public void toNetwork(PacketBuffer buffer, HiveExtractorMapping recipe) {
 
         buffer.writeResourceLocation(recipe.hive.getRegistryName());
-        buffer.writeItemStack(recipe.item);
+        buffer.writeItem(recipe.item);
         buffer.writeFluidStack(recipe.fluid);
     }
 

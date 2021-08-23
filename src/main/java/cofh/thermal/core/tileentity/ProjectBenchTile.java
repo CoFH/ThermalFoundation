@@ -21,7 +21,7 @@ public class ProjectBenchTile extends ThermalTileAugmentable {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new ProjectBenchContainer(i, world, pos, inventory, player);
+        return new ProjectBenchContainer(i, level, worldPosition, inventory, player);
     }
 
 }

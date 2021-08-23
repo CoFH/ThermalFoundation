@@ -11,24 +11,24 @@ public class ElementalProjectileModel<T extends Entity> extends SegmentedModel<T
 
     public ElementalProjectileModel() {
 
-        this.textureWidth = 32;
-        this.textureHeight = 16;
+        this.texWidth = 32;
+        this.texHeight = 16;
         this.renderer = new ModelRenderer(this);
-        this.renderer.setTextureOffset(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-        this.renderer.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.renderer.texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+        this.renderer.setPos(0.0F, 0.0F, 0.0F);
     }
 
     @Override
-    public Iterable<ModelRenderer> getParts() {
+    public Iterable<ModelRenderer> parts() {
 
         return ImmutableList.of(this.renderer);
     }
 
     @Override
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
-        this.renderer.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
-        this.renderer.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+        this.renderer.yRot = netHeadYaw * ((float) Math.PI / 180F);
+        this.renderer.xRot = headPitch * ((float) Math.PI / 180F);
     }
 
 }

@@ -52,7 +52,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
         super(builder, slots);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity) -> (hasColor(stack) ? 1F : 0));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity) -> (hasCustomColor(stack) ? 1F : 0));
         ProxyUtils.registerColorable(this);
 
         numSlots = () -> ThermalConfig.storageAugments;
@@ -62,21 +62,21 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     @Override
     protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.satchel.use").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(getTextComponent("info.thermal.satchel.use").withStyle(TextFormatting.GRAY));
         if (FilterHelper.hasFilter(stack)) {
-            tooltip.add(getTextComponent("info.thermal.satchel.use.sneak").mergeStyle(TextFormatting.DARK_GRAY));
+            tooltip.add(getTextComponent("info.thermal.satchel.use.sneak").withStyle(TextFormatting.DARK_GRAY));
         }
-        tooltip.add(getTextComponent("info.thermal.satchel.mode." + getMode(stack)).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.satchel.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
         addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
 
-        ItemStack stack = playerIn.getHeldItem(handIn);
-        return useDelegate(stack, playerIn, handIn) ? ActionResult.resultSuccess(stack) : ActionResult.resultPass(stack);
+        ItemStack stack = playerIn.getItemInHand(handIn);
+        return useDelegate(stack, playerIn, handIn) ? ActionResult.success(stack) : ActionResult.pass(stack);
     }
 
     //    @Override
@@ -125,9 +125,9 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
             eventItem.setItem(InventoryHelper.insertStackIntoInventory(containerInv, eventItem.getItem(), false));
 
             if (eventItem.getItem().getCount() != count) {
-                container.setAnimationsToGo(5);
+                container.setPopTime(5);
                 PlayerEntity player = event.getPlayer();
-                player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 containerInv.write(satchelItem.getOrCreateInvTag(container));
                 satchelItem.onContainerInventoryChanged(container);
             }
@@ -138,7 +138,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     @Override
     protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
 
-        CompoundNBT subTag = container.getChildTag(TAG_PROPERTIES);
+        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -193,7 +193,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     @Override
     public void onModeChange(PlayerEntity player, ItemStack stack) {
 
-        player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.4F, 0.8F + 0.4F * getMode(stack));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.ITEM_PICKUP, SoundCategory.PLAYERS, 0.4F, 0.8F + 0.4F * getMode(stack));
         ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.satchel.mode." + getMode(stack)));
     }
     // endregion

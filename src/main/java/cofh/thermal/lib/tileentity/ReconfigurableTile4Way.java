@@ -62,24 +62,24 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     @Override
     public TileCoFH worldContext(BlockState state, IBlockReader world) {
 
-        reconfigControl.setFacing(state.get(FACING_HORIZONTAL));
+        reconfigControl.setFacing(state.getValue(FACING_HORIZONTAL));
         updateHandlers();
 
         return this;
     }
 
     @Override
-    public void updateContainingBlockInfo() {
+    public void clearCache() {
 
-        super.updateContainingBlockInfo();
+        super.clearCache();
         updateSideCache();
     }
 
     // TODO: Does this need to exist?
     @Override
-    public void remove() {
+    public void setRemoved() {
 
-        super.remove();
+        super.setRemoved();
 
         inputItemCap.invalidate();
         outputItemCap.invalidate();
@@ -124,13 +124,13 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     protected void updateSideCache() {
 
         Direction prevFacing = getFacing();
-        Direction curFacing = getBlockState().get(FACING_HORIZONTAL);
+        Direction curFacing = getBlockState().getValue(FACING_HORIZONTAL);
 
         if (prevFacing != curFacing) {
             reconfigControl.setFacing(curFacing);
 
-            int iPrev = prevFacing.getIndex();
-            int iFace = curFacing.getIndex();
+            int iPrev = prevFacing.get3DDataValue();
+            int iFace = curFacing.get3DDataValue();
             SideConfig[] sides = new SideConfig[6];
 
             if (iPrev == SIDE_RIGHT[iFace]) {
@@ -279,11 +279,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
-        reconfigControl.setFacing(Direction.byIndex(nbt.getByte(TAG_FACING)));
+        reconfigControl.setFacing(Direction.from3DDataValue(nbt.getByte(TAG_FACING)));
         reconfigControl.read(nbt);
         transferControl.read(nbt);
 
@@ -294,11 +294,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
-        nbt.putByte(TAG_FACING, (byte) reconfigControl.getFacing().getIndex());
+        nbt.putByte(TAG_FACING, (byte) reconfigControl.getFacing().get3DDataValue());
         reconfigControl.write(nbt);
         transferControl.write(nbt);
 

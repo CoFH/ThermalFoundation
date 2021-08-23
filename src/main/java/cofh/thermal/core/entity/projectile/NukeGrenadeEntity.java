@@ -59,21 +59,21 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
-        if (Utils.isServerWorld(world)) {
-            world.setBlockState(this.getPosition(), Blocks.AIR.getDefaultState());
-            affectNearbyEntities(this, world, this.getPosition(), radius * 3, func_234616_v_());
-            destroyBlocks(this, world, this.getPosition(), radius * 2);
-            world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float) explosionStrength, true, explosionsDestroyBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
-            this.world.setEntityState(this, (byte) 3);
+        if (Utils.isServerWorld(level)) {
+            level.setBlockAndUpdate(this.blockPosition(), Blocks.AIR.defaultBlockState());
+            affectNearbyEntities(this, level, this.blockPosition(), radius * 3, getOwner());
+            destroyBlocks(this, level, this.blockPosition(), radius * 2);
+            level.explode(this, this.getX(), this.getY(), this.getZ(), (float) explosionStrength, true, explosionsDestroyBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.ticksExisted < 10) {
+        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
-        this.world.addParticle(ParticleTypes.FLASH, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.FLASH, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     public static void destroyBlocks(Entity entity, World worldIn, BlockPos pos, int radius) {
@@ -85,12 +85,12 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
         float maxResistance = 400F * radius * radius;
         float f2 = f * f;
 
-        for (BlockPos iterPos : BlockPos.getAllInBoxMutable(pos.add(-f, -f / 2, -f), pos.add(f, f, f))) {
-            double distance = iterPos.distanceSq(entity.getPositionVec(), true);
+        for (BlockPos iterPos : BlockPos.betweenClosed(pos.offset(-f, -f / 2, -f), pos.offset(f, f, f))) {
+            double distance = iterPos.distSqr(entity.position(), true);
             if (distance < f2) {
                 BlockState state = worldIn.getBlockState(iterPos);
                 if (!state.isAir(worldIn, iterPos) && state.getBlock().getExplosionResistance(state, worldIn, iterPos, null) < maxResistance - (maxResistance * distance / f2)) {
-                    worldIn.setBlockState(iterPos, Blocks.AIR.getDefaultState());
+                    worldIn.setBlockAndUpdate(iterPos, Blocks.AIR.defaultBlockState());
                 }
             }
         }
@@ -98,15 +98,15 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
 
     public static void affectNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
+        AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
         double f2 = radius * radius;
-        worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE)
+        worldIn.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE)
                 .forEach(livingEntity -> {
-                    double distance = pos.distanceSq(livingEntity.getPosition());
+                    double distance = pos.distSqr(livingEntity.blockPosition());
                     if (distance < f2) {
                         float damage = (float) MathHelper.clamp(f2 - distance, radius, f2);
-                        livingEntity.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), damage);
-                        livingEntity.addPotionEffect(new EffectInstance(WITHER, effectDuration, effectAmplifier, false, false));
+                        livingEntity.hurt(DamageSource.explosion(source instanceof LivingEntity ? (LivingEntity) source : null), damage);
+                        livingEntity.addEffect(new EffectInstance(WITHER, effectDuration, effectAmplifier, false, false));
                     }
                 });
     }

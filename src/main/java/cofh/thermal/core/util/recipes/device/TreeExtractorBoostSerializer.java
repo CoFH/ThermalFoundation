@@ -15,7 +15,7 @@ import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<TreeExtractorBoost> {
 
     @Override
-    public TreeExtractorBoost read(ResourceLocation recipeId, JsonObject json) {
+    public TreeExtractorBoost fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Ingredient ingredient;
         float outputMod = 1.0F;
@@ -37,9 +37,9 @@ public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<IRecipeSeri
 
     @Nullable
     @Override
-    public TreeExtractorBoost read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public TreeExtractorBoost fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
-        Ingredient ingredient = Ingredient.read(buffer);
+        Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
         float outputMod = buffer.readFloat();
         int cycles = buffer.readInt();
@@ -48,9 +48,9 @@ public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<IRecipeSeri
     }
 
     @Override
-    public void write(PacketBuffer buffer, TreeExtractorBoost recipe) {
+    public void toNetwork(PacketBuffer buffer, TreeExtractorBoost recipe) {
 
-        recipe.ingredient.write(buffer);
+        recipe.ingredient.toNetwork(buffer);
 
         buffer.writeFloat(recipe.outputMod);
         buffer.writeInt(recipe.cycles);

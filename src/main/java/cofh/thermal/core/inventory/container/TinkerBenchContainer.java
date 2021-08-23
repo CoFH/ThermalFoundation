@@ -31,16 +31,16 @@ public class TinkerBenchContainer extends TileContainer {
     protected InvWrapperItem itemInventory = new InvWrapperItem(this, MAX_AUGMENTS) {
 
         @Override
-        public boolean isItemValidForSlot(int index, ItemStack stack) {
+        public boolean canPlaceItem(int index, ItemStack stack) {
 
-            return tile.allowAugmentation() && tinkerSlot.getHasStack() && index < AugmentableHelper.getAugmentSlots(tinkerSlot.getStack()) && AugmentableHelper.validAugment(tinkerSlot.getStack(), stack, itemInventory.getStacks());
+            return tile.allowAugmentation() && tinkerSlot.hasItem() && index < AugmentableHelper.getAugmentSlots(tinkerSlot.getItem()) && AugmentableHelper.validAugment(tinkerSlot.getItem(), stack, itemInventory.getStacks());
         }
     };
 
     public TinkerBenchContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(TINKER_BENCH_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (TinkerBenchTile) world.getTileEntity(pos);
+        this.tile = (TinkerBenchTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         allowSwap = false;
@@ -51,7 +51,7 @@ public class TinkerBenchContainer extends TileContainer {
             public ItemStack onTake(PlayerEntity thePlayer, ItemStack stack) {
 
                 writeAugmentsToItem(stack);
-                itemInventory.clear();
+                itemInventory.clearContent();
                 // TODO: Revisit sound.
                 //                if (AugmentableHelper.isAugmentableItem(stack)) {
                 //                    ProxyUtils.playSimpleSound(SOUND_TINKER, 0.2F, 1.0F);
@@ -60,17 +60,17 @@ public class TinkerBenchContainer extends TileContainer {
             }
 
             @Override
-            public void putStack(ItemStack stack) {
+            public void set(ItemStack stack) {
 
                 if (syncing) {
-                    super.putStack(stack);
+                    super.set(stack);
                     return;
                 }
-                ItemStack curStack = tinkerSlot.getStack();
+                ItemStack curStack = tinkerSlot.getItem();
                 if (!curStack.isEmpty() && !curStack.equals(stack)) {
                     writeAugmentsToItem(curStack);
                 }
-                super.putStack(stack);
+                super.set(stack);
                 if (!stack.isEmpty()) {
                     readAugmentsFromItem(stack);
                 }
@@ -85,7 +85,7 @@ public class TinkerBenchContainer extends TileContainer {
         bindTinkerSlots(itemInventory, 0, MAX_AUGMENTS);
         bindPlayerInventory(inventory);
 
-        readAugmentsFromItem(tinkerSlot.getStack());
+        readAugmentsFromItem(tinkerSlot.getItem());
     }
 
     private void readAugmentsFromItem(ItemStack stack) {
@@ -110,7 +110,7 @@ public class TinkerBenchContainer extends TileContainer {
             SlotCoFH slot = new SlotCoFH(inventory, i + startIndex, 0, 0, 1) {
 
                 @Override
-                public boolean canTakeStack(PlayerEntity player) {
+                public boolean mayPickup(PlayerEntity player) {
 
                     return tile.allowAugmentation();
                 }
@@ -133,7 +133,7 @@ public class TinkerBenchContainer extends TileContainer {
 
     public int getNumTinkerAugmentSlots() {
 
-        return AugmentableHelper.getAugmentSlots(tinkerSlot.getStack());
+        return AugmentableHelper.getAugmentSlots(tinkerSlot.getItem());
     }
 
     public List<SlotCoFH> getTinkerAugmentSlots() {
@@ -142,26 +142,26 @@ public class TinkerBenchContainer extends TileContainer {
     }
 
     @Override
-    public void onContainerClosed(PlayerEntity playerIn) {
+    public void removed(PlayerEntity playerIn) {
 
-        writeAugmentsToItem(tinkerSlot.getStack());
-        super.onContainerClosed(playerIn);
+        writeAugmentsToItem(tinkerSlot.getItem());
+        super.removed(playerIn);
     }
 
     @Override
-    public ItemStack transferStackInSlot(PlayerEntity player, int index) {
+    public ItemStack quickMoveStack(PlayerEntity player, int index) {
 
         if (index == tinkerSlot.getSlotIndex()) {
-            writeAugmentsToItem(tinkerSlot.getStack());
+            writeAugmentsToItem(tinkerSlot.getItem());
         }
-        return super.transferStackInSlot(player, index);
+        return super.quickMoveStack(player, index);
     }
 
     // region NETWORK
     @Override
     public void handleContainerPacket(PacketBuffer buffer) {
 
-        writeAugmentsToItem(tinkerSlot.getStack());
+        writeAugmentsToItem(tinkerSlot.getItem());
         tile.toggleTinkerSlotMode();
     }
     // endregion

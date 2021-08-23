@@ -41,7 +41,7 @@ public class DeviceChunkLoaderTile extends DeviceTileBase implements ITickableTi
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new ChunkLoaderContainer(i, world, pos, inventory, player);
+        return new ChunkLoaderContainer(i, level, worldPosition, inventory, player);
     }
 
 }

@@ -29,7 +29,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     protected InvWrapperCoFH invWrapper;
     protected ItemStack containerStack;
 
-    protected int slots;
+    protected int numSlots;
     protected int rows;
 
     public SatchelContainer(int windowId, PlayerInventory inventory, PlayerEntity player) {
@@ -38,15 +38,15 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
 
         allowSwap = false;
 
-        containerStack = player.getHeldItemMainhand();
+        containerStack = player.getMainHandItem();
         containerItem = (IInventoryContainerItem) containerStack.getItem();
 
-        slots = MathHelper.clamp(containerItem.getContainerSlots(containerStack), 0, MAX_SLOTS);
+        numSlots = MathHelper.clamp(containerItem.getContainerSlots(containerStack), 0, MAX_SLOTS);
         itemInventory = containerItem.getContainerInventory(containerStack);
-        invWrapper = new InvWrapperCoFH(itemInventory, slots);
+        invWrapper = new InvWrapperCoFH(itemInventory, numSlots);
 
-        rows = MathHelper.clamp(slots / 9, 0, MAX_ROWS);
-        int extraSlots = slots % 9;
+        rows = MathHelper.clamp(numSlots / 9, 0, MAX_ROWS);
+        int extraSlots = numSlots % 9;
 
         int xOffset = 8;
         int yOffset = 44 - 9 * MathHelper.clamp(rows + (extraSlots > 0 ? 1 : 0), 0, 3);
@@ -56,7 +56,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
         }
         if (extraSlots > 0) {
             xOffset = 89 - 9 * extraSlots;
-            for (int i = slots - extraSlots; i < slots; ++i) {
+            for (int i = numSlots - extraSlots; i < numSlots; ++i) {
                 addSlot(new SlotCoFH(invWrapper, i, xOffset + i % extraSlots * 18, yOffset + 18 * rows));
             }
         }
@@ -75,7 +75,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
             }
         }
         for (int i = 0; i < 9; ++i) {
-            if (i == inventory.currentItem) {
+            if (i == inventory.selected) {
                 addSlot(new SlotLocked(inventory, i, xOffset + i * 18, yOffset + 58));
             } else {
                 addSlot(new Slot(inventory, i, xOffset + i * 18, yOffset + 58));
@@ -91,32 +91,32 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
 
     public int getExtraRows() {
 
-        return MathHelper.clamp((rows + (slots % 9 > 0 ? 1 : 0)) - 3, 0, (MAX_ROWS - 3));
+        return MathHelper.clamp((rows + (numSlots % 9 > 0 ? 1 : 0)) - 3, 0, (MAX_ROWS - 3));
     }
 
     public int getContainerInventorySize() {
 
-        return slots;
+        return numSlots;
     }
 
     @Override
     protected int getMergeableSlotCount() {
 
-        return invWrapper.getSizeInventory();
+        return invWrapper.getContainerSize();
     }
 
     @Override
-    public boolean canInteractWith(PlayerEntity playerIn) {
+    public boolean stillValid(PlayerEntity playerIn) {
 
         return true;
     }
 
     @Override
-    public void onContainerClosed(PlayerEntity playerIn) {
+    public void removed(PlayerEntity playerIn) {
 
         itemInventory.write(containerItem.getOrCreateInvTag(containerStack));
         containerItem.onContainerInventoryChanged(containerStack);
-        super.onContainerClosed(playerIn);
+        super.removed(playerIn);
     }
 
     // region ISecurable
@@ -136,7 +136,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     public void setAccess(AccessMode access) {
 
         SecurityHelper.setAccess(containerStack, access);
-        if (Utils.isClientWorld(player.world)) {
+        if (Utils.isClientWorld(player.level)) {
             SecurityPacket.sendToServer(access);
         }
     }

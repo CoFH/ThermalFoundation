@@ -27,7 +27,7 @@ import static cofh.thermal.core.ThermalCore.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_BLOCKS;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_ITEMS;
-import static net.minecraft.block.AbstractBlock.Properties.create;
+import static net.minecraft.block.AbstractBlock.Properties.of;
 
 public class RegistrationHelper {
 
@@ -79,7 +79,7 @@ public class RegistrationHelper {
 
     public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
 
-        registerBlockAndItem(name, sup, () -> new BlockItemCoFH(BLOCKS.get(name), new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups).setModId(modId));
+        registerBlockAndItem(name, sup, () -> new BlockItemCoFH(BLOCKS.get(name), new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups).setModId(modId));
     }
 
     public static void registerBlockOnly(String name, Supplier<Block> sup) {
@@ -118,22 +118,22 @@ public class RegistrationHelper {
     public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
 
         BLOCKS.register(name, sup);
-        ITEMS.register(name, (Supplier<Item>) () -> new BlockItemAugmentable(BLOCKS.get(name), new Item.Properties().group(group).rarity(rarity)).setNumSlots(numSlots).setAugValidator(validAugment).setShowInGroups(showInGroups).setModId(modId));
+        ITEMS.register(name, (Supplier<Item>) () -> new BlockItemAugmentable(BLOCKS.get(name), new Item.Properties().tab(group).rarity(rarity)).setNumSlots(numSlots).setAugValidator(validAugment).setShowInGroups(showInGroups).setModId(modId));
     }
     // endregion
 
     // region BLOCK SETS
     public static void registerWoodBlockSet(String woodName, Material material, MaterialColor color, float hardness, float resistance, SoundType soundType, String modId) {
 
-        registerBlock(woodName + "_planks", () -> new Block(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
-        registerBlock(woodName + "_slab", () -> new SlabBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
-        registerBlock(woodName + "_stairs", () -> new StairsBlock(() -> BLOCKS.get(woodName + "_planks").getDefaultState(), create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
-        registerBlock(woodName + "_door", () -> new DoorBlock(create(material, color).hardnessAndResistance(resistance).sound(soundType).notSolid()), modId);
-        registerBlock(woodName + "_trapdoor", () -> new TrapDoorBlock(create(material, color).hardnessAndResistance(resistance).sound(soundType).notSolid().setAllowsSpawn((state, reader, pos, entityType) -> false)), modId);
-        registerBlock(woodName + "_button", () -> new WoodButtonBlock(create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(soundType)), modId);
-        registerBlock(woodName + "_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, create(material, color).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(soundType)), modId);
-        registerBlock(woodName + "_fence", () -> new FenceBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
-        registerBlock(woodName + "_fence_gate", () -> new FenceGateBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_planks", () -> new Block(of(material, color).strength(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_slab", () -> new SlabBlock(of(material, color).strength(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_stairs", () -> new StairsBlock(() -> BLOCKS.get(woodName + "_planks").defaultBlockState(), of(material, color).strength(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_door", () -> new DoorBlock(of(material, color).strength(resistance).sound(soundType).noOcclusion()), modId);
+        registerBlock(woodName + "_trapdoor", () -> new TrapDoorBlock(of(material, color).strength(resistance).sound(soundType).noOcclusion().isValidSpawn((state, reader, pos, entityType) -> false)), modId);
+        registerBlock(woodName + "_button", () -> new WoodButtonBlock(of(Material.DECORATION).noCollission().strength(0.5F).sound(soundType)), modId);
+        registerBlock(woodName + "_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, of(material, color).noCollission().strength(0.5F).sound(soundType)), modId);
+        registerBlock(woodName + "_fence", () -> new FenceBlock(of(material, color).strength(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_fence_gate", () -> new FenceGateBlock(of(material, color).strength(hardness, resistance).sound(soundType)), modId);
     }
     // endregion
 
@@ -150,7 +150,7 @@ public class RegistrationHelper {
 
     public static RegistryObject<Item> registerItem(String name, ItemGroup group, Rarity rarity) {
 
-        return registerItem(name, () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)));
+        return registerItem(name, () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)));
     }
     // endregion
 
@@ -204,15 +204,15 @@ public class RegistrationHelper {
 
         if (!vanilla) {
             if (false) {    // TODO: 1.17 - if NOT alloy
-                ITEMS.register("raw_" + prefix, () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
+                ITEMS.register("raw_" + prefix, () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
             }
-            ITEMS.register(prefix + "_ingot", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
-            ITEMS.register(prefix + "_nugget", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
+            ITEMS.register(prefix + "_ingot", () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
+            ITEMS.register(prefix + "_nugget", () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
         }
-        ITEMS.register(prefix + "_dust", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
-        ITEMS.register(prefix + "_gear", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
-        ITEMS.register(prefix + "_plate", () -> new CountedItem(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(() -> getFlag(FLAG_PLATES).getAsBoolean() && showInGroups.getAsBoolean()));
-        ITEMS.register(prefix + "_coin", () -> new CoinItem(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(() -> getFlag(FLAG_COINS).getAsBoolean() && showInGroups.getAsBoolean()));
+        ITEMS.register(prefix + "_dust", () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
+        ITEMS.register(prefix + "_gear", () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
+        ITEMS.register(prefix + "_plate", () -> new CountedItem(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(() -> getFlag(FLAG_PLATES).getAsBoolean() && showInGroups.getAsBoolean()));
+        ITEMS.register(prefix + "_coin", () -> new CoinItem(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(() -> getFlag(FLAG_COINS).getAsBoolean() && showInGroups.getAsBoolean()));
     }
     // endregion
 
@@ -235,11 +235,11 @@ public class RegistrationHelper {
     public static void registerGemSet(String prefix, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, boolean vanilla) {
 
         if (!vanilla) {
-            ITEMS.register(prefix, () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
+            ITEMS.register(prefix, () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
         }
         // ITEMS.register(prefix + "_nugget", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)));
-        ITEMS.register(prefix + "_dust", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
-        ITEMS.register(prefix + "_gear", () -> new ItemCoFH(new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
+        ITEMS.register(prefix + "_dust", () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
+        ITEMS.register(prefix + "_gear", () -> new ItemCoFH(new Item.Properties().tab(group).rarity(rarity)).setShowInGroups(showInGroups));
         // ITEMS.register(prefix + "_plate", () -> new CountedItem(new Item.Properties().group(group).rarity(rarity)));
         // ITEMS.register(prefix + "_coin", () -> new CoinItem(new Item.Properties().group(group).rarity(rarity)));
     }
@@ -248,38 +248,38 @@ public class RegistrationHelper {
     // region TOOL SETS
     public static void registerStandardToolSet(String prefix, IItemTier tier, ItemGroup toolGroup, ItemGroup combatGroup) {
 
-        ITEMS.register(prefix + "_shovel", () -> new ShovelItem(tier, 1.5F, -3.0F, new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_pickaxe", () -> new PickaxeItem(tier, 1, -2.8F, new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_axe", () -> new AxeItem(tier, tier.getAttackDamage() > 0 ? 8.0F - tier.getAttackDamage() : 6.0F, MathHelper.clamp(-3.7F + tier.getEfficiency() / 10, -3.2F, -3.0F), new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_hoe", () -> new HoeItem(tier, -tier.getHarvestLevel(), Math.min(-3.0F + tier.getHarvestLevel(), 0.0F), new Item.Properties().group(toolGroup)));
+        ITEMS.register(prefix + "_shovel", () -> new ShovelItem(tier, 1.5F, -3.0F, new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_pickaxe", () -> new PickaxeItem(tier, 1, -2.8F, new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_axe", () -> new AxeItem(tier, tier.getAttackDamageBonus() > 0 ? 8.0F - tier.getAttackDamageBonus() : 6.0F, MathHelper.clamp(-3.7F + tier.getSpeed() / 10, -3.2F, -3.0F), new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_hoe", () -> new HoeItem(tier, -tier.getLevel(), Math.min(-3.0F + tier.getLevel(), 0.0F), new Item.Properties().tab(toolGroup)));
 
-        ITEMS.register(prefix + "_sword", () -> new SwordItem(tier, 3, -2.4F, new Item.Properties().group(combatGroup)));
+        ITEMS.register(prefix + "_sword", () -> new SwordItem(tier, 3, -2.4F, new Item.Properties().tab(combatGroup)));
     }
 
     public static void registerExtraToolSet(String prefix, IItemTier tier, ItemGroup toolGroup) {
 
-        ITEMS.register(prefix + "_excavator", () -> new ExcavatorItem(tier, new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_hammer", () -> new HammerItem(tier, new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_sickle", () -> new SickleItem(tier, new Item.Properties().group(toolGroup)));
+        ITEMS.register(prefix + "_excavator", () -> new ExcavatorItem(tier, new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_hammer", () -> new HammerItem(tier, new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_sickle", () -> new SickleItem(tier, new Item.Properties().tab(toolGroup)));
     }
 
     public static void registerSpecial(String prefix, IItemTier tier, ItemGroup toolGroup) {
 
-        ITEMS.register(prefix + "_shears", () -> new ShearsItemCoFH(tier, new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_bow", () -> new BowItemCoFH(tier, new Item.Properties().group(toolGroup)));
-        ITEMS.register(prefix + "_fishing_rod", () -> new FishingRodItemCoFH(tier, new Item.Properties().group(toolGroup)));
+        ITEMS.register(prefix + "_shears", () -> new ShearsItemCoFH(tier, new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_bow", () -> new BowItemCoFH(tier, new Item.Properties().tab(toolGroup)));
+        ITEMS.register(prefix + "_fishing_rod", () -> new FishingRodItemCoFH(tier, new Item.Properties().tab(toolGroup)));
     }
     // endregion
 
     // region CROPS
     public static void registerAnnual(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockCoFH(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropsBlockCoFH(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerTallAnnual(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockTall(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropsBlockTall(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerPerennial(String id) {
@@ -289,7 +289,7 @@ public class RegistrationHelper {
 
     public static void registerPerennial(String id, int postHarvestAge) {
 
-        BLOCKS.register(id, () -> new CropsBlockPerennial(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.CROP)).postHarvestAge(postHarvestAge).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropsBlockPerennial(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).postHarvestAge(postHarvestAge).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerCropAndSeed(String id) {
@@ -310,11 +310,11 @@ public class RegistrationHelper {
     public static void registerCropAndSeed(String id, ItemGroup group, Food food) {
 
         if (food != null) {
-            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group).food(food)).setModId(ID_THERMAL_CULTIVATION));
+            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().tab(group).food(food)).setModId(ID_THERMAL_CULTIVATION));
         } else {
-            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group)).setModId(ID_THERMAL_CULTIVATION));
+            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().tab(group)).setModId(ID_THERMAL_CULTIVATION));
         }
-        ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)).setModId(ID_THERMAL_CULTIVATION));
+        ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().tab(group)).setModId(ID_THERMAL_CULTIVATION));
     }
 
     public static void registerSpores(String id) {
@@ -324,7 +324,7 @@ public class RegistrationHelper {
 
     public static void registerSpores(String id, ItemGroup group) {
 
-        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)).setModId(ID_THERMAL_CULTIVATION));
+        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().tab(group)).setModId(ID_THERMAL_CULTIVATION));
     }
 
     public static String deepslate(String id) {

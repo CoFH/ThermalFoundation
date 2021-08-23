@@ -84,71 +84,71 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         addAugmentSlots(deviceAugments);
         initHandlers();
 
-        trunkPos = new BlockPos(pos);
+        trunkPos = new BlockPos(worldPosition);
         for (int i = 0; i < NUM_LEAVES; ++i) {
-            leafPos[i] = new BlockPos(pos);
+            leafPos[i] = new BlockPos(worldPosition);
         }
     }
 
     @Override
     protected void updateValidity() {
 
-        if (world == null || !world.isAreaLoaded(pos, 1) || Utils.isClientWorld(world)) {
+        if (level == null || !level.isAreaLoaded(worldPosition, 1) || Utils.isClientWorld(level)) {
             return;
         }
         if (valid) {
             if (isTrunkBase(trunkPos)) {
-                Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(world.getBlockState(trunkPos));
+                Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(level.getBlockState(trunkPos));
                 int leafCount = 0;
                 for (int i = 0; i < NUM_LEAVES; ++i) {
-                    if (leafSet.contains(world.getBlockState(leafPos[i]))) {
+                    if (leafSet.contains(level.getBlockState(leafPos[i]))) {
                         ++leafCount;
                     }
                 }
                 if (leafCount >= NUM_LEAVES) {
-                    Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(trunkPos, trunkPos.add(0, leafPos[0].getY() - trunkPos.getY(), 0));
+                    Iterable<BlockPos> area = BlockPos.betweenClosed(trunkPos, trunkPos.offset(0, leafPos[0].getY() - trunkPos.getY(), 0));
                     for (BlockPos scan : area) {
-                        Material material = world.getBlockState(scan).getMaterial();
-                        if (material == Material.ORGANIC || material == Material.EARTH || material == Material.ROCK) {
+                        Material material = level.getBlockState(scan).getMaterial();
+                        if (material == Material.GRASS || material == Material.DIRT || material == Material.STONE) {
                             valid = false;
                             cached = true;
                             return;
                         }
                     }
-                    area = BlockPos.getAllInBoxMutable(pos.add(0, 1, 0), pos.add(0, leafPos[0].getY() - pos.getY(), 0));
+                    area = BlockPos.betweenClosed(worldPosition.offset(0, 1, 0), worldPosition.offset(0, leafPos[0].getY() - worldPosition.getY(), 0));
                     for (BlockPos scan : area) {
-                        if (isTreeExtractor(world.getBlockState(scan))) {
+                        if (isTreeExtractor(level.getBlockState(scan))) {
                             valid = false;
                             cached = true;
                             return;
                         }
                     }
                     cached = true;
-                    renderFluid = TreeExtractorManager.instance().getFluid(world.getBlockState(trunkPos));
+                    renderFluid = TreeExtractorManager.instance().getFluid(level.getBlockState(trunkPos));
                     return;
                 }
             }
             valid = false;
         }
-        if (isTrunkBase(pos.west())) {
-            trunkPos = pos.west();
-        } else if (isTrunkBase(pos.east())) {
-            trunkPos = pos.east();
-        } else if (isTrunkBase(pos.north())) {
-            trunkPos = pos.north();
-        } else if (isTrunkBase(pos.south())) {
-            trunkPos = pos.south();
+        if (isTrunkBase(worldPosition.west())) {
+            trunkPos = worldPosition.west();
+        } else if (isTrunkBase(worldPosition.east())) {
+            trunkPos = worldPosition.east();
+        } else if (isTrunkBase(worldPosition.north())) {
+            trunkPos = worldPosition.north();
+        } else if (isTrunkBase(worldPosition.south())) {
+            trunkPos = worldPosition.south();
         }
         if (!isTrunkBase(trunkPos)) {
             valid = false;
             cached = true;
             return;
         }
-        Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(world.getBlockState(trunkPos));
+        Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(level.getBlockState(trunkPos));
         int leafCount = 0;
-        Iterable<BlockPos> area = BlockPos.getAllInBox(pos.add(-1, 0, -1), pos.add(1, Math.min(256 - pos.getY(), 40), 1)).map(BlockPos::toImmutable).collect(Collectors.toList());
+        Iterable<BlockPos> area = BlockPos.betweenClosedStream(worldPosition.offset(-1, 0, -1), worldPosition.offset(1, Math.min(256 - worldPosition.getY(), 40), 1)).map(BlockPos::immutable).collect(Collectors.toList());
         for (BlockPos scan : area) {
-            if (leafSet.contains(world.getBlockState(scan))) {
+            if (leafSet.contains(level.getBlockState(scan))) {
                 leafPos[leafCount] = new BlockPos(scan);
                 ++leafCount;
                 if (leafCount >= NUM_LEAVES) {
@@ -157,25 +157,25 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
             }
         }
         if (leafCount >= NUM_LEAVES) {
-            area = BlockPos.getAllInBoxMutable(trunkPos, trunkPos.add(0, leafPos[0].getY() - trunkPos.getY(), 0));
+            area = BlockPos.betweenClosed(trunkPos, trunkPos.offset(0, leafPos[0].getY() - trunkPos.getY(), 0));
             for (BlockPos scan : area) {
-                Material material = world.getBlockState(scan).getMaterial();
-                if (material == Material.ORGANIC || material == Material.EARTH || material == Material.ROCK) {
+                Material material = level.getBlockState(scan).getMaterial();
+                if (material == Material.GRASS || material == Material.DIRT || material == Material.STONE) {
                     valid = false;
                     cached = true;
                     return;
                 }
             }
-            area = BlockPos.getAllInBoxMutable(pos.add(0, 1, 0), pos.add(0, leafPos[0].getY() - pos.getY(), 0));
+            area = BlockPos.betweenClosed(worldPosition.offset(0, 1, 0), worldPosition.offset(0, leafPos[0].getY() - worldPosition.getY(), 0));
             for (BlockPos scan : area) {
-                if (isTreeExtractor(world.getBlockState(scan))) {
+                if (isTreeExtractor(level.getBlockState(scan))) {
                     valid = false;
                     cached = true;
                     return;
                 }
             }
             valid = true;
-            renderFluid = TreeExtractorManager.instance().getFluid(world.getBlockState(trunkPos));
+            renderFluid = TreeExtractorManager.instance().getFluid(level.getBlockState(trunkPos));
         }
         cached = true;
     }
@@ -244,7 +244,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceTreeExtractorContainer(i, world, pos, inventory, player);
+        return new DeviceTreeExtractorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region GUI
@@ -320,9 +320,9 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         boostCycles = nbt.getInt(TAG_BOOST_CYCLES);
         boostMax = nbt.getInt(TAG_BOOST_MAX);
@@ -336,9 +336,9 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_BOOST_CYCLES, boostCycles);
         nbt.putInt(TAG_BOOST_MAX, boostMax);
@@ -356,13 +356,13 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     // region HELPERS
     protected int getTimeConstant() {
 
-        if (world == null) {
+        if (level == null) {
             return timeConstant;
         }
         int constant = timeConstant / 2;
-        Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(trunkPos.add(-1, 0, -1), trunkPos.add(1, 0, 1));
+        Iterable<BlockPos> area = BlockPos.betweenClosed(trunkPos.offset(-1, 0, -1), trunkPos.offset(1, 0, 1));
         for (BlockPos scan : area) {
-            if (isTreeExtractor(world.getBlockState(scan))) {
+            if (isTreeExtractor(level.getBlockState(scan))) {
                 constant += timeConstant / 2;
             }
         }
@@ -371,14 +371,14 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     protected boolean isTrunkBase(BlockPos checkPos) {
 
-        BlockState state = world.getBlockState(checkPos.down());
+        BlockState state = level.getBlockState(checkPos.below());
         Material material = state.getMaterial();
-        if (material != Material.ORGANIC && material != Material.EARTH && material != Material.ROCK) {
+        if (material != Material.GRASS && material != Material.DIRT && material != Material.STONE) {
             return false;
         }
-        return TreeExtractorManager.instance().validTrunk(world.getBlockState(checkPos))
-                && TreeExtractorManager.instance().validTrunk(world.getBlockState(checkPos.up()))
-                && TreeExtractorManager.instance().validTrunk(world.getBlockState(checkPos.up(2)));
+        return TreeExtractorManager.instance().validTrunk(level.getBlockState(checkPos))
+                && TreeExtractorManager.instance().validTrunk(level.getBlockState(checkPos.above()))
+                && TreeExtractorManager.instance().validTrunk(level.getBlockState(checkPos.above(2)));
     }
 
     protected boolean isTreeExtractor(BlockState state) {

@@ -38,7 +38,7 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                container.emptyBin();
+                menu.emptyBin();
                 playClickSound(0.7F);
                 return true;
             }
@@ -46,7 +46,7 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
                 .setSize(20, 20)
                 .setTexture(TEX_TRASH, 60, 20)
                 .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.device_nullifier_empty_bin")))
-                .setEnabled(() -> !container.tile.binHasItems()));
+                .setEnabled(() -> !menu.tile.binHasItems()));
     }
 
 }

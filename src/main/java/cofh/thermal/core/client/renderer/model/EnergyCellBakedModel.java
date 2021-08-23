@@ -66,7 +66,7 @@ public class EnergyCellBakedModel extends BakedModelWrapper<IBakedModel> impleme
             return quads;
         }
         BakedQuad baseQuad = quads.get(0);
-        int sideIndex = side.getIndex();
+        int sideIndex = side.get3DDataValue();
 
         // FACE
         Direction face = extraData.getData(ModelUtils.FACING);
@@ -76,10 +76,10 @@ public class EnergyCellBakedModel extends BakedModelWrapper<IBakedModel> impleme
                 // This shouldn't happen, but playing it safe.
                 return quads;
             }
-            BakedQuad faceQuad = FACE_QUAD_CACHE.get(Arrays.asList(face.getIndex(), level));
+            BakedQuad faceQuad = FACE_QUAD_CACHE.get(Arrays.asList(face.get3DDataValue(), level));
             if (faceQuad == null) {
                 faceQuad = new RetexturedBakedQuad(baseQuad, getLevelTexture(level));
-                FACE_QUAD_CACHE.put(Arrays.asList(face.getIndex(), level), faceQuad);
+                FACE_QUAD_CACHE.put(Arrays.asList(face.get3DDataValue(), level), faceQuad);
             }
             quads.add(faceQuad);
         }
@@ -114,9 +114,9 @@ public class EnergyCellBakedModel extends BakedModelWrapper<IBakedModel> impleme
 
         @Nullable
         @Override
-        public IBakedModel getOverrideModel(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
+        public IBakedModel resolve(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
 
-            CompoundNBT tag = stack.getChildTag(TAG_BLOCK_ENTITY);
+            CompoundNBT tag = stack.getTagElement(TAG_BLOCK_ENTITY);
             byte[] sideConfigRaw = getSideConfigRaw(tag);
             int itemHash = new ComparableItemStack(stack).hashCode();
             int level = getLevel(stack);

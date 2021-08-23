@@ -18,7 +18,7 @@ public class ChargeBenchContainer extends TileContainer {
     public ChargeBenchContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(CHARGE_BENCH_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ChargeBenchTile) world.getTileEntity(pos);
+        this.tile = (ChargeBenchTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         for (int i = 0; i < 3; ++i) {

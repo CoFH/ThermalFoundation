@@ -84,11 +84,11 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
                 processOff();
             }
         } else if (redstoneControl.getState()) {
-            if (Utils.timeCheck(world)) {
+            if (Utils.timeCheck(level)) {
                 transferOutput();
                 transferInput();
             }
-            if (Utils.timeCheckQuarter(world) && canProcessStart()) {
+            if (Utils.timeCheckQuarter(level) && canProcessStart()) {
                 processStart();
                 processTick();
                 isActive = true;
@@ -104,17 +104,17 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         // If not active but WAS active this tick.
         if (!isActive && prevActive) {
             wasActive = true;
-            if (world != null) {
-                timeTracker.markTime(world);
+            if (level != null) {
+                timeTracker.markTime(level);
             }
             return;
         }
         // Otherwise if IS active but was not, or WAS & delayed off OR Empty Tracker (Instant)
-        if (prevActive != isActive || wasActive && (timeTracker.hasDelayPassed(world, 40) || timeTracker.notSet())) {
+        if (prevActive != isActive || wasActive && (timeTracker.hasDelayPassed(level, 40) || timeTracker.notSet())) {
             // TODO: Config time delay
             wasActive = false;
             if (getBlockState().hasProperty(ACTIVE)) {
-                world.setBlockState(pos, getBlockState().with(ACTIVE, isActive));
+                level.setBlockAndUpdate(worldPosition, getBlockState().setValue(ACTIVE, isActive));
             }
             TileStatePacket.sendToClient(this);
         }
@@ -165,8 +165,8 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         isActive = false;
         wasActive = true;
         clearRecipe();
-        if (world != null) {
-            timeTracker.markTime(world);
+        if (level != null) {
+            timeTracker.markTime(level);
         }
     }
 
@@ -315,7 +315,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
             ItemStack recipeOutput = recipeOutputItems.get(i);
             float chance = recipeOutputChances.get(i);
             int outputCount = chance <= BASE_CHANCE ? recipeOutput.getCount() : (int) chance;
-            while (world.rand.nextFloat() < chance) {
+            while (level.random.nextFloat() < chance) {
                 boolean matched = false;
                 for (ItemStorageCoFH slot : outputSlots()) {
                     ItemStack output = slot.getItemStack();
@@ -441,9 +441,9 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         wasActive = nbt.getBoolean(TAG_ACTIVE_PREV);
 
@@ -453,9 +453,9 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putBoolean(TAG_ACTIVE_PREV, wasActive);
 
@@ -526,7 +526,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
         super.onInventoryChanged(slot);
 
-        if (world != null && Utils.isServerWorld(world) && isActive) {
+        if (level != null && Utils.isServerWorld(level) && isActive) {
             if (slot >= invSize() - augSize()) {
                 if (!validateOutputs()) {
                     processOff();
@@ -544,7 +544,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     @Override
     public void onTankChanged(int tank) {
 
-        if (Utils.isServerWorld(world) && tank < tankInv.getInputTanks().size()) {
+        if (Utils.isServerWorld(level) && tank < tankInv.getInputTanks().size()) {
             if (isActive) {
                 IMachineRecipe tempRecipe = curRecipe;
                 IRecipeCatalyst tempCatalyst = curCatalyst;

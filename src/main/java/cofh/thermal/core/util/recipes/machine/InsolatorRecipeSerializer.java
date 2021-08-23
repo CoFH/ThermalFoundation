@@ -24,7 +24,7 @@ public class InsolatorRecipeSerializer<T extends ThermalRecipe> extends MachineR
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int energy = defaultEnergy;
         int water = defaultWater;

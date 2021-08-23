@@ -17,7 +17,7 @@ public class ChunkLoaderContainer extends TileContainer {
     public ChunkLoaderContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(CHUNK_LOADER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (DeviceChunkLoaderTile) world.getTileEntity(pos);
+        this.tile = (DeviceChunkLoaderTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         bindPlayerInventory(inventory);

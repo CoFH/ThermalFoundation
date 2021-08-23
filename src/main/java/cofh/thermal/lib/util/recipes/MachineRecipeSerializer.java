@@ -28,7 +28,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int energy = defaultEnergy;
         float experience = 0.0F;
@@ -81,7 +81,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
 
     @Nullable
     @Override
-    public T read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         int energy = buffer.readVarInt();
         float experience = buffer.readFloat();
@@ -89,7 +89,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         int numInputItems = buffer.readVarInt();
         ArrayList<Ingredient> inputItems = new ArrayList<>(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            inputItems.add(Ingredient.read(buffer));
+            inputItems.add(Ingredient.fromNetwork(buffer));
         }
 
         int numInputFluids = buffer.readVarInt();
@@ -102,7 +102,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         ArrayList<ItemStack> outputItems = new ArrayList<>(numOutputItems);
         ArrayList<Float> outputItemChances = new ArrayList<>(numOutputItems);
         for (int i = 0; i < numOutputItems; ++i) {
-            outputItems.add(buffer.readItemStack());
+            outputItems.add(buffer.readItem());
             outputItemChances.add(buffer.readFloat());
         }
 
@@ -115,7 +115,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
     }
 
     @Override
-    public void write(PacketBuffer buffer, T recipe) {
+    public void toNetwork(PacketBuffer buffer, T recipe) {
 
         buffer.writeVarInt(recipe.energy);
         buffer.writeFloat(recipe.xp);
@@ -123,7 +123,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         int numInputItems = recipe.inputItems.size();
         buffer.writeVarInt(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            recipe.inputItems.get(i).write(buffer);
+            recipe.inputItems.get(i).toNetwork(buffer);
         }
         int numInputFluids = recipe.inputFluids.size();
         buffer.writeVarInt(numInputFluids);
@@ -133,7 +133,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         int numOutputItems = recipe.outputItems.size();
         buffer.writeVarInt(numOutputItems);
         for (int i = 0; i < numOutputItems; ++i) {
-            buffer.writeItemStack(recipe.outputItems.get(i));
+            buffer.writeItem(recipe.outputItems.get(i));
             buffer.writeFloat(recipe.outputItemChances.get(i));
         }
         int numOutputFluids = recipe.outputFluids.size();

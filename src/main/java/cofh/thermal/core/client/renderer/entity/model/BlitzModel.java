@@ -20,12 +20,12 @@ public class BlitzModel<T extends Entity> extends SegmentedModel<T> {
 
     public BlitzModel() {
 
-        textureWidth = 64;
-        textureHeight = 32;
+        texWidth = 64;
+        texHeight = 32;
 
         head = new ModelRenderer(this);
-        head.setRotationPoint(0.0F, 0.0F, 0.0F);
-        head.setTextureOffset(0, 0).addBox(-6.0F, -4.0F, -4.0F, 12.0F, 8.0F, 8.0F, 0.0F, false);
+        head.setPos(0.0F, 0.0F, 0.0F);
+        head.texOffs(0, 0).addBox(-6.0F, -4.0F, -4.0F, 12.0F, 8.0F, 8.0F, 0.0F, false);
         this.motes = new ModelRenderer[8];
 
         for (int i = 0; i < this.motes.length; ++i) {
@@ -38,12 +38,12 @@ public class BlitzModel<T extends Entity> extends SegmentedModel<T> {
         this.partsList = builder.build();
     }
 
-    public Iterable<ModelRenderer> getParts() {
+    public Iterable<ModelRenderer> parts() {
 
         return this.partsList;
     }
 
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
         //        float f = ageInTicks * (float) Math.PI * -0.1F;
         //        for (int i = 0; i < 4; ++i) {
@@ -55,21 +55,21 @@ public class BlitzModel<T extends Entity> extends SegmentedModel<T> {
 
         float f = ((float) Math.PI / 4F) + ageInTicks * (float) Math.PI * 0.03F;
         for (int j = 0; j < 4; ++j) {
-            this.motes[j].rotationPointY = 4.0F + MathHelper.cos(((float) (j * 3) + ageInTicks) * 0.25F);
-            this.motes[j].rotationPointX = MathHelper.cos(f) * 9.0F;
-            this.motes[j].rotationPointZ = MathHelper.sin(f) * 9.0F;
+            this.motes[j].y = 4.0F + MathHelper.cos(((float) (j * 3) + ageInTicks) * 0.25F);
+            this.motes[j].x = MathHelper.cos(f) * 9.0F;
+            this.motes[j].z = MathHelper.sin(f) * 9.0F;
             ++f;
         }
 
         f = 0.47123894F + ageInTicks * (float) Math.PI * -0.05F;
         for (int k = 4; k < 8; ++k) {
-            this.motes[k].rotationPointY = 12.0F + MathHelper.cos(((float) k * 1.5F + ageInTicks) * 0.5F);
-            this.motes[k].rotationPointX = MathHelper.cos(f) * 5.0F;
-            this.motes[k].rotationPointZ = MathHelper.sin(f) * 5.0F;
+            this.motes[k].y = 12.0F + MathHelper.cos(((float) k * 1.5F + ageInTicks) * 0.5F);
+            this.motes[k].x = MathHelper.cos(f) * 5.0F;
+            this.motes[k].z = MathHelper.sin(f) * 5.0F;
             ++f;
         }
-        this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
-        this.head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+        this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+        this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
 
 }

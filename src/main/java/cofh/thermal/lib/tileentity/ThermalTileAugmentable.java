@@ -127,9 +127,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // TODO: Does this need to exist?
     @Override
-    public void remove() {
+    public void setRemoved() {
 
-        super.remove();
+        super.setRemoved();
 
         energyCap.invalidate();
         itemCap.invalidate();
@@ -169,7 +169,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
         if (prevActive != isActive) {
             if (getBlockState().hasProperty(ACTIVE)) {
-                world.setBlockState(pos, getBlockState().with(ACTIVE, isActive));
+                level.setBlockAndUpdate(worldPosition, getBlockState().setValue(ACTIVE, isActive));
             }
             TileStatePacket.sendToClient(this);
         }
@@ -183,8 +183,8 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     @Override
     public void neighborChanged(Block blockIn, BlockPos fromPos) {
 
-        if (world != null && redstoneControl.isControllable()) {
-            redstoneControl.setPower(world.getRedstonePowerFromNeighbors(pos));
+        if (level != null && redstoneControl.isControllable()) {
+            redstoneControl.setPower(level.getBestNeighborSignal(worldPosition));
             TileRedstonePacket.sendToClient(this);
         }
     }
@@ -194,7 +194,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
         super.onPlacedBy(worldIn, pos, state, placer, stack);
 
-        enchantments = stack.getEnchantmentTagList();
+        enchantments = stack.getEnchantmentTags();
 
         updateAugmentState();
         onControlUpdate();
@@ -205,7 +205,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
         if (!keepItems()) {
             for (int i = 0; i < invSize() - augSize(); ++i) {
-                InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+                InventoryHelper.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
         if (!ThermalConfig.keepAugments.get()) {
@@ -214,14 +214,14 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
             }
         }
         if (xpStorage.getStored() > 0) {
-            spawnXpOrbs(world, xpStorage.getStored(), Vector3d.copyCenteredHorizontally(pos));
+            spawnXpOrbs(level, xpStorage.getStored(), Vector3d.atBottomCenterOf(pos));
         }
     }
 
     @Override
     public ItemStack createItemStackTag(ItemStack stack) {
 
-        CompoundNBT nbt = stack.getOrCreateChildTag(TAG_BLOCK_ENTITY);
+        CompoundNBT nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         if (keepEnergy()) {
             getEnergyStorage().writeWithParams(nbt);
         }
@@ -253,7 +253,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
             securityControl().write(nbt);
         }
         if (!nbt.isEmpty()) {
-            stack.setTagInfo(TAG_BLOCK_ENTITY, nbt);
+            stack.addTagElement(TAG_BLOCK_ENTITY, nbt);
         }
         if (!enchantments.isEmpty()) {
             stack.getOrCreateTag().put(TAG_ENCHANTMENTS, enchantments);
@@ -495,9 +495,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         isActive = nbt.getBoolean(TAG_ACTIVE);
 
@@ -522,9 +522,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putBoolean(TAG_ACTIVE, isActive);
 
@@ -654,7 +654,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         int storedXp = xpStorage.getStored();
         xpStorage.applyModifiers(xpStorageMod * (xpStorageFeature ? 1 : 0));
         if (storedXp > 0 && xpStorage.getStored() < storedXp) {
-            spawnXpOrbs(world, storedXp - xpStorage.getStored(), Vector3d.copyCenteredHorizontally(pos));
+            spawnXpOrbs(level, storedXp - xpStorage.getStored(), Vector3d.atBottomCenterOf(worldPosition));
         }
 
         CompoundNBT filterNBT = filter.write(new CompoundNBT());
@@ -778,7 +778,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     public boolean openGui(ServerPlayerEntity player) {
 
         if (canOpenGui()) {
-            NetworkHooks.openGui(player, this, pos);
+            NetworkHooks.openGui(player, this, worldPosition);
             return true;
         }
         return false;
@@ -788,7 +788,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     public boolean openFilterGui(ServerPlayerEntity player) {
 
         if (FilterHelper.hasFilter(this)) {
-            NetworkHooks.openGui(player, getFilter(), pos);
+            NetworkHooks.openGui(player, getFilter(), worldPosition);
             return true;
         }
         return false;
@@ -799,7 +799,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     @Override
     public ITextComponent getDisplayName() {
 
-        return new TranslationTextComponent(this.getBlockState().getBlock().getTranslationKey());
+        return new TranslationTextComponent(this.getBlockState().getBlock().getDescriptionId());
     }
     // endregion
 

@@ -72,7 +72,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(world) || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
+        if (Utils.timeCheck(level) || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
             updateTrackers(true);
         }
     }
@@ -93,12 +93,12 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         }
         for (int i = inputTracker; i < 6 && fluidStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < inputTracker && fluidStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         ++inputTracker;
@@ -115,12 +115,12 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         }
         for (int i = outputTracker; i < 6 && fluidStorage.getAmount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < outputTracker && fluidStorage.getAmount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         ++outputTracker;
@@ -166,7 +166,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new FluidCellContainer(i, world, pos, inventory, player);
+        return new FluidCellContainer(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull
@@ -191,7 +191,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         if (curScale != compareTracker) {
             compareTracker = curScale;
             if (send) {
-                markDirty();
+                setChanged();
             }
         }
         if (fluidStorage.isCreative()) {

@@ -37,21 +37,21 @@ public class BasalzEntity extends MonsterEntity {
 
     private float heightOffset = 0.5F;
     private int heightOffsetUpdateTime;
-    private static final DataParameter<Byte> ANGRY = EntityDataManager.createKey(BasalzEntity.class, DataSerializers.BYTE);
+    private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BasalzEntity.class, DataSerializers.BYTE);
 
     public static boolean canSpawn(EntityType<BasalzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 
-        return ThermalFlags.getFlag(FLAG_MOB_BASALZ).getAsBoolean() && MonsterEntity.canMonsterSpawnInLight(entityType, world, reason, pos, rand);
+        return ThermalFlags.getFlag(FLAG_MOB_BASALZ).getAsBoolean() && MonsterEntity.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
     }
 
     public BasalzEntity(EntityType<? extends BasalzEntity> type, World world) {
 
         super(type, world);
-        this.setPathPriority(PathNodeType.WATER, -1.0F);
-        this.setPathPriority(PathNodeType.LAVA, 2.0F);
-        this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
-        this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
-        this.experienceValue = 10;
+        this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
+        this.setPathfindingMalus(PathNodeType.LAVA, 2.0F);
+        this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 0.0F);
+        this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, 0.0F);
+        this.xpReward = 10;
     }
 
     @Override
@@ -62,23 +62,23 @@ public class BasalzEntity extends MonsterEntity {
         this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
 
-        return MonsterEntity.func_234295_eP_()
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23F)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 48.0D);
+        return MonsterEntity.createMonsterAttributes()
+                .add(Attributes.ATTACK_DAMAGE, 8.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.23F)
+                .add(Attributes.FOLLOW_RANGE, 48.0D);
     }
 
     @Override
-    protected void registerData() {
+    protected void defineSynchedData() {
 
-        super.registerData();
-        this.dataManager.register(ANGRY, (byte) 0);
+        super.defineSynchedData();
+        this.entityData.define(ANGRY, (byte) 0);
     }
 
     @Override
@@ -100,41 +100,41 @@ public class BasalzEntity extends MonsterEntity {
     }
 
     @Override
-    public void livingTick() {
+    public void aiStep() {
 
-        if (!this.onGround && this.getMotion().y < 0.0D) {
-            this.setMotion(this.getMotion().mul(1.0D, 0.6D, 1.0D));
+        if (!this.onGround && this.getDeltaMovement().y < 0.0D) {
+            this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
         }
-        if (this.world.isRemote) {
+        if (this.level.isClientSide) {
             //            if (this.rand.nextInt(256) == 0 && !this.isSilent()) {
             //                this.world.playSound(this.getPosX() + 0.5D, this.getPosY() + 0.5D, this.getPosZ() + 0.5D, SOUND_BASALZ_ROAM, this.getSoundCategory(), 0.5F + 0.25F * this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, true);
             //            }
-            if (this.isAngry() && this.rand.nextInt(2) == 0) {
-                this.world.addParticle(ParticleTypes.FALLING_LAVA, this.getPosXRandom(0.5D), this.getPosYRandom(), this.getPosZRandom(0.5D), 0.0D, 0.0D, 0.0D);
+            if (this.isAngry() && this.random.nextInt(2) == 0) {
+                this.level.addParticle(ParticleTypes.FALLING_LAVA, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
         }
-        super.livingTick();
+        super.aiStep();
     }
 
     @Override
-    protected void updateAITasks() {
+    protected void customServerAiStep() {
 
         --this.heightOffsetUpdateTime;
         if (this.heightOffsetUpdateTime <= 0) {
             this.heightOffsetUpdateTime = 100;
-            this.heightOffset = 0.5F + (float) this.rand.nextGaussian() * 3.0F;
+            this.heightOffset = 0.5F + (float) this.random.nextGaussian() * 3.0F;
         }
-        LivingEntity livingentity = this.getAttackTarget();
-        if (livingentity != null && livingentity.getPosYEye() > this.getPosYEye() + (double) this.heightOffset && this.canAttack(livingentity)) {
-            Vector3d vec3d = this.getMotion();
-            this.setMotion(this.getMotion().add(0.0D, ((double) 0.3F - vec3d.y) * (double) 0.3F, 0.0D));
-            this.isAirBorne = true;
+        LivingEntity livingentity = this.getTarget();
+        if (livingentity != null && livingentity.getEyeY() > this.getEyeY() + (double) this.heightOffset && this.canAttack(livingentity)) {
+            Vector3d vec3d = this.getDeltaMovement();
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0D, ((double) 0.3F - vec3d.y) * (double) 0.3F, 0.0D));
+            this.hasImpulse = true;
         }
-        super.updateAITasks();
+        super.customServerAiStep();
     }
 
     @Override
-    public boolean onLivingFall(float distance, float damageMultiplier) {
+    public boolean causeFallDamage(float distance, float damageMultiplier) {
 
         return false;
     }
@@ -148,18 +148,18 @@ public class BasalzEntity extends MonsterEntity {
     // region ANGER MANAGEMENT
     public boolean isAngry() {
 
-        return (this.dataManager.get(ANGRY) & 1) != 0;
+        return (this.entityData.get(ANGRY) & 1) != 0;
     }
 
     protected void setAngry(boolean angry) {
 
-        byte b0 = this.dataManager.get(ANGRY);
+        byte b0 = this.entityData.get(ANGRY);
         if (angry) {
             b0 = (byte) (b0 | 1);
         } else {
             b0 = (byte) (b0 & -2);
         }
-        this.dataManager.set(ANGRY, b0);
+        this.entityData.set(ANGRY, b0);
     }
     // endregion
 
@@ -173,23 +173,23 @@ public class BasalzEntity extends MonsterEntity {
         public BasalzAttackGoal(BasalzEntity basalzIn) {
 
             this.basalz = basalzIn;
-            this.setMutexFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
         }
 
         /**
          * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
          * method as well.
          */
-        public boolean shouldExecute() {
+        public boolean canUse() {
 
-            LivingEntity livingentity = this.basalz.getAttackTarget();
+            LivingEntity livingentity = this.basalz.getTarget();
             return livingentity != null && livingentity.isAlive() && this.basalz.canAttack(livingentity);
         }
 
         /**
          * Execute a one shot task or start executing a continuous task
          */
-        public void startExecuting() {
+        public void start() {
 
             this.attackStep = 0;
         }
@@ -197,7 +197,7 @@ public class BasalzEntity extends MonsterEntity {
         /**
          * Reset the task's internal state. Called when this task is interrupted by another one
          */
-        public void resetTask() {
+        public void stop() {
 
             this.basalz.setAngry(false);
             this.chaseStep = 0;
@@ -209,28 +209,28 @@ public class BasalzEntity extends MonsterEntity {
         public void tick() {
 
             --this.attackTime;
-            LivingEntity livingentity = this.basalz.getAttackTarget();
+            LivingEntity livingentity = this.basalz.getTarget();
             if (livingentity != null) {
-                boolean flag = this.basalz.getEntitySenses().canSee(livingentity);
+                boolean flag = this.basalz.getSensing().canSee(livingentity);
                 if (flag) {
                     this.chaseStep = 0;
                 } else {
                     ++this.chaseStep;
                 }
-                double d0 = this.basalz.getDistanceSq(livingentity);
+                double d0 = this.basalz.distanceToSqr(livingentity);
                 if (d0 < 4.0D) {
                     if (!flag) {
                         return;
                     }
                     if (this.attackTime <= 0) {
                         this.attackTime = 20;
-                        this.basalz.attackEntityAsMob(livingentity);
+                        this.basalz.doHurtTarget(livingentity);
                     }
-                    this.basalz.getMoveHelper().setMoveTo(livingentity.getPosX(), livingentity.getPosY(), livingentity.getPosZ(), 1.0D);
+                    this.basalz.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
                 } else if (d0 < this.getFollowDistance() * this.getFollowDistance() && flag) {
-                    double d1 = livingentity.getPosX() - this.basalz.getPosX();
-                    double d2 = livingentity.getPosYHeight(0.5D) - this.basalz.getPosYHeight(0.5D);
-                    double d3 = livingentity.getPosZ() - this.basalz.getPosZ();
+                    double d1 = livingentity.getX() - this.basalz.getX();
+                    double d2 = livingentity.getY(0.5D) - this.basalz.getY(0.5D);
+                    double d3 = livingentity.getZ() - this.basalz.getZ();
                     if (this.attackTime <= 0) {
                         ++this.attackStep;
                         if (this.attackStep == 1) {
@@ -245,15 +245,15 @@ public class BasalzEntity extends MonsterEntity {
                         }
                         if (this.attackStep > 1) {
                             float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
-                            this.basalz.world.playEvent(null, 1018, this.basalz.getPosition(), 0);
-                            BasalzProjectileEntity projectile = new BasalzProjectileEntity(this.basalz, d1 + this.basalz.getRNG().nextGaussian() * (double) f, d2, d3 + this.basalz.getRNG().nextGaussian() * (double) f, this.basalz.world);
-                            projectile.setPosition(projectile.getPosX(), this.basalz.getPosYHeight(0.5D) + 0.5D, projectile.getPosZ());
-                            this.basalz.world.addEntity(projectile);
+                            this.basalz.level.levelEvent(null, 1018, this.basalz.blockPosition(), 0);
+                            BasalzProjectileEntity projectile = new BasalzProjectileEntity(this.basalz, d1 + this.basalz.getRandom().nextGaussian() * (double) f, d2, d3 + this.basalz.getRandom().nextGaussian() * (double) f, this.basalz.level);
+                            projectile.setPos(projectile.getX(), this.basalz.getY(0.5D) + 0.5D, projectile.getZ());
+                            this.basalz.level.addFreshEntity(projectile);
                         }
                     }
-                    this.basalz.getLookController().setLookPositionWithEntity(livingentity, 10.0F, 10.0F);
+                    this.basalz.getLookControl().setLookAt(livingentity, 10.0F, 10.0F);
                 } else if (this.chaseStep < 5) {
-                    this.basalz.getMoveHelper().setMoveTo(livingentity.getPosX(), livingentity.getPosY(), livingentity.getPosZ(), 1.0D);
+                    this.basalz.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
                 }
                 super.tick();
             }

@@ -46,7 +46,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
         super(builder);
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> multimap = ImmutableMultimap.builder();
-        multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", 0.0D, AttributeModifier.Operation.ADDITION));
+        multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 0.0D, AttributeModifier.Operation.ADDITION));
 
         this.toolAttributes = multimap.build();
     }
@@ -54,7 +54,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     @Override
     protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.wrench.mode." + getMode(stack)).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.wrench.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
         addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
@@ -62,11 +62,11 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
 
     protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
 
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
+        World world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
         PlayerEntity player = context.getPlayer();
 
-        if (player == null || world.isAirBlock(pos)) {
+        if (player == null || world.isEmptyBlock(pos)) {
             return false;
         }
         BlockState state = world.getBlockState(pos);
@@ -74,14 +74,14 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
 
         if (player.isSecondaryUseActive() && block instanceof IDismantleable && ((IDismantleable) block).canDismantle(world, pos, state, player)) {
             if (Utils.isServerWorld(world)) {
-                BlockRayTraceResult target = new BlockRayTraceResult(context.getHitVec(), context.getFace(), context.getPos(), context.isInside());
+                BlockRayTraceResult target = new BlockRayTraceResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
                 ((IDismantleable) block).dismantleBlock(world, pos, state, target, player, false);
             }
-            player.swingArm(context.getHand());
+            player.swing(context.getHand());
             return true;
         } else if (!player.isSecondaryUseActive()) {
             if (block instanceof IWrenchable && ((IWrenchable) block).canWrench(world, pos, state, player)) {
-                BlockRayTraceResult target = new BlockRayTraceResult(context.getHitVec(), context.getFace(), context.getPos(), context.isInside());
+                BlockRayTraceResult target = new BlockRayTraceResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
                 ((IWrenchable) block).wrenchBlock(world, pos, state, target, player);
                 return true;
             }
@@ -91,23 +91,23 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
-        target.addPotionEffect(new EffectInstance(WRENCHED, 60, 0, false, false));
-        stack.damageItem(1, attacker, (entity) -> {
-            entity.sendBreakAnimation(EquipmentSlotType.MAINHAND);
+        target.addEffect(new EffectInstance(WRENCHED, 60, 0, false, false));
+        stack.hurtAndBreak(1, attacker, (entity) -> {
+            entity.broadcastBreakEvent(EquipmentSlotType.MAINHAND);
         });
         return true;
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
         if (player == null) {
             return ActionResultType.FAIL;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), context.getItem()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
     }
 
     @Override
@@ -117,7 +117,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
         if (player == null) {
             return ActionResultType.PASS;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
     }
 
     @Override
@@ -142,7 +142,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     @Override
     public void onModeChange(PlayerEntity player, ItemStack stack) {
 
-        player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS, 0.4F, (isActive(stack) ? 0.7F : 0.5F) + 0.1F * getMode(stack));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.ENDER_EYE_DEATH, SoundCategory.PLAYERS, 0.4F, (isActive(stack) ? 0.7F : 0.5F) + 0.1F * getMode(stack));
         ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.wrench.mode." + getMode(stack)));
     }
     // endregion

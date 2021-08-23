@@ -29,12 +29,12 @@ public class LumiumGlassBlock extends HardenedGlassBlock {
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 
         if (entityIn instanceof LivingEntity) {
             LivingEntity mob = (LivingEntity) entityIn;
-            if (mob.getCreatureAttribute() == CreatureAttribute.UNDEAD) {
-                mob.setFire(duration);
+            if (mob.getMobType() == CreatureAttribute.UNDEAD) {
+                mob.setSecondsOnFire(duration);
             }
         }
     }

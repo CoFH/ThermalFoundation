@@ -70,7 +70,7 @@ public class HiveExtractorManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> mappings = recipeManager.getRecipes(TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : mappings.entrySet()) {
             addMapping((HiveExtractorMapping) entry.getValue());
         }

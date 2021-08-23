@@ -37,8 +37,8 @@ public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScr
         // addPanel(new PanelEnchantment(this, "This block can be enchanted."));
         addPanel(new SecurityPanel(this, tile, SecurityHelper.getID(player)));
 
-        if (container.getAugmentSlots().size() > 0) {
-            addPanel(new AugmentPanel(this, container::getNumAugmentSlots, container.getAugmentSlots()));
+        if (menu.getAugmentSlots().size() > 0) {
+            addPanel(new AugmentPanel(this, menu::getNumAugmentSlots, menu.getAugmentSlots()));
         }
         addPanel(new RSControlPanel(this, tile));
 

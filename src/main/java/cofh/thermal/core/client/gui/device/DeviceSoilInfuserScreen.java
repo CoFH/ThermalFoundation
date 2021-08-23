@@ -48,13 +48,13 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderLabels(MatrixStack matrixStack, int mouseX, int mouseY) {
 
         String radius = format(1 + 2 * tile.getRadius());
 
-        getFontRenderer().drawString(matrixStack, localize("info.cofh.area") + ": " + radius + " x " + radius, 70, 39, 0x404040);
+        getFontRenderer().draw(matrixStack, localize("info.cofh.area") + ": " + radius + " x " + radius, 70, 39, 0x404040);
 
-        super.drawGuiContainerForegroundLayer(matrixStack, mouseX, mouseY);
+        super.renderLabels(matrixStack, mouseX, mouseY);
     }
 
 }

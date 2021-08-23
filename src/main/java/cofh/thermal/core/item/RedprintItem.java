@@ -42,20 +42,20 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
         CompoundNBT conveyableData = stack.getTag();
 
         if (conveyableData == null) {
-            tooltip.add(getTextComponent("info.thermal.redprint.use").mergeStyle(GRAY));
+            tooltip.add(getTextComponent("info.thermal.redprint.use").withStyle(GRAY));
         } else {
-            tooltip.add(getTextComponent("info.thermal.redprint.use.contents").mergeStyle(GRAY));
-            tooltip.add(getTextComponent("info.thermal.redprint.use.sneak").mergeStyle(DARK_GRAY));
+            tooltip.add(getTextComponent("info.thermal.redprint.use.contents").withStyle(GRAY));
+            tooltip.add(getTextComponent("info.thermal.redprint.use.sneak").withStyle(DARK_GRAY));
 
             tooltip.add(getTextComponent("info.thermal.redprint.contents"));
-            for (String type : conveyableData.keySet()) {
+            for (String type : conveyableData.getAllKeys()) {
                 if (!canLocalize("info.thermal.redprint.data." + type)) {
                     tooltip.add(getTextComponent("info.thermal.redprint.unknown")
-                            .mergeStyle(DARK_GRAY));
+                            .withStyle(DARK_GRAY));
                 }
                 tooltip.add(new StringTextComponent(" - ")
                         .append(getTextComponent("info.thermal.redprint.data." + type)
-                                .mergeStyle(GRAY))
+                                .withStyle(GRAY))
                 );
             }
         }
@@ -69,7 +69,7 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
 
     protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
 
-        World world = context.getWorld();
+        World world = context.getLevel();
         PlayerEntity player = context.getPlayer();
 
         if (player == null || Utils.isClientWorld(world)) {
@@ -77,13 +77,13 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
         }
         if (player.isSecondaryUseActive() && context.getHand() == Hand.MAIN_HAND) {
             if (stack.getTag() != null) {
-                player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.3F);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.3F);
                 stack.setTag(null);
             }
             return true;
         }
-        BlockPos pos = context.getPos();
-        TileEntity tile = world.getTileEntity(pos);
+        BlockPos pos = context.getClickedPos();
+        TileEntity tile = world.getBlockEntity(pos);
 
         if (tile instanceof ISecurable && !((ISecurable) tile).canAccess(player)) {
             return false;
@@ -92,16 +92,16 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
             IConveyableData conveyableTile = (IConveyableData) tile;
             if (stack.getTag() == null && context.getHand() == Hand.MAIN_HAND) {
                 conveyableTile.writeConveyableData(player, stack.getOrCreateTag());
-                tile.markDirty();
+                tile.setChanged();
                 if (stack.getTag().isEmpty()) {
                     stack.setTag(null);
                     return false;
                 } else {
-                    player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.7F);
+                    player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.7F);
                 }
             } else {
                 conveyableTile.readConveyableData(player, stack.getTag());
-                player.world.playSound(null, player.getPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.5F, 0.8F);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.5F, 0.8F);
             }
             return true;
         }
@@ -109,13 +109,13 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
         if (player == null) {
             return ActionResultType.FAIL;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), context.getItem()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
     }
 
     @Override
@@ -125,21 +125,21 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
         if (player == null) {
             return ActionResultType.PASS;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 
-        ItemStack stack = player.getHeldItem(hand);
+        ItemStack stack = player.getItemInHand(hand);
         if (player.isSecondaryUseActive()) {
             if (stack.getTag() != null) {
-                player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 0.3F);
+                player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, 0.3F);
             }
             stack.setTag(null);
         }
-        player.swingArm(hand);
-        return ActionResult.resultSuccess(stack);
+        player.swing(hand);
+        return ActionResult.success(stack);
     }
 
     // region IPlacementItem

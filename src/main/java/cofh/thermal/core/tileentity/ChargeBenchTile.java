@@ -87,7 +87,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new ChargeBenchContainer(i, world, pos, inventory, player);
+        return new ChargeBenchContainer(i, level, worldPosition, inventory, player);
     }
 
     // region AUGMENTS

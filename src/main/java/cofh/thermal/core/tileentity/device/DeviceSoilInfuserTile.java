@@ -71,7 +71,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
                 energyStorage.modify(-processTick);
                 if (process >= processMax) {
                     process -= processMax;
-                    BlockPos.getAllInBox(pos.add(-radius, -1, -radius), pos.add(radius, 1, radius))
+                    BlockPos.betweenClosedStream(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(radius, 1, radius))
                             .forEach(this::chargeSoil);
                 }
             } else {
@@ -88,7 +88,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceSoilInfuserContainer(i, world, pos, inventory, player);
+        return new DeviceSoilInfuserContainer(i, level, worldPosition, inventory, player);
     }
 
     // region GUI
@@ -134,9 +134,9 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
@@ -144,9 +144,9 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);
@@ -164,9 +164,9 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     protected void chargeSoil(BlockPos blockPos) {
 
-        BlockState state = world.getBlockState(blockPos);
+        BlockState state = level.getBlockState(blockPos);
         if (state.getBlock() instanceof SoilBlock) {
-            SoilBlock.charge(state, world, blockPos);
+            SoilBlock.charge(state, level, blockPos);
         }
     }
 
@@ -220,7 +220,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     public AxisAlignedBB getArea() {
 
         if (area == null) {
-            area = new AxisAlignedBB(pos.add(-radius, -1, -radius), pos.add(1 + radius, 1, 1 + radius));
+            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1, 1 + radius));
         }
         return area;
     }

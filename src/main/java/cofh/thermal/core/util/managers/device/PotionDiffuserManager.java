@@ -43,7 +43,7 @@ public class PotionDiffuserManager extends AbstractManager {
 
     public void addBoost(PotionDiffuserBoost boost) {
 
-        for (ItemStack ingredient : boost.getIngredient().getMatchingStacks()) {
+        for (ItemStack ingredient : boost.getIngredient().getItems()) {
             boostMap.put(convert(ingredient), Triple.of(boost.getCycles(), boost.getAmplifier(), boost.getDurationMod()));
         }
     }
@@ -69,7 +69,7 @@ public class PotionDiffuserManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.getRecipes(TCoreRecipeTypes.BOOST_POTION_DIFFUSER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_POTION_DIFFUSER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((PotionDiffuserBoost) entry.getValue());
         }

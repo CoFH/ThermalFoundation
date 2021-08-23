@@ -35,7 +35,7 @@ import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
 public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
 
-    public static final int BASE_CAPACITY = 1000;
+    public static final int BASE_CAPACITY = 10000;
 
     protected ItemStorageCoFH itemStorage = new ItemStorageCoFH(BASE_CAPACITY, item -> filter.valid(item));
 
@@ -69,7 +69,7 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(world)) {
+        if (Utils.timeCheck(level)) {
             updateTrackers(true);
             if (!itemsEqualWithTags(renderItem, itemStorage.getItemStack())) {
                 renderItem = cloneStack(itemStorage.getItemStack(), 1);
@@ -88,12 +88,12 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         }
         for (int i = inputTracker; i < 6 && itemStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < inputTracker && itemStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         ++inputTracker;
@@ -110,12 +110,12 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         }
         for (int i = outputTracker; i < 6 && itemStorage.getCount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < outputTracker && itemStorage.getCount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         ++outputTracker;
@@ -197,7 +197,7 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new ItemCellContainer(i, world, pos, inventory, player);
+        return new ItemCellContainer(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull
@@ -218,7 +218,7 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         if (curScale != compareTracker) {
             compareTracker = curScale;
             if (send) {
-                markDirty();
+                setChanged();
             }
         }
         if (itemStorage.isCreative()) {
@@ -240,7 +240,7 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
 
         super.getRenderPacket(buffer);
 
-        buffer.writeItemStack(renderItem);
+        buffer.writeItem(renderItem);
 
         return buffer;
     }
@@ -250,15 +250,15 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
 
         super.handleRenderPacket(buffer);
 
-        renderItem = buffer.readItemStack();
+        renderItem = buffer.readItem();
     }
     // endregion
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         renderItem = inventory.get(0).getStack();
     }

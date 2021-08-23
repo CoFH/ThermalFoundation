@@ -56,45 +56,45 @@ public class IceGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
-        if (Utils.isServerWorld(world)) {
-            affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
-            AreaUtils.freezeSpecial(this, world, this.getPosition(), radius, true, true);
-            AreaUtils.freezeNearbyGround(this, world, this.getPosition(), radius);
-            AreaUtils.freezeAllWater(this, world, this.getPosition(), radius, permanentWater);
-            AreaUtils.freezeAllLava(this, world, this.getPosition(), radius, permanentLava);
+        if (Utils.isServerWorld(level)) {
+            affectNearbyEntities(this, level, this.blockPosition(), radius, getOwner());
+            AreaUtils.freezeSpecial(this, level, this.blockPosition(), radius, true, true);
+            AreaUtils.freezeNearbyGround(this, level, this.blockPosition(), radius);
+            AreaUtils.freezeAllWater(this, level, this.blockPosition(), radius, permanentWater);
+            AreaUtils.freezeAllLava(this, level, this.blockPosition(), radius, permanentLava);
             makeAreaOfEffectCloud();
-            this.world.setEntityState(this, (byte) 3);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.ticksExisted < 10) {
+        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.ITEM_SNOWBALL);
+        cloud.setParticle(ParticleTypes.ITEM_SNOWBALL);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        level.addFreshEntity(cloud);
     }
 
     public static void affectNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
-        List<LivingEntity> mobs = worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE);
+        AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
+        List<LivingEntity> mobs = worldIn.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
 
         for (LivingEntity mob : mobs) {
-            mob.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), mob.isImmuneToFire() ? 4.0F : 1.0F);
-            mob.addPotionEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
+            mob.hurt(DamageSource.explosion(source instanceof LivingEntity ? (LivingEntity) source : null), mob.fireImmune() ? 4.0F : 1.0F);
+            mob.addEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
         }
     }
 

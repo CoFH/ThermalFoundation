@@ -70,15 +70,15 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_PULVERIZER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_PULVERIZER_RECYCLE);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER_RECYCLE);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recycle.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.getRecipes(TCoreRecipeTypes.CATALYST_PULVERIZER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_PULVERIZER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {
             addCatalyst((ThermalCatalyst) entry.getValue());
         }

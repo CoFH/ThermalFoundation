@@ -70,21 +70,21 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
     @Override
     protected void updateValidity() {
 
-        if (world == null || !world.isAreaLoaded(pos, 1)) {
+        if (level == null || !level.isAreaLoaded(worldPosition, 1)) {
             return;
         }
         int adjWaterSource = 0;
         valid = false;
 
         BlockPos[] cardinals = new BlockPos[]{
-                pos.north(),
-                pos.south(),
-                pos.west(),
-                pos.east(),
+                worldPosition.north(),
+                worldPosition.south(),
+                worldPosition.west(),
+                worldPosition.east(),
         };
         for (BlockPos adj : cardinals) {
-            FluidState state = world.getFluidState(adj);
-            if (state.getFluid().equals(Fluids.WATER)) {
+            FluidState state = level.getFluidState(adj);
+            if (state.getType().equals(Fluids.WATER)) {
                 ++adjWaterSource;
             }
         }
@@ -147,13 +147,13 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceWaterGenContainer(i, world, pos, inventory, player);
+        return new DeviceWaterGenContainer(i, level, worldPosition, inventory, player);
     }
 
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_DEVICE_WATER_GEN, SoundCategory.AMBIENT, this, () -> !removed && isActive);
+        return new ConditionalSound(SOUND_DEVICE_WATER_GEN, SoundCategory.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region AUGMENTS

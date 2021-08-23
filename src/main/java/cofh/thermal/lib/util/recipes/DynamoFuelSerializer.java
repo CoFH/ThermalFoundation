@@ -31,7 +31,7 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int energy = defaultEnergy;
 
@@ -63,14 +63,14 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
 
     @Nullable
     @Override
-    public T read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         int energy = buffer.readVarInt();
 
         int numInputItems = buffer.readVarInt();
         ArrayList<Ingredient> inputItems = new ArrayList<>(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            inputItems.add(Ingredient.read(buffer));
+            inputItems.add(Ingredient.fromNetwork(buffer));
         }
 
         int numInputFluids = buffer.readVarInt();
@@ -82,14 +82,14 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
     }
 
     @Override
-    public void write(PacketBuffer buffer, T recipe) {
+    public void toNetwork(PacketBuffer buffer, T recipe) {
 
         buffer.writeVarInt(recipe.energy);
 
         int numInputItems = recipe.inputItems.size();
         buffer.writeVarInt(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            recipe.inputItems.get(i).write(buffer);
+            recipe.inputItems.get(i).toNetwork(buffer);
         }
         int numInputFluids = recipe.inputFluids.size();
         buffer.writeVarInt(numInputFluids);

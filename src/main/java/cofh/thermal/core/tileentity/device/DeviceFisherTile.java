@@ -93,9 +93,9 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     }
 
     @Override
-    public void updateContainingBlockInfo() {
+    public void clearCache() {
 
-        super.updateContainingBlockInfo();
+        super.clearCache();
         updateValidity();
     }
 
@@ -103,22 +103,22 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     protected void updateValidity() {
 
         area = null;
-        if (world == null || !world.isAreaLoaded(pos, 1 + radius) || Utils.isClientWorld(world)) {
+        if (level == null || !level.isAreaLoaded(worldPosition, 1 + radius) || Utils.isClientWorld(level)) {
             return;
         }
         int facingWater = 0;
         valid = false;
 
         BlockState myState = getBlockState();
-        BlockPos facePos = pos.offset(myState.get(FACING_HORIZONTAL));
-        FluidState state = world.getFluidState(facePos);
+        BlockPos facePos = worldPosition.relative(myState.getValue(FACING_HORIZONTAL));
+        FluidState state = level.getFluidState(facePos);
 
-        if (state.getFluid().equals(Fluids.WATER)) {
-            BlockPos areaPos = pos.offset(myState.get(FACING_HORIZONTAL), 2);
-            Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(areaPos.add(-1, 0, -1), areaPos.add(1, 0, 1));
+        if (state.getType().equals(Fluids.WATER)) {
+            BlockPos areaPos = worldPosition.relative(myState.getValue(FACING_HORIZONTAL), 2);
+            Iterable<BlockPos> area = BlockPos.betweenClosed(areaPos.offset(-1, 0, -1), areaPos.offset(1, 0, 1));
             for (BlockPos scan : area) {
-                state = world.getFluidState(scan);
-                if (state.getFluid().equals(Fluids.WATER)) {
+                state = level.getFluidState(scan);
+                if (state.getType().equals(Fluids.WATER)) {
                     ++facingWater;
                 }
             }
@@ -159,8 +159,8 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
             return;
         }
         if (valid) {
-            LootTable table = world.getServer().getLootTableManager().getLootTableFromLocation(FisherManager.instance().getBoostLootTable(inputSlot.getItemStack()));
-            LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) world).withParameter(LootParameters.field_237457_g_, Vector3d.copy(getPos())).withRandom(world.rand);
+            LootTable table = level.getServer().getLootTables().get(FisherManager.instance().getBoostLootTable(inputSlot.getItemStack()));
+            LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) level).withParameter(LootParameters.ORIGIN, Vector3d.atLowerCornerOf(getBlockPos())).withRandom(level.random);
 
             float lootBase = baseMod * FisherManager.instance().getBoostOutputMod(inputSlot.getItemStack());
             float lootExtra = lootBase - (int) lootBase;
@@ -169,7 +169,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
             int caught = 0;
 
             for (int i = 0; i < lootCount; ++i) {
-                for (ItemStack stack : table.generate(contextBuilder.build(LootParameterSets.EMPTY))) {
+                for (ItemStack stack : table.getRandomItems(contextBuilder.create(LootParameterSets.EMPTY))) {
                     if (InventoryHelper.insertStackIntoInventory(internalHandler, stack, false).isEmpty()) {
                         ++caught;
                     }
@@ -180,10 +180,10 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
                     inputSlot.consume(1);
                 }
                 if (xpStorageFeature) {
-                    xpStorage.receiveXp(caught + world.rand.nextInt(2 * caught), false);
+                    xpStorage.receiveXp(caught + level.random.nextInt(2 * caught), false);
                 }
-                Vector3d splashVec = Vector3d.copyCenteredWithVerticalOffset(pos.offset(getBlockState().get(FACING_HORIZONTAL)), 1.0);
-                ((ServerWorld) world).spawnParticle(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
+                Vector3d splashVec = Vector3d.upFromBottomCenterOf(worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL)), 1.0);
+                ((ServerWorld) level).sendParticles(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
             }
         }
     }
@@ -192,22 +192,22 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceFisherContainer(i, world, pos, inventory, player);
+        return new DeviceFisherContainer(i, level, worldPosition, inventory, player);
     }
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         process = nbt.getInt(TAG_PROCESS);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
 
@@ -218,27 +218,27 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     // region HELPERS
     protected int getTimeConstant() {
 
-        if (world == null) {
+        if (level == null) {
             return timeConstant / 2;
         }
         int constant = timeConstant;
 
-        BlockPos areaPos = pos.offset(getBlockState().get(FACING_HORIZONTAL), radius);
-        Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(areaPos.add(-radius, 1 - radius, -radius), areaPos.add(radius, -1 + radius, radius));
+        BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
+        Iterable<BlockPos> area = BlockPos.betweenClosed(areaPos.offset(-radius, 1 - radius, -radius), areaPos.offset(radius, -1 + radius, radius));
 
         for (BlockPos scan : area) {
-            FluidState state = world.getFluidState(scan);
-            if (state.getFluid().equals(Fluids.WATER)) {
+            FluidState state = level.getFluidState(scan);
+            if (state.getType().equals(Fluids.WATER)) {
                 constant -= timeReductionWater;
             }
         }
-        if (Utils.hasBiomeType(world, pos, BiomeDictionary.Type.OCEAN)) {
+        if (Utils.hasBiomeType(level, worldPosition, BiomeDictionary.Type.OCEAN)) {
             constant /= 3;
         }
-        if (Utils.hasBiomeType(world, pos, BiomeDictionary.Type.RIVER)) {
+        if (Utils.hasBiomeType(level, worldPosition, BiomeDictionary.Type.RIVER)) {
             constant /= 2;
         }
-        if (world.isRainingAt(pos)) {
+        if (level.isRainingAt(worldPosition)) {
             constant /= 2;
         }
         if (inputSlot.isEmpty()) {
@@ -285,8 +285,8 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     public AxisAlignedBB getArea() {
 
         if (area == null) {
-            BlockPos areaPos = pos.offset(getBlockState().get(FACING_HORIZONTAL), radius);
-            area = new AxisAlignedBB(areaPos.add(-radius, -1 - radius, -radius), areaPos.add(1 + radius, -1 + radius, 1 + radius));
+            BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
+            area = new AxisAlignedBB(areaPos.offset(-radius, -1 - radius, -radius), areaPos.offset(1 + radius, -1 + radius, 1 + radius));
         }
         return area;
     }

@@ -23,7 +23,7 @@ public class ThermalTextures {
     @SubscribeEvent
     public static void preStitch(TextureStitchEvent.Pre event) {
 
-        if (!event.getMap().getTextureLocation().toString().equals(BLOCK_ATLAS)) {
+        if (!event.getMap().location().toString().equals(BLOCK_ATLAS)) {
             return;
         }
         event.addSprite(DEVICE_COLLECTOR_UNDERLAY_LOC);
@@ -53,7 +53,7 @@ public class ThermalTextures {
     @SubscribeEvent
     public static void postStitch(TextureStitchEvent.Post event) {
 
-        if (!event.getMap().getTextureLocation().toString().equals(BLOCK_ATLAS)) {
+        if (!event.getMap().location().toString().equals(BLOCK_ATLAS)) {
             return;
         }
         UnderlayBakedModel.clearCache();

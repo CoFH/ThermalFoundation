@@ -45,14 +45,14 @@ public class EnderFluid extends FluidCoFH {
         flowingFluid = FLUIDS.register(flowing(key), () -> new ForgeFlowingFluid.Flowing(properties));
 
         // block = BLOCKS.register(key, () -> new EnderFluidBlock(stillFluid, AbstractBlock.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()));
-        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
+        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
 
         properties = new ForgeFlowingFluid.Properties(stillFluid, flowingFluid, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .luminosity(3)
                 .density(4000)
                 .viscosity(2500)
                 .rarity(Rarity.UNCOMMON)
-                .sound(SoundEvents.ITEM_BUCKET_FILL, SoundEvents.ITEM_BUCKET_EMPTY)
+                .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY)
         ).bucket(bucket);//.block(block).levelDecreasePerBlock(2);
     }
 
@@ -64,7 +64,7 @@ public class EnderFluid extends FluidCoFH {
         }
 
         @Override
-        public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 
             if (!teleport || Utils.isClientWorld(worldIn)) {
                 return;
@@ -72,16 +72,16 @@ public class EnderFluid extends FluidCoFH {
             if (entityIn instanceof ItemEntity || entityIn instanceof ExperienceOrbEntity) {
                 return;
             }
-            BlockPos randPos = pos.add(-8 + worldIn.rand.nextInt(17), worldIn.rand.nextInt(8), -8 + worldIn.rand.nextInt(17));
+            BlockPos randPos = pos.offset(-8 + worldIn.random.nextInt(17), worldIn.random.nextInt(8), -8 + worldIn.random.nextInt(17));
 
             if (!worldIn.getBlockState(randPos).getMaterial().isSolid()) {
                 if (entityIn instanceof LivingEntity) {
                     if (Utils.teleportEntityTo(entityIn, randPos)) {
-                        ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(ENDERFERENCE, duration, 0, false, false));
+                        ((LivingEntity) entityIn).addEffect(new EffectInstance(ENDERFERENCE, duration, 0, false, false));
                     }
                 } else if (worldIn.getGameTime() % duration == 0) {
-                    entityIn.setPosition(randPos.getX(), randPos.getY(), randPos.getZ());
-                    entityIn.playSound(SoundEvents.ENTITY_ENDERMAN_TELEPORT, 1.0F, 1.0F);
+                    entityIn.setPos(randPos.getX(), randPos.getY(), randPos.getZ());
+                    entityIn.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, 1.0F);
                 }
             }
         }

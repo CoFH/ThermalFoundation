@@ -55,22 +55,22 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
         super.updateActiveState();
 
         if (isActive) {
-            extractProducts(pos.up());
+            extractProducts(worldPosition.above());
         }
     }
 
     @Override
     protected boolean isValid() {
 
-        return world != null && world.getBlockState(pos.up()).hasProperty(BeehiveBlock.HONEY_LEVEL);
+        return level != null && level.getBlockState(worldPosition.above()).hasProperty(BeehiveBlock.HONEY_LEVEL);
     }
 
     protected void extractProducts(BlockPos above) {
 
-        if (world == null) {
+        if (level == null) {
             return;
         }
-        BlockState hive = world.getBlockState(above);
+        BlockState hive = level.getBlockState(above);
         if (hive.hasProperty(BeehiveBlock.HONEY_LEVEL) && BeehiveTileEntity.getHoneyLevel(hive) >= 5) {
             ItemStack comb = HiveExtractorManager.instance().getItem(hive);
             FluidStack honey = HiveExtractorManager.instance().getFluid(hive);
@@ -78,7 +78,7 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
             outputSlot.insertItem(0, comb, false);
             outputTank.fill(honey, EXECUTE);
 
-            world.setBlockState(above, hive.with(BeehiveBlock.HONEY_LEVEL, 0), 3);
+            level.setBlock(above, hive.setValue(BeehiveBlock.HONEY_LEVEL, 0), 3);
         }
     }
 
@@ -86,7 +86,7 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceHiveExtractorContainer(i, world, pos, inventory, player);
+        return new DeviceHiveExtractorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region AUGMENTS

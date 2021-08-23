@@ -51,7 +51,7 @@ public class UnderlayBakedModel extends BakedModelWrapper<IBakedModel> implement
             return quads;
         }
         BakedQuad baseQuad = quads.get(0);
-        int sideIndex = side.getIndex();
+        int sideIndex = side.get3DDataValue();
 
         // FLUID
         if (extraData.hasProperty(ModelUtils.FLUID)) {

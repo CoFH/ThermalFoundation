@@ -35,23 +35,23 @@ public class LockItem extends ItemCoFH implements IPlacementItem {
 
     protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
 
-        World world = context.getWorld();
+        World world = context.getLevel();
         PlayerEntity player = context.getPlayer();
 
         if (player == null || Utils.isClientWorld(world)) {
             return false;
         }
-        BlockPos pos = context.getPos();
-        TileEntity tile = world.getTileEntity(pos);
+        BlockPos pos = context.getClickedPos();
+        TileEntity tile = world.getBlockEntity(pos);
 
         if (tile instanceof ISecurable) {
             ISecurable securable = (ISecurable) tile;
             if (securable.setOwner(player.getGameProfile())) {
                 securable.setAccess(ISecurable.AccessMode.PUBLIC);
-                if (!player.abilities.isCreativeMode) {
+                if (!player.abilities.instabuild) {
                     stack.shrink(1);
                 }
-                player.world.playSound(null, player.getPosition(), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.PLAYERS, 0.5F, 0.8F);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.FLINTANDSTEEL_USE, SoundCategory.PLAYERS, 0.5F, 0.8F);
                 ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.cofh.secure_block"));
             }
             return true;
@@ -60,13 +60,13 @@ public class LockItem extends ItemCoFH implements IPlacementItem {
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
         if (player == null) {
             return ActionResultType.FAIL;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), context.getItem()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class LockItem extends ItemCoFH implements IPlacementItem {
         if (player == null) {
             return ActionResultType.PASS;
         }
-        return player.canPlayerEdit(context.getPos(), context.getFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
     }
 
     // region IPlacementItem

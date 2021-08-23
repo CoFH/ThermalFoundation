@@ -20,7 +20,7 @@ public class DeviceNullifierContainer extends TileContainer {
     public DeviceNullifierContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(DEVICE_NULLIFIER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (DeviceNullifierTile) world.getTileEntity(pos);
+        this.tile = (DeviceNullifierTile) world.getBlockEntity(pos);
 
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

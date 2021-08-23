@@ -18,7 +18,7 @@ public class DeviceCollectorContainer extends TileContainer {
     public DeviceCollectorContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(DEVICE_COLLECTOR_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ThermalTileAugmentable) world.getTileEntity(pos);
+        this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         for (int i = 0; i < 3; ++i) {

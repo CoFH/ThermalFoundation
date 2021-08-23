@@ -41,7 +41,7 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
 
     public void addRecipe(ThermalRecipe recipe, BaseMachineRecipe.RecipeType type) {
 
-        for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
+        for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
             addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
         }
     }
@@ -168,7 +168,7 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
 
         public void addCatalyst(ThermalCatalyst catalyst) {
 
-            for (ItemStack ingredient : catalyst.getIngredient().getMatchingStacks()) {
+            for (ItemStack ingredient : catalyst.getIngredient().getItems()) {
                 addCatalyst(ingredient, catalyst.getPrimaryMod(), catalyst.getSecondaryMod(), catalyst.getEnergyMod(), catalyst.getMinChance(), catalyst.getUseChance());
             }
         }

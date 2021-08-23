@@ -31,7 +31,7 @@ public class DivingArmorItem extends ArmorItemCoFH {
     public void setup() {
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> multimap = ImmutableMultimap.builder();
-        multimap.putAll(super.getAttributeModifiers(slot));
+        multimap.putAll(super.getDefaultAttributeModifiers(slot));
         multimap.put(SWIM_SPEED.get(), new AttributeModifier(UUID_SWIM_SPEED[slot.getIndex()], "Swim Speed", SWIM_SPEED_BONUS[slot.getIndex()], AttributeModifier.Operation.ADDITION));
         armorAttributes = multimap.build();
     }
@@ -46,8 +46,8 @@ public class DivingArmorItem extends ArmorItemCoFH {
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
 
         if (this.slot == EquipmentSlotType.HEAD) {
-            if (player.getAir() < player.getMaxAir() && world.rand.nextInt(5) > 0) {
-                player.setAir(player.getAir() + 1);
+            if (player.getAirSupply() < player.getMaxAirSupply() && world.random.nextInt(5) > 0) {
+                player.setAirSupply(player.getAirSupply() + 1);
             }
             // TODO: Revisit
             //            if (!player.areEyesInFluid(FluidTags.WATER)) {

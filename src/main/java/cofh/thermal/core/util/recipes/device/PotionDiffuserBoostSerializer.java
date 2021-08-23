@@ -15,7 +15,7 @@ import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PotionDiffuserBoost> {
 
     @Override
-    public PotionDiffuserBoost read(ResourceLocation recipeId, JsonObject json) {
+    public PotionDiffuserBoost fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Ingredient ingredient;
         int amplifier = 0;
@@ -39,9 +39,9 @@ public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<IRecipeSer
 
     @Nullable
     @Override
-    public PotionDiffuserBoost read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public PotionDiffuserBoost fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
-        Ingredient ingredient = Ingredient.read(buffer);
+        Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
         int amplifier = buffer.readInt();
         float durationMod = buffer.readFloat();
@@ -51,9 +51,9 @@ public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<IRecipeSer
     }
 
     @Override
-    public void write(PacketBuffer buffer, PotionDiffuserBoost recipe) {
+    public void toNetwork(PacketBuffer buffer, PotionDiffuserBoost recipe) {
 
-        recipe.ingredient.write(buffer);
+        recipe.ingredient.toNetwork(buffer);
 
         buffer.writeInt(recipe.amplifier);
         buffer.writeFloat(recipe.durationMod);

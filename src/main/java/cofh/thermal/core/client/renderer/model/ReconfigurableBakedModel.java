@@ -58,7 +58,7 @@ public class ReconfigurableBakedModel extends UnderlayBakedModel implements IDyn
             return quads;
         }
         BakedQuad baseQuad = quads.get(0);
-        int sideIndex = side.getIndex();
+        int sideIndex = side.get3DDataValue();
 
         // SIDES
         byte[] sideConfigRaw = extraData.getData(ModelUtils.SIDES);
@@ -91,9 +91,9 @@ public class ReconfigurableBakedModel extends UnderlayBakedModel implements IDyn
 
         @Nullable
         @Override
-        public IBakedModel getOverrideModel(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
+        public IBakedModel resolve(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
 
-            CompoundNBT tag = stack.getChildTag(TAG_BLOCK_ENTITY);
+            CompoundNBT tag = stack.getTagElement(TAG_BLOCK_ENTITY);
             byte[] sideConfigRaw = getSideConfigRaw(tag);
             int itemHash = new ComparableItemStack(stack).hashCode();
             int configHash = Arrays.hashCode(sideConfigRaw);
