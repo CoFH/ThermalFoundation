@@ -6,21 +6,9 @@
   "overrides": [
     {
       "predicate": {
-        "color": 0.3
+        "color": 1
       },
-      "model": "thermal:item/satchel_0"
-    },
-    {
-      "predicate": {
-        "color": 0.6
-      },
-      "model": "thermal:item/satchel_1"
-    },
-    {
-      "predicate": {
-        "color": 0.9
-      },
-      "model": "thermal:item/satchel_2"
+      "model": "thermal:item/satchel_color"
     }
   ]
 }

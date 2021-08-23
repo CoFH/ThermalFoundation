@@ -1,7 +1,7 @@
 package cofh.thermal.core.tileentity;
 
 import cofh.thermal.core.inventory.container.ChunkLoaderContainer;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 import static cofh.thermal.core.init.TCoreReferences.CHUNK_LOADER_TILE;
 
-public class ChunkLoaderTile extends ThermalTileBase implements ITickableTileEntity {
+public class ChunkLoaderTile extends ThermalTileAugmentable implements ITickableTileEntity {
 
     protected boolean cached;
 

@@ -22,7 +22,7 @@ import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class CellTileBase extends ThermalTileBase implements IReconfigurableTile, ITransferControllableTile {
+public abstract class CellTileBase extends ThermalTileAugmentable implements IReconfigurableTile, ITransferControllableTile {
 
     protected int compareTracker;
     protected int levelTracker;

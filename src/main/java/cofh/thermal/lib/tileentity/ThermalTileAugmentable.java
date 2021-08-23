@@ -76,7 +76,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.lib.util.references.CoreReferences.HOLDING;
 import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
 
-public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, INamedContainerProvider, IFilterableTile {
+public abstract class ThermalTileAugmentable extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, INamedContainerProvider, IFilterableTile {
 
     protected static final int BASE_ENERGY = 50000;
     protected static final int BASE_PROCESS_TICK = 20;
@@ -97,7 +97,7 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
     public boolean isActive;
     protected FluidStack renderFluid = FluidStack.EMPTY;
 
-    public ThermalTileBase(TileEntityType<?> tileEntityTypeIn) {
+    public ThermalTileAugmentable(TileEntityType<?> tileEntityTypeIn) {
 
         super(tileEntityTypeIn);
         redstoneControl.setEnabled(() -> redstoneControlFeature);

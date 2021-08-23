@@ -44,7 +44,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class ReconfigurableTile4Way extends ThermalTileBase implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {
+public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {
 
     protected int inputTracker;
     protected int outputTracker;

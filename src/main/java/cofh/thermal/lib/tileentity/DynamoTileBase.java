@@ -34,7 +34,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 
-public abstract class DynamoTileBase extends ThermalTileBase implements ITickableTileEntity {
+public abstract class DynamoTileBase extends ThermalTileAugmentable implements ITickableTileEntity {
 
     protected Direction facing;
 

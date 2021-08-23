@@ -5,7 +5,7 @@ import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -24,7 +24,7 @@ import static cofh.thermal.core.init.TCoreReferences.CHARGE_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
-public class ChargeBenchTile extends ThermalTileBase implements ITickableTileEntity {
+public class ChargeBenchTile extends ThermalTileAugmentable implements ITickableTileEntity {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FILTER);
 

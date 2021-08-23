@@ -21,7 +21,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_VALIDATOR;
 
-public abstract class DeviceTileBase extends ThermalTileBase {
+public abstract class DeviceTileBase extends ThermalTileAugmentable {
 
     public DeviceTileBase(TileEntityType<?> tileEntityTypeIn) {
 

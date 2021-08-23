@@ -8,7 +8,7 @@ import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,7 +34,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableTileEntity, IAreaEffectTile {
+public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT);
 

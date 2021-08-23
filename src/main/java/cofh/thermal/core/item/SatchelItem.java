@@ -24,6 +24,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.*;
@@ -43,7 +44,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentStr
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, IFilterableItem, IMultiModeItem, INamedContainerProvider {
+public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, IDyeableArmorItem, IFilterableItem, IMultiModeItem, INamedContainerProvider {
 
     protected static final WeakHashMap<ItemStack, IFilter> FILTERS = new WeakHashMap<>(MAP_CAPACITY);
 
@@ -51,7 +52,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
         super(builder, slots);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity) -> (getColor(stack, 1) != 0xFFFFFF ? 0.33F : 0) + (getColor(stack, 2) != 0xFFFFFF ? 0.66F : 0));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity) -> (hasColor(stack) ? 1F : 0));
         ProxyUtils.registerColorable(this);
 
         numSlots = () -> ThermalConfig.storageAugments;
@@ -159,20 +160,6 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
         return new SatchelContainer(i, inventory, player);
-    }
-    // endregion
-
-    // region IColorableItem
-    @Override
-    public int getColor(ItemStack item, int colorIndex) {
-
-        if (colorIndex > 0) {
-            CompoundNBT colorTag = item.getChildTag(TAG_COLORS);
-            if (colorTag != null) {
-                return colorTag.getInt(TAG_INDEX + colorIndex);
-            }
-        }
-        return 0xFFFFFF;
     }
     // endregion
 

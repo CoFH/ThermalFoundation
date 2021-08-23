@@ -9,7 +9,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.AugmentableHelper;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -35,7 +35,7 @@ import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
 
-public class TinkerBenchTile extends ThermalTileBase implements ITickableTileEntity {
+public class TinkerBenchTile extends ThermalTileAugmentable implements ITickableTileEntity {
 
     public static final int BASE_CAPACITY = 500000;
     public static final int BASE_XFER = 1000;
