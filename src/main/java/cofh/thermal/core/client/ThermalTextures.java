@@ -42,10 +42,12 @@ public class ThermalTextures {
         for (int i = 0; i < 9; ++i) {
             event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/energy_cell_level_" + i));
             event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/fluid_cell_level_" + i));
+            event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/item_cell_level_" + i));
         }
         event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/energy_cell_level_8c"));
         event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/fluid_cell_level_0c"));
         event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/fluid_cell_level_8c"));
+        event.addSprite(new ResourceLocation(ID_THERMAL + ":block/cells/item_cell_level_8c"));
     }
 
     @SubscribeEvent
@@ -59,6 +61,7 @@ public class ThermalTextures {
         ReconfigurableBakedModel.clearCache();
         EnergyCellBakedModel.clearCache();
         FluidCellBakedModel.clearCache();
+        ItemCellBakedModel.clearCache();
 
         AtlasTexture map = event.getMap();
         MACHINE_CONFIG_NONE = map.getSprite(MACHINE_CONFIG_NONE_LOC);
@@ -74,14 +77,17 @@ public class ThermalTextures {
 
         ENERGY_CELL_LEVELS = new TextureAtlasSprite[9];
         FLUID_CELL_LEVELS = new TextureAtlasSprite[9];
+        ITEM_CELL_LEVELS = new TextureAtlasSprite[9];
 
         for (int i = 0; i < 9; ++i) {
             ENERGY_CELL_LEVELS[i] = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/energy_cell_level_" + i));
             FLUID_CELL_LEVELS[i] = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/fluid_cell_level_" + i));
+            ITEM_CELL_LEVELS[i] = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/item_cell_level_" + i));
         }
         ENERGY_CELL_LEVEL_8_C = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/energy_cell_level_8c"));
         FLUID_CELL_LEVEL_0_C = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/fluid_cell_level_0c"));
         FLUID_CELL_LEVEL_8_C = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/fluid_cell_level_8c"));
+        ITEM_CELL_LEVEL_8_C = map.getSprite(new ResourceLocation(ID_THERMAL + ":block/cells/item_cell_level_8c"));
     }
 
     public static ResourceLocation DEVICE_COLLECTOR_UNDERLAY_LOC = new ResourceLocation(ID_THERMAL + ":block/devices/device_collector_underlay");
@@ -117,5 +123,8 @@ public class ThermalTextures {
     public static TextureAtlasSprite[] FLUID_CELL_LEVELS;
     public static TextureAtlasSprite FLUID_CELL_LEVEL_0_C;
     public static TextureAtlasSprite FLUID_CELL_LEVEL_8_C;
+
+    public static TextureAtlasSprite[] ITEM_CELL_LEVELS;
+    public static TextureAtlasSprite ITEM_CELL_LEVEL_8_C;
     // endregion
 }

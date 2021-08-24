@@ -561,6 +561,9 @@
   "info.thermal.fluid_cell.0": "Stores and transfers Fluids.",
   "info.thermal.fluid_cell.1": "Hold §e§oShift§r and/or §e§oCtrl§r to fine tune amounts.",
 
+  "info.thermal.item_cell.0": "Stores and transfers Items.",
+  "info.thermal.item_cell.1": "Hold §e§oShift§r and/or §e§oCtrl§r to fine tune amounts.",
+
   "info.thermal.charge_bench.0": "Charges items with Redstone Flux.",
   "info.thermal.charge_bench.1": "Items can be inserted and removed with automation.",
   "info.thermal.charge_bench.2": "Feel the hum.",

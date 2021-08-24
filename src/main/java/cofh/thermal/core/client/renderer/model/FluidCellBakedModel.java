@@ -239,7 +239,10 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
 
         Item item = stack.getItem();
         if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, FLUID)) {
-            return -1;
+            if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
+                return 9;
+            }
+            return 10;
         }
         if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
             return 1 + Math.min(((IFluidContainerItem) item).getScaledFluidStored(stack, 8), 7);

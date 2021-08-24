@@ -1,5 +1,5 @@
 {
-  "loader": "thermal:energy_cell",
+  "loader": "thermal:item_cell",
   "parent": "minecraft:block/block",
   "elements": [
     {
@@ -12,18 +12,6 @@
         "south": {"texture": "#south", "cullface": "south"},
         "west": {"texture": "#west", "cullface": "west"},
         "east": {"texture": "#east", "cullface": "east"}
-      }
-    },
-    {
-      "from": [2, 2, 2],
-      "to": [14, 14, 14],
-      "faces": {
-        "down": {"texture": "#center"},
-        "up": {"texture": "#center"},
-        "north": {"texture": "#center"},
-        "south": {"texture": "#center"},
-        "west": {"texture": "#center"},
-        "east": {"texture": "#center"}
       }
     },
     {
@@ -76,14 +64,13 @@
     }
   ],
   "textures": {
-    "particle": "thermal:block/cells/energy_cell_top",
-    "down": "thermal:block/cells/energy_cell_bottom",
-    "up": "thermal:block/cells/energy_cell_top",
-    "north": "thermal:block/cells/energy_cell_side",
-    "east": "thermal:block/cells/energy_cell_side",
-    "south": "thermal:block/cells/energy_cell_side",
-    "west": "thermal:block/cells/energy_cell_side",
-    "inner": "thermal:block/cells/energy_cell_inner",
-    "center": "thermal:block/cells/energy_cell_center"
+    "particle": "thermal:block/cells/item_cell_top",
+    "down": "thermal:block/cells/item_cell_bottom",
+    "up": "thermal:block/cells/item_cell_top",
+    "north": "thermal:block/cells/item_cell_side",
+    "east": "thermal:block/cells/item_cell_side",
+    "south": "thermal:block/cells/item_cell_side",
+    "west": "thermal:block/cells/item_cell_side",
+    "inner": "thermal:block/cells/item_cell_inner"
   }
 }

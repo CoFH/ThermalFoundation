@@ -14,6 +14,7 @@ import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.ItemCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.renderer.entity.*;
+import cofh.thermal.core.client.renderer.tileentity.ItemCellRenderer;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.init.*;
 import cofh.thermal.core.world.gen.feature.ThermalFeatures;
@@ -35,6 +36,7 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -147,6 +149,7 @@ public class ThermalCore {
         registerGuiFactories();
         registerRenderLayers();
         registerEntityRenderingHandlers();
+        registerTileEntityRenderers();
 
         // ThermalItemGroups.setup();
     }
@@ -246,6 +249,11 @@ public class ThermalCore {
         RenderingRegistry.registerEntityRenderingHandler(LIGHTNING_TNT_ENTITY, TNTRendererCoFH::new);
 
         RenderingRegistry.registerEntityRenderingHandler(NUKE_TNT_ENTITY, TNTRendererCoFH::new);
+    }
+
+    private void registerTileEntityRenderers() {
+
+        ClientRegistry.bindTileEntityRenderer(ITEM_CELL_TILE, ItemCellRenderer::new);
     }
     // endregion
 }

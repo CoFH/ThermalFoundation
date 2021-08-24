@@ -193,7 +193,7 @@ public class EnergyCellBakedModel extends BakedModelWrapper<IBakedModel> impleme
 
         Item item = stack.getItem();
         if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, ENERGY)) {
-            return -1;
+            return 9;
         }
         if (item instanceof IEnergyContainerItem && ((IEnergyContainerItem) item).getEnergyStored(stack) > 0) {
             return 1 + Math.min(((IEnergyContainerItem) item).getScaledEnergyStored(stack, 8), 7);

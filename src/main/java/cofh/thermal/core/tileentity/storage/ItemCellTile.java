@@ -29,7 +29,7 @@ import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
 public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
 
-    public static final int BASE_CAPACITY = 10000;
+    public static final int BASE_CAPACITY = 1000;
 
     protected ItemStorageCoFH itemStorage = new ItemStorageCoFH(BASE_CAPACITY, item -> filter.valid(item));
 

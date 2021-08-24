@@ -75,18 +75,14 @@ public class BlockItemEnergyCell extends BlockItemAugmentable implements IEnergy
     public int getExtract(ItemStack container) {
 
         CompoundNBT tag = getOrCreateEnergyTag(container);
-        float base = getPropertyWithDefault(container, TAG_AUGMENT_BASE_MOD, 1.0F);
-        float mod = getPropertyWithDefault(container, TAG_AUGMENT_RF_STORAGE, 1.0F);
-        return Math.round(tag.getInt(TAG_ENERGY_SEND) * mod * base);
+        return Math.round(tag.getInt(TAG_ENERGY_SEND));
     }
 
     @Override
     public int getReceive(ItemStack container) {
 
         CompoundNBT tag = getOrCreateEnergyTag(container);
-        float base = getPropertyWithDefault(container, TAG_AUGMENT_BASE_MOD, 1.0F);
-        float mod = getPropertyWithDefault(container, TAG_AUGMENT_RF_STORAGE, 1.0F);
-        return Math.round(tag.getInt(TAG_ENERGY_RECV) * mod * base);
+        return Math.round(tag.getInt(TAG_ENERGY_RECV));
     }
 
     @Override
