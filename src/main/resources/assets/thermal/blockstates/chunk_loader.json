@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "thermal:block/chunk_loader"
+    },
+    "active=true": {
+      "model": "thermal:block/chunk_loader_active"
+    }
+  }
+}

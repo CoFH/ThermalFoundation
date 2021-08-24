@@ -1,7 +1,7 @@
 package cofh.thermal.core.tileentity;
 
 import cofh.thermal.core.inventory.container.ChunkLoaderContainer;
-import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -11,19 +11,25 @@ import javax.annotation.Nullable;
 
 import static cofh.thermal.core.init.TCoreReferences.CHUNK_LOADER_TILE;
 
-public class ChunkLoaderTile extends ThermalTileAugmentable implements ITickableTileEntity {
+public class DeviceChunkLoaderTile extends DeviceTileBase implements ITickableTileEntity {
 
     protected boolean cached;
 
-    public ChunkLoaderTile() {
+    public DeviceChunkLoaderTile() {
 
         super(CHUNK_LOADER_TILE);
+
+        //        inventory.addSlot(inputSlot, ACCESSIBLE);
+        //
+        //        tankInv.addTank(inputTank, ACCESSIBLE);
+        //
+        initHandlers();
     }
 
     @Override
     public void tick() {
 
-        //        updateActiveState();
+        updateActiveState();
         //
         //        if (isActive) {
         //            tank.modify((int) (GENERATION_RATE * baseMod));

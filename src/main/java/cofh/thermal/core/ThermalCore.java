@@ -6,6 +6,7 @@ import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
+import cofh.thermal.core.client.gui.ChunkLoaderScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
 import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
@@ -13,7 +14,6 @@ import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.ItemCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.renderer.entity.*;
-import cofh.core.compat.curios.CuriosIntegration;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.init.*;
 import cofh.thermal.core.world.gen.feature.ThermalFeatures;
@@ -35,7 +35,6 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -45,7 +44,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static cofh.lib.util.constants.Constants.ID_CURIOS;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.init.TCoreReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
@@ -118,6 +116,8 @@ public class ThermalCore {
         setFlag(FLAG_CREATIVE_AUGMENTS, true);
 
         setFlag(ID_TINKER_BENCH, true);
+
+        setFlag(ID_CHUNK_LOADER, true);
     }
 
     // region INITIALIZATION
@@ -164,6 +164,8 @@ public class ThermalCore {
         ScreenManager.registerFactory(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
         ScreenManager.registerFactory(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
         ScreenManager.registerFactory(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
+
+        ScreenManager.registerFactory(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
 
         ScreenManager.registerFactory(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
         ScreenManager.registerFactory(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);

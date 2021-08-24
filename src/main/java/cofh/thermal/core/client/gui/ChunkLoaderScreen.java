@@ -7,7 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-import static cofh.core.util.helpers.GuiHelper.*;
+import static cofh.core.util.helpers.GuiHelper.generatePanelInfo;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class ChunkLoaderScreen extends ThermalTileScreenBase<ChunkLoaderContainer> {
@@ -27,7 +27,7 @@ public class ChunkLoaderScreen extends ThermalTileScreenBase<ChunkLoaderContaine
 
         super.init();
 
-        addElement(setClearable(createDefaultEnergyStorage(this, 8, 8, tile.getEnergyStorage()), tile, 0));
+        // addElement(setClearable(createDefaultEnergyStorage(this, 8, 8, tile.getEnergyStorage()), tile, 0));
     }
 
 }

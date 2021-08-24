@@ -493,6 +493,8 @@
   "block.thermal.charge_bench": "Energetic Infuser",
   "block.thermal.tinker_bench": "Tinker's Workbench",
 
+  "block.thermal.chunk_loader": "Continuum Anchor",
+
   "block.thermal.earth_tnt": "Tectonic Explosive",
   "block.thermal.earth_tnt.desc": "Breaks apart rocks and earth. Very effective for mining.",
   "block.thermal.ender_tnt": "Disruption Explosive",
@@ -686,9 +688,12 @@
 
   "block.thermal.energy_cell.keyword": "energy rf storage",
   "block.thermal.fluid_cell.keyword": "fluid storage tank",
+  "block.thermal.item_cell.keyword": "cache item storage",
 
   "block.thermal.charge_bench.keyword": "energy recharger rf",
   "block.thermal.tinker_bench.keyword": "augment recharger refiller upgrade",
+
+  "block.thermal.chunk_loader.keyword": "chunk chunkloader loader",
 
   "block.thermal.device_collector.keyword": "collector magnet",
   "block.thermal.device_fisher.keyword": "autofisher bait fishing",

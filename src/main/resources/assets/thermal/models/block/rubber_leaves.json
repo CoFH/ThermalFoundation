@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/leaves",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "thermal:block/rubber_leaves"
+    "bottom": "thermal:block/rubber_leaves_top",
+    "top": "thermal:block/rubber_leaves_top",
+    "side": "thermal:block/rubber_leaves"
   }
 }

@@ -15,7 +15,7 @@ import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.core.inventory.container.storage.ItemCellContainer;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.tileentity.ChargeBenchTile;
-import cofh.thermal.core.tileentity.ChunkLoaderTile;
+import cofh.thermal.core.tileentity.DeviceChunkLoaderTile;
 import cofh.thermal.core.tileentity.ProjectBenchTile;
 import cofh.thermal.core.tileentity.TinkerBenchTile;
 import cofh.thermal.core.tileentity.device.*;
@@ -201,9 +201,6 @@ public class TCoreReferences {
     // endregion
 
     // region STORAGE
-    @ObjectHolder(ID_SATCHEL)
-    public static final ContainerType<SatchelContainer> SATCHEL_CONTAINER = null;
-
     @ObjectHolder(ID_ENERGY_CELL)
     public static final Block ENERGY_CELL_BLOCK = null;
     @ObjectHolder(ID_ENERGY_CELL)
@@ -224,6 +221,9 @@ public class TCoreReferences {
     public static final TileEntityType<ItemCellTile> ITEM_CELL_TILE = null;
     @ObjectHolder(ID_ITEM_CELL)
     public static final ContainerType<ItemCellContainer> ITEM_CELL_CONTAINER = null;
+
+    @ObjectHolder(ID_SATCHEL)
+    public static final ContainerType<SatchelContainer> SATCHEL_CONTAINER = null;
     // endregion
 
     // region MISC TILES
@@ -251,7 +251,7 @@ public class TCoreReferences {
     @ObjectHolder(ID_CHUNK_LOADER)
     public static final Block CHUNK_LOADER_BLOCK = null;
     @ObjectHolder(ID_CHUNK_LOADER)
-    public static final TileEntityType<ChunkLoaderTile> CHUNK_LOADER_TILE = null;
+    public static final TileEntityType<DeviceChunkLoaderTile> CHUNK_LOADER_TILE = null;
     @ObjectHolder(ID_CHUNK_LOADER)
     public static final ContainerType<ChunkLoaderContainer> CHUNK_LOADER_CONTAINER = null;
     // endregion
