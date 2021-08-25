@@ -1,5 +1,6 @@
 package cofh.thermal.core.tileentity.storage;
 
+import cofh.core.network.packet.client.TileRenderPacket;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.StorageGroup;
@@ -8,10 +9,13 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.thermal.core.inventory.container.storage.ItemCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraftforge.client.model.data.IModelData;
@@ -23,6 +27,8 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.core.init.TCoreReferences.ITEM_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ITEM_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
@@ -32,6 +38,8 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
     public static final int BASE_CAPACITY = 1000;
 
     protected ItemStorageCoFH itemStorage = new ItemStorageCoFH(BASE_CAPACITY, item -> filter.valid(item));
+
+    protected ItemStack renderItem = ItemStack.EMPTY;
 
     public ItemCellTile() {
 
@@ -63,6 +71,10 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         }
         if (Utils.timeCheck(world)) {
             updateTrackers(true);
+            if (!itemsEqualWithTags(renderItem, itemStorage.getItemStack())) {
+                renderItem = cloneStack(itemStorage.getItemStack(), 1);
+                TileRenderPacket.sendToClient(this);
+            }
         }
     }
 
@@ -120,10 +132,53 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
         InventoryHelper.insertIntoAdjacent(this, itemStorage, amountOutput, side);
     }
 
+    //    @Override
+    //    public boolean onActivatedDelegate(World world, BlockPos pos, BlockState state, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+    //
+    //        ItemStack heldItem = player.getHeldItem(hand);
+    //        ItemStack ret = inventory.insertItem(0, heldItem, false);
+    //
+    //        boolean inserted = false;
+    //        long time = player.getPersistentData().getLong("thermal:item_cell_click");
+    //        long currentTime = world.getGameTime();
+    //        player.getPersistentData().putLong("thermal:item_cell_click", currentTime);
+    //
+    //        if (!player.abilities.isCreativeMode) {
+    //            if (ret != heldItem) {
+    //                player.inventory.setInventorySlotContents(player.inventory.currentItem, ret);
+    //                inserted = true;
+    //            }
+    //            if (currentTime - time < 15 && player.getHeldItem(hand).isEmpty() && !inventory.get(0).isEmpty()) {
+    //                inserted |= insertAllItemsFromPlayer(player);
+    //            }
+    //        }
+    //        if (inserted) {
+    //            world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.1F, 0.7F);
+    //        }
+    //        return inserted;
+    //    }
+    //
+    //    protected boolean insertAllItemsFromPlayer(PlayerEntity player) {
+    //
+    //        boolean inserted = false;
+    //        for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
+    //            if (inventory.insertItem(0, player.inventory.getStackInSlot(i), true) != player.inventory.getStackInSlot(i)) {
+    //                player.inventory.setInventorySlotContents(i, inventory.insertItem(0, player.inventory.getStackInSlot(i), false));
+    //                inserted = true;
+    //            }
+    //        }
+    //        return inserted;
+    //    }
+
     @Override
     protected boolean keepItems() {
 
         return true;
+    }
+
+    public ItemStack getRenderItem() {
+
+        return renderItem;
     }
 
     @Override
@@ -178,6 +233,36 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
             }
         }
     }
+
+    // region NETWORK
+    @Override
+    public PacketBuffer getRenderPacket(PacketBuffer buffer) {
+
+        super.getRenderPacket(buffer);
+
+        buffer.writeItemStack(renderItem);
+
+        return buffer;
+    }
+
+    @Override
+    public void handleRenderPacket(PacketBuffer buffer) {
+
+        super.handleRenderPacket(buffer);
+
+        renderItem = buffer.readItemStack();
+    }
+    // endregion
+
+    // region NBT
+    @Override
+    public void read(BlockState state, CompoundNBT nbt) {
+
+        super.read(state, nbt);
+
+        renderItem = inventory.get(0).getStack();
+    }
+    // endregion
 
     // region AUGMENTS
     @Override

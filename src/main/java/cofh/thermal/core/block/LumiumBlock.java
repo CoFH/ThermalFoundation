@@ -15,7 +15,7 @@ import static cofh.lib.util.constants.Constants.FULL_CUBE_COLLISION;
 
 public class LumiumBlock extends Block {
 
-    protected static int duration = 100;
+    protected static int duration = 40;
 
     public LumiumBlock(Properties properties) {
 

@@ -8,9 +8,9 @@ import cofh.lib.item.impl.BowItemCoFH;
 import cofh.lib.item.impl.FishingRodItemCoFH;
 import cofh.lib.item.impl.ShearsItemCoFH;
 import cofh.lib.util.helpers.MathHelper;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -22,7 +22,7 @@ import java.util.function.BooleanSupplier;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.constants.Constants.TRUE;
+import static cofh.lib.util.constants.Constants.*;
 import static cofh.thermal.core.ThermalCore.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_BLOCKS;
@@ -38,27 +38,48 @@ public class RegistrationHelper {
     // region BLOCKS
     public static void registerBlock(String name, Supplier<Block> sup) {
 
-        registerBlock(name, sup, THERMAL_BLOCKS, Rarity.COMMON, TRUE);
+        registerBlock(name, sup, ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, BooleanSupplier showInGroups) {
 
-        registerBlock(name, sup, THERMAL_BLOCKS, Rarity.COMMON, showInGroups);
+        registerBlock(name, sup, showInGroups, ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity) {
 
-        registerBlock(name, sup, THERMAL_BLOCKS, rarity, TRUE);
+        registerBlock(name, sup, rarity, ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, BooleanSupplier showInGroups) {
 
-        registerBlock(name, sup, THERMAL_BLOCKS, rarity, showInGroups);
+        registerBlock(name, sup, rarity, showInGroups, ID_THERMAL);
     }
 
-    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups) {
+    public static void registerBlock(String name, Supplier<Block> sup, String modId) {
 
-        registerBlockAndItem(name, sup, () -> new BlockItemCoFH(BLOCKS.get(name), new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups));
+        registerBlock(name, sup, THERMAL_BLOCKS, Rarity.COMMON, TRUE, modId);
+    }
+
+    // MOD ID
+    public static void registerBlock(String name, Supplier<Block> sup, BooleanSupplier showInGroups, String modId) {
+
+        registerBlock(name, sup, THERMAL_BLOCKS, Rarity.COMMON, showInGroups, modId);
+    }
+
+    public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, String modId) {
+
+        registerBlock(name, sup, THERMAL_BLOCKS, rarity, TRUE, modId);
+    }
+
+    public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, BooleanSupplier showInGroups, String modId) {
+
+        registerBlock(name, sup, THERMAL_BLOCKS, rarity, showInGroups, modId);
+    }
+
+    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
+
+        registerBlockAndItem(name, sup, () -> new BlockItemCoFH(BLOCKS.get(name), new Item.Properties().group(group).rarity(rarity)).setShowInGroups(showInGroups).setModId(modId));
     }
 
     public static void registerBlockOnly(String name, Supplier<Block> sup) {
@@ -76,18 +97,40 @@ public class RegistrationHelper {
     // region AUGMENTABLE BLOCKS
     public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_BLOCKS, Rarity.COMMON, TRUE);
+        registerAugBlock(name, sup, numSlots, validAugment, ID_THERMAL);
     }
 
     public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_BLOCKS, Rarity.COMMON, showInGroups);
+        registerAugBlock(name, sup, numSlots, validAugment, showInGroups, ID_THERMAL);
     }
 
-    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups) {
+    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, String modId) {
+
+        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_BLOCKS, Rarity.COMMON, TRUE, modId);
+    }
+
+    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups, String modId) {
+
+        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_BLOCKS, Rarity.COMMON, showInGroups, modId);
+    }
+
+    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
 
         BLOCKS.register(name, sup);
-        ITEMS.register(name, (Supplier<Item>) () -> new BlockItemAugmentable(BLOCKS.get(name), new Item.Properties().group(group).rarity(rarity)).setNumSlots(numSlots).setAugValidator(validAugment).setShowInGroups(showInGroups));
+        ITEMS.register(name, (Supplier<Item>) () -> new BlockItemAugmentable(BLOCKS.get(name), new Item.Properties().group(group).rarity(rarity)).setNumSlots(numSlots).setAugValidator(validAugment).setShowInGroups(showInGroups).setModId(modId));
+    }
+    // endregion
+
+    // region BLOCK SETS
+    public static void registerWoodBlockSet(String woodName, Material material, MaterialColor color, float hardness, float resistance, SoundType soundType, String modId) {
+
+        registerBlock(woodName + "_planks", () -> new Block(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_slab", () -> new SlabBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_stairs", () -> new StairsBlock(() -> BLOCKS.get(woodName + "_planks").getDefaultState(), create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_door", () -> new DoorBlock(create(material, color).hardnessAndResistance(resistance).sound(soundType).notSolid()), modId);
+        registerBlock(woodName + "_fence", () -> new FenceBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
+        registerBlock(woodName + "_fence_gate", () -> new FenceGateBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
     }
     // endregion
 
@@ -264,11 +307,11 @@ public class RegistrationHelper {
     public static void registerCropAndSeed(String id, ItemGroup group, Food food) {
 
         if (food != null) {
-            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group).food(food)));
+            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group).food(food)).setModId(ID_THERMAL_CULTIVATION));
         } else {
-            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group)));
+            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group)).setModId(ID_THERMAL_CULTIVATION));
         }
-        ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
+        ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)).setModId(ID_THERMAL_CULTIVATION));
     }
 
     public static void registerSpores(String id) {
@@ -278,7 +321,7 @@ public class RegistrationHelper {
 
     public static void registerSpores(String id, ItemGroup group) {
 
-        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
+        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)).setModId(ID_THERMAL_CULTIVATION));
     }
 
     public static String deepslate(String id) {

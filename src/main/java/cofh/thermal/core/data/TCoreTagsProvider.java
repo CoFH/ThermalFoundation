@@ -34,18 +34,6 @@ public class TCoreTagsProvider {
         @Override
         protected void registerTags() {
 
-            getOrCreateBuilder(BlockTags.SAPLINGS).add(
-                    BLOCKS.get(ID_RUBBER_SAPLING)
-            );
-
-            getOrCreateBuilder(BlockTags.LOGS_THAT_BURN).add(
-                    BLOCKS.get(ID_RUBBER_LOG)
-            );
-
-            getOrCreateBuilder(BlockTags.LEAVES).add(
-                    BLOCKS.get(ID_RUBBER_LEAVES)
-            );
-
             getOrCreateBuilder(BlockTagsCoFH.HARDENED_GLASS).add(
                     BLOCKS.get(ID_OBSIDIAN_GLASS),
                     BLOCKS.get(ID_SIGNALUM_GLASS),

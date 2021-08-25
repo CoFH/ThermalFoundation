@@ -17,7 +17,6 @@ import cofh.thermal.core.tileentity.device.*;
 import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.core.tileentity.storage.ItemCellTile;
-import cofh.thermal.core.world.gen.feature.tree.RubberTree;
 import cofh.thermal.lib.block.TileBlockCell;
 import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.block.*;
@@ -62,7 +61,6 @@ public class TCoreBlocks {
         registerVanilla();
         registerResources();
         registerStorage();
-        registerPlants();
         registerBuildingBlocks();
         registerMisc();
 
@@ -83,12 +81,6 @@ public class TCoreBlocks {
         fire.setFireInfo(BLOCKS.get(ID_BITUMEN_BLOCK), 5, 5);
         fire.setFireInfo(BLOCKS.get(ID_TAR_BLOCK), 5, 5);
         fire.setFireInfo(BLOCKS.get(ID_ROSIN_BLOCK), 5, 5);
-
-        fire.setFireInfo(BLOCKS.get(ID_RUBBER_LOG), 5, 5);
-        fire.setFireInfo(BLOCKS.get(ID_RUBBER_LEAVES), 30, 60);
-
-        ComposterBlock.registerCompostable(0.3F, ITEMS.get(ID_RUBBER_LEAVES));
-        ComposterBlock.registerCompostable(0.3F, ITEMS.get(ID_RUBBER_SAPLING));
 
         DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_SLIME_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_REDSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
@@ -227,13 +219,6 @@ public class TCoreBlocks {
         registerBlock(ID_CURED_RUBBER_BLOCK, () -> new RubberBlock(create(Material.CLAY, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(3.0F, 3.0F).jumpFactor(1.25F).sound(SoundType.FUNGUS)));
         registerBlock(ID_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
         registerBlock(ID_RICH_SLAG_BLOCK, () -> new Block(create(Material.ROCK, MaterialColor.BLACK_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).setRequiresTool()));
-    }
-
-    private static void registerPlants() {
-
-        registerBlock(ID_RUBBER_SAPLING, () -> new SaplingBlock(new RubberTree(), create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-        registerBlock(ID_RUBBER_LOG, () -> Blocks.createLogBlock(MaterialColor.WOOD, MaterialColor.QUARTZ));
-        registerBlock(ID_RUBBER_LEAVES, Blocks::createLeavesBlock);
     }
 
     private static void registerBuildingBlocks() {
