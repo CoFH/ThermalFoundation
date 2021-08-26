@@ -140,7 +140,6 @@ public class ThermalCore {
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);
         event.enqueueWork(TCoreEntities::setup);
-
         event.enqueueWork(ThermalFeatures::setup);
     }
 

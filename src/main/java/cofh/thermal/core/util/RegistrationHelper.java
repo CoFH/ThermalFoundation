@@ -129,6 +129,8 @@ public class RegistrationHelper {
         registerBlock(woodName + "_slab", () -> new SlabBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
         registerBlock(woodName + "_stairs", () -> new StairsBlock(() -> BLOCKS.get(woodName + "_planks").getDefaultState(), create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
         registerBlock(woodName + "_door", () -> new DoorBlock(create(material, color).hardnessAndResistance(resistance).sound(soundType).notSolid()), modId);
+        registerBlock(woodName + "_trapdoor", () -> new TrapDoorBlock(create(material, color).hardnessAndResistance(resistance).sound(soundType).notSolid().setAllowsSpawn((state, reader, pos, entityType) -> false)), modId);
+        registerBlock(woodName + "_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, create(material, color).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(soundType)), modId);
         registerBlock(woodName + "_fence", () -> new FenceBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
         registerBlock(woodName + "_fence_gate", () -> new FenceGateBlock(create(material, color).hardnessAndResistance(hardness, resistance).sound(soundType)), modId);
     }
