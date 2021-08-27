@@ -156,7 +156,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         }
         resolveOutputs();
         resolveInputs();
-        markDirty();
+        markDirtyFast();
     }
 
     protected void processOff() {
