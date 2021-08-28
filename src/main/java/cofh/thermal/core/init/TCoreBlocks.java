@@ -47,8 +47,8 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_BLOCKS;
-import static net.minecraft.block.AbstractBlock.Properties.of;
 import static net.minecraft.block.AbstractBlock.Properties.copy;
+import static net.minecraft.block.AbstractBlock.Properties.of;
 
 public class TCoreBlocks {
 
@@ -292,12 +292,12 @@ public class TCoreBlocks {
         registerAugBlock(ID_DEVICE_NULLIFIER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).lightLevel(lightValue(ACTIVE, 7)), DeviceNullifierTile::new), deviceAugs, DeviceNullifierTile.AUG_VALIDATOR, getFlag(ID_DEVICE_NULLIFIER));
         registerAugBlock(ID_DEVICE_POTION_DIFFUSER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE), DevicePotionDiffuserTile::new), deviceAugs, DevicePotionDiffuserTile.AUG_VALIDATOR, getFlag(ID_DEVICE_POTION_DIFFUSER));
 
+        registerBlock(ID_CHUNK_LOADER, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(10.0F).harvestTool(ToolType.PICKAXE), DeviceChunkLoaderTile::new), getFlag(ID_CHUNK_LOADER));
+
         IntSupplier storageAugs = () -> ThermalConfig.storageAugments;
 
         registerAugBlock(ID_TINKER_BENCH, () -> new TileBlockCoFH(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).harvestTool(ToolType.AXE), TinkerBenchTile::new), storageAugs, STORAGE_VALIDATOR, getFlag(ID_TINKER_BENCH));
         registerAugBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).lightLevel(lightValue(ACTIVE, 7)), ChargeBenchTile::new), storageAugs, ChargeBenchTile.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));
-
-        registerBlock(ID_CHUNK_LOADER, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(10.0F).harvestTool(ToolType.PICKAXE), DeviceChunkLoaderTile::new), getFlag(ID_CHUNK_LOADER));
 
         BLOCKS.register(ID_ENERGY_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion(), EnergyCellTile::new));
         ITEMS.register(ID_ENERGY_CELL, (Supplier<Item>) () -> new BlockItemEnergyCell(BLOCKS.get(ID_ENERGY_CELL), new Item.Properties().tab(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ENERGY_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ENERGY_CELL)));
@@ -321,10 +321,10 @@ public class TCoreBlocks {
         TILE_ENTITIES.register(ID_DEVICE_NULLIFIER, () -> TileEntityType.Builder.of(DeviceNullifierTile::new, DEVICE_NULLIFIER_BLOCK).build(null));
         TILE_ENTITIES.register(ID_DEVICE_POTION_DIFFUSER, () -> TileEntityType.Builder.of(DevicePotionDiffuserTile::new, DEVICE_POTION_DIFFUSER_BLOCK).build(null));
 
+        TILE_ENTITIES.register(ID_CHUNK_LOADER, () -> TileEntityType.Builder.of(DeviceChunkLoaderTile::new, CHUNK_LOADER_BLOCK).build(null));
+
         TILE_ENTITIES.register(ID_TINKER_BENCH, () -> TileEntityType.Builder.of(TinkerBenchTile::new, TINKER_BENCH_BLOCK).build(null));
         TILE_ENTITIES.register(ID_CHARGE_BENCH, () -> TileEntityType.Builder.of(ChargeBenchTile::new, CHARGE_BENCH_BLOCK).build(null));
-
-        TILE_ENTITIES.register(ID_CHUNK_LOADER, () -> TileEntityType.Builder.of(DeviceChunkLoaderTile::new, CHUNK_LOADER_BLOCK).build(null));
 
         TILE_ENTITIES.register(ID_ENERGY_CELL, () -> TileEntityType.Builder.of(EnergyCellTile::new, ENERGY_CELL_BLOCK).build(null));
         TILE_ENTITIES.register(ID_FLUID_CELL, () -> TileEntityType.Builder.of(FluidCellTile::new, FLUID_CELL_BLOCK).build(null));

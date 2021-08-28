@@ -968,7 +968,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(Tags.Items.ENDER_PEARLS)
                 .requires(earthCharge)
                 .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
-                .save(consumer, ID_THERMAL + ":earth_charge_ender_pearl_dust_from_ender_pearl");
+                .save(consumer, ID_THERMAL + ":earth_charge/ender_pearl_dust_from_ender_pearl");
 
         ShapelessRecipeBuilder.shapeless(reg.get("lapis_dust"))
                 .requires(Tags.Items.GEMS_LAPIS)

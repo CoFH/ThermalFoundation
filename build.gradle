@@ -89,7 +89,7 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    
+
     compile fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
@@ -105,17 +105,17 @@ dependencies {
 }
 
 signing {
-   if (!signProps.isEmpty()) {
-       jars {
-           sign jar
-           after 'reobfJar'
+    if (!signProps.isEmpty()) {
+        jars {
+            sign jar
+            after 'reobfJar'
 
-           keyStore = signProps.keyStore
-           alias = signProps.alias
-           storePass = signProps.storePass
-           keyPass = signProps.keyPass
-       }
-   }
+            keyStore = signProps.keyStore
+            alias = signProps.alias
+            storePass = signProps.storePass
+            keyPass = signProps.keyPass
+        }
+    }
 }
 
 jar {
