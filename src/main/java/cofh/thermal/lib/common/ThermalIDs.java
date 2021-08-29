@@ -36,12 +36,12 @@ public class ThermalIDs {
     public static final String ID_OIL_SAND = "oil_sand";
     public static final String ID_OIL_RED_SAND = "oil_red_sand";
 
-    public static final String ID_ELASTICA_LEAVES = "elastica_leaves";
-    public static final String ID_ELASTICA_LOG = "elastica_log";
-    public static final String ID_ELASTICA_SAPLING = "elastica_sapling";
-    public static final String ID_ELASTICA_WOOD = "elastica_wood";
-    public static final String ID_STRIPPED_ELASTICA_LOG = "stripped_elastica_log";
-    public static final String ID_STRIPPED_ELASTICA_WOOD = "stripped_elastica_wood";
+    public static final String ID_RUBBERWOOD_LEAVES = "rubberwood_leaves";
+    public static final String ID_RUBBERWOOD_LOG = "rubberwood_log";
+    public static final String ID_RUBBERWOOD_SAPLING = "rubberwood_sapling";
+    public static final String ID_RUBBERWOOD_WOOD = "rubberwood_wood";
+    public static final String ID_STRIPPED_RUBBERWOOD_LOG = "stripped_rubberwood_log";
+    public static final String ID_STRIPPED_RUBBERWOOD_WOOD = "stripped_rubberwood_wood";
     // endregion
 
     // region BLOCKS
