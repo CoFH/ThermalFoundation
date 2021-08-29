@@ -202,6 +202,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         super.load(state, nbt);
 
         process = nbt.getInt(TAG_PROCESS);
+        valid = nbt.getBoolean(TAG_VALID);
     }
 
     @Override
@@ -210,6 +211,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         super.save(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
+        nbt.putBoolean(TAG_VALID, valid);
 
         return nbt;
     }
@@ -285,10 +287,21 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     public AxisAlignedBB getArea() {
 
         if (area == null) {
-            BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
-            area = new AxisAlignedBB(areaPos.offset(-radius, -1 - radius, -radius), areaPos.offset(1 + radius, -1 + radius, 1 + radius));
+            if (!valid) {
+                BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), 2);
+                area = new AxisAlignedBB(areaPos.offset(-1, 0, -1), areaPos.offset(2, 1, 2));
+            } else {
+                BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
+                area = new AxisAlignedBB(areaPos.offset(-radius, -1 - radius, -radius), areaPos.offset(1 + radius, -1 + radius, 1 + radius));
+            }
         }
         return area;
+    }
+
+    @Override
+    public int getColor() {
+
+        return valid ? isActive ? 0x0088FF : 0x555555 : 0xFF0000;
     }
     // endregion
 }

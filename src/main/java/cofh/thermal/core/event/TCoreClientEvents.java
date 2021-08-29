@@ -115,14 +115,41 @@ public class TCoreClientEvents {
         return pos.distSqr(player.position(), true) <= distanceSq;
     }
 
-    private static void blueLine(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, float dx1, float dy1, float dz1, float dx2, float dy2, float dz2) {
+    private static void line(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, float dx1, float dy1, float dz1, float dx2, float dy2, float dz2, int r, int g, int b, int a) {
 
         builder.vertex(positionMatrix, pos.getX() + dx1, pos.getY() + dy1, pos.getZ() + dz1)
-                .color(0.0f, 0.0f, 1.0f, 1.0f)
+                .color(r, g, b, a)
                 .endVertex();
         builder.vertex(positionMatrix, pos.getX() + dx2, pos.getY() + dy2, pos.getZ() + dz2)
-                .color(0.0f, 0.0f, 1.0f, 1.0f)
+                .color(r, g, b, a)
                 .endVertex();
+    }
+
+    private static void box(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, AxisAlignedBB area, int color) {
+
+        float lenX = (float) (area.maxX - area.minX);
+        float lenY = (float) (area.maxY - area.minY);
+        float lenZ = (float) (area.maxZ - area.minZ);
+
+        int a = 192; // (color >> 24 & 255);
+        int r = (color >> 16 & 255);
+        int g = (color >> 8 & 255);
+        int b = (color & 255);
+
+        line(builder, positionMatrix, pos, 0, 0, 0, lenX, 0, 0, r, g, b, a);
+        line(builder, positionMatrix, pos, 0, lenY, 0, lenX, lenY, 0, r, g, b, a);
+        line(builder, positionMatrix, pos, 0, 0, lenZ, lenX, 0, lenZ, r, g, b, a);
+        line(builder, positionMatrix, pos, 0, lenY, lenZ, lenX, lenY, lenZ, r, g, b, a);
+
+        line(builder, positionMatrix, pos, 0, 0, 0, 0, 0, lenZ, r, g, b, a);
+        line(builder, positionMatrix, pos, lenX, 0, 0, lenX, 0, lenZ, r, g, b, a);
+        line(builder, positionMatrix, pos, 0, lenY, 0, 0, lenY, lenZ, r, g, b, a);
+        line(builder, positionMatrix, pos, lenX, lenY, 0, lenX, lenY, lenZ, r, g, b, a);
+
+        line(builder, positionMatrix, pos, 0, 0, 0, 0, lenY, 0, r, g, b, a);
+        line(builder, positionMatrix, pos, lenX, 0, 0, lenX, lenY, 0, r, g, b, a);
+        line(builder, positionMatrix, pos, 0, 0, lenZ, 0, lenY, lenZ, r, g, b, a);
+        line(builder, positionMatrix, pos, lenX, 0, lenZ, lenX, lenY, lenZ, r, g, b, a);
     }
 
     private static void renderOperationalAreas(ClientPlayerEntity player, MatrixStack matrixStack) {
@@ -138,30 +165,12 @@ public class TCoreClientEvents {
         BlockPos.Mutable pos = new BlockPos.Mutable();
 
         for (IAreaEffectTile tile : ProxyClient.getAreaEffectTiles()) {
-            if (!tile.canPlayerAccess(player) || !playerWithinDistance(tile.pos(), player, 576)) {
+            if (!tile.canPlayerAccess(player) || !playerWithinDistance(tile.pos(), player, 32 * 32)) {
                 continue;
             }
             AxisAlignedBB area = tile.getArea();
-
             pos.set(area.minX, area.minY, area.minZ);
-            float lenX = (float) (area.maxX - area.minX);
-            float lenY = (float) (area.maxY - area.minY);
-            float lenZ = (float) (area.maxZ - area.minZ);
-
-            blueLine(builder, positionMatrix, pos, 0, 0, 0, lenX, 0, 0);
-            blueLine(builder, positionMatrix, pos, 0, lenY, 0, lenX, lenY, 0);
-            blueLine(builder, positionMatrix, pos, 0, 0, lenZ, lenX, 0, lenZ);
-            blueLine(builder, positionMatrix, pos, 0, lenY, lenZ, lenX, lenY, lenZ);
-
-            blueLine(builder, positionMatrix, pos, 0, 0, 0, 0, 0, lenZ);
-            blueLine(builder, positionMatrix, pos, lenX, 0, 0, lenX, 0, lenZ);
-            blueLine(builder, positionMatrix, pos, 0, lenY, 0, 0, lenY, lenZ);
-            blueLine(builder, positionMatrix, pos, lenX, lenY, 0, lenX, lenY, lenZ);
-
-            blueLine(builder, positionMatrix, pos, 0, 0, 0, 0, lenY, 0);
-            blueLine(builder, positionMatrix, pos, lenX, 0, 0, lenX, lenY, 0);
-            blueLine(builder, positionMatrix, pos, 0, 0, lenZ, 0, lenY, lenZ);
-            blueLine(builder, positionMatrix, pos, lenX, 0, lenZ, lenX, lenY, lenZ);
+            box(builder, positionMatrix, pos, area, tile.getColor());
         }
         matrixStack.popPose();
         RenderSystem.disableDepthTest();

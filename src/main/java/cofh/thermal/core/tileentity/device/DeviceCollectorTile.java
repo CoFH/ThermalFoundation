@@ -206,5 +206,11 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
         }
         return area;
     }
+
+    @Override
+    public int getColor() {
+
+        return isActive ? 0xA81C62 : 0x555555;
+    }
     // endregion
 }

@@ -98,7 +98,11 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     @Override
     protected boolean isValid() {
 
-        return inputTank.getAmount() >= FLUID_AMOUNT;
+        if (inputTank.getAmount() < FLUID_AMOUNT) {
+            cached = false;
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -408,6 +412,12 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
             area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
         }
         return area;
+    }
+
+    @Override
+    public int getColor() {
+
+        return isActive ? renderFluid.isEmpty() ? 0xF800F8 : FluidHelper.color(renderFluid) : 0x555555;
     }
     // endregion
 }

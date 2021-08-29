@@ -224,5 +224,11 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
         }
         return area;
     }
+
+    @Override
+    public int getColor() {
+
+        return isActive ? 0x78E86F : 0x555555;
+    }
     // endregion
 }
