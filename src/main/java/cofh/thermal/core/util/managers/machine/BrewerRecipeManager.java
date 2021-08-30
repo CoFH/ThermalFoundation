@@ -2,6 +2,7 @@ package cofh.thermal.core.util.managers.machine;
 
 import cofh.core.fluid.PotionFluid;
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.fluid.IFluidStackAccess;
 import cofh.lib.inventory.FalseIInventory;
 import cofh.lib.inventory.IItemStackAccess;
@@ -65,7 +66,9 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
     public void addRecipe(ThermalRecipe recipe) {
 
         for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
-            addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
+                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            }
         }
     }
 
@@ -249,7 +252,7 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
 
         return new BrewerRecipe(new ResourceLocation(ID_THERMAL, "brewer_" + inputPotion.hashCode()), defaultEnergy, 0.0F,
                 Collections.singletonList(reagent),
-                Collections.singletonList(PotionFluid.getPotionAsFluid(defaultPotion, inputPotion)),
+                Collections.singletonList(FluidIngredient.of(PotionFluid.getPotionAsFluid(defaultPotion, inputPotion))),
                 Collections.emptyList(), Collections.emptyList(),
                 Collections.singletonList(PotionFluid.getPotionAsFluid(defaultPotion, outputPotion)));
     }

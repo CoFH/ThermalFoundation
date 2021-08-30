@@ -37,7 +37,9 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
 
     public void addFuel(ThermalFuel recipe) {
 
-        addFuel(recipe.getEnergy(), Collections.emptyList(), recipe.getInputFluids());
+        for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
+            addFuel(recipe.getEnergy(), Collections.emptyList(), Collections.singletonList(fluidInput));
+        }
     }
 
     public boolean validFuel(FluidStack input) {

@@ -1,5 +1,6 @@
 package cofh.thermal.core.util.recipes.machine;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -15,7 +16,7 @@ import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 
 public class PulverizerRecycleRecipe extends PulverizerRecipe {
 
-    public PulverizerRecycleRecipe(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids) {
+    public PulverizerRecycleRecipe(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidIngredient> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids) {
 
         super(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }

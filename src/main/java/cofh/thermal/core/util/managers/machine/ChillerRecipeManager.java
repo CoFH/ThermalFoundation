@@ -52,12 +52,20 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
 
     public void addRecipe(ThermalRecipe recipe) {
 
-        if (!recipe.getInputItems().isEmpty()) {
-            for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
-                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+        if (!recipe.getInputFluids().isEmpty()) {
+            for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
+                if (!recipe.getInputItems().isEmpty()) {
+                    for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+                        addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                    }
+                } else {
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                }
             }
         } else {
-            addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            }
         }
     }
 

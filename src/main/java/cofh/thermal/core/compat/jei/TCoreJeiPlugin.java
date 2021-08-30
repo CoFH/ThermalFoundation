@@ -1,14 +1,17 @@
 package cofh.thermal.core.compat.jei;
 
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.client.gui.device.DeviceRockGenScreen;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.compat.jei.device.RockGenCategory;
 import cofh.thermal.core.compat.jei.device.TreeExtractorCategory;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -18,6 +21,11 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -88,6 +96,17 @@ public class TCoreJeiPlugin implements IModPlugin {
             recipeManager = world.getRecipeManager();
         }
         return recipeManager;
+    }
+
+    public static void setInputIngredients(IIngredients ingredients, List<FluidIngredient> inputs) {
+
+        List<List<FluidStack>> inputLists = new ArrayList<>();
+        for (FluidIngredient input : inputs) {
+            FluidStack[] stacks = input.getFluids();
+            List<FluidStack> expandedInput = Arrays.asList(stacks);
+            inputLists.add(expandedInput);
+        }
+        ingredients.setInputLists(VanillaTypes.FLUID, inputLists);
     }
 
     public static void addDefaultFluidTooltipCallback(IGuiFluidStackGroup group) {

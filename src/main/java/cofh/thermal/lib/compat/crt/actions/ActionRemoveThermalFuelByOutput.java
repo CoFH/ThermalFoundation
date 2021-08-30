@@ -6,7 +6,6 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRecipeBase;
-import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -60,7 +59,7 @@ public class ActionRemoveThermalFuelByOutput extends ActionRecipeBase {
                 }
             }
             for (int i = 0; i < fuel.getInputFluids().size(); ++i) {
-                if (!fluids[i].containsOther(new MCFluidStackMutable(fuel.getInputFluids().get(i))) && !new MCFluidStackMutable(fuel.getInputFluids().get(i)).containsOther(fluids[i])) {
+                if (!fuel.getInputFluids().get(i).test(fluids[i].getInternal())) {
                     valid = false;
                     break;
                 }

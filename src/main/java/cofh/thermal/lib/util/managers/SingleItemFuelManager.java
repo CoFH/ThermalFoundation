@@ -33,7 +33,7 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
     public void addFuel(ThermalFuel recipe) {
 
         for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
-            addFuel(recipe.getEnergy(), Collections.singletonList(recipeInput), recipe.getInputFluids());
+            addFuel(recipe.getEnergy(), Collections.singletonList(recipeInput), Collections.emptyList());
         }
     }
 

@@ -1,5 +1,6 @@
 package cofh.thermal.core.util.recipes.machine;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import net.minecraft.item.ItemStack;
@@ -20,7 +21,7 @@ import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 
 public class FurnaceRecipe extends ThermalRecipe {
 
-    public FurnaceRecipe(ResourceLocation recipeId, int energy, float experience, @Nullable List<Ingredient> inputItems, @Nullable List<FluidStack> inputFluids, @Nullable List<ItemStack> outputItems, @Nullable List<Float> outputItemChances, @Nullable List<FluidStack> outputFluids) {
+    public FurnaceRecipe(ResourceLocation recipeId, int energy, float experience, @Nullable List<Ingredient> inputItems, @Nullable List<FluidIngredient> inputFluids, @Nullable List<ItemStack> outputItems, @Nullable List<Float> outputItemChances, @Nullable List<FluidStack> outputFluids) {
 
         super(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }

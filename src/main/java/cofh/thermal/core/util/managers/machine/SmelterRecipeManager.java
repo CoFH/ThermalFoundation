@@ -56,13 +56,13 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
         switch (recipe.getInputItems().size()) {
             case 1:
                 for (ItemStack firstInput : recipe.getInputItems().get(0).getItems()) {
-                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(firstInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(firstInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                 }
                 return;
             case 2:
                 for (ItemStack firstInput : recipe.getInputItems().get(0).getItems()) {
                     for (ItemStack secondInput : recipe.getInputItems().get(1).getItems()) {
-                        addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
+                        addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                     }
                 }
                 return;
@@ -70,7 +70,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
                 for (ItemStack firstInput : recipe.getInputItems().get(0).getItems()) {
                     for (ItemStack secondInput : recipe.getInputItems().get(1).getItems()) {
                         for (ItemStack thirdInput : recipe.getInputItems().get(2).getItems()) {
-                            addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput, thirdInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
+                            addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput, thirdInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                         }
                     }
                 }

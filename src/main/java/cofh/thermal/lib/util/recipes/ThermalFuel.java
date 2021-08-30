@@ -1,9 +1,9 @@
 package cofh.thermal.lib.util.recipes;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.recipes.SerializableRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.List;
 public abstract class ThermalFuel extends SerializableRecipe {
 
     protected final List<Ingredient> inputItems = new ArrayList<>();
-    protected final List<FluidStack> inputFluids = new ArrayList<>();
+    protected final List<FluidIngredient> inputFluids = new ArrayList<>();
 
     protected int energy;
 
-    protected ThermalFuel(ResourceLocation recipeId, int energy, List<Ingredient> inputItems, List<FluidStack> inputFluids) {
+    protected ThermalFuel(ResourceLocation recipeId, int energy, List<Ingredient> inputItems, List<FluidIngredient> inputFluids) {
 
         super(recipeId);
 
@@ -33,7 +33,7 @@ public abstract class ThermalFuel extends SerializableRecipe {
     private void trim() {
 
         ((ArrayList<Ingredient>) this.inputItems).trimToSize();
-        ((ArrayList<FluidStack>) this.inputFluids).trimToSize();
+        ((ArrayList<FluidIngredient>) this.inputFluids).trimToSize();
     }
 
     // region GETTERS
@@ -42,7 +42,7 @@ public abstract class ThermalFuel extends SerializableRecipe {
         return inputItems;
     }
 
-    public List<FluidStack> getInputFluids() {
+    public List<FluidIngredient> getInputFluids() {
 
         return inputFluids;
     }

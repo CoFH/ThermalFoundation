@@ -1,5 +1,6 @@
 package cofh.thermal.lib.compat.crt.base;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
@@ -19,7 +20,7 @@ public class CRTRecipe {
     private final ResourceLocation name;
 
     private List<Ingredient> inputItems;
-    private List<FluidStack> inputFluids;
+    private List<FluidIngredient> inputFluids;
 
     private List<ItemStack> outputItems;
     private List<FluidStack> outputFluids;
@@ -41,13 +42,13 @@ public class CRTRecipe {
 
     public CRTRecipe input(FluidStack... ingredient) {
 
-        this.inputFluids = Arrays.stream(ingredient).collect(Collectors.toList());
+        this.inputFluids = Arrays.stream(ingredient).map(FluidIngredient::of).collect(Collectors.toList());
         return this;
     }
 
     public CRTRecipe input(IFluidStack... ingredient) {
 
-        this.inputFluids = Arrays.stream(ingredient).map(IFluidStack::getInternal).collect(Collectors.toList());
+        this.inputFluids = Arrays.stream(ingredient).map(IFluidStack::getInternal).map(FluidIngredient::of).collect(Collectors.toList());
         return this;
     }
 
@@ -109,7 +110,7 @@ public class CRTRecipe {
 
     public interface IRecipeBuilder<T extends ThermalRecipe> {
 
-        T apply(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids);
+        T apply(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidIngredient> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids);
 
     }
 

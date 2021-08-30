@@ -52,13 +52,13 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
 
         if (recipe.getInputItems().size() == 1) {
             for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
-                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
             }
         } else {
             // The die should never have multiple variations but eh, who knows?
             for (ItemStack dieInput : recipe.getInputItems().get(1).getItems()) {
                 for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
-                    addRecipe(recipe.getEnergy(), recipe.getXp(), asList(recipeInput, dieInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), asList(recipeInput, dieInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
                 }
             }
         }

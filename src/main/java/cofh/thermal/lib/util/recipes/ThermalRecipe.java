@@ -1,5 +1,6 @@
 package cofh.thermal.lib.util.recipes;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.recipes.SerializableRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -14,7 +15,7 @@ import static cofh.lib.util.constants.Constants.BASE_CHANCE_LOCKED;
 public abstract class ThermalRecipe extends SerializableRecipe {
 
     protected final List<Ingredient> inputItems = new ArrayList<>();
-    protected final List<FluidStack> inputFluids = new ArrayList<>();
+    protected final List<FluidIngredient> inputFluids = new ArrayList<>();
 
     protected final List<ItemStack> outputItems = new ArrayList<>();
     protected final List<FluidStack> outputFluids = new ArrayList<>();
@@ -25,7 +26,7 @@ public abstract class ThermalRecipe extends SerializableRecipe {
 
     protected boolean catalyzable;
 
-    protected ThermalRecipe(ResourceLocation recipeId, int energy, float xp, List<Ingredient> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids) {
+    protected ThermalRecipe(ResourceLocation recipeId, int energy, float xp, List<Ingredient> inputItems, List<FluidIngredient> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids) {
 
         super(recipeId);
 
@@ -62,7 +63,7 @@ public abstract class ThermalRecipe extends SerializableRecipe {
     private void trim() {
 
         ((ArrayList<Ingredient>) this.inputItems).trimToSize();
-        ((ArrayList<FluidStack>) this.inputFluids).trimToSize();
+        ((ArrayList<FluidIngredient>) this.inputFluids).trimToSize();
 
         ((ArrayList<ItemStack>) this.outputItems).trimToSize();
         ((ArrayList<FluidStack>) this.outputFluids).trimToSize();
@@ -75,7 +76,7 @@ public abstract class ThermalRecipe extends SerializableRecipe {
         return inputItems;
     }
 
-    public List<FluidStack> getInputFluids() {
+    public List<FluidIngredient> getInputFluids() {
 
         return inputFluids;
     }
