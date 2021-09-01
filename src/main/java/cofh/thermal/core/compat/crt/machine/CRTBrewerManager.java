@@ -6,7 +6,7 @@ import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.fluid.IFluidStack;
+import com.blamejared.crafttweaker.api.fluid.*;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
@@ -20,7 +20,7 @@ import org.openzen.zencode.java.ZenCodeType;
 public class CRTBrewerManager implements IRecipeManager {
 
     @ZenCodeType.Method
-    public void addRecipe(String name, IFluidStack output, IIngredient ingredient, IFluidStack fluidInput, int energy) {
+    public void addRecipe(String name, IFluidStack output, IIngredient ingredient, CTFluidIngredient fluidInput, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
@@ -36,7 +36,7 @@ public class CRTBrewerManager implements IRecipeManager {
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeRecipe(IIngredient output) {
 
         throw new IllegalArgumentException("The Brewer only outputs fluids! Please provide an IFluidStack");
     }

@@ -29,7 +29,7 @@ public class CRTCompressionManager implements IRecipeManager {
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeRecipe(IIngredient output) {
 
         throw new IllegalArgumentException("Compression Fuel only works with fluids! Please provide an IFluidStack");
     }

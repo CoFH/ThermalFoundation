@@ -36,7 +36,7 @@ public class CRTCrucibleManager implements IRecipeManager {
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeRecipe(IIngredient output) {
 
         throw new IllegalArgumentException("The Crucible only outputs fluids! Please provide an IFluidStack");
     }
