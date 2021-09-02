@@ -6,7 +6,7 @@ import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.fluid.IFluidStack;
+import com.blamejared.crafttweaker.api.fluid.*;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
@@ -20,7 +20,7 @@ import org.openzen.zencode.java.ZenCodeType;
 public class CRTRefineryManager implements IRecipeManager {
 
     @ZenCodeType.Method
-    public void addRecipe(String name, MCWeightedItemStack itemOutput, IFluidStack[] fluidsOutput, IFluidStack inputFluid, int energy) {
+    public void addRecipe(String name, MCWeightedItemStack itemOutput, IFluidStack[] fluidsOutput, CTFluidIngredient inputFluid, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);

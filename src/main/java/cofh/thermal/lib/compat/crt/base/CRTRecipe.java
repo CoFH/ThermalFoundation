@@ -2,7 +2,7 @@ package cofh.thermal.lib.compat.crt.base;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import com.blamejared.crafttweaker.api.fluid.IFluidStack;
+import com.blamejared.crafttweaker.api.fluid.*;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
@@ -13,7 +13,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 public class CRTRecipe {
 
@@ -39,16 +39,10 @@ public class CRTRecipe {
         this.inputItems = Arrays.stream(ingredient).map(IIngredient::asVanillaIngredient).collect(Collectors.toList());
         return this;
     }
-
-    public CRTRecipe input(FluidStack... ingredient) {
-
-        this.inputFluids = Arrays.stream(ingredient).map(FluidIngredient::of).collect(Collectors.toList());
-        return this;
-    }
-
-    public CRTRecipe input(IFluidStack... ingredient) {
-
-        this.inputFluids = Arrays.stream(ingredient).map(IFluidStack::getInternal).map(FluidIngredient::of).collect(Collectors.toList());
+    
+    public CRTRecipe input(CTFluidIngredient... ingredient) {
+        
+        this.inputFluids = Arrays.stream(ingredient).map(CRTHelper::mapFluidIngredient).collect(Collectors.toList());
         return this;
     }
 
