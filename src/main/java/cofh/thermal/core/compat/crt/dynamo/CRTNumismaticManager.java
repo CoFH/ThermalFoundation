@@ -25,7 +25,7 @@ public class CRTNumismaticManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         NumismaticFuel recipe = new CRTFuel(resourceLocation, energy).item(ingredient).fuel(NumismaticFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override

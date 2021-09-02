@@ -27,7 +27,7 @@ public class CRTCentrifugeManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).output(outputs).output(outputFluid);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(CentrifugeRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(CentrifugeRecipe::new)));
     }
 
     @Override

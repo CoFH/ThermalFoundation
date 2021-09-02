@@ -26,7 +26,7 @@ public class CRTSmelterManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredients).output(outputs).experience(experience);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(SmelterRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(SmelterRecipe::new)));
     }
 
     @Override

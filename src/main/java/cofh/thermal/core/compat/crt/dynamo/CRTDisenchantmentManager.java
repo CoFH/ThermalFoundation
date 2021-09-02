@@ -25,7 +25,7 @@ public class CRTDisenchantmentManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         DisenchantmentFuel recipe = new CRTFuel(resourceLocation, energy).item(ingredient).fuel(DisenchantmentFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override

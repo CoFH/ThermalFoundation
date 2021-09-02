@@ -26,7 +26,7 @@ public class CRTPulverizerManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).output(outputs).experience(experience);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(PulverizerRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(PulverizerRecipe::new)));
     }
 
     @Override

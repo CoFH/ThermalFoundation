@@ -26,7 +26,7 @@ public class CRTBottlerManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).input(fluidInput).output(output);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(BottlerRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(BottlerRecipe::new)));
     }
 
     @Override

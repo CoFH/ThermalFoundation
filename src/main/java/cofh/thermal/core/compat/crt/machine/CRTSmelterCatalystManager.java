@@ -25,7 +25,7 @@ public class CRTSmelterCatalystManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         SmelterCatalyst catalyst = new CRTCatalyst(resourceLocation, ingredient, primaryMod, secondaryMod, energyMod, minChance, useChance).catalyst(SmelterCatalyst::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, catalyst, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, catalyst));
     }
 
     @Override

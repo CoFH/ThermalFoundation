@@ -25,7 +25,7 @@ public class CRTMagmaticManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         MagmaticFuel recipe = new CRTFuel(resourceLocation, energy).fluid(ingredient).fuel(MagmaticFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override
