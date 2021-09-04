@@ -48,7 +48,7 @@ public class HiveExtractorManager extends AbstractManager {
 
     public ItemStack getItem(BlockState hive) {
 
-        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getLeft() : cloneStack(Items.HONEYCOMB, COMB_AMOUNT);
+        return specificHive(hive) ? cloneStack(hiveMap.get(hive.getBlock()).getLeft()) : cloneStack(Items.HONEYCOMB, COMB_AMOUNT);
     }
 
     public FluidStack getFluid(BlockState hive) {
