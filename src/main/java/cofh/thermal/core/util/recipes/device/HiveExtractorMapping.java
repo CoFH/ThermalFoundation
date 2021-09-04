@@ -18,7 +18,7 @@ public class HiveExtractorMapping extends SerializableRecipe {
     protected final ItemStack item;
     protected final FluidStack fluid;
 
-    protected HiveExtractorMapping(ResourceLocation recipeId, Block hive, ItemStack item, FluidStack fluid) {
+    public HiveExtractorMapping(ResourceLocation recipeId, Block hive, ItemStack item, FluidStack fluid) {
 
         super(recipeId);
 

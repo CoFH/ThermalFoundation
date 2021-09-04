@@ -18,7 +18,7 @@ public class FisherBoost extends SerializableRecipe {
     protected float outputMod;
     protected float useChance;
 
-    protected FisherBoost(ResourceLocation recipeId, Ingredient inputItem, ResourceLocation lootTable, float outputMod, float useChance) {
+    public FisherBoost(ResourceLocation recipeId, Ingredient inputItem, ResourceLocation lootTable, float outputMod, float useChance) {
 
         super(recipeId);
 
