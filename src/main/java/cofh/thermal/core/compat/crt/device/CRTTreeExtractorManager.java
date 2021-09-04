@@ -1,6 +1,7 @@
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
+import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
@@ -9,8 +10,11 @@ import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
+import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
+import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
 import com.blamejared.crafttweaker.impl_native.blocks.ExpandBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.LeavesBlock;
@@ -21,7 +25,8 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.TreeExtractor")
-public class CRTTreeExtractorManager implements IRecipeManager {
+@IRecipeHandler.For(TreeExtractorMapping.class)
+public class CRTTreeExtractorManager implements IRecipeManager, IRecipeHandler<TreeExtractorMapping> {
 
     @ZenCodeType.Method
     public void addMapping(String name, Block trunk, Block leaves, IFluidStack fluid) {
@@ -73,5 +78,9 @@ public class CRTTreeExtractorManager implements IRecipeManager {
         }));
     }
 
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, TreeExtractorMapping recipe) {
+        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(),  ExpandBlock.getCommandString(recipe.getTrunk()), ExpandBlock.getCommandString(recipe.getLeaves()), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
+    }
 
 }

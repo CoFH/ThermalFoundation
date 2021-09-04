@@ -2,6 +2,7 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
+import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -10,8 +11,10 @@ import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
+import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
 import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
 import com.blamejared.crafttweaker.impl_native.blocks.ExpandBlock;
 import net.minecraft.block.BeehiveBlock;
@@ -22,7 +25,8 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.HiveExtractor")
-public class CRTHiveExtractorManager implements IRecipeManager {
+@IRecipeHandler.For(HiveExtractorMapping.class)
+public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<HiveExtractorMapping> {
 
     @ZenCodeType.Method
     public void addMapping(String name, Block hive, IItemStack item, IFluidStack fluid) {
@@ -76,6 +80,11 @@ public class CRTHiveExtractorManager implements IRecipeManager {
             }
             return false;
         }));
+    }
+
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, HiveExtractorMapping recipe) {
+        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(),  ExpandBlock.getCommandString(recipe.getHive()), new MCItemStackMutable(recipe.getItem()).getCommandString(), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
     }
 
 
