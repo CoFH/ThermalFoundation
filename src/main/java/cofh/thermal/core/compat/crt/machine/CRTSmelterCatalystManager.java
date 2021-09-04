@@ -9,6 +9,7 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
@@ -16,7 +17,8 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.SmelterCatalyst")
-public class CRTSmelterCatalystManager implements IRecipeManager {
+@IRecipeHandler.For(SmelterCatalyst.class)
+public class CRTSmelterCatalystManager implements IRecipeManager, IRecipeHandler<SmelterCatalyst> {
 
     @ZenCodeType.Method
     public void addCatalyst(String name, IIngredient ingredient, float primaryMod, float secondaryMod, float energyMod, float minChance, float useChance) {
@@ -46,4 +48,8 @@ public class CRTSmelterCatalystManager implements IRecipeManager {
         return TCoreRecipeTypes.CATALYST_SMELTER;
     }
 
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, SmelterCatalyst recipe) {
+        return String.format("<recipetype:%s>.addCatalyst(\"%s\", %s, %s, %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), recipe.getPrimaryMod(), recipe.getSecondaryMod(), recipe.getEnergyMod(), recipe.getMinChance(), recipe.getUseChance());
+    }
 }

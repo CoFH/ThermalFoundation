@@ -3,14 +3,16 @@ package cofh.thermal.core.compat.crt.machine;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
 import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
+import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
@@ -18,7 +20,8 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Brewer")
-public class CRTBrewerManager implements IRecipeManager {
+@IRecipeHandler.For(BrewerRecipe.class)
+public class CRTBrewerManager implements IRecipeManager, IRecipeHandler<BrewerRecipe> {
 
     @ZenCodeType.Method
     public void addRecipe(String name, IFluidStack output, IIngredient ingredient, CTFluidIngredient fluidInput, int energy) {
@@ -48,4 +51,8 @@ public class CRTBrewerManager implements IRecipeManager {
         CraftTweakerAPI.apply(new ActionRemoveThermalRecipeByOutput(this, new IFluidStack[]{output}));
     }
 
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, BrewerRecipe recipe) {
+        return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
+    }
 }
