@@ -3,7 +3,6 @@ package cofh.thermal.core.compat.crt.machine;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.PressRecipe;
 import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
-import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -12,13 +11,20 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipes.ReplacementHandlerHelper;
 import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.fluid.MCFluidStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Press")
@@ -56,6 +62,17 @@ public class CRTPressManager implements IRecipeManager, IRecipeHandler<PressReci
     @Override
     public String dumpToCommandString(IRecipeManager manager, PressRecipe recipe) {
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, [%s], %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), recipe.getOutputFluids().isEmpty() ? MCFluidStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), ", "), recipe.getEnergy());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, PressRecipe>> replaceIngredients(IRecipeManager manager, PressRecipe recipe, List<IReplacementRule> rules) {
+
+        return ReplacementHandlerHelper.replaceIngredientList(
+                recipe.getInputItems(),
+                Ingredient.class,
+                recipe,
+                rules,
+                newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setOutputItems(recipe.getOutputItems(), recipe.getOutputItemChances()).setOutputFluids(recipe.getOutputFluids()).recipe(PressRecipe::new));
     }
 
 }

@@ -2,7 +2,8 @@ package cofh.thermal.lib.compat.crt.base;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import com.blamejared.crafttweaker.api.fluid.*;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
+import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
@@ -13,7 +14,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class CRTRecipe {
 
@@ -39,9 +40,9 @@ public class CRTRecipe {
         this.inputItems = Arrays.stream(ingredient).map(IIngredient::asVanillaIngredient).collect(Collectors.toList());
         return this;
     }
-    
+
     public CRTRecipe input(CTFluidIngredient... ingredient) {
-        
+
         this.inputFluids = Arrays.stream(ingredient).map(CRTHelper::mapFluidIngredient).collect(Collectors.toList());
         return this;
     }
@@ -97,10 +98,33 @@ public class CRTRecipe {
         return this;
     }
 
+    // Helpers for Recipe Replacements
+    public CRTRecipe setInputItems(List<Ingredient> ingredients) {
+        this.inputItems = ingredients;
+        return this;
+    }
+
+    public CRTRecipe setInputFluids(List<FluidIngredient> ingredient) {
+        this.inputFluids = ingredient;
+        return this;
+    }
+
+    public CRTRecipe setOutputItems(List<ItemStack> outputItems, List<Float> outputItemChances) {
+        this.outputItems = outputItems;
+        this.outputItemChances = outputItemChances;
+        return this;
+    }
+
+    public CRTRecipe setOutputFluids(List<FluidStack> outputFluids) {
+        this.outputFluids = outputFluids;
+        return this;
+    }
+
     public <T extends ThermalRecipe> T recipe(IRecipeBuilder<T> builder) {
 
         return builder.apply(name, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }
+
 
     public interface IRecipeBuilder<T extends ThermalRecipe> {
 

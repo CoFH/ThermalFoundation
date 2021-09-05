@@ -12,11 +12,18 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipes.ReplacementHandlerHelper;
 import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Bottler")
@@ -54,5 +61,16 @@ public class CRTBottlerManager implements IRecipeManager, IRecipeHandler<Bottler
     @Override
     public String dumpToCommandString(IRecipeManager manager, BottlerRecipe recipe) {
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyStacks(recipe.getOutputItems(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, BottlerRecipe>> replaceIngredients(IRecipeManager manager, BottlerRecipe recipe, List<IReplacementRule> rules) throws ReplacementNotSupportedException {
+
+        return ReplacementHandlerHelper.replaceIngredientList(
+                recipe.getInputItems(),
+                Ingredient.class,
+                recipe,
+                rules,
+                newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setInputFluids(recipe.getInputFluids()).setOutputItems(recipe.getOutputItems(), recipe.getOutputItemChances()).recipe(BottlerRecipe::new));
     }
 }

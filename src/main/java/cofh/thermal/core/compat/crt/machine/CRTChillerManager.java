@@ -12,12 +12,19 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipes.ReplacementHandlerHelper;
 import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.item.MCItemStack;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Chiller")
@@ -55,5 +62,16 @@ public class CRTChillerManager implements IRecipeManager, IRecipeHandler<Chiller
     @Override
     public String dumpToCommandString(IRecipeManager manager, ChillerRecipe recipe) {
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyStacks(recipe.getOutputItems(), " | "), recipe.getInputItems().isEmpty() ? MCItemStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, ChillerRecipe>> replaceIngredients(IRecipeManager manager, ChillerRecipe recipe, List<IReplacementRule> rules) throws ReplacementNotSupportedException {
+
+        return ReplacementHandlerHelper.replaceIngredientList(
+                recipe.getInputItems(),
+                Ingredient.class,
+                recipe,
+                rules,
+                newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setInputFluids(recipe.getInputFluids()).setOutputItems(recipe.getOutputItems(), recipe.getOutputItemChances()).recipe(ChillerRecipe::new));
     }
 }

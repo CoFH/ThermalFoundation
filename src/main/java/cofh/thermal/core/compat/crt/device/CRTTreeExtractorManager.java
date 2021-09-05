@@ -1,7 +1,6 @@
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
-import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
@@ -14,7 +13,6 @@ import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
 import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
-import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
 import com.blamejared.crafttweaker.impl_native.blocks.ExpandBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.LeavesBlock;

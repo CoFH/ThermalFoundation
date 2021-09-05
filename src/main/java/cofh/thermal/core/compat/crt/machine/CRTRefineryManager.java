@@ -1,7 +1,6 @@
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
-import cofh.thermal.core.util.recipes.machine.PyrolyzerRecipe;
 import cofh.thermal.core.util.recipes.machine.RefineryRecipe;
 import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;

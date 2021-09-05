@@ -2,7 +2,6 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
-import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;

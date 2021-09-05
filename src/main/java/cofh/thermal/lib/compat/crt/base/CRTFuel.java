@@ -29,6 +29,14 @@ public class CRTFuel {
         this.item = Collections.singletonList(item.asVanillaIngredient());
         return this;
     }
+
+    // Recipe replacer helper
+    public CRTFuel item(List<Ingredient> newIngredients) {
+
+        this.item = newIngredients;
+        return this;
+    }
+
     
     public CRTFuel fluid(CTFluidIngredient fluid) {
         
@@ -52,5 +60,6 @@ public class CRTFuel {
         T apply(ResourceLocation recipeId, int energy, @Nullable List<Ingredient> inputItems, @Nullable List<FluidIngredient> inputFluids);
 
     }
+
 
 }
