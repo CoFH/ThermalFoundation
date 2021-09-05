@@ -2,6 +2,7 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
+import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -11,6 +12,7 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
 import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
@@ -21,6 +23,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.HiveExtractor")
@@ -86,5 +92,10 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
         return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(),  ExpandBlock.getCommandString(recipe.getHive()), new MCItemStackMutable(recipe.getItem()).getCommandString(), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
     }
 
+    @Override
+    public Optional<Function<ResourceLocation, HiveExtractorMapping>> replaceIngredients(IRecipeManager manager, HiveExtractorMapping recipe, List<IReplacementRule> rules) {
+        // CRT doesn't support replacing blocks right now.
+        return Optional.empty();
+    }
 
 }

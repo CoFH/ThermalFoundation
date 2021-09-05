@@ -7,10 +7,12 @@ import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.fluid.*;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
+import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
 import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.item.MCItemStack;
@@ -18,6 +20,10 @@ import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Refinery")
@@ -55,6 +61,12 @@ public class CRTRefineryManager implements IRecipeManager, IRecipeHandler<Refine
     @Override
     public String dumpToCommandString(IRecipeManager manager, RefineryRecipe recipe) {
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, [%s], %s, %s);", recipe.getType(), recipe.getId(), recipe.getOutputItems().isEmpty() ? MCItemStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), " | "), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), ", "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, RefineryRecipe>> replaceIngredients(IRecipeManager manager, RefineryRecipe recipe, List<IReplacementRule> rules) {
+        // CRT doesn't support replacing fluid ingredients right now.
+        return Optional.empty();
     }
 
 }

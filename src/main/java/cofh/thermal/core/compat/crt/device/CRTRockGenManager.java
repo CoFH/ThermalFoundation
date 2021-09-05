@@ -2,12 +2,14 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.RockGenMapping;
+import cofh.thermal.lib.util.recipes.ThermalFuel;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
 import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
@@ -16,6 +18,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.RockGen")
@@ -55,6 +61,12 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
     @Override
     public String dumpToCommandString(IRecipeManager manager, RockGenMapping recipe) {
         return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), new MCItemStackMutable(recipe.getResult()).getCommandString(), ExpandBlock.getCommandString(recipe.getAdjacent()), ExpandBlock.getCommandString(recipe.getBelow()), recipe.getTime());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, RockGenMapping>> replaceIngredients(IRecipeManager manager, RockGenMapping recipe, List<IReplacementRule> rules) {
+        // CRT doesn't support replacing blocks right now.
+        return Optional.empty();
     }
 
 
