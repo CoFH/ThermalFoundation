@@ -7,15 +7,23 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.PotionDiffuserBoost")
-public class CRTPotionDiffuserBoostManager implements IRecipeManager {
+@IRecipeHandler.For(PotionDiffuserBoost.class)
+public class CRTPotionDiffuserBoostManager implements IRecipeManager, IRecipeHandler<PotionDiffuserBoost> {
 
     @ZenCodeType.Method
     public void addBoost(String name, IIngredient inputItem, int amplifier, float durationMod, int cycles) {
@@ -45,6 +53,18 @@ public class CRTPotionDiffuserBoostManager implements IRecipeManager {
             }
             return false;
         }));
+    }
+
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, PotionDiffuserBoost recipe) {
+        return String.format("<recipetype:%s>.addBoost(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), recipe.getAmplifier(), recipe.getDurationMod(), recipe.getCycles());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, PotionDiffuserBoost>> replaceIngredients(IRecipeManager manager, PotionDiffuserBoost recipe, List<IReplacementRule> rules) {
+
+        final Optional<Ingredient> ingredient = IRecipeHandler.attemptReplacing(recipe.getIngredient(), Ingredient.class, recipe, rules);
+        return ingredient.map(value -> id -> new PotionDiffuserBoost(id, value, recipe.getAmplifier(), recipe.getDurationMod(), recipe.getCycles()));
     }
 
 }

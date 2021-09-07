@@ -7,15 +7,24 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
+import com.blamejared.crafttweaker.impl_native.util.ExpandResourceLocation;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.FisherBoost")
-public class CRTFisherBoostManager implements IRecipeManager {
+@IRecipeHandler.For(FisherBoost.class)
+public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<FisherBoost> {
 
     @ZenCodeType.Method
     public void addBoost(String name, IIngredient inputItem, ResourceLocation lootTable, float outputMod, float useChance) {
@@ -45,6 +54,18 @@ public class CRTFisherBoostManager implements IRecipeManager {
             }
             return false;
         }));
+    }
+
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, FisherBoost recipe) {
+        return String.format("<recipetype:%s>.addBoost(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), ExpandResourceLocation.getCommandString(recipe.getLootTable()), recipe.getOutputMod(), recipe.getUseChance());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, FisherBoost>> replaceIngredients(IRecipeManager manager, FisherBoost recipe, List<IReplacementRule> rules) {
+
+        final Optional<Ingredient> ingredient = IRecipeHandler.attemptReplacing(recipe.getIngredient(), Ingredient.class, recipe, rules);
+        return ingredient.map(value -> id -> new FisherBoost(id, value, recipe.getLootTable(), recipe.getOutputMod(), recipe.getUseChance()));
     }
 
 }
