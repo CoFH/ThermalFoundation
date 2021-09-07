@@ -28,13 +28,16 @@ public class TCoreRecipeTypes {
         RECIPE_FURNACE.register();
         RECIPE_SAWMILL.register();
         RECIPE_PULVERIZER.register();
+        RECIPE_PULVERIZER_RECYCLE.register();
         RECIPE_SMELTER.register();
+        RECIPE_SMELTER_RECYCLE.register();
         RECIPE_INSOLATOR.register();
         RECIPE_CENTRIFUGE.register();
         RECIPE_PRESS.register();
         RECIPE_CRUCIBLE.register();
         RECIPE_CHILLER.register();
         RECIPE_REFINERY.register();
+        RECIPE_PYROLYZER.register();
         RECIPE_BOTTLER.register();
         RECIPE_BREWER.register();
         // RECIPE_ENCHANTER.register();
@@ -49,6 +52,8 @@ public class TCoreRecipeTypes {
         FUEL_MAGMATIC.register();
         FUEL_NUMISMATIC.register();
         FUEL_LAPIDARY.register();
+        FUEL_DISENCHANTMENT.register();
+        FUEL_GOURMAND.register();
     }
 
     // region DEVICES
