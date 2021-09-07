@@ -26,7 +26,7 @@ public class CRTSawmillManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).output(outputs);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(SawmillRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(SawmillRecipe::new)));
     }
 
     @Override

@@ -26,7 +26,7 @@ public class CRTBrewerManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).input(fluidInput).output(output);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(BrewerRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(BrewerRecipe::new)));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CRTBrewerManager implements IRecipeManager {
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeRecipe(IIngredient output) {
 
         throw new IllegalArgumentException("The Brewer only outputs fluids! Please provide an IFluidStack");
     }

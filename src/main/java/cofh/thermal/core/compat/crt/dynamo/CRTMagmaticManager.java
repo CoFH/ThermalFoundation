@@ -25,11 +25,11 @@ public class CRTMagmaticManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         MagmaticFuel recipe = new CRTFuel(resourceLocation, energy).fluid(ingredient).fuel(MagmaticFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeRecipe(IIngredient output) {
 
         throw new IllegalArgumentException("Magmatic Fuel only works with fluids! Please provide an IFluidStack");
     }

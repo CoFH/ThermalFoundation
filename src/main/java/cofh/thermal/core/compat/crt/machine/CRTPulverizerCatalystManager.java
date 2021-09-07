@@ -25,7 +25,7 @@ public class CRTPulverizerCatalystManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         PulverizerCatalyst catalyst = new CRTCatalyst(resourceLocation, ingredient, primaryMod, secondaryMod, energyMod, minChance, useChance).catalyst(PulverizerCatalyst::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, catalyst, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, catalyst));
     }
 
     @Override

@@ -25,7 +25,7 @@ public class CRTStirlingManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         StirlingFuel recipe = new CRTFuel(resourceLocation, energy).item(ingredient).fuel(StirlingFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override

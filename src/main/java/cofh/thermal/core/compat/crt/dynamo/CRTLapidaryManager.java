@@ -25,7 +25,7 @@ public class CRTLapidaryManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         LapidaryFuel recipe = new CRTFuel(resourceLocation, energy).item(ingredient).fuel(LapidaryFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override

@@ -25,7 +25,7 @@ public class CRTInsolatorCatalystManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         InsolatorCatalyst catalyst = new CRTCatalyst(resourceLocation, ingredient, primaryMod, secondaryMod, energyMod, minChance, useChance).catalyst(InsolatorCatalyst::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, catalyst, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, catalyst));
     }
 
     @Override

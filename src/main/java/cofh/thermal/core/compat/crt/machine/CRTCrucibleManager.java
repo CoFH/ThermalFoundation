@@ -26,7 +26,7 @@ public class CRTCrucibleManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).output(output);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(CrucibleRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(CrucibleRecipe::new)));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CRTCrucibleManager implements IRecipeManager {
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeRecipe(IIngredient output) {
 
         throw new IllegalArgumentException("The Crucible only outputs fluids! Please provide an IFluidStack");
     }

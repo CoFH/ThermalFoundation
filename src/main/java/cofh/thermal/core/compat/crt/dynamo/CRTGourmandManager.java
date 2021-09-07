@@ -25,7 +25,7 @@ public class CRTGourmandManager implements IRecipeManager {
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         GourmandFuel recipe = new CRTFuel(resourceLocation, energy).item(ingredient).fuel(GourmandFuel::new);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe));
     }
 
     @Override
