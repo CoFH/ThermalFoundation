@@ -6,8 +6,8 @@ import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalFuelByOutput;
 import cofh.thermal.lib.compat.crt.base.CRTFuel;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IItemStack;
+import com.blamejared.crafttweaker.api.fluid.*;
+import com.blamejared.crafttweaker.api.item.*;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import net.minecraft.item.crafting.IRecipeType;
@@ -19,7 +19,7 @@ import org.openzen.zencode.java.ZenCodeType;
 public class CRTCompressionManager implements IRecipeManager {
 
     @ZenCodeType.Method
-    public void addFuel(String name, IFluidStack ingredient, int energy) {
+    public void addFuel(String name, CTFluidIngredient ingredient, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);

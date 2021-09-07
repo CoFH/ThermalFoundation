@@ -6,10 +6,12 @@ import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
+import com.blamejared.crafttweaker.impl.fluid.MCFluidStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.crafting.IRecipeType;
@@ -27,7 +29,7 @@ public class CRTInsolatorManager implements IRecipeManager {
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
-        CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).input(new FluidStack(Fluids.WATER, fluidAmount)).output(outputs);
+        CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredient).input(new CTFluidIngredient.FluidStackIngredient(new MCFluidStack(new FluidStack(Fluids.WATER, fluidAmount)))).output(outputs);
         CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(InsolatorRecipe::new)));
     }
 
