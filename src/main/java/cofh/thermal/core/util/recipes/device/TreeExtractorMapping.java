@@ -17,7 +17,7 @@ public class TreeExtractorMapping extends SerializableRecipe {
     protected final Block leaves;
     protected final FluidStack fluid;
 
-    protected TreeExtractorMapping(ResourceLocation recipeId, Block trunk, Block leaves, FluidStack fluid) {
+    public TreeExtractorMapping(ResourceLocation recipeId, Block trunk, Block leaves, FluidStack fluid) {
 
         super(recipeId);
 
