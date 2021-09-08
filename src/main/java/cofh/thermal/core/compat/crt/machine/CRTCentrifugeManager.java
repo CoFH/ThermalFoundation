@@ -61,6 +61,7 @@ public class CRTCentrifugeManager implements IRecipeManager, IRecipeHandler<Cent
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, CentrifugeRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), recipe.getOutputFluids().isEmpty() ? MCFluidStack.EMPTY.get() : RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getEnergy());
     }
 

@@ -59,6 +59,7 @@ public class CRTSmelterManager implements IRecipeManager, IRecipeHandler<Smelter
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, SmelterRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], [%s], %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), ", "), recipe.getXp(), recipe.getEnergy());
     }
 

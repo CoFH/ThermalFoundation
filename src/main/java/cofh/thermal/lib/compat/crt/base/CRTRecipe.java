@@ -100,22 +100,26 @@ public class CRTRecipe {
 
     // Helpers for Recipe Replacements
     public CRTRecipe setInputItems(List<Ingredient> ingredients) {
+
         this.inputItems = ingredients;
         return this;
     }
 
     public CRTRecipe setInputFluids(List<FluidIngredient> ingredient) {
+
         this.inputFluids = ingredient;
         return this;
     }
 
     public CRTRecipe setOutputItems(List<ItemStack> outputItems, List<Float> outputItemChances) {
+
         this.outputItems = outputItems;
         this.outputItemChances = outputItemChances;
         return this;
     }
 
     public CRTRecipe setOutputFluids(List<FluidStack> outputFluids) {
+
         this.outputFluids = outputFluids;
         return this;
     }
@@ -124,7 +128,6 @@ public class CRTRecipe {
 
         return builder.apply(name, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }
-
 
     public interface IRecipeBuilder<T extends ThermalRecipe> {
 

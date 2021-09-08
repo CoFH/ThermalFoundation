@@ -2,7 +2,6 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.RockGenMapping;
-import cofh.thermal.lib.util.recipes.ThermalFuel;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
@@ -30,6 +29,7 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
 
     @ZenCodeType.Method
     public void addMapping(String name, IItemStack result, Block adjacent, Block below, int time) {
+
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
@@ -45,11 +45,13 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
 
     @Override
     public void removeRecipe(IIngredient output) {
+
         removeMapping(output);
     }
 
     @ZenCodeType.Method
     public void removeMapping(IIngredient output) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof RockGenMapping) {
                 return output.matches(new MCItemStackMutable(((RockGenMapping) recipe).getResult()));
@@ -60,6 +62,7 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, RockGenMapping recipe) {
+
         return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), new MCItemStackMutable(recipe.getResult()).getCommandString(), ExpandBlock.getCommandString(recipe.getAdjacent()), ExpandBlock.getCommandString(recipe.getBelow()), recipe.getTime());
     }
 
@@ -68,6 +71,5 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
         // CRT doesn't support replacing blocks right now.
         return Optional.empty();
     }
-
 
 }

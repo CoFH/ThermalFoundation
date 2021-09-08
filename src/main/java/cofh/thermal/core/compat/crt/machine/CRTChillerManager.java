@@ -61,6 +61,7 @@ public class CRTChillerManager implements IRecipeManager, IRecipeHandler<Chiller
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, ChillerRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyStacks(recipe.getOutputItems(), " | "), recipe.getInputItems().isEmpty() ? MCItemStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
     }
 
@@ -74,4 +75,5 @@ public class CRTChillerManager implements IRecipeManager, IRecipeHandler<Chiller
                 rules,
                 newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setInputFluids(recipe.getInputFluids()).setOutputItems(recipe.getOutputItems(), recipe.getOutputItemChances()).recipe(ChillerRecipe::new));
     }
+
 }

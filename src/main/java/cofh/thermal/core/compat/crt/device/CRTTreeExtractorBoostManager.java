@@ -1,7 +1,6 @@
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
-import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
 import cofh.thermal.core.util.recipes.device.TreeExtractorBoost;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -28,6 +27,7 @@ public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHand
 
     @ZenCodeType.Method
     public void addBoost(String name, IIngredient inputItem, float outputMod, int cycles) {
+
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
@@ -43,11 +43,13 @@ public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHand
 
     @Override
     public void removeRecipe(IItemStack input) {
+
         removeBoost(input);
     }
 
     @ZenCodeType.Method
     public void removeBoost(IItemStack input) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof TreeExtractorBoost) {
                 return ((TreeExtractorBoost) recipe).getIngredient().test(input.getInternal());
@@ -58,6 +60,7 @@ public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHand
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, TreeExtractorBoost recipe) {
+
         return String.format("<recipetype:%s>.addBoost(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), recipe.getOutputMod(), recipe.getCycles());
     }
 

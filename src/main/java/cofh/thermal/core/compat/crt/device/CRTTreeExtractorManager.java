@@ -1,7 +1,6 @@
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
-import cofh.thermal.core.util.recipes.device.TreeExtractorBoost;
 import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
@@ -34,6 +33,7 @@ public class CRTTreeExtractorManager implements IRecipeManager, IRecipeHandler<T
 
     @ZenCodeType.Method
     public void addMapping(String name, Block trunk, Block leaves, IFluidStack fluid) {
+
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
@@ -59,11 +59,13 @@ public class CRTTreeExtractorManager implements IRecipeManager, IRecipeHandler<T
 
     @Override
     public void removeRecipe(IIngredient output) {
+
         throw new IllegalArgumentException("Tree Extractor mappings can only be removed with the output FluidStack or the trunk Block!");
     }
 
     @ZenCodeType.Method
     public void removeMapping(Block trunk) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof TreeExtractorMapping) {
                 return trunk == ((TreeExtractorMapping) recipe).getTrunk();
@@ -74,6 +76,7 @@ public class CRTTreeExtractorManager implements IRecipeManager, IRecipeHandler<T
 
     @ZenCodeType.Method
     public void removeMapping(CTFluidIngredient fluid) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof TreeExtractorMapping) {
                 return CRTHelper.mapFluidIngredient(fluid).test(((TreeExtractorMapping) recipe).getFluid());
@@ -84,7 +87,8 @@ public class CRTTreeExtractorManager implements IRecipeManager, IRecipeHandler<T
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, TreeExtractorMapping recipe) {
-        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(),  ExpandBlock.getCommandString(recipe.getTrunk()), ExpandBlock.getCommandString(recipe.getLeaves()), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
+
+        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(), ExpandBlock.getCommandString(recipe.getTrunk()), ExpandBlock.getCommandString(recipe.getLeaves()), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
     }
 
     @Override

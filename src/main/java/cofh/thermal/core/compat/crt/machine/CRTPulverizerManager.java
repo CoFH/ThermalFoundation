@@ -59,6 +59,7 @@ public class CRTPulverizerManager implements IRecipeManager, IRecipeHandler<Pulv
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, PulverizerRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getXp(), recipe.getEnergy());
     }
 

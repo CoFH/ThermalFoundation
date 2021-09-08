@@ -2,7 +2,6 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
-import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -35,6 +34,7 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
 
     @ZenCodeType.Method
     public void addMapping(String name, Block hive, IItemStack item, IFluidStack fluid) {
+
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
@@ -54,11 +54,13 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
 
     @Override
     public void removeRecipe(IIngredient output) {
+
         removeMapping(output);
     }
 
     @ZenCodeType.Method
     public void removeMapping(IIngredient output) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof HiveExtractorMapping) {
                 return output.matches(new MCItemStackMutable(((HiveExtractorMapping) recipe).getItem()));
@@ -69,6 +71,7 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
 
     @ZenCodeType.Method
     public void removeMapping(Block hive) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof HiveExtractorMapping) {
                 return hive == ((HiveExtractorMapping) recipe).getHive();
@@ -79,6 +82,7 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
 
     @ZenCodeType.Method
     public void removeMapping(CTFluidIngredient fluid) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof HiveExtractorMapping) {
                 return CRTHelper.mapFluidIngredient(fluid).test(((HiveExtractorMapping) recipe).getFluid());
@@ -89,7 +93,8 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, HiveExtractorMapping recipe) {
-        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(),  ExpandBlock.getCommandString(recipe.getHive()), new MCItemStackMutable(recipe.getItem()).getCommandString(), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
+
+        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(), ExpandBlock.getCommandString(recipe.getHive()), new MCItemStackMutable(recipe.getItem()).getCommandString(), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
     }
 
     @Override

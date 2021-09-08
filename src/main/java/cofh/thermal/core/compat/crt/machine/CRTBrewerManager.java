@@ -60,6 +60,7 @@ public class CRTBrewerManager implements IRecipeManager, IRecipeHandler<BrewerRe
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, BrewerRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
     }
 
@@ -73,4 +74,5 @@ public class CRTBrewerManager implements IRecipeManager, IRecipeHandler<BrewerRe
                 rules,
                 newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setInputFluids(recipe.getInputFluids()).setOutputFluids(recipe.getOutputFluids()).recipe(BrewerRecipe::new));
     }
+
 }

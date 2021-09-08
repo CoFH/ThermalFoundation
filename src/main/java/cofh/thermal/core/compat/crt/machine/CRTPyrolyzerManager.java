@@ -60,6 +60,7 @@ public class CRTPyrolyzerManager implements IRecipeManager, IRecipeHandler<Pyrol
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, PyrolyzerRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getEnergy());
     }
 

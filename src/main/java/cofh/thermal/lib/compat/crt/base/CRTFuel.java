@@ -2,7 +2,8 @@ package cofh.thermal.lib.compat.crt.base;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
-import com.blamejared.crafttweaker.api.fluid.*;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
+import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -37,13 +38,12 @@ public class CRTFuel {
         return this;
     }
 
-    
     public CRTFuel fluid(CTFluidIngredient fluid) {
-        
+
         this.fluid = Collections.singletonList(CRTHelper.mapFluidIngredient(fluid));
         return this;
     }
-    
+
     public CRTFuel fluid(IFluidStack fluid) {
 
         this.fluid = Collections.singletonList(FluidIngredient.of(fluid.getInternal()));
@@ -60,6 +60,5 @@ public class CRTFuel {
         T apply(ResourceLocation recipeId, int energy, @Nullable List<Ingredient> inputItems, @Nullable List<FluidIngredient> inputFluids);
 
     }
-
 
 }

@@ -63,6 +63,7 @@ public class CRTInsolatorManager implements IRecipeManager, IRecipeHandler<Insol
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, InsolatorRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getInputFluids().get(0).getFluids()[0].getAmount(), recipe.getEnergy());
     }
 

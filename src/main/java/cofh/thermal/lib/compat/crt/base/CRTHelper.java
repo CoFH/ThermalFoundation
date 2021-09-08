@@ -4,7 +4,6 @@ import cofh.lib.fluid.FluidIngredient;
 import com.blamejared.crafttweaker.api.brackets.CommandStringDisplayable;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +19,7 @@ public class CRTHelper {
      * @return A {@link FluidIngredient} representation of the given {@link CTFluidIngredient}.
      */
     public static FluidIngredient mapFluidIngredient(CTFluidIngredient ingredient) {
+
         return ingredient.mapTo(FluidIngredient::of, FluidIngredient::of, compound -> compound.reduce((first, second) -> FluidIngredient.of(Stream.concat(Arrays.stream(first.getFluids()), Arrays.stream(second.getFluids())))).orElseThrow(() -> new RuntimeException("Error while mapping compound fluid ingredients!")));
     }
 
@@ -32,6 +32,7 @@ public class CRTHelper {
      * @return A String representing the given ingredients.
      */
     public static String stringifyFluidIngredients(List<FluidIngredient> ingredients) {
+
         return ingredients.stream().flatMap(fluidIngredient -> Arrays.stream(fluidIngredient.getFluids())).map(MCFluidStackMutable::new).map(CommandStringDisplayable::getCommandString).collect(Collectors.joining(" | "));
     }
 

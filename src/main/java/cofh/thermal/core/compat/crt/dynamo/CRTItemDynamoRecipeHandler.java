@@ -24,11 +24,13 @@ public class CRTItemDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> {
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, ThermalFuel recipe) {
+
         return String.format("<recipetype:%s>.addFuel(\"%s\", %s, %s);", recipe.getType().toString(), recipe.getId(), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getEnergy());
     }
 
     @Override
     public Optional<Function<ResourceLocation, ThermalFuel>> replaceIngredients(IRecipeManager manager, ThermalFuel recipe, List<IReplacementRule> rules) throws ReplacementNotSupportedException {
+
         CRTFuel.IFuelBuilder<?> builder;
 
         if (recipe instanceof GourmandFuel) {
@@ -51,4 +53,5 @@ public class CRTItemDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> {
                 rules,
                 newIngredients -> id -> new CRTFuel(id, recipe.getEnergy()).item(newIngredients).fuel(finalBuilder));
     }
+
 }

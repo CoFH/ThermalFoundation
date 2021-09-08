@@ -61,6 +61,7 @@ public class CRTPressManager implements IRecipeManager, IRecipeHandler<PressReci
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, PressRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, [%s], %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), recipe.getOutputFluids().isEmpty() ? MCFluidStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), ", "), recipe.getEnergy());
     }
 

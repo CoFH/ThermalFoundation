@@ -60,6 +60,7 @@ public class CRTRefineryManager implements IRecipeManager, IRecipeHandler<Refine
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, RefineryRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, [%s], %s, %s);", recipe.getType(), recipe.getId(), recipe.getOutputItems().isEmpty() ? MCItemStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), " | "), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), ", "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
     }
 

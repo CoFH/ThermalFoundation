@@ -27,6 +27,7 @@ public class CRTPotionDiffuserBoostManager implements IRecipeManager, IRecipeHan
 
     @ZenCodeType.Method
     public void addBoost(String name, IIngredient inputItem, int amplifier, float durationMod, int cycles) {
+
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
@@ -42,11 +43,13 @@ public class CRTPotionDiffuserBoostManager implements IRecipeManager, IRecipeHan
 
     @Override
     public void removeRecipe(IItemStack input) {
+
         removeBoost(input);
     }
 
     @ZenCodeType.Method
     public void removeBoost(IItemStack input) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof PotionDiffuserBoost) {
                 return ((PotionDiffuserBoost) recipe).getIngredient().test(input.getInternal());
@@ -57,6 +60,7 @@ public class CRTPotionDiffuserBoostManager implements IRecipeManager, IRecipeHan
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, PotionDiffuserBoost recipe) {
+
         return String.format("<recipetype:%s>.addBoost(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), recipe.getAmplifier(), recipe.getDurationMod(), recipe.getCycles());
     }
 

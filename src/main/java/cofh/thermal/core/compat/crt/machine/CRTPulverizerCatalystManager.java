@@ -56,6 +56,7 @@ public class CRTPulverizerCatalystManager implements IRecipeManager, IRecipeHand
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, PulverizerCatalyst recipe) {
+
         return String.format("<recipetype:%s>.addCatalyst(\"%s\", %s, %s, %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), recipe.getPrimaryMod(), recipe.getSecondaryMod(), recipe.getEnergyMod(), recipe.getMinChance(), recipe.getUseChance());
     }
 

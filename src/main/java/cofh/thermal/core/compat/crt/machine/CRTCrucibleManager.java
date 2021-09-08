@@ -58,6 +58,7 @@ public class CRTCrucibleManager implements IRecipeManager, IRecipeHandler<Crucib
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, CrucibleRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getEnergy());
     }
 
@@ -71,4 +72,5 @@ public class CRTCrucibleManager implements IRecipeManager, IRecipeHandler<Crucib
                 rules,
                 newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setOutputFluids(recipe.getOutputFluids()).recipe(CrucibleRecipe::new));
     }
+
 }

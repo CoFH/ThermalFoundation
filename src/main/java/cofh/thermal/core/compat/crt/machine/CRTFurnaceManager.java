@@ -58,6 +58,7 @@ public class CRTFurnaceManager implements IRecipeManager, IRecipeHandler<Furnace
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, FurnaceRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyStacks(recipe.getOutputItems(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getXp(), recipe.getEnergy());
     }
 

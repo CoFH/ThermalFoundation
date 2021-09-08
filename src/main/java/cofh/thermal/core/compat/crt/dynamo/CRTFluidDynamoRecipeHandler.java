@@ -19,6 +19,7 @@ public class CRTFluidDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> 
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, ThermalFuel recipe) {
+
         return String.format("<recipetype:%s>.addFuel(\"%s\", %s, %s);", recipe.getType().toString(), recipe.getId(), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
     }
 
@@ -27,4 +28,5 @@ public class CRTFluidDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> 
         // CRT doesn't support replacing fluid ingredients right now.
         return Optional.empty();
     }
+
 }

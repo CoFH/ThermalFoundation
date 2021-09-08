@@ -56,6 +56,7 @@ public class CRTSmelterCatalystManager implements IRecipeManager, IRecipeHandler
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, SmelterCatalyst recipe) {
+
         return String.format("<recipetype:%s>.addCatalyst(\"%s\", %s, %s, %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), recipe.getPrimaryMod(), recipe.getSecondaryMod(), recipe.getEnergyMod(), recipe.getMinChance(), recipe.getUseChance());
     }
 
@@ -65,4 +66,5 @@ public class CRTSmelterCatalystManager implements IRecipeManager, IRecipeHandler
         final Optional<Ingredient> ingredient = IRecipeHandler.attemptReplacing(recipe.getIngredient(), Ingredient.class, recipe, rules);
         return ingredient.map(value -> id -> new CRTCatalyst(id, value, recipe.getPrimaryMod(), recipe.getSecondaryMod(), recipe.getEnergyMod(), recipe.getMinChance(), recipe.getUseChance()).catalyst(SmelterCatalyst::new));
     }
+
 }

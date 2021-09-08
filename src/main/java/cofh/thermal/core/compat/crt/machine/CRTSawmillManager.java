@@ -59,6 +59,7 @@ public class CRTSawmillManager implements IRecipeManager, IRecipeHandler<Sawmill
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, SawmillRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), recipe.getEnergy());
     }
 

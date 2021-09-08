@@ -60,6 +60,7 @@ public class CRTBottlerManager implements IRecipeManager, IRecipeHandler<Bottler
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, BottlerRecipe recipe) {
+
         return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyStacks(recipe.getOutputItems(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), " | "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
     }
 
@@ -73,4 +74,5 @@ public class CRTBottlerManager implements IRecipeManager, IRecipeHandler<Bottler
                 rules,
                 newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setInputFluids(recipe.getInputFluids()).setOutputItems(recipe.getOutputItems(), recipe.getOutputItemChances()).recipe(BottlerRecipe::new));
     }
+
 }

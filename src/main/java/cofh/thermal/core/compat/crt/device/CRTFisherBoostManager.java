@@ -28,6 +28,7 @@ public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<Fis
 
     @ZenCodeType.Method
     public void addBoost(String name, IIngredient inputItem, ResourceLocation lootTable, float outputMod, float useChance) {
+
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
@@ -43,11 +44,13 @@ public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<Fis
 
     @Override
     public void removeRecipe(IItemStack input) {
+
         removeBoost(input);
     }
 
     @ZenCodeType.Method
     public void removeBoost(IItemStack input) {
+
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof FisherBoost) {
                 return ((FisherBoost) recipe).getIngredient().test(input.getInternal());
@@ -58,6 +61,7 @@ public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<Fis
 
     @Override
     public String dumpToCommandString(IRecipeManager manager, FisherBoost recipe) {
+
         return String.format("<recipetype:%s>.addBoost(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), IIngredient.fromIngredient(recipe.getIngredient()).getCommandString(), ExpandResourceLocation.getCommandString(recipe.getLootTable()), recipe.getOutputMod(), recipe.getUseChance());
     }
 
