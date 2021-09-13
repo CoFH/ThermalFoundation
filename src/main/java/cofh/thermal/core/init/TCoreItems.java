@@ -1,9 +1,13 @@
 package cofh.thermal.core.init;
 
-import cofh.core.item.*;
+import cofh.core.item.AugmentItem;
+import cofh.core.item.EnergyContainerItem;
+import cofh.core.item.GrenadeItem;
+import cofh.core.item.ItemCoFH;
 import cofh.core.util.filter.FilterRegistry;
 import cofh.lib.entity.AbstractGrenadeEntity;
 import cofh.lib.item.ArmorMaterialCoFH;
+import cofh.lib.item.impl.SpawnEggItemCoFH;
 import cofh.lib.util.constants.ToolTypes;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.entity.item.*;
