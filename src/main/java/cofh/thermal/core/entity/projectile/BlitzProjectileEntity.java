@@ -22,7 +22,7 @@ import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
 
 public class BlitzProjectileEntity extends DamagingProjectileEntity {
 
-    public static float baseDamage = 7.0F;
+    public static float defaultDamage = 7.0F;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
 
@@ -62,7 +62,7 @@ public class BlitzProjectileEntity extends DamagingProjectileEntity {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false));
             }
-            entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), entity.isInWaterOrRain() ? baseDamage + 3.0F : baseDamage);
+            entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), entity.isInWaterOrRain() ? defaultDamage + 3.0F : defaultDamage);
         }
         if (Utils.isServerWorld(level)) {
             this.level.broadcastEntityEvent(this, (byte) 3);

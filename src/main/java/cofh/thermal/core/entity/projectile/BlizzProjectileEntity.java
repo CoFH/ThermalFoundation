@@ -26,7 +26,7 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
 
     private static final int CLOUD_DURATION = 20;
 
-    public static float baseDamage = 5.0F;
+    public static float defaultDamage = 5.0F;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
     public static int effectRadius = 2;
@@ -70,7 +70,7 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
             }
-            entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), entity.fireImmune() ? baseDamage + 3.0F : baseDamage);
+            entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), entity.fireImmune() ? defaultDamage + 3.0F : defaultDamage);
         }
         if (Utils.isServerWorld(level)) {
             if (effectRadius > 0) {

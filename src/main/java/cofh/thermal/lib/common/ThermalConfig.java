@@ -536,6 +536,7 @@ public class ThermalConfig {
         blockAmbientSounds = flagBlockAmbientSounds.get();
         mobAmbientSounds = flagMobAmbientSounds.get();
     }
+    // endregion
 
     // region GLOBALS
     public static final byte[] DEFAULT_MACHINE_SIDES_RAW = new byte[]{0, 0, 0, 0, 0, 0};
