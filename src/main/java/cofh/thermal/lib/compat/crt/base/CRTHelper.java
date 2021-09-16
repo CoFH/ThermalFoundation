@@ -3,7 +3,10 @@ package cofh.thermal.lib.compat.crt.base;
 import cofh.lib.fluid.FluidIngredient;
 import com.blamejared.crafttweaker.api.brackets.CommandStringDisplayable;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +37,22 @@ public class CRTHelper {
     public static String stringifyFluidIngredients(List<FluidIngredient> ingredients) {
 
         return ingredients.stream().flatMap(fluidIngredient -> Arrays.stream(fluidIngredient.getFluids())).map(MCFluidStackMutable::new).map(CommandStringDisplayable::getCommandString).collect(Collectors.joining(" | "));
+    }
+
+    /**
+     * Maps a {@link IIngredientWithAmount} to a vanilla {@link Ingredient} with a count.
+     *
+     * @param ingredient The ingredient to map/
+     * @return A {@link Ingredient} representation of the given {@link IIngredientWithAmount}
+     */
+    public static Ingredient mapIIngredientWithAmount(IIngredientWithAmount ingredient) {
+        Ingredient vanillaIngredient = ingredient.getIngredient().asVanillaIngredient();
+        // This will probably end badly for some ingredients that don't use the list of ItemStacks,
+        // however, it is what Thermal itself uses, so it will be on par with JSON recipes.
+        for (ItemStack stack : vanillaIngredient.getItems()) {
+            stack.setCount(ingredient.getAmount());
+        }
+        return vanillaIngredient;
     }
 
 }

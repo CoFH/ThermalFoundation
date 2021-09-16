@@ -7,6 +7,7 @@ import cofh.thermal.lib.compat.crt.base.CRTFuel;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
@@ -19,7 +20,7 @@ import org.openzen.zencode.java.ZenCodeType;
 public class CRTDisenchantmentManager implements IRecipeManager {
 
     @ZenCodeType.Method
-    public void addFuel(String name, IIngredient ingredient, int energy) {
+    public void addFuel(String name, IIngredientWithAmount ingredient, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);

@@ -7,6 +7,7 @@ import cofh.thermal.lib.compat.crt.base.CRTCatalyst;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
@@ -27,7 +28,7 @@ import java.util.function.Function;
 public class CRTPulverizerCatalystManager implements IRecipeManager, IRecipeHandler<PulverizerCatalyst> {
 
     @ZenCodeType.Method
-    public void addCatalyst(String name, IIngredient ingredient, float primaryMod, float secondaryMod, float energyMod, float minChance, float useChance) {
+    public void addCatalyst(String name, IIngredientWithAmount ingredient, float primaryMod, float secondaryMod, float energyMod, float minChance, float useChance) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);

@@ -8,6 +8,7 @@ import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
@@ -34,7 +35,7 @@ import java.util.function.Function;
 public class CRTInsolatorManager implements IRecipeManager, IRecipeHandler<InsolatorRecipe> {
 
     @ZenCodeType.Method
-    public void addRecipe(String name, MCWeightedItemStack[] outputs, IIngredient ingredient, int fluidAmount, int energy) {
+    public void addRecipe(String name, MCWeightedItemStack[] outputs, IIngredientWithAmount ingredient, int fluidAmount, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);

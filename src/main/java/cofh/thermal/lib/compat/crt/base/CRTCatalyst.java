@@ -2,6 +2,7 @@ package cofh.thermal.lib.compat.crt.base;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
@@ -15,7 +16,7 @@ public class CRTCatalyst {
     private final float minChance;
     private final float useChance;
 
-    // Mainly used for Recipe Replacerment.
+    // Mainly used for Recipe Replacement.
     public CRTCatalyst(ResourceLocation name, Ingredient ingredient, float primaryMod, float secondaryMod, float energyMod, float minChance, float useChance) {
 
         this.name = name;
@@ -27,9 +28,9 @@ public class CRTCatalyst {
         this.useChance = useChance;
     }
 
-    public CRTCatalyst(ResourceLocation name, IIngredient ingredient, float primaryMod, float secondaryMod, float energyMod, float minChance, float useChance) {
+    public CRTCatalyst(ResourceLocation name, IIngredientWithAmount ingredient, float primaryMod, float secondaryMod, float energyMod, float minChance, float useChance) {
 
-        this(name, ingredient.asVanillaIngredient(), primaryMod, secondaryMod, energyMod, minChance, useChance);
+        this(name, CRTHelper.mapIIngredientWithAmount(ingredient), primaryMod, secondaryMod, energyMod, minChance, useChance);
     }
 
     public <T extends ThermalCatalyst> T catalyst(ICatalystBuilder<T> builder) {

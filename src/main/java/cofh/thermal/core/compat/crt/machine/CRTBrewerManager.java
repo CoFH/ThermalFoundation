@@ -10,6 +10,7 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
 import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
@@ -31,7 +32,7 @@ import java.util.function.Function;
 public class CRTBrewerManager implements IRecipeManager, IRecipeHandler<BrewerRecipe> {
 
     @ZenCodeType.Method
-    public void addRecipe(String name, IFluidStack output, IIngredient ingredient, CTFluidIngredient fluidInput, int energy) {
+    public void addRecipe(String name, IFluidStack output, IIngredientWithAmount ingredient, CTFluidIngredient fluidInput, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);

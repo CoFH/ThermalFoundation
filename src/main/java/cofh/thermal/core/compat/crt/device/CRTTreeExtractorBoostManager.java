@@ -2,9 +2,11 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.TreeExtractorBoost;
+import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
@@ -26,12 +28,12 @@ import java.util.function.Function;
 public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHandler<TreeExtractorBoost> {
 
     @ZenCodeType.Method
-    public void addBoost(String name, IIngredient inputItem, float outputMod, int cycles) {
+    public void addBoost(String name, IIngredientWithAmount inputItem, float outputMod, int cycles) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
-        TreeExtractorBoost mapping = new TreeExtractorBoost(resourceLocation, inputItem.asVanillaIngredient(), outputMod, cycles);
+        TreeExtractorBoost mapping = new TreeExtractorBoost(resourceLocation, CRTHelper.mapIIngredientWithAmount(inputItem), outputMod, cycles);
         CraftTweakerAPI.apply(new ActionAddRecipe(this, mapping));
     }
 
