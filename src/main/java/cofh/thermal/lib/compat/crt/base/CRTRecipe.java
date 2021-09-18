@@ -5,6 +5,7 @@ import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.item.ItemStack;
@@ -35,9 +36,9 @@ public class CRTRecipe {
         this.name = name;
     }
 
-    public CRTRecipe input(IIngredient... ingredient) {
+    public CRTRecipe input(IIngredientWithAmount... ingredient) {
 
-        this.inputItems = Arrays.stream(ingredient).map(IIngredient::asVanillaIngredient).collect(Collectors.toList());
+        this.inputItems = Arrays.stream(ingredient).map(CRTHelper::mapIIngredientWithAmount).collect(Collectors.toList());
         return this;
     }
 

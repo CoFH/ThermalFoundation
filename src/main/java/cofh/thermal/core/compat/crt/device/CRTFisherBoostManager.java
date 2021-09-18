@@ -2,9 +2,11 @@ package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.FisherBoost;
+import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
@@ -27,12 +29,12 @@ import java.util.function.Function;
 public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<FisherBoost> {
 
     @ZenCodeType.Method
-    public void addBoost(String name, IIngredient inputItem, ResourceLocation lootTable, float outputMod, float useChance) {
+    public void addBoost(String name, IIngredientWithAmount inputItem, ResourceLocation lootTable, float outputMod, float useChance) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
-        FisherBoost mapping = new FisherBoost(resourceLocation, inputItem.asVanillaIngredient(), lootTable, outputMod, useChance);
+        FisherBoost mapping = new FisherBoost(resourceLocation, CRTHelper.mapIIngredientWithAmount(inputItem), lootTable, outputMod, useChance);
         CraftTweakerAPI.apply(new ActionAddRecipe(this, mapping));
     }
 

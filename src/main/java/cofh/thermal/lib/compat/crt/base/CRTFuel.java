@@ -5,6 +5,7 @@ import cofh.thermal.lib.util.recipes.ThermalFuel;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
@@ -25,9 +26,9 @@ public class CRTFuel {
         this.energy = energy;
     }
 
-    public CRTFuel item(IIngredient item) {
+    public CRTFuel item(IIngredientWithAmount item) {
 
-        this.item = Collections.singletonList(item.asVanillaIngredient());
+        this.item = Collections.singletonList(CRTHelper.mapIIngredientWithAmount(item));
         return this;
     }
 
