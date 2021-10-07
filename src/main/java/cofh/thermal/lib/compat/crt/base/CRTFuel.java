@@ -4,7 +4,6 @@ import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;

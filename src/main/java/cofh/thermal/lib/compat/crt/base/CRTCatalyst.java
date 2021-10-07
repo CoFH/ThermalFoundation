@@ -1,7 +1,6 @@
 package cofh.thermal.lib.compat.crt.base;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
-import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;

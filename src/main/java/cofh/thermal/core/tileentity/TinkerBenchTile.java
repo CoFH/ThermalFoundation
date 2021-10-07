@@ -1,11 +1,13 @@
 package cofh.thermal.core.tileentity;
 
 import cofh.core.fluid.PotionFluid;
+import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.helpers.EnergyHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.util.filter.IFilter;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.AugmentableHelper;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
@@ -13,6 +15,7 @@ import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -23,19 +26,23 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.lib.util.StorageGroup.INPUT;
 import static cofh.lib.util.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.Constants.*;
-import static cofh.lib.util.constants.NBTTags.TAG_MODE;
+import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreReferences.TINKER_BENCH_TILE;
-import static cofh.thermal.lib.common.ThermalAugmentRules.STORAGE_VALIDATOR;
+import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
 
 public class TinkerBenchTile extends ThermalTileAugmentable implements ITickableTileEntity {
+
+    public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FLUID);
 
     public static final int BASE_CAPACITY = 500000;
     public static final int BASE_XFER = 1000;
@@ -198,7 +205,32 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && STORAGE_VALIDATOR.test(item, getAugmentsAsList());
+        return item -> AugmentDataHelper.hasAugmentData(item) && AUG_VALIDATOR.test(item, getAugmentsAsList());
+    }
+    // endregion
+
+    // region IFilterableTile
+    @Override
+    public IFilter getFilter() {
+
+        return EmptyFilter.INSTANCE;
+    }
+
+    @Override
+    public void onFilterChanged() {
+
+    }
+
+    @Override
+    public boolean openGui(ServerPlayerEntity player) {
+
+        return false;
+    }
+
+    @Override
+    public boolean openFilterGui(ServerPlayerEntity player) {
+
+        return false;
     }
     // endregion
 }

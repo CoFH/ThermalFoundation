@@ -41,7 +41,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 
         for (int i = 0; i < benchSlots.length; ++i) {
-            benchSlots[i] = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+            benchSlots[i] = new ItemStorageCoFH(1, (item -> filter.valid(item) && EnergyHelper.hasEnergyHandlerCap(item)));
             inventory.addSlot(benchSlots[i], ACCESSIBLE);
         }
         inventory.addSlot(chargeSlot, INTERNAL);

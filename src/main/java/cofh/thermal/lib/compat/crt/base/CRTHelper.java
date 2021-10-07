@@ -46,6 +46,7 @@ public class CRTHelper {
      * @return A {@link Ingredient} representation of the given {@link IIngredientWithAmount}
      */
     public static Ingredient mapIIngredientWithAmount(IIngredientWithAmount ingredient) {
+
         Ingredient vanillaIngredient = ingredient.getIngredient().asVanillaIngredient();
         // This will probably end badly for some ingredients that don't use the list of ItemStacks,
         // however, it is what Thermal itself uses, so it will be on par with JSON recipes.

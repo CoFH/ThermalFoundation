@@ -209,6 +209,5 @@ public class ThermalAugmentRules {
     public static final BiPredicate<ItemStack, List<ItemStack>> ITEM_STORAGE_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
     public static final BiPredicate<ItemStack, List<ItemStack>> MACHINE_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_DYNAMO, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
     public static final BiPredicate<ItemStack, List<ItemStack>> MACHINE_NO_FLUID_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_DYNAMO, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
-    public static final BiPredicate<ItemStack, List<ItemStack>> STORAGE_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_MACHINE, TAG_AUGMENT_TYPE_DYNAMO, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
     // endregion
 }
