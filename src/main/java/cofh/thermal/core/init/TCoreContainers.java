@@ -2,7 +2,6 @@ package cofh.thermal.core.init;
 
 import cofh.core.util.ProxyUtils;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
-import cofh.thermal.core.inventory.container.ChunkLoaderContainer;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.core.inventory.container.device.*;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
@@ -32,7 +31,7 @@ public class TCoreContainers {
         CONTAINERS.register(ID_DEVICE_POTION_DIFFUSER, () -> IForgeContainerType.create((windowId, inv, data) -> new DevicePotionDiffuserContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
         CONTAINERS.register(ID_DEVICE_NULLIFIER, () -> IForgeContainerType.create((windowId, inv, data) -> new DeviceNullifierContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
 
-        CONTAINERS.register(ID_CHUNK_LOADER, () -> IForgeContainerType.create((windowId, inv, data) -> new ChunkLoaderContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
+        // CONTAINERS.register(ID_CHUNK_LOADER, () -> IForgeContainerType.create((windowId, inv, data) -> new ChunkLoaderContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
 
         CONTAINERS.register(ID_TINKER_BENCH, () -> IForgeContainerType.create((windowId, inv, data) -> new TinkerBenchContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
         CONTAINERS.register(ID_CHARGE_BENCH, () -> IForgeContainerType.create((windowId, inv, data) -> new ChargeBenchContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));

@@ -6,7 +6,6 @@ import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
-import cofh.thermal.core.client.gui.ChunkLoaderScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
 import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
@@ -119,7 +118,7 @@ public class ThermalCore {
 
         setFlag(ID_TINKER_BENCH, true);
 
-        setFlag(ID_CHUNK_LOADER, true);
+        // setFlag(ID_CHUNK_LOADER, true);
     }
 
     // region INITIALIZATION
@@ -167,7 +166,7 @@ public class ThermalCore {
         ScreenManager.register(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
         ScreenManager.register(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
 
-        ScreenManager.register(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
+        // ScreenManager.register(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
 
         ScreenManager.register(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
         ScreenManager.register(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
