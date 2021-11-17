@@ -1,6 +1,7 @@
 package cofh.thermal.core.inventory.container.storage;
 
 import cofh.core.inventory.container.TileContainer;
+import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.core.tileentity.storage.ItemCellTile;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,6 +20,8 @@ public class ItemCellContainer extends TileContainer {
         super(ITEM_CELL_CONTAINER, windowId, world, pos, inventory, player);
         this.tile = (ItemCellTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
+
+        addSlot(new SlotCoFH(tileInv, 0, 80, 26));
 
         bindAugmentSlots(tileInv, 1, this.tile.augSize());
         bindPlayerInventory(inventory);

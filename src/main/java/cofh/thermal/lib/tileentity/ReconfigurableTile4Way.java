@@ -36,8 +36,7 @@ import java.util.Map;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
 import static cofh.core.client.renderer.model.ModelUtils.SIDES;
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.StorageGroup.OUTPUT;
+import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.DIRECTIONS;
 import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
@@ -357,9 +356,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     // region CAPABILITIES
     protected LazyOptional<?> inputItemCap = LazyOptional.empty();
     protected LazyOptional<?> outputItemCap = LazyOptional.empty();
+    protected LazyOptional<?> ioItemCap = LazyOptional.empty();
 
     protected LazyOptional<?> inputFluidCap = LazyOptional.empty();
     protected LazyOptional<?> outputFluidCap = LazyOptional.empty();
+    protected LazyOptional<?> ioFluidCap = LazyOptional.empty();
 
     protected void updateHandlers() {
 
@@ -368,28 +369,36 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
         // ITEMS
         LazyOptional<?> prevItemInputCap = inputItemCap;
         LazyOptional<?> prevItemOutputCap = outputItemCap;
+        LazyOptional<?> prevItemIOCap = ioItemCap;
 
         IItemHandler inputInvHandler = inventory.getHandler(INPUT);
         IItemHandler outputInvHandler = inventory.getHandler(OUTPUT);
+        IItemHandler ioInvHandler = inventory.getHandler(INPUT_OUTPUT);
 
         inputItemCap = inventory.hasInputSlots() ? LazyOptional.of(() -> inputInvHandler) : LazyOptional.empty();
         outputItemCap = inventory.hasOutputSlots() ? LazyOptional.of(() -> outputInvHandler) : LazyOptional.empty();
+        ioItemCap = inventory.hasAccessibleSlots() ? LazyOptional.of(() -> ioInvHandler) : LazyOptional.empty();
 
         prevItemInputCap.invalidate();
         prevItemOutputCap.invalidate();
+        prevItemIOCap.invalidate();
 
         // FLUID
         LazyOptional<?> prevFluidInputCap = inputFluidCap;
         LazyOptional<?> prevFluidOutputCap = outputFluidCap;
+        LazyOptional<?> prevFluidIOCap = ioFluidCap;
 
         IFluidHandler inputFluidHandler = tankInv.getHandler(INPUT);
         IFluidHandler outputFluidHandler = tankInv.getHandler(OUTPUT);
+        IFluidHandler ioFluidHandler = tankInv.getHandler(INPUT_OUTPUT);
 
         inputFluidCap = tankInv.hasInputTanks() ? LazyOptional.of(() -> inputFluidHandler) : LazyOptional.empty();
         outputFluidCap = tankInv.hasOutputTanks() ? LazyOptional.of(() -> outputFluidHandler) : LazyOptional.empty();
+        ioFluidCap = tankInv.hasAccessibleTanks() ? LazyOptional.of(() -> ioFluidHandler) : LazyOptional.empty();
 
         prevFluidInputCap.invalidate();
         prevFluidOutputCap.invalidate();
+        prevFluidIOCap.invalidate();
     }
 
     @Override
@@ -405,6 +414,8 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
                 return inputItemCap.cast();
             case SIDE_OUTPUT:
                 return outputItemCap.cast();
+            case SIDE_BOTH:
+                return ioItemCap.cast();
             default:
                 return super.getItemHandlerCapability(side);
         }
@@ -423,6 +434,8 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
                 return inputFluidCap.cast();
             case SIDE_OUTPUT:
                 return outputFluidCap.cast();
+            case SIDE_BOTH:
+                return ioFluidCap.cast();
             default:
                 return super.getFluidHandlerCapability(side);
         }
