@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,8 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
 
         group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
             if (!chances.isEmpty() && slotIndex >= indexOffset && slotIndex < indexOffset + chances.size()) {
-                float chance = Math.abs(chances.get(slotIndex - indexOffset));
+                float baseChance = chances.get(slotIndex - indexOffset);
+                float chance = Math.abs(baseChance);
                 if (chance < BASE_CHANCE) {
                     tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
                 } else {
@@ -64,23 +66,38 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
                         tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
                     }
                 }
+                if (chances.size() > 1) {
+                    if (baseChance >= 0) {
+                        tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
+                    } else {
+                        tooltip.add(getTextComponent("info.cofh.amount_unmodifiable").withStyle(TextFormatting.RED));
+                    }
+                }
             }
         });
     }
 
-    protected void addCatalyzedItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, int indexOffset) {
+    protected void addCatalyzedItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, boolean catalyzable, int indexOffset) {
 
         group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
             if (slotIndex == indexOffset - 1) {
                 tooltip.add(getTextComponent("info.cofh.optional_catalyst"));
             } else if (!chances.isEmpty() && slotIndex >= indexOffset && slotIndex < indexOffset + chances.size()) {
-                float chance = Math.abs(chances.get(slotIndex - indexOffset));
+                float baseChance = chances.get(slotIndex - indexOffset);
+                float chance = Math.abs(baseChance);
                 if (chance < BASE_CHANCE) {
                     tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
                 } else {
                     chance -= (int) chance;
                     if (chance > 0) {
                         tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
+                    }
+                }
+                if (catalyzable) {
+                    if (baseChance >= 0) {
+                        tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
+                    } else {
+                        tooltip.add(getTextComponent("info.cofh.amount_unmodifiable").withStyle(TextFormatting.RED));
                     }
                 }
             }
