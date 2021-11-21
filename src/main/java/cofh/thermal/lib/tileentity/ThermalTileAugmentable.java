@@ -22,6 +22,7 @@ import cofh.lib.util.filter.IFilter;
 import cofh.lib.util.filter.IFilterableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.FilterHelper;
+import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SoundHelper;
 import cofh.lib.xp.EmptyXpStorage;
 import cofh.lib.xp.XpStorage;
@@ -42,6 +43,8 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
@@ -65,7 +68,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.StorageGroup.ACCESSIBLE;
@@ -73,6 +75,8 @@ import static cofh.lib.util.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.*;
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.lib.util.helpers.ItemHelper.consumeItem;
 import static cofh.lib.util.references.CoreReferences.HOLDING;
 import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
 
@@ -266,6 +270,16 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
         if (player.isSecondaryUseActive()) {
             return openFilterGui((ServerPlayerEntity) player);
+        }
+        ItemStack stack = player.getItemInHand(hand);
+        if (augValidator().test(stack)) {
+            if (attemptAugmentInstall(stack)) {
+                player.setItemInHand(hand, consumeItem(stack, 1));
+                player.level.playSound(null, player.blockPosition(), SoundEvents.ANVIL_USE, SoundCategory.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
+            } else {
+                player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.1F, 0.25F);
+            }
+            return true;
         }
         return super.onActivatedDelegate(world, pos, state, player, hand, result);
     }
@@ -557,6 +571,17 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     // This is CLEARED after augments are finalized.
     protected CompoundNBT augmentNBT;
 
+    protected final boolean attemptAugmentInstall(ItemStack stack) {
+
+        for (ItemStorageCoFH augSlot : augments) {
+            if (augSlot.isEmpty() && augSlot.isItemValid(stack)) {
+                augSlot.setItemStack(cloneStack(stack, 1));
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * This should be called AFTER all other slots have been added.
      * Augment slots are added to the INTERNAL inventory category.
@@ -591,7 +616,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     protected final List<ItemStack> getAugmentsAsList() {
 
-        return augments.stream().map(ItemStorageCoFH::getItemStack).flatMap(Stream::of).collect(Collectors.toList());
+        return augments.stream().map(ItemStorageCoFH::getItemStack).collect(Collectors.toList());
     }
 
     protected Predicate<ItemStack> augValidator() {
