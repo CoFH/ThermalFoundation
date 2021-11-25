@@ -274,7 +274,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         ItemStack stack = player.getItemInHand(hand);
         if (augValidator().test(stack)) {
             if (attemptAugmentInstall(stack)) {
-                player.setItemInHand(hand, consumeItem(stack, 1));
+                if (!player.abilities.instabuild) {
+                    player.setItemInHand(hand, consumeItem(stack, 1));
+                }
                 player.level.playSound(null, player.blockPosition(), SoundEvents.ANVIL_USE, SoundCategory.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
             } else {
                 player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.1F, 0.25F);
@@ -576,6 +578,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         for (ItemStorageCoFH augSlot : augments) {
             if (augSlot.isEmpty() && augSlot.isItemValid(stack)) {
                 augSlot.setItemStack(cloneStack(stack, 1));
+                updateAugmentState();
                 return true;
             }
         }
