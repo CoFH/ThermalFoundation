@@ -66,12 +66,8 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
                         tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
                     }
                 }
-                if (chances.size() > 1) {
-                    if (baseChance >= 0) {
-                        tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
-                    } else {
-                        tooltip.add(getTextComponent("info.cofh.amount_unmodifiable").withStyle(TextFormatting.RED));
-                    }
+                if (baseChance >= 0) {
+                    tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
                 }
             }
         });
@@ -93,12 +89,8 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
                         tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
                     }
                 }
-                if (catalyzable) {
-                    if (baseChance >= 0) {
-                        tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
-                    } else {
-                        tooltip.add(getTextComponent("info.cofh.amount_unmodifiable").withStyle(TextFormatting.RED));
-                    }
+                if (catalyzable && baseChance >= 0) {
+                    tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
                 }
             }
         });
