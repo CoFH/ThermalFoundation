@@ -217,11 +217,6 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     }
 
     @Override
-    public void onFilterChanged() {
-
-    }
-
-    @Override
     public boolean openGui(ServerPlayerEntity player) {
 
         return false;

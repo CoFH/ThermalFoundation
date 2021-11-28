@@ -305,7 +305,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", FurnaceRecipeManager.instance().getBasePower(), FurnaceRecipeManager.instance().getMinPower(), FurnaceRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_SAWMILL).getAsBoolean()) {
             SERVER_CONFIG.push("Sawmill");
 
             machineSawmillPower = SERVER_CONFIG
@@ -313,7 +314,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", SawmillRecipeManager.instance().getBasePower(), SawmillRecipeManager.instance().getMinPower(), SawmillRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_PULVERIZER).getAsBoolean()) {
             SERVER_CONFIG.push("Pulverizer");
 
             machinePulverizerPower = SERVER_CONFIG
@@ -321,7 +323,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", PulverizerRecipeManager.instance().getBasePower(), PulverizerRecipeManager.instance().getMinPower(), PulverizerRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_SMELTER).getAsBoolean()) {
             SERVER_CONFIG.push("Smelter");
 
             machineSmelterPower = SERVER_CONFIG
@@ -329,7 +332,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", SmelterRecipeManager.instance().getBasePower(), SmelterRecipeManager.instance().getMinPower(), SmelterRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_INSOLATOR).getAsBoolean()) {
             SERVER_CONFIG.push("Insolator");
 
             machineInsolatorPower = SERVER_CONFIG
@@ -337,7 +341,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", InsolatorRecipeManager.instance().getBasePower(), InsolatorRecipeManager.instance().getMinPower(), InsolatorRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_CENTRIFUGE).getAsBoolean()) {
             SERVER_CONFIG.push("Centrifuge");
 
             machineCentrifugePower = SERVER_CONFIG
@@ -345,7 +350,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", CentrifugeRecipeManager.instance().getBasePower(), CentrifugeRecipeManager.instance().getMinPower(), CentrifugeRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_PRESS).getAsBoolean()) {
             SERVER_CONFIG.push("Press");
 
             machinePressPower = SERVER_CONFIG
@@ -353,7 +359,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", PressRecipeManager.instance().getBasePower(), PressRecipeManager.instance().getMinPower(), PressRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_CRUCIBLE).getAsBoolean()) {
             SERVER_CONFIG.push("Crucible");
 
             machineCruciblePower = SERVER_CONFIG
@@ -361,7 +368,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", CrucibleRecipeManager.instance().getBasePower(), CrucibleRecipeManager.instance().getMinPower(), CrucibleRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_CHILLER).getAsBoolean()) {
             SERVER_CONFIG.push("Chiller");
 
             machineChillerPower = SERVER_CONFIG
@@ -369,7 +377,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", ChillerRecipeManager.instance().getBasePower(), ChillerRecipeManager.instance().getMinPower(), ChillerRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_FURNACE).getAsBoolean()) {
             SERVER_CONFIG.push("Refinery");
 
             machineRefineryPower = SERVER_CONFIG
@@ -377,7 +386,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", RefineryRecipeManager.instance().getBasePower(), RefineryRecipeManager.instance().getMinPower(), RefineryRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_PYROLYZER).getAsBoolean()) {
             SERVER_CONFIG.push("Pyrolyzer");
 
             machinePyrolyzerPower = SERVER_CONFIG
@@ -385,7 +395,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", PyrolyzerRecipeManager.instance().getBasePower(), PyrolyzerRecipeManager.instance().getMinPower(), PyrolyzerRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_BOTTLER).getAsBoolean()) {
             SERVER_CONFIG.push("Bottler");
 
             machineBottlerPower = SERVER_CONFIG
@@ -393,7 +404,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", BottlerRecipeManager.instance().getBasePower(), BottlerRecipeManager.instance().getMinPower(), BottlerRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_BREWER).getAsBoolean()) {
             SERVER_CONFIG.push("Brewer");
 
             machineBrewerPower = SERVER_CONFIG
@@ -401,7 +413,8 @@ public class ThermalConfig {
                     .defineInRange("Base Power", BrewerRecipeManager.instance().getBasePower(), BrewerRecipeManager.instance().getMinPower(), BrewerRecipeManager.instance().getMaxPower());
 
             SERVER_CONFIG.pop();
-
+        }
+        if (getFlag(ID_MACHINE_CRAFTER).getAsBoolean()) {
             SERVER_CONFIG.push("Crafter");
 
             machineCrafterPower = SERVER_CONFIG
@@ -410,7 +423,6 @@ public class ThermalConfig {
 
             SERVER_CONFIG.pop();
         }
-
         SERVER_CONFIG.pop();
     }
 
