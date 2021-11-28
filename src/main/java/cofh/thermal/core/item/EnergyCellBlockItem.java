@@ -21,9 +21,9 @@ import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax
 import static cofh.lib.util.helpers.StringHelper.*;
 import static cofh.thermal.core.tileentity.storage.EnergyCellTile.*;
 
-public class BlockItemEnergyCell extends BlockItemAugmentable implements IEnergyContainerItem {
+public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergyContainerItem {
 
-    public BlockItemEnergyCell(Block blockIn, Properties builder) {
+    public EnergyCellBlockItem(Block blockIn, Properties builder) {
 
         super(blockIn, builder);
 

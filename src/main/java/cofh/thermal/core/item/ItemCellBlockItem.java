@@ -14,9 +14,9 @@ import java.util.List;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 
-public class BlockItemItemCell extends BlockItemAugmentable {
+public class ItemCellBlockItem extends BlockItemAugmentable {
 
-    public BlockItemItemCell(Block blockIn, Properties builder) {
+    public ItemCellBlockItem(Block blockIn, Properties builder) {
 
         super(blockIn, builder);
 

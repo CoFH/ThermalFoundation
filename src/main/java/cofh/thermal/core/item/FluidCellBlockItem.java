@@ -29,9 +29,9 @@ import static cofh.lib.util.helpers.StringHelper.*;
 import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class BlockItemFluidCell extends BlockItemAugmentable implements IFluidContainerItem {
+public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidContainerItem {
 
-    public BlockItemFluidCell(Block blockIn, Properties builder) {
+    public FluidCellBlockItem(Block blockIn, Properties builder) {
 
         super(blockIn, builder);
 
