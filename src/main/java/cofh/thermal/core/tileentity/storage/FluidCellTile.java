@@ -2,6 +2,7 @@ package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.fluid.FluidHandlerRestrictionWrapper;
 import cofh.lib.fluid.FluidStorageAdjustable;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.util.Utils;
@@ -21,6 +22,7 @@ import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -216,22 +218,45 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
     // endregion
 
     // region CAPABILITIES
+    protected LazyOptional<?> inputFluidCap = LazyOptional.empty();
+    protected LazyOptional<?> outputFluidCap = LazyOptional.empty();
+
     @Override
     protected void updateHandlers() {
 
         // Optimization to prevent callback logic as contents may change rapidly.
         LazyOptional<?> prevFluidCap = fluidCap;
+        LazyOptional<?> prevFluidInputCap = inputFluidCap;
+        LazyOptional<?> prevFluidOutputCap = outputFluidCap;
+
+        IFluidHandler inputHandler = new FluidHandlerRestrictionWrapper(fluidStorage, true, false);
+        IFluidHandler outputHandler = new FluidHandlerRestrictionWrapper(fluidStorage, false, true);
+
         fluidCap = LazyOptional.of(() -> fluidStorage);
+        inputFluidCap = LazyOptional.of(() -> inputHandler);
+        outputFluidCap = LazyOptional.of(() -> outputHandler);
+
         prevFluidCap.invalidate();
+        prevFluidInputCap.invalidate();
+        prevFluidOutputCap.invalidate();
     }
 
     @Override
     protected <T> LazyOptional<T> getFluidHandlerCapability(@Nullable Direction side) {
 
-        if (side == null || reconfigControl.getSideConfig(side.ordinal()) != SideConfig.SIDE_NONE) {
+        if (side == null) {
             return super.getFluidHandlerCapability(side);
         }
-        return LazyOptional.empty();
+        switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE:
+                return LazyOptional.empty();
+            case SIDE_INPUT:
+                return inputFluidCap.cast();
+            case SIDE_OUTPUT:
+                return outputFluidCap.cast();
+            default:
+                return super.getFluidHandlerCapability(side);
+        }
     }
     // endregion
 }

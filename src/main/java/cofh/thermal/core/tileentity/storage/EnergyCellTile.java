@@ -2,6 +2,7 @@ package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.EnergyHelper;
+import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
 import cofh.lib.energy.EnergyStorageAdjustable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
@@ -18,6 +19,7 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -215,22 +217,45 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     // endregion
 
     // region CAPABILITIES
+    protected LazyOptional<?> inputEnergyCap = LazyOptional.empty();
+    protected LazyOptional<?> outputEnergyCap = LazyOptional.empty();
+
     @Override
     protected void updateHandlers() {
 
         // Optimization to prevent callback logic as contents may change rapidly.
-        LazyOptional<?> prevCap = energyCap;
+        LazyOptional<?> prevEnergyCap = energyCap;
+        LazyOptional<?> prevEnergyInputCap = inputEnergyCap;
+        LazyOptional<?> prevEnergyOutputCap = outputEnergyCap;
+
+        IEnergyStorage inputHandler = new EnergyHandlerRestrictionWrapper(energyStorage, true, false);
+        IEnergyStorage outputHandler = new EnergyHandlerRestrictionWrapper(energyStorage, false, true);
+
         energyCap = LazyOptional.of(() -> energyStorage);
-        prevCap.invalidate();
+        inputEnergyCap = LazyOptional.of(() -> inputHandler);
+        outputEnergyCap = LazyOptional.of(() -> outputHandler);
+
+        prevEnergyCap.invalidate();
+        prevEnergyInputCap.invalidate();
+        prevEnergyOutputCap.invalidate();
     }
 
     @Override
     protected <T> LazyOptional<T> getEnergyCapability(@Nullable Direction side) {
 
-        if (side == null || reconfigControl.getSideConfig(side.ordinal()) != SideConfig.SIDE_NONE) {
+        if (side == null) {
             return super.getEnergyCapability(side);
         }
-        return LazyOptional.empty();
+        switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE:
+                return LazyOptional.empty();
+            case SIDE_INPUT:
+                return inputEnergyCap.cast();
+            case SIDE_OUTPUT:
+                return outputEnergyCap.cast();
+            default:
+                return super.getEnergyCapability(side);
+        }
     }
     // endregion
 }

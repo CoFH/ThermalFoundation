@@ -2,6 +2,7 @@ package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileRenderPacket;
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.lib.inventory.ItemHandlerRestrictionWrapper;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.StorageGroup;
 import cofh.lib.util.Utils;
@@ -21,6 +22,7 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -273,22 +275,45 @@ public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
     // endregion
 
     // region CAPABILITIES
+    protected LazyOptional<?> inputItemCap = LazyOptional.empty();
+    protected LazyOptional<?> outputItemCap = LazyOptional.empty();
+
     @Override
     protected void updateHandlers() {
 
         // Optimization to prevent callback logic as contents may change rapidly.
-        LazyOptional<?> prevCap = itemCap;
+        LazyOptional<?> prevItemCap = itemCap;
+        LazyOptional<?> prevItemInputCap = inputItemCap;
+        LazyOptional<?> prevItemOutputCap = outputItemCap;
+
+        IItemHandler inputHandler = new ItemHandlerRestrictionWrapper(itemStorage, true, false);
+        IItemHandler outputHandler = new ItemHandlerRestrictionWrapper(itemStorage, false, true);
+
         itemCap = LazyOptional.of(() -> itemStorage);
-        prevCap.invalidate();
+        inputItemCap = LazyOptional.of(() -> inputHandler);
+        outputItemCap = LazyOptional.of(() -> outputHandler);
+
+        prevItemCap.invalidate();
+        prevItemInputCap.invalidate();
+        prevItemOutputCap.invalidate();
     }
 
     @Override
     protected <T> LazyOptional<T> getItemHandlerCapability(@Nullable Direction side) {
 
-        if (side == null || reconfigControl.getSideConfig(side.ordinal()) != SideConfig.SIDE_NONE) {
+        if (side == null) {
             return super.getItemHandlerCapability(side);
         }
-        return LazyOptional.empty();
+        switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE:
+                return LazyOptional.empty();
+            case SIDE_INPUT:
+                return inputItemCap.cast();
+            case SIDE_OUTPUT:
+                return outputItemCap.cast();
+            default:
+                return super.getItemHandlerCapability(side);
+        }
     }
     // endregion
 }
