@@ -176,62 +176,6 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
         for (Object mixpredicate : PotionBrewing.POTION_MIXES) {
             createConvertedRecipe(mixpredicate);
         }
-
-        //        createConvertedRecipe(Potions.WATER, Items.GLISTERING_MELON_SLICE, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.GHAST_TEAR, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.RABBIT_FOOT, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.BLAZE_POWDER, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.SPIDER_EYE, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.SUGAR, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.MAGMA_CREAM, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.GLOWSTONE_DUST, Potions.THICK);
-        //        createConvertedRecipe(Potions.WATER, Items.REDSTONE, Potions.MUNDANE);
-        //        createConvertedRecipe(Potions.WATER, Items.NETHER_WART, Potions.AWKWARD);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.GOLDEN_CARROT, Potions.NIGHT_VISION);
-        //        createConvertedRecipe(Potions.NIGHT_VISION, Items.REDSTONE, Potions.LONG_NIGHT_VISION);
-        //        createConvertedRecipe(Potions.NIGHT_VISION, Items.FERMENTED_SPIDER_EYE, Potions.INVISIBILITY);
-        //        createConvertedRecipe(Potions.LONG_NIGHT_VISION, Items.FERMENTED_SPIDER_EYE, Potions.LONG_INVISIBILITY);
-        //        createConvertedRecipe(Potions.INVISIBILITY, Items.REDSTONE, Potions.LONG_INVISIBILITY);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.MAGMA_CREAM, Potions.FIRE_RESISTANCE);
-        //        createConvertedRecipe(Potions.FIRE_RESISTANCE, Items.REDSTONE, Potions.LONG_FIRE_RESISTANCE);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.RABBIT_FOOT, Potions.LEAPING);
-        //        createConvertedRecipe(Potions.LEAPING, Items.REDSTONE, Potions.LONG_LEAPING);
-        //        createConvertedRecipe(Potions.LEAPING, Items.GLOWSTONE_DUST, Potions.STRONG_LEAPING);
-        //        createConvertedRecipe(Potions.LEAPING, Items.FERMENTED_SPIDER_EYE, Potions.SLOWNESS);
-        //        createConvertedRecipe(Potions.LONG_LEAPING, Items.FERMENTED_SPIDER_EYE, Potions.LONG_SLOWNESS);
-        //        createConvertedRecipe(Potions.SLOWNESS, Items.REDSTONE, Potions.LONG_SLOWNESS);
-        //        createConvertedRecipe(Potions.SLOWNESS, Items.GLOWSTONE_DUST, Potions.STRONG_SLOWNESS);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.TURTLE_HELMET, Potions.TURTLE_MASTER);
-        //        createConvertedRecipe(Potions.TURTLE_MASTER, Items.REDSTONE, Potions.LONG_TURTLE_MASTER);
-        //        createConvertedRecipe(Potions.TURTLE_MASTER, Items.GLOWSTONE_DUST, Potions.STRONG_TURTLE_MASTER);
-        //        createConvertedRecipe(Potions.SWIFTNESS, Items.FERMENTED_SPIDER_EYE, Potions.SLOWNESS);
-        //        createConvertedRecipe(Potions.LONG_SWIFTNESS, Items.FERMENTED_SPIDER_EYE, Potions.LONG_SLOWNESS);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.SUGAR, Potions.SWIFTNESS);
-        //        createConvertedRecipe(Potions.SWIFTNESS, Items.REDSTONE, Potions.LONG_SWIFTNESS);
-        //        createConvertedRecipe(Potions.SWIFTNESS, Items.GLOWSTONE_DUST, Potions.STRONG_SWIFTNESS);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.PUFFERFISH, Potions.WATER_BREATHING);
-        //        createConvertedRecipe(Potions.WATER_BREATHING, Items.REDSTONE, Potions.LONG_WATER_BREATHING);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.GLISTERING_MELON_SLICE, Potions.HEALING);
-        //        createConvertedRecipe(Potions.HEALING, Items.GLOWSTONE_DUST, Potions.STRONG_HEALING);
-        //        createConvertedRecipe(Potions.HEALING, Items.FERMENTED_SPIDER_EYE, Potions.HARMING);
-        //        createConvertedRecipe(Potions.STRONG_HEALING, Items.FERMENTED_SPIDER_EYE, Potions.STRONG_HARMING);
-        //        createConvertedRecipe(Potions.HARMING, Items.GLOWSTONE_DUST, Potions.STRONG_HARMING);
-        //        createConvertedRecipe(Potions.POISON, Items.FERMENTED_SPIDER_EYE, Potions.HARMING);
-        //        createConvertedRecipe(Potions.LONG_POISON, Items.FERMENTED_SPIDER_EYE, Potions.HARMING);
-        //        createConvertedRecipe(Potions.STRONG_POISON, Items.FERMENTED_SPIDER_EYE, Potions.STRONG_HARMING);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.SPIDER_EYE, Potions.POISON);
-        //        createConvertedRecipe(Potions.POISON, Items.REDSTONE, Potions.LONG_POISON);
-        //        createConvertedRecipe(Potions.POISON, Items.GLOWSTONE_DUST, Potions.STRONG_POISON);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.GHAST_TEAR, Potions.REGENERATION);
-        //        createConvertedRecipe(Potions.REGENERATION, Items.REDSTONE, Potions.LONG_REGENERATION);
-        //        createConvertedRecipe(Potions.REGENERATION, Items.GLOWSTONE_DUST, Potions.STRONG_REGENERATION);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.BLAZE_POWDER, Potions.STRENGTH);
-        //        createConvertedRecipe(Potions.STRENGTH, Items.REDSTONE, Potions.LONG_STRENGTH);
-        //        createConvertedRecipe(Potions.STRENGTH, Items.GLOWSTONE_DUST, Potions.STRONG_STRENGTH);
-        //        createConvertedRecipe(Potions.WATER, Items.FERMENTED_SPIDER_EYE, Potions.WEAKNESS);
-        //        createConvertedRecipe(Potions.WEAKNESS, Items.REDSTONE, Potions.LONG_WEAKNESS);
-        //        createConvertedRecipe(Potions.AWKWARD, Items.PHANTOM_MEMBRANE, Potions.SLOW_FALLING);
-        //        createConvertedRecipe(Potions.SLOW_FALLING, Items.REDSTONE, Potions.LONG_SLOW_FALLING);
     }
 
     protected boolean createConvertedRecipe(Object mixpredicate) {

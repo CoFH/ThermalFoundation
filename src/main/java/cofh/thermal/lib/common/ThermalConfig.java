@@ -1,5 +1,6 @@
 package cofh.thermal.lib.common;
 
+import cofh.core.util.helpers.EnergyHelper;
 import cofh.thermal.core.tileentity.device.DeviceFisherTile;
 import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
 import cofh.thermal.core.util.managers.dynamo.*;
@@ -55,9 +56,9 @@ public class ThermalConfig {
 
         SERVER_CONFIG.push("Global Options");
 
-        //        standaloneRedstoneFlux = SERVER_CONFIG
-        //                .comment("If TRUE, Redstone Flux will act as its own energy system and will NOT be interoperable with 'Forge Energy' - only enable this if you absolutely know what you are doing and want the Thermal Series to use a unique energy system.")
-        //                .define("Standalone Redstone Flux", false);
+        standaloneRedstoneFlux = SERVER_CONFIG
+                .comment("If TRUE, Redstone Flux will act as its own energy system and will NOT be interoperable with 'Forge Energy' - only enable this if you absolutely know what you are doing and want the Thermal Series to use a unique energy system.")
+                .define("Standalone Redstone Flux", false);
 
         keepEnergy = SERVER_CONFIG
                 .comment("If TRUE, most Thermal Blocks will retain Energy when dropped.\nThis setting does not control ALL blocks.")
@@ -92,6 +93,28 @@ public class ThermalConfig {
                 .comment("If TRUE, Rockwool Blocks and Recipes are enabled.")
                 .define("Rockwool", true);
 
+        flagWrench = SERVER_CONFIG
+                .comment("If TRUE, the Crescent Hammer is enabled.")
+                .define("Wrench", true);
+        flagRedprint = SERVER_CONFIG
+                .comment("If TRUE, the Redprint is enabled.")
+                .define("Redprint", true);
+        flagRFPotato = SERVER_CONFIG
+                .comment("If TRUE, the Capacitato is enabled.")
+                .define("RF Potato", true);
+        flagXPCrystal = SERVER_CONFIG
+                .comment("If TRUE, the Insightful Crystal is enabled.")
+                .define("XP Crystal", true);
+        flagLock = SERVER_CONFIG
+                .comment("If TRUE, the Signalum Security Lock is enabled.")
+                .define("Lock", true);
+        flagSatchel = SERVER_CONFIG
+                .comment("If TRUE, the Satchel is enabled.")
+                .define("Satchel", true);
+        flagDetonator = SERVER_CONFIG
+                .comment("If TRUE, the Remote Detonator is enabled.")
+                .define("Detonator", true);
+
         flagMobBasalz = SERVER_CONFIG
                 .comment("If TRUE, the Basalz Mob is enabled.")
                 .define("Basalz", true);
@@ -123,6 +146,10 @@ public class ThermalConfig {
         enableVillagerTrades = SERVER_CONFIG
                 .comment("If TRUE, trades will be added to various Villagers.")
                 .define("Enable Villager Trades", true);
+
+        enableWandererTrades = SERVER_CONFIG
+                .comment("If TRUE, trades will be added to the Wandering Trader.")
+                .define("Enable Wandering Trader Trades", true);
 
         SERVER_CONFIG.pop();
 
@@ -428,8 +455,18 @@ public class ThermalConfig {
 
     private static void refreshServerConfig() {
 
+        EnergyHelper.standaloneRedstoneFlux = standaloneRedstoneFlux.get();
+
         setFlag(FLAG_VANILLA_BLOCKS, flagVanillaBlocks.get());
         setFlag(FLAG_ROCKWOOL, flagRockwool.get());
+
+        setFlag(ID_WRENCH, flagWrench.get());
+        setFlag(ID_REDPRINT, flagRedprint.get());
+        setFlag(ID_RF_POTATO, flagRFPotato.get());
+        setFlag(ID_XP_CRYSTAL, flagXPCrystal.get());
+        setFlag(ID_LOCK, flagLock.get());
+        setFlag(ID_SATCHEL, flagSatchel.get());
+        setFlag(ID_DETONATOR, flagDetonator.get());
 
         setFlag(FLAG_MOB_BASALZ, flagMobBasalz.get());
         setFlag(FLAG_MOB_BLITZ, flagMobBlitz.get());
@@ -569,6 +606,7 @@ public class ThermalConfig {
     public static BooleanValue standaloneRedstoneFlux;
 
     public static BooleanValue enableVillagerTrades;
+    public static BooleanValue enableWandererTrades;
 
     public static BooleanValue keepEnergy;
     public static BooleanValue keepItems;
@@ -585,6 +623,14 @@ public class ThermalConfig {
 
     private static BooleanValue flagVanillaBlocks;
     private static BooleanValue flagRockwool;
+
+    private static BooleanValue flagWrench;
+    private static BooleanValue flagRedprint;
+    private static BooleanValue flagRFPotato;
+    private static BooleanValue flagXPCrystal;
+    private static BooleanValue flagLock;
+    private static BooleanValue flagSatchel;
+    private static BooleanValue flagDetonator;
 
     private static BooleanValue flagMobBasalz;
     private static BooleanValue flagMobBlitz;

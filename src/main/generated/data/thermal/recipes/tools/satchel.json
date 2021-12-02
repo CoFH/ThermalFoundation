@@ -18,5 +18,11 @@
   },
   "result": {
     "item": "thermal:satchel"
-  }
+  },
+  "conditions": [
+    {
+      "flag": "satchel",
+      "type": "thermal:flag"
+    }
+  ]
 }

@@ -21,5 +21,11 @@
   },
   "result": {
     "item": "thermal:rf_potato"
-  }
+  },
+  "conditions": [
+    {
+      "flag": "rf_potato",
+      "type": "thermal:flag"
+    }
+  ]
 }

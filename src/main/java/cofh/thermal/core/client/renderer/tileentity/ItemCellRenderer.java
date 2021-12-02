@@ -33,7 +33,10 @@ public class ItemCellRenderer extends TileEntityRenderer<ItemCellTile> {
             matrixStackIn.mulPose(Vector3f.YP.rotation(((float) CoreClientEvents.renderTime + spin) / 30.0F));
 
             RenderHelper.renderItem().renderStatic(item, ItemCameraTransforms.TransformType.GROUND, combinedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn);
+
             matrixStackIn.popPose();
+
+            // RenderHelper.renderItemOnBlockSide(matrixStackIn, item, tile.getFacing(), tile.getBlockPos());
         }
     }
 

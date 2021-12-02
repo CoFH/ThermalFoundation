@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static cofh.lib.item.ContainerType.ITEM;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 
@@ -26,6 +27,7 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
     @Override
     protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 
+        boolean creative = isCreative(stack, ITEM);
     }
 
     protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {

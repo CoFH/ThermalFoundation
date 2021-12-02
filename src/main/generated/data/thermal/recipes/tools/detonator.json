@@ -18,5 +18,11 @@
   },
   "result": {
     "item": "thermal:detonator"
-  }
+  },
+  "conditions": [
+    {
+      "flag": "detonator",
+      "type": "thermal:flag"
+    }
+  ]
 }

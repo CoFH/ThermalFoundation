@@ -141,10 +141,10 @@ public class TCoreBlocks {
         registerBlock(ID_RUBY_ORE, () -> new OreBlockCoFH(2).xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
         registerBlock(ID_SAPPHIRE_ORE, () -> new OreBlockCoFH(2).xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
 
-        registerBlockAndItem(ID_OIL_SAND, () -> new OreBlockCoFH(copy(Blocks.SAND).harvestTool(ToolType.SHOVEL)),
+        registerBlockAndItem(ID_OIL_SAND, () -> new SandBlock(14406560, copy(Blocks.SAND).harvestTool(ToolType.SHOVEL)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_SAND), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
 
-        registerBlockAndItem(ID_OIL_RED_SAND, () -> new OreBlockCoFH(copy(Blocks.RED_SAND).harvestTool(ToolType.SHOVEL)),
+        registerBlockAndItem(ID_OIL_RED_SAND, () -> new SandBlock(11098145, copy(Blocks.RED_SAND).harvestTool(ToolType.SHOVEL)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
     }
 

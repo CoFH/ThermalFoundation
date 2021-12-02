@@ -35,13 +35,6 @@ public class ThermalIDs {
 
     public static final String ID_OIL_SAND = "oil_sand";
     public static final String ID_OIL_RED_SAND = "oil_red_sand";
-
-    public static final String ID_RUBBERWOOD_LEAVES = "rubberwood_leaves";
-    public static final String ID_RUBBERWOOD_LOG = "rubberwood_log";
-    public static final String ID_RUBBERWOOD_SAPLING = "rubberwood_sapling";
-    public static final String ID_RUBBERWOOD_WOOD = "rubberwood_wood";
-    public static final String ID_STRIPPED_RUBBERWOOD_LOG = "stripped_rubberwood_log";
-    public static final String ID_STRIPPED_RUBBERWOOD_WOOD = "stripped_rubberwood_wood";
     // endregion
 
     // region BLOCKS
@@ -157,10 +150,6 @@ public class ThermalIDs {
     // endregion
 
     // region STORAGE
-    public static final String ID_SATCHEL = "satchel";
-
-    public static final String ID_STRONGBOX = "strongbox";
-
     public static final String ID_ENERGY_CELL = "energy_cell";
     public static final String ID_FLUID_CELL = "fluid_cell";
     public static final String ID_ITEM_CELL = "item_cell";
@@ -204,7 +193,7 @@ public class ThermalIDs {
     public static final String ID_BLITZ_PROJECTILE = "blitz_projectile";
     public static final String ID_BLIZZ_PROJECTILE = "blizz_projectile";
 
-    public static final String ID_EXPLOSIVE_GRENADE = "grenade";
+    public static final String ID_EXPLOSIVE_GRENADE = "explosive_grenade";
 
     public static final String ID_SLIME_GRENADE = "slime_grenade";
     public static final String ID_REDSTONE_GRENADE = "redstone_grenade";
@@ -233,6 +222,16 @@ public class ThermalIDs {
     public static final String ID_LIGHTNING_TNT = "lightning_tnt";
 
     public static final String ID_NUKE_TNT = "nuke_tnt";
+    // endregion
+
+    // region TOOLS
+    public static final String ID_WRENCH = "wrench";
+    public static final String ID_REDPRINT = "redprint";
+    public static final String ID_RF_POTATO = "rf_potato";
+    public static final String ID_XP_CRYSTAL = "xp_crystal";
+    public static final String ID_LOCK = "lock";
+    public static final String ID_SATCHEL = "satchel";
+    public static final String ID_DETONATOR = "detonator";
     // endregion
 
     // region ARMOR

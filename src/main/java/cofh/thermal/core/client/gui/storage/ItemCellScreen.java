@@ -2,6 +2,7 @@ package cofh.thermal.core.client.gui.storage;
 
 import cofh.core.client.gui.element.ElementBase;
 import cofh.core.client.gui.element.ElementButton;
+import cofh.core.client.gui.element.ElementItem;
 import cofh.core.client.gui.element.ElementTexture;
 import cofh.core.network.packet.server.TileConfigPacket;
 import cofh.lib.util.helpers.StringHelper;
@@ -54,7 +55,8 @@ public class ItemCellScreen extends CellScreenReconfigurable<ItemCellContainer> 
                 .setSize(20, 20)
                 .setTexture(INFO_OUTPUT, 20, 20));
 
-        // addElement(setClearable(createMediumItemStorage(this, 80, 22, tile.getTank(0)), tile, 0));
+        addElement(new ElementItem(this, 80, 26).setItem(() -> tile.getRenderItem()));
+        addElement(setClearable(createDefaultItemStorage(this, 80, 22, tile.getSlot(0)), tile, 0));
 
         addButtons();
     }
