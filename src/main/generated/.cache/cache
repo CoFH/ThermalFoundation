@@ -253,6 +253,8 @@ b07ea9c3d6fc1f7714996e0712f0ee2fb29332ea assets/thermal/models/item/machine_cycl
 5b657502f4723bb2cbcfb6a453689bd28a5622fd assets/thermal/models/item/machine_output_augment.json
 6b3af16ac7c0ba70f53b55c232927399047188a4 assets/thermal/models/item/machine_speed_augment.json
 12aa20d32aa31a0cb7e45abb01fe6cc49614df7a assets/thermal/models/item/magenta_rockwool.json
+487c3ea67d785ffcaaa307adcc1ca1929d809490 assets/thermal/models/item/netherite_dust.json
+5a5c09b01f3f5d4ff231e072ab721ca44eaf9277 assets/thermal/models/item/netherite_gear.json
 3855a71dc7029811022f4fd68f57d6265b2c748e assets/thermal/models/item/nickel_block.json
 1838b4c4453d0362c3e83a16209f38ab6b1ac138 assets/thermal/models/item/nickel_dust.json
 c4b47c87447526771960a2ee22d7fbdaa228e757 assets/thermal/models/item/nickel_gear.json
@@ -397,7 +399,7 @@ a8b265f834bb9be512db71d5558acb203e0f378e data/forge/tags/blocks/storage_blocks/s
 ef667206f26b63a4a43b4aa3721243c7db678536 data/forge/tags/fluids/redstone.json
 2ea9bdd7ab17f13d34aa307a06aa0bfd06f35ceb data/forge/tags/items/bitumen.json
 09894c623366ea7d11f8e657657f15fcf6789803 data/forge/tags/items/coal_coke.json
-37dc59a9c9728efe98ee40e16629c1d2e948fcc2 data/forge/tags/items/coins.json
+863dc9b1aac47e976f269da87c23ae0121d12e27 data/forge/tags/items/coins.json
 4d44cbc5ec14895f857bede7ead492cccd245da1 data/forge/tags/items/coins/bronze.json
 00e0d199c0f84ac255fb4ff9270eb9485ec6f372 data/forge/tags/items/coins/constantan.json
 0dd0b9b07d4b9835616414f5b516812bee00384b data/forge/tags/items/coins/copper.json
@@ -408,11 +410,12 @@ b26e196fc52da70929b95f6a7de4616c3fcb1bae data/forge/tags/items/coins/invar.json
 5c32270f77e0d992c2a8622e2b29b673bdb7fc13 data/forge/tags/items/coins/iron.json
 297ba28635c0586bc7753969af18c7206b67f44d data/forge/tags/items/coins/lead.json
 14142e9a9cd99c391e564abea7fada699ef80b52 data/forge/tags/items/coins/lumium.json
+78e6374bf830ad5edbed52ea78e1960a3e72d839 data/forge/tags/items/coins/netherite.json
 9af3e0e9f8cb899c1df985fcb09211041c2512b8 data/forge/tags/items/coins/nickel.json
 498ba6ee2d4d2a292762193fc293dfc61e2e2f7a data/forge/tags/items/coins/signalum.json
 5dbb93d81ee9f81233473695791b39c5a909a0ea data/forge/tags/items/coins/silver.json
 1cfcd239637b6b48896a4ffa591c9849ce2d27bf data/forge/tags/items/coins/tin.json
-0d2dd1caa4f7ba63413fe1d34a48ca1e547ea6fe data/forge/tags/items/dusts.json
+6707fde7e273d1177e7ae67055a0b12ac3fbcc41 data/forge/tags/items/dusts.json
 94d200c3c242db09c6b477cd4390daa57ef27ce2 data/forge/tags/items/dusts/apatite.json
 49960d2da6e27b265537f468b97ad65902ea02ac data/forge/tags/items/dusts/bronze.json
 422e09d0f57bb410b6e34e713419bb84f4220cda data/forge/tags/items/dusts/cinnabar.json
@@ -429,6 +432,7 @@ defab4c90c6b883879fcf5b6423b3dd4397e1bb9 data/forge/tags/items/dusts/iron.json
 ee2dfd362c0ef1bac2ad4817ee2f497ce47452f5 data/forge/tags/items/dusts/lapis.json
 42a883892f4de0804114ae49e2320b286eaa81cf data/forge/tags/items/dusts/lead.json
 892fbbd789ba9e622935e046c816b20512d9895d data/forge/tags/items/dusts/lumium.json
+a96576a1fdb16c154897baa62a228de84728af6c data/forge/tags/items/dusts/netherite.json
 d34aa0b2bf077103c306ef6ad000ca09a2255663 data/forge/tags/items/dusts/nickel.json
 1ac655e82d250cbe0d288f632f2bfc3ae286fd04 data/forge/tags/items/dusts/niter.json
 cac90e1a1c61c5968468c3e9495167ac179e97ea data/forge/tags/items/dusts/quartz.json
@@ -439,7 +443,7 @@ b88161ec7b68ca18a3a77e08da34ca470945d2b7 data/forge/tags/items/dusts/signalum.js
 c4f85b261f57b0e155ce99925c6923078d22bf5d data/forge/tags/items/dusts/sulfur.json
 399d88560070d87081598dd12dae01ea9c1cee63 data/forge/tags/items/dusts/tin.json
 9fe877f9147a5edd62c0b5ebcb868a83371d3a88 data/forge/tags/items/dusts/wood.json
-88a83963cf67a375fc38ca9aade4b00975128f3c data/forge/tags/items/gears.json
+3998ace8140ef658807385ec8b3474d1d772a708 data/forge/tags/items/gears.json
 be66b5c9565d7afd1b6a91c84a7e821ae005005f data/forge/tags/items/gears/bronze.json
 ab662a9270b095755c7c01c6dc8479a03c422c1b data/forge/tags/items/gears/constantan.json
 a6c0cbc041697d181e15de2dac4ca07e6f5d29ec data/forge/tags/items/gears/copper.json
@@ -453,6 +457,7 @@ b6420d2279f2360021fa3a7becb6e0eada2853d3 data/forge/tags/items/gears/iron.json
 7b06e5c4ffcd33cd36475b56f51fcb29be0836be data/forge/tags/items/gears/lapis.json
 69d870a7a0116aeca7f02e73d637f44be73ff805 data/forge/tags/items/gears/lead.json
 872aea127cd5dc30e09843b38656252acbef5d2c data/forge/tags/items/gears/lumium.json
+efc17a80bd8c50340f85fb221cf92d772fec31eb data/forge/tags/items/gears/netherite.json
 a2920bc25276e4b77edca80eecc4081c2db8013e data/forge/tags/items/gears/nickel.json
 58c45b615280c7899262109a152c1f1afa414788 data/forge/tags/items/gears/quartz.json
 4369ffc772c61f9d067bf6787188cde89efc4ae1 data/forge/tags/items/gears/ruby.json
@@ -505,7 +510,7 @@ f8b0b696025db74a50b198583b29fde1b857607c data/forge/tags/items/ores/copper.json
 20480e4582293278b38550bd6fe052b1c6fa2840 data/forge/tags/items/ores/silver.json
 01e3c95561d8cb654e0cbcb5e4e98c0d220638f1 data/forge/tags/items/ores/sulfur.json
 fd5fdf1c0c59bd484b0a5fa13e7ea5e5d78b47cd data/forge/tags/items/ores/tin.json
-e5441d4dab08e3a45727d2ea91f9f8b8e89735b9 data/forge/tags/items/plates.json
+bc400018237b6a8e36da83c2b01af7fa1a1d66a4 data/forge/tags/items/plates.json
 af080ccebfc91afc5003d25a82505aea225836b4 data/forge/tags/items/plates/bronze.json
 3295f269a63cdd959e4302e1e9645891324f3c24 data/forge/tags/items/plates/constantan.json
 b42255bf33682e985e20b9de431d7d1e855e4ae7 data/forge/tags/items/plates/copper.json
@@ -516,6 +521,7 @@ c6f1fdb0a9684682ab918885cbebb6adadb351f9 data/forge/tags/items/plates/gold.json
 ba53f9ba3c4f763ea0e35de302e10c31c23e3804 data/forge/tags/items/plates/iron.json
 d2e27261d33f254f9cacfd8d824c7bd476ded42a data/forge/tags/items/plates/lead.json
 58c7fe57418975cff01e337a72d67aeb620973f8 data/forge/tags/items/plates/lumium.json
+d5f3f6f2c73d6759d426d133cf5a29a0510bcba4 data/forge/tags/items/plates/netherite.json
 5adfd3a527e0c4bf094f5a509f5056eb3ba0fcfb data/forge/tags/items/plates/nickel.json
 05e06d7ab29d657e7515ed5adef8d43fc29f6356 data/forge/tags/items/plates/signalum.json
 b8c1e4540842e8399bb9ec31c79239580c62e123 data/forge/tags/items/plates/silver.json
@@ -755,8 +761,6 @@ f53a4ee13e034ec7d51df06b28b63e0e0d068409 data/thermal/recipes/ice_charge_3.json
 9bcbf07278fecbe94fc1177a75bab43a3b7ccd23 data/thermal/recipes/ice_grenade_4.json
 bc2d5bb7863c4724b687167d1e921a35a5988caa data/thermal/recipes/ice_tnt.json
 745ad6b9938894b1db49fd0fc5b820405fb69f31 data/thermal/recipes/invar_dust_3.json
-bd6325a10e48135726b0fe5e1b3dea9100b3555c data/thermal/recipes/item_cell.json
-5011a56ae5273fccd7caabb95e3711d40a00e80c data/thermal/recipes/item_cell_frame.json
 01d0b8d6c74618e0b5a5cb6a80b15b5e73b6f7ce data/thermal/recipes/junk_net.json
 36afff75b6dd4436b7718f855aa621303e6cc151 data/thermal/recipes/lightning_charge/witch_from_villager.json
 cb1e14718da8c567e4597aa95aafcab1f039d15f data/thermal/recipes/lightning_charge/zombified_piglin_from_pig.json
@@ -778,6 +782,7 @@ b483e7ce08fe5656c919cec4faab7553d64159fe data/thermal/recipes/machine_frame.json
 829c59a448824908e03d738828915f45663ec60b data/thermal/recipes/parts/lapis_gear.json
 791e39c69bca27ce416fa7a54e62683e37a3565b data/thermal/recipes/parts/lead_gear.json
 0310b58cdbc3a9480aa906d5809fc92cddcf5ead data/thermal/recipes/parts/lumium_gear.json
+11124e03cd2ecc53d4801a15ceaa40af93a35465 data/thermal/recipes/parts/netherite_gear.json
 fb8c5b73c10ebdfd7c6856a29a88c5ac5ff01e77 data/thermal/recipes/parts/nickel_gear.json
 07c30f065dad304913da753be4af26701105624e data/thermal/recipes/parts/quartz_gear.json
 33a6fefb2e6be08fe6386f03868fa0ac656a53b9 data/thermal/recipes/parts/signalum_gear.json
@@ -849,6 +854,8 @@ e49ab59d500383614353d9a67d4630cb09372b14 data/thermal/recipes/smelting/iron_ingo
 652f0084604e6546cd680fe7d87d519e345d3d87 data/thermal/recipes/smelting/lead_ingot_from_ore_smelting.json
 67ead637dac7208efdc4e2d34bb86ad63c3c3f04 data/thermal/recipes/smelting/lumium_ingot_from_dust_blasting.json
 af1645e497827878c4a76b22c002171a87cc97cc data/thermal/recipes/smelting/lumium_ingot_from_dust_smelting.json
+c0511a12cb1db4c314f011e5798350193f131cfc data/thermal/recipes/smelting/netherite_ingot_from_dust_blasting.json
+f80a7d599714a6aafa2dac60add41f3e01bf79b8 data/thermal/recipes/smelting/netherite_ingot_from_dust_smelting.json
 05252f79a67462e01b95583333b06794382737cb data/thermal/recipes/smelting/nickel_ingot_from_dust_blasting.json
 8f2a8c6ba70ef3dcc07fd4b85c13ae7dbda6f766 data/thermal/recipes/smelting/nickel_ingot_from_dust_smelting.json
 3ebc4b0a06718326e9d21c8abfa1ec40bc9fdd40 data/thermal/recipes/smelting/nickel_ingot_from_ore_blasting.json

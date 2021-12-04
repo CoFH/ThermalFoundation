@@ -80,6 +80,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         generateGearRecipe(consumer, reg.get("iron_gear"), Items.IRON_INGOT, forgeTag("ingots/iron"));
         generateGearRecipe(consumer, reg.get("gold_gear"), Items.GOLD_INGOT, forgeTag("ingots/gold"));
+        generateGearRecipe(consumer, reg.get("netherite_gear"), Items.NETHERITE_INGOT, forgeTag("ingots/netherite"));
 
         generateGearRecipe(consumer, reg.get("diamond_gear"), Items.IRON_INGOT, forgeTag("gems/diamond"));
         generateGearRecipe(consumer, reg.get("emerald_gear"), Items.IRON_INGOT, forgeTag("gems/emerald"));
@@ -106,6 +107,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("iron_dust"), Items.IRON_INGOT, 0.0F, "smelting", "_dust");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("gold_dust"), Items.GOLD_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("netherite_dust"), Items.NETHERITE_INGOT, 0.0F, "smelting", "_dust");
 
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_APATITE_ORE), reg.get("apatite"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_CINNABAR_ORE), reg.get("cinnabar"), 0.5F, "smelting");
@@ -1099,15 +1101,15 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_copper", has(ItemTagsCoFH.INGOTS_COPPER))
                 .save(withConditions(consumer).flag(ID_FLUID_CELL_FRAME));
 
-        ShapedRecipeBuilder.shaped(reg.get(ID_ITEM_CELL_FRAME))
-                .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_TIN)
-                .define('E', ItemTagsCoFH.GEARS_IRON)
-                .pattern("IGI")
-                .pattern("GEG")
-                .pattern("IGI")
-                .unlockedBy("has_copper", has(ItemTagsCoFH.INGOTS_TIN))
-                .save(withConditions(consumer).flag(ID_ITEM_CELL_FRAME));
+        //        ShapedRecipeBuilder.shaped(reg.get(ID_ITEM_CELL_FRAME))
+        //                .define('G', Tags.Items.GLASS)
+        //                .define('I', ItemTagsCoFH.INGOTS_TIN)
+        //                .define('E', ItemTagsCoFH.GEARS_IRON)
+        //                .pattern("IGI")
+        //                .pattern("GEG")
+        //                .pattern("IGI")
+        //                .unlockedBy("has_copper", has(ItemTagsCoFH.INGOTS_TIN))
+        //                .save(withConditions(consumer).flag(ID_ITEM_CELL_FRAME));
     }
 
     private void generateExplosiveRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -1476,7 +1478,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         Item energyCellFrame = reg.get(ID_ENERGY_CELL_FRAME);
         Item fluidCellFrame = reg.get(ID_FLUID_CELL_FRAME);
-        Item itemCellFrame = reg.get(ID_ITEM_CELL_FRAME);
+        // Item itemCellFrame = reg.get(ID_ITEM_CELL_FRAME);
         Item redstoneServo = reg.get("redstone_servo");
         Item rfCoil = reg.get("rf_coil");
 
@@ -1612,17 +1614,17 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_fluid_cell_frame", has(fluidCellFrame))
                 .save(withConditions(consumer).flag(ID_FLUID_CELL));
 
-        ShapedRecipeBuilder.shaped(reg.get(ID_ITEM_CELL))
-                .define('C', itemCellFrame)
-                .define('I', Tags.Items.INGOTS_IRON)
-                .define('P', redstoneServo)
-                .define('R', reg.get("cured_rubber"))
-                .define('X', Items.CHEST)
-                .pattern("RXR")
-                .pattern("ICI")
-                .pattern("RPR")
-                .unlockedBy("has_item_cell_frame", has(itemCellFrame))
-                .save(withConditions(consumer).flag(ID_ITEM_CELL));
+        //        ShapedRecipeBuilder.shaped(reg.get(ID_ITEM_CELL))
+        //                .define('C', itemCellFrame)
+        //                .define('I', Tags.Items.INGOTS_IRON)
+        //                .define('P', redstoneServo)
+        //                .define('R', reg.get("cured_rubber"))
+        //                .define('X', Items.CHEST)
+        //                .pattern("RXR")
+        //                .pattern("ICI")
+        //                .pattern("RPR")
+        //                .unlockedBy("has_item_cell_frame", has(itemCellFrame))
+        //                .save(withConditions(consumer).flag(ID_ITEM_CELL));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_TINKER_BENCH))
                 .define('C', Blocks.CRAFTING_TABLE)

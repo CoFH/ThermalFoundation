@@ -12,7 +12,6 @@ import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.core.inventory.container.device.*;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
-import cofh.thermal.core.inventory.container.storage.ItemCellContainer;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.tileentity.ChargeBenchTile;
 import cofh.thermal.core.tileentity.DeviceChunkLoaderTile;
@@ -21,7 +20,6 @@ import cofh.thermal.core.tileentity.TinkerBenchTile;
 import cofh.thermal.core.tileentity.device.*;
 import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
-import cofh.thermal.core.tileentity.storage.ItemCellTile;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
@@ -215,12 +213,12 @@ public class TCoreReferences {
     @ObjectHolder(ID_FLUID_CELL)
     public static final ContainerType<FluidCellContainer> FLUID_CELL_CONTAINER = null;
 
-    @ObjectHolder(ID_ITEM_CELL)
-    public static final Block ITEM_CELL_BLOCK = null;
-    @ObjectHolder(ID_ITEM_CELL)
-    public static final TileEntityType<ItemCellTile> ITEM_CELL_TILE = null;
-    @ObjectHolder(ID_ITEM_CELL)
-    public static final ContainerType<ItemCellContainer> ITEM_CELL_CONTAINER = null;
+    //    @ObjectHolder(ID_ITEM_CELL)
+    //    public static final Block ITEM_CELL_BLOCK = null;
+    //    @ObjectHolder(ID_ITEM_CELL)
+    //    public static final TileEntityType<ItemCellTile> ITEM_CELL_TILE = null;
+    //    @ObjectHolder(ID_ITEM_CELL)
+    //    public static final ContainerType<ItemCellContainer> ITEM_CELL_CONTAINER = null;
 
     @ObjectHolder(ID_SATCHEL)
     public static final ContainerType<SatchelContainer> SATCHEL_CONTAINER = null;

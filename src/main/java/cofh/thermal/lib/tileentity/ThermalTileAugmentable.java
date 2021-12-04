@@ -201,6 +201,10 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         enchantments = stack.getEnchantmentTags();
 
         updateAugmentState();
+
+        if (redstoneControl.isControllable()) {
+            redstoneControl.setPower(worldIn.getBestNeighborSignal(worldPosition));
+        }
         onControlUpdate();
     }
 
@@ -568,7 +572,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     protected boolean creativeEnergy = false;
     protected boolean creativeTanks = false;
-    protected boolean creativeSlots = false;
+    // protected boolean creativeSlots = false;
 
     // This is CLEARED after augments are finalized.
     protected CompoundNBT augmentNBT;
@@ -636,7 +640,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
         creativeEnergy = false;
         creativeTanks = false;
-        creativeSlots = false;
+        // creativeSlots = false;
     }
 
     protected void setAttributesFromAugment(CompoundNBT augmentData) {
@@ -654,7 +658,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
         creativeEnergy |= getAttributeMod(augmentData, TAG_AUGMENT_RF_CREATIVE) > 0;
         creativeTanks |= getAttributeMod(augmentData, TAG_AUGMENT_FLUID_CREATIVE) > 0;
-        creativeSlots |= getAttributeMod(augmentData, TAG_AUGMENT_ITEM_CREATIVE) > 0;
+        // creativeSlots |= getAttributeMod(augmentData, TAG_AUGMENT_ITEM_CREATIVE) > 0;
     }
 
     protected void finalizeAttributes(Map<Enchantment, Integer> enchantmentMap) {
@@ -674,9 +678,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         for (int i = 0; i < tankInv.getTanks(); ++i) {
             tankInv.getTank(i).applyModifiers(fluidStorageMod).setCreative(() -> creativeTanks);
         }
-        for (int i = 0; i < inventory.getSlots(); ++i) {
-            inventory.getSlot(i).applyModifiers(itemStorageMod).setCreative(() -> creativeSlots);
-        }
+        //        for (int i = 0; i < inventory.getSlots(); ++i) {
+        //            inventory.getSlot(i).applyModifiers(itemStorageMod).setCreative(() -> creativeSlots);
+        //        }
 
         // TODO: XP Storage improvement
         int storedXp = xpStorage.getStored();

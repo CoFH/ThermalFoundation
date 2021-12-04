@@ -260,6 +260,7 @@ public class TCoreTagsProvider {
             tag(ItemTagsCoFH.COINS_IRON).add(ITEMS.get("iron_coin"));
             tag(ItemTagsCoFH.COINS_LEAD).add(ITEMS.get("lead_coin"));
             tag(ItemTagsCoFH.COINS_LUMIUM).add(ITEMS.get("lumium_coin"));
+            tag(ItemTagsCoFH.COINS_NETHERITE).add(ITEMS.get("netherite_coin"));
             tag(ItemTagsCoFH.COINS_NICKEL).add(ITEMS.get("nickel_coin"));
             tag(ItemTagsCoFH.COINS_SIGNALUM).add(ITEMS.get("signalum_coin"));
             tag(ItemTagsCoFH.COINS_SILVER).add(ITEMS.get("silver_coin"));
@@ -276,6 +277,7 @@ public class TCoreTagsProvider {
                     ItemTagsCoFH.COINS_IRON,
                     ItemTagsCoFH.COINS_LEAD,
                     ItemTagsCoFH.COINS_LUMIUM,
+                    ItemTagsCoFH.COINS_NETHERITE,
                     ItemTagsCoFH.COINS_NICKEL,
                     ItemTagsCoFH.COINS_SIGNALUM,
                     ItemTagsCoFH.COINS_SILVER,
@@ -295,6 +297,7 @@ public class TCoreTagsProvider {
             tag(ItemTagsCoFH.DUSTS_LAPIS).add(ITEMS.get("lapis_dust"));
             tag(ItemTagsCoFH.DUSTS_LEAD).add(ITEMS.get("lead_dust"));
             tag(ItemTagsCoFH.DUSTS_LUMIUM).add(ITEMS.get("lumium_dust"));
+            tag(ItemTagsCoFH.DUSTS_NETHERITE).add(ITEMS.get("netherite_dust"));
             tag(ItemTagsCoFH.DUSTS_NICKEL).add(ITEMS.get("nickel_dust"));
             tag(ItemTagsCoFH.DUSTS_QUARTZ).add(ITEMS.get("quartz_dust"));
             tag(ItemTagsCoFH.DUSTS_RUBY).add(ITEMS.get("ruby_dust"));
@@ -320,6 +323,7 @@ public class TCoreTagsProvider {
                     ItemTagsCoFH.DUSTS_LAPIS,
                     ItemTagsCoFH.DUSTS_LEAD,
                     ItemTagsCoFH.DUSTS_LUMIUM,
+                    ItemTagsCoFH.DUSTS_NETHERITE,
                     ItemTagsCoFH.DUSTS_NICKEL,
                     ItemTagsCoFH.DUSTS_NITER,
                     ItemTagsCoFH.DUSTS_QUARTZ,
@@ -344,6 +348,7 @@ public class TCoreTagsProvider {
             tag(ItemTagsCoFH.GEARS_LAPIS).add(ITEMS.get("lapis_gear"));
             tag(ItemTagsCoFH.GEARS_LEAD).add(ITEMS.get("lead_gear"));
             tag(ItemTagsCoFH.GEARS_LUMIUM).add(ITEMS.get("lumium_gear"));
+            tag(ItemTagsCoFH.GEARS_NETHERITE).add(ITEMS.get("netherite_gear"));
             tag(ItemTagsCoFH.GEARS_NICKEL).add(ITEMS.get("nickel_gear"));
             tag(ItemTagsCoFH.GEARS_QUARTZ).add(ITEMS.get("quartz_gear"));
             tag(ItemTagsCoFH.GEARS_RUBY).add(ITEMS.get("ruby_gear"));
@@ -366,6 +371,7 @@ public class TCoreTagsProvider {
                     ItemTagsCoFH.GEARS_LAPIS,
                     ItemTagsCoFH.GEARS_LEAD,
                     ItemTagsCoFH.GEARS_LUMIUM,
+                    ItemTagsCoFH.GEARS_NETHERITE,
                     ItemTagsCoFH.GEARS_NICKEL,
                     ItemTagsCoFH.GEARS_QUARTZ,
                     ItemTagsCoFH.GEARS_RUBY,
@@ -466,6 +472,7 @@ public class TCoreTagsProvider {
             // getOrCreateBuilder(CoFHTags.Items.PLATES_LAPIS).add(ITEMS.get("lapis_plate"));
             tag(ItemTagsCoFH.PLATES_LEAD).add(ITEMS.get("lead_plate"));
             tag(ItemTagsCoFH.PLATES_LUMIUM).add(ITEMS.get("lumium_plate"));
+            tag(ItemTagsCoFH.PLATES_NETHERITE).add(ITEMS.get("netherite_plate"));
             tag(ItemTagsCoFH.PLATES_NICKEL).add(ITEMS.get("nickel_plate"));
             // getOrCreateBuilder(CoFHTags.Items.PLATES_QUARTZ).add(ITEMS.get("quartz_plate"));
             // getOrCreateBuilder(CoFHTags.Items.PLATES_RUBY).add(ITEMS.get("ruby_plate"));
@@ -485,13 +492,14 @@ public class TCoreTagsProvider {
                     ItemTagsCoFH.PLATES_IRON,
                     ItemTagsCoFH.PLATES_LEAD,
                     ItemTagsCoFH.PLATES_LUMIUM,
+                    ItemTagsCoFH.PLATES_NETHERITE,
                     ItemTagsCoFH.PLATES_NICKEL,
                     ItemTagsCoFH.PLATES_SIGNALUM,
                     ItemTagsCoFH.PLATES_SILVER,
                     ItemTagsCoFH.PLATES_TIN
             );
 
-            tag(ItemTagsCoFH.TOOLS_WRENCH).add(ITEMS.get("wrench"));
+            tag(ItemTagsCoFH.TOOLS_WRENCH).add(ITEMS.get(ID_WRENCH));
 
             tag(ItemTagsCoFH.BITUMEN).add(ITEMS.get("bitumen"));
             tag(ItemTagsCoFH.COAL_COKE).add(ITEMS.get("coal_coke"));
@@ -507,8 +515,8 @@ public class TCoreTagsProvider {
 
             tag(ItemTagsCoFH.DUSTS_ENDER_PEARL).add(ITEMS.get("ender_pearl_dust"));
 
-            tag(ItemTagsCoFH.LOCKS).add(ITEMS.get("lock"));
-            tag(ItemTagsCoFH.SECURABLE).add(ITEMS.get("satchel"));
+            tag(ItemTagsCoFH.LOCKS).add(ITEMS.get(ID_LOCK));
+            tag(ItemTagsCoFH.SECURABLE).add(ITEMS.get(ID_SATCHEL));
         }
 
     }

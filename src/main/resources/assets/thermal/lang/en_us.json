@@ -664,6 +664,11 @@
   "item.thermal.iron_gear": "Iron Gear",
   "item.thermal.iron_plate": "Iron Plate",
 
+  "item.thermal.netherite_coin": "Netherite Coin",
+  "item.thermal.netherite_dust": "Netherite Dust",
+  "item.thermal.netherite_gear": "Netherite Gear",
+  "item.thermal.netherite_plate": "Netherite Plate",
+
   "item.thermal.quartz_coin": "Quartz Coin",
   "item.thermal.quartz_dust": "Quartz Dust",
   "item.thermal.quartz_gear": "Quartz Gear",

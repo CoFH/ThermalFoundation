@@ -47,6 +47,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         metalSet(reg, "iron", true);
         metalSet(reg, "gold", true);
+        metalSet(reg, "netherite", true);
 
         gemSet(reg, "lapis", true);
         gemSet(reg, "diamond", true);

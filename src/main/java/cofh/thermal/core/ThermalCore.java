@@ -10,10 +10,8 @@ import cofh.thermal.core.client.gui.TinkerBenchScreen;
 import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
-import cofh.thermal.core.client.gui.storage.ItemCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.renderer.entity.*;
-import cofh.thermal.core.client.renderer.tileentity.ItemCellRenderer;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.init.*;
 import cofh.thermal.core.world.gen.feature.ThermalFeatures;
@@ -35,7 +33,6 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -175,7 +172,7 @@ public class ThermalCore {
 
         ScreenManager.register(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
         ScreenManager.register(FLUID_CELL_CONTAINER, FluidCellScreen::new);
-        ScreenManager.register(ITEM_CELL_CONTAINER, ItemCellScreen::new);
+        // ScreenManager.register(ITEM_CELL_CONTAINER, ItemCellScreen::new);
     }
 
     private void registerRenderLayers() {
@@ -195,8 +192,8 @@ public class ThermalCore {
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLUID_CELL_FRAME), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLUID_CELL), cutout);
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL_FRAME), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL), cutout);
+        //        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL_FRAME), cutout);
+        //        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL), cutout);
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_WATER_GEN), cutout);
@@ -249,7 +246,7 @@ public class ThermalCore {
 
     private void registerTileEntityRenderers() {
 
-        ClientRegistry.bindTileEntityRenderer(ITEM_CELL_TILE, ItemCellRenderer::new);
+        // ClientRegistry.bindTileEntityRenderer(ITEM_CELL_TILE, ItemCellRenderer::new);
     }
     // endregion
 }
