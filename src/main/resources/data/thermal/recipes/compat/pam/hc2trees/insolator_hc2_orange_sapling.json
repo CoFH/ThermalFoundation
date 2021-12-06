@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "pamhc2trees:orange_sapling"
+  },
+  "result": [
+    {
+      "item": "minecraft:oak_log",
+      "chance": 6.0
+    },
+    {
+      "item": "pamhc2trees:orange_sapling",
+      "chance": 1.1
+    },
+    {
+      "item": "pamhc2trees:orangeitem",
+      "chance": 4.0
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2trees"
+    }
+  ]
+}

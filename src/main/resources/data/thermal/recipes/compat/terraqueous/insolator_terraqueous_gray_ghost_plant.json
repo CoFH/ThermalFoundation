@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "terraqueous:gray_ghost_plant"
+  },
+  "result": [
+    {
+      "item": "terraqueous:gray_ghost_plant",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "terraqueous"
+    }
+  ]
+}

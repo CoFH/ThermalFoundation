@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "jellyfishing:seanut"
+  },
+  "result": [
+    {
+      "item": "jellyfishing:seanut",
+      "chance": 2.0
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "jellyfishing"
+    }
+  ]
+}

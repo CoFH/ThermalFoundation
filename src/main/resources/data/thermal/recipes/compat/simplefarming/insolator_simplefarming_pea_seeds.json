@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:pea_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:pea",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:pea_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}

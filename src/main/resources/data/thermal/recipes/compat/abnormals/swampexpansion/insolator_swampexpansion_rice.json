@@ -1,0 +1,19 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "swampexpansion:rice"
+  },
+  "result": [
+    {
+      "item": "swampexpansion:rice",
+      "chance": 4.0
+    }
+  ],
+  "water_mod": 2.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "swampexpansion"
+    }
+  ]
+}

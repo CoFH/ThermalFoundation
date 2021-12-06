@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "minecraft:spruce_log",
+  "leaves": "byg:orange_spruce_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 50
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

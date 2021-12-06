@@ -1,0 +1,14 @@
+{
+  "type": "thermal:compression_fuel",
+  "ingredient": {
+    "fluid": "pneumaticcraft:kerosene",
+    "amount": 1000
+  },
+  "energy": 1100000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pneumaticcraft"
+    }
+  ]
+}

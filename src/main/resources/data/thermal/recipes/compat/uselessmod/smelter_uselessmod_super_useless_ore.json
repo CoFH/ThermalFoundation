@@ -1,0 +1,27 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:ores/super_useless"
+  },
+  "result": [
+    {
+      "item": "uselessmod:super_useless_ingot",
+      "chance": 1.0
+    },
+    {
+      "item": "uselessmod:useless_ingot",
+      "chance": 0.2
+    },
+    {
+      "item": "thermal:rich_slag",
+      "chance": 0.2
+    }
+  ],
+  "experience": 0.2,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "uselessmod"
+    }
+  ]
+}

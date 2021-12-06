@@ -1,0 +1,23 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "mysticalagriculture:niotic_crystal_seeds"
+  },
+  "result": [
+    {
+      "item": "mysticalagriculture:niotic_crystal_essence",
+      "count": 1
+    },
+    {
+      "item": "mysticalagriculture:niotic_crystal_seeds",
+      "count": 1
+    }
+  ],
+  "energy": 100000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ]
+}

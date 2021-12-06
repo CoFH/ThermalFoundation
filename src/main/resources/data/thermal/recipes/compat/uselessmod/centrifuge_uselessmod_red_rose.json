@@ -1,0 +1,19 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "uselessmod:red_rose"
+  },
+  "result": [
+    {
+      "item": "minecraft:red_dye",
+      "count": 3
+    }
+  ],
+  "energy": 1600,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "uselessmod"
+    }
+  ]
+}

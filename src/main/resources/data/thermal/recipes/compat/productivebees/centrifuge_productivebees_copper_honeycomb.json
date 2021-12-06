@@ -1,0 +1,22 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "productivebees:honeycomb_copper"
+  },
+  "result": [
+    {
+      "item": "thermal:copper_dust",
+      "chance": 0.9
+    },
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 50
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ]
+}

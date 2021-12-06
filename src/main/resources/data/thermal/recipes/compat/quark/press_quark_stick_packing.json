@@ -1,0 +1,24 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:stick",
+      "count": 9
+    },
+    {
+      "item": "thermal:press_packing_3x3_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "quark:stick_block"
+    }
+  ],
+  "energy": 400,
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "stick_block"
+    }
+  ]
+}

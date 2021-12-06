@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "farmersdelight:cabbage_seeds"
+  },
+  "result": [
+    {
+      "item": "farmersdelight:cabbage",
+      "chance": 2.0
+    },
+    {
+      "item": "farmersdelight:cabbage_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ]
+}

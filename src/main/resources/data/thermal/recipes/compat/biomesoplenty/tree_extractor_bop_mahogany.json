@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "biomesoplenty:mahogany_log",
+  "leaves": "biomesoplenty:mahogany_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "pamhc2crops:cactusfruitseeditem"
+  },
+  "result": [
+    {
+      "item": "pamhc2crops:cactusfruititem",
+      "chance": 2.0
+    },
+    {
+      "item": "pamhc2crops:cactusfruitseeditem",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2crops"
+    }
+  ]
+}

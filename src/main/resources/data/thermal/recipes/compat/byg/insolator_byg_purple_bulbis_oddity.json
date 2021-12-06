@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "byg:purple_bulbis_oddity"
+  },
+  "result": [
+    {
+      "item": "byg:bulbis_wood",
+      "chance": 6.0
+    },
+    {
+      "item": "byg:purple_bulbis_oddity",
+      "chance": 1.1
+    },
+    {
+      "item": "byg:purple_shroomlight",
+      "chance": 0.8
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    }
+  ]
+}

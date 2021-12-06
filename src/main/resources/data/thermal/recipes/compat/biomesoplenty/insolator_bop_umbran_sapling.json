@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "biomesoplenty:umbran_sapling"
+  },
+  "result": [
+    {
+      "item": "biomesoplenty:umbran_log",
+      "chance": 6.0
+    },
+    {
+      "item": "biomesoplenty:umbran_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

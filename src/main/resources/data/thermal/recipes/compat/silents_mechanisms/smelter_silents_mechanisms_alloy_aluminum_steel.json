@@ -1,0 +1,44 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/aluminum"
+        },
+        {
+          "tag": "forge:dusts/aluminum"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/iron"
+        },
+        {
+          "tag": "forge:dusts/iron"
+        }
+      ],
+      "count": 2
+    },
+    {
+      "tag": "forge:dusts/coal",
+      "count": 3
+    }
+  ],
+  "result": [
+    {
+      "item": "silents_mechanisms:aluminum_steel_ingot",
+      "count": 4
+    }
+  ],
+  "energy": 9600,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "silents_mechanisms"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:broccoli_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:broccoli",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:broccoli_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}

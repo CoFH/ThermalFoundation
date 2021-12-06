@@ -1,0 +1,26 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "tconstruct:cobalt_ingot",
+      "count": 3
+    },
+    {
+      "item": "minecraft:netherite_scrap",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:manyullyn_ingot",
+      "count": 4
+    }
+  ],
+  "energy": 4000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

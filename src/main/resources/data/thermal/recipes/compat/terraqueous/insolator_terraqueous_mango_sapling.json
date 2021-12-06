@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "terraqueous:mango_sapling"
+  },
+  "result": [
+    {
+      "item": "terraqueous:mango_log",
+      "chance": 6.0
+    },
+    {
+      "item": "terraqueous:mango_sapling",
+      "chance": 1.1
+    },
+    {
+      "item": "terraqueous:mango",
+      "chance": 4.0
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "terraqueous"
+    }
+  ]
+}

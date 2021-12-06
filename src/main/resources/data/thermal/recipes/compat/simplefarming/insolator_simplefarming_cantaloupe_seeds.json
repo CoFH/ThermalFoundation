@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:cantaloupe_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:cantaloupe",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:cantaloupe_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}

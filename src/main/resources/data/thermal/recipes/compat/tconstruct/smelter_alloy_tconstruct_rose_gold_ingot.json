@@ -1,0 +1,26 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/copper",
+      "count": 3
+    },
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:rose_gold_ingot",
+      "count": 4
+    }
+  ],
+  "energy": 4000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

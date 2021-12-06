@@ -1,0 +1,27 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:ores/super_useless"
+  },
+  "result": [
+    {
+      "item": "uselessmod:super_useless_dust",
+      "chance": 2.0
+    },
+    {
+      "item": "uselessmod:useless_dust",
+      "chance": 0.1
+    },
+    {
+      "item": "minecraft:gravel",
+      "chance": 0.2
+    }
+  ],
+  "experience": 0.2,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "uselessmod"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "simplefarming:radish_seeds"
+  },
+  "result": [
+    {
+      "item": "simplefarming:radish",
+      "chance": 2.0
+    },
+    {
+      "item": "simplefarming:radish_seeds",
+      "chance": 1.1
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ]
+}
