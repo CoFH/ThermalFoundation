@@ -664,6 +664,11 @@
   "item.thermal.iron_gear": "鉄の歯車",
   "item.thermal.iron_plate": "鉄のプレート",
 
+  "item.thermal.netherite_coin": "ネザライトのコイン",
+  "item.thermal.netherite_dust": "ネザライトの粉",
+  "item.thermal.netherite_gear": "ネザライトの歯車",
+  "item.thermal.netherite_plate": "ネザライトのプレート",
+
   "item.thermal.quartz_coin": "ネザークォーツのコイン",
   "item.thermal.quartz_dust": "ネザークォーツの粉",
   "item.thermal.quartz_gear": "ネザークォーツの歯車",
