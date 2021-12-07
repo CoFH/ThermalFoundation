@@ -282,12 +282,12 @@ public class RegistrationHelper {
 
     public static void registerCropAndSeed(String id) {
 
-        registerCropAndSeed(id, THERMAL_FOODS);
+        registerCropAndSeed(id, THERMAL_CROPS);
     }
 
     public static void registerCropAndSeed(String id, Food food) {
 
-        registerCropAndSeed(id, THERMAL_FOODS, food);
+        registerCropAndSeed(id, THERMAL_CROPS, food);
     }
 
     public static void registerCropAndSeed(String id, ItemGroup group) {
@@ -307,7 +307,7 @@ public class RegistrationHelper {
 
     public static void registerSpores(String id) {
 
-        registerSpores(id, THERMAL_ITEMS);
+        registerSpores(id, THERMAL_CROPS);
     }
 
     public static void registerSpores(String id, ItemGroup group) {

@@ -45,7 +45,7 @@ public class ThermalItemGroups {
         }
     };
 
-    public static final ItemGroup THERMAL_FOODS = new ItemGroup(-1, ID_THERMAL + ".foods") {
+    public static final ItemGroup THERMAL_CROPS = new ItemGroup(-1, ID_THERMAL + ".crops") {
 
         @Override
         @OnlyIn(Dist.CLIENT)

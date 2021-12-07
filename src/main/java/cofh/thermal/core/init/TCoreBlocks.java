@@ -118,10 +118,10 @@ public class TCoreBlocks {
             }
         }, getFlag(FLAG_VANILLA_BLOCKS));
 
-        registerBlock(ID_APPLE_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_RED).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_CARROT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_ORANGE).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_POTATO_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_BEETROOT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_APPLE_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_RED).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_CROPS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_CARROT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_ORANGE).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_CROPS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_POTATO_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_CROPS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_BEETROOT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_CROPS, getFlag(FLAG_VANILLA_BLOCKS));
     }
 
     private static void registerResources() {

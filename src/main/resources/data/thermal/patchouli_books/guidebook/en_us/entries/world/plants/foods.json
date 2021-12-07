@@ -1,1 +1,59 @@
-{  "name": "Foods",  "icon": "thermal:chocolate_cake",  "read_by_default": true,  "flag": "mod:thermal_cultivation",  "category": "thermal:plants",  "pages": [    {      "type": "crafting",      "recipe": "thermal:chocolate_cake",      "text": "A delightful, delectable dessert deserving decorous devotion. As satisfying as normal cake."    },    {      "type": "crafting",      "recipe": "thermal:spice_cake",      "text": "A satiating, scrumptious sweet synthesized from sadiroot spice. Cleanses negative status effects when eaten."    },    {      "type": "crafting",      "recipe": "thermal:xp_stew",      "text": "An exhilarant eggplant elixir effervescing with exhorbitant experience enhancements. Boosts exp gain when consumed."    }  ]}
+{
+  "name": "Foods",
+  "icon": "thermal:chocolate_cake",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "crafting",
+      "recipe": "thermal:chocolate_cake",
+      "text": "A delightful, delectable dessert deserving decorous devotion. As satisfying as normal cake."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:potion_cake",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:spice_cake",
+      "text": "A satiating, scrumptious sweet synthesized from sadiroot spice. Cleanses negative status effects when eaten."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:cheese_wheel",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:green_bean_pie",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:pbj_sandwich_2",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:stuffed_pepper",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:sushi_maki_8",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:hearty_stew",
+      "text": "<HEK TODO>."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:xp_stew",
+      "text": "An exhilarant eggplant elixir effervescing with exhorbitant experience enhancements. Boosts exp gain when consumed."
+    }
+  ]
+}

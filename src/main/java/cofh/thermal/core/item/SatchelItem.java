@@ -5,7 +5,6 @@ import cofh.core.util.ProxyUtils;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.inventory.IInventoryContainerItem;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemInv;
 import cofh.lib.item.IColorableItem;
@@ -165,7 +164,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
                 if (slot < 0 || slot >= getSlots()) {
                     return false;
                 }
-                return !(stack.getItem() instanceof IInventoryContainerItem || BANNED_ITEMS.contains(stack.getItem()));
+                return !BANNED_ITEMS.contains(stack.getItem());
             }
         };
         inventory.read(containerTag);
