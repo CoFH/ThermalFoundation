@@ -1,10 +1,11 @@
 package cofh.thermal.core.init;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.ObjectHolder;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.thermal.core.util.RegistrationHelper.registerSound;
+import static cofh.thermal.core.ThermalCore.SOUND_EVENTS;
 
 public class TCoreSounds {
 
@@ -36,6 +37,11 @@ public class TCoreSounds {
 
         registerSound(ID_SOUND_MAGNET);
         registerSound(ID_SOUND_TINKER);
+    }
+
+    public static void registerSound(String soundID) {
+
+        SOUND_EVENTS.register(soundID, () -> new SoundEvent(new ResourceLocation(soundID)));
     }
 
     // region IDs

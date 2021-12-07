@@ -8,8 +8,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.*;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.List;
@@ -19,7 +17,8 @@ import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
 import static cofh.lib.util.constants.Constants.*;
-import static cofh.thermal.core.ThermalCore.*;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.*;
 import static net.minecraft.block.AbstractBlock.Properties.of;
@@ -54,6 +53,11 @@ public class RegistrationHelper {
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, BooleanSupplier showInGroups) {
 
         registerBlock(name, sup, rarity, showInGroups, ID_THERMAL);
+    }
+
+    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups) {
+
+        registerBlock(name, sup, group, rarity, showInGroups, ID_THERMAL);
     }
 
     // MOD ID
@@ -110,27 +114,22 @@ public class RegistrationHelper {
     // endregion
 
     // region AUGMENTABLE BLOCKS
-    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment) {
+    public static void registerAugmentableBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, ID_THERMAL);
+        registerAugmentableBlock(name, sup, numSlots, validAugment, showInGroups, ID_THERMAL);
     }
 
-    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups) {
+    public static void registerAugmentableBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, String modId) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, showInGroups, ID_THERMAL);
+        registerAugmentableBlock(name, sup, numSlots, validAugment, THERMAL_DEVICES, Rarity.COMMON, TRUE, modId);
     }
 
-    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, String modId) {
+    public static void registerAugmentableBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups, String modId) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_DEVICES, Rarity.COMMON, TRUE, modId);
+        registerAugmentableBlock(name, sup, numSlots, validAugment, THERMAL_DEVICES, Rarity.COMMON, showInGroups, modId);
     }
 
-    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups, String modId) {
-
-        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_DEVICES, Rarity.COMMON, showInGroups, modId);
-    }
-
-    public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
+    public static void registerAugmentableBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
 
         BLOCKS.register(name, sup);
         ITEMS.register(name, (Supplier<Item>) () -> new BlockItemAugmentable(BLOCKS.get(name), new Item.Properties().tab(group).rarity(rarity)).setNumSlots(numSlots).setAugValidator(validAugment).setShowInGroups(showInGroups).setModId(modId));
@@ -334,13 +333,6 @@ public class RegistrationHelper {
     public static String spores(String id) {
 
         return id + "_spores";
-    }
-    // endregion
-
-    // region SOUND EVENTS
-    public static void registerSound(String soundID) {
-
-        SOUND_EVENTS.register(soundID, () -> new SoundEvent(new ResourceLocation(soundID)));
     }
     // endregion
 }
