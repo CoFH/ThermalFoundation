@@ -21,8 +21,7 @@ import java.util.function.Supplier;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.thermal.core.ThermalCore.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
-import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_BLOCKS;
-import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_ITEMS;
+import static cofh.thermal.lib.common.ThermalItemGroups.*;
 import static net.minecraft.block.AbstractBlock.Properties.of;
 
 public class RegistrationHelper {
@@ -42,6 +41,11 @@ public class RegistrationHelper {
         registerBlock(name, sup, showInGroups, ID_THERMAL);
     }
 
+    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, BooleanSupplier showInGroups) {
+
+        registerBlock(name, sup, group, showInGroups, ID_THERMAL);
+    }
+
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity) {
 
         registerBlock(name, sup, rarity, ID_THERMAL);
@@ -52,20 +56,35 @@ public class RegistrationHelper {
         registerBlock(name, sup, rarity, showInGroups, ID_THERMAL);
     }
 
+    // MOD ID
     public static void registerBlock(String name, Supplier<Block> sup, String modId) {
 
         registerBlock(name, sup, THERMAL_BLOCKS, Rarity.COMMON, TRUE, modId);
     }
 
-    // MOD ID
+    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, String modId) {
+
+        registerBlock(name, sup, group, Rarity.COMMON, TRUE, modId);
+    }
+
     public static void registerBlock(String name, Supplier<Block> sup, BooleanSupplier showInGroups, String modId) {
 
         registerBlock(name, sup, THERMAL_BLOCKS, Rarity.COMMON, showInGroups, modId);
     }
 
+    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, BooleanSupplier showInGroups, String modId) {
+
+        registerBlock(name, sup, group, Rarity.COMMON, showInGroups, modId);
+    }
+
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, String modId) {
 
         registerBlock(name, sup, THERMAL_BLOCKS, rarity, TRUE, modId);
+    }
+
+    public static void registerBlock(String name, Supplier<Block> sup, ItemGroup group, Rarity rarity, String modId) {
+
+        registerBlock(name, sup, group, rarity, TRUE, modId);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, BooleanSupplier showInGroups, String modId) {
@@ -103,12 +122,12 @@ public class RegistrationHelper {
 
     public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, String modId) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_BLOCKS, Rarity.COMMON, TRUE, modId);
+        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_DEVICES, Rarity.COMMON, TRUE, modId);
     }
 
     public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups, String modId) {
 
-        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_BLOCKS, Rarity.COMMON, showInGroups, modId);
+        registerAugBlock(name, sup, numSlots, validAugment, THERMAL_DEVICES, Rarity.COMMON, showInGroups, modId);
     }
 
     public static void registerAugBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, ItemGroup group, Rarity rarity, BooleanSupplier showInGroups, String modId) {
@@ -264,12 +283,12 @@ public class RegistrationHelper {
 
     public static void registerCropAndSeed(String id) {
 
-        registerCropAndSeed(id, THERMAL_ITEMS);
+        registerCropAndSeed(id, THERMAL_FOODS);
     }
 
     public static void registerCropAndSeed(String id, Food food) {
 
-        registerCropAndSeed(id, THERMAL_ITEMS, food);
+        registerCropAndSeed(id, THERMAL_FOODS, food);
     }
 
     public static void registerCropAndSeed(String id, ItemGroup group) {

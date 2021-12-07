@@ -79,13 +79,31 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
         return useDelegate(stack, playerIn, handIn) ? ActionResult.success(stack) : ActionResult.pass(stack);
     }
 
-    //    @Override
-    //    public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
-    //
-    //        return useDelegate(stack, context.getPlayer(), context.getHand()) ? ActionResultType.SUCCESS : ActionResultType.PASS;
-    //    }
-
     // region HELPERS
+    public static boolean onItemPickup(EntityItemPickupEvent event, ItemStack container) {
+
+        SatchelItem satchelItem = (SatchelItem) container.getItem();
+        if (satchelItem.getMode(container) <= 0 || !satchelItem.canPlayerAccess(container, event.getPlayer())) {
+            return false;
+        }
+        ItemEntity eventItem = event.getItem();
+        int count = eventItem.getItem().getCount();
+
+        if (satchelItem.getFilter(container).valid(eventItem.getItem())) {
+            SimpleItemInv containerInv = satchelItem.getContainerInventory(container);
+            eventItem.setItem(InventoryHelper.insertStackIntoInventory(containerInv, eventItem.getItem(), false));
+
+            if (eventItem.getItem().getCount() != count) {
+                container.setPopTime(5);
+                PlayerEntity player = event.getPlayer();
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                containerInv.write(satchelItem.getOrCreateInvTag(container));
+                satchelItem.onContainerInventoryChanged(container);
+            }
+        }
+        return eventItem.getItem().getCount() != count;
+    }
+
     protected boolean useDelegate(ItemStack stack, PlayerEntity player, Hand hand) {
 
         if (Utils.isFakePlayer(player)) {
@@ -109,30 +127,6 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
             NetworkHooks.openGui((ServerPlayerEntity) player, this);
         }
         return true;
-    }
-
-    public static boolean onItemPickup(EntityItemPickupEvent event, ItemStack container) {
-
-        SatchelItem satchelItem = (SatchelItem) container.getItem();
-        if (satchelItem.getMode(container) <= 0 || !satchelItem.canPlayerAccess(container, event.getPlayer())) {
-            return false;
-        }
-        ItemEntity eventItem = event.getItem();
-        int count = eventItem.getItem().getCount();
-
-        if (satchelItem.getFilter(container).valid(eventItem.getItem())) {
-            SimpleItemInv containerInv = satchelItem.getContainerInventory(container);
-            eventItem.setItem(InventoryHelper.insertStackIntoInventory(containerInv, eventItem.getItem(), false));
-
-            if (eventItem.getItem().getCount() != count) {
-                container.setPopTime(5);
-                PlayerEntity player = event.getPlayer();
-                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-                containerInv.write(satchelItem.getOrCreateInvTag(container));
-                satchelItem.onContainerInventoryChanged(container);
-            }
-        }
-        return eventItem.getItem().getCount() != count;
     }
 
     @Override

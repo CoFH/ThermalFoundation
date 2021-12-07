@@ -163,6 +163,7 @@
   "info.thermal.xp_crystal.use.sneak": "Use while sneaking to retrieve stored experience.",
 
   "itemGroup.thermal.blocks": "Thermal Series: Blocks",
+  "itemGroup.thermal.devices": "Thermal Series: Machinery",
   "itemGroup.thermal.foods": "Thermal Series: Crops and Foods",
   "itemGroup.thermal.items": "Thermal Series: Items",
   "itemGroup.thermal.resources": "Thermal Series: Resources",

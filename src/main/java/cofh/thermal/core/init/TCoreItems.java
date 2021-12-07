@@ -212,7 +212,7 @@ public class TCoreItems {
         registerItem("ice_charge", () -> new IceChargeItem(new Item.Properties().tab(group)));
         registerItem("lightning_charge", () -> new LightningChargeItem(new Item.Properties().tab(group)));
 
-        registerItem(ID_DETONATOR, () -> new DetonatorItem(new Item.Properties().tab(group)).setShowInGroups(getFlag(ID_DETONATOR)));
+        registerItem(ID_DETONATOR, () -> new DetonatorItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_DETONATOR)));
 
         registerItem(ID_EXPLOSIVE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 

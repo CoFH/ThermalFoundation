@@ -7,6 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class ThermalItemGroups {
 
@@ -14,61 +15,23 @@ public class ThermalItemGroups {
 
     }
 
-    public static void setup() {
-
-        //        thermalBlocks = new ItemGroup(-1, ID_THERMAL + ".blocks") {
-        //
-        //            @Override
-        //            @OnlyIn(Dist.CLIENT)
-        //            public ItemStack createIcon() {
-        //
-        //                return new ItemStack(ITEMS.get("enderium_block"));
-        //            }
-        //        };
-
-        //        thermalMachines = new ItemGroup(-1, ID_THERMAL + ".adv_blocks") {
-        //
-        //            @Override
-        //            @OnlyIn(Dist.CLIENT)
-        //            public ItemStack createIcon() {
-        //
-        //                return new ItemStack(ITEMS.get("tinker_bench"));
-        //            }
-        //        };
-
-        //        thermalItems = new ItemGroup(-1, ID_THERMAL + ".items") {
-        //
-        //            @Override
-        //            @OnlyIn(Dist.CLIENT)
-        //            public ItemStack createIcon() {
-        //
-        //                return new ItemStack(ITEMS.get("signalum_gear"));
-        //            }
-        //        };
-        //
-        //        thermalTools = new ItemGroup(-1, ID_THERMAL + ".tools") {
-        //
-        //            @Override
-        //            @OnlyIn(Dist.CLIENT)
-        //            public ItemStack createIcon() {
-        //
-        //                return new ItemStack(ITEMS.get("wrench"));
-        //            }
-        //        };
-    }
-
-    //    public static ItemGroup thermalBlocks;
-    //    public static ItemGroup thermalMachines;
-    //    public static ItemGroup thermalItems;
-    //    public static ItemGroup thermalTools;
-
     public static final ItemGroup THERMAL_BLOCKS = new ItemGroup(-1, ID_THERMAL + ".blocks") {
 
         @Override
         @OnlyIn(Dist.CLIENT)
         public ItemStack makeIcon() {
 
-            return new ItemStack(ITEMS.get("enderium_block"));
+            return new ItemStack(ITEMS.get(ID_ENDERIUM_BLOCK));
+        }
+    };
+
+    public static final ItemGroup THERMAL_DEVICES = new ItemGroup(-1, ID_THERMAL + ".devices") {
+
+        @Override
+        @OnlyIn(Dist.CLIENT)
+        public ItemStack makeIcon() {
+
+            return new ItemStack(ITEMS.get(ID_TINKER_BENCH));
         }
     };
 
@@ -82,16 +45,26 @@ public class ThermalItemGroups {
         }
     };
 
+    public static final ItemGroup THERMAL_FOODS = new ItemGroup(-1, ID_THERMAL + ".foods") {
+
+        @Override
+        @OnlyIn(Dist.CLIENT)
+        public ItemStack makeIcon() {
+
+            return new ItemStack(ITEMS.get(ID_APPLE_BLOCK));
+        }
+    };
+
     public static final ItemGroup THERMAL_TOOLS = new ItemGroup(-1, ID_THERMAL + ".tools") {
 
         @Override
         @OnlyIn(Dist.CLIENT)
         public ItemStack makeIcon() {
 
-            return new ItemStack(ITEMS.get("wrench"));
+            return new ItemStack(ITEMS.get(ID_WRENCH));
         }
     };
 
-    public static ItemGroup THERMAL_MISC;
+    public static ItemGroup THERMAL_MISC; // TODO: Florbs, Morbs
 
 }
