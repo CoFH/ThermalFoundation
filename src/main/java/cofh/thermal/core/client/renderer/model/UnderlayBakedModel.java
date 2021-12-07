@@ -32,6 +32,8 @@ public class UnderlayBakedModel extends BakedModelWrapper<IBakedModel> implement
         UNDERLAY_QUAD_CACHE.clear();
     }
 
+    protected int underlayQuadLevel = 0;
+
     public UnderlayBakedModel(IBakedModel originalModel) {
 
         super(originalModel);
@@ -50,7 +52,7 @@ public class UnderlayBakedModel extends BakedModelWrapper<IBakedModel> implement
         if (side == null || quads.isEmpty()) {
             return quads;
         }
-        BakedQuad baseQuad = quads.get(0);
+        BakedQuad baseQuad = quads.get(underlayQuadLevel);
         int sideIndex = side.get3DDataValue();
 
         // FLUID

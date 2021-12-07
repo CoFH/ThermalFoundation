@@ -5,6 +5,8 @@ import cofh.core.util.ProxyUtils;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
 import cofh.core.util.helpers.ChatHelper;
+import cofh.lib.inventory.IInventoryContainerItem;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemInv;
 import cofh.lib.item.IColorableItem;
 import cofh.lib.item.IMultiModeItem;
@@ -17,6 +19,7 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.lib.common.ThermalConfig;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,6 +28,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.IDyeableArmorItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.*;
@@ -34,10 +38,11 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.WeakHashMap;
+import java.util.*;
 
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentString;
@@ -45,6 +50,20 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, IDyeableArmorItem, IFilterableItem, IMultiModeItem, INamedContainerProvider {
+
+    protected static final Set<Item> BANNED_ITEMS = new ObjectOpenHashSet<>();
+
+    public static void setBannedItems(Collection<String> itemLocs) {
+
+        BANNED_ITEMS.clear();
+
+        for (String loc : itemLocs) {
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(loc));
+            if (item != null) {
+                BANNED_ITEMS.add(item);
+            }
+        }
+    }
 
     protected static final WeakHashMap<ItemStack, IFilter> FILTERS = new WeakHashMap<>(MAP_CAPACITY);
 
@@ -127,6 +146,30 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
             NetworkHooks.openGui((ServerPlayerEntity) player, this);
         }
         return true;
+    }
+
+    @Override
+    protected SimpleItemInv readInventoryFromNBT(ItemStack container) {
+
+        CompoundNBT containerTag = getOrCreateInvTag(container);
+        int numSlots = getContainerSlots(container);
+        ArrayList<ItemStorageCoFH> invSlots = new ArrayList<>(numSlots);
+        for (int i = 0; i < numSlots; ++i) {
+            invSlots.add(new ItemStorageCoFH());
+        }
+        SimpleItemInv inventory = new SimpleItemInv(invSlots) {
+
+            @Override
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+
+                if (slot < 0 || slot >= getSlots()) {
+                    return false;
+                }
+                return !(stack.getItem() instanceof IInventoryContainerItem || BANNED_ITEMS.contains(stack.getItem()));
+            }
+        };
+        inventory.read(containerTag);
+        return inventory;
     }
 
     @Override

@@ -60,6 +60,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     public FluidCellBakedModel(IBakedModel originalModel) {
 
         super(originalModel);
+        underlayQuadLevel = 1;
     }
 
     @Override
@@ -67,6 +68,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
 
         LinkedList<BakedQuad> quads = new LinkedList<>(originalModel.getQuads(state, side, rand, extraData));
+
         if (side == null || quads.isEmpty()) {
             return quads;
         }
@@ -83,7 +85,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
             }
             BakedQuad faceQuad = FACE_QUAD_CACHE.get(Arrays.asList(face.get3DDataValue(), level));
             if (faceQuad == null) {
-                faceQuad = new RetexturedBakedQuad(baseQuad, getLevelTexture(level));
+                faceQuad = new RetexturedBakedQuad(quads.get(1), getLevelTexture(level));
                 FACE_QUAD_CACHE.put(Arrays.asList(face.get3DDataValue(), level), faceQuad);
             }
             quads.add(faceQuad);

@@ -1,10 +1,12 @@
 package cofh.thermal.lib.common;
 
 import cofh.core.util.helpers.EnergyHelper;
+import cofh.thermal.core.item.SatchelItem;
 import cofh.thermal.core.tileentity.device.DeviceFisherTile;
 import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
 import cofh.thermal.core.util.managers.dynamo.*;
 import cofh.thermal.core.util.managers.machine.*;
+import net.minecraft.item.Items;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
@@ -12,6 +14,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
@@ -150,6 +155,34 @@ public class ThermalConfig {
         enableWandererTrades = SERVER_CONFIG
                 .comment("If TRUE, trades will be added to the Wandering Trader.")
                 .define("Enable Wandering Trader Trades", true);
+
+        SERVER_CONFIG.pop();
+
+        SERVER_CONFIG.push("Satchels");
+
+        String[] shulkerBoxes = new String[]{
+                Items.SHULKER_BOX.getRegistryName().toString(),
+                Items.WHITE_SHULKER_BOX.getRegistryName().toString(),
+                Items.ORANGE_SHULKER_BOX.getRegistryName().toString(),
+                Items.MAGENTA_SHULKER_BOX.getRegistryName().toString(),
+                Items.LIGHT_BLUE_SHULKER_BOX.getRegistryName().toString(),
+                Items.YELLOW_SHULKER_BOX.getRegistryName().toString(),
+                Items.LIME_SHULKER_BOX.getRegistryName().toString(),
+                Items.PINK_SHULKER_BOX.getRegistryName().toString(),
+                Items.GRAY_SHULKER_BOX.getRegistryName().toString(),
+                Items.LIGHT_GRAY_SHULKER_BOX.getRegistryName().toString(),
+                Items.CYAN_SHULKER_BOX.getRegistryName().toString(),
+                Items.PURPLE_SHULKER_BOX.getRegistryName().toString(),
+                Items.BLUE_SHULKER_BOX.getRegistryName().toString(),
+                Items.BROWN_SHULKER_BOX.getRegistryName().toString(),
+                Items.GREEN_SHULKER_BOX.getRegistryName().toString(),
+                Items.RED_SHULKER_BOX.getRegistryName().toString(),
+                Items.BLACK_SHULKER_BOX.getRegistryName().toString()
+        };
+
+        satchelBans = SERVER_CONFIG
+                .comment("A list of Items by Resource Location which are NOT allowed in Satchels.")
+                .define("Satchel Denylist", Arrays.asList(shulkerBoxes));
 
         SERVER_CONFIG.pop();
 
@@ -476,6 +509,8 @@ public class ThermalConfig {
         setFlag(FLAG_RS_CONTROL_AUGMENT, !flagRSControl.get());
         setFlag(FLAG_XP_STORAGE_AUGMENT, !flagXPStorage.get());
 
+        SatchelItem.setBannedItems(satchelBans.get());
+
         refreshDeviceConfig();
         refreshDynamoConfig();
         refreshMachineConfig();
@@ -678,6 +713,8 @@ public class ThermalConfig {
     private static IntValue machineBottlerPower;
     private static IntValue machineBrewerPower;
     private static IntValue machineCrafterPower;
+
+    public static ForgeConfigSpec.ConfigValue<List<String>> satchelBans;
     // endregion
 
     // region CLIENT VARIABLES
