@@ -17,7 +17,7 @@ public class TreeExtractorBoost extends SerializableRecipe {
     protected float outputMod;
     protected int cycles;
 
-    protected TreeExtractorBoost(ResourceLocation recipeId, Ingredient inputItem, float outputMod, int cycles) {
+    public TreeExtractorBoost(ResourceLocation recipeId, Ingredient inputItem, float outputMod, int cycles) {
 
         super(recipeId);
 

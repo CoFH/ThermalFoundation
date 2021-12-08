@@ -18,6 +18,7 @@ public class TCoreRecipeTypes {
 
         // TODO: Convert when a ForgeRegistry is added.
         // Recipes are self-registered as they do not currently have a proper Forge Registry.
+        MAPPING_HIVE_EXTRACTOR.register();
         MAPPING_TREE_EXTRACTOR.register();
         BOOST_TREE_EXTRACTOR.register();
         BOOST_FISHER.register();
@@ -27,13 +28,16 @@ public class TCoreRecipeTypes {
         RECIPE_FURNACE.register();
         RECIPE_SAWMILL.register();
         RECIPE_PULVERIZER.register();
+        RECIPE_PULVERIZER_RECYCLE.register();
         RECIPE_SMELTER.register();
+        RECIPE_SMELTER_RECYCLE.register();
         RECIPE_INSOLATOR.register();
         RECIPE_CENTRIFUGE.register();
         RECIPE_PRESS.register();
         RECIPE_CRUCIBLE.register();
         RECIPE_CHILLER.register();
         RECIPE_REFINERY.register();
+        RECIPE_PYROLYZER.register();
         RECIPE_BOTTLER.register();
         RECIPE_BREWER.register();
         // RECIPE_ENCHANTER.register();
@@ -48,15 +52,19 @@ public class TCoreRecipeTypes {
         FUEL_MAGMATIC.register();
         FUEL_NUMISMATIC.register();
         FUEL_LAPIDARY.register();
+        FUEL_DISENCHANTMENT.register();
+        FUEL_GOURMAND.register();
     }
 
     // region DEVICES
+    public static final ResourceLocation ID_MAPPING_HIVE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "hive_extractor");
     public static final ResourceLocation ID_MAPPING_TREE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "tree_extractor");
     public static final ResourceLocation ID_BOOST_TREE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "tree_extractor_boost");
     public static final ResourceLocation ID_BOOST_FISHER = new ResourceLocation(ID_THERMAL, "fisher_boost");
     public static final ResourceLocation ID_MAPPING_ROCK_GEN = new ResourceLocation(ID_THERMAL, "rock_gen");
     public static final ResourceLocation ID_BOOST_POTION_DIFFUSER = new ResourceLocation(ID_THERMAL, "potion_diffuser_boost");
 
+    public static final SerializableRecipeType<HiveExtractorMapping> MAPPING_HIVE_EXTRACTOR = new SerializableRecipeType<>(ID_MAPPING_HIVE_EXTRACTOR);
     public static final SerializableRecipeType<TreeExtractorMapping> MAPPING_TREE_EXTRACTOR = new SerializableRecipeType<>(ID_MAPPING_TREE_EXTRACTOR);
     public static final SerializableRecipeType<TreeExtractorBoost> BOOST_TREE_EXTRACTOR = new SerializableRecipeType<>(ID_BOOST_TREE_EXTRACTOR);
     public static final SerializableRecipeType<FisherBoost> BOOST_FISHER = new SerializableRecipeType<>(ID_BOOST_FISHER);
@@ -116,11 +124,15 @@ public class TCoreRecipeTypes {
     public static final ResourceLocation ID_FUEL_MAGMATIC = new ResourceLocation(ID_THERMAL, "magmatic_fuel");
     public static final ResourceLocation ID_FUEL_NUMISMATIC = new ResourceLocation(ID_THERMAL, "numismatic_fuel");
     public static final ResourceLocation ID_FUEL_LAPIDARY = new ResourceLocation(ID_THERMAL, "lapidary_fuel");
+    public static final ResourceLocation ID_FUEL_DISENCHANTMENT = new ResourceLocation(ID_THERMAL, "disenchantment_fuel");
+    public static final ResourceLocation ID_FUEL_GOURMAND = new ResourceLocation(ID_THERMAL, "gourmand_fuel");
 
     public static final SerializableRecipeType<StirlingFuel> FUEL_STIRLING = new SerializableRecipeType<>(ID_FUEL_STIRLING);
     public static final SerializableRecipeType<CompressionFuel> FUEL_COMPRESSION = new SerializableRecipeType<>(ID_FUEL_COMPRESSION);
     public static final SerializableRecipeType<MagmaticFuel> FUEL_MAGMATIC = new SerializableRecipeType<>(ID_FUEL_MAGMATIC);
     public static final SerializableRecipeType<NumismaticFuel> FUEL_NUMISMATIC = new SerializableRecipeType<>(ID_FUEL_NUMISMATIC);
     public static final SerializableRecipeType<LapidaryFuel> FUEL_LAPIDARY = new SerializableRecipeType<>(ID_FUEL_LAPIDARY);
+    public static final SerializableRecipeType<DisenchantmentFuel> FUEL_DISENCHANTMENT = new SerializableRecipeType<>(ID_FUEL_DISENCHANTMENT);
+    public static final SerializableRecipeType<GourmandFuel> FUEL_GOURMAND = new SerializableRecipeType<>(ID_FUEL_GOURMAND);
     // endregion
 }

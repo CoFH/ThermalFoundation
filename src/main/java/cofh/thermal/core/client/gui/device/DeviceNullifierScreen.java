@@ -16,10 +16,10 @@ import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 
 public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifierContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/devices/nullifier.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/nullifier.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public static final String TEX_TRASH = ID_THERMAL + ":textures/gui/devices/nullifier_empty_bin.png";
+    public static final String TEX_TRASH = ID_THERMAL + ":textures/gui/container/nullifier_empty_bin.png";
 
     public DeviceNullifierScreen(DeviceNullifierContainer container, PlayerInventory inv, ITextComponent titleIn) {
 
@@ -33,20 +33,20 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
 
         super.init();
 
-        addElement(new ElementButton(this, 132, 34) {
+        addElement(new ElementButton(this, 131, 33) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                container.emptyBin();
+                menu.emptyBin();
                 playClickSound(0.7F);
                 return true;
             }
         }
-                .setSize(18, 18)
-                .setTexture(TEX_TRASH, 54, 18)
+                .setSize(20, 20)
+                .setTexture(TEX_TRASH, 60, 20)
                 .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.device_nullifier_empty_bin")))
-                .setEnabled(() -> !container.tile.binHasItems()));
+                .setEnabled(() -> !menu.tile.binHasItems()));
     }
 
 }

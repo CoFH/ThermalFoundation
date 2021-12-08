@@ -23,7 +23,7 @@ import static cofh.thermal.core.init.TCoreReferences.BASALZ_PROJECTILE_ENTITY;
 
 public class BasalzProjectileEntity extends DamagingProjectileEntity {
 
-    public static float baseDamage = 7.0F;
+    public static float defaultDamage = 7.0F;
     public static int knockbackStrength = 2;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
@@ -44,45 +44,45 @@ public class BasalzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected boolean isFireballFiery() {
+    protected boolean shouldBurn() {
 
         return false;
     }
 
     @Override
-    protected IParticleData getParticle() {
+    protected IParticleData getTrailParticle() {
 
         return ParticleTypes.FALLING_LAVA;
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
             if (!entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addPotionEffect(new EffectInstance(SUNDERED, effectDuration, effectAmplifier, false, false));
-                Vector3d vec3d = this.getMotion().mul(1.0D, 0.0D, 1.0D).normalize().scale((double) knockbackStrength * 0.6D);
-                if (vec3d.lengthSquared() > 0.0D) {
-                    living.addVelocity(vec3d.x, 0.1D, vec3d.z);
+                living.addEffect(new EffectInstance(SUNDERED, effectDuration, effectAmplifier, false, false));
+                Vector3d vec3d = this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D).normalize().scale((double) knockbackStrength * 0.6D);
+                if (vec3d.lengthSqr() > 0.0D) {
+                    living.push(vec3d.x, 0.1D, vec3d.z);
                 }
             }
-            entity.attackEntityFrom(BasalzDamageSource.causeDamage(this, func_234616_v_()), baseDamage);
+            entity.hurt(BasalzDamageSource.causeDamage(this, getOwner()), defaultDamage);
         }
-        if (Utils.isServerWorld(world)) {
-            this.world.setEntityState(this, (byte) 3);
+        if (Utils.isServerWorld(level)) {
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
     }
 
     @Override
-    protected void registerData() {
+    protected void defineSynchedData() {
 
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }

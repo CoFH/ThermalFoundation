@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "bottom": "thermal:block/misc/earth_tnt_bottom",
-    "top": "thermal:block/misc/earth_tnt_top",
-    "side": "thermal:block/misc/earth_tnt_side"
+    "bottom": "thermal:block/earth_tnt_bottom",
+    "top": "thermal:block/earth_tnt_top",
+    "side": "thermal:block/earth_tnt_side"
   }
 }

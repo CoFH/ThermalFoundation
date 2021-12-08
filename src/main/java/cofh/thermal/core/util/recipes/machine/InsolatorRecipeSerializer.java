@@ -1,5 +1,6 @@
 package cofh.thermal.core.util.recipes.machine;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.MachineRecipeSerializer;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import com.google.gson.JsonObject;
@@ -24,14 +25,14 @@ public class InsolatorRecipeSerializer<T extends ThermalRecipe> extends MachineR
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int energy = defaultEnergy;
         int water = defaultWater;
         float experience = 0.0F;
 
         ArrayList<Ingredient> inputItems = new ArrayList<>();
-        ArrayList<FluidStack> inputFluids = new ArrayList<>();
+        ArrayList<FluidIngredient> inputFluids = new ArrayList<>();
         ArrayList<ItemStack> outputItems = new ArrayList<>();
         ArrayList<Float> outputItemChances = new ArrayList<>();
         ArrayList<FluidStack> outputFluids = new ArrayList<>();
@@ -77,7 +78,7 @@ public class InsolatorRecipeSerializer<T extends ThermalRecipe> extends MachineR
             water *= json.get(WATER_MOD).getAsFloat();
         }
         if (inputFluids.isEmpty()) {
-            inputFluids.add(new FluidStack(Fluids.WATER, water));
+            inputFluids.add(FluidIngredient.of(new FluidStack(Fluids.WATER, water)));
         }
         return factory.create(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }

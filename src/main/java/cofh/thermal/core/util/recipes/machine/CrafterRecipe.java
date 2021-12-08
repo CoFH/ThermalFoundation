@@ -39,7 +39,7 @@ public class CrafterRecipe extends BaseMachineRecipe {
         ingredients = recipe.getIngredients();
 
         for (Ingredient ing : ingredients) {
-            for (ItemStack stack : ing.getMatchingStacks()) {
+            for (ItemStack stack : ing.getItems()) {
                 validItems.add(convert(stack));
                 FluidUtil.getFluidContained(stack).ifPresent(fluidStack -> {
                     if (!fluidStack.isEmpty()) {
@@ -48,7 +48,7 @@ public class CrafterRecipe extends BaseMachineRecipe {
                 });
             }
         }
-        outputItems.add(recipe.getRecipeOutput());
+        outputItems.add(recipe.getResultItem());
         outputItemChances.add(BASE_CHANCE_LOCKED);
     }
 
@@ -85,10 +85,10 @@ public class CrafterRecipe extends BaseMachineRecipe {
         if (storedFluidAmount > 0) {
             FluidStack storedFluid = inventory.inputTanks().get(0).getFluidStack();
             for (Ingredient ing : ingredients) {
-                if (ing.hasNoMatchingItems()) {
+                if (ing.isEmpty()) {
                     ++found;
                 } else {
-                    for (ItemStack stack : ing.getMatchingStacks()) {
+                    for (ItemStack stack : ing.getItems()) {
                         FluidStack fluid = FluidUtil.getFluidContained(stack).orElse(FluidStack.EMPTY);
                         if (FluidHelper.fluidsEqual(storedFluid, fluid) && storedFluidAmount - retFluid >= fluid.getAmount()) {
                             retFluid += fluid.getAmount();
@@ -113,10 +113,10 @@ public class CrafterRecipe extends BaseMachineRecipe {
             }
         } else {
             for (Ingredient ing : ingredients) {
-                if (ing.hasNoMatchingItems()) {
+                if (ing.isEmpty()) {
                     ++found;
                 } else {
-                    for (ItemStack stack : ing.getMatchingStacks()) {
+                    for (ItemStack stack : ing.getItems()) {
                         int curFound = found;
                         for (int j = 0; j < retItems.length; ++j) {
                             ItemStack inSlot = inventory.inputSlots().get(j).getItemStack();

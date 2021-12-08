@@ -15,7 +15,7 @@ import java.util.Map;
 public class NumismaticFuelManager extends SingleItemFuelManager {
 
     private static final NumismaticFuelManager INSTANCE = new NumismaticFuelManager();
-    protected static int DEFAULT_ENERGY = 16000;
+    protected static final int DEFAULT_ENERGY = 16000;
 
     public static NumismaticFuelManager instance() {
 
@@ -38,7 +38,7 @@ public class NumismaticFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.FUEL_NUMISMATIC);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_NUMISMATIC);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addFuel((ThermalFuel) entry.getValue());
         }

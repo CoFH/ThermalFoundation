@@ -17,7 +17,7 @@ import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 public class TreeExtractorMappingSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<TreeExtractorMapping> {
 
     @Override
-    public TreeExtractorMapping read(ResourceLocation recipeId, JsonObject json) {
+    public TreeExtractorMapping fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Block trunk = Blocks.AIR;
         Block leaves = Blocks.AIR;
@@ -43,7 +43,7 @@ public class TreeExtractorMappingSerializer extends ForgeRegistryEntry<IRecipeSe
 
     @Nullable
     @Override
-    public TreeExtractorMapping read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public TreeExtractorMapping fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         Block trunk = ForgeRegistries.BLOCKS.getValue(buffer.readResourceLocation());
         Block leaves = ForgeRegistries.BLOCKS.getValue(buffer.readResourceLocation());
@@ -53,7 +53,7 @@ public class TreeExtractorMappingSerializer extends ForgeRegistryEntry<IRecipeSe
     }
 
     @Override
-    public void write(PacketBuffer buffer, TreeExtractorMapping recipe) {
+    public void toNetwork(PacketBuffer buffer, TreeExtractorMapping recipe) {
 
         buffer.writeResourceLocation(recipe.trunk.getRegistryName());
         buffer.writeResourceLocation(recipe.leaves.getRegistryName());

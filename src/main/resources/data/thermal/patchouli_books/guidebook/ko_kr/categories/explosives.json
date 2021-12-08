@@ -1,0 +1,1 @@
+{  "name": "폭발물",  "description": "가지고 놀면 재밌습니다. 소모될 걸 생각하면 아니지만요.",  "icon": "thermal:explosive_grenade",  "parent": "thermal:equipment",  "sortnum": 4}

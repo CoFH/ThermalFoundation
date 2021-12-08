@@ -1,14 +1,17 @@
 package cofh.thermal.core.compat.jei;
 
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.client.gui.device.DeviceRockGenScreen;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.compat.jei.device.RockGenCategory;
 import cofh.thermal.core.compat.jei.device.TreeExtractorCategory;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -18,6 +21,11 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -25,6 +33,9 @@ import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_BLOCK;
 import static cofh.thermal.lib.common.ThermalConfig.jeiBucketTanks;
+import static cofh.thermal.lib.common.ThermalFlags.getFlag;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_ROCK_GEN;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;
 
 @JeiPlugin
 public class TCoreJeiPlugin implements IModPlugin {
@@ -37,8 +48,12 @@ public class TCoreJeiPlugin implements IModPlugin {
             // TODO: Log an error.
             return;
         }
-        registration.addRecipes(recipeManager.getRecipes(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
-        registration.addRecipes(recipeManager.getRecipes(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
+        if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
+            registration.addRecipes(recipeManager.byType(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
+        }
+        if (getFlag(ID_DEVICE_ROCK_GEN).getAsBoolean()) {
+            registration.addRecipes(recipeManager.byType(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
+        }
     }
 
     @Override
@@ -76,11 +91,22 @@ public class TCoreJeiPlugin implements IModPlugin {
     private RecipeManager getRecipeManager() {
 
         RecipeManager recipeManager = null;
-        ClientWorld world = Minecraft.getInstance().world;
+        ClientWorld world = Minecraft.getInstance().level;
         if (world != null) {
             recipeManager = world.getRecipeManager();
         }
         return recipeManager;
+    }
+
+    public static void setInputIngredients(IIngredients ingredients, List<FluidIngredient> inputs) {
+
+        List<List<FluidStack>> inputLists = new ArrayList<>();
+        for (FluidIngredient input : inputs) {
+            FluidStack[] stacks = input.getFluids();
+            List<FluidStack> expandedInput = Arrays.asList(stacks);
+            inputLists.add(expandedInput);
+        }
+        ingredients.setInputLists(VanillaTypes.FLUID, inputLists);
     }
 
     public static void addDefaultFluidTooltipCallback(IGuiFluidStackGroup group) {

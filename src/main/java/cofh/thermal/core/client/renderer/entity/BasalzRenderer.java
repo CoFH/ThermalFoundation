@@ -23,13 +23,13 @@ public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<Basalz
     }
 
     @Override
-    protected int getBlockLight(BasalzEntity entityIn, BlockPos partialTicks) {
+    protected int getBlockLightLevel(BasalzEntity entityIn, BlockPos partialTicks) {
 
-        return entityIn.isAngry() ? 12 : super.getBlockLight(entityIn, partialTicks);
+        return entityIn.isAngry() ? 12 : super.getBlockLightLevel(entityIn, partialTicks);
     }
 
     @Override
-    public ResourceLocation getEntityTexture(BasalzEntity entity) {
+    public ResourceLocation getTextureLocation(BasalzEntity entity) {
 
         return entity.isAngry() ? ANGRY_TEXTURE : CALM_TEXTURE;
     }

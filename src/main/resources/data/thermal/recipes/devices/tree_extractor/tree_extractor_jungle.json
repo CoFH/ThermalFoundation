@@ -4,6 +4,6 @@
   "leaves": "minecraft:jungle_leaves",
   "result": {
     "fluid": "thermal:latex",
-    "amount": 50
+    "amount": 25
   }
 }

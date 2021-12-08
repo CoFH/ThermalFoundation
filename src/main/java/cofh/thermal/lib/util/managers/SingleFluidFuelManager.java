@@ -32,11 +32,14 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
     protected SingleFluidFuelManager(int defaultEnergy) {
 
         super(defaultEnergy);
+        this.basePower = 40;
     }
 
     public void addFuel(ThermalFuel recipe) {
 
-        addFuel(recipe.getEnergy(), Collections.emptyList(), recipe.getInputFluids());
+        for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
+            addFuel(recipe.getEnergy(), Collections.emptyList(), Collections.singletonList(fluidInput));
+        }
     }
 
     public boolean validFuel(FluidStack input) {
@@ -88,6 +91,12 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
         BaseDynamoFuel fuel = new BaseDynamoFuel(energy, inputItems, inputFluids);
         fuelMap.put(FluidHelper.fluidHashcode(input), fuel);
         return fuel;
+    }
+
+    @Override
+    public int getMinPower() {
+
+        return 10;
     }
 
     // region IFuelManager

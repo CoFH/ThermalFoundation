@@ -1,6 +1,6 @@
 {
   "parent": "thermal:item/glowstone_grenade",
   "textures": {
-    "layer0": "thermal:item/tools/glowstone_grenade_thrown"
+    "layer0": "thermal:item/glowstone_grenade_thrown"
   }
 }

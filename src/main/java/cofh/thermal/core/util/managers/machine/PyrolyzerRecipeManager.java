@@ -23,6 +23,7 @@ public class PyrolyzerRecipeManager extends SingleItemRecipeManager {
     private PyrolyzerRecipeManager() {
 
         super(DEFAULT_ENERGY, 4, 1);
+        basePower = 5;
     }
 
     // region IManager
@@ -30,7 +31,7 @@ public class PyrolyzerRecipeManager extends SingleItemRecipeManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_PYROLYZER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PYROLYZER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }

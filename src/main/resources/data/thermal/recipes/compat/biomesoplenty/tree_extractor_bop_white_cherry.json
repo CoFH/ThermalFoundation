@@ -1,6 +1,6 @@
 {
   "type": "thermal:tree_extractor",
-  "trunk": "biomesoplenty:cherry_logs",
+  "trunk": "biomesoplenty:cherry_log",
   "leaves": "biomesoplenty:white_cherry_leaves",
   "result": {
     "fluid": "thermal:resin",

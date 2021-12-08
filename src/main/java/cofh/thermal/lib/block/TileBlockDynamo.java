@@ -17,21 +17,21 @@ import static cofh.lib.util.constants.Constants.FACING_ALL;
 public class TileBlockDynamo extends TileBlockActive6Way {
 
     private static final VoxelShape[] BASE_SHAPE = new VoxelShape[]{
-            Block.makeCuboidShape(0, 6, 0, 16, 16, 16),
-            Block.makeCuboidShape(0, 0, 0, 16, 10, 16),
-            Block.makeCuboidShape(0, 0, 6, 16, 16, 16),
-            Block.makeCuboidShape(0, 0, 0, 16, 16, 10),
-            Block.makeCuboidShape(6, 0, 0, 16, 16, 16),
-            Block.makeCuboidShape(0, 0, 0, 10, 16, 16)
+            Block.box(0, 6, 0, 16, 16, 16),
+            Block.box(0, 0, 0, 16, 10, 16),
+            Block.box(0, 0, 6, 16, 16, 16),
+            Block.box(0, 0, 0, 16, 16, 10),
+            Block.box(6, 0, 0, 16, 16, 16),
+            Block.box(0, 0, 0, 10, 16, 16)
     };
 
     private static final VoxelShape[] COIL_SHAPE = new VoxelShape[]{
-            Block.makeCuboidShape(4, 0, 4, 12, 6, 12),
-            Block.makeCuboidShape(4, 10, 4, 12, 16, 12),
-            Block.makeCuboidShape(4, 4, 0, 12, 12, 6),
-            Block.makeCuboidShape(4, 4, 10, 12, 12, 16),
-            Block.makeCuboidShape(0, 4, 4, 6, 12, 12),
-            Block.makeCuboidShape(10, 4, 4, 16, 12, 12)
+            Block.box(4, 0, 4, 12, 6, 12),
+            Block.box(4, 10, 4, 12, 16, 12),
+            Block.box(4, 4, 0, 12, 12, 6),
+            Block.box(4, 4, 10, 12, 12, 16),
+            Block.box(0, 4, 4, 6, 12, 12),
+            Block.box(10, 4, 4, 16, 12, 12)
     };
 
     private static final VoxelShape[] DYNAMO_SHAPE = new VoxelShape[]{
@@ -51,7 +51,7 @@ public class TileBlockDynamo extends TileBlockActive6Way {
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 
-        return DYNAMO_SHAPE[state.get(FACING_ALL).ordinal()];
+        return DYNAMO_SHAPE[state.getValue(FACING_ALL).ordinal()];
     }
 
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "thermal:block/storage/cured_rubber_block"
-  }
-}

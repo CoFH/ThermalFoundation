@@ -4,6 +4,7 @@ import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.ThermalCore;
@@ -11,6 +12,7 @@ import cofh.thermal.core.inventory.container.device.DevicePotionDiffuserContaine
 import cofh.thermal.core.util.managers.device.PotionDiffuserManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,11 +36,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.INPUT;
+import static cofh.lib.util.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
@@ -46,7 +49,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_POTION_DIFFUSER_TILE
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickableTileEntity {
+public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER, TAG_AUGMENT_TYPE_POTION);
 
@@ -58,6 +61,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     protected static final int FLUID_AMOUNT = 25;
     protected static final int RADIUS = 4;
     protected int radius = RADIUS;
+    protected AxisAlignedBB area;
 
     protected boolean cached;
     protected List<EffectInstance> effects = Collections.emptyList();
@@ -74,9 +78,9 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
         super(DEVICE_POTION_DIFFUSER_TILE);
 
-        inventory.addSlot(inputSlot, INPUT);
+        inventory.addSlot(inputSlot, ACCESSIBLE);
 
-        tankInv.addTank(inputTank, INPUT);
+        tankInv.addTank(inputTank, ACCESSIBLE);
 
         addAugmentSlots(deviceAugments);
         initHandlers();
@@ -94,7 +98,11 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     @Override
     protected boolean isValid() {
 
-        return inputTank.getAmount() > FLUID_AMOUNT;
+        if (inputTank.getAmount() < FLUID_AMOUNT) {
+            cached = false;
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -138,7 +146,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DevicePotionDiffuserContainer(i, world, pos, inventory, player);
+        return new DevicePotionDiffuserContainer(i, level, worldPosition, inventory, player);
     }
 
     // region GUI
@@ -218,9 +226,9 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         boostCycles = nbt.getInt(TAG_BOOST_CYCLES);
         boostMax = nbt.getInt(TAG_BOOST_MAX);
@@ -234,9 +242,9 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_BOOST_CYCLES, boostCycles);
         nbt.putInt(TAG_BOOST_MAX, boostMax);
@@ -281,9 +289,9 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
                 cached = false;
             }
         } else if (!cached) {
-            effects = PotionUtils.getEffectsFromTag(inputTank.getFluidStack().getTag());
+            effects = PotionUtils.getAllEffects(inputTank.getFluidStack().getTag());
             for (EffectInstance effect : effects) {
-                instant |= effect.getPotion().isInstant();
+                instant |= effect.getEffect().isInstantenous();
             }
             cached = true;
         }
@@ -297,14 +305,14 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
         if (effects.isEmpty()) {
             return;
         }
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -1, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
-        List<LivingEntity> targets = world.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE);
+        AxisAlignedBB area = getArea();
+        List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
         if (targets.isEmpty()) { // TODO: Proximity sensor aug?
             return;
         }
         if (boostCycles > 0) {
             --boostCycles;
-        } else if (!inputSlot.isEmpty()) {
+        } else if (PotionDiffuserManager.instance().validBoost(inputSlot.getItemStack())) {
             boostCycles = PotionDiffuserManager.instance().getBoostCycles(inputSlot.getItemStack());
             boostMax = boostCycles;
             boostAmplifier = PotionDiffuserManager.instance().getBoostAmplifier(inputSlot.getItemStack());
@@ -316,13 +324,13 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
             boostDuration = 0;
         }
         for (LivingEntity target : targets) {
-            if (target.canBeHitWithPotion()) {
+            if (target.isAffectedByPotions()) {
                 for (EffectInstance effect : effects) {
-                    if (effect.getPotion().isInstant()) {
-                        effect.getPotion().affectEntity(null, null, target, getEffectAmplifier(effect), 0.5D);
+                    if (effect.getEffect().isInstantenous()) {
+                        effect.getEffect().applyInstantenousEffect(null, null, target, getEffectAmplifier(effect), 0.5D);
                     } else {
-                        EffectInstance potion = new EffectInstance(effect.getPotion(), getEffectDuration(effect), getEffectAmplifier(effect), effect.isAmbient(), effect.doesShowParticles());
-                        target.addPotionEffect(potion);
+                        EffectInstance potion = new EffectInstance(effect.getEffect(), getEffectDuration(effect), getEffectAmplifier(effect), effect.isAmbient(), effect.isVisible());
+                        target.addEffect(potion);
                     }
                 }
             }
@@ -336,8 +344,8 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
         if (renderFluid.getAmount() < FLUID_AMOUNT) {
             return;
         }
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -1, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
-        List<LivingEntity> targets = world.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE);
+        AxisAlignedBB area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
+        List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
         if (targets.isEmpty()) {
             return;
         }
@@ -385,6 +393,31 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
         potionAmpMod += getAttributeMod(augmentData, TAG_AUGMENT_POTION_AMPLIFIER);
         potionDurMod += getAttributeMod(augmentData, TAG_AUGMENT_POTION_DURATION);
+    }
+
+    @Override
+    protected void finalizeAttributes(Map<Enchantment, Integer> enchantmentMap) {
+
+        super.finalizeAttributes(enchantmentMap);
+
+        area = null;
+    }
+    // endregion
+
+    // region IAreaEffectTile
+    @Override
+    public AxisAlignedBB getArea() {
+
+        if (area == null) {
+            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
+        }
+        return area;
+    }
+
+    @Override
+    public int getColor() {
+
+        return isActive ? renderFluid.isEmpty() ? 0xF800F8 : FluidHelper.color(renderFluid) : 0x555555;
     }
     // endregion
 }

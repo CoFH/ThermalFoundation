@@ -27,12 +27,13 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
     protected SingleItemFuelManager(int defaultEnergy) {
 
         super(defaultEnergy);
+        this.basePower = 40;
     }
 
     public void addFuel(ThermalFuel recipe) {
 
-        for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-            addFuel(recipe.getEnergy(), Collections.singletonList(recipeInput), recipe.getInputFluids());
+        for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+            addFuel(recipe.getEnergy(), Collections.singletonList(recipeInput), Collections.emptyList());
         }
     }
 
@@ -76,6 +77,12 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
         BaseDynamoFuel fuel = new BaseDynamoFuel(energy, inputItems, inputFluids);
         fuelMap.put(convert(input), fuel);
         return fuel;
+    }
+
+    @Override
+    public int getMinPower() {
+
+        return 10;
     }
 
     // region IFuelManager

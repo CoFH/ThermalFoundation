@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreIDs.ID_NUKE_TNT;
 import static cofh.thermal.core.init.TCoreReferences.NUKE_TNT_ENTITY;
+import static cofh.thermal.lib.common.ThermalIDs.ID_NUKE_TNT;
 
 public class NukeTNTEntity extends AbstractTNTEntity {
 
@@ -40,15 +40,15 @@ public class NukeTNTEntity extends AbstractTNTEntity {
     @Override
     protected void explode() {
 
-        if (Utils.isServerWorld(world)) {
-            world.setBlockState(this.getPosition(), Blocks.AIR.getDefaultState());
-            NukeGrenadeEntity.affectNearbyEntities(this, world, this.getPosition(), radius * 2, tntPlacedBy);
-            NukeGrenadeEntity.destroyBlocks(this, world, this.getPosition(), radius + radius / 2);
-            world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float) NukeGrenadeEntity.explosionStrength * 2, !this.isInWater(), NukeGrenadeEntity.explosionsBreakBlocks ? Explosion.Mode.BREAK : Explosion.Mode.NONE);
+        if (Utils.isServerWorld(level)) {
+            level.setBlockAndUpdate(this.blockPosition(), Blocks.AIR.defaultBlockState());
+            NukeGrenadeEntity.affectNearbyEntities(this, level, this.blockPosition(), radius * 3, owner);
+            NukeGrenadeEntity.destroyBlocks(this, level, this.blockPosition(), radius * 2);
+            level.explode(this, this.getX(), this.getY(), this.getZ(), (float) NukeGrenadeEntity.explosionStrength * 2, true, NukeGrenadeEntity.explosionsDestroyBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
             this.remove();
         }
-        this.world.addParticle(ParticleTypes.FLASH, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.FLASH, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
 }

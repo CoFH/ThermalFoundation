@@ -2,6 +2,7 @@ package cofh.thermal.core.tileentity.device;
 
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemHandler;
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
@@ -11,6 +12,7 @@ import cofh.thermal.core.inventory.container.device.DeviceFisherContainer;
 import cofh.thermal.core.util.managers.device.FisherManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.fluid.FluidState;
@@ -24,6 +26,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.server.ServerWorld;
@@ -31,6 +34,7 @@ import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
@@ -43,7 +47,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEntity {
+public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
@@ -59,6 +63,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
 
     protected static final int RADIUS = 2;
     public int radius = RADIUS;
+    protected AxisAlignedBB area;
 
     protected int process = timeConstant / 2;
 
@@ -88,31 +93,32 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     }
 
     @Override
-    public void updateContainingBlockInfo() {
+    public void clearCache() {
 
-        super.updateContainingBlockInfo();
+        super.clearCache();
         updateValidity();
     }
 
     @Override
     protected void updateValidity() {
 
-        if (world == null || !world.isAreaLoaded(pos, 1 + radius) || Utils.isClientWorld(world)) {
+        area = null;
+        if (level == null || !level.isAreaLoaded(worldPosition, 1 + radius) || Utils.isClientWorld(level)) {
             return;
         }
         int facingWater = 0;
         valid = false;
 
         BlockState myState = getBlockState();
-        BlockPos facePos = pos.offset(myState.get(FACING_HORIZONTAL));
-        FluidState state = world.getFluidState(facePos);
+        BlockPos facePos = worldPosition.relative(myState.getValue(FACING_HORIZONTAL));
+        FluidState state = level.getFluidState(facePos);
 
-        if (state.getFluid().equals(Fluids.WATER)) {
-            BlockPos areaPos = pos.offset(myState.get(FACING_HORIZONTAL), 2);
-            Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(areaPos.add(-1, 0, -1), areaPos.add(1, 0, 1));
+        if (state.getType().equals(Fluids.WATER)) {
+            BlockPos areaPos = worldPosition.relative(myState.getValue(FACING_HORIZONTAL), 2);
+            Iterable<BlockPos> area = BlockPos.betweenClosed(areaPos.offset(-1, 0, -1), areaPos.offset(1, 0, 1));
             for (BlockPos scan : area) {
-                state = world.getFluidState(scan);
-                if (state.getFluid().equals(Fluids.WATER)) {
+                state = level.getFluidState(scan);
+                if (state.getType().equals(Fluids.WATER)) {
                     ++facingWater;
                 }
             }
@@ -153,8 +159,8 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
             return;
         }
         if (valid) {
-            LootTable table = world.getServer().getLootTableManager().getLootTableFromLocation(FisherManager.instance().getBoostLootTable(inputSlot.getItemStack()));
-            LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) world).withParameter(LootParameters.field_237457_g_, Vector3d.copy(getPos())).withRandom(world.rand);
+            LootTable table = level.getServer().getLootTables().get(FisherManager.instance().getBoostLootTable(inputSlot.getItemStack()));
+            LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) level).withParameter(LootParameters.ORIGIN, Vector3d.atLowerCornerOf(getBlockPos())).withRandom(level.random);
 
             float lootBase = baseMod * FisherManager.instance().getBoostOutputMod(inputSlot.getItemStack());
             float lootExtra = lootBase - (int) lootBase;
@@ -163,7 +169,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
             int caught = 0;
 
             for (int i = 0; i < lootCount; ++i) {
-                for (ItemStack stack : table.generate(contextBuilder.build(LootParameterSets.EMPTY))) {
+                for (ItemStack stack : table.getRandomItems(contextBuilder.create(LootParameterSets.EMPTY))) {
                     if (InventoryHelper.insertStackIntoInventory(internalHandler, stack, false).isEmpty()) {
                         ++caught;
                     }
@@ -174,10 +180,10 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
                     inputSlot.consume(1);
                 }
                 if (xpStorageFeature) {
-                    xpStorage.receiveXp(caught + world.rand.nextInt(2 * caught), false);
+                    xpStorage.receiveXp(caught + level.random.nextInt(2 * caught), false);
                 }
-                Vector3d splashVec = Vector3d.copyCenteredWithVerticalOffset(pos.offset(getBlockState().get(FACING_HORIZONTAL)), 1.0);
-                ((ServerWorld) world).spawnParticle(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
+                Vector3d splashVec = Vector3d.upFromBottomCenterOf(worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL)), 1.0);
+                ((ServerWorld) level).sendParticles(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
             }
         }
     }
@@ -186,24 +192,26 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceFisherContainer(i, world, pos, inventory, player);
+        return new DeviceFisherContainer(i, level, worldPosition, inventory, player);
     }
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         process = nbt.getInt(TAG_PROCESS);
+        valid = nbt.getBoolean(TAG_VALID);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
+        nbt.putBoolean(TAG_VALID, valid);
 
         return nbt;
     }
@@ -212,27 +220,27 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     // region HELPERS
     protected int getTimeConstant() {
 
-        if (world == null) {
+        if (level == null) {
             return timeConstant / 2;
         }
         int constant = timeConstant;
 
-        BlockPos areaPos = pos.offset(getBlockState().get(FACING_HORIZONTAL), radius);
-        Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(areaPos.add(-radius, 1 - radius, -radius), areaPos.add(radius, -1 + radius, radius));
+        BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
+        Iterable<BlockPos> area = BlockPos.betweenClosed(areaPos.offset(-radius, 1 - radius, -radius), areaPos.offset(radius, -1 + radius, radius));
 
         for (BlockPos scan : area) {
-            FluidState state = world.getFluidState(scan);
-            if (state.getFluid().equals(Fluids.WATER)) {
+            FluidState state = level.getFluidState(scan);
+            if (state.getType().equals(Fluids.WATER)) {
                 constant -= timeReductionWater;
             }
         }
-        if (Utils.hasBiomeType(world, pos, BiomeDictionary.Type.OCEAN)) {
+        if (Utils.hasBiomeType(level, worldPosition, BiomeDictionary.Type.OCEAN)) {
             constant /= 3;
         }
-        if (Utils.hasBiomeType(world, pos, BiomeDictionary.Type.RIVER)) {
+        if (Utils.hasBiomeType(level, worldPosition, BiomeDictionary.Type.RIVER)) {
             constant /= 2;
         }
-        if (world.isRainingAt(pos)) {
+        if (level.isRainingAt(worldPosition)) {
             constant /= 2;
         }
         if (inputSlot.isEmpty()) {
@@ -263,6 +271,37 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         super.setAttributesFromAugment(augmentData);
 
         radius += getAttributeMod(augmentData, TAG_AUGMENT_RADIUS);
+    }
+
+    @Override
+    protected void finalizeAttributes(Map<Enchantment, Integer> enchantmentMap) {
+
+        super.finalizeAttributes(enchantmentMap);
+
+        area = null;
+    }
+    // endregion
+
+    // region IAreaEffectTile
+    @Override
+    public AxisAlignedBB getArea() {
+
+        if (area == null) {
+            if (!valid) {
+                BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), 2);
+                area = new AxisAlignedBB(areaPos.offset(-1, 0, -1), areaPos.offset(2, 1, 2));
+            } else {
+                BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
+                area = new AxisAlignedBB(areaPos.offset(-radius, -1 - radius, -radius), areaPos.offset(1 + radius, -1 + radius, 1 + radius));
+            }
+        }
+        return area;
+    }
+
+    @Override
+    public int getColor() {
+
+        return valid ? isActive ? 0x0088FF : 0x555555 : 0xFF0000;
     }
     // endregion
 }

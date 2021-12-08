@@ -2,11 +2,11 @@ package cofh.thermal.lib.tileentity;
 
 import cofh.core.tileentity.TileCoFH;
 import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.util.TimeTracker;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
@@ -21,7 +21,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -35,9 +34,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 
-public abstract class DynamoTileBase extends ThermalTileBase implements ITickableTileEntity {
-
-    protected static final int BASE_PROCESS_TICK = 40;
+public abstract class DynamoTileBase extends ThermalTileAugmentable implements ITickableTileEntity {
 
     protected Direction facing;
 
@@ -53,7 +50,6 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
     public DynamoTileBase(TileEntityType<?> tileEntityTypeIn) {
 
         super(tileEntityTypeIn);
-        timeTracker = new TimeTracker();
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), 0, getBaseEnergyXfer()) {
 
             @Override
@@ -67,28 +63,23 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
     // region BASE PARAMETERS
     protected int getBaseEnergyStorage() {
 
-        return BASE_PROCESS_TICK * 100;
-    }
-
-    protected int getBaseProcessTick() {
-
-        return BASE_PROCESS_TICK;
+        return getBaseProcessTick() * 100;
     }
     // endregion
 
     @Override
     public TileCoFH worldContext(BlockState state, IBlockReader world) {
 
-        facing = state.get(FACING_ALL);
+        facing = state.getValue(FACING_ALL);
         updateHandlers();
 
         return this;
     }
 
     @Override
-    public void updateContainingBlockInfo() {
+    public void clearCache() {
 
-        super.updateContainingBlockInfo();
+        super.clearCache();
         updateFacing();
     }
 
@@ -114,7 +105,7 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
                     processStart();
                 }
             }
-        } else if (Utils.timeCheckQuarter(world)) {
+        } else if (Utils.timeCheckQuarter(level)) {
             if (redstoneControl.getState() && canProcessStart()) {
                 processStart();
                 processTick();
@@ -165,7 +156,7 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
         if (adjTile != null) {
             Direction opposite = getFacing().getOpposite();
             int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-            adjTile.getCapability(CapabilityEnergy.ENERGY, opposite)
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
                     .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
         }
     }
@@ -180,7 +171,7 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
 
     protected void updateFacing() {
 
-        facing = getBlockState().get(FACING_ALL);
+        facing = getBlockState().getValue(FACING_ALL);
         updateHandlers();
     }
     // endregion
@@ -268,9 +259,9 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         fuelMax = nbt.getInt(TAG_FUEL_MAX);
         fuel = nbt.getInt(TAG_FUEL);
@@ -282,9 +273,9 @@ public abstract class DynamoTileBase extends ThermalTileBase implements ITickabl
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_FUEL_MAX, fuelMax);
         nbt.putInt(TAG_FUEL, fuel);

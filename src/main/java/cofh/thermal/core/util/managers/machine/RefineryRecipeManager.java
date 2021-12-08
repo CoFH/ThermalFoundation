@@ -48,7 +48,9 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
 
     public void addRecipe(ThermalRecipe recipe) {
 
-        addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+        for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
+            addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+        }
     }
 
     public boolean validRecipe(FluidStack input) {
@@ -120,7 +122,7 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_REFINERY);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_REFINERY);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }

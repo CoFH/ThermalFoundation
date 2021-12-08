@@ -1,6 +1,6 @@
 {
   "parent": "thermal:item/redprint",
   "textures": {
-    "layer0": "thermal:item/tools/redprint_with_data"
+    "layer0": "thermal:item/redprint_with_data"
   }
 }

@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.init.TCoreIDs.ID_FLUID_GLOWSTONE;
+import static cofh.thermal.lib.common.ThermalIDs.ID_FLUID_GLOWSTONE;
 
 public class GlowstoneFluid extends FluidCoFH {
 
@@ -32,14 +32,14 @@ public class GlowstoneFluid extends FluidCoFH {
         flowingFluid = FLUIDS.register(flowing(key), () -> new ForgeFlowingFluid.Flowing(properties));
 
         // block = BLOCKS.register(key, () -> new GlowstoneFluidBlock(stillFluid, AbstractBlock.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()));
-        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
+        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
 
         properties = new ForgeFlowingFluid.Properties(stillFluid, flowingFluid, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .luminosity(15)
                 .density(-500)
                 .viscosity(100)
                 .rarity(Rarity.UNCOMMON)
-                .sound(SoundEvents.ITEM_BUCKET_FILL, SoundEvents.ITEM_BUCKET_EMPTY)
+                .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY)
         ).bucket(bucket);//.block(block).levelDecreasePerBlock(4);
     }
 

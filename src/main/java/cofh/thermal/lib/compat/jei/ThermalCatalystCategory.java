@@ -90,16 +90,16 @@ public abstract class ThermalCatalystCategory<T extends ThermalCatalyst> impleme
         Minecraft minecraft = Minecraft.getInstance();
 
         String primaryMod = localize("info.thermal.primary_mod") + ": " + recipe.getPrimaryMod() + "x";
-        minecraft.fontRenderer.drawString(matrixStack, primaryMod, 44, 8, 0xFF606060);
+        minecraft.font.draw(matrixStack, primaryMod, 44, 8, 0xFF606060);
 
         String secondaryMod = localize("info.thermal.secondary_mod") + ": " + recipe.getSecondaryMod() + "x";
-        minecraft.fontRenderer.drawString(matrixStack, secondaryMod, 44, 20, 0xFF606060);
+        minecraft.font.draw(matrixStack, secondaryMod, 44, 20, 0xFF606060);
 
         String energyMod = localize("info.thermal.energy_mod") + ": " + recipe.getEnergyMod() + "x";
-        minecraft.fontRenderer.drawString(matrixStack, energyMod, 44, 32, 0xFF606060);
+        minecraft.font.draw(matrixStack, energyMod, 44, 32, 0xFF606060);
 
         String useChance = localize("info.thermal.use_chance") + ": " + DF0.format(recipe.getUseChance() * 100) + "%";
-        minecraft.fontRenderer.drawString(matrixStack, useChance, 44, 44, 0xFF606060);
+        minecraft.font.draw(matrixStack, useChance, 44, 44, 0xFF606060);
     }
     // endregion
 }

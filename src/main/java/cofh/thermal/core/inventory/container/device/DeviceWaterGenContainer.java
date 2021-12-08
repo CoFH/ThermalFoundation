@@ -3,7 +3,7 @@ package cofh.thermal.core.inventory.container.device;
 import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.math.BlockPos;
@@ -13,12 +13,12 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_WATER_GEN_CONTAINER;
 
 public class DeviceWaterGenContainer extends TileContainer {
 
-    public final ThermalTileBase tile;
+    public final ThermalTileAugmentable tile;
 
     public DeviceWaterGenContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(DEVICE_WATER_GEN_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ThermalTileBase) world.getTileEntity(pos);
+        this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 44, 35));

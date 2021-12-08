@@ -21,7 +21,7 @@ public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeR
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Ingredient ingredient;
 
@@ -54,9 +54,9 @@ public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeR
 
     @Nullable
     @Override
-    public T read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
-        Ingredient ingredient = Ingredient.read(buffer);
+        Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
         float primaryMod = buffer.readFloat();
         float secondaryMod = buffer.readFloat();
@@ -68,9 +68,9 @@ public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeR
     }
 
     @Override
-    public void write(PacketBuffer buffer, T recipe) {
+    public void toNetwork(PacketBuffer buffer, T recipe) {
 
-        recipe.ingredient.write(buffer);
+        recipe.ingredient.toNetwork(buffer);
 
         buffer.writeFloat(recipe.primaryMod);
         buffer.writeFloat(recipe.secondaryMod);

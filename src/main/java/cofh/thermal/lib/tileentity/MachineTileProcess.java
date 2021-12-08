@@ -9,6 +9,7 @@ import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.xp.XpStorage;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.MachineProperties;
 import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
@@ -29,6 +30,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.util.helpers.FluidHelper.fluidsEqual;
+import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.constants.Constants.BASE_CHANCE;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.*;
@@ -38,6 +40,8 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALID
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
 public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ITickableTileEntity, IMachineInventory {
+
+    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
     protected IMachineRecipe curRecipe;
     protected IRecipeCatalyst curCatalyst;
@@ -50,10 +54,12 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     protected int baseProcessTick = getBaseProcessTick();
     protected int processTick = baseProcessTick;
 
+    protected TimeTracker timeTracker = new TimeTracker();
+    public boolean wasActive;
+
     public MachineTileProcess(TileEntityType<?> tileEntityTypeIn) {
 
         super(tileEntityTypeIn);
-        timeTracker = new TimeTracker();
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
         xpStorage = new XpStorage(getBaseXpStorage());
     }
@@ -78,11 +84,11 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
                 processOff();
             }
         } else if (redstoneControl.getState()) {
-            if (Utils.timeCheck(world)) {
+            if (Utils.timeCheck(level)) {
                 transferOutput();
                 transferInput();
             }
-            if (Utils.timeCheckQuarter(world) && canProcessStart()) {
+            if (Utils.timeCheckQuarter(level) && canProcessStart()) {
                 processStart();
                 processTick();
                 isActive = true;
@@ -90,6 +96,28 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         }
         updateActiveState(curActive);
         chargeEnergy();
+    }
+
+    @Override
+    protected void updateActiveState(boolean prevActive) {
+
+        // If not active but WAS active this tick.
+        if (!isActive && prevActive) {
+            wasActive = true;
+            if (level != null) {
+                timeTracker.markTime(level);
+            }
+            return;
+        }
+        // Otherwise if IS active but was not, or WAS & delayed off OR Empty Tracker (Instant)
+        if (prevActive != isActive || wasActive && (timeTracker.hasDelayPassed(level, 40) || timeTracker.notSet())) {
+            // TODO: Config time delay
+            wasActive = false;
+            if (getBlockState().hasProperty(ACTIVE)) {
+                level.setBlockAndUpdate(worldPosition, getBlockState().setValue(ACTIVE, isActive));
+            }
+            TileStatePacket.sendToClient(this);
+        }
     }
 
     // region PROCESS
@@ -128,7 +156,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         }
         resolveOutputs();
         resolveInputs();
-        markDirty();
+        markDirtyFast();
     }
 
     protected void processOff() {
@@ -137,8 +165,8 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         isActive = false;
         wasActive = true;
         clearRecipe();
-        if (world != null) {
-            timeTracker.markTime(world);
+        if (level != null) {
+            timeTracker.markTime(level);
         }
     }
 
@@ -154,6 +182,15 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     // endregion
 
     // region HELPERS
+    protected void chargeEnergy() {
+
+        if (!chargeSlot.isEmpty()) {
+            chargeSlot.getItemStack()
+                    .getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null)
+                    .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
+        }
+    }
+
     protected boolean cacheRecipe() {
 
         return false;
@@ -278,7 +315,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
             ItemStack recipeOutput = recipeOutputItems.get(i);
             float chance = recipeOutputChances.get(i);
             int outputCount = chance <= BASE_CHANCE ? recipeOutput.getCount() : (int) chance;
-            while (world.rand.nextFloat() < chance) {
+            while (level.random.nextFloat() < chance) {
                 boolean matched = false;
                 for (ItemStorageCoFH slot : outputSlots()) {
                     ItemStack output = slot.getItemStack();
@@ -404,9 +441,11 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
+
+        wasActive = nbt.getBoolean(TAG_ACTIVE_PREV);
 
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
@@ -414,9 +453,11 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
+
+        nbt.putBoolean(TAG_ACTIVE_PREV, wasActive);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);
@@ -481,11 +522,11 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region ITileCallback
     @Override
-    public void onInventoryChange(int slot) {
+    public void onInventoryChanged(int slot) {
 
-        super.onInventoryChange(slot);
+        super.onInventoryChanged(slot);
 
-        if (world != null && Utils.isServerWorld(world) && isActive) {
+        if (level != null && Utils.isServerWorld(level) && isActive) {
             if (slot >= invSize() - augSize()) {
                 if (!validateOutputs()) {
                     processOff();
@@ -501,9 +542,9 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    public void onTankChange(int tank) {
+    public void onTankChanged(int tank) {
 
-        if (Utils.isServerWorld(world) && tank < tankInv.getInputTanks().size()) {
+        if (Utils.isServerWorld(level) && tank < tankInv.getInputTanks().size()) {
             if (isActive) {
                 IMachineRecipe tempRecipe = curRecipe;
                 IRecipeCatalyst tempCatalyst = curCatalyst;
@@ -512,7 +553,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
                 }
             }
         }
-        super.onTankChange(tank);
+        super.onTankChanged(tank);
     }
     // endregion
 }

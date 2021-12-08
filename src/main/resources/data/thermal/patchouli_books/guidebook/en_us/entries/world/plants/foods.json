@@ -1,1 +1,74 @@
-{  "name": "Foods",  "icon": "thermal:chocolate_cake",  "read_by_default": true,  "flag": "mod:thermal_cultivation",  "category": "thermal:plants",  "pages": [    {      "type": "crafting",      "recipe": "thermal:chocolate_cake",      "text": "A delightful, delectable dessert deserving decorous devotion. As satisfying as normal cake."    },    {      "type": "crafting",      "recipe": "thermal:spice_cake",      "text": "A satiating, scrumptious sweet synthesized from sadiroot spice. Cleanses negative status effects when eaten."    },    {      "type": "crafting",      "recipe": "thermal:xp_stew",      "text": "An exhilarant eggplant elixir effervescing with exhorbitant experience enhancements. Boosts exp gain when consumed."    }  ]}
+{
+  "name": "Foods",
+  "icon": "thermal:pbj_sandwich",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "crafting",
+      "recipe": "thermal:carrot_cake",
+      "text": "A little bit of carrot, a whole lot of cake. Provides night vision when eaten."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:chocolate_cake",
+      "text": "A delightful, delectable dessert deserving decorous devotion. More satisfying than normal cake."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:potion_cake",
+      "text": "A decoctive delight! Imbues the consumer with the effects of the Potion used to bake it."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:spice_cake",
+      "text": "A satiating, scrumptious sweet synthesized from sadiroot spice. Cleanses negative status effects when eaten."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:stuffed_pumpkin",
+      "text": "It's a harvest feast! Incredibly filling and there's just so much of it."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:cheese_wheel",
+      "text": "Smile and say it! Who doesn't love cheese? Can be split into wedges."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:green_bean_pie",
+      "text": "A classic harvest-time staple, in pie form. Vegetarian and very filling!"
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:pbj_sandwich_2",
+      "text": "If there are any flavors which make a better pairing, they have not yet been discovered."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:stuffed_pepper",
+      "text": "A seasoned meal stuffed with various meats. Incredibly filling and tasty!"
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:sushi_maki_8",
+      "text": "Raw fish wrapped in rice and seaweed. Super nutritious and quick to eat. Don't tell Direwolf20."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:spring_salad",
+      "text": "Made with fresh spring produce, it's sure to put a spring in your step as well. Boosts jump height when consumed."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:hearty_stew",
+      "text": "A thick, rich broth full of delicious root vegetables. Boosts maximum health when consumed."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:xp_stew",
+      "text": "An exhilarating eggplant elixir effervescing with exorbitant experience enhancements. Boosts xp gain when consumed."
+    }
+  ]
+}

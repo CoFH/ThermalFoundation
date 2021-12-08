@@ -101,7 +101,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
         List<ITextComponent> tooltip = new ArrayList<>();
 
         if (energy != null && mouseX > ENERGY_X && mouseX < ENERGY_X + energy.getWidth() - 1 && mouseY > ENERGY_Y && mouseY < ENERGY_Y + energy.getHeight() - 1) {
-            tooltip.add(getTextComponent("info.cofh.energy").appendString(": " + StringHelper.format(recipe.getEnergy()) + " RF"));
+            tooltip.add(getTextComponent("info.cofh.energy").append(": " + StringHelper.format(recipe.getEnergy()) + " RF"));
         }
         return tooltip;
     }

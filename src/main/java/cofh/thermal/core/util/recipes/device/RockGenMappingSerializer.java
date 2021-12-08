@@ -18,7 +18,7 @@ import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 public class RockGenMappingSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RockGenMapping> {
 
     @Override
-    public RockGenMapping read(ResourceLocation recipeId, JsonObject json) {
+    public RockGenMapping fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int time = RockGenManager.instance().getDefaultEnergy();
 
@@ -53,23 +53,23 @@ public class RockGenMappingSerializer extends ForgeRegistryEntry<IRecipeSerializ
 
     @Nullable
     @Override
-    public RockGenMapping read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public RockGenMapping fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         int time = buffer.readInt();
         Block trunk = ForgeRegistries.BLOCKS.getValue(buffer.readResourceLocation());
         Block leaves = ForgeRegistries.BLOCKS.getValue(buffer.readResourceLocation());
-        ItemStack result = buffer.readItemStack();
+        ItemStack result = buffer.readItem();
 
         return new RockGenMapping(recipeId, time, trunk, leaves, result);
     }
 
     @Override
-    public void write(PacketBuffer buffer, RockGenMapping recipe) {
+    public void toNetwork(PacketBuffer buffer, RockGenMapping recipe) {
 
         buffer.writeInt(recipe.time);
         buffer.writeResourceLocation(recipe.below.getRegistryName());
         buffer.writeResourceLocation(recipe.adjacent.getRegistryName());
-        buffer.writeItemStack(recipe.result);
+        buffer.writeItem(recipe.result);
     }
 
 }

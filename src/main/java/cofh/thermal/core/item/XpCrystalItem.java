@@ -35,10 +35,10 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
     @Override
     protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.xp_crystal.use").mergeStyle(TextFormatting.GRAY));
-        tooltip.add(getTextComponent("info.thermal.xp_crystal.use.sneak").mergeStyle(TextFormatting.DARK_GRAY));
+        tooltip.add(getTextComponent("info.thermal.xp_crystal.use").withStyle(TextFormatting.GRAY));
+        tooltip.add(getTextComponent("info.thermal.xp_crystal.use.sneak").withStyle(TextFormatting.DARK_GRAY));
 
-        tooltip.add(getTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
         addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
@@ -50,14 +50,14 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
         if (Utils.isClientWorld(worldIn) || Utils.isFakePlayer(entityIn) || getMode(stack) <= 0) {
             return;
         }
-        entityIn.getPersistentData().putLong(TAG_XP_TIMER, entityIn.world.getGameTime());
+        entityIn.getPersistentData().putLong(TAG_XP_TIMER, entityIn.level.getGameTime());
     }
 
     // region IMultiModeItem
     @Override
     public void onModeChange(PlayerEntity player, ItemStack stack) {
 
-        player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.4F, 0.6F + 0.2F * getMode(stack));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.4F, 0.6F + 0.2F * getMode(stack));
         ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)));
     }
     // endregion

@@ -16,8 +16,17 @@
   "energy": 100000,
   "conditions": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "mysticalagriculture"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mysticalagriculture"
+        },
+        {
+          "type": "cofh_core:tag_exists",
+          "tag": "forge:ingots/constantan"
+        }
+      ]
     }
   ]
 }

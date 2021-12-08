@@ -1,7 +1,12 @@
 package cofh.thermal.lib.common;
 
+import cofh.thermal.core.item.SatchelItem;
 import cofh.thermal.core.tileentity.device.DeviceFisherTile;
 import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
+import cofh.thermal.core.util.managers.dynamo.*;
+import cofh.thermal.core.util.managers.machine.*;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
+import net.minecraft.item.Items;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
@@ -10,9 +15,13 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import static cofh.thermal.core.init.TCoreIDs.ID_DEVICE_FISHER;
-import static cofh.thermal.core.init.TCoreIDs.ID_DEVICE_TREE_EXTRACTOR;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.lib.common.ThermalFlags.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class ThermalConfig {
 
@@ -54,6 +63,10 @@ public class ThermalConfig {
 
         SERVER_CONFIG.push("Global Options");
 
+        standaloneRedstoneFlux = SERVER_CONFIG
+                .comment("If TRUE, Redstone Flux will act as its own energy system and will NOT be interoperable with 'Forge Energy' - only enable this if you absolutely know what you are doing and want the Thermal Series to use a unique energy system.")
+                .define("Standalone Redstone Flux", false);
+
         keepEnergy = SERVER_CONFIG
                 .comment("If TRUE, most Thermal Blocks will retain Energy when dropped.\nThis setting does not control ALL blocks.")
                 .define("Blocks Retain Energy", true);
@@ -87,6 +100,62 @@ public class ThermalConfig {
                 .comment("If TRUE, Rockwool Blocks and Recipes are enabled.")
                 .define("Rockwool", true);
 
+        SERVER_CONFIG.push("Tools");
+
+        flagWrench = SERVER_CONFIG
+                .comment("If TRUE, the Crescent Hammer is enabled.")
+                .define("Wrench", true);
+        flagRedprint = SERVER_CONFIG
+                .comment("If TRUE, the Redprint is enabled.")
+                .define("Redprint", true);
+        flagRFPotato = SERVER_CONFIG
+                .comment("If TRUE, the Capacitato is enabled.")
+                .define("RF Potato", true);
+        flagXPCrystal = SERVER_CONFIG
+                .comment("If TRUE, the Insightful Crystal is enabled.")
+                .define("XP Crystal", true);
+        flagLock = SERVER_CONFIG
+                .comment("If TRUE, the Signalum Security Lock is enabled.")
+                .define("Lock", true);
+        flagDetonator = SERVER_CONFIG
+                .comment("If TRUE, the Remote Detonator is enabled.")
+                .define("Detonator", true);
+
+        SERVER_CONFIG.push("Satchel");
+
+        flagSatchel = SERVER_CONFIG
+                .comment("If TRUE, the Satchel is enabled.")
+                .define("Satchel", true);
+
+        String[] shulkerBoxes = new String[]{
+                ID_THERMAL + ":" + ID_SATCHEL,
+                Items.SHULKER_BOX.getRegistryName().toString(),
+                Items.WHITE_SHULKER_BOX.getRegistryName().toString(),
+                Items.ORANGE_SHULKER_BOX.getRegistryName().toString(),
+                Items.MAGENTA_SHULKER_BOX.getRegistryName().toString(),
+                Items.LIGHT_BLUE_SHULKER_BOX.getRegistryName().toString(),
+                Items.YELLOW_SHULKER_BOX.getRegistryName().toString(),
+                Items.LIME_SHULKER_BOX.getRegistryName().toString(),
+                Items.PINK_SHULKER_BOX.getRegistryName().toString(),
+                Items.GRAY_SHULKER_BOX.getRegistryName().toString(),
+                Items.LIGHT_GRAY_SHULKER_BOX.getRegistryName().toString(),
+                Items.CYAN_SHULKER_BOX.getRegistryName().toString(),
+                Items.PURPLE_SHULKER_BOX.getRegistryName().toString(),
+                Items.BLUE_SHULKER_BOX.getRegistryName().toString(),
+                Items.BROWN_SHULKER_BOX.getRegistryName().toString(),
+                Items.GREEN_SHULKER_BOX.getRegistryName().toString(),
+                Items.RED_SHULKER_BOX.getRegistryName().toString(),
+                Items.BLACK_SHULKER_BOX.getRegistryName().toString()
+        };
+
+        satchelBans = SERVER_CONFIG
+                .comment("A list of Items by Resource Location which are NOT allowed in Satchels.")
+                .define("Denylist", new ArrayList<>(Arrays.asList(shulkerBoxes)));
+
+        SERVER_CONFIG.pop(2);
+
+        SERVER_CONFIG.push("Mobs");
+
         flagMobBasalz = SERVER_CONFIG
                 .comment("If TRUE, the Basalz Mob is enabled.")
                 .define("Basalz", true);
@@ -97,7 +166,7 @@ public class ThermalConfig {
                 .comment("If TRUE, the Blizz Mob is enabled.")
                 .define("Blizz", true);
 
-        SERVER_CONFIG.pop();
+        SERVER_CONFIG.pop(2);
 
         SERVER_CONFIG.push("Augments");
 
@@ -119,9 +188,15 @@ public class ThermalConfig {
                 .comment("If TRUE, trades will be added to various Villagers.")
                 .define("Enable Villager Trades", true);
 
+        enableWandererTrades = SERVER_CONFIG
+                .comment("If TRUE, trades will be added to the Wandering Trader.")
+                .define("Enable Wandering Trader Trades", true);
+
         SERVER_CONFIG.pop();
 
         genDeviceConfig();
+        genDynamoConfig();
+        genMachineConfig();
         genWorldConfig();
 
         serverSpec = SERVER_CONFIG.build();
@@ -193,30 +268,246 @@ public class ThermalConfig {
         SERVER_CONFIG.push("Devices");
 
         if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
+            SERVER_CONFIG.push("TreeExtractor");
+
             deviceTreeExtractorTimeConstant = SERVER_CONFIG
                     .comment("This sets the base time constant (in ticks) for the Arboreal Extractor.")
                     .defineInRange("Time Constant", 500, 20, 72000);
+
+            SERVER_CONFIG.pop();
         }
         if (getFlag(ID_DEVICE_FISHER).getAsBoolean()) {
+            SERVER_CONFIG.push("Fisher");
+
             deviceFisherTimeConstant = SERVER_CONFIG
                     .comment("This sets the base time constant (in ticks) for the Aquatic Entangler.")
                     .defineInRange("Time Constant", 4800, 400, 72000);
             deviceFisherTimeReductionWater = SERVER_CONFIG
                     .comment("This sets the time constant reduction (in ticks) per nearby Water source block for the Aquatic Entangler.")
                     .defineInRange("Water Source Time Constant Reduction", 20, 1, 1000);
-        }
 
+            SERVER_CONFIG.pop();
+        }
+        SERVER_CONFIG.pop();
+    }
+
+    private static void genDynamoConfig() {
+
+        SERVER_CONFIG.push("Dynamos");
+
+        if (getFlag(ID_DYNAMO_STIRLING).getAsBoolean()) {
+            SERVER_CONFIG.push("Stirling");
+
+            dynamoStirlingPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Stirling Dynamo.")
+                    .defineInRange("Base Power", StirlingFuelManager.instance().getBasePower(), StirlingFuelManager.instance().getMinPower(), StirlingFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_COMPRESSION).getAsBoolean()) {
+            SERVER_CONFIG.push("Compression");
+
+            dynamoCompressionPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Compression Dynamo.")
+                    .defineInRange("Base Power", CompressionFuelManager.instance().getBasePower(), CompressionFuelManager.instance().getMinPower(), CompressionFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_MAGMATIC).getAsBoolean()) {
+            SERVER_CONFIG.push("Magmatic");
+
+            dynamoMagmaticPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Magmatic Dynamo.")
+                    .defineInRange("Base Power", MagmaticFuelManager.instance().getBasePower(), MagmaticFuelManager.instance().getMinPower(), MagmaticFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_NUMISMATIC).getAsBoolean()) {
+            SERVER_CONFIG.push("Numismatic");
+
+            dynamoNumismaticPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Numismatic Dynamo.")
+                    .defineInRange("Base Power", NumismaticFuelManager.instance().getBasePower(), NumismaticFuelManager.instance().getMinPower(), NumismaticFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_LAPIDARY).getAsBoolean()) {
+            SERVER_CONFIG.push("Lapidary");
+
+            dynamoLapidaryPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Lapidary Dynamo.")
+                    .defineInRange("Base Power", LapidaryFuelManager.instance().getBasePower(), LapidaryFuelManager.instance().getMinPower(), LapidaryFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_DISENCHANTMENT).getAsBoolean()) {
+            SERVER_CONFIG.push("Disenchantment");
+
+            dynamoDisenchantmentPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Disenchantment Dynamo.")
+                    .defineInRange("Base Power", DisenchantmentFuelManager.instance().getBasePower(), DisenchantmentFuelManager.instance().getMinPower(), DisenchantmentFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_DYNAMO_GOURMAND).getAsBoolean()) {
+            SERVER_CONFIG.push("Gourmand");
+
+            dynamoGourmandPower = SERVER_CONFIG
+                    .comment("This sets the base power generation (RF/t) for the Gourmand Dynamo.")
+                    .defineInRange("Base Power", GourmandFuelManager.instance().getBasePower(), GourmandFuelManager.instance().getMinPower(), GourmandFuelManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
         SERVER_CONFIG.pop();
     }
 
     private static void genMachineConfig() {
 
+        SERVER_CONFIG.push("Machines");
+
+        if (getFlag(ID_MACHINE_FURNACE).getAsBoolean()) {
+            SERVER_CONFIG.push("Furnace");
+
+            machineFurnacePower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Redstone Furnace.")
+                    .defineInRange("Base Power", FurnaceRecipeManager.instance().getBasePower(), FurnaceRecipeManager.instance().getMinPower(), FurnaceRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_SAWMILL).getAsBoolean()) {
+            SERVER_CONFIG.push("Sawmill");
+
+            machineSawmillPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Sawmill.")
+                    .defineInRange("Base Power", SawmillRecipeManager.instance().getBasePower(), SawmillRecipeManager.instance().getMinPower(), SawmillRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_PULVERIZER).getAsBoolean()) {
+            SERVER_CONFIG.push("Pulverizer");
+
+            machinePulverizerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Pulverizer.")
+                    .defineInRange("Base Power", PulverizerRecipeManager.instance().getBasePower(), PulverizerRecipeManager.instance().getMinPower(), PulverizerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_SMELTER).getAsBoolean()) {
+            SERVER_CONFIG.push("Smelter");
+
+            machineSmelterPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Induction Smelter.")
+                    .defineInRange("Base Power", SmelterRecipeManager.instance().getBasePower(), SmelterRecipeManager.instance().getMinPower(), SmelterRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_INSOLATOR).getAsBoolean()) {
+            SERVER_CONFIG.push("Insolator");
+
+            machineInsolatorPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Phytogenic Insolator.")
+                    .defineInRange("Base Power", InsolatorRecipeManager.instance().getBasePower(), InsolatorRecipeManager.instance().getMinPower(), InsolatorRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_CENTRIFUGE).getAsBoolean()) {
+            SERVER_CONFIG.push("Centrifuge");
+
+            machineCentrifugePower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Centrifugal Separator.")
+                    .defineInRange("Base Power", CentrifugeRecipeManager.instance().getBasePower(), CentrifugeRecipeManager.instance().getMinPower(), CentrifugeRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_PRESS).getAsBoolean()) {
+            SERVER_CONFIG.push("Press");
+
+            machinePressPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Multiservo Press.")
+                    .defineInRange("Base Power", PressRecipeManager.instance().getBasePower(), PressRecipeManager.instance().getMinPower(), PressRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_CRUCIBLE).getAsBoolean()) {
+            SERVER_CONFIG.push("Crucible");
+
+            machineCruciblePower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Magma Crucible.")
+                    .defineInRange("Base Power", CrucibleRecipeManager.instance().getBasePower(), CrucibleRecipeManager.instance().getMinPower(), CrucibleRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_CHILLER).getAsBoolean()) {
+            SERVER_CONFIG.push("Chiller");
+
+            machineChillerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Blast Chiller.")
+                    .defineInRange("Base Power", ChillerRecipeManager.instance().getBasePower(), ChillerRecipeManager.instance().getMinPower(), ChillerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_FURNACE).getAsBoolean()) {
+            SERVER_CONFIG.push("Refinery");
+
+            machineRefineryPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Fractionating Still.")
+                    .defineInRange("Base Power", RefineryRecipeManager.instance().getBasePower(), RefineryRecipeManager.instance().getMinPower(), RefineryRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_PYROLYZER).getAsBoolean()) {
+            SERVER_CONFIG.push("Pyrolyzer");
+
+            machinePyrolyzerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Pyrolyzer.")
+                    .defineInRange("Base Power", PyrolyzerRecipeManager.instance().getBasePower(), PyrolyzerRecipeManager.instance().getMinPower(), PyrolyzerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_BOTTLER).getAsBoolean()) {
+            SERVER_CONFIG.push("Bottler");
+
+            machineBottlerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Fluid Encapsulator.")
+                    .defineInRange("Base Power", BottlerRecipeManager.instance().getBasePower(), BottlerRecipeManager.instance().getMinPower(), BottlerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_BREWER).getAsBoolean()) {
+            SERVER_CONFIG.push("Brewer");
+
+            machineBrewerPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Alchemical Imbuer.")
+                    .defineInRange("Base Power", BrewerRecipeManager.instance().getBasePower(), BrewerRecipeManager.instance().getMinPower(), BrewerRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        if (getFlag(ID_MACHINE_CRAFTER).getAsBoolean()) {
+            SERVER_CONFIG.push("Crafter");
+
+            machineCrafterPower = SERVER_CONFIG
+                    .comment("This sets the base power consumption (RF/t) for the Sequential Fabricator.")
+                    .defineInRange("Base Power", CrafterRecipeManager.instance().getBasePower(), CrafterRecipeManager.instance().getMinPower(), CrafterRecipeManager.instance().getMaxPower());
+
+            SERVER_CONFIG.pop();
+        }
+        SERVER_CONFIG.pop();
     }
 
     private static void refreshServerConfig() {
 
+        ThermalEnergyHelper.standaloneRedstoneFlux = standaloneRedstoneFlux.get();
+
         setFlag(FLAG_VANILLA_BLOCKS, flagVanillaBlocks.get());
         setFlag(FLAG_ROCKWOOL, flagRockwool.get());
+
+        setFlag(ID_WRENCH, flagWrench.get());
+        setFlag(ID_REDPRINT, flagRedprint.get());
+        setFlag(ID_RF_POTATO, flagRFPotato.get());
+        setFlag(ID_XP_CRYSTAL, flagXPCrystal.get());
+        setFlag(ID_LOCK, flagLock.get());
+        setFlag(ID_SATCHEL, flagSatchel.get());
+        setFlag(ID_DETONATOR, flagDetonator.get());
 
         setFlag(FLAG_MOB_BASALZ, flagMobBasalz.get());
         setFlag(FLAG_MOB_BLITZ, flagMobBlitz.get());
@@ -226,7 +517,11 @@ public class ThermalConfig {
         setFlag(FLAG_RS_CONTROL_AUGMENT, !flagRSControl.get());
         setFlag(FLAG_XP_STORAGE_AUGMENT, !flagXPStorage.get());
 
+        SatchelItem.setBannedItems(satchelBans.get());
+
         refreshDeviceConfig();
+        refreshDynamoConfig();
+        refreshMachineConfig();
         refreshWorldConfig();
     }
 
@@ -238,6 +533,77 @@ public class ThermalConfig {
         if (deviceFisherTimeConstant != null) {
             DeviceFisherTile.setTimeConstant(deviceFisherTimeConstant.get());
             DeviceFisherTile.setTimeReductionWater(deviceFisherTimeReductionWater.get());
+        }
+    }
+
+    private static void refreshDynamoConfig() {
+
+        if (dynamoStirlingPower != null) {
+            StirlingFuelManager.instance().setBasePower(dynamoStirlingPower.get());
+        }
+        if (dynamoCompressionPower != null) {
+            CompressionFuelManager.instance().setBasePower(dynamoCompressionPower.get());
+        }
+        if (dynamoMagmaticPower != null) {
+            MagmaticFuelManager.instance().setBasePower(dynamoMagmaticPower.get());
+        }
+        if (dynamoNumismaticPower != null) {
+            NumismaticFuelManager.instance().setBasePower(dynamoNumismaticPower.get());
+        }
+        if (dynamoLapidaryPower != null) {
+            LapidaryFuelManager.instance().setBasePower(dynamoLapidaryPower.get());
+        }
+        if (dynamoDisenchantmentPower != null) {
+            DisenchantmentFuelManager.instance().setBasePower(dynamoDisenchantmentPower.get());
+        }
+        if (dynamoGourmandPower != null) {
+            GourmandFuelManager.instance().setBasePower(dynamoGourmandPower.get());
+        }
+    }
+
+    private static void refreshMachineConfig() {
+
+        if (machineFurnacePower != null) {
+            FurnaceRecipeManager.instance().setBasePower(machineFurnacePower.get());
+        }
+        if (machineSawmillPower != null) {
+            SawmillRecipeManager.instance().setBasePower(machineSawmillPower.get());
+        }
+        if (machinePulverizerPower != null) {
+            PulverizerRecipeManager.instance().setBasePower(machinePulverizerPower.get());
+        }
+        if (machineSmelterPower != null) {
+            SmelterRecipeManager.instance().setBasePower(machineSmelterPower.get());
+        }
+        if (machineInsolatorPower != null) {
+            InsolatorRecipeManager.instance().setBasePower(machineInsolatorPower.get());
+        }
+        if (machineCentrifugePower != null) {
+            CentrifugeRecipeManager.instance().setBasePower(machineCentrifugePower.get());
+        }
+        if (machinePressPower != null) {
+            PressRecipeManager.instance().setBasePower(machinePressPower.get());
+        }
+        if (machineCruciblePower != null) {
+            CrucibleRecipeManager.instance().setBasePower(machineCruciblePower.get());
+        }
+        if (machineChillerPower != null) {
+            ChillerRecipeManager.instance().setBasePower(machineChillerPower.get());
+        }
+        if (machineRefineryPower != null) {
+            RefineryRecipeManager.instance().setBasePower(machineRefineryPower.get());
+        }
+        if (machinePyrolyzerPower != null) {
+            PyrolyzerRecipeManager.instance().setBasePower(machinePyrolyzerPower.get());
+        }
+        if (machineBottlerPower != null) {
+            BottlerRecipeManager.instance().setBasePower(machineBottlerPower.get());
+        }
+        if (machineBrewerPower != null) {
+            BrewerRecipeManager.instance().setBasePower(machineBrewerPower.get());
+        }
+        if (machineCrafterPower != null) {
+            CrafterRecipeManager.instance().setBasePower(machineCrafterPower.get());
         }
     }
 
@@ -262,6 +628,7 @@ public class ThermalConfig {
         blockAmbientSounds = flagBlockAmbientSounds.get();
         mobAmbientSounds = flagMobAmbientSounds.get();
     }
+    // endregion
 
     // region GLOBALS
     public static final byte[] DEFAULT_MACHINE_SIDES_RAW = new byte[]{0, 0, 0, 0, 0, 0};
@@ -279,7 +646,10 @@ public class ThermalConfig {
     public static boolean permanentLava = true;
     public static boolean permanentWater = true;
 
+    public static BooleanValue standaloneRedstoneFlux;
+
     public static BooleanValue enableVillagerTrades;
+    public static BooleanValue enableWandererTrades;
 
     public static BooleanValue keepEnergy;
     public static BooleanValue keepItems;
@@ -296,6 +666,14 @@ public class ThermalConfig {
 
     private static BooleanValue flagVanillaBlocks;
     private static BooleanValue flagRockwool;
+
+    private static BooleanValue flagWrench;
+    private static BooleanValue flagRedprint;
+    private static BooleanValue flagRFPotato;
+    private static BooleanValue flagXPCrystal;
+    private static BooleanValue flagLock;
+    private static BooleanValue flagSatchel;
+    private static BooleanValue flagDetonator;
 
     private static BooleanValue flagMobBasalz;
     private static BooleanValue flagMobBlitz;
@@ -320,6 +698,31 @@ public class ThermalConfig {
     private static IntValue deviceTreeExtractorTimeConstant;
     private static IntValue deviceFisherTimeConstant;
     private static IntValue deviceFisherTimeReductionWater;
+
+    private static IntValue dynamoStirlingPower;
+    private static IntValue dynamoCompressionPower;
+    private static IntValue dynamoMagmaticPower;
+    private static IntValue dynamoNumismaticPower;
+    private static IntValue dynamoLapidaryPower;
+    private static IntValue dynamoDisenchantmentPower;
+    private static IntValue dynamoGourmandPower;
+
+    private static IntValue machineFurnacePower;
+    private static IntValue machineSawmillPower;
+    private static IntValue machinePulverizerPower;
+    private static IntValue machineSmelterPower;
+    private static IntValue machineInsolatorPower;
+    private static IntValue machineCentrifugePower;
+    private static IntValue machinePressPower;
+    private static IntValue machineCruciblePower;
+    private static IntValue machineChillerPower;
+    private static IntValue machineRefineryPower;
+    private static IntValue machinePyrolyzerPower;
+    private static IntValue machineBottlerPower;
+    private static IntValue machineBrewerPower;
+    private static IntValue machineCrafterPower;
+
+    public static ForgeConfigSpec.ConfigValue<List<String>> satchelBans;
     // endregion
 
     // region CLIENT VARIABLES

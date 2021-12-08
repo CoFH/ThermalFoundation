@@ -25,7 +25,7 @@ import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/storage/energy_cell.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/energy_cell.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public static final String TEX_INCREMENT = ID_COFH_CORE + ":textures/gui/elements/button_increment.png";
@@ -60,15 +60,15 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderLabels(MatrixStack matrixStack, int mouseX, int mouseY) {
 
         String input = format(tile.amountInput);
         String output = format(tile.amountOutput);
 
-        getFontRenderer().drawString(matrixStack, input, getCenteredOffset(input, 34), 42, 0x404040);
-        getFontRenderer().drawString(matrixStack, output, getCenteredOffset(output, 142), 42, 0x404040);
+        getFontRenderer().draw(matrixStack, input, getCenteredOffset(input, 34), 42, 0x404040);
+        getFontRenderer().draw(matrixStack, output, getCenteredOffset(output, 142), 42, 0x404040);
 
-        super.drawGuiContainerForegroundLayer(matrixStack, mouseX, mouseY);
+        super.renderLabels(matrixStack, mouseX, mouseY);
     }
 
     // region ELEMENTS

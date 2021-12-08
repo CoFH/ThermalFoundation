@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.FluidAttributes;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.init.TCoreIDs.ID_FLUID_CREOSOTE;
+import static cofh.thermal.lib.common.ThermalIDs.ID_FLUID_CREOSOTE;
 
 public class CreosoteFluid extends FluidCoFH {
 
@@ -25,10 +25,10 @@ public class CreosoteFluid extends FluidCoFH {
         super(FLUIDS, key, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .density(1050)
                 .viscosity(3000)
-                .sound(SoundEvents.ITEM_BUCKET_FILL, SoundEvents.ITEM_BUCKET_EMPTY)
+                .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY)
         );
 
-        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_ITEMS)));
+        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ThermalItemGroups.THERMAL_ITEMS)));
         properties.bucket(bucket);
     }
 

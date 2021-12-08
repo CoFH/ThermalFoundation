@@ -18,7 +18,7 @@ public class PotionDiffuserBoost extends SerializableRecipe {
     protected float durationMod;
     protected int cycles;
 
-    protected PotionDiffuserBoost(ResourceLocation recipeId, Ingredient inputItem, int amplifier, float durationMod, int cycles) {
+    public PotionDiffuserBoost(ResourceLocation recipeId, Ingredient inputItem, int amplifier, float durationMod, int cycles) {
 
         super(recipeId);
 

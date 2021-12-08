@@ -31,7 +31,7 @@ public class DisenchantMachineRecipe extends BaseMachineRecipe {
             Enchantment enchantment = entry.getKey();
             int level = entry.getValue();
             if (!enchantment.isCurse()) {
-                encXP += enchantment.getMinEnchantability(level);
+                encXP += enchantment.getMinCost(level);
             }
         }
         return encXP;

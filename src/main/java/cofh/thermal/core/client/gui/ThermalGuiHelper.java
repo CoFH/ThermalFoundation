@@ -11,7 +11,7 @@ import cofh.lib.client.gui.IGuiAccess;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 
 import static cofh.core.util.helpers.RenderHelper.getFluidTexture;
 import static cofh.core.util.helpers.RenderHelper.textureExists;
@@ -225,27 +225,27 @@ public class ThermalGuiHelper {
     // endregion
 
     // region COMMON UX
-    public static ElementScaled createDefaultProgress(IGuiAccess gui, int posX, int posY, String texture, ThermalTileBase tile) {
+    public static ElementScaled createDefaultProgress(IGuiAccess gui, int posX, int posY, String texture, ThermalTileAugmentable tile) {
 
         return GuiHelper.createDefaultProgress(gui, posX, posY, texture, tile::getScaledProgress, () -> tile.getRenderFluid().isEmpty());
     }
 
-    public static ElementScaledFluid createDefaultFluidProgress(IGuiAccess gui, int posX, int posY, String texture, ThermalTileBase tile) {
+    public static ElementScaledFluid createDefaultFluidProgress(IGuiAccess gui, int posX, int posY, String texture, ThermalTileAugmentable tile) {
 
         return GuiHelper.createDefaultFluidProgress(gui, posX, posY, texture, tile::getScaledProgress, tile::getRenderFluid, () -> !tile.getRenderFluid().isEmpty());
     }
 
-    public static ElementScaled createDefaultSpeed(IGuiAccess gui, int posX, int posY, String texture, ThermalTileBase tile) {
+    public static ElementScaled createDefaultSpeed(IGuiAccess gui, int posX, int posY, String texture, ThermalTileAugmentable tile) {
 
         return GuiHelper.createDefaultSpeed(gui, posX, posY, texture, tile::getScaledSpeed);
     }
 
-    public static ElementScaled createDefaultDuration(IGuiAccess gui, int posX, int posY, String texture, ThermalTileBase tile) {
+    public static ElementScaled createDefaultDuration(IGuiAccess gui, int posX, int posY, String texture, ThermalTileAugmentable tile) {
 
         return GuiHelper.createDefaultDuration(gui, posX, posY, texture, tile::getScaledDuration);
     }
 
-    public static ResourcePanel createDefaultEnergyUserPanel(IGuiAccess gui, ThermalTileBase tile) {
+    public static ResourcePanel createDefaultEnergyUserPanel(IGuiAccess gui, ThermalTileAugmentable tile) {
 
         return new ResourcePanel(gui)
                 .setResource(CoreTextures.ICON_ENERGY, "info.cofh.energy", false)
@@ -254,7 +254,7 @@ public class ThermalGuiHelper {
                 .setEfficiency(tile::getEfficiency);
     }
 
-    public static ResourcePanel createDefaultEnergyProducerPanel(IGuiAccess gui, ThermalTileBase tile) {
+    public static ResourcePanel createDefaultEnergyProducerPanel(IGuiAccess gui, ThermalTileAugmentable tile) {
 
         return new ResourcePanel(gui)
                 .setResource(CoreTextures.ICON_ENERGY, "info.cofh.energy", true)

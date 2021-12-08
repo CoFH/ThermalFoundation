@@ -15,7 +15,7 @@ import java.util.Map;
 public class LapidaryFuelManager extends SingleItemFuelManager {
 
     private static final LapidaryFuelManager INSTANCE = new LapidaryFuelManager();
-    protected static int DEFAULT_ENERGY = 16000;
+    protected static final int DEFAULT_ENERGY = 16000;
 
     public static LapidaryFuelManager instance() {
 
@@ -38,7 +38,7 @@ public class LapidaryFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.FUEL_LAPIDARY);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_LAPIDARY);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addFuel((ThermalFuel) entry.getValue());
         }

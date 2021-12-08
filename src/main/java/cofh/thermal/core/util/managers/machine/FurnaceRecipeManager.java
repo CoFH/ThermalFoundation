@@ -82,7 +82,7 @@ public class FurnaceRecipeManager extends SingleItemRecipeManager {
                 addRecipe(recipe);
             }
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_FURNACE);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_FURNACE);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
@@ -99,14 +99,14 @@ public class FurnaceRecipeManager extends SingleItemRecipeManager {
 
     protected void createConvertedRecipes(RecipeManager recipeManager) {
 
-        for (IRecipe<IInventory> recipe : recipeManager.getRecipes(IRecipeType.SMELTING).values()) {
+        for (IRecipe<IInventory> recipe : recipeManager.byType(IRecipeType.SMELTING).values()) {
             createConvertedRecipe((AbstractCookingRecipe) recipe);
         }
     }
 
     protected boolean createConvertedRecipe(AbstractCookingRecipe recipe) {
 
-        if (recipe.isDynamic() || recipe.getRecipeOutput().isEmpty()) {
+        if (recipe.isSpecial() || recipe.getResultItem().isEmpty()) {
             return false;
         }
         convertedRecipes.add(convert(recipe));
@@ -115,9 +115,9 @@ public class FurnaceRecipeManager extends SingleItemRecipeManager {
 
     protected FurnaceRecipe convert(AbstractCookingRecipe recipe) {
 
-        ItemStack recipeOutput = recipe.getRecipeOutput();
+        ItemStack recipeOutput = recipe.getResultItem();
         float experience = recipe.getExperience();
-        int energy = defaultFoodRecipes && recipeOutput.getItem().isFood() ? defaultEnergy / 2 : defaultEnergy;
+        int energy = defaultFoodRecipes && recipeOutput.getItem().isEdible() ? defaultEnergy / 2 : defaultEnergy;
         return new FurnaceRecipe(new ResourceLocation(ID_THERMAL, "furnace_" + recipe.getIngredients().get(0).hashCode()), energy, experience, recipe);
     }
     // endregion

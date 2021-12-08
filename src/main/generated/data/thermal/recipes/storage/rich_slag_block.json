@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "thermal:rich_slag"
+    }
+  },
+  "result": {
+    "item": "thermal:rich_slag_block"
+  }
+}

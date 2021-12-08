@@ -1,12 +1,12 @@
 package cofh.thermal.lib.util.recipes;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.helpers.MathHelper;
 import com.google.gson.JsonObject;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
@@ -31,12 +31,12 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int energy = defaultEnergy;
 
         ArrayList<Ingredient> inputItems = new ArrayList<>();
-        ArrayList<FluidStack> inputFluids = new ArrayList<>();
+        ArrayList<FluidIngredient> inputFluids = new ArrayList<>();
 
         /* INPUT */
         if (json.has(INGREDIENT)) {
@@ -63,44 +63,44 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
 
     @Nullable
     @Override
-    public T read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         int energy = buffer.readVarInt();
 
         int numInputItems = buffer.readVarInt();
         ArrayList<Ingredient> inputItems = new ArrayList<>(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            inputItems.add(Ingredient.read(buffer));
+            inputItems.add(Ingredient.fromNetwork(buffer));
         }
 
         int numInputFluids = buffer.readVarInt();
-        ArrayList<FluidStack> inputFluids = new ArrayList<>(numInputFluids);
+        ArrayList<FluidIngredient> inputFluids = new ArrayList<>(numInputFluids);
         for (int i = 0; i < numInputFluids; ++i) {
-            inputFluids.add(buffer.readFluidStack());
+            inputFluids.add(FluidIngredient.fromNetwork(buffer));
         }
         return factory.create(recipeId, energy, inputItems, inputFluids);
     }
 
     @Override
-    public void write(PacketBuffer buffer, T recipe) {
+    public void toNetwork(PacketBuffer buffer, T recipe) {
 
         buffer.writeVarInt(recipe.energy);
 
         int numInputItems = recipe.inputItems.size();
         buffer.writeVarInt(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            recipe.inputItems.get(i).write(buffer);
+            recipe.inputItems.get(i).toNetwork(buffer);
         }
         int numInputFluids = recipe.inputFluids.size();
         buffer.writeVarInt(numInputFluids);
         for (int i = 0; i < numInputFluids; ++i) {
-            buffer.writeFluidStack(recipe.inputFluids.get(i));
+            recipe.inputFluids.get(i).toNetwork(buffer);
         }
     }
 
     public interface IFactory<T extends ThermalFuel> {
 
-        T create(ResourceLocation recipeId, int energy, List<Ingredient> inputItems, List<FluidStack> inputFluids);
+        T create(ResourceLocation recipeId, int energy, List<Ingredient> inputItems, List<FluidIngredient> inputFluids);
 
     }
 

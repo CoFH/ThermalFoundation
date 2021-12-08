@@ -30,25 +30,25 @@ public class EarthChargeItem extends ItemCoFH {
 
         super(builder);
 
-        DispenserBlock.registerDispenseBehavior(this, DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(this, DISPENSER_BEHAVIOR);
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
+        World world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
         BlockState state = world.getBlockState(pos);
 
         //        if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getFace(), context.getItem()))) {
         //            return ActionResultType.FAIL;
         //        }
         Material material = state.getMaterial();
-        if (material == Material.ROCK || material == Material.EARTH || state.getBlock() instanceof SnowyDirtBlock) {
+        if (material == Material.STONE || material == Material.DIRT || state.getBlock() instanceof SnowyDirtBlock) {
             destroyBlock(world, pos, true, player);
             playUseSound(world, pos);
-            context.getItem().shrink(1);
+            context.getItemInHand().shrink(1);
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.FAIL;
@@ -63,27 +63,27 @@ public class EarthChargeItem extends ItemCoFH {
     private static final IDispenseItemBehavior DISPENSER_BEHAVIOR = new DefaultDispenseItemBehavior() {
 
         @Override
-        public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+        public ItemStack execute(IBlockSource source, ItemStack stack) {
 
-            Direction direction = source.getBlockState().get(DispenserBlock.FACING);
+            Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
             IPosition iposition = DispenserBlock.getDispensePosition(source);
-            double d0 = iposition.getX() + (double) ((float) direction.getXOffset() * 0.3F);
-            double d1 = iposition.getY() + (double) ((float) direction.getYOffset() * 0.3F);
-            double d2 = iposition.getZ() + (double) ((float) direction.getZOffset() * 0.3F);
-            World world = source.getWorld();
-            Random random = world.rand;
-            double d3 = random.nextGaussian() * 0.05D + (double) direction.getXOffset();
-            double d4 = random.nextGaussian() * 0.05D + (double) direction.getYOffset();
-            double d5 = random.nextGaussian() * 0.05D + (double) direction.getZOffset();
-            world.addEntity(Util.make(() -> new BasalzProjectileEntity(d0, d1, d2, d3, d4, d5, world)));
+            double d0 = iposition.x() + (double) ((float) direction.getStepX() * 0.3F);
+            double d1 = iposition.y() + (double) ((float) direction.getStepY() * 0.3F);
+            double d2 = iposition.z() + (double) ((float) direction.getStepZ() * 0.3F);
+            World world = source.getLevel();
+            Random random = world.random;
+            double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
+            double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
+            double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
+            world.addFreshEntity(Util.make(() -> new BasalzProjectileEntity(d0, d1, d2, d3, d4, d5, world)));
             stack.shrink(1);
             return stack;
         }
 
         @Override
-        protected void playDispenseSound(IBlockSource source) {
+        protected void playSound(IBlockSource source) {
 
-            source.getWorld().playEvent(1018, source.getBlockPos(), 0);
+            source.getLevel().levelEvent(1018, source.getPos(), 0);
         }
     };
     // endregion

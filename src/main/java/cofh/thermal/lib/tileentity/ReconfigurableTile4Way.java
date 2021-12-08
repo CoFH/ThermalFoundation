@@ -5,11 +5,11 @@ import cofh.core.util.control.IReconfigurableTile;
 import cofh.core.util.control.ITransferControllableTile;
 import cofh.core.util.control.ReconfigControlModule;
 import cofh.core.util.control.TransferControlModule;
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.InventoryHelper;
+import cofh.thermal.lib.util.recipes.IThermalInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -26,27 +26,24 @@ import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
 import static cofh.core.client.renderer.model.ModelUtils.SIDES;
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.StorageGroup.OUTPUT;
+import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.DIRECTIONS;
 import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class ReconfigurableTile4Way extends ThermalTileBase implements IReconfigurableTile, ITransferControllableTile {
-
-    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {
 
     protected int inputTracker;
     protected int outputTracker;
@@ -64,24 +61,24 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
     @Override
     public TileCoFH worldContext(BlockState state, IBlockReader world) {
 
-        reconfigControl.setFacing(state.get(FACING_HORIZONTAL));
+        reconfigControl.setFacing(state.getValue(FACING_HORIZONTAL));
         updateHandlers();
 
         return this;
     }
 
     @Override
-    public void updateContainingBlockInfo() {
+    public void clearCache() {
 
-        super.updateContainingBlockInfo();
+        super.clearCache();
         updateSideCache();
     }
 
     // TODO: Does this need to exist?
     @Override
-    public void remove() {
+    public void setRemoved() {
 
-        super.remove();
+        super.setRemoved();
 
         inputItemCap.invalidate();
         outputItemCap.invalidate();
@@ -100,17 +97,39 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
                 .build();
     }
 
+    @Override
+    public List<? extends ItemStorageCoFH> inputSlots() {
+
+        return inventory.getInputSlots();
+    }
+
+    @Override
+    public List<? extends FluidStorageCoFH> inputTanks() {
+
+        return tankInv.getInputTanks();
+    }
+
+    protected List<? extends ItemStorageCoFH> outputSlots() {
+
+        return inventory.getOutputSlots();
+    }
+
+    protected List<? extends FluidStorageCoFH> outputTanks() {
+
+        return tankInv.getOutputTanks();
+    }
+
     // region HELPERS
     protected void updateSideCache() {
 
         Direction prevFacing = getFacing();
-        Direction curFacing = getBlockState().get(FACING_HORIZONTAL);
+        Direction curFacing = getBlockState().getValue(FACING_HORIZONTAL);
 
         if (prevFacing != curFacing) {
             reconfigControl.setFacing(curFacing);
 
-            int iPrev = prevFacing.getIndex();
-            int iFace = curFacing.getIndex();
+            int iPrev = prevFacing.get3DDataValue();
+            int iFace = curFacing.get3DDataValue();
             SideConfig[] sides = new SideConfig[6];
 
             if (iPrev == SIDE_RIGHT[iFace]) {
@@ -129,15 +148,6 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
             reconfigControl.setSideConfig(sides);
         }
         updateHandlers();
-    }
-
-    protected void chargeEnergy() {
-
-        if (!chargeSlot.isEmpty()) {
-            chargeSlot.getItemStack()
-                    .getCapability(CapabilityEnergy.ENERGY, null)
-                    .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
-        }
     }
 
     protected void transferInput() {
@@ -268,11 +278,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
-        reconfigControl.setFacing(Direction.byIndex(nbt.getByte(TAG_FACING)));
+        reconfigControl.setFacing(Direction.from3DDataValue(nbt.getByte(TAG_FACING)));
         reconfigControl.read(nbt);
         transferControl.read(nbt);
 
@@ -283,11 +293,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
-        nbt.putByte(TAG_FACING, (byte) reconfigControl.getFacing().getIndex());
+        nbt.putByte(TAG_FACING, (byte) reconfigControl.getFacing().get3DDataValue());
         reconfigControl.write(nbt);
         transferControl.write(nbt);
 
@@ -346,9 +356,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
     // region CAPABILITIES
     protected LazyOptional<?> inputItemCap = LazyOptional.empty();
     protected LazyOptional<?> outputItemCap = LazyOptional.empty();
+    protected LazyOptional<?> ioItemCap = LazyOptional.empty();
 
     protected LazyOptional<?> inputFluidCap = LazyOptional.empty();
     protected LazyOptional<?> outputFluidCap = LazyOptional.empty();
+    protected LazyOptional<?> ioFluidCap = LazyOptional.empty();
 
     protected void updateHandlers() {
 
@@ -357,28 +369,36 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
         // ITEMS
         LazyOptional<?> prevItemInputCap = inputItemCap;
         LazyOptional<?> prevItemOutputCap = outputItemCap;
+        LazyOptional<?> prevItemIOCap = ioItemCap;
 
         IItemHandler inputInvHandler = inventory.getHandler(INPUT);
         IItemHandler outputInvHandler = inventory.getHandler(OUTPUT);
+        IItemHandler ioInvHandler = inventory.getHandler(INPUT_OUTPUT);
 
         inputItemCap = inventory.hasInputSlots() ? LazyOptional.of(() -> inputInvHandler) : LazyOptional.empty();
         outputItemCap = inventory.hasOutputSlots() ? LazyOptional.of(() -> outputInvHandler) : LazyOptional.empty();
+        ioItemCap = inventory.hasAccessibleSlots() ? LazyOptional.of(() -> ioInvHandler) : LazyOptional.empty();
 
         prevItemInputCap.invalidate();
         prevItemOutputCap.invalidate();
+        prevItemIOCap.invalidate();
 
         // FLUID
         LazyOptional<?> prevFluidInputCap = inputFluidCap;
         LazyOptional<?> prevFluidOutputCap = outputFluidCap;
+        LazyOptional<?> prevFluidIOCap = ioFluidCap;
 
         IFluidHandler inputFluidHandler = tankInv.getHandler(INPUT);
         IFluidHandler outputFluidHandler = tankInv.getHandler(OUTPUT);
+        IFluidHandler ioFluidHandler = tankInv.getHandler(INPUT_OUTPUT);
 
         inputFluidCap = tankInv.hasInputTanks() ? LazyOptional.of(() -> inputFluidHandler) : LazyOptional.empty();
         outputFluidCap = tankInv.hasOutputTanks() ? LazyOptional.of(() -> outputFluidHandler) : LazyOptional.empty();
+        ioFluidCap = tankInv.hasAccessibleTanks() ? LazyOptional.of(() -> ioFluidHandler) : LazyOptional.empty();
 
         prevFluidInputCap.invalidate();
         prevFluidOutputCap.invalidate();
+        prevFluidIOCap.invalidate();
     }
 
     @Override
@@ -394,6 +414,8 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
                 return inputItemCap.cast();
             case SIDE_OUTPUT:
                 return outputItemCap.cast();
+            case SIDE_BOTH:
+                return ioItemCap.cast();
             default:
                 return super.getItemHandlerCapability(side);
         }
@@ -412,6 +434,8 @@ public abstract class ReconfigurableTile4Way extends ThermalTileBase implements 
                 return inputFluidCap.cast();
             case SIDE_OUTPUT:
                 return outputFluidCap.cast();
+            case SIDE_BOTH:
+                return ioFluidCap.cast();
             default:
                 return super.getFluidHandlerCapability(side);
         }

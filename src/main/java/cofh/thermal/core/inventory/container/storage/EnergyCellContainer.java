@@ -17,7 +17,7 @@ public class EnergyCellContainer extends TileContainer {
     public EnergyCellContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(ENERGY_CELL_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (EnergyCellTile) world.getTileEntity(pos);
+        this.tile = (EnergyCellTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         bindAugmentSlots(tileInv, 0, this.tile.augSize());

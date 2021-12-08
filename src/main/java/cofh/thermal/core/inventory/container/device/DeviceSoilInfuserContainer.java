@@ -17,7 +17,7 @@ public class DeviceSoilInfuserContainer extends TileContainer {
     public DeviceSoilInfuserContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(TCoreReferences.DEVICE_SOIL_INFUSER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (DeviceSoilInfuserTile) world.getTileEntity(pos);
+        this.tile = (DeviceSoilInfuserTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 8, 53));

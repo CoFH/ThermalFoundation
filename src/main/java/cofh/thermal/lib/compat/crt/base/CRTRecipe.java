@@ -1,8 +1,10 @@
 package cofh.thermal.lib.compat.crt.base;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.item.ItemStack;
@@ -19,7 +21,7 @@ public class CRTRecipe {
     private final ResourceLocation name;
 
     private List<Ingredient> inputItems;
-    private List<FluidStack> inputFluids;
+    private List<FluidIngredient> inputFluids;
 
     private List<ItemStack> outputItems;
     private List<FluidStack> outputFluids;
@@ -33,21 +35,15 @@ public class CRTRecipe {
         this.name = name;
     }
 
-    public CRTRecipe input(IIngredient... ingredient) {
+    public CRTRecipe input(IIngredientWithAmount... ingredient) {
 
-        this.inputItems = Arrays.stream(ingredient).map(IIngredient::asVanillaIngredient).collect(Collectors.toList());
+        this.inputItems = Arrays.stream(ingredient).map(CRTHelper::mapIIngredientWithAmount).collect(Collectors.toList());
         return this;
     }
 
-    public CRTRecipe input(FluidStack... ingredient) {
+    public CRTRecipe input(CTFluidIngredient... ingredient) {
 
-        this.inputFluids = Arrays.stream(ingredient).collect(Collectors.toList());
-        return this;
-    }
-
-    public CRTRecipe input(IFluidStack... ingredient) {
-
-        this.inputFluids = Arrays.stream(ingredient).map(IFluidStack::getInternal).collect(Collectors.toList());
+        this.inputFluids = Arrays.stream(ingredient).map(CRTHelper::mapFluidIngredient).collect(Collectors.toList());
         return this;
     }
 
@@ -102,6 +98,32 @@ public class CRTRecipe {
         return this;
     }
 
+    // Helpers for Recipe Replacements
+    public CRTRecipe setInputItems(List<Ingredient> ingredients) {
+
+        this.inputItems = ingredients;
+        return this;
+    }
+
+    public CRTRecipe setInputFluids(List<FluidIngredient> ingredient) {
+
+        this.inputFluids = ingredient;
+        return this;
+    }
+
+    public CRTRecipe setOutputItems(List<ItemStack> outputItems, List<Float> outputItemChances) {
+
+        this.outputItems = outputItems;
+        this.outputItemChances = outputItemChances;
+        return this;
+    }
+
+    public CRTRecipe setOutputFluids(List<FluidStack> outputFluids) {
+
+        this.outputFluids = outputFluids;
+        return this;
+    }
+
     public <T extends ThermalRecipe> T recipe(IRecipeBuilder<T> builder) {
 
         return builder.apply(name, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
@@ -109,7 +131,7 @@ public class CRTRecipe {
 
     public interface IRecipeBuilder<T extends ThermalRecipe> {
 
-        T apply(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids);
+        T apply(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidIngredient> inputFluids, List<ItemStack> outputItems, List<Float> outputItemChances, List<FluidStack> outputFluids);
 
     }
 

@@ -56,9 +56,9 @@ public class TreeExtractorManager extends AbstractManager {
         return leafMap.get(trunk);
     }
 
-    public boolean validTrunk(BlockState state) {
+    public boolean validTrunk(BlockState trunk) {
 
-        return trunkMap.containsKey(state);
+        return trunkMap.containsKey(trunk);
     }
 
     public FluidStack getFluid(BlockState trunk) {
@@ -98,7 +98,7 @@ public class TreeExtractorManager extends AbstractManager {
 
     public void addBoost(TreeExtractorBoost boost) {
 
-        for (ItemStack ingredient : boost.getIngredient().getMatchingStacks()) {
+        for (ItemStack ingredient : boost.getIngredient().getItems()) {
             boostMap.put(convert(ingredient), Pair.of(boost.getCycles(), boost.getOutputMod()));
         }
     }
@@ -119,12 +119,11 @@ public class TreeExtractorManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> mappings = recipeManager.getRecipes(TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : mappings.entrySet()) {
             addMapping((TreeExtractorMapping) entry.getValue());
         }
-
-        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.getRecipes(TCoreRecipeTypes.BOOST_TREE_EXTRACTOR);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_TREE_EXTRACTOR);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((TreeExtractorBoost) entry.getValue());
         }
@@ -135,10 +134,10 @@ public class TreeExtractorManager extends AbstractManager {
     private void addDefaultMappings(Block trunk, Block leaf, FluidStack stack) {
 
         if (trunk instanceof RotatedPillarBlock && leaf instanceof LeavesBlock && !stack.isEmpty()) {
-            BlockState state = trunk.getDefaultState();
+            BlockState state = trunk.defaultBlockState();
             addTrunkMapping(state, stack);
             for (int i = 1; i <= 7; ++i) {
-                addLeafMapping(state, leaf.getDefaultState().with(LeavesBlock.DISTANCE, i).with(LeavesBlock.PERSISTENT, false));
+                addLeafMapping(state, leaf.defaultBlockState().setValue(LeavesBlock.DISTANCE, i).setValue(LeavesBlock.PERSISTENT, false));
             }
         }
     }

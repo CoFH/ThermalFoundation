@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "thermal:item/tools/redprint"
+    "layer0": "thermal:item/redprint"
   },
   "overrides": [
     {

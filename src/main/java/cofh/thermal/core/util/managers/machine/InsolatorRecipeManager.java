@@ -82,11 +82,11 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_INSOLATOR);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_INSOLATOR);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((InsolatorRecipe) entry.getValue());
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.getRecipes(TCoreRecipeTypes.CATALYST_INSOLATOR);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_INSOLATOR);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {
             addCatalyst((ThermalCatalyst) entry.getValue());
         }

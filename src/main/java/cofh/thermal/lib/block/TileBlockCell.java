@@ -18,7 +18,7 @@ public class TileBlockCell extends TileBlock4Way {
     }
 
     @Override
-    public boolean hasComparatorInputOverride(BlockState state) {
+    public boolean hasAnalogOutputSignal(BlockState state) {
 
         return true;
     }
@@ -26,14 +26,14 @@ public class TileBlockCell extends TileBlock4Way {
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
 
-        if (state.getLightValue() > 0) {
-            return state.getLightValue();
+        if (state.getLightEmission() > 0) {
+            return state.getLightEmission();
         }
-        TileEntity tile = world.getTileEntity(pos);
+        TileEntity tile = world.getBlockEntity(pos);
         if (tile instanceof ITileCallback) {
             return ((ITileCallback) tile).getLightValue();
         }
-        return state.getLightValue();
+        return state.getLightEmission();
     }
 
 }

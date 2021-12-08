@@ -13,27 +13,27 @@ public class UnderwaterMinecartModel<T extends Entity> extends EntityModel<T> {
 
     public UnderwaterMinecartModel() {
 
-        textureWidth = 128;
-        textureHeight = 128;
+        texWidth = 128;
+        texHeight = 128;
 
         dome = new ModelRenderer(this);
         dome.addBox(-8, -20, -10, 16, 15, 20);
 
         minecart = new ModelRenderer(this);
-        minecart.setTextureOffset(0, 42).addBox(-8, -5, -10, 16, 10, 20);
-        minecart.setTextureOffset(56, 56).addBox(-6, -5, -8, 12, 8, 16);
+        minecart.texOffs(0, 42).addBox(-8, -5, -10, 16, 10, 20);
+        minecart.texOffs(56, 56).addBox(-6, -5, -8, 12, 8, 16);
 
-        dome.rotateAngleY = ((float) Math.PI / 2F);
-        minecart.rotateAngleY = ((float) Math.PI / 2F);
+        dome.yRot = ((float) Math.PI / 2F);
+        minecart.yRot = ((float) Math.PI / 2F);
     }
 
     @Override
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         //previously the render function, render code was moved to a method below
     }
 
     @Override
-    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 
         dome.render(matrixStack, buffer, packedLight, packedOverlay);
         minecart.render(matrixStack, buffer, packedLight, packedOverlay);

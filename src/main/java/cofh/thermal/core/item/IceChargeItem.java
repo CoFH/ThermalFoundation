@@ -34,15 +34,15 @@ public class IceChargeItem extends ItemCoFH {
 
         super(builder);
 
-        DispenserBlock.registerDispenseBehavior(this, DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(this, DISPENSER_BEHAVIOR);
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
+        World world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
         BlockState state = world.getBlockState(pos);
         //        if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getFace(), context.getItem()))) {
         //            return ActionResultType.FAIL;
@@ -50,42 +50,42 @@ public class IceChargeItem extends ItemCoFH {
         boolean used = false;
         // CAMPFIRE/FIRE
         if (AreaUtils.isLitCampfire(state)) {
-            world.setBlockState(pos, state.with(BlockStateProperties.LIT, false));
+            world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.LIT, false));
             used = true;
         }
         // SNOW
-        pos = pos.offset(context.getFace());
-        if (world.isAirBlock(pos) && AreaUtils.isValidSnowPosition(world, pos)) {
-            world.setBlockState(pos, SNOW.getDefaultState());
+        pos = pos.relative(context.getClickedFace());
+        if (world.isEmptyBlock(pos) && AreaUtils.isValidSnowPosition(world, pos)) {
+            world.setBlockAndUpdate(pos, SNOW.defaultBlockState());
             used = true;
         }
         state = world.getBlockState(pos);
         // FIRE
         if (state.getBlock() == FIRE) {
-            world.setBlockState(pos, AIR.getDefaultState());
+            world.setBlockAndUpdate(pos, AIR.defaultBlockState());
             used = true;
         }
         // WATER
-        boolean isFull = state.getBlock() == WATER && state.get(FlowingFluidBlock.LEVEL) == 0;
-        if (state.getMaterial() == Material.WATER && isFull && state.isValidPosition(world, pos) && world.placedBlockCollides(state, pos, ISelectionContext.dummy())) {
-            world.setBlockState(pos, permanentWater ? ICE.getDefaultState() : FROSTED_ICE.getDefaultState());
+        boolean isFull = state.getBlock() == WATER && state.getValue(FlowingFluidBlock.LEVEL) == 0;
+        if (state.getMaterial() == Material.WATER && isFull && state.canSurvive(world, pos) && world.isUnobstructed(state, pos, ISelectionContext.empty())) {
+            world.setBlockAndUpdate(pos, permanentWater ? ICE.defaultBlockState() : FROSTED_ICE.defaultBlockState());
             used = true;
             if (!permanentWater) {
-                world.getPendingBlockTicks().scheduleTick(pos, FROSTED_ICE, MathHelper.nextInt(world.rand, 60, 120));
+                world.getBlockTicks().scheduleTick(pos, FROSTED_ICE, MathHelper.nextInt(world.random, 60, 120));
             }
         }
         // LAVA
-        isFull = state.getBlock() == LAVA && state.get(FlowingFluidBlock.LEVEL) == 0;
-        if (state.getMaterial() == Material.LAVA && isFull && state.isValidPosition(world, pos) && world.placedBlockCollides(state, pos, ISelectionContext.dummy())) {
-            world.setBlockState(pos, permanentLava ? OBSIDIAN.getDefaultState() : GLOSSED_MAGMA.getDefaultState());
+        isFull = state.getBlock() == LAVA && state.getValue(FlowingFluidBlock.LEVEL) == 0;
+        if (state.getMaterial() == Material.LAVA && isFull && state.canSurvive(world, pos) && world.isUnobstructed(state, pos, ISelectionContext.empty())) {
+            world.setBlockAndUpdate(pos, permanentLava ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.defaultBlockState());
             used = true;
             if (!permanentLava) {
-                world.getPendingBlockTicks().scheduleTick(pos, GLOSSED_MAGMA, MathHelper.nextInt(world.rand, 60, 120));
+                world.getBlockTicks().scheduleTick(pos, GLOSSED_MAGMA, MathHelper.nextInt(world.random, 60, 120));
             }
         }
         if (used) {
             playUseSound(world, pos);
-            context.getItem().shrink(1);
+            context.getItemInHand().shrink(1);
             return ActionResultType.SUCCESS;
         } else {
             return ActionResultType.FAIL;
@@ -94,34 +94,34 @@ public class IceChargeItem extends ItemCoFH {
 
     private void playUseSound(World worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR
     private static final IDispenseItemBehavior DISPENSER_BEHAVIOR = new DefaultDispenseItemBehavior() {
 
         @Override
-        public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+        public ItemStack execute(IBlockSource source, ItemStack stack) {
 
-            Direction direction = source.getBlockState().get(DispenserBlock.FACING);
+            Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
             IPosition iposition = DispenserBlock.getDispensePosition(source);
-            double d0 = iposition.getX() + (double) ((float) direction.getXOffset() * 0.3F);
-            double d1 = iposition.getY() + (double) ((float) direction.getYOffset() * 0.3F);
-            double d2 = iposition.getZ() + (double) ((float) direction.getZOffset() * 0.3F);
-            World world = source.getWorld();
-            Random random = world.rand;
-            double d3 = random.nextGaussian() * 0.05D + (double) direction.getXOffset();
-            double d4 = random.nextGaussian() * 0.05D + (double) direction.getYOffset();
-            double d5 = random.nextGaussian() * 0.05D + (double) direction.getZOffset();
-            world.addEntity(Util.make(() -> new BlizzProjectileEntity(d0, d1, d2, d3, d4, d5, world)));
+            double d0 = iposition.x() + (double) ((float) direction.getStepX() * 0.3F);
+            double d1 = iposition.y() + (double) ((float) direction.getStepY() * 0.3F);
+            double d2 = iposition.z() + (double) ((float) direction.getStepZ() * 0.3F);
+            World world = source.getLevel();
+            Random random = world.random;
+            double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
+            double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
+            double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
+            world.addFreshEntity(Util.make(() -> new BlizzProjectileEntity(d0, d1, d2, d3, d4, d5, world)));
             stack.shrink(1);
             return stack;
         }
 
         @Override
-        protected void playDispenseSound(IBlockSource source) {
+        protected void playSound(IBlockSource source) {
 
-            source.getWorld().playEvent(1018, source.getBlockPos(), 0);
+            source.getLevel().levelEvent(1018, source.getPos(), 0);
         }
     };
     // endregion

@@ -17,7 +17,7 @@ public class FluidCellContainer extends TileContainer {
     public FluidCellContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(FLUID_CELL_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (FluidCellTile) world.getTileEntity(pos);
+        this.tile = (FluidCellTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         bindAugmentSlots(tileInv, 0, this.tile.augSize());

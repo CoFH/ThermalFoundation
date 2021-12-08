@@ -55,7 +55,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
         background = guiHelper.drawableBuilder(DeviceRockGenScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
                 .build();
-        name = getTextComponent(DEVICE_ROCK_GEN_BLOCK.getTranslationKey());
+        name = getTextComponent(DEVICE_ROCK_GEN_BLOCK.getDescriptionId());
 
         slot = Drawables.getDrawables(guiHelper).getSlot(SLOT);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

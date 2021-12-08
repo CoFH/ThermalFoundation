@@ -1,14 +1,14 @@
 package cofh.thermal.core.tileentity.device;
 
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.TimeTracker;
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,8 +18,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -34,16 +34,17 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableTileEntity {
+public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT);
 
     protected static final int BASE_PROCESS_MAX = 4000;
 
-    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
     protected static final int RADIUS = 2;
     protected int radius = RADIUS;
+    protected AxisAlignedBB area;
 
     protected int process;
     protected int processMax = BASE_PROCESS_MAX * radius * radius;
@@ -52,7 +53,6 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
     public DeviceSoilInfuserTile() {
 
         super(TCoreReferences.DEVICE_SOIL_INFUSER_TILE);
-        timeTracker = new TimeTracker();
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
 
         inventory.addSlot(chargeSlot, INTERNAL);
@@ -71,7 +71,7 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
                 energyStorage.modify(-processTick);
                 if (process >= processMax) {
                     process -= processMax;
-                    BlockPos.getAllInBox(pos.add(-radius, -1, -radius), pos.add(radius, 1, radius))
+                    BlockPos.betweenClosedStream(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(radius, 1, radius))
                             .forEach(this::chargeSoil);
                 }
             } else {
@@ -88,7 +88,7 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceSoilInfuserContainer(i, world, pos, inventory, player);
+        return new DeviceSoilInfuserContainer(i, level, worldPosition, inventory, player);
     }
 
     // region GUI
@@ -134,9 +134,9 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
@@ -144,9 +144,9 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);
@@ -164,9 +164,9 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
     protected void chargeSoil(BlockPos blockPos) {
 
-        BlockState state = world.getBlockState(blockPos);
+        BlockState state = level.getBlockState(blockPos);
         if (state.getBlock() instanceof SoilBlock) {
-            SoilBlock.charge(state, world, blockPos);
+            SoilBlock.charge(state, level, blockPos);
         }
     }
 
@@ -174,7 +174,7 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
         if (!chargeSlot.isEmpty()) {
             chargeSlot.getItemStack()
-                    .getCapability(CapabilityEnergy.ENERGY, null)
+                    .getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null)
                     .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
         }
     }
@@ -211,6 +211,24 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
         processMax = BASE_PROCESS_MAX * (1 + radius);
         processTick = Math.round(getBaseProcessTick() * baseMod);
+        area = null;
+    }
+    // endregion
+
+    // region IAreaEffectTile
+    @Override
+    public AxisAlignedBB getArea() {
+
+        if (area == null) {
+            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1, 1 + radius));
+        }
+        return area;
+    }
+
+    @Override
+    public int getColor() {
+
+        return isActive ? 0x78E86F : 0x555555;
     }
     // endregion
 }

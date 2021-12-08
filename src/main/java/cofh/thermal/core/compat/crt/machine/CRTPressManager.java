@@ -7,27 +7,38 @@ import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipes.ReplacementHandlerHelper;
+import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
+import com.blamejared.crafttweaker.impl.fluid.MCFluidStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Press")
-public class CRTPressManager implements IRecipeManager {
+@IRecipeHandler.For(PressRecipe.class)
+public class CRTPressManager implements IRecipeManager, IRecipeHandler<PressRecipe> {
 
     @ZenCodeType.Method
-    public void addRecipe(String name, MCWeightedItemStack[] outputs, IFluidStack outputFluid, IIngredient[] ingredients, int energy) {
+    public void addRecipe(String name, MCWeightedItemStack[] outputs, IFluidStack outputFluid, IIngredientWithAmount[] ingredients, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(ingredients).output(outputs).output(outputFluid);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(PressRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(PressRecipe::new)));
     }
 
     @Override
@@ -46,6 +57,23 @@ public class CRTPressManager implements IRecipeManager {
     public void removeRecipe(IItemStack[] itemOutputs, IFluidStack[] fluidOutputs) {
 
         CraftTweakerAPI.apply(new ActionRemoveThermalRecipeByOutput(this, itemOutputs, fluidOutputs));
+    }
+
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, PressRecipe recipe) {
+
+        return String.format("<recipetype:%s>.addRecipe(\"%s\", [%s], %s, [%s], %s);", recipe.getType(), recipe.getId(), RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), ", "), recipe.getOutputFluids().isEmpty() ? MCFluidStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), " | "), RecipePrintingUtil.stringifyIngredients(recipe.getInputItems(), ", "), recipe.getEnergy());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, PressRecipe>> replaceIngredients(IRecipeManager manager, PressRecipe recipe, List<IReplacementRule> rules) {
+
+        return ReplacementHandlerHelper.replaceIngredientList(
+                recipe.getInputItems(),
+                Ingredient.class,
+                recipe,
+                rules,
+                newIngredients -> id -> new CRTRecipe(id).energy(recipe.getEnergy()).setInputItems(newIngredients).setOutputItems(recipe.getOutputItems(), recipe.getOutputItemChances()).setOutputFluids(recipe.getOutputFluids()).recipe(PressRecipe::new));
     }
 
 }

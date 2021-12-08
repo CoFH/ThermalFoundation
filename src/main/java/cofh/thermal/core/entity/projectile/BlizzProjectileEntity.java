@@ -26,7 +26,7 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
 
     private static final int CLOUD_DURATION = 20;
 
-    public static float baseDamage = 5.0F;
+    public static float defaultDamage = 5.0F;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
     public static int effectRadius = 2;
@@ -47,64 +47,64 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected boolean isFireballFiery() {
+    protected boolean shouldBurn() {
 
         return false;
     }
 
     @Override
-    protected IParticleData getParticle() {
+    protected IParticleData getTrailParticle() {
 
         return ParticleTypes.ITEM_SNOWBALL;
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
-            if (entity.isBurning()) {
-                entity.extinguish();
+            if (entity.isOnFire()) {
+                entity.clearFire();
             }
             if (!entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addPotionEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
+                living.addEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
             }
-            entity.attackEntityFrom(BlizzDamageSource.causeDamage(this, func_234616_v_()), entity.isImmuneToFire() ? baseDamage + 3.0F : baseDamage);
+            entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), entity.fireImmune() ? defaultDamage + 3.0F : defaultDamage);
         }
-        if (Utils.isServerWorld(world)) {
+        if (Utils.isServerWorld(level)) {
             if (effectRadius > 0) {
-                AreaUtils.freezeNearbyGround(this, world, this.getPosition(), effectRadius);
-                AreaUtils.freezeSurfaceWater(this, world, this.getPosition(), effectRadius, false);
-                AreaUtils.freezeSurfaceLava(this, world, this.getPosition(), effectRadius, false);
+                AreaUtils.freezeNearbyGround(this, level, this.blockPosition(), effectRadius);
+                AreaUtils.freezeSurfaceWater(this, level, this.blockPosition(), effectRadius, false);
+                AreaUtils.freezeSurfaceLava(this, level, this.blockPosition(), effectRadius, false);
                 makeAreaOfEffectCloud();
             }
-            this.world.setEntityState(this, (byte) 3);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
     }
 
     @Override
-    protected void registerData() {
+    protected void defineSynchedData() {
 
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.ITEM_SNOWBALL);
+        cloud.setParticle(ParticleTypes.ITEM_SNOWBALL);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((effectRadius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        level.addFreshEntity(cloud);
     }
 
     // region DAMAGE SOURCE

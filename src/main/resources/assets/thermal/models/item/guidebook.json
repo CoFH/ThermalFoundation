@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/guidebook"
+    "layer0": "thermal:item/guidebook"
   }
 }

@@ -23,29 +23,29 @@ public class ThermalTileSecurable extends TileCoFH implements ISecurableTile {
     @Override
     public ItemStack createItemStackTag(ItemStack stack) {
 
-        CompoundNBT nbt = stack.getOrCreateChildTag(TAG_BLOCK_ENTITY);
+        CompoundNBT nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         if (hasSecurity()) {
             securityControl().write(nbt);
         }
         if (!nbt.isEmpty()) {
-            stack.setTagInfo(TAG_BLOCK_ENTITY, nbt);
+            stack.addTagElement(TAG_BLOCK_ENTITY, nbt);
         }
         return super.createItemStackTag(stack);
     }
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         securityControl.read(nbt);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         securityControl.write(nbt);
 

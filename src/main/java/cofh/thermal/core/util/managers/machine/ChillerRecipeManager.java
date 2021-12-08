@@ -6,6 +6,7 @@ import cofh.lib.inventory.FalseIInventory;
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.lib.util.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
@@ -51,12 +52,20 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
 
     public void addRecipe(ThermalRecipe recipe) {
 
-        if (!recipe.getInputItems().isEmpty()) {
-            for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+        if (!recipe.getInputFluids().isEmpty()) {
+            for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
+                if (!recipe.getInputItems().isEmpty()) {
+                    for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+                        addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                    }
+                } else {
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                }
             }
         } else {
-            addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            }
         }
     }
 
@@ -87,7 +96,7 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
             ItemStack inputItem = inputSlots.get(0).getItemStack();
             return recipeMap.get(Collections.singletonList(convert(inputItem).hashCode()));
         }
-        if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
+        if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty() || inputSlots.get(0).getItemStack().getItem() instanceof SlotSealItem) {
             FluidStack inputFluid = inputTanks.get(0).getFluidStack();
             return recipeMap.get(Collections.singletonList(FluidHelper.fluidHashcode(inputFluid)));
         }
@@ -161,7 +170,7 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_CHILLER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_CHILLER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }

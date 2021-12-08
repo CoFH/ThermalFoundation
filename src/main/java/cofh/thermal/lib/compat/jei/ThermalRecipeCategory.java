@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,33 +56,41 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
 
         group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
             if (!chances.isEmpty() && slotIndex >= indexOffset && slotIndex < indexOffset + chances.size()) {
-                float chance = Math.abs(chances.get(slotIndex - indexOffset));
+                float baseChance = chances.get(slotIndex - indexOffset);
+                float chance = Math.abs(baseChance);
                 if (chance < BASE_CHANCE) {
-                    tooltip.add(getTextComponent("info.cofh.chance").appendString(": " + (int) (100 * chance) + "%"));
+                    tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
                 } else {
                     chance -= (int) chance;
                     if (chance > 0) {
-                        tooltip.add(getTextComponent("info.cofh.chance_additional").appendString(": " + (int) (100 * chance) + "%"));
+                        tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
                     }
+                }
+                if (baseChance >= 0) {
+                    tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
                 }
             }
         });
     }
 
-    protected void addCatalyzedItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, int indexOffset) {
+    protected void addCatalyzedItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, boolean catalyzable, int indexOffset) {
 
         group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
             if (slotIndex == indexOffset - 1) {
                 tooltip.add(getTextComponent("info.cofh.optional_catalyst"));
             } else if (!chances.isEmpty() && slotIndex >= indexOffset && slotIndex < indexOffset + chances.size()) {
-                float chance = Math.abs(chances.get(slotIndex - indexOffset));
+                float baseChance = chances.get(slotIndex - indexOffset);
+                float chance = Math.abs(baseChance);
                 if (chance < BASE_CHANCE) {
-                    tooltip.add(getTextComponent("info.cofh.chance").appendString(": " + (int) (100 * chance) + "%"));
+                    tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
                 } else {
                     chance -= (int) chance;
                     if (chance > 0) {
-                        tooltip.add(getTextComponent("info.cofh.chance_additional").appendString(": " + (int) (100 * chance) + "%"));
+                        tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
                     }
+                }
+                if (catalyzable && baseChance >= 0) {
+                    tooltip.add(getTextComponent("info.cofh.boostable").withStyle(TextFormatting.GOLD));
                 }
             }
         });
@@ -127,7 +136,7 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
         List<ITextComponent> tooltip = new ArrayList<>();
 
         if (recipe.getEnergy() > 0 && mouseX > ENERGY_X && mouseX < ENERGY_X + energy.getWidth() - 1 && mouseY > ENERGY_Y && mouseY < ENERGY_Y + energy.getHeight() - 1) {
-            tooltip.add(getTextComponent("info.cofh.energy").appendString(": " + StringHelper.format(recipe.getEnergy()) + " RF"));
+            tooltip.add(getTextComponent("info.cofh.energy").append(": " + StringHelper.format(recipe.getEnergy()) + " RF"));
         }
         //        if (recipe.getXp() > 0 && mouseX > EXP_X && mouseX < EXP_X + xp.getWidth() - 1 && mouseY > EXP_Y && mouseY < EXP_Y + xp.getHeight() - 1) {
         //            tooltip.add(getTextComponent("info.cofh.xp").appendString(": " + recipe.getXp() + " XP"));

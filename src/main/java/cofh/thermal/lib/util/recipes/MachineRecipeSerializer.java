@@ -1,5 +1,6 @@
 package cofh.thermal.lib.util.recipes;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.helpers.MathHelper;
 import com.google.gson.JsonObject;
 import net.minecraft.item.ItemStack;
@@ -28,13 +29,13 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
     }
 
     @Override
-    public T read(ResourceLocation recipeId, JsonObject json) {
+    public T fromJson(ResourceLocation recipeId, JsonObject json) {
 
         int energy = defaultEnergy;
         float experience = 0.0F;
 
         ArrayList<Ingredient> inputItems = new ArrayList<>();
-        ArrayList<FluidStack> inputFluids = new ArrayList<>();
+        ArrayList<FluidIngredient> inputFluids = new ArrayList<>();
         ArrayList<ItemStack> outputItems = new ArrayList<>();
         ArrayList<Float> outputItemChances = new ArrayList<>();
         ArrayList<FluidStack> outputFluids = new ArrayList<>();
@@ -81,7 +82,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
 
     @Nullable
     @Override
-    public T read(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 
         int energy = buffer.readVarInt();
         float experience = buffer.readFloat();
@@ -89,20 +90,20 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         int numInputItems = buffer.readVarInt();
         ArrayList<Ingredient> inputItems = new ArrayList<>(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            inputItems.add(Ingredient.read(buffer));
+            inputItems.add(Ingredient.fromNetwork(buffer));
         }
 
         int numInputFluids = buffer.readVarInt();
-        ArrayList<FluidStack> inputFluids = new ArrayList<>(numInputFluids);
+        ArrayList<FluidIngredient> inputFluids = new ArrayList<>(numInputFluids);
         for (int i = 0; i < numInputFluids; ++i) {
-            inputFluids.add(buffer.readFluidStack());
+            inputFluids.add(FluidIngredient.fromNetwork(buffer));
         }
 
         int numOutputItems = buffer.readVarInt();
         ArrayList<ItemStack> outputItems = new ArrayList<>(numOutputItems);
         ArrayList<Float> outputItemChances = new ArrayList<>(numOutputItems);
         for (int i = 0; i < numOutputItems; ++i) {
-            outputItems.add(buffer.readItemStack());
+            outputItems.add(buffer.readItem());
             outputItemChances.add(buffer.readFloat());
         }
 
@@ -115,7 +116,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
     }
 
     @Override
-    public void write(PacketBuffer buffer, T recipe) {
+    public void toNetwork(PacketBuffer buffer, T recipe) {
 
         buffer.writeVarInt(recipe.energy);
         buffer.writeFloat(recipe.xp);
@@ -123,17 +124,17 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         int numInputItems = recipe.inputItems.size();
         buffer.writeVarInt(numInputItems);
         for (int i = 0; i < numInputItems; ++i) {
-            recipe.inputItems.get(i).write(buffer);
+            recipe.inputItems.get(i).toNetwork(buffer);
         }
         int numInputFluids = recipe.inputFluids.size();
         buffer.writeVarInt(numInputFluids);
         for (int i = 0; i < numInputFluids; ++i) {
-            buffer.writeFluidStack(recipe.inputFluids.get(i));
+            recipe.inputFluids.get(i).toNetwork(buffer);
         }
         int numOutputItems = recipe.outputItems.size();
         buffer.writeVarInt(numOutputItems);
         for (int i = 0; i < numOutputItems; ++i) {
-            buffer.writeItemStack(recipe.outputItems.get(i));
+            buffer.writeItem(recipe.outputItems.get(i));
             buffer.writeFloat(recipe.outputItemChances.get(i));
         }
         int numOutputFluids = recipe.outputFluids.size();
@@ -145,7 +146,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
 
     public interface IFactory<T extends ThermalRecipe> {
 
-        T create(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids);
+        T create(ResourceLocation recipeId, int energy, float experience, List<Ingredient> inputItems, List<FluidIngredient> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids);
 
     }
 

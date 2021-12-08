@@ -3,30 +3,41 @@ package cofh.thermal.core.compat.crt.machine;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.RefineryRecipe;
 import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
+import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
+import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
+import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
+import com.blamejared.crafttweaker.impl.item.MCItemStack;
 import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
 @ZenRegister
 @ZenCodeType.Name("mods.thermal.Refinery")
-public class CRTRefineryManager implements IRecipeManager {
+@IRecipeHandler.For(RefineryRecipe.class)
+public class CRTRefineryManager implements IRecipeManager, IRecipeHandler<RefineryRecipe> {
 
     @ZenCodeType.Method
-    public void addRecipe(String name, MCWeightedItemStack itemOutput, IFluidStack[] fluidsOutput, IFluidStack inputFluid, int energy) {
+    public void addRecipe(String name, MCWeightedItemStack itemOutput, IFluidStack[] fluidsOutput, CTFluidIngredient inputFluid, int energy) {
 
         name = fixRecipeName(name);
         ResourceLocation resourceLocation = new ResourceLocation("crafttweaker", name);
 
         CRTRecipe crtRecipe = new CRTRecipe(resourceLocation).energy(energy).input(inputFluid).output(fluidsOutput).output(itemOutput);
-        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(RefineryRecipe::new), ""));
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, crtRecipe.recipe(RefineryRecipe::new)));
     }
 
     @Override
@@ -45,6 +56,18 @@ public class CRTRefineryManager implements IRecipeManager {
     public void removeRecipe(IItemStack[] itemOutputs, IFluidStack[] fluidOutputs) {
 
         CraftTweakerAPI.apply(new ActionRemoveThermalRecipeByOutput(this, itemOutputs, fluidOutputs));
+    }
+
+    @Override
+    public String dumpToCommandString(IRecipeManager manager, RefineryRecipe recipe) {
+
+        return String.format("<recipetype:%s>.addRecipe(\"%s\", %s, [%s], %s, %s);", recipe.getType(), recipe.getId(), recipe.getOutputItems().isEmpty() ? MCItemStack.EMPTY.get().getCommandString() : RecipePrintingUtil.stringifyWeightedStacks(recipe.getOutputItems(), recipe.getOutputItemChances(), " | "), RecipePrintingUtil.stringifyFluidStacks(recipe.getOutputFluids(), ", "), CRTHelper.stringifyFluidIngredients(recipe.getInputFluids()), recipe.getEnergy());
+    }
+
+    @Override
+    public Optional<Function<ResourceLocation, RefineryRecipe>> replaceIngredients(IRecipeManager manager, RefineryRecipe recipe, List<IReplacementRule> rules) {
+        // CRT doesn't support replacing fluid ingredients right now.
+        return Optional.empty();
     }
 
 }

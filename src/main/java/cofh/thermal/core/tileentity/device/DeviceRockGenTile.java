@@ -91,7 +91,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     @Override
     protected void updateValidity() {
 
-        if (world == null || !world.isAreaLoaded(pos, 1)) {
+        if (level == null || !level.isAreaLoaded(worldPosition, 1)) {
             return;
         }
         adjLava = 0;
@@ -99,21 +99,21 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
 
         Block[] adjBlocks = new Block[4];
         BlockPos[] cardinals = new BlockPos[]{
-                pos.north(),
-                pos.south(),
-                pos.west(),
-                pos.east(),
+                worldPosition.north(),
+                worldPosition.south(),
+                worldPosition.west(),
+                worldPosition.east(),
         };
         for (int i = 0; i < 4; ++i) {
             BlockPos adj = cardinals[i];
-            FluidState fluidState = world.getFluidState(adj);
-            if (fluidState.getFluid().equals(Fluids.LAVA)) {
+            FluidState fluidState = level.getFluidState(adj);
+            if (fluidState.getType().equals(Fluids.LAVA)) {
                 ++adjLava;
             }
-            adjBlocks[i] = fluidState.isEmpty() || fluidState.isSource() ? world.getBlockState(adj).getBlock() : Blocks.AIR;
+            adjBlocks[i] = fluidState.isEmpty() || fluidState.isSource() ? level.getBlockState(adj).getBlock() : Blocks.AIR;
         }
         if (adjLava > 0) {
-            Block under = world.getBlockState(pos.down()).getBlock();
+            Block under = level.getBlockState(worldPosition.below()).getBlock();
             RockGenManager.RockGenRecipe recipe = RockGenManager.instance().getResult(under, adjBlocks);
             ItemStack result = recipe.getResult();
             if (!result.isEmpty()) {
@@ -133,7 +133,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
                 }
                 processMax = recipe.getTime();
                 genAmount = Math.max(1, result.getCount());
-                if (world.getBiome(pos).getCategory() == Biome.Category.NETHER) {
+                if (level.getBiome(worldPosition).getBiomeCategory() == Biome.Category.NETHER) {
                     processMax = Math.max(1, processMax / 2);
                 }
                 process = processMax;
@@ -187,7 +187,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceRockGenContainer(i, world, pos, inventory, player);
+        return new DeviceRockGenContainer(i, level, worldPosition, inventory, player);
     }
 
     // region GUI
@@ -231,8 +231,8 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
         buffer.writeInt(process);
         buffer.writeInt(adjLava);
 
-        buffer.writeString(ForgeRegistries.BLOCKS.getKey(below).toString());
-        buffer.writeString(ForgeRegistries.BLOCKS.getKey(adjacent).toString());
+        buffer.writeUtf(ForgeRegistries.BLOCKS.getKey(below).toString());
+        buffer.writeUtf(ForgeRegistries.BLOCKS.getKey(adjacent).toString());
 
         return buffer;
     }
@@ -245,16 +245,16 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
         process = buffer.readInt();
         adjLava = buffer.readInt();
 
-        below = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(buffer.readString()));
-        adjacent = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(buffer.readString()));
+        below = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(buffer.readUtf()));
+        adjacent = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(buffer.readUtf()));
     }
     // endregion
 
     // region NBT
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void load(BlockState state, CompoundNBT nbt) {
 
-        super.read(state, nbt);
+        super.load(state, nbt);
 
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
@@ -265,9 +265,9 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
+    public CompoundNBT save(CompoundNBT nbt) {
 
-        super.write(nbt);
+        super.save(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);

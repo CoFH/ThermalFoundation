@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thermal:item/tools/ender_grenade"
+    "layer0": "thermal:item/ender_grenade"
   },
   "overrides": [
     {

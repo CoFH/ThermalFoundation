@@ -18,7 +18,7 @@ public class RockGenMapping extends SerializableRecipe {
     protected final Block adjacent;
     protected final ItemStack result;
 
-    protected RockGenMapping(ResourceLocation recipeId, int time, Block below, Block adjacent, ItemStack result) {
+    public RockGenMapping(ResourceLocation recipeId, int time, Block below, Block adjacent, ItemStack result) {
 
         super(recipeId);
 

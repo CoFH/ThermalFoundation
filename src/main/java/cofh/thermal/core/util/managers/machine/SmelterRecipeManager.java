@@ -30,7 +30,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     private static final SmelterRecipeManager INSTANCE = new SmelterRecipeManager();
     protected static final int DEFAULT_ENERGY = 3200;
 
-    protected Object2ObjectOpenHashMap<SmelterMapWrapper, IMachineRecipe> recipeMap = new Object2ObjectOpenHashMap<>();
+    protected Map<SmelterMapWrapper, IMachineRecipe> recipeMap = new Object2ObjectOpenHashMap<>();
     protected Map<ComparableItemStack, IRecipeCatalyst> catalystMap = new Object2ObjectOpenHashMap<>();
     protected Set<ComparableItemStack> validItems = new ObjectOpenHashSet<>();
 
@@ -55,22 +55,22 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
 
         switch (recipe.getInputItems().size()) {
             case 1:
-                for (ItemStack firstInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(firstInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
+                for (ItemStack firstInput : recipe.getInputItems().get(0).getItems()) {
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(firstInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                 }
                 return;
             case 2:
-                for (ItemStack firstInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                    for (ItemStack secondInput : recipe.getInputItems().get(1).getMatchingStacks()) {
-                        addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
+                for (ItemStack firstInput : recipe.getInputItems().get(0).getItems()) {
+                    for (ItemStack secondInput : recipe.getInputItems().get(1).getItems()) {
+                        addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                     }
                 }
                 return;
             case 3:
-                for (ItemStack firstInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                    for (ItemStack secondInput : recipe.getInputItems().get(1).getMatchingStacks()) {
-                        for (ItemStack thirdInput : recipe.getInputItems().get(2).getMatchingStacks()) {
-                            addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput, thirdInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
+                for (ItemStack firstInput : recipe.getInputItems().get(0).getItems()) {
+                    for (ItemStack secondInput : recipe.getInputItems().get(1).getItems()) {
+                        for (ItemStack thirdInput : recipe.getInputItems().get(2).getItems()) {
+                            addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput, thirdInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                         }
                     }
                 }
@@ -174,7 +174,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
 
     public void addCatalyst(ThermalCatalyst catalyst) {
 
-        for (ItemStack ingredient : catalyst.getIngredient().getMatchingStacks()) {
+        for (ItemStack ingredient : catalyst.getIngredient().getItems()) {
             addCatalyst(ingredient, catalyst.getPrimaryMod(), catalyst.getSecondaryMod(), catalyst.getEnergyMod(), catalyst.getMinChance(), catalyst.getUseChance());
         }
     }
@@ -219,15 +219,15 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_SMELTER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.CATALYZED);
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_SMELTER_RECYCLE);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER_RECYCLE);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recycle.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.getRecipes(TCoreRecipeTypes.CATALYST_SMELTER);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_SMELTER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {
             addCatalyst((ThermalCatalyst) entry.getValue());
         }

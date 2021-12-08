@@ -10,7 +10,7 @@ import cofh.core.network.packet.server.FilterGuiOpenPacket;
 import cofh.lib.inventory.container.ContainerCoFH;
 import cofh.lib.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.SecurityHelper;
-import cofh.thermal.lib.tileentity.ThermalTileBase;
+import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
 
@@ -20,9 +20,9 @@ import static cofh.core.util.helpers.GuiHelper.*;
 
 public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScreenCoFH<T> {
 
-    protected ThermalTileBase tile;
+    protected ThermalTileAugmentable tile;
 
-    public ThermalTileScreenBase(T container, PlayerInventory inv, ThermalTileBase tile, ITextComponent titleIn) {
+    public ThermalTileScreenBase(T container, PlayerInventory inv, ThermalTileAugmentable tile, ITextComponent titleIn) {
 
         super(container, inv, titleIn);
         this.tile = tile;
@@ -37,8 +37,8 @@ public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScr
         // addPanel(new PanelEnchantment(this, "This block can be enchanted."));
         addPanel(new SecurityPanel(this, tile, SecurityHelper.getID(player)));
 
-        if (container.getAugmentSlots().size() > 0) {
-            addPanel(new AugmentPanel(this, container::getNumAugmentSlots, container.getAugmentSlots()));
+        if (menu.getAugmentSlots().size() > 0) {
+            addPanel(new AugmentPanel(this, menu::getNumAugmentSlots, menu.getAugmentSlots()));
         }
         addPanel(new RSControlPanel(this, tile));
 

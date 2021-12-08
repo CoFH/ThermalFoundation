@@ -2,9 +2,9 @@ package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.fluid.FluidHandlerRestrictionWrapper;
 import cofh.lib.fluid.FluidStorageAdjustable;
 import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.util.StorageGroup;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
@@ -22,16 +22,18 @@ import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
+import static cofh.lib.util.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.thermal.core.init.TCoreReferences.FLUID_CELL_TILE;
-import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_VALIDATOR;
+import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
@@ -49,7 +51,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         amountInput = BUCKET_VOLUME;
         amountOutput = BUCKET_VOLUME;
 
-        tankInv.addTank(fluidStorage, StorageGroup.ACCESSIBLE);
+        tankInv.addTank(fluidStorage, ACCESSIBLE);
 
         transferControl.initControl(false, true);
 
@@ -72,7 +74,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(world) || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
+        if (Utils.timeCheck(level) || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
             updateTrackers(true);
         }
     }
@@ -93,12 +95,12 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         }
         for (int i = inputTracker; i < 6 && fluidStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < inputTracker && fluidStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         ++inputTracker;
@@ -115,12 +117,12 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         }
         for (int i = outputTracker; i < 6 && fluidStorage.getAmount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < outputTracker && fluidStorage.getAmount() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         ++outputTracker;
@@ -166,7 +168,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new FluidCellContainer(i, world, pos, inventory, player);
+        return new FluidCellContainer(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull
@@ -191,7 +193,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         if (curScale != compareTracker) {
             compareTracker = curScale;
             if (send) {
-                markDirty();
+                setChanged();
             }
         }
         if (fluidStorage.isCreative()) {
@@ -207,29 +209,54 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         }
     }
 
+    // region AUGMENTS
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && FLUID_VALIDATOR.test(item, getAugmentsAsList());
+        return item -> AugmentDataHelper.hasAugmentData(item) && FLUID_STORAGE_VALIDATOR.test(item, getAugmentsAsList());
     }
+    // endregion
 
     // region CAPABILITIES
+    protected LazyOptional<?> inputFluidCap = LazyOptional.empty();
+    protected LazyOptional<?> outputFluidCap = LazyOptional.empty();
+
     @Override
     protected void updateHandlers() {
 
         // Optimization to prevent callback logic as contents may change rapidly.
         LazyOptional<?> prevFluidCap = fluidCap;
+        LazyOptional<?> prevFluidInputCap = inputFluidCap;
+        LazyOptional<?> prevFluidOutputCap = outputFluidCap;
+
+        IFluidHandler inputHandler = new FluidHandlerRestrictionWrapper(fluidStorage, true, false);
+        IFluidHandler outputHandler = new FluidHandlerRestrictionWrapper(fluidStorage, false, true);
+
         fluidCap = LazyOptional.of(() -> fluidStorage);
+        inputFluidCap = LazyOptional.of(() -> inputHandler);
+        outputFluidCap = LazyOptional.of(() -> outputHandler);
+
         prevFluidCap.invalidate();
+        prevFluidInputCap.invalidate();
+        prevFluidOutputCap.invalidate();
     }
 
     @Override
     protected <T> LazyOptional<T> getFluidHandlerCapability(@Nullable Direction side) {
 
-        if (side == null || reconfigControl.getSideConfig(side.ordinal()) != SideConfig.SIDE_NONE) {
+        if (side == null) {
             return super.getFluidHandlerCapability(side);
         }
-        return LazyOptional.empty();
+        switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE:
+                return LazyOptional.empty();
+            case SIDE_INPUT:
+                return inputFluidCap.cast();
+            case SIDE_OUTPUT:
+                return outputFluidCap.cast();
+            default:
+                return super.getFluidHandlerCapability(side);
+        }
     }
     // endregion
 }

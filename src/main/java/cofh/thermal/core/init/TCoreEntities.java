@@ -11,8 +11,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.world.gen.Heightmap;
 
 import static cofh.thermal.core.ThermalCore.ENTITIES;
-import static cofh.thermal.core.init.TCoreIDs.*;
 import static cofh.thermal.core.init.TCoreReferences.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreEntities {
 
@@ -22,43 +22,43 @@ public class TCoreEntities {
 
     public static void register() {
 
-        ENTITIES.register(ID_BASALZ, () -> EntityType.Builder.create(BasalzEntity::new, EntityClassification.MONSTER).size(0.6F, 1.8F).immuneToFire().build(ID_BASALZ));
-        ENTITIES.register(ID_BLIZZ, () -> EntityType.Builder.create(BlizzEntity::new, EntityClassification.MONSTER).size(0.6F, 1.8F).build(ID_BLIZZ));
-        ENTITIES.register(ID_BLITZ, () -> EntityType.Builder.create(BlitzEntity::new, EntityClassification.MONSTER).size(0.6F, 1.8F).build(ID_BLITZ));
+        ENTITIES.register(ID_BASALZ, () -> EntityType.Builder.of(BasalzEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.8F).fireImmune().build(ID_BASALZ));
+        ENTITIES.register(ID_BLIZZ, () -> EntityType.Builder.of(BlizzEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.8F).build(ID_BLIZZ));
+        ENTITIES.register(ID_BLITZ, () -> EntityType.Builder.of(BlitzEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.8F).build(ID_BLITZ));
 
-        ENTITIES.register(ID_BASALZ_PROJECTILE, () -> EntityType.Builder.<BasalzProjectileEntity>create(BasalzProjectileEntity::new, EntityClassification.MISC).size(0.3125F, 0.3125F).build(ID_BASALZ_PROJECTILE));
-        ENTITIES.register(ID_BLIZZ_PROJECTILE, () -> EntityType.Builder.<BlizzProjectileEntity>create(BlizzProjectileEntity::new, EntityClassification.MISC).size(0.3125F, 0.3125F).build(ID_BLIZZ_PROJECTILE));
-        ENTITIES.register(ID_BLITZ_PROJECTILE, () -> EntityType.Builder.<BlitzProjectileEntity>create(BlitzProjectileEntity::new, EntityClassification.MISC).size(0.3125F, 0.3125F).build(ID_BLITZ_PROJECTILE));
+        ENTITIES.register(ID_BASALZ_PROJECTILE, () -> EntityType.Builder.<BasalzProjectileEntity>of(BasalzProjectileEntity::new, EntityClassification.MISC).sized(0.3125F, 0.3125F).build(ID_BASALZ_PROJECTILE));
+        ENTITIES.register(ID_BLIZZ_PROJECTILE, () -> EntityType.Builder.<BlizzProjectileEntity>of(BlizzProjectileEntity::new, EntityClassification.MISC).sized(0.3125F, 0.3125F).build(ID_BLIZZ_PROJECTILE));
+        ENTITIES.register(ID_BLITZ_PROJECTILE, () -> EntityType.Builder.<BlitzProjectileEntity>of(BlitzProjectileEntity::new, EntityClassification.MISC).sized(0.3125F, 0.3125F).build(ID_BLITZ_PROJECTILE));
 
-        ENTITIES.register(ID_EXPLOSIVE_GRENADE, () -> EntityType.Builder.<ExplosiveGrenadeEntity>create(ExplosiveGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_EXPLOSIVE_GRENADE));
+        ENTITIES.register(ID_EXPLOSIVE_GRENADE, () -> EntityType.Builder.<ExplosiveGrenadeEntity>of(ExplosiveGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_EXPLOSIVE_GRENADE));
 
-        ENTITIES.register(ID_SLIME_GRENADE, () -> EntityType.Builder.<SlimeGrenadeEntity>create(SlimeGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_SLIME_GRENADE));
-        ENTITIES.register(ID_REDSTONE_GRENADE, () -> EntityType.Builder.<RedstoneGrenadeEntity>create(RedstoneGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_REDSTONE_GRENADE));
-        ENTITIES.register(ID_GLOWSTONE_GRENADE, () -> EntityType.Builder.<GlowstoneGrenadeEntity>create(GlowstoneGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_GLOWSTONE_GRENADE));
-        ENTITIES.register(ID_ENDER_GRENADE, () -> EntityType.Builder.<EnderGrenadeEntity>create(EnderGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_ENDER_GRENADE));
+        ENTITIES.register(ID_SLIME_GRENADE, () -> EntityType.Builder.<SlimeGrenadeEntity>of(SlimeGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_SLIME_GRENADE));
+        ENTITIES.register(ID_REDSTONE_GRENADE, () -> EntityType.Builder.<RedstoneGrenadeEntity>of(RedstoneGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_REDSTONE_GRENADE));
+        ENTITIES.register(ID_GLOWSTONE_GRENADE, () -> EntityType.Builder.<GlowstoneGrenadeEntity>of(GlowstoneGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_GLOWSTONE_GRENADE));
+        ENTITIES.register(ID_ENDER_GRENADE, () -> EntityType.Builder.<EnderGrenadeEntity>of(EnderGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_ENDER_GRENADE));
 
-        ENTITIES.register(ID_PHYTO_GRENADE, () -> EntityType.Builder.<PhytoGrenadeEntity>create(PhytoGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_PHYTO_GRENADE));
+        ENTITIES.register(ID_PHYTO_GRENADE, () -> EntityType.Builder.<PhytoGrenadeEntity>of(PhytoGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_PHYTO_GRENADE));
 
-        ENTITIES.register(ID_FIRE_GRENADE, () -> EntityType.Builder.<FireGrenadeEntity>create(FireGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_FIRE_GRENADE));
-        ENTITIES.register(ID_EARTH_GRENADE, () -> EntityType.Builder.<EarthGrenadeEntity>create(EarthGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_EARTH_GRENADE));
-        ENTITIES.register(ID_ICE_GRENADE, () -> EntityType.Builder.<IceGrenadeEntity>create(IceGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_ICE_GRENADE));
-        ENTITIES.register(ID_LIGHTNING_GRENADE, () -> EntityType.Builder.<LightningGrenadeEntity>create(LightningGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_LIGHTNING_GRENADE));
+        ENTITIES.register(ID_FIRE_GRENADE, () -> EntityType.Builder.<FireGrenadeEntity>of(FireGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_FIRE_GRENADE));
+        ENTITIES.register(ID_EARTH_GRENADE, () -> EntityType.Builder.<EarthGrenadeEntity>of(EarthGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_EARTH_GRENADE));
+        ENTITIES.register(ID_ICE_GRENADE, () -> EntityType.Builder.<IceGrenadeEntity>of(IceGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_ICE_GRENADE));
+        ENTITIES.register(ID_LIGHTNING_GRENADE, () -> EntityType.Builder.<LightningGrenadeEntity>of(LightningGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_LIGHTNING_GRENADE));
 
-        ENTITIES.register(ID_NUKE_GRENADE, () -> EntityType.Builder.<NukeGrenadeEntity>create(NukeGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_NUKE_GRENADE));
+        ENTITIES.register(ID_NUKE_GRENADE, () -> EntityType.Builder.<NukeGrenadeEntity>of(NukeGrenadeEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).build(ID_NUKE_GRENADE));
 
-        ENTITIES.register(ID_SLIME_TNT, () -> EntityType.Builder.<SlimeTNTEntity>create(SlimeTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_SLIME_TNT));
-        ENTITIES.register(ID_REDSTONE_TNT, () -> EntityType.Builder.<RedstoneTNTEntity>create(RedstoneTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_REDSTONE_TNT));
-        ENTITIES.register(ID_GLOWSTONE_TNT, () -> EntityType.Builder.<GlowstoneTNTEntity>create(GlowstoneTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_GLOWSTONE_TNT));
-        ENTITIES.register(ID_ENDER_TNT, () -> EntityType.Builder.<EnderTNTEntity>create(EnderTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_ENDER_TNT));
+        ENTITIES.register(ID_SLIME_TNT, () -> EntityType.Builder.<SlimeTNTEntity>of(SlimeTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_SLIME_TNT));
+        ENTITIES.register(ID_REDSTONE_TNT, () -> EntityType.Builder.<RedstoneTNTEntity>of(RedstoneTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_REDSTONE_TNT));
+        ENTITIES.register(ID_GLOWSTONE_TNT, () -> EntityType.Builder.<GlowstoneTNTEntity>of(GlowstoneTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_GLOWSTONE_TNT));
+        ENTITIES.register(ID_ENDER_TNT, () -> EntityType.Builder.<EnderTNTEntity>of(EnderTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_ENDER_TNT));
 
-        ENTITIES.register(ID_PHYTO_TNT, () -> EntityType.Builder.<PhytoTNTEntity>create(PhytoTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_PHYTO_TNT));
+        ENTITIES.register(ID_PHYTO_TNT, () -> EntityType.Builder.<PhytoTNTEntity>of(PhytoTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_PHYTO_TNT));
 
-        ENTITIES.register(ID_FIRE_TNT, () -> EntityType.Builder.<FireTNTEntity>create(FireTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_FIRE_TNT));
-        ENTITIES.register(ID_EARTH_TNT, () -> EntityType.Builder.<EarthTNTEntity>create(EarthTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_EARTH_TNT));
-        ENTITIES.register(ID_ICE_TNT, () -> EntityType.Builder.<IceTNTEntity>create(IceTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_ICE_TNT));
-        ENTITIES.register(ID_LIGHTNING_TNT, () -> EntityType.Builder.<LightningTNTEntity>create(LightningTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_LIGHTNING_TNT));
+        ENTITIES.register(ID_FIRE_TNT, () -> EntityType.Builder.<FireTNTEntity>of(FireTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_FIRE_TNT));
+        ENTITIES.register(ID_EARTH_TNT, () -> EntityType.Builder.<EarthTNTEntity>of(EarthTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_EARTH_TNT));
+        ENTITIES.register(ID_ICE_TNT, () -> EntityType.Builder.<IceTNTEntity>of(IceTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_ICE_TNT));
+        ENTITIES.register(ID_LIGHTNING_TNT, () -> EntityType.Builder.<LightningTNTEntity>of(LightningTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_LIGHTNING_TNT));
 
-        ENTITIES.register(ID_NUKE_TNT, () -> EntityType.Builder.<NukeTNTEntity>create(NukeTNTEntity::new, EntityClassification.MISC).immuneToFire().size(0.98F, 0.98F).build(ID_NUKE_TNT));
+        ENTITIES.register(ID_NUKE_TNT, () -> EntityType.Builder.<NukeTNTEntity>of(NukeTNTEntity::new, EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_NUKE_TNT));
     }
 
     public static void setup() {

@@ -1,11 +1,12 @@
 package cofh.thermal.lib.compat.crt.base;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
+import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -16,7 +17,7 @@ public class CRTFuel {
     private final ResourceLocation name;
     private final int energy;
     private List<Ingredient> item;
-    private List<FluidStack> fluid;
+    private List<FluidIngredient> fluid;
 
     public CRTFuel(ResourceLocation name, int energy) {
 
@@ -24,15 +25,28 @@ public class CRTFuel {
         this.energy = energy;
     }
 
-    public CRTFuel item(IIngredient item) {
+    public CRTFuel item(IIngredientWithAmount item) {
 
-        this.item = Collections.singletonList(item.asVanillaIngredient());
+        this.item = Collections.singletonList(CRTHelper.mapIIngredientWithAmount(item));
+        return this;
+    }
+
+    // Recipe replacer helper
+    public CRTFuel item(List<Ingredient> newIngredients) {
+
+        this.item = newIngredients;
+        return this;
+    }
+
+    public CRTFuel fluid(CTFluidIngredient fluid) {
+
+        this.fluid = Collections.singletonList(CRTHelper.mapFluidIngredient(fluid));
         return this;
     }
 
     public CRTFuel fluid(IFluidStack fluid) {
 
-        this.fluid = Collections.singletonList(fluid.getInternal());
+        this.fluid = Collections.singletonList(FluidIngredient.of(fluid.getInternal()));
         return this;
     }
 
@@ -43,7 +57,7 @@ public class CRTFuel {
 
     public interface IFuelBuilder<T extends ThermalFuel> {
 
-        T apply(ResourceLocation recipeId, int energy, @Nullable List<Ingredient> inputItems, @Nullable List<FluidStack> inputFluids);
+        T apply(ResourceLocation recipeId, int energy, @Nullable List<Ingredient> inputItems, @Nullable List<FluidIngredient> inputFluids);
 
     }
 

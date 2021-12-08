@@ -5,6 +5,7 @@ import cofh.lib.inventory.FalseIInventory;
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.lib.util.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
@@ -50,14 +51,14 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
     public void addRecipe(ThermalRecipe recipe) {
 
         if (recipe.getInputItems().size() == 1) {
-            for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+                addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
             }
         } else {
             // The die should never have multiple variations but eh, who knows?
-            for (ItemStack dieInput : recipe.getInputItems().get(1).getMatchingStacks()) {
-                for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                    addRecipe(recipe.getEnergy(), recipe.getXp(), asList(recipeInput, dieInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            for (ItemStack dieInput : recipe.getInputItems().get(1).getItems()) {
+                for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), asList(recipeInput, dieInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
                 }
             }
         }
@@ -84,7 +85,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
 
         ArrayList<ComparableItemStack> key = new ArrayList<>();
         for (IItemStackAccess slot : inputSlots) {
-            if (!slot.isEmpty()) {
+            if (!slot.isEmpty() && !(slot.getItemStack().getItem() instanceof SlotSealItem)) {
                 key.add(convert(slot.getItemStack()));
             }
         }
@@ -95,7 +96,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
 
         ArrayList<ComparableItemStack> key = new ArrayList<>();
         for (ItemStack stack : inputStacks) {
-            if (!stack.isEmpty()) {
+            if (!stack.isEmpty() && !(stack.getItem() instanceof SlotSealItem)) {
                 key.add(convert(stack));
             }
         }
@@ -166,7 +167,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         //                addRecipe(recipe);
         //            }
         //        }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TCoreRecipeTypes.RECIPE_PRESS);
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PRESS);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }

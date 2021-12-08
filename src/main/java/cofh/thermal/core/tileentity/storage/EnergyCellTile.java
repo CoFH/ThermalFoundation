@@ -1,12 +1,14 @@
 package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
 import cofh.lib.energy.EnergyStorageAdjustable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -17,7 +19,7 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -25,7 +27,7 @@ import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
 import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
-import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_VALIDATOR;
+import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
 public class EnergyCellTile extends CellTileBase implements ITickableTileEntity {
@@ -64,7 +66,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(world)) {
+        if (Utils.timeCheck(level)) {
             updateTrackers(true);
         }
     }
@@ -85,12 +87,12 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         }
         for (int i = inputTracker; i < 6 && energyStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < inputTracker && energyStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
-                attemptTransferIn(Direction.byIndex(i));
+                attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
         ++inputTracker;
@@ -107,12 +109,12 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         }
         for (int i = outputTracker; i < 6 && energyStorage.getEnergyStored() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         for (int i = 0; i < outputTracker && energyStorage.getEnergyStored() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
-                attemptTransferOut(Direction.byIndex(i));
+                attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
         ++outputTracker;
@@ -125,7 +127,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountInput, energyStorage.getSpace());
-            adjTile.getCapability(CapabilityEnergy.ENERGY, opposite)
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
                     .ifPresent(e -> {
                         if (e.canExtract()) {
                             energyStorage.modify(e.extractEnergy(maxTransfer, false));
@@ -140,7 +142,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountOutput, energyStorage.getEnergyStored());
-            adjTile.getCapability(CapabilityEnergy.ENERGY, opposite)
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
                     .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
         }
     }
@@ -167,7 +169,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new EnergyCellContainer(i, world, pos, inventory, player);
+        return new EnergyCellContainer(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull
@@ -190,7 +192,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (curScale != compareTracker) {
             compareTracker = curScale;
             if (send) {
-                markDirty();
+                setChanged();
             }
         }
         if (energyStorage.isCreative()) {
@@ -210,26 +212,50 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && ENERGY_VALIDATOR.test(item, getAugmentsAsList());
+        return item -> AugmentDataHelper.hasAugmentData(item) && ENERGY_STORAGE_VALIDATOR.test(item, getAugmentsAsList());
     }
     // endregion
 
     // region CAPABILITIES
+    protected LazyOptional<?> inputEnergyCap = LazyOptional.empty();
+    protected LazyOptional<?> outputEnergyCap = LazyOptional.empty();
+
     @Override
     protected void updateHandlers() {
 
-        LazyOptional<?> prevCap = energyCap;
+        // Optimization to prevent callback logic as contents may change rapidly.
+        LazyOptional<?> prevEnergyCap = energyCap;
+        LazyOptional<?> prevEnergyInputCap = inputEnergyCap;
+        LazyOptional<?> prevEnergyOutputCap = outputEnergyCap;
+
+        IEnergyStorage inputHandler = new EnergyHandlerRestrictionWrapper(energyStorage, true, false);
+        IEnergyStorage outputHandler = new EnergyHandlerRestrictionWrapper(energyStorage, false, true);
+
         energyCap = LazyOptional.of(() -> energyStorage);
-        prevCap.invalidate();
+        inputEnergyCap = LazyOptional.of(() -> inputHandler);
+        outputEnergyCap = LazyOptional.of(() -> outputHandler);
+
+        prevEnergyCap.invalidate();
+        prevEnergyInputCap.invalidate();
+        prevEnergyOutputCap.invalidate();
     }
 
     @Override
     protected <T> LazyOptional<T> getEnergyCapability(@Nullable Direction side) {
 
-        if (side == null || reconfigControl.getSideConfig(side.ordinal()) != SideConfig.SIDE_NONE) {
+        if (side == null) {
             return super.getEnergyCapability(side);
         }
-        return LazyOptional.empty();
+        switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE:
+                return LazyOptional.empty();
+            case SIDE_INPUT:
+                return inputEnergyCap.cast();
+            case SIDE_OUTPUT:
+                return outputEnergyCap.cast();
+            default:
+                return super.getEnergyCapability(side);
+        }
     }
     // endregion
 }

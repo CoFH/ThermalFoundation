@@ -60,6 +60,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     public FluidCellBakedModel(IBakedModel originalModel) {
 
         super(originalModel);
+        underlayQuadLevel = 1;
     }
 
     @Override
@@ -67,11 +68,12 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
 
         LinkedList<BakedQuad> quads = new LinkedList<>(originalModel.getQuads(state, side, rand, extraData));
+
         if (side == null || quads.isEmpty()) {
             return quads;
         }
         BakedQuad baseQuad = quads.get(0);
-        int sideIndex = side.getIndex();
+        int sideIndex = side.get3DDataValue();
 
         // FACE
         Direction face = extraData.getData(ModelUtils.FACING);
@@ -81,10 +83,10 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
                 // This shouldn't happen, but playing it safe.
                 return quads;
             }
-            BakedQuad faceQuad = FACE_QUAD_CACHE.get(Arrays.asList(face.getIndex(), level));
+            BakedQuad faceQuad = FACE_QUAD_CACHE.get(Arrays.asList(face.get3DDataValue(), level));
             if (faceQuad == null) {
-                faceQuad = new RetexturedBakedQuad(baseQuad, getLevelTexture(level));
-                FACE_QUAD_CACHE.put(Arrays.asList(face.getIndex(), level), faceQuad);
+                faceQuad = new RetexturedBakedQuad(quads.get(1), getLevelTexture(level));
+                FACE_QUAD_CACHE.put(Arrays.asList(face.get3DDataValue(), level), faceQuad);
             }
             quads.add(faceQuad);
         }
@@ -121,9 +123,9 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
 
         @Nullable
         @Override
-        public IBakedModel getOverrideModel(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
+        public IBakedModel resolve(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
 
-            CompoundNBT tag = stack.getChildTag(TAG_BLOCK_ENTITY);
+            CompoundNBT tag = stack.getTagElement(TAG_BLOCK_ENTITY);
             byte[] sideConfigRaw = getSideConfigRaw(tag);
             int itemHash = new ComparableItemStack(stack).hashCode();
             int level = getLevel(stack);
@@ -239,7 +241,10 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
 
         Item item = stack.getItem();
         if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, FLUID)) {
-            return -1;
+            if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
+                return 9;
+            }
+            return 10;
         }
         if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
             return 1 + Math.min(((IFluidContainerItem) item).getScaledFluidStored(stack, 8), 7);

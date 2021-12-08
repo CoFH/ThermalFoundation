@@ -43,35 +43,35 @@ public class FireGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
-        if (Utils.isServerWorld(world)) {
+        if (Utils.isServerWorld(level)) {
             if (!this.isInWater()) {
-                AreaUtils.igniteNearbyEntities(this, world, this.getPosition(), radius, effectDuration);
-                AreaUtils.igniteSpecial(this, world, this.getPosition(), radius, true, true, func_234616_v_());
-                AreaUtils.igniteNearbyGround(this, world, this.getPosition(), radius, 0.2);
+                AreaUtils.igniteNearbyEntities(this, level, this.blockPosition(), radius, effectDuration);
+                AreaUtils.igniteSpecial(this, level, this.blockPosition(), radius, true, true, getOwner());
+                AreaUtils.igniteNearbyGround(this, level, this.blockPosition(), radius, 0.2);
                 makeAreaOfEffectCloud();
             }
-            this.world.setEntityState(this, (byte) 3);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.ticksExisted < 10) {
+        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.FLAME);
+        cloud.setParticle(ParticleTypes.FLAME);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
 
-        world.addEntity(cloud);
+        level.addFreshEntity(cloud);
     }
 
 }

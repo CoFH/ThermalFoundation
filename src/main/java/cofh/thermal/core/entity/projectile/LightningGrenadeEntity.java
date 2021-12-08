@@ -49,30 +49,30 @@ public class LightningGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onHit(RayTraceResult result) {
 
-        if (Utils.isServerWorld(world)) {
-            BlockPos pos = this.getPosition();
-            if (this.world.canSeeSky(pos)) {
-                Utils.spawnLightningBolt(world, pos, func_234616_v_());
+        if (Utils.isServerWorld(level)) {
+            BlockPos pos = this.blockPosition();
+            if (this.level.canSeeSky(pos)) {
+                Utils.spawnLightningBolt(level, pos, getOwner());
             }
-            shockNearbyEntities(this, world, this.getPosition(), radius);
-            AreaUtils.zapNearbyGround(this, world, this.getPosition(), radius, 0.05, 3);
-            this.world.setEntityState(this, (byte) 3);
+            shockNearbyEntities(this, level, this.blockPosition(), radius);
+            AreaUtils.zapNearbyGround(this, level, this.blockPosition(), radius, 0.05, 3);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.ticksExisted < 10) {
+        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     public static void shockNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius) {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
-        worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE)
-                .forEach(livingEntity -> livingEntity.addPotionEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false)));
+        AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
+        worldIn.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE)
+                .forEach(livingEntity -> livingEntity.addEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false)));
     }
 
 }

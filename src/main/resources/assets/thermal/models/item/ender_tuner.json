@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "thermal:item/tools/ender_tuner"
+    "layer0": "thermal:item/ender_tuner"
   },
   "overrides": [
     {

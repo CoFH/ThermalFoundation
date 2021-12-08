@@ -1,11 +1,13 @@
 package cofh.thermal.core.tileentity.device;
 
+import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.client.ThermalTextures;
 import cofh.thermal.core.inventory.container.device.DeviceCollectorContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,6 +25,7 @@ import net.minecraftforge.items.IItemHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
@@ -34,7 +37,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_COLLECTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceCollectorTile extends DeviceTileBase implements ITickableTileEntity {
+public class DeviceCollectorTile extends DeviceTileBase implements ITickableTileEntity, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
@@ -45,7 +48,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
             .build();
 
     protected static final Predicate<ItemEntity> VALID_ITEM_ENTITY = item -> {
-        if (!item.isAlive() || item.cannotPickup()) {
+        if (!item.isAlive() || item.hasPickUpDelay()) {
             return false;
         }
         CompoundNBT data = item.getPersistentData();
@@ -54,6 +57,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     protected static final int RADIUS = 4;
     public int radius = RADIUS;
+    protected AxisAlignedBB area;
 
     protected int process = 1;
 
@@ -105,7 +109,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DeviceCollectorContainer(i, world, pos, inventory, player);
+        return new DeviceCollectorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region HELPERS
@@ -121,19 +125,17 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     protected void collectItemsAndXp() {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -1, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
-
-        collectItems(area);
+        collectItems(getArea());
 
         if (xpStorageFeature) {
-            collectXpOrbs(area);
+            collectXpOrbs(getArea());
         }
     }
 
     protected void collectItems(AxisAlignedBB area) {
 
         IItemHandler handler = inventory.getHandler(ACCESSIBLE);
-        List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, area, VALID_ITEM_ENTITY);
+        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, area, VALID_ITEM_ENTITY);
 
         Predicate<ItemStack> filterRules = filter.getItemRules();
         for (ItemEntity item : items) {
@@ -152,11 +154,11 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     protected void collectXpOrbs(AxisAlignedBB area) {
 
-        List<ExperienceOrbEntity> orbs = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, area, EntityPredicates.IS_ALIVE);
+        List<ExperienceOrbEntity> orbs = level.getEntitiesOfClass(ExperienceOrbEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
 
         for (ExperienceOrbEntity orb : orbs) {
-            orb.xpValue -= xpStorage.receiveXp(orb.getXpValue(), false);
-            if (orb.xpValue <= 0) {
+            orb.value -= xpStorage.receiveXp(orb.getValue(), false);
+            if (orb.value <= 0) {
                 orb.remove();
             }
         }
@@ -184,6 +186,31 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
         super.setAttributesFromAugment(augmentData);
 
         radius += getAttributeMod(augmentData, TAG_AUGMENT_RADIUS);
+    }
+
+    @Override
+    protected void finalizeAttributes(Map<Enchantment, Integer> enchantmentMap) {
+
+        super.finalizeAttributes(enchantmentMap);
+
+        area = null;
+    }
+    // endregion
+
+    // region IAreaEffectTile
+    @Override
+    public AxisAlignedBB getArea() {
+
+        if (area == null) {
+            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
+        }
+        return area;
+    }
+
+    @Override
+    public int getColor() {
+
+        return isActive ? 0xA81C62 : 0x555555;
     }
     // endregion
 }
