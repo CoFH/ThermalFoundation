@@ -1,6 +1,5 @@
 package cofh.thermal.core.init;
 
-import cofh.core.item.AugmentItem;
 import cofh.core.item.EnergyContainerItem;
 import cofh.core.item.GrenadeItem;
 import cofh.core.item.ItemCoFH;
@@ -13,6 +12,8 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.entity.item.*;
 import cofh.thermal.core.entity.projectile.*;
 import cofh.thermal.core.item.*;
+import cofh.thermal.lib.item.AugmentItem;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.TNTEntity;
@@ -21,6 +22,8 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import static cofh.lib.util.constants.Constants.FALSE;
 import static cofh.lib.util.constants.NBTTags.*;
@@ -194,7 +197,14 @@ public class TCoreItems {
 
         registerItem(ID_WRENCH, () -> new WrenchItem(new Item.Properties().stacksTo(1).tab(group).addToolType(ToolTypes.WRENCH, 1)).setShowInGroups(getFlag(ID_WRENCH)));
         registerItem(ID_REDPRINT, () -> new RedprintItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_REDPRINT)));
-        registerItem(ID_RF_POTATO, () -> new EnergyContainerItem(new Item.Properties().stacksTo(1).tab(group), 100000, 40).setShowInGroups(getFlag(ID_RF_POTATO)));
+        registerItem(ID_RF_POTATO, () -> new EnergyContainerItem(new Item.Properties().stacksTo(1).tab(group), 100000, 40) {
+
+            @Override
+            public Capability<? extends IEnergyStorage> getEnergyCapability() {
+
+                return ThermalEnergyHelper.getBaseEnergySystem();
+            }
+        }.setShowInGroups(getFlag(ID_RF_POTATO)));
         registerItem(ID_XP_CRYSTAL, () -> new XpCrystalItem(new Item.Properties().stacksTo(1).tab(group), 10000).setShowInGroups(getFlag(ID_XP_CRYSTAL)));
         registerItem(ID_LOCK, () -> new LockItem(new Item.Properties().tab(group)).setShowInGroups(getFlag(ID_LOCK)));
         registerItem(ID_SATCHEL, () -> new SatchelItem(new Item.Properties().stacksTo(1).tab(group), 9).setShowInGroups(getFlag(ID_SATCHEL)));

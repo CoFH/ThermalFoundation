@@ -1,7 +1,6 @@
 package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
 import cofh.lib.energy.EnergyStorageAdjustable;
 import cofh.lib.util.Utils;
@@ -9,6 +8,7 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -127,7 +127,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountInput, energyStorage.getSpace());
-            adjTile.getCapability(EnergyHelper.getEnergySystem(), opposite)
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
                     .ifPresent(e -> {
                         if (e.canExtract()) {
                             energyStorage.modify(e.extractEnergy(maxTransfer, false));
@@ -142,7 +142,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountOutput, energyStorage.getEnergyStored());
-            adjTile.getCapability(EnergyHelper.getEnergySystem(), opposite)
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
                     .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
         }
     }

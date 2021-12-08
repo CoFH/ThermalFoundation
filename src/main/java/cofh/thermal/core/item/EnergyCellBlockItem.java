@@ -1,15 +1,18 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.BlockItemAugmentable;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.energy.IEnergyContainerItem;
 import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -61,6 +64,12 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
     //    }
 
     // region IEnergyContainerItem
+    @Override
+    public Capability<? extends IEnergyStorage> getEnergyCapability() {
+
+        return CapabilityEnergy.ENERGY;
+    }
+
     @Override
     public CompoundNBT getOrCreateEnergyTag(ItemStack container) {
 

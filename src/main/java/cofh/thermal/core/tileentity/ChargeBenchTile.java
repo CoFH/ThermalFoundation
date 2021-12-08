@@ -1,11 +1,11 @@
 package cofh.thermal.core.tileentity;
 
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -32,7 +32,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
     public static final int BASE_XFER = 4000;
 
     protected ItemStorageCoFH[] benchSlots = new ItemStorageCoFH[9];
-    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
     public ChargeBenchTile() {
 
@@ -41,7 +41,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 
         for (int i = 0; i < benchSlots.length; ++i) {
-            benchSlots[i] = new ItemStorageCoFH(1, (item -> filter.valid(item) && EnergyHelper.hasEnergyHandlerCap(item)));
+            benchSlots[i] = new ItemStorageCoFH(1, (item -> filter.valid(item) && ThermalEnergyHelper.hasEnergyHandlerCap(item)));
             inventory.addSlot(benchSlots[i], ACCESSIBLE);
         }
         inventory.addSlot(chargeSlot, INTERNAL);
@@ -66,7 +66,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
 
         if (!chargeSlot.isEmpty()) {
             int maxTransfer = Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace());
-            chargeSlot.getItemStack().getCapability(EnergyHelper.getEnergySystem(), null).ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(maxTransfer, false), false));
+            chargeSlot.getItemStack().getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null).ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(maxTransfer, false), false));
         }
     }
 
@@ -76,7 +76,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
             if (!benchSlot.isEmpty()) {
                 if (!energyStorage.isEmpty()) {
                     int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-                    benchSlot.getItemStack().getCapability(EnergyHelper.getEnergySystem(), null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
+                    benchSlot.getItemStack().getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
                 }
                 isActive = true;
             }

@@ -1,12 +1,12 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.BlockItemAugmentable;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.fluid.IFluidContainerItem;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
+import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;

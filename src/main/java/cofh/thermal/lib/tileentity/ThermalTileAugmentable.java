@@ -7,7 +7,6 @@ import cofh.core.tileentity.TileCoFH;
 import cofh.core.util.control.*;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EmptyEnergyStorage;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
@@ -27,6 +26,7 @@ import cofh.lib.util.helpers.SoundHelper;
 import cofh.lib.xp.EmptyXpStorage;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.lib.common.ThermalConfig;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -755,7 +755,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
 
-        if (cap == EnergyHelper.getEnergySystem() && energyStorage.getMaxEnergyStored() > 0) {
+        if (cap == ThermalEnergyHelper.getBaseEnergySystem() && energyStorage.getMaxEnergyStored() > 0) {
             return getEnergyCapability(side);
         }
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && inventory.hasAccessibleSlots()) {

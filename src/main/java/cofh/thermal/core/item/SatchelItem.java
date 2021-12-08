@@ -1,6 +1,5 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.InventoryContainerItemAugmentable;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
@@ -18,6 +17,7 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.lib.common.ThermalConfig;
+import cofh.thermal.lib.item.InventoryContainerItemAugmentable;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;

@@ -1,6 +1,5 @@
 package cofh.thermal.core.tileentity.device;
 
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
@@ -9,6 +8,7 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,7 +40,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     protected static final int BASE_PROCESS_MAX = 4000;
 
-    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
     protected static final int RADIUS = 2;
     protected int radius = RADIUS;
@@ -174,7 +174,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
         if (!chargeSlot.isEmpty()) {
             chargeSlot.getItemStack()
-                    .getCapability(EnergyHelper.getEnergySystem(), null)
+                    .getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null)
                     .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
         }
     }

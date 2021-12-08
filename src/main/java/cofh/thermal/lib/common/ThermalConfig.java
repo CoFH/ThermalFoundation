@@ -1,11 +1,11 @@
 package cofh.thermal.lib.common;
 
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.thermal.core.item.SatchelItem;
 import cofh.thermal.core.tileentity.device.DeviceFisherTile;
 import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
 import cofh.thermal.core.util.managers.dynamo.*;
 import cofh.thermal.core.util.managers.machine.*;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.item.Items;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
@@ -496,7 +496,7 @@ public class ThermalConfig {
 
     private static void refreshServerConfig() {
 
-        EnergyHelper.standaloneRedstoneFlux = standaloneRedstoneFlux.get();
+        ThermalEnergyHelper.standaloneRedstoneFlux = standaloneRedstoneFlux.get();
 
         setFlag(FLAG_VANILLA_BLOCKS, flagVanillaBlocks.get());
         setFlag(FLAG_ROCKWOOL, flagRockwool.get());

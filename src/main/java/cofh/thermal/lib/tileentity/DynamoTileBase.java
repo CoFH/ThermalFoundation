@@ -1,12 +1,12 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.tileentity.TileCoFH;
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
@@ -156,7 +156,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
         if (adjTile != null) {
             Direction opposite = getFacing().getOpposite();
             int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-            adjTile.getCapability(EnergyHelper.getEnergySystem(), opposite)
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
                     .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
         }
     }

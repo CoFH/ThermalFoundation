@@ -4,6 +4,7 @@ import cofh.core.item.*;
 import cofh.lib.block.impl.crops.CropsBlockCoFH;
 import cofh.lib.block.impl.crops.CropsBlockPerennial;
 import cofh.lib.block.impl.crops.CropsBlockTall;
+import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -282,12 +283,12 @@ public class RegistrationHelper {
 
     public static void registerCropAndSeed(String id) {
 
-        registerCropAndSeed(id, THERMAL_CROPS);
+        registerCropAndSeed(id, THERMAL_FOODS);
     }
 
     public static void registerCropAndSeed(String id, Food food) {
 
-        registerCropAndSeed(id, THERMAL_CROPS, food);
+        registerCropAndSeed(id, THERMAL_FOODS, food);
     }
 
     public static void registerCropAndSeed(String id, ItemGroup group) {
@@ -307,7 +308,7 @@ public class RegistrationHelper {
 
     public static void registerSpores(String id) {
 
-        registerSpores(id, THERMAL_CROPS);
+        registerSpores(id, THERMAL_FOODS);
     }
 
     public static void registerSpores(String id, ItemGroup group) {

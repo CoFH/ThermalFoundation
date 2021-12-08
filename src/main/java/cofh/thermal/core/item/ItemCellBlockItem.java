@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.BlockItemAugmentable;
+import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;

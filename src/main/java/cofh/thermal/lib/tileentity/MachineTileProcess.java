@@ -1,7 +1,6 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
@@ -10,6 +9,7 @@ import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.xp.XpStorage;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.MachineProperties;
 import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
@@ -41,7 +41,7 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
 public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ITickableTileEntity, IMachineInventory {
 
-    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, EnergyHelper::hasEnergyHandlerCap);
+    protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
     protected IMachineRecipe curRecipe;
     protected IRecipeCatalyst curCatalyst;
@@ -186,7 +186,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
         if (!chargeSlot.isEmpty()) {
             chargeSlot.getItemStack()
-                    .getCapability(EnergyHelper.getEnergySystem(), null)
+                    .getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null)
                     .ifPresent(c -> energyStorage.receiveEnergy(c.extractEnergy(Math.min(energyStorage.getMaxReceive(), energyStorage.getSpace()), false), false));
         }
     }
