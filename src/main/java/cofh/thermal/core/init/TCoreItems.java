@@ -34,8 +34,7 @@ import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.flagUniqueAugment;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
-import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_ITEMS;
-import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_TOOLS;
+import static cofh.thermal.lib.common.ThermalItemGroups.*;
 import static net.minecraft.item.Items.GLASS_BOTTLE;
 
 public class TCoreItems {
@@ -117,7 +116,7 @@ public class TCoreItems {
         registerItem("slag", group);
         registerItem("rich_slag", group);
 
-        registerItem("syrup_bottle", () -> new HoneyBottleItem(new Item.Properties().tab(group).craftRemainder(GLASS_BOTTLE).food(Foods.HONEY_BOTTLE).stacksTo(16)));
+        registerItem("syrup_bottle", () -> new HoneyBottleItem(new Item.Properties().tab(THERMAL_FOODS).craftRemainder(GLASS_BOTTLE).food(Foods.HONEY_BOTTLE).stacksTo(16)));
 
         //        registerItem("biomass", group);
         //        registerItem("rich_biomass", group);

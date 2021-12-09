@@ -416,6 +416,10 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
                 return outputItemCap.cast();
             case SIDE_BOTH:
                 return ioItemCap.cast();
+            case SIDE_ACCESSIBLE:
+                if (!reconfigControl.isReconfigurable()) {
+                    return ioItemCap.cast();
+                }
             default:
                 return super.getItemHandlerCapability(side);
         }
@@ -436,6 +440,10 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
                 return outputFluidCap.cast();
             case SIDE_BOTH:
                 return ioFluidCap.cast();
+            case SIDE_ACCESSIBLE:
+                if (!reconfigControl.isReconfigurable()) {
+                    return ioFluidCap.cast();
+                }
             default:
                 return super.getFluidHandlerCapability(side);
         }
