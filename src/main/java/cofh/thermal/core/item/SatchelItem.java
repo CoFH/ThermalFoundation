@@ -124,7 +124,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
     protected boolean useDelegate(ItemStack stack, PlayerEntity player, Hand hand) {
 
-        if (Utils.isFakePlayer(player)) {
+        if (Utils.isFakePlayer(player) || hand == Hand.OFF_HAND) {
             return false;
         }
         if (player instanceof ServerPlayerEntity) {

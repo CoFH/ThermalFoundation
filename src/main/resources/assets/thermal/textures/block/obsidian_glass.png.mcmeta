@@ -3,6 +3,6 @@
 		"ctm_version": 1,
 		"type": "ctm",
 		"layer": "CUTOUT",
-		"textures": [ "thermal:block/glass/obsidian_glass_ctm" ]
+		"textures": [ "thermal:block/obsidian_glass_ctm" ]
 	}
 }

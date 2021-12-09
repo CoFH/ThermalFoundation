@@ -11,6 +11,7 @@ import cofh.lib.util.Utils;
 import cofh.lib.util.control.ISecurable;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
+import cofh.thermal.core.item.SatchelItem;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,13 +35,18 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     protected int numSlots;
     protected int rows;
 
+    private static boolean isSatchel(ItemStack stack) {
+
+        return stack.getItem() instanceof SatchelItem;
+    }
+
     public SatchelContainer(int windowId, PlayerInventory inventory, PlayerEntity player) {
 
         super(SATCHEL_CONTAINER, windowId, inventory, player);
 
         allowSwap = false;
 
-        containerStack = player.getMainHandItem();
+        containerStack = isSatchel(player.getMainHandItem()) ? player.getMainHandItem() : player.getOffhandItem();
         containerItem = (IInventoryContainerItem) containerStack.getItem();
 
         numSlots = MathHelper.clamp(containerItem.getContainerSlots(containerStack), 0, MAX_SLOTS);
