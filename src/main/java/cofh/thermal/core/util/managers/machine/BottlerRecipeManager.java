@@ -186,7 +186,12 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
             Set<Fluid> bucketFluids = new ObjectOpenHashSet<>(32);
             for (Fluid fluid : ForgeRegistries.FLUIDS) {
                 if (fluid instanceof FlowingFluid) {
-                    Fluid still = ((FlowingFluid) fluid).getSource();
+                    Fluid still = null;
+                    try {
+                        still = ((FlowingFluid) fluid).getSource();
+                    } catch (Exception e) {
+                        ThermalCore.LOG.error("Fluid " + fluid.getRegistryName() + " had a critical error when attempting to query its still form!");
+                    }
                     if (still == null) {
                         ThermalCore.LOG.error("Fluid " + fluid.getRegistryName() + " returned a null value for its Still Fluid! This is an error. Report this to the mod author. Probable mod: " + fluid.getRegistryName().getNamespace());
                         continue;
