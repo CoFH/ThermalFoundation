@@ -914,6 +914,30 @@
   "item.thermal.watering_can.keyword": "crops farm fertilizer",
 
   "_comment": "========================================================================================================",
+  "_comment": "Thermal Dynamics",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.ender_tunnel": "Ender Tunnel",
+  "block.thermal.item_buffer": "Logistical Item Buffer",
+
+  "info.thermal.item_buffer.0": "Restricts quantity and flow of items.",
+  "info.thermal.item_buffer.1": "Set desired items and quantities using the left grid.",
+  "info.thermal.item_buffer.2": "Latch I/O requires all items to be present before extraction is allowed.",
+  "info.thermal.item_buffer.3": "Very useful for maintaining specific item ratios.",
+
+  "info.thermal.item_buffer.mode.0": "I/O: Normal",
+  "info.thermal.item_buffer.mode.1": "I/O: Latch",
+
+  "item.thermal.ender_tuner": "Ender Tuning Fork",
+  "item.thermal.ender_tuner.desc": "Used to tune various spacetime manipulation devices.",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.ender_tunnel.keyword": "entangloporter quantum tesseract",
+
+  "_comment": "========================================================================================================",
   "_comment": "Thermal Expansion",
   "_comment": "========================================================================================================",
 
