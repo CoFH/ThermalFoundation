@@ -27,8 +27,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Centrifuge")
-@IRecipeHandler.For(CentrifugeRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Centrifuge")
+@IRecipeHandler.For (CentrifugeRecipe.class)
 public class CRTCentrifugeManager implements IRecipeManager, IRecipeHandler<CentrifugeRecipe> {
 
     @ZenCodeType.Method

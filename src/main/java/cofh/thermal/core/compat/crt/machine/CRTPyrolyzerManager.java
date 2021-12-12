@@ -26,8 +26,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Pyrolyzer")
-@IRecipeHandler.For(PyrolyzerRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Pyrolyzer")
+@IRecipeHandler.For (PyrolyzerRecipe.class)
 public class CRTPyrolyzerManager implements IRecipeManager, IRecipeHandler<PyrolyzerRecipe> {
 
     @ZenCodeType.Method

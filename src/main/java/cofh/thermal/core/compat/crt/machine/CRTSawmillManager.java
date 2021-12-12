@@ -25,8 +25,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Sawmill")
-@IRecipeHandler.For(SawmillRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Sawmill")
+@IRecipeHandler.For (SawmillRecipe.class)
 public class CRTSawmillManager implements IRecipeManager, IRecipeHandler<SawmillRecipe> {
 
     @ZenCodeType.Method

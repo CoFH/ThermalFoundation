@@ -25,8 +25,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Crucible")
-@IRecipeHandler.For(CrucibleRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Crucible")
+@IRecipeHandler.For (CrucibleRecipe.class)
 public class CRTCrucibleManager implements IRecipeManager, IRecipeHandler<CrucibleRecipe> {
 
     @ZenCodeType.Method

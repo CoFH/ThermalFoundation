@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-@IRecipeHandler.For(DisenchantmentFuel.class)
-@IRecipeHandler.For(GourmandFuel.class)
-@IRecipeHandler.For(LapidaryFuel.class)
-@IRecipeHandler.For(NumismaticFuel.class)
-@IRecipeHandler.For(StirlingFuel.class)
+@IRecipeHandler.For (DisenchantmentFuel.class)
+@IRecipeHandler.For (GourmandFuel.class)
+@IRecipeHandler.For (LapidaryFuel.class)
+@IRecipeHandler.For (NumismaticFuel.class)
+@IRecipeHandler.For (StirlingFuel.class)
 public class CRTItemDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> {
 
     @Override

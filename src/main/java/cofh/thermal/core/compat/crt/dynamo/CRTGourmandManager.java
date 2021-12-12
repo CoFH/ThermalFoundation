@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.GourmandFuel")
+@ZenCodeType.Name ("mods.thermal.GourmandFuel")
 public class CRTGourmandManager implements IRecipeManager {
 
     @ZenCodeType.Method

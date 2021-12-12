@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.CompressionFuel")
+@ZenCodeType.Name ("mods.thermal.CompressionFuel")
 public class CRTCompressionManager implements IRecipeManager {
 
     @ZenCodeType.Method

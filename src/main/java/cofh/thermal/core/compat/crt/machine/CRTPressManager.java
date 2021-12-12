@@ -27,8 +27,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Press")
-@IRecipeHandler.For(PressRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Press")
+@IRecipeHandler.For (PressRecipe.class)
 public class CRTPressManager implements IRecipeManager, IRecipeHandler<PressRecipe> {
 
     @ZenCodeType.Method

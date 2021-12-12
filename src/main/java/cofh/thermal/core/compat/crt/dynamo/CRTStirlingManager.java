@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.StirlingFuel")
+@ZenCodeType.Name ("mods.thermal.StirlingFuel")
 public class CRTStirlingManager implements IRecipeManager {
 
     @ZenCodeType.Method

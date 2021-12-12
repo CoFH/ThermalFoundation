@@ -26,8 +26,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Refinery")
-@IRecipeHandler.For(RefineryRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Refinery")
+@IRecipeHandler.For (RefineryRecipe.class)
 public class CRTRefineryManager implements IRecipeManager, IRecipeHandler<RefineryRecipe> {
 
     @ZenCodeType.Method

@@ -47,7 +47,7 @@ import static cofh.thermal.core.init.TCoreReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
-@Mod(ID_THERMAL)
+@Mod (ID_THERMAL)
 public class ThermalCore {
 
     public static final Logger LOG = LogManager.getLogger(ID_THERMAL);

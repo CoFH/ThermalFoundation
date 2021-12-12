@@ -29,8 +29,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Insolator")
-@IRecipeHandler.For(InsolatorRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Insolator")
+@IRecipeHandler.For (InsolatorRecipe.class)
 public class CRTInsolatorManager implements IRecipeManager, IRecipeHandler<InsolatorRecipe> {
 
     @ZenCodeType.Method

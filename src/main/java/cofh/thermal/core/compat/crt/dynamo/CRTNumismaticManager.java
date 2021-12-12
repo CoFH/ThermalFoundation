@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.NumismaticFuel")
+@ZenCodeType.Name ("mods.thermal.NumismaticFuel")
 public class CRTNumismaticManager implements IRecipeManager {
 
     @ZenCodeType.Method

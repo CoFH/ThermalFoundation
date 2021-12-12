@@ -23,8 +23,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.PotionDiffuserBoost")
-@IRecipeHandler.For(PotionDiffuserBoost.class)
+@ZenCodeType.Name ("mods.thermal.PotionDiffuserBoost")
+@IRecipeHandler.For (PotionDiffuserBoost.class)
 public class CRTPotionDiffuserBoostManager implements IRecipeManager, IRecipeHandler<PotionDiffuserBoost> {
 
     @ZenCodeType.Method

@@ -23,8 +23,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.TreeExtractorBoost")
-@IRecipeHandler.For(TreeExtractorBoost.class)
+@ZenCodeType.Name ("mods.thermal.TreeExtractorBoost")
+@IRecipeHandler.For (TreeExtractorBoost.class)
 public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHandler<TreeExtractorBoost> {
 
     @ZenCodeType.Method

@@ -24,8 +24,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Furnace")
-@IRecipeHandler.For(FurnaceRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Furnace")
+@IRecipeHandler.For (FurnaceRecipe.class)
 public class CRTFurnaceManager implements IRecipeManager, IRecipeHandler<FurnaceRecipe> {
 
     @ZenCodeType.Method

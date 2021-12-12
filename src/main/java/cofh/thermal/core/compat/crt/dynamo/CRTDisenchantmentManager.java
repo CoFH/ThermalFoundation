@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.DisenchantmentFuel")
+@ZenCodeType.Name ("mods.thermal.DisenchantmentFuel")
 public class CRTDisenchantmentManager implements IRecipeManager {
 
     @ZenCodeType.Method

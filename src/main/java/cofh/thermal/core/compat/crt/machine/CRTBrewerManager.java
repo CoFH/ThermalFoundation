@@ -27,8 +27,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Brewer")
-@IRecipeHandler.For(BrewerRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Brewer")
+@IRecipeHandler.For (BrewerRecipe.class)
 public class CRTBrewerManager implements IRecipeManager, IRecipeHandler<BrewerRecipe> {
 
     @ZenCodeType.Method

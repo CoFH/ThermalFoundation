@@ -23,8 +23,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.InsolatorCatalyst")
-@IRecipeHandler.For(InsolatorCatalyst.class)
+@ZenCodeType.Name ("mods.thermal.InsolatorCatalyst")
+@IRecipeHandler.For (InsolatorCatalyst.class)
 public class CRTInsolatorCatalystManager implements IRecipeManager, IRecipeHandler<InsolatorCatalyst> {
 
     @ZenCodeType.Method

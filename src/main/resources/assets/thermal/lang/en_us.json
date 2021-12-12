@@ -431,7 +431,7 @@
   "item.thermal.machine_efficiency_augment.desc": "Increases RF efficiency but reduces process speed.",
   "item.thermal.machine_efficiency_creative_augment": "Creative Flux Efficiency",
   "item.thermal.machine_efficiency_creative_augment.desc": "No RF used, very fast processing.",
-  "item.thermal.machine_null_augment": "Nullification Chamber",
+  "item.thermal.machine_null_augment": "Auxiliary Cactus",
   "item.thermal.machine_null_augment.desc": "Destroys excess non-primary item outputs.",
   "item.thermal.machine_output_augment": "Auxiliary Process Sieve",
   "item.thermal.machine_output_augment.desc": "Increases non-primary item output production.",
@@ -733,7 +733,7 @@
   "item.thermal.machine_cycle_augment.keyword": "augment machine",
   "item.thermal.machine_efficiency_augment.keyword": "augment machine",
   "item.thermal.machine_efficiency_creative_augment.keyword": "augment creative machine",
-  "item.thermal.machine_null_augment.keyword": "augment machine",
+  "item.thermal.machine_null_augment.keyword": "augment machine trash void",
   "item.thermal.machine_output_augment.keyword": "augment machine",
   "item.thermal.machine_speed_augment.keyword": "augment machine overclock speed",
 
@@ -746,7 +746,7 @@
   "item.thermal.rf_coil_xfer_augment.keyword": "augment energy rf storage",
 
   "item.thermal.rs_control_augment.keyword": "augment redstone",
-  "item.thermal.side_config_augment.keyword": "augment",
+  "item.thermal.side_config_augment.keyword": "augment side",
 
   "item.thermal.upgrade_augment_1.keyword": "augment kit upgrade",
   "item.thermal.upgrade_augment_2.keyword": "augment kit upgrade",
@@ -770,8 +770,8 @@
   "item.thermal.hazmat_leggings.keyword": "armor leggings radiation",
   "item.thermal.hazmat_boots.keyword": "armor radiation",
 
-  "item.thermal.deep_aquachow.keyword": "bait",
   "item.thermal.aquachow.keyword": "bait",
+  "item.thermal.deep_aquachow.keyword": "bait",
   "item.thermal.junk_net.keyword": "bait",
 
   "item.thermal.detonator.keyword": "tnt",

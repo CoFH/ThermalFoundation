@@ -23,8 +23,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.PulverizerCatalyst")
-@IRecipeHandler.For(PulverizerCatalyst.class)
+@ZenCodeType.Name ("mods.thermal.PulverizerCatalyst")
+@IRecipeHandler.For (PulverizerCatalyst.class)
 public class CRTPulverizerCatalystManager implements IRecipeManager, IRecipeHandler<PulverizerCatalyst> {
 
     @ZenCodeType.Method

@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-@IRecipeHandler.For(CompressionFuel.class)
-@IRecipeHandler.For(MagmaticFuel.class)
+@IRecipeHandler.For (CompressionFuel.class)
+@IRecipeHandler.For (MagmaticFuel.class)
 public class CRTFluidDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> {
 
     @Override

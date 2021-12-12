@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.MagmaticFuel")
+@ZenCodeType.Name ("mods.thermal.MagmaticFuel")
 public class CRTMagmaticManager implements IRecipeManager {
 
     @ZenCodeType.Method

@@ -26,8 +26,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Bottler")
-@IRecipeHandler.For(BottlerRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Bottler")
+@IRecipeHandler.For (BottlerRecipe.class)
 public class CRTBottlerManager implements IRecipeManager, IRecipeHandler<BottlerRecipe> {
 
     @ZenCodeType.Method

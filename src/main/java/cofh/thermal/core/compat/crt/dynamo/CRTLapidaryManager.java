@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.LapidaryFuel")
+@ZenCodeType.Name ("mods.thermal.LapidaryFuel")
 public class CRTLapidaryManager implements IRecipeManager {
 
     @ZenCodeType.Method

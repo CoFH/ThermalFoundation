@@ -27,8 +27,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.Chiller")
-@IRecipeHandler.For(ChillerRecipe.class)
+@ZenCodeType.Name ("mods.thermal.Chiller")
+@IRecipeHandler.For (ChillerRecipe.class)
 public class CRTChillerManager implements IRecipeManager, IRecipeHandler<ChillerRecipe> {
 
     @ZenCodeType.Method
