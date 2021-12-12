@@ -16,7 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLModIdMappingEvent;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
-@Mod.EventBusSubscriber(modid = ID_THERMAL)
+@Mod.EventBusSubscriber (modid = ID_THERMAL)
 public class TCoreCommonSetupEvents {
 
     private TCoreCommonSetupEvents() {
@@ -73,7 +73,7 @@ public class TCoreCommonSetupEvents {
         ThermalRecipeManagers.instance().refreshClient(event.getRecipeManager());
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
+    @SubscribeEvent (priority = EventPriority.HIGH)
     public static void biomeLoadingAdd(final BiomeLoadingEvent event) {
 
         ThermalBiomeFeatures.addOreGeneration(event);

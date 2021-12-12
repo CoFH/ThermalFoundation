@@ -11,7 +11,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Arrays;
 
-@OnlyIn(Dist.CLIENT)
+@OnlyIn (Dist.CLIENT)
 public class BlitzModel<T extends Entity> extends SegmentedModel<T> {
 
     private final ModelRenderer head;

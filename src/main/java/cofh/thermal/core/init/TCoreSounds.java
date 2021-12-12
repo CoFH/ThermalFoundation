@@ -70,46 +70,46 @@ public class TCoreSounds {
     // endregion
 
     // region REFERENCES
-    @ObjectHolder(ID_SOUND_DEVICE_WATER_GEN)
+    @ObjectHolder (ID_SOUND_DEVICE_WATER_GEN)
     public static final SoundEvent SOUND_DEVICE_WATER_GEN = null;
 
-    @ObjectHolder(ID_SOUND_BASALZ_AMBIENT)
+    @ObjectHolder (ID_SOUND_BASALZ_AMBIENT)
     public static final SoundEvent SOUND_BASALZ_AMBIENT = null;
-    @ObjectHolder(ID_SOUND_BASALZ_DEATH)
+    @ObjectHolder (ID_SOUND_BASALZ_DEATH)
     public static final SoundEvent SOUND_BASALZ_DEATH = null;
-    @ObjectHolder(ID_SOUND_BASALZ_HURT)
+    @ObjectHolder (ID_SOUND_BASALZ_HURT)
     public static final SoundEvent SOUND_BASALZ_HURT = null;
-    @ObjectHolder(ID_SOUND_BASALZ_ROAM)
+    @ObjectHolder (ID_SOUND_BASALZ_ROAM)
     public static final SoundEvent SOUND_BASALZ_ROAM = null;
-    @ObjectHolder(ID_SOUND_BASALZ_SHOOT)
+    @ObjectHolder (ID_SOUND_BASALZ_SHOOT)
     public static final SoundEvent SOUND_BASALZ_SHOOT = null;
 
-    @ObjectHolder(ID_SOUND_BLITZ_AMBIENT)
+    @ObjectHolder (ID_SOUND_BLITZ_AMBIENT)
     public static final SoundEvent SOUND_BLITZ_AMBIENT = null;
-    @ObjectHolder(ID_SOUND_BLITZ_DEATH)
+    @ObjectHolder (ID_SOUND_BLITZ_DEATH)
     public static final SoundEvent SOUND_BLITZ_DEATH = null;
-    @ObjectHolder(ID_SOUND_BLITZ_HURT)
+    @ObjectHolder (ID_SOUND_BLITZ_HURT)
     public static final SoundEvent SOUND_BLITZ_HURT = null;
-    @ObjectHolder(ID_SOUND_BLITZ_ROAM)
+    @ObjectHolder (ID_SOUND_BLITZ_ROAM)
     public static final SoundEvent SOUND_BLITZ_ROAM = null;
-    @ObjectHolder(ID_SOUND_BLITZ_SHOOT)
+    @ObjectHolder (ID_SOUND_BLITZ_SHOOT)
     public static final SoundEvent SOUND_BLITZ_SHOOT = null;
 
-    @ObjectHolder(ID_SOUND_BLIZZ_AMBIENT)
+    @ObjectHolder (ID_SOUND_BLIZZ_AMBIENT)
     public static final SoundEvent SOUND_BLIZZ_AMBIENT = null;
-    @ObjectHolder(ID_SOUND_BLIZZ_DEATH)
+    @ObjectHolder (ID_SOUND_BLIZZ_DEATH)
     public static final SoundEvent SOUND_BLIZZ_DEATH = null;
-    @ObjectHolder(ID_SOUND_BLIZZ_HURT)
+    @ObjectHolder (ID_SOUND_BLIZZ_HURT)
     public static final SoundEvent SOUND_BLIZZ_HURT = null;
-    @ObjectHolder(ID_SOUND_BLIZZ_ROAM)
+    @ObjectHolder (ID_SOUND_BLIZZ_ROAM)
     public static final SoundEvent SOUND_BLIZZ_ROAM = null;
-    @ObjectHolder(ID_SOUND_BLIZZ_SHOOT)
+    @ObjectHolder (ID_SOUND_BLIZZ_SHOOT)
     public static final SoundEvent SOUND_BLIZZ_SHOOT = null;
 
-    @ObjectHolder(ID_SOUND_MAGNET)
+    @ObjectHolder (ID_SOUND_MAGNET)
     public static final SoundEvent SOUND_MAGNET = null;
 
-    @ObjectHolder(ID_SOUND_TINKER)
+    @ObjectHolder (ID_SOUND_TINKER)
     public static final SoundEvent SOUND_TINKER = null;
     // endregion
 }

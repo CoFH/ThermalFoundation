@@ -18,7 +18,7 @@ public class ThermalItemGroups {
     public static final ItemGroup THERMAL_BLOCKS = new ItemGroup(-1, ID_THERMAL + ".blocks") {
 
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_ENDERIUM_BLOCK));
@@ -28,7 +28,7 @@ public class ThermalItemGroups {
     public static final ItemGroup THERMAL_DEVICES = new ItemGroup(-1, ID_THERMAL + ".devices") {
 
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_TINKER_BENCH));
@@ -38,7 +38,7 @@ public class ThermalItemGroups {
     public static final ItemGroup THERMAL_ITEMS = new ItemGroup(-1, ID_THERMAL + ".items") {
 
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get("signalum_gear"));
@@ -48,7 +48,7 @@ public class ThermalItemGroups {
     public static final ItemGroup THERMAL_FOODS = new ItemGroup(-1, ID_THERMAL + ".foods") {
 
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_APPLE_BLOCK));
@@ -58,7 +58,7 @@ public class ThermalItemGroups {
     public static final ItemGroup THERMAL_TOOLS = new ItemGroup(-1, ID_THERMAL + ".tools") {
 
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_WRENCH));

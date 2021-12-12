@@ -36,7 +36,7 @@ import static cofh.lib.util.constants.NBTTags.TAG_TYPE;
 import static cofh.lib.util.helpers.StringHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.*;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = ID_THERMAL)
+@Mod.EventBusSubscriber (value = Dist.CLIENT, modid = ID_THERMAL)
 public class TCoreClientEvents {
 
     private TCoreClientEvents() {

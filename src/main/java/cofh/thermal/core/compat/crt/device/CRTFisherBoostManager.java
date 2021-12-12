@@ -24,8 +24,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.FisherBoost")
-@IRecipeHandler.For(FisherBoost.class)
+@ZenCodeType.Name ("mods.thermal.FisherBoost")
+@IRecipeHandler.For (FisherBoost.class)
 public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<FisherBoost> {
 
     @ZenCodeType.Method

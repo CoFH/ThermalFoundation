@@ -28,8 +28,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.HiveExtractor")
-@IRecipeHandler.For(HiveExtractorMapping.class)
+@ZenCodeType.Name ("mods.thermal.HiveExtractor")
+@IRecipeHandler.For (HiveExtractorMapping.class)
 public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<HiveExtractorMapping> {
 
     @ZenCodeType.Method

@@ -23,8 +23,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @ZenRegister
-@ZenCodeType.Name("mods.thermal.RockGen")
-@IRecipeHandler.For(RockGenMapping.class)
+@ZenCodeType.Name ("mods.thermal.RockGen")
+@IRecipeHandler.For (RockGenMapping.class)
 public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGenMapping> {
 
     @ZenCodeType.Method

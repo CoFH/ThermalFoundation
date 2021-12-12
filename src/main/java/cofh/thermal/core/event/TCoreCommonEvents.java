@@ -21,10 +21,10 @@ import static cofh.lib.util.Utils.getMaxEquippedEnchantmentLevel;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.lib.util.references.EnsorcReferences.AIR_AFFINITY;
 
-@Mod.EventBusSubscriber(modid = ID_THERMAL)
+@Mod.EventBusSubscriber (modid = ID_THERMAL)
 public class TCoreCommonEvents {
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent (priority = EventPriority.LOWEST)
     public static void handleBreakSpeedEvent(PlayerEvent.BreakSpeed event) {
 
         if (event.isCanceled()) {
