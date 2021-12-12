@@ -99,6 +99,7 @@ public class TCoreItems {
         flagUniqueAugment(ITEMS.get("machine_efficiency_creative_augment"));
         flagUniqueAugment(ITEMS.get("machine_catalyst_creative_augment"));
         flagUniqueAugment(ITEMS.get("machine_cycle_augment"));
+        flagUniqueAugment(ITEMS.get("machine_null_augment"));
     }
 
     // region HELPERS
@@ -581,6 +582,12 @@ public class TCoreItems {
                 AugmentDataHelper.builder()
                         .type(TAG_AUGMENT_TYPE_MACHINE)
                         .mod(TAG_AUGMENT_FEATURE_CYCLE_PROCESS, 1.0F)
+                        .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
+
+        registerItem("machine_null_augment", () -> new AugmentItem(new Item.Properties().tab(group),
+                AugmentDataHelper.builder()
+                        .type(TAG_AUGMENT_TYPE_MACHINE)
+                        .mod(TAG_AUGMENT_FEATURE_SECONDARY_NULL, 1.0F)
                         .build()).setShowInGroups(getFlag(FLAG_MACHINE_AUGMENTS)));
     }
 

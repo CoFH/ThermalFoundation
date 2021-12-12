@@ -91,8 +91,7 @@ public class ThermalAugmentRules {
         TYPE_EXC.addAll(Arrays.asList(
                 TAG_AUGMENT_TYPE_FILTER,
                 TAG_AUGMENT_TYPE_FLUID,
-                TAG_AUGMENT_TYPE_RF,
-                TAG_AUGMENT_TYPE_UPGRADE
+                TAG_AUGMENT_TYPE_RF
         ));
     }
 
@@ -150,13 +149,13 @@ public class ThermalAugmentRules {
             if (!newType.isEmpty() && !allowAugTypes.contains(newType)) {
                 return false;
             }
-            //            if (isTypeExclusive(newType)) {
-            //                for (ItemStack augment : augments) {
-            //                    if (newType.equals(AugmentDataHelper.getAugmentType(augment))) {
-            //                        return false;
-            //                    }
-            //                }
-            //            }
+            if (isTypeExclusive(newType)) {
+                for (ItemStack augment : augments) {
+                    if (newType.equals(AugmentDataHelper.getAugmentType(augment))) {
+                        return false;
+                    }
+                }
+            }
             if (isUnique(newAugment)) {
                 for (ItemStack augment : augments) {
                     if (ItemHelper.itemsEqual(newAugment, augment)) {
@@ -181,13 +180,13 @@ public class ThermalAugmentRules {
             if (!newType.isEmpty() && denyAugTypes.contains(newType)) {
                 return false;
             }
-            //            if (isTypeExclusive(newType)) {
-            //                for (ItemStack augment : augments) {
-            //                    if (newType.equals(AugmentDataHelper.getAugmentType(augment))) {
-            //                        return false;
-            //                    }
-            //                }
-            //            }
+            if (isTypeExclusive(newType)) {
+                for (ItemStack augment : augments) {
+                    if (newType.equals(AugmentDataHelper.getAugmentType(augment))) {
+                        return false;
+                    }
+                }
+            }
             if (isUnique(newAugment)) {
                 for (ItemStack augment : augments) {
                     if (ItemHelper.itemsEqual(newAugment, augment)) {

@@ -236,7 +236,10 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         List<? extends ItemStorageCoFH> slotOutputs = outputSlots();
         List<ItemStack> recipeOutputItems = curRecipe.getOutputItems(this);
         boolean[] used = new boolean[outputSlots().size()];
-        for (ItemStack recipeOutput : recipeOutputItems) {
+
+        for (int j = 0; j < recipeOutputItems.size(); ++j) {
+            ItemStack recipeOutput = recipeOutputItems.get(j);
+
             boolean matched = false;
             for (int i = 0; i < slotOutputs.size(); ++i) {
                 if (used[i]) {
@@ -264,10 +267,44 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
                     }
                 }
             }
-            if (!matched) {
+            if (!matched && (j == 0 || !secondaryNullFeature)) {
                 return false;
             }
         }
+
+        //        for (ItemStack recipeOutput : recipeOutputItems) {
+        //            boolean matched = false;
+        //            for (int i = 0; i < slotOutputs.size(); ++i) {
+        //                if (used[i]) {
+        //                    continue;
+        //                }
+        //                ItemStack output = slotOutputs.get(i).getItemStack();
+        //                if (output.getCount() >= output.getMaxStackSize()) {
+        //                    continue;
+        //                }
+        //                if (itemsEqualWithTags(output, recipeOutput)) {
+        //                    used[i] = true;
+        //                    matched = true;
+        //                    break;
+        //                }
+        //            }
+        //            if (!matched) {
+        //                for (int i = 0; i < slotOutputs.size(); ++i) {
+        //                    if (used[i]) {
+        //                        continue;
+        //                    }
+        //                    if (slotOutputs.get(i).isEmpty()) {
+        //                        used[i] = true;
+        //                        matched = true;
+        //                        break;
+        //                    }
+        //                }
+        //            }
+        //            if (!matched) {
+        //                return false;
+        //            }
+        //        }
+
         // FLUIDS
         List<? extends FluidStorageCoFH> tankOutputs = outputTanks();
         List<FluidStack> recipeOutputFluids = curRecipe.getOutputFluids(this);
@@ -276,7 +313,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
             boolean matched = false;
             for (int i = 0; i < tankOutputs.size(); ++i) {
                 FluidStack output = tankOutputs.get(i).getFluidStack();
-                if (used[i] || tankOutputs.get(i).getSpace() < output.getAmount()) {
+                if (used[i] || tankOutputs.get(i).getSpace() < recipeOutput.getAmount()) {
                     continue;
                 }
                 if (fluidsEqual(output, recipeOutput)) {
@@ -469,6 +506,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region AUGMENTS
     protected MachineProperties machineProperties = new MachineProperties();
+    protected boolean secondaryNullFeature = false;
 
     @Override
     protected Predicate<ItemStack> augValidator() {
@@ -486,6 +524,8 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         setAttribute(augmentNBT, TAG_AUGMENT_MACHINE_SPEED, 1.0F);
 
         machineProperties.resetAttributes();
+
+        secondaryNullFeature = false;
     }
 
     @Override
@@ -497,6 +537,8 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         setAttributeFromAugmentAdd(augmentNBT, augmentData, TAG_AUGMENT_MACHINE_SPEED);
 
         machineProperties.setAttributesFromAugment(augmentData);
+
+        secondaryNullFeature |= getAttributeMod(augmentData, TAG_AUGMENT_FEATURE_SECONDARY_NULL) > 0;
     }
 
     @Override

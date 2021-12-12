@@ -431,12 +431,17 @@
   "item.thermal.machine_efficiency_augment.desc": "Increases RF efficiency but reduces process speed.",
   "item.thermal.machine_efficiency_creative_augment": "Creative Flux Efficiency",
   "item.thermal.machine_efficiency_creative_augment.desc": "No RF used, very fast processing.",
+  "item.thermal.machine_null_augment": "Nullification Chamber",
+  "item.thermal.machine_null_augment.desc": "Destroys excess non-primary item outputs.",
   "item.thermal.machine_output_augment": "Auxiliary Process Sieve",
+  "item.thermal.machine_output_augment.desc": "Increases non-primary item output production.",
   "item.thermal.machine_speed_augment": "Flux Linkage Amplifier",
   "item.thermal.machine_speed_augment.desc": "Increases process speed but reduces RF efficiency.",
 
   "item.thermal.potion_amplifier_augment": "Alchemical Amplifier",
+  "item.thermal.potion_amplifier_augment.desc": "Increases the strength of an applied potion.",
   "item.thermal.potion_duration_augment": "Alchemical Extender",
+  "item.thermal.potion_duration_augment.desc": "Increases the duration of an applied potion.",
 
   "item.thermal.rf_coil_augment": "Expanded RF Coil",
 
@@ -728,6 +733,7 @@
   "item.thermal.machine_cycle_augment.keyword": "augment machine",
   "item.thermal.machine_efficiency_augment.keyword": "augment machine",
   "item.thermal.machine_efficiency_creative_augment.keyword": "augment creative machine",
+  "item.thermal.machine_null_augment.keyword": "augment machine",
   "item.thermal.machine_output_augment.keyword": "augment machine",
   "item.thermal.machine_speed_augment.keyword": "augment machine overclock speed",
 

@@ -62,7 +62,7 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
                     addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
                 }
             }
-        } else {
+        } else if (!recipe.getInputItems().isEmpty()) {
             for (ItemStack recipeInput : recipe.getInputItems().get(0).getItems()) {
                 addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), Collections.emptyList(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
             }

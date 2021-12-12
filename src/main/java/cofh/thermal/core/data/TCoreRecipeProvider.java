@@ -593,6 +593,16 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_redstone_servo", has(redstoneServo))
                 .save(withConditions(consumer).flag(FLAG_MACHINE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
+        result = reg.get("machine_null_augment");
+        ShapedRecipeBuilder.shaped(result)
+                .define('i', Tags.Items.NUGGETS_IRON)
+                .define('C', Items.CACTUS)
+                .pattern(" i ")
+                .pattern("iCi")
+                .pattern(" i ")
+                .unlockedBy("has_cactus", has(Items.CACTUS))
+                .save(withConditions(consumer).flag(FLAG_MACHINE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
+
         result = reg.get("potion_amplifier_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', ItemTagsCoFH.GEARS_SIGNALUM)

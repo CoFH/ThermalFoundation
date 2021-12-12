@@ -209,6 +209,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         generated(reg.getSup("machine_catalyst_augment"), AUGMENTS);
         generated(reg.getSup("machine_catalyst_creative_augment"), AUGMENTS);
         generated(reg.getSup("machine_cycle_augment"), AUGMENTS);
+        generated(reg.getSup("machine_null_augment"), AUGMENTS);
 
         generated(reg.getSup("dynamo_output_augment"), AUGMENTS);
         generated(reg.getSup("dynamo_fuel_augment"), AUGMENTS);
