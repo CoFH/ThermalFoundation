@@ -4,7 +4,7 @@
     "sounds": [
       "thermal:block/device/water_gen"
     ],
-    "subtitle": "subtitle.thermal.block.device_water_gen"
+    "subtitle": "subtitles.thermal.block.device_water_gen"
   },
 
   "block.machine_bottler": {
@@ -12,42 +12,42 @@
     "sounds": [
       "thermal:block/machine/bottler"
     ],
-    "subtitle": "subtitle.thermal.block.machine_bottler"
+    "subtitle": "subtitles.thermal.block.machine_bottler"
   },
   "block.machine_crucible": {
     "category": "block",
     "sounds": [
       "thermal:block/machine/crucible"
     ],
-    "subtitle": "subtitle.thermal.block.machine_crucible"
+    "subtitle": "subtitles.thermal.block.machine_crucible"
   },
   "block.machine_furnace": {
     "category": "block",
     "sounds": [
       "thermal:block/machine/furnace"
     ],
-    "subtitle": "subtitle.thermal.block.machine_furnace"
+    "subtitle": "subtitles.thermal.block.machine_furnace"
   },
   "block.machine_pulverizer": {
     "category": "block",
     "sounds": [
       "thermal:block/machine/pulverizer"
     ],
-    "subtitle": "subtitle.thermal.block.machine_pulverizer"
+    "subtitle": "subtitles.thermal.block.machine_pulverizer"
   },
   "block.machine_sawmill": {
     "category": "block",
     "sounds": [
       "thermal:block/machine/sawmill"
     ],
-    "subtitle": "subtitle.thermal.block.machine_sawmill"
+    "subtitle": "subtitles.thermal.block.machine_sawmill"
   },
   "block.machine_smelter": {
     "category": "block",
     "sounds": [
       "thermal:block/machine/smelter"
     ],
-    "subtitle": "subtitle.thermal.block.machine_smelter"
+    "subtitle": "subtitles.thermal.block.machine_smelter"
   },
 
   "entity.basalz.ambient": {
@@ -56,35 +56,35 @@
       "thermal:mob/basalz/breathe0",
       "thermal:mob/basalz/breathe1"
     ],
-    "subtitle": "subtitle.thermal.entity.basalz.ambient"
+    "subtitle": "subtitles.thermal.entity.basalz.ambient"
   },
   "entity.basalz.death": {
     "category": "entity",
     "sounds": [
       "thermal:mob/basalz/death"
     ],
-    "subtitle": "subtitle.thermal.entity.basalz.death"
+    "subtitle": "subtitles.thermal.entity.basalz.death"
   },
   "entity.basalz.hurt": {
     "category": "entity",
     "sounds": [
       "thermal:mob/basalz/hurt"
     ],
-    "subtitle": "subtitle.thermal.entity.basalz.hurt"
+    "subtitle": "subtitles.thermal.entity.basalz.hurt"
   },
   "entity.basalz.roam": {
     "category": "entity",
     "sounds": [
       "thermal:mob/basalz/roam"
     ],
-    "subtitle": "subtitle.thermal.entity.basalz.roam"
+    "subtitle": "subtitles.thermal.entity.basalz.roam"
   },
   "entity.basalz.shoot": {
     "category": "entity",
     "sounds": [
       "thermal:mob/basalz/shoot"
     ],
-    "subtitle": "subtitle.thermal.entity.basalz.shoot"
+    "subtitle": "subtitles.thermal.entity.basalz.shoot"
   },
 
   "entity.blitz.ambient": {
@@ -94,35 +94,35 @@
       "thermal:mob/blitz/breathe1",
       "thermal:mob/blitz/breathe2"
     ],
-    "subtitle": "subtitle.thermal.entity.blitz.ambient"
+    "subtitle": "subtitles.thermal.entity.blitz.ambient"
   },
   "entity.blitz.death": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blitz/death"
     ],
-    "subtitle": "subtitle.thermal.entity.blitz.death"
+    "subtitle": "subtitles.thermal.entity.blitz.death"
   },
   "entity.blitz.hurt": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blitz/hurt"
     ],
-    "subtitle": "subtitle.thermal.entity.blitz.hurt"
+    "subtitle": "subtitles.thermal.entity.blitz.hurt"
   },
   "entity.blitz.roam": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blitz/roam"
     ],
-    "subtitle": "subtitle.thermal.entity.blitz.roam"
+    "subtitle": "subtitles.thermal.entity.blitz.roam"
   },
   "entity.blitz.shoot": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blitz/shoot"
     ],
-    "subtitle": "subtitle.thermal.entity.blitz.shoot"
+    "subtitle": "subtitles.thermal.entity.blitz.shoot"
   },
 
   "entity.blizz.ambient": {
@@ -132,35 +132,35 @@
       "thermal:mob/blizz/breathe1",
       "thermal:mob/blizz/breathe2"
     ],
-    "subtitle": "subtitle.thermal.entity.blizz.ambient"
+    "subtitle": "subtitles.thermal.entity.blizz.ambient"
   },
   "entity.blizz.death": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blizz/death"
     ],
-    "subtitle": "subtitle.thermal.entity.blizz.death"
+    "subtitle": "subtitles.thermal.entity.blizz.death"
   },
   "entity.blizz.hurt": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blizz/hurt"
     ],
-    "subtitle": "subtitle.thermal.entity.blizz.hurt"
+    "subtitle": "subtitles.thermal.entity.blizz.hurt"
   },
   "entity.blizz.roam": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blizz/roam"
     ],
-    "subtitle": "subtitle.thermal.entity.blizz.roam"
+    "subtitle": "subtitles.thermal.entity.blizz.roam"
   },
   "entity.blizz.shoot": {
     "category": "entity",
     "sounds": [
       "thermal:mob/blizz/shoot"
     ],
-    "subtitle": "subtitle.thermal.entity.blizz.shoot"
+    "subtitle": "subtitles.thermal.entity.blizz.shoot"
   },
 
   "item.magnet": {
@@ -168,7 +168,7 @@
     "sounds": [
       "minecraft:mob/endermen/portal2"
     ],
-    "subtitle": "subtitle.thermal.item.magnet"
+    "subtitle": "subtitles.thermal.item.magnet"
   },
 
   "misc.tinker": {
@@ -176,6 +176,43 @@
     "sounds": [
       "thermal:misc/tinker"
     ],
-    "subtitle": "subtitle.thermal.misc.tinker"
+    "subtitle": "subtitles.thermal.misc.tinker"
+  },
+
+  "item.armor.equip_beekeeper": {
+    "category": "neutral",
+    "sounds": [
+      "minecraft:item/armor/equip_leather1",
+      "minecraft:item/armor/equip_leather2",
+      "minecraft:item/armor/equip_leather3",
+      "minecraft:item/armor/equip_leather4",
+      "minecraft:item/armor/equip_leather5",
+      "minecraft:item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.thermal.item.equip_beekeeper"
+  },
+  "item.armor.equip_diving": {
+    "category": "neutral",
+    "sounds": [
+      "minecraft:item/armor/equip_chain1",
+      "minecraft:item/armor/equip_chain2",
+      "minecraft:item/armor/equip_chain3",
+      "minecraft:item/armor/equip_chain4",
+      "minecraft:item/armor/equip_chain5",
+      "minecraft:item/armor/equip_chain6"
+    ],
+    "subtitle": "subtitles.thermal.item.equip_diving"
+  },
+  "item.armor.equip_hazmat": {
+    "category": "neutral",
+    "sounds": [
+      "minecraft:item/armor/equip_leather1",
+      "minecraft:item/armor/equip_leather2",
+      "minecraft:item/armor/equip_leather3",
+      "minecraft:item/armor/equip_leather4",
+      "minecraft:item/armor/equip_leather5",
+      "minecraft:item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.thermal.item.equip_hazmat"
   }
 }

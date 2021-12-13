@@ -339,24 +339,30 @@
   "item.thermal.signalum_nugget": "Signalum Nugget",
   "item.thermal.signalum_plate": "Signalum Plate",
 
-  "subtitle.thermal.block.device_water_gen": "Aqueous Accumulator blurbles",
+  "subtitles.thermal.block.device_water_gen": "Aqueous Accumulator blurbles",
 
-  "subtitle.thermal.entity.basalz.ambient": "Basalz breathes",
-  "subtitle.thermal.entity.basalz.death": "Basalz dies",
-  "subtitle.thermal.entity.basalz.hurt": "Basalz hurts",
-  "subtitle.thermal.entity.basalz.shoot": "Basalz shoots",
+  "subtitles.thermal.entity.basalz.ambient": "Basalz breathes",
+  "subtitles.thermal.entity.basalz.death": "Basalz dies",
+  "subtitles.thermal.entity.basalz.hurt": "Basalz hurts",
+  "subtitles.thermal.entity.basalz.shoot": "Basalz shoots",
 
-  "subtitle.thermal.entity.blitz.ambient": "Blitz breathes",
-  "subtitle.thermal.entity.blitz.death": "Blitz dies",
-  "subtitle.thermal.entity.blitz.hurt": "Blitz hurts",
-  "subtitle.thermal.entity.blitz.shoot": "Blitz shoots",
+  "subtitles.thermal.entity.blitz.ambient": "Blitz breathes",
+  "subtitles.thermal.entity.blitz.death": "Blitz dies",
+  "subtitles.thermal.entity.blitz.hurt": "Blitz hurts",
+  "subtitles.thermal.entity.blitz.shoot": "Blitz shoots",
 
-  "subtitle.thermal.entity.blizz.ambient": "Blizz breathes",
-  "subtitle.thermal.entity.blizz.death": "Blizz dies",
-  "subtitle.thermal.entity.blizz.hurt": "Blizz hurts",
-  "subtitle.thermal.entity.blizz.shoot": "Blizz shoots",
+  "subtitles.thermal.entity.blizz.ambient": "Blizz breathes",
+  "subtitles.thermal.entity.blizz.death": "Blizz dies",
+  "subtitles.thermal.entity.blizz.hurt": "Blizz hurts",
+  "subtitles.thermal.entity.blizz.shoot": "Blizz shoots",
 
-  "subtitle.thermal.item.magnet": "Magnet yoinks",
+  "subtitles.thermal.item.magnet": "Magnet yoinks",
+
+  "subtitles.thermal.item.equip_beekeeper": "Beekeeper Suit rustles",
+  "subtitles.thermal.item.equip_diving": "Diving Suit jingles",
+  "subtitles.thermal.item.equip_hazmat": "Hazmat Suit rustles",
+
+  "subtitles.thermal.misc.tinker": "Augment installs",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Augments",
@@ -1072,12 +1078,12 @@
   "item.thermal.slot_seal": "Slot Seal",
   "item.thermal.slot_seal.desc": "Prevents a slot from being used. Useful in machines with multiple input slots.",
 
-  "subtitle.thermal.block.machine_bottler": "Fluid Encapsulator fills",
-  "subtitle.thermal.block.machine_crucible": "Magma Crucible hums",
-  "subtitle.thermal.block.machine_furnace": "Redstone Furnace hums and crackles",
-  "subtitle.thermal.block.machine_pulverizer": "Pulverizer smashes",
-  "subtitle.thermal.block.machine_sawmill": "Sawmill cuts",
-  "subtitle.thermal.block.machine_smelter": "Induction Smelter hums",
+  "subtitles.thermal.block.machine_bottler": "Fluid Encapsulator fills",
+  "subtitles.thermal.block.machine_crucible": "Magma Crucible hums",
+  "subtitles.thermal.block.machine_furnace": "Redstone Furnace hums and crackles",
+  "subtitles.thermal.block.machine_pulverizer": "Pulverizer smashes",
+  "subtitles.thermal.block.machine_sawmill": "Sawmill cuts",
+  "subtitles.thermal.block.machine_smelter": "Induction Smelter hums",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",

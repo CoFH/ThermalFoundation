@@ -25,6 +25,7 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SoundHelper;
 import cofh.lib.xp.EmptyXpStorage;
 import cofh.lib.xp.XpStorage;
+import cofh.thermal.core.init.TCoreSounds;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.block.Block;
@@ -281,7 +282,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
                 if (!player.abilities.instabuild) {
                     player.setItemInHand(hand, consumeItem(stack, 1));
                 }
-                player.level.playSound(null, player.blockPosition(), SoundEvents.ANVIL_USE, SoundCategory.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
+                player.level.playSound(null, player.blockPosition(), TCoreSounds.SOUND_TINKER, SoundCategory.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
             } else {
                 player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.1F, 0.25F);
             }

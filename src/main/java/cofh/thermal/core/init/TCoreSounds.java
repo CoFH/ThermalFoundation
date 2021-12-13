@@ -37,6 +37,10 @@ public class TCoreSounds {
 
         registerSound(ID_SOUND_MAGNET);
         registerSound(ID_SOUND_TINKER);
+
+        registerSound(ID_SOUND_ARMOR_BEEKEEPER);
+        registerSound(ID_SOUND_ARMOR_DIVING);
+        registerSound(ID_SOUND_ARMOR_HAZMAT);
     }
 
     public static void registerSound(String soundID) {
@@ -67,6 +71,10 @@ public class TCoreSounds {
 
     public static final String ID_SOUND_MAGNET = ID_THERMAL + ":item.magnet";
     public static final String ID_SOUND_TINKER = ID_THERMAL + ":misc.tinker";
+
+    public static final String ID_SOUND_ARMOR_BEEKEEPER = ID_THERMAL + ":item.armor.equip_beekeeper";
+    public static final String ID_SOUND_ARMOR_DIVING = ID_THERMAL + ":item.armor.equip_diving";
+    public static final String ID_SOUND_ARMOR_HAZMAT = ID_THERMAL + ":item.armor.equip_hazmat";
     // endregion
 
     // region REFERENCES
@@ -108,8 +116,14 @@ public class TCoreSounds {
 
     @ObjectHolder (ID_SOUND_MAGNET)
     public static final SoundEvent SOUND_MAGNET = null;
-
     @ObjectHolder (ID_SOUND_TINKER)
     public static final SoundEvent SOUND_TINKER = null;
+
+    @ObjectHolder (ID_SOUND_ARMOR_BEEKEEPER)
+    public static final SoundEvent ARMOR_EQUIP_BEEKEEPER = null;
+    @ObjectHolder (ID_SOUND_ARMOR_DIVING)
+    public static final SoundEvent ARMOR_EQUIP_DIVING = null;
+    @ObjectHolder (ID_SOUND_ARMOR_HAZMAT)
+    public static final SoundEvent ARMOR_EQUIP_HAZMAT = null;
     // endregion
 }
