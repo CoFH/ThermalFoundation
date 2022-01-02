@@ -6,7 +6,6 @@ import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
 import cofh.thermal.core.entity.projectile.*;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
-import cofh.thermal.core.inventory.container.ChunkLoaderContainer;
 import cofh.thermal.core.inventory.container.ProjectBenchContainer;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.core.inventory.container.device.*;
@@ -14,7 +13,6 @@ import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.tileentity.ChargeBenchTile;
-import cofh.thermal.core.tileentity.DeviceChunkLoaderTile;
 import cofh.thermal.core.tileentity.ProjectBenchTile;
 import cofh.thermal.core.tileentity.TinkerBenchTile;
 import cofh.thermal.core.tileentity.device.*;
@@ -183,19 +181,19 @@ public class TCoreReferences {
     @ObjectHolder (ID_DEVICE_COLLECTOR)
     public static final ContainerType<DeviceCollectorContainer> DEVICE_COLLECTOR_CONTAINER = null;
 
-    @ObjectHolder (ID_DEVICE_POTION_DIFFUSER)
-    public static final Block DEVICE_POTION_DIFFUSER_BLOCK = null;
-    @ObjectHolder (ID_DEVICE_POTION_DIFFUSER)
-    public static final TileEntityType<DevicePotionDiffuserTile> DEVICE_POTION_DIFFUSER_TILE = null;
-    @ObjectHolder (ID_DEVICE_POTION_DIFFUSER)
-    public static final ContainerType<DevicePotionDiffuserContainer> DEVICE_POTION_DIFFUSER_CONTAINER = null;
-
     @ObjectHolder (ID_DEVICE_NULLIFIER)
     public static final Block DEVICE_NULLIFIER_BLOCK = null;
     @ObjectHolder (ID_DEVICE_NULLIFIER)
     public static final TileEntityType<DeviceNullifierTile> DEVICE_NULLIFIER_TILE = null;
     @ObjectHolder (ID_DEVICE_NULLIFIER)
     public static final ContainerType<DeviceNullifierContainer> DEVICE_NULLIFIER_CONTAINER = null;
+
+    @ObjectHolder (ID_DEVICE_POTION_DIFFUSER)
+    public static final Block DEVICE_POTION_DIFFUSER_BLOCK = null;
+    @ObjectHolder (ID_DEVICE_POTION_DIFFUSER)
+    public static final TileEntityType<DevicePotionDiffuserTile> DEVICE_POTION_DIFFUSER_TILE = null;
+    @ObjectHolder (ID_DEVICE_POTION_DIFFUSER)
+    public static final ContainerType<DevicePotionDiffuserContainer> DEVICE_POTION_DIFFUSER_CONTAINER = null;
     // endregion
 
     // region STORAGE
@@ -246,11 +244,11 @@ public class TCoreReferences {
     @ObjectHolder (ID_TINKER_BENCH)
     public static final ContainerType<TinkerBenchContainer> TINKER_BENCH_CONTAINER = null;
 
-    @ObjectHolder (ID_CHUNK_LOADER)
-    public static final Block CHUNK_LOADER_BLOCK = null;
-    @ObjectHolder (ID_CHUNK_LOADER)
-    public static final TileEntityType<DeviceChunkLoaderTile> CHUNK_LOADER_TILE = null;
-    @ObjectHolder (ID_CHUNK_LOADER)
-    public static final ContainerType<ChunkLoaderContainer> CHUNK_LOADER_CONTAINER = null;
+    //    @ObjectHolder (ID_CHUNK_LOADER)
+    //    public static final Block CHUNK_LOADER_BLOCK = null;
+    //    @ObjectHolder (ID_CHUNK_LOADER)
+    //    public static final TileEntityType<DeviceChunkLoaderTile> CHUNK_LOADER_TILE = null;
+    //    @ObjectHolder (ID_CHUNK_LOADER)
+    //    public static final ContainerType<ChunkLoaderContainer> CHUNK_LOADER_CONTAINER = null;
     // endregion
 }

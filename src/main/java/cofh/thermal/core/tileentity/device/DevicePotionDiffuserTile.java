@@ -302,11 +302,11 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
         if (inputTank.getAmount() < FLUID_AMOUNT) {
             return;
         }
-        if (effects.isEmpty()) {
+        if (effects.isEmpty() || level == null) {
             return;
         }
         AxisAlignedBB area = getArea();
-        List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
+        List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.LIVING_ENTITY_STILL_ALIVE);
         if (targets.isEmpty()) { // TODO: Proximity sensor aug?
             return;
         }

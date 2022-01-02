@@ -3,6 +3,7 @@ package cofh.thermal.lib.util.recipes;
 import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.helpers.MathHelper;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
@@ -77,6 +78,9 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         } else if (json.has(XP)) {
             experience = json.get(XP).getAsFloat();
         }
+        if (inputItems.isEmpty() && inputFluids.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty()) {
+            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nThis is NOT a Thermal Series error. Refer to the recipe's ResourceLocation to find the mod responsible and let them know!");
+        }
         return factory.create(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }
 
@@ -111,6 +115,9 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
         ArrayList<FluidStack> outputFluids = new ArrayList<>(numOutputFluids);
         for (int i = 0; i < numOutputFluids; ++i) {
             outputFluids.add(buffer.readFluidStack());
+        }
+        if (inputItems.isEmpty() && inputFluids.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty()) {
+            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nThis is NOT a Thermal Series error. Refer to the recipe's ResourceLocation to find the mod responsible and let them know!");
         }
         return factory.create(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }

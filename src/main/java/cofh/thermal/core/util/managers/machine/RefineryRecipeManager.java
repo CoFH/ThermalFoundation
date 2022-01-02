@@ -48,6 +48,9 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
 
     public void addRecipe(ThermalRecipe recipe) {
 
+        if (recipe.getInputFluids().isEmpty()) {
+            return;
+        }
         for (FluidStack fluidInput : recipe.getInputFluids().get(0).getFluids()) {
             addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.emptyList(), Collections.singletonList(fluidInput), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
         }
