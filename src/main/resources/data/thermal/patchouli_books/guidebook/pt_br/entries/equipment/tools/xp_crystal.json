@@ -1,0 +1,17 @@
+{
+  "name": "Cristal Perspicaz",
+  "icon": "thermal:xp_crystal",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Armazenamento XP portátil! O Cristal Perspicaz pode conter 10K exp, o equivalente a cerca de 63 níveis. Isso pode ser aumentado encantando-o com $(l:thermal:world/holding)Segurando$(/l)."
+    },
+    {
+      "type": "crafting",
+      "recipe": "thermal:tools/xp_crystal",
+      "title": "Insightful Crystal"
+    }
+  ]
+} 

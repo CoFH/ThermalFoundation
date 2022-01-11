@@ -1,0 +1,1 @@
+{  "name": "Locomoção",  "description": "A quantidade correta de chugga chuggas antes de choo choo é oito.",  "icon": "thermal:lumium_rail",  "parent": "thermal:storage_and_transport",  "flag": "mod:thermal_locomotion",  "sortnum": 4}

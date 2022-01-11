@@ -1,0 +1,28 @@
+{
+  "name": "Engrenagens, Moedas, Pó, etc.",
+  "icon": "thermal:enderium_coin",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "5_item_page",
+      "title": "Engrenagens, Moedas, Pó, etc.",
+      "item1": "thermal:copper_gear,thermal:tin_gear,thermal:lead_gear,thermal:silver_gear,thermal:nickel_gear,thermal:bronze_gear,thermal:invar_gear,thermal:electrum_gear,thermal:constantan_gear,thermal:signalum_gear,thermal:lumium_gear,thermal:enderium_gear,thermal:iron_gear,thermal:gold_gear,thermal:lapis_gear,thermal:diamond_gear,thermal:emerald_gear",
+      "item2": "thermal:copper_plate,thermal:tin_plate,thermal:lead_plate,thermal:silver_plate,thermal:nickel_plate,thermal:bronze_plate,thermal:invar_plate,thermal:electrum_plate,thermal:constantan_plate,thermal:signalum_plate,thermal:lumium_plate,thermal:enderium_plate,thermal:iron_plate,thermal:gold_plate",
+      "item3": "thermal:copper_coin,thermal:tin_coin,thermal:lead_coin,thermal:silver_coin,thermal:nickel_coin,thermal:bronze_coin,thermal:invar_coin,thermal:electrum_coin,thermal:constantan_coin,thermal:signalum_coin,thermal:lumium_coin,thermal:enderium_coin,thermal:iron_coin,thermal:gold_coin",
+      "item4": "thermal:copper_dust,thermal:tin_dust,thermal:lead_dust,thermal:silver_dust,thermal:nickel_dust,thermal:bronze_dust,thermal:invar_dust,thermal:electrum_dust,thermal:constantan_dust,thermal:signalum_dust,thermal:lumium_dust,thermal:enderium_dust,thermal:iron_dust,thermal:gold_dust,thermal:lapis_dust,thermal:diamond_dust,thermal:emerald_dust",
+      "item5": "thermal:copper_nugget,thermal:tin_nugget,thermal:lead_nugget,thermal:silver_nugget,thermal:nickel_nugget,thermal:bronze_nugget,thermal:invar_nugget,thermal:electrum_nugget,thermal:constantan_nugget,thermal:signalum_nugget,thermal:lumium_nugget,thermal:enderium_nugget",
+      "text": "O térmico adiciona várias formas de metais e gemas que são usadas em várias receitas. Mais básicas são as pepitas de metal, que funcionam de forma idêntica às pepitas de ferro baunilha e ouro."
+    },
+    {
+      "flag": "!mod:thermal_expansion",
+      "type": "text",
+      "text": "Poeiras podem vir de lingote de fabricação com $(l:thermal:equipment/charges/earth_charge)Carga de Terra$(/l) e pode ser usado em receitas (tipicamente ligas) ou fundido (apenas pós de metal). Engrenagens podem ser feitas usando uma pepita de ferro cercada por 4 lingote/gemas de um material específico."
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "text",
+      "text": "As poeiras normalmente vêm do $(l:thermal:technology/machines/pulverizer)Pulverizador$(/l) e pode ser usado em receitas (tipicamente ligas) ou fundido (apenas pós de metal). As placas e moedas são feitas exclusivamente no $(l:thermal:technology/machines/press)Prensa Multiservo$(/l) e são usados em várias receitas. As engrenagens podem ser feitas usando uma pepita de ferro cercada por 4 lingotes / gemas de um determinado material. Engrenagens de metal também podem ser criadas na prensa para 4 lingotes."
+    }
+  ]
+}
