@@ -13,6 +13,8 @@ import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.renderer.entity.*;
 import cofh.thermal.core.entity.monster.BasalzEntity;
+import cofh.thermal.core.entity.monster.BlitzEntity;
+import cofh.thermal.core.entity.monster.BlizzEntity;
 import cofh.thermal.core.init.*;
 import cofh.thermal.core.world.gen.feature.ThermalFeatures;
 import cofh.thermal.lib.common.ThermalConfig;
@@ -122,8 +124,8 @@ public class ThermalCore {
     private void entitySetup(final EntityAttributeCreationEvent event) {
 
         event.put(BASALZ_ENTITY, BasalzEntity.registerAttributes().build());
-        event.put(BLITZ_ENTITY, BasalzEntity.registerAttributes().build());
-        event.put(BLIZZ_ENTITY, BasalzEntity.registerAttributes().build());
+        event.put(BLITZ_ENTITY, BlitzEntity.registerAttributes().build());
+        event.put(BLIZZ_ENTITY, BlizzEntity.registerAttributes().build());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
