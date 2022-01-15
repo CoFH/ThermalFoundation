@@ -10,6 +10,7 @@
     }
   },
   "result": {
-    "item": "thermal:slag_bricks"
+    "item": "thermal:slag_bricks",
+    "count": 4
   }
 }

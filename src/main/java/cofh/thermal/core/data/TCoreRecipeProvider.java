@@ -1464,14 +1464,14 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateSmeltingRecipe(reg, consumer, reg.get(ID_SLAG_BRICKS), reg.get(ID_CRACKED_SLAG_BRICKS), 0.1F, "smelting");
         generateSmeltingRecipe(reg, consumer, reg.get(ID_RICH_SLAG_BRICKS), reg.get(ID_CRACKED_RICH_SLAG_BRICKS), 0.1F, "smelting");
 
-        ShapedRecipeBuilder.shaped(reg.get(ID_SLAG_BRICKS))
+        ShapedRecipeBuilder.shaped(reg.get(ID_SLAG_BRICKS), 4)
                 .define('#', reg.get(ID_POLISHED_SLAG))
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_slag", has(reg.get("slag")))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(reg.get(ID_RICH_SLAG_BRICKS))
+        ShapedRecipeBuilder.shaped(reg.get(ID_RICH_SLAG_BRICKS), 4)
                 .define('#', reg.get(ID_POLISHED_RICH_SLAG))
                 .pattern("##")
                 .pattern("##")
