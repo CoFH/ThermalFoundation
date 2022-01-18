@@ -17,8 +17,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class BasalzProjectileRenderer extends EntityRenderer<BasalzProjectileEntity> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/basalz_projectile.png");
-    private static final RenderType RENDER_TYPE = RenderType.entityTranslucent(TEXTURE);
+    public static final ResourceLocation TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/basalz_projectile.png");
     private final ElementalProjectileModel<BasalzProjectileEntity> model = new ElementalProjectileModel<>();
 
     public BasalzProjectileRenderer(EntityRendererManager manager) {

@@ -5,7 +5,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.network.IPacket;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
@@ -15,12 +14,11 @@ import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 import static cofh.lib.util.references.CoreReferences.SHOCKED;
 import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
 
-public class BlitzProjectileEntity extends DamagingProjectileEntity {
+public class BlitzProjectileEntity extends ElementalProjectileEntity {
 
     public static float defaultDamage = 7.0F;
     public static int effectAmplifier = 0;
@@ -42,12 +40,6 @@ public class BlitzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected boolean shouldBurn() {
-
-        return false;
-    }
-
-    @Override
     protected IParticleData getTrailParticle() {
 
         return ParticleTypes.INSTANT_EFFECT;
@@ -58,11 +50,10 @@ public class BlitzProjectileEntity extends DamagingProjectileEntity {
 
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
-            if (!entity.isInvulnerable() && entity instanceof LivingEntity) {
+            if (entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), entity.isInWaterOrRain() ? defaultDamage + 3.0F : defaultDamage) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false));
             }
-            entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), entity.isInWaterOrRain() ? defaultDamage + 3.0F : defaultDamage);
         }
         if (Utils.isServerWorld(level)) {
             this.level.broadcastEntityEvent(this, (byte) 3);
@@ -71,18 +62,7 @@ public class BlitzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-
-    }
-
-    @Override
-    public IPacket<?> getAddEntityPacket() {
-
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @Override
-    public float getBrightness() {
+    protected float getInertia() {
 
         return 1.0F;
     }

@@ -5,7 +5,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.network.IPacket;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
@@ -16,15 +15,14 @@ import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 import static cofh.lib.util.references.CoreReferences.SUNDERED;
 import static cofh.thermal.core.init.TCoreReferences.BASALZ_PROJECTILE_ENTITY;
 
-public class BasalzProjectileEntity extends DamagingProjectileEntity {
+public class BasalzProjectileEntity extends ElementalProjectileEntity {
 
     public static float defaultDamage = 7.0F;
-    public static int knockbackStrength = 2;
+    public static float knockbackStrength = 1.2F;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
 
@@ -44,53 +42,28 @@ public class BasalzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected boolean shouldBurn() {
-
-        return false;
-    }
-
-    @Override
     protected IParticleData getTrailParticle() {
 
         return ParticleTypes.FALLING_LAVA;
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
+    public void onHit(RayTraceResult result) {
 
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
-            if (!entity.isInvulnerable() && entity instanceof LivingEntity) {
+            if (entity.hurt(BasalzDamageSource.causeDamage(this, getOwner()), defaultDamage) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(SUNDERED, effectDuration, effectAmplifier, false, false));
-                Vector3d vec3d = this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D).normalize().scale((double) knockbackStrength * 0.6D);
-                if (vec3d.lengthSqr() > 0.0D) {
-                    living.push(vec3d.x, 0.1D, vec3d.z);
+                Vector3d velocity = this.getDeltaMovement();
+                if (velocity.lengthSqr() > 0.01) {
+                    living.knockback(knockbackStrength, -velocity.x, -velocity.z);
                 }
             }
-            entity.hurt(BasalzDamageSource.causeDamage(this, getOwner()), defaultDamage);
         }
         if (Utils.isServerWorld(level)) {
-            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-    }
-
-    @Override
-    protected void defineSynchedData() {
-
-    }
-
-    @Override
-    public IPacket<?> getAddEntityPacket() {
-
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @Override
-    public float getBrightness() {
-
-        return 1.0F;
     }
 
     // region DAMAGE SOURCE

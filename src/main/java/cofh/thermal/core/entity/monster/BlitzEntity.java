@@ -18,6 +18,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -68,7 +69,8 @@ public class BlitzEntity extends MonsterEntity {
 
         return MonsterEntity.createMonsterAttributes()
                 .add(Attributes.ATTACK_DAMAGE, 3.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.4F)
+                .add(Attributes.MOVEMENT_SPEED, 0.23F)
+                .add(Attributes.FLYING_SPEED, 0.6F)
                 .add(Attributes.FOLLOW_RANGE, 48.0D);
     }
 
@@ -164,7 +166,6 @@ public class BlitzEntity extends MonsterEntity {
     static class BlitzAttackGoal extends Goal {
 
         private final BlitzEntity blitz;
-        private int attackStep;
         private int attackTime;
         private int chaseStep;
 
@@ -180,8 +181,8 @@ public class BlitzEntity extends MonsterEntity {
          */
         public boolean canUse() {
 
-            LivingEntity livingentity = this.blitz.getTarget();
-            return livingentity != null && livingentity.isAlive() && this.blitz.canAttack(livingentity);
+            LivingEntity target = this.blitz.getTarget();
+            return target != null && target.isAlive() && this.blitz.canAttack(target);
         }
 
         /**
@@ -189,7 +190,6 @@ public class BlitzEntity extends MonsterEntity {
          */
         public void start() {
 
-            this.attackStep = 0;
         }
 
         /**
@@ -206,56 +206,57 @@ public class BlitzEntity extends MonsterEntity {
          */
         public void tick() {
 
-            --this.attackTime;
-            LivingEntity livingentity = this.blitz.getTarget();
-            if (livingentity != null) {
-                boolean flag = this.blitz.getSensing().canSee(livingentity);
-                if (flag) {
-                    this.chaseStep = 0;
-                } else {
-                    ++this.chaseStep;
-                }
-                double d0 = this.blitz.distanceToSqr(livingentity);
-                if (d0 < 4.0D) {
-                    if (!flag) {
-                        return;
-                    }
-                    if (this.attackTime <= 0) {
-                        this.attackTime = 20;
-                        this.blitz.doHurtTarget(livingentity);
-                    }
-                    this.blitz.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
-                } else if (d0 < this.getFollowDistance() * this.getFollowDistance() && flag) {
-                    double d1 = livingentity.getX() - this.blitz.getX();
-                    double d2 = livingentity.getY(0.5D) - this.blitz.getY(0.5D);
-                    double d3 = livingentity.getZ() - this.blitz.getZ();
-                    if (this.attackTime <= 0) {
-                        ++this.attackStep;
-                        if (this.attackStep == 1) {
-                            this.attackTime = 60;
-                            this.blitz.setAngry(true);
-                        } else if (this.attackStep <= 4) {
-                            this.attackTime = 6;
-                        } else {
-                            this.attackTime = 100;
-                            this.attackStep = 0;
-                            this.blitz.setAngry(false);
-                        }
-                        if (this.attackStep > 1) {
-                            float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
-                            this.blitz.level.levelEvent(null, 1018, this.blitz.blockPosition(), 0);
-                            // this.blitz.world.playSound(blitz.getPosX() + 0.5D, blitz.getPosY() + 0.5D, blitz.getPosZ() + 0.5D, SOUND_BLITZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (blitz.rand.nextFloat() - blitz.rand.nextFloat()) * 0.2F + 1.0F, false);
-                            BlitzProjectileEntity projectile = new BlitzProjectileEntity(this.blitz, d1 + this.blitz.random.nextGaussian() * (double) f, d2, d3 + this.blitz.random.nextGaussian() * (double) f, this.blitz.level);
-                            projectile.setPos(projectile.getX(), this.blitz.getY(0.5D) + 0.5D, projectile.getZ());
-                            this.blitz.level.addFreshEntity(projectile);
-                        }
-                    }
-                    this.blitz.getLookControl().setLookAt(livingentity, 10.0F, 10.0F);
-                } else if (this.chaseStep < 5) {
-                    this.blitz.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
-                }
-                super.tick();
+            --attackTime;
+            LivingEntity target = blitz.getTarget();
+            if (target == null) {
+                return;
             }
+            Vector3d pos = blitz.getEyePosition(0.5F);
+            Vector3d targetPos = target.position().add(0, target.getBbHeight() * 0.5F, 0);
+            Vector3d diff = targetPos.subtract(pos);
+            double distSqr = blitz.distanceToSqr(target);
+            if (blitz.getSensing().canSee(target) && distSqr < getFollowDistance() * getFollowDistance()) {
+                chaseStep = 0;
+                blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+                if (distSqr < 4.0) {
+                    if (attackTime <= 0) {
+                        attackTime = 20;
+                        blitz.doHurtTarget(target);
+                    }
+                } else {
+                    blitz.setAngry(true);
+                    if (attackTime <= 0) {
+                        attackTime = 20;
+                        World world = blitz.level;
+                        world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                        // imagine using what you learn in school
+                        float gravity = 0.05F;
+                        float horzSpeed = 0.5F;
+                        double horzDist = MathHelper.sqrt(getHorizontalDistanceSqr(diff));
+                        double time = 2 * horzDist;
+                        Vector3d horzVel = diff.scale(horzSpeed / horzDist);
+
+                        BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
+                        projectile.setDeltaMovement(horzVel.x, gravity * time + diff.y / time, horzVel.z);
+                        projectile.setOwner(blitz);
+                        world.addFreshEntity(projectile);
+                    }
+                    if (distSqr < 256.0) {
+                        Vector3d want = (new Vector3d(blitz.getX() - target.getX(), 0, blitz.getZ() - target.getZ())).normalize().scale(20);
+                        blitz.getMoveControl().setWantedPosition(want.x, blitz.getZ(), want.z, 1.0D);
+                    } else if (distSqr > 576.0) {
+                        blitz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+                    }
+                    return;
+                }
+            } else {
+                blitz.setAngry(false);
+            }
+            if (chaseStep < 5) {
+                ++chaseStep;
+                blitz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+            }
+            super.tick();
         }
 
         private double getFollowDistance() {

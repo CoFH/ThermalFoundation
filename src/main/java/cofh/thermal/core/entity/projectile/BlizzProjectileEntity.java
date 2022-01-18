@@ -7,7 +7,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.network.IPacket;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
@@ -17,12 +16,11 @@ import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 import static cofh.lib.util.references.CoreReferences.CHILLED;
 import static cofh.thermal.core.init.TCoreReferences.BLIZZ_PROJECTILE_ENTITY;
 
-public class BlizzProjectileEntity extends DamagingProjectileEntity {
+public class BlizzProjectileEntity extends ElementalProjectileEntity {
 
     private static final int CLOUD_DURATION = 20;
 
@@ -47,12 +45,6 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
     }
 
     @Override
-    protected boolean shouldBurn() {
-
-        return false;
-    }
-
-    @Override
     protected IParticleData getTrailParticle() {
 
         return ParticleTypes.ITEM_SNOWBALL;
@@ -66,11 +58,10 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
             if (entity.isOnFire()) {
                 entity.clearFire();
             }
-            if (!entity.isInvulnerable() && entity instanceof LivingEntity) {
+            if (entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), entity.fireImmune() ? defaultDamage + 3.0F : defaultDamage) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
             }
-            entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), entity.fireImmune() ? defaultDamage + 3.0F : defaultDamage);
         }
         if (Utils.isServerWorld(level)) {
             if (effectRadius > 0) {
@@ -82,17 +73,6 @@ public class BlizzProjectileEntity extends DamagingProjectileEntity {
             this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
-    }
-
-    @Override
-    protected void defineSynchedData() {
-
-    }
-
-    @Override
-    public IPacket<?> getAddEntityPacket() {
-
-        return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     private void makeAreaOfEffectCloud() {
