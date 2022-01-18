@@ -109,22 +109,24 @@ public class BasalzEntity extends MonsterEntity {
     @Override
     public void tick() {
 
-        if (attackTime <= 0 && isAngry() && getOrbit() > 0) {
-            Vector3d pos = this.position();
-            for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
-                if (!target.equals(this) && distanceToSqr(target) < 12.25) {
-                    attackTime = 15;
-                    Vector3d targetPos = target.position();
-                    Vector3d offset = targetPos.subtract(pos).normalize().cross(vert).scale(0.5);
-                    BasalzProjectileEntity projectile = new BasalzProjectileEntity(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
-                    projectile.setDeltaMovement(-offset.x, 0, -offset.z);
-                    projectile.setOwner(this);
-                    projectile.onHit(new EntityRayTraceResult(target));
-                    reduceOrbit();
+        if (!level.isClientSide) {
+            if (attackTime <= 0 && isAngry() && getOrbit() > 0) {
+                Vector3d pos = this.position();
+                for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
+                    if (!target.equals(this) && distanceToSqr(target) < 12.25) {
+                        attackTime = 15;
+                        Vector3d targetPos = target.position();
+                        Vector3d offset = targetPos.subtract(pos).normalize().cross(vert).scale(0.5);
+                        BasalzProjectileEntity projectile = new BasalzProjectileEntity(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
+                        projectile.setDeltaMovement(-offset.x, 0, -offset.z);
+                        projectile.setOwner(this);
+                        projectile.onHit(new EntityRayTraceResult(target));
+                        reduceOrbit();
+                    }
                 }
+            } else {
+                --attackTime;
             }
-        } else {
-            --attackTime;
         }
         super.tick();
     }

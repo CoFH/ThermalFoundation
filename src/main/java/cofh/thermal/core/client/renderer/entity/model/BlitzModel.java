@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -12,29 +12,44 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Arrays;
 
 @OnlyIn (Dist.CLIENT)
-public class BlitzModel<T extends Entity> extends SegmentedModel<T> {
+public class BlitzModel<T extends LivingEntity> extends SegmentedModel<T> {
 
     private final ModelRenderer head;
-    private final ModelRenderer[] motes;
+    private final ModelRenderer[] body;
+    private final ModelRenderer cyclone;
     private final ImmutableList<ModelRenderer> partsList;
 
     public BlitzModel() {
 
-        texWidth = 64;
-        texHeight = 32;
+        texWidth = 128;
+        texHeight = 64;
 
         head = new ModelRenderer(this);
         head.setPos(0.0F, 0.0F, 0.0F);
-        head.texOffs(0, 0).addBox(-6.0F, -4.0F, -4.0F, 12.0F, 8.0F, 8.0F, 0.0F, false);
-        this.motes = new ModelRenderer[8];
+        head.texOffs(0, 39).addBox(-6.0F, -7.0F, -4.0F, 12.0F, 8.0F, 8.0F, 0.0F, false);
 
-        for (int i = 0; i < this.motes.length; ++i) {
-            this.motes[i] = new ModelRenderer(this, 16 * (i % 4), 16);
-            this.motes[i].addBox(0.0F, 0.0F, 0.0F, 4.0F, 5.0F, 4.0F);
-        }
+        this.body = new ModelRenderer[3];
+
+        body[0] = new ModelRenderer(this);
+        body[0].setPos(0.0F, 0.0F, 0.0F);
+        body[0].texOffs(0, 0).addBox(-8.0F, 2.0F, -8.0F, 16.0F, 6.0F, 16.0F, 0.0F, false);
+
+        body[1] = new ModelRenderer(this);
+        body[1].setPos(0.0F, 0.0F, 0.0F);
+        body[1].texOffs(0, 23).addBox(-5.0F, 9.0F, -5.0F, 10.0F, 6.0F, 10.0F, 0.0F, false);
+
+        body[2] = new ModelRenderer(this);
+        body[2].setPos(0.0F, 0.0F, 0.0F);
+        body[2].texOffs(40, 27).addBox(-3.0F, 16.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, false);
+
+        cyclone = new ModelRenderer(this);
+        cyclone.setPos(0.0F, 0.0F, 0.0F);
+        cyclone.texOffs(15, 39).addBox(-12.5F, 23.0F, -12.5F, 25.0F, 0.0F, 25.0F, 0.0F, false);
+
         Builder<ModelRenderer> builder = ImmutableList.builder();
         builder.add(this.head);
-        builder.addAll(Arrays.asList(this.motes));
+        builder.addAll(Arrays.asList(this.body));
+        builder.add(this.cyclone);
         this.partsList = builder.build();
     }
 
@@ -45,29 +60,12 @@ public class BlitzModel<T extends Entity> extends SegmentedModel<T> {
 
     public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
-        //        float f = ageInTicks * (float) Math.PI * -0.1F;
-        //        for (int i = 0; i < 4; ++i) {
-        //            this.motes[i].rotationPointY = -2.0F + MathHelper.cos(((float) (i * 2) + ageInTicks) * 0.25F);
-        //            this.motes[i].rotationPointX = MathHelper.cos(f) * 13.0F;
-        //            this.motes[i].rotationPointZ = MathHelper.sin(f) * 13.0F;
-        //            ++f;
-        //        }
-
-        float f = ((float) Math.PI / 4F) + ageInTicks * (float) Math.PI * 0.03F;
-        for (int j = 0; j < 4; ++j) {
-            this.motes[j].y = 4.0F + MathHelper.cos(((float) (j * 3) + ageInTicks) * 0.25F);
-            this.motes[j].x = MathHelper.cos(f) * 9.0F;
-            this.motes[j].z = MathHelper.sin(f) * 9.0F;
-            ++f;
+        float partialTicks = ageInTicks - entityIn.tickCount;
+        for (int i = 0; i < this.body.length; ++i) {
+            this.body[i].yRot = (ageInTicks * (i + 1) * 10 - MathHelper.lerp(partialTicks, entityIn.yBodyRotO, entityIn.yBodyRot)) * (float) Math.PI / 180.0F;
         }
+        cyclone.yRot = (ageInTicks * 20 - MathHelper.lerp(partialTicks, entityIn.yBodyRotO, entityIn.yBodyRot)) * (float) Math.PI / 180.0F;
 
-        f = 0.47123894F + ageInTicks * (float) Math.PI * -0.05F;
-        for (int k = 4; k < 8; ++k) {
-            this.motes[k].y = 12.0F + MathHelper.cos(((float) k * 1.5F + ageInTicks) * 0.5F);
-            this.motes[k].x = MathHelper.cos(f) * 5.0F;
-            this.motes[k].z = MathHelper.sin(f) * 5.0F;
-            ++f;
-        }
         this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
