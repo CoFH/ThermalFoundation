@@ -37,6 +37,7 @@ import java.util.Random;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BASALZ;
+import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 
 public class BasalzEntity extends MonsterEntity {
 
@@ -108,7 +109,7 @@ public class BasalzEntity extends MonsterEntity {
     @Override
     public void tick() {
 
-        if (attackTime <= 0 && getOrbit() > 0) {
+        if (attackTime <= 0 && isAngry() && getOrbit() > 0) {
             Vector3d pos = this.position();
             for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
                 if (!target.equals(this) && distanceToSqr(target) < 12.25) {
@@ -146,12 +147,6 @@ public class BasalzEntity extends MonsterEntity {
     }
 
     @Override
-    protected void customServerAiStep() {
-
-        super.customServerAiStep();
-    }
-
-    @Override
     public boolean causeFallDamage(float distance, float damageMultiplier) {
 
         return false;
@@ -168,6 +163,29 @@ public class BasalzEntity extends MonsterEntity {
     public AxisAlignedBB getBoundingBoxForCulling() {
 
         return isAngry() ? super.getBoundingBoxForCulling().inflate(4) : super.getBoundingBoxForCulling();
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+
+        return source.msgId.equals(ID_BASALZ) || super.isInvulnerableTo(source);
+    }
+
+    // region ANGER/ORBIT MANAGEMENT
+    public boolean isAngry() {
+
+        return (this.entityData.get(ANGRY) & 1) != 0;
+    }
+
+    protected void setAngry(boolean angry) {
+
+        byte b0 = this.entityData.get(ANGRY);
+        if (angry) {
+            b0 = (byte) (b0 | 1);
+        } else {
+            b0 = (byte) (b0 & -2);
+        }
+        this.entityData.set(ANGRY, b0);
     }
 
     public int getOrbit() {
@@ -188,23 +206,6 @@ public class BasalzEntity extends MonsterEntity {
     public void resetOrbit() {
 
         setOrbit(DEFAULT_ORBIT);
-    }
-
-    // region ANGER MANAGEMENT
-    public boolean isAngry() {
-
-        return (this.entityData.get(ANGRY) & 1) != 0;
-    }
-
-    protected void setAngry(boolean angry) {
-
-        byte b0 = this.entityData.get(ANGRY);
-        if (angry) {
-            b0 = (byte) (b0 | 1);
-        } else {
-            b0 = (byte) (b0 & -2);
-        }
-        this.entityData.set(ANGRY, b0);
     }
     // endregion
 

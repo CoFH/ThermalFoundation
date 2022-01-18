@@ -33,6 +33,7 @@ import java.util.Random;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BLITZ;
+import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
 public class BlitzEntity extends MonsterEntity {
 
@@ -145,6 +146,12 @@ public class BlitzEntity extends MonsterEntity {
         return new ItemStack(ITEMS.get("blitz_spawn_egg"));
     }
 
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+
+        return source == DamageSource.LIGHTNING_BOLT || source.msgId.equals(ID_BLITZ) || super.isInvulnerableTo(source);
+    }
+
     // region ANGER MANAGEMENT
     public boolean isAngry() {
 
@@ -242,8 +249,8 @@ public class BlitzEntity extends MonsterEntity {
                         world.addFreshEntity(projectile);
                     }
                     if (distSqr < 256.0) {
-                        Vector3d want = (new Vector3d(blitz.getX() - target.getX(), 0, blitz.getZ() - target.getZ())).normalize().scale(20);
-                        blitz.getMoveControl().setWantedPosition(want.x, blitz.getZ(), want.z, 1.0D);
+                        Vector3d want = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(20);
+                        blitz.getMoveControl().setWantedPosition(pos.x + want.x, blitz.getY(), pos.z + want.z, 1.0D);
                     } else if (distSqr > 576.0) {
                         blitz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
                     }

@@ -19,7 +19,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -33,6 +32,7 @@ import java.util.Random;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BLIZZ;
+import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 
 public class BlizzEntity extends MonsterEntity {
 
@@ -118,20 +118,9 @@ public class BlizzEntity extends MonsterEntity {
     }
 
     @Override
-    protected void customServerAiStep() {
+    public boolean hurt(DamageSource source, float amount) {
 
-        //--this.heightOffsetUpdateTime;
-        //if (this.heightOffsetUpdateTime <= 0) {
-        //    this.heightOffsetUpdateTime = 100;
-        //    this.heightOffset = 0.5F + (float) this.random.nextGaussian() * 3.0F;
-        //}
-        //LivingEntity target = this.getTarget();
-        //if (target != null && target.getEyeY() > this.getEyeY() + (double) this.heightOffset && this.canAttack(target)) {
-        //    Vector3d vec3d = this.getDeltaMovement();
-        //    this.setDeltaMovement(this.getDeltaMovement().add(0.0D, ((double) 0.3F - vec3d.y) * (double) 0.3F, 0.0D));
-        //    this.hasImpulse = true;
-        //}
-        super.customServerAiStep();
+        return super.hurt(source, source.isFire() ? amount + 3 : amount);
     }
 
     @Override
@@ -144,6 +133,12 @@ public class BlizzEntity extends MonsterEntity {
     public ItemStack getPickedResult(RayTraceResult target) {
 
         return new ItemStack(ITEMS.get("blizz_spawn_egg"));
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+
+        return source.msgId.equals(ID_BLIZZ) || super.isInvulnerableTo(source);
     }
 
     // region ANGER MANAGEMENT

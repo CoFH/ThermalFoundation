@@ -1,6 +1,7 @@
 package cofh.thermal.core.entity.projectile;
 
 import cofh.lib.util.Utils;
+import cofh.thermal.core.entity.monster.BasalzEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -17,12 +18,9 @@ import net.minecraft.world.World;
 
 import static cofh.lib.util.references.CoreReferences.SHOCKED;
 import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
+import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
 public class BlitzProjectileEntity extends ElementalProjectileEntity {
-
-    public static float defaultDamage = 7.0F;
-    public static int effectAmplifier = 0;
-    public static int effectDuration = 100;
 
     public BlitzProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
 
@@ -50,9 +48,9 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
 
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
-            if (entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), entity.isInWaterOrRain() ? defaultDamage + 3.0F : defaultDamage) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
+            if (entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addEffect(new EffectInstance(SHOCKED, effectDuration, effectAmplifier, false, false));
+                living.addEffect(new EffectInstance(SHOCKED, getEffectDuration(entity), getEffectPower(entity), false, false));
             }
         }
         if (Utils.isServerWorld(level)) {
@@ -67,17 +65,23 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
         return 1.0F;
     }
 
+    @Override
+    public float getDamage(Entity target) {
+
+        return target.isInWaterOrRain() || target instanceof BasalzEntity ? defaultDamage + 3.0F : defaultDamage;
+    }
+
     // region DAMAGE SOURCE
     protected static class BlitzDamageSource extends EntityDamageSource {
 
         public BlitzDamageSource(Entity source) {
 
-            super("blitz", source);
+            super(ID_BLITZ, source);
         }
 
         public static DamageSource causeDamage(BlitzProjectileEntity entityProj, Entity entitySource) {
 
-            return (new IndirectEntityDamageSource("blitz", entityProj, entitySource == null ? entityProj : entitySource)).setProjectile();
+            return (new IndirectEntityDamageSource(ID_BLITZ, entityProj, entitySource == null ? entityProj : entitySource)).setProjectile();
         }
 
     }

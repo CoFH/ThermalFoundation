@@ -15,6 +15,10 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public abstract class ElementalProjectileEntity extends DamagingProjectileEntity {
 
+    public static float defaultDamage = 7.0F;
+    public static int effectAmplifier = 0;
+    public static int effectDuration = 100;
+
     public ElementalProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
 
         super(type, world);
@@ -111,4 +115,21 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
 
         return 0.0F;
     }
+
+    // region HELPERS
+    public float getDamage(Entity target) {
+
+        return defaultDamage;
+    }
+
+    public int getEffectPower(Entity target) {
+
+        return effectAmplifier;
+    }
+
+    public int getEffectDuration(Entity target) {
+
+        return effectDuration;
+    }
+    // endregion
 }
