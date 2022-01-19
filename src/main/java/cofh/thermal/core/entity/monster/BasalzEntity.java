@@ -110,7 +110,7 @@ public class BasalzEntity extends MonsterEntity {
     public void tick() {
 
         if (!level.isClientSide) {
-            if (attackTime <= 0 && isAngry() && getOrbit() > 0) {
+            if (isAlive() && isAngry() && attackTime <= 0 && getOrbit() > 0) {
                 Vector3d pos = this.position();
                 for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
                     if (!target.equals(this) && distanceToSqr(target) < 12.25) {

@@ -6,14 +6,13 @@
   "flag": "mod:thermal_expansion",
   "pages": [
     {
-      "type": "hidden_item_text_page",
+      "type": "text",
       "title": "Fundidora de Indução",
-      "item": "thermal:rich_slag",
       "text": "A fundição por indução é uma máquina que funde vários itens juntos, produzindo ligas. Ele também pode fundir minérios em lingotes e gemas, que é afetado por $(l:thermal:world/materials/catalysts)catalisadores$(/l). A fundição de minérios tem a chance de produzir escória rica como uma saída secundária, que pode ser usada como um catalisador ou para fazer $(l:thermal:world/plants/phytogro)phyto-gro$(/l). A fundição de cascalho produz pederneira e escória."
     },
     {
-      "type": "crafting",
-      "recipe": "thermal:machine_smelter",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_smelter",
       "title": "Fundidora de Indução"
     },
     {

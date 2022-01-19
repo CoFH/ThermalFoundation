@@ -116,6 +116,12 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
         return 0.0F;
     }
 
+    @Override
+    public boolean isPickable() {
+
+        return false;
+    }
+
     // region HELPERS
     public float getDamage(Entity target) {
 

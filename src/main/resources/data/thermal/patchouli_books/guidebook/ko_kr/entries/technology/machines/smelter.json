@@ -6,14 +6,13 @@
   "flag": "mod:thermal_expansion",
   "pages": [
     {
-      "type": "hidden_item_text_page",
+      "type": "text",
       "title": "유도 용광로",
-      "item": "thermal:rich_slag",
       "text": "유도 용광로는 여러 금속을 함께 재련하여 합금을 생산하는 기계입니다. 또한 $(l:thermal:world/materials/catalysts)촉매제$(/l)의 영향을 받는 광석들을 주괴와 보석으로 제련할 수 있습니다. 광석 제련은 촉매제로 사용하거나 $(l:thermal:world/plants/phytogro)픽토 그로$(/l)를 만드는 데 사용되는 슬래그가 부산물로 나올 수 있습니다. 자갈을 제련하면 부싯돌과 슬래그가 생성됩니다."
     },
     {
-      "type": "crafting",
-      "recipe": "thermal:machine_smelter",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_smelter",
       "title": "유도 용광로"
     },
     {

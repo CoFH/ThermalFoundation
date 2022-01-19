@@ -1,0 +1,1 @@
+{  "include": [    {      "template": "crafting_page",      "as": "A"    },    {      "template": "crafting_page",      "as": "B",      "y": 78    }  ],  "components": [    {      "type": "text",      "text": "#text",      "x": 0,      "y": 69    }  ]}
