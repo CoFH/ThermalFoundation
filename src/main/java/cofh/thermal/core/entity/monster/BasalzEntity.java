@@ -43,7 +43,7 @@ public class BasalzEntity extends MonsterEntity {
 
     protected static final int DEFAULT_ORBIT = 8;
     private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BasalzEntity.class, DataSerializers.BYTE);
-    private static final Vector3d vert = new Vector3d( 0, 1, 0);
+    private static final Vector3d vert = new Vector3d(0, 1, 0);
     protected int attackTime = 0;
 
     public static boolean canSpawn(EntityType<BasalzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
@@ -160,7 +160,7 @@ public class BasalzEntity extends MonsterEntity {
         return new ItemStack(ITEMS.get("basalz_spawn_egg"));
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @OnlyIn (Dist.CLIENT)
     @Override
     public AxisAlignedBB getBoundingBoxForCulling() {
 

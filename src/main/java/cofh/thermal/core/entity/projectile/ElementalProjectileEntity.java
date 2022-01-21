@@ -15,10 +15,6 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public abstract class ElementalProjectileEntity extends DamagingProjectileEntity {
 
-    public static float defaultDamage = 7.0F;
-    public static int effectAmplifier = 0;
-    public static int effectDuration = 100;
-
     public ElementalProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
 
         super(type, world);
@@ -61,7 +57,7 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
             ProjectileHelper.rotateTowardsMovement(this, 0.2F);
             float resistance = getInertia();
             if (isInWater()) {
-                for(int i = 0; i < 4; ++i) {
+                for (int i = 0; i < 4; ++i) {
                     level.addParticle(ParticleTypes.BUBBLE, pos.x + velocity.x * i * 0.25F, pos.y + velocity.y * i * 0.25F, pos.z + velocity.z * i * 0.25F, velocity.x, velocity.y, velocity.z);
                 }
                 resistance = getWaterInertia();
@@ -123,19 +119,10 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
     }
 
     // region HELPERS
-    public float getDamage(Entity target) {
+    public abstract float getDamage(Entity target);
 
-        return defaultDamage;
-    }
+    public abstract int getEffectAmplifier(Entity target);
 
-    public int getEffectPower(Entity target) {
-
-        return effectAmplifier;
-    }
-
-    public int getEffectDuration(Entity target) {
-
-        return effectDuration;
-    }
+    public abstract int getEffectDuration(Entity target);
     // endregion
 }

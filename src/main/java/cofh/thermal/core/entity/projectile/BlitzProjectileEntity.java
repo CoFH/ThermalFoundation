@@ -22,6 +22,10 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
 public class BlitzProjectileEntity extends ElementalProjectileEntity {
 
+    public static float defaultDamage = 5.0F;
+    public static int effectAmplifier = 0;
+    public static int effectDuration = 100;
+
     public BlitzProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
 
         super(type, world);
@@ -50,7 +54,7 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
             if (entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addEffect(new EffectInstance(SHOCKED, getEffectDuration(entity), getEffectPower(entity), false, false));
+                living.addEffect(new EffectInstance(SHOCKED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
         if (Utils.isServerWorld(level)) {
@@ -65,11 +69,25 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
         return 1.0F;
     }
 
+    // region HELPERS
     @Override
     public float getDamage(Entity target) {
 
         return target.isInWaterOrRain() || target instanceof BasalzEntity ? defaultDamage + 3.0F : defaultDamage;
     }
+
+    @Override
+    public int getEffectAmplifier(Entity target) {
+
+        return effectAmplifier;
+    }
+
+    @Override
+    public int getEffectDuration(Entity target) {
+
+        return effectDuration;
+    }
+    // endregion
 
     // region DAMAGE SOURCE
     protected static class BlitzDamageSource extends EntityDamageSource {

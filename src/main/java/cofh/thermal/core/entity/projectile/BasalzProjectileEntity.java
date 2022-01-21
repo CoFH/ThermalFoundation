@@ -23,6 +23,9 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 
 public class BasalzProjectileEntity extends ElementalProjectileEntity {
 
+    public static float defaultDamage = 6.0F;
+    public static int effectAmplifier = 0;
+    public static int effectDuration = 100;
     public static float knockbackStrength = 1.2F;
 
     public BasalzProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
@@ -53,7 +56,7 @@ public class BasalzProjectileEntity extends ElementalProjectileEntity {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
             if (entity.hurt(BasalzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addEffect(new EffectInstance(SUNDERED, getEffectDuration(entity), getEffectPower(entity), false, false));
+                living.addEffect(new EffectInstance(SUNDERED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
                 Vector3d velocity = this.getDeltaMovement();
                 if (velocity.lengthSqr() > 0.01) {
                     living.knockback(knockbackStrength, -velocity.x, -velocity.z);
@@ -65,11 +68,25 @@ public class BasalzProjectileEntity extends ElementalProjectileEntity {
         }
     }
 
+    // region HELPERS
     @Override
     public float getDamage(Entity target) {
 
         return target instanceof BlitzEntity ? defaultDamage + 3.0F : defaultDamage;
     }
+
+    @Override
+    public int getEffectAmplifier(Entity target) {
+
+        return effectAmplifier;
+    }
+
+    @Override
+    public int getEffectDuration(Entity target) {
+
+        return effectDuration;
+    }
+    // endregion
 
     // region DAMAGE SOURCE
     protected static class BasalzDamageSource extends EntityDamageSource {

@@ -24,24 +24,24 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 public class BlizzProjectileEntity extends ElementalProjectileEntity {
 
     private static final int CLOUD_DURATION = 20;
+    public static float defaultDamage = 5.0F;
+    public static int effectAmplifier = 0;
+    public static int effectDuration = 100;
     public static int effectRadius = 2;
 
     public BlizzProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
 
         super(type, world);
-        defaultDamage = 5.0F;
     }
 
     public BlizzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, World world) {
 
         super(BLIZZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
-        defaultDamage = 5.0F;
     }
 
     public BlizzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, World world) {
 
         super(BLIZZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
-        defaultDamage = 5.0F;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
             }
             if (entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addEffect(new EffectInstance(CHILLED, getEffectDuration(entity), getEffectPower(entity), false, false));
+                living.addEffect(new EffectInstance(CHILLED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
         if (Utils.isServerWorld(level)) {
@@ -87,11 +87,25 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
         level.addFreshEntity(cloud);
     }
 
+    // region HELPERS
     @Override
     public float getDamage(Entity target) {
 
         return target.fireImmune() ? defaultDamage + 3.0F : defaultDamage;
     }
+
+    @Override
+    public int getEffectAmplifier(Entity target) {
+
+        return effectAmplifier;
+    }
+
+    @Override
+    public int getEffectDuration(Entity target) {
+
+        return effectDuration;
+    }
+    // endregion
 
     // region DAMAGE SOURCE
     protected static class BlizzDamageSource extends EntityDamageSource {

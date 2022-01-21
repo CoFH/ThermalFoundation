@@ -79,7 +79,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
             experience = json.get(XP).getAsFloat();
         }
         if (inputItems.isEmpty() && inputFluids.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty()) {
-            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nThis is NOT a Thermal Series error. Refer to the recipe's ResourceLocation to find the mod responsible and let them know!");
+            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nRefer to the recipe's ResourceLocation to find the mod responsible and let them know!");
         }
         return factory.create(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }
@@ -117,7 +117,7 @@ public class MachineRecipeSerializer<T extends ThermalRecipe> extends ForgeRegis
             outputFluids.add(buffer.readFluidStack());
         }
         if (inputItems.isEmpty() && inputFluids.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty()) {
-            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nThis is NOT a Thermal Series error. Refer to the recipe's ResourceLocation to find the mod responsible and let them know!");
+            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nRefer to the recipe's ResourceLocation to find the mod responsible and let them know!");
         }
         return factory.create(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }

@@ -245,7 +245,7 @@ public class BlizzEntity extends MonsterEntity {
                         attackStep %= rotateSteps;
                     }
                     Vector3d offset = rotateOffset.yRot(attackStep * rotateRad);
-                    blizz.getMoveControl().setWantedPosition(targetPos.x + offset.x,targetPos.y + hoverOffset, targetPos.z + offset.z, 1.0D);
+                    blizz.getMoveControl().setWantedPosition(targetPos.x + offset.x, targetPos.y + hoverOffset, targetPos.z + offset.z, 1.0D);
                     return;
                 } else {
                     blizz.setAngry(false);

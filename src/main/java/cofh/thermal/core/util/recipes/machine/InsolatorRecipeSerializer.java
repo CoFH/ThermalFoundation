@@ -4,6 +4,7 @@ import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.MachineRecipeSerializer;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -79,6 +80,9 @@ public class InsolatorRecipeSerializer<T extends ThermalRecipe> extends MachineR
         }
         if (inputFluids.isEmpty()) {
             inputFluids.add(FluidIngredient.of(new FluidStack(Fluids.WATER, water)));
+        }
+        if (inputItems.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty()) {
+            throw new JsonSyntaxException("Invalid Thermal Series recipe: " + recipeId + "\nRefer to the recipe's ResourceLocation to find the mod responsible and let them know!");
         }
         return factory.create(recipeId, energy, experience, inputItems, inputFluids, outputItems, outputItemChances, outputFluids);
     }
