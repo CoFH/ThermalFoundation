@@ -107,31 +107,6 @@ public class BasalzEntity extends MonsterEntity {
     }
 
     @Override
-    public void tick() {
-
-        if (!level.isClientSide) {
-            if (isAlive() && isAngry() && attackTime <= 0 && getOrbit() > 0) {
-                Vector3d pos = this.position();
-                for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
-                    if (!target.equals(this) && distanceToSqr(target) < 12.25) {
-                        attackTime = 15;
-                        Vector3d targetPos = target.position();
-                        Vector3d offset = targetPos.subtract(pos).normalize().cross(vert).scale(0.5);
-                        BasalzProjectileEntity projectile = new BasalzProjectileEntity(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
-                        projectile.setDeltaMovement(-offset.x, 0, -offset.z);
-                        projectile.setOwner(this);
-                        projectile.onHit(new EntityRayTraceResult(target));
-                        reduceOrbit();
-                    }
-                }
-            } else {
-                --attackTime;
-            }
-        }
-        super.tick();
-    }
-
-    @Override
     public void aiStep() {
 
         if (!this.onGround && this.getDeltaMovement().y < 0.0D) {
@@ -144,8 +119,30 @@ public class BasalzEntity extends MonsterEntity {
             if (this.isAngry() && this.random.nextInt(2) == 0) {
                 this.level.addParticle(ParticleTypes.FALLING_LAVA, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
+        } else if (isAlive() && isAngry() && attackTime <= 0 && getOrbit() > 0) {
+            Vector3d pos = this.position();
+            for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
+                if (!(target instanceof BasalzEntity) && distanceToSqr(target) < 12.25) {
+                    attackTime = 15;
+                    Vector3d targetPos = target.position();
+                    Vector3d offset = targetPos.subtract(pos).normalize().cross(vert).scale(0.5);
+                    BasalzProjectileEntity projectile = new BasalzProjectileEntity(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
+                    projectile.setDeltaMovement(-offset.x, 0, -offset.z);
+                    projectile.setOwner(this);
+                    projectile.onHit(new EntityRayTraceResult(target));
+                    reduceOrbit();
+                }
+            }
+        } else {
+            --attackTime;
         }
         super.aiStep();
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+
+        return super.hurt(source, source == DamageSource.LIGHTNING_BOLT ? amount + 3 : amount);
     }
 
     @Override
@@ -296,10 +293,11 @@ public class BasalzEntity extends MonsterEntity {
                     }
                 }
             } else {
-                basalz.setAngry(false);
                 if (chaseStep < 5) {
                     ++chaseStep;
                     basalz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+                } else {
+                    basalz.setAngry(false);
                 }
             }
             super.tick();

@@ -12,6 +12,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.IndirectEntityDamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -58,7 +59,10 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
             }
         }
         if (Utils.isServerWorld(level)) {
-            this.level.broadcastEntityEvent(this, (byte) 3);
+            BlockPos pos = new BlockPos(result.getLocation());
+            if (level.canSeeSky(pos) && random.nextFloat() < (level.isRainingAt(pos) ? (level.isThundering() ? 0.2F : 0.1F) : 0.04F)) {
+                Utils.spawnLightningBolt(level, pos);
+            }
             this.remove();
         }
     }

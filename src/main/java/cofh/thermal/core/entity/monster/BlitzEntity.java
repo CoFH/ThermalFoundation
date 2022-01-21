@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.controller.FlyingMovementController;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,8 +38,6 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
 public class BlitzEntity extends MonsterEntity {
 
-    private float heightOffset = 0.5F;
-    private int heightOffsetUpdateTime;
     private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BlitzEntity.class, DataSerializers.BYTE);
 
     public static boolean canSpawn(EntityType<BlitzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
@@ -49,6 +48,7 @@ public class BlitzEntity extends MonsterEntity {
     public BlitzEntity(EntityType<? extends BlitzEntity> type, World world) {
 
         super(type, world);
+        this.moveControl = new FlyingMovementController(this, 20, true);
         this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
         this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);
         this.xpReward = 10;
@@ -71,7 +71,7 @@ public class BlitzEntity extends MonsterEntity {
         return MonsterEntity.createMonsterAttributes()
                 .add(Attributes.ATTACK_DAMAGE, 3.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.23F)
-                .add(Attributes.FLYING_SPEED, 0.6F)
+                .add(Attributes.FLYING_SPEED, 0.4F)
                 .add(Attributes.FOLLOW_RANGE, 48.0D);
     }
 
@@ -117,22 +117,22 @@ public class BlitzEntity extends MonsterEntity {
         super.aiStep();
     }
 
-    @Override
-    protected void customServerAiStep() {
-
-        --this.heightOffsetUpdateTime;
-        if (this.heightOffsetUpdateTime <= 0) {
-            this.heightOffsetUpdateTime = 100;
-            this.heightOffset = 0.5F + (float) this.random.nextGaussian() * 3.0F;
-        }
-        LivingEntity livingentity = this.getTarget();
-        if (livingentity != null && livingentity.getEyeY() > this.getEyeY() + (double) this.heightOffset && this.canAttack(livingentity)) {
-            Vector3d vec3d = this.getDeltaMovement();
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0D, ((double) 0.3F - vec3d.y) * (double) 0.3F, 0.0D));
-            this.hasImpulse = true;
-        }
-        super.customServerAiStep();
-    }
+    //@Override
+    //protected void customServerAiStep() {
+    //
+    //    --this.heightOffsetUpdateTime;
+    //    if (this.heightOffsetUpdateTime <= 0) {
+    //        this.heightOffsetUpdateTime = 100;
+    //        this.heightOffset = 0.5F + (float) this.random.nextGaussian() * 3.0F;
+    //    }
+    //    LivingEntity livingentity = this.getTarget();
+    //    if (livingentity != null && livingentity.getEyeY() > this.getEyeY() + (double) this.heightOffset && this.canAttack(livingentity)) {
+    //        Vector3d vec3d = this.getDeltaMovement();
+    //        this.setDeltaMovement(this.getDeltaMovement().add(0.0D, (0.3F - vec3d.y) * 0.3F, 0.0D));
+    //        this.hasImpulse = true;
+    //    }
+    //    super.customServerAiStep();
+    //}
 
     @Override
     public boolean causeFallDamage(float distance, float damageMultiplier) {
@@ -230,7 +230,7 @@ public class BlitzEntity extends MonsterEntity {
                         attackTime = 20;
                         blitz.doHurtTarget(target);
                     }
-                } else {
+                } else if (distSqr < 576.0) {
                     blitz.setAngry(true);
                     if (attackTime <= 0) {
                         attackTime = 20;
@@ -238,9 +238,9 @@ public class BlitzEntity extends MonsterEntity {
                         world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         // imagine using what you learn in school
                         float gravity = 0.05F;
-                        float horzSpeed = 0.6F;
+                        float horzSpeed = 0.5F;
                         double horzDist = MathHelper.sqrt(getHorizontalDistanceSqr(diff));
-                        double time = 1.6666 * horzDist;
+                        double time = 2 * horzDist;
                         Vector3d horzVel = diff.scale(horzSpeed / horzDist);
 
                         BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
@@ -248,11 +248,10 @@ public class BlitzEntity extends MonsterEntity {
                         projectile.setOwner(blitz);
                         world.addFreshEntity(projectile);
                     }
-                    if (distSqr < 256.0) {
-                        Vector3d want = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(20);
+                    if (distSqr < 400.0) {
+                        Vector3d want = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
                         blitz.getMoveControl().setWantedPosition(pos.x + want.x, blitz.getY(), pos.z + want.z, 1.0D);
-                    } else if (distSqr > 576.0) {
-                        blitz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+                        blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
                     }
                     return;
                 }

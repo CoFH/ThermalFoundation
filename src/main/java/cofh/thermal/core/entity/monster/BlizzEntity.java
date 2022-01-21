@@ -36,8 +36,6 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 
 public class BlizzEntity extends MonsterEntity {
 
-    private float heightOffset = 0.5F;
-    private int heightOffsetUpdateTime;
     private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BlizzEntity.class, DataSerializers.BYTE);
 
     public static boolean canSpawn(EntityType<BlizzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
@@ -162,7 +160,7 @@ public class BlizzEntity extends MonsterEntity {
     static class BlizzAttackGoal extends Goal {
 
         private final BlizzEntity blizz;
-        private final float hoverOffset = 2.5F;
+        private final float hoverOffset = 2.25F;
         private final Vector3d rotateOffset = new Vector3d(1.5, 0, 0);
         private final int rotateSteps = 16;
         private final float rotateRad = (float) Math.PI * 2 / rotateSteps;
@@ -235,7 +233,7 @@ public class BlizzEntity extends MonsterEntity {
                         //world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (rand.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         BlizzProjectileEntity projectile;
                         if (horzDistSqr < 9) {
-                            projectile = new BlizzProjectileEntity(targetPos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() - 0.2F, targetPos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
+                            projectile = new BlizzProjectileEntity(targetPos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() * 0.5F - 0.2F, targetPos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
                         } else {
                             projectile = new BlizzProjectileEntity(pos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() - 0.2F, pos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
                         }
