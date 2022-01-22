@@ -3,6 +3,7 @@ package cofh.thermal.core.entity.monster;
 import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
+import net.minecraft.enchantment.FrostWalkerEnchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -47,7 +48,7 @@ public class BlizzEntity extends MonsterEntity {
 
         super(type, world);
         this.moveControl = new FlyingMovementController(this, 20, true);
-        this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
+        //this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
         this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);
         this.xpReward = 10;
     }
@@ -57,9 +58,10 @@ public class BlizzEntity extends MonsterEntity {
 
         this.goalSelector.addGoal(4, new BlizzAttackGoal(this));
         this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0D));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
+        this.goalSelector.addGoal(7, new RandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        //this.goalSelector.addGoal(8, new SwimGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
@@ -116,6 +118,17 @@ public class BlizzEntity extends MonsterEntity {
     }
 
     @Override
+    protected void onChangedBlock(BlockPos pos) {
+
+        FrostWalkerEnchantment.onEntityMoved(this, level, pos, 1);
+
+        if (this.shouldRemoveSoulSpeed(this.getBlockStateOn())) {
+            this.removeSoulSpeed();
+        }
+        this.tryAddSoulSpeed();
+    }
+
+    @Override
     public boolean hurt(DamageSource source, float amount) {
 
         return super.hurt(source, source.isFire() ? amount + 3 : amount);
@@ -160,12 +173,9 @@ public class BlizzEntity extends MonsterEntity {
     static class BlizzAttackGoal extends Goal {
 
         private final BlizzEntity blizz;
-        private final float hoverOffset = 2.25F;
-        private final Vector3d rotateOffset = new Vector3d(1.5, 0, 0);
-        private final int rotateSteps = 16;
-        private final float rotateRad = (float) Math.PI * 2 / rotateSteps;
+        private final Vector3d[] hoverOffsets = getHoverOffsets(new Vector3d(1.5, 2.25, 0), 16);
         private int attackTime;
-        private int attackStep;
+        private int hoverStep;
         private int chaseStep;
 
         public BlizzAttackGoal(BlizzEntity blizzIn) {
@@ -239,11 +249,10 @@ public class BlizzEntity extends MonsterEntity {
                         }
                         projectile.setOwner(blizz);
                         world.addFreshEntity(projectile);
-                        ++attackStep;
-                        attackStep %= rotateSteps;
+                        ++hoverStep;
+                        hoverStep %= hoverOffsets.length;
                     }
-                    Vector3d offset = rotateOffset.yRot(attackStep * rotateRad);
-                    blizz.getMoveControl().setWantedPosition(targetPos.x + offset.x, targetPos.y + hoverOffset, targetPos.z + offset.z, 1.0D);
+                    blizz.getMoveControl().setWantedPosition(targetPos.x + hoverOffsets[hoverStep].x, targetPos.y + hoverOffsets[hoverStep].y, targetPos.z + hoverOffsets[hoverStep].z, 1.0D);
                     return;
                 } else {
                     blizz.setAngry(false);
@@ -253,7 +262,7 @@ public class BlizzEntity extends MonsterEntity {
             }
             if (chaseStep < 5) {
                 ++chaseStep;
-                blizz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y + hoverOffset, targetPos.z, 1.0D);
+                blizz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y + hoverOffsets[0].y, targetPos.z, 1.0D);
             }
             super.tick();
         }
@@ -261,6 +270,16 @@ public class BlizzEntity extends MonsterEntity {
         private double getFollowDistance() {
 
             return this.blizz.getAttributeValue(Attributes.FOLLOW_RANGE);
+        }
+
+        protected static Vector3d[] getHoverOffsets(Vector3d start, int steps) {
+
+            float stepRad = (float) Math.PI * 2 / steps;
+            Vector3d[] offsets = new Vector3d[steps];
+            for (int i = 0; i < steps; ++i) {
+                offsets[i] = start.yRot(stepRad * i);
+            }
+            return offsets;
         }
 
     }

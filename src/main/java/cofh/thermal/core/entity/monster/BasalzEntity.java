@@ -69,6 +69,7 @@ public class BasalzEntity extends MonsterEntity {
         this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(8, new SwimGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }

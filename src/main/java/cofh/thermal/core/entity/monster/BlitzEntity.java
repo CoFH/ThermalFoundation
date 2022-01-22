@@ -62,6 +62,7 @@ public class BlitzEntity extends MonsterEntity {
         this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(8, new SwimGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
@@ -238,9 +239,9 @@ public class BlitzEntity extends MonsterEntity {
                         world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         // imagine using what you learn in school
                         float gravity = 0.05F;
-                        float horzSpeed = 0.5F;
+                        float horzSpeed = 0.8F;
                         double horzDist = MathHelper.sqrt(getHorizontalDistanceSqr(diff));
-                        double time = 2 * horzDist;
+                        double time = 1.25F * horzDist;
                         Vector3d horzVel = diff.scale(horzSpeed / horzDist);
 
                         BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
