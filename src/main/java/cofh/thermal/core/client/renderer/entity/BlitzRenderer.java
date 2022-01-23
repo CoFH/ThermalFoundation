@@ -31,8 +31,7 @@ public class BlitzRenderer extends MobRenderer<BlitzEntity, BlitzModel<BlitzEnti
     @Override
     public ResourceLocation getTextureLocation(BlitzEntity entity) {
 
-        //return entity.isAngry() ? ANGRY_TEXTURE : CALM_TEXTURE; //TODO
-        return CALM_TEXTURE;
+        return entity.isAngry() ? ANGRY_TEXTURE : CALM_TEXTURE;
     }
 
 }

@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -12,31 +12,38 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Arrays;
 
 @OnlyIn (Dist.CLIENT)
-public class BasalzModel<T extends Entity> extends SegmentedModel<T> {
+public class BasalzModel<T extends LivingEntity> extends SegmentedModel<T> {
 
     private final ModelRenderer head;
-    private final ModelRenderer[] shards;
+    private final ModelRenderer core;
+    private final ModelRenderer[] pillars;
     private final ImmutableList<ModelRenderer> partsList;
 
     public BasalzModel() {
 
         texWidth = 64;
-        texHeight = 32;
+        texHeight = 64;
 
         head = new ModelRenderer(this);
         head.setPos(0.0F, 0.0F, 0.0F);
-        head.texOffs(0, 0).addBox(-6.0F, -6.0F, -6.0F, 12.0F, 10.0F, 12.0F, 0.0F, false);
-        this.shards = new ModelRenderer[12];
+        head.texOffs(0, 0).addBox(-6.0F, -5.0F, -6.0F, 12.0F, 10.0F, 12.0F, 0.0F, false);
 
-        float[] heights = new float[]{6.0F, 7.0F, 5.0F, 7.0F, 7.0F, 6.0F, 7.0F, 5.0F, 7.0F, 5.0F, 6.0F, 7.0F};
-
-        for (int i = 0; i < this.shards.length; ++i) {
-            this.shards[i] = new ModelRenderer(this, 12 * (i % 4), 22);
-            this.shards[i].addBox(0.0F, 0.0F, 0.0F, 3.0F, heights[i], 3.0F);
+        pillars = new ModelRenderer[4];
+        for (int i = 0; i < pillars.length; ++i) {
+            pillars[i] = new ModelRenderer(this);
+            pillars[i].setPos(0.0F, 0.0F, 0.0F);
+            int odd = i & 1;
+            pillars[i].texOffs(odd * 20, 38).addBox(((i + 1 & 2) >> 1) * 17 - 11, 6.0F + i, odd * 17 - 11, 5.0F, 13.0F, 5.0F, 0.0F, (i & 2) > 0);
         }
+
+        core = new ModelRenderer(this);
+        core.setPos(0.0F, 0.0F, 0.0F);
+        core.texOffs(0, 22).addBox(-4.0F, 10.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+
         Builder<ModelRenderer> builder = ImmutableList.builder();
-        builder.add(this.head);
-        builder.addAll(Arrays.asList(this.shards));
+        builder.add(head);
+        builder.addAll(Arrays.asList(pillars));
+        builder.add(core);
         this.partsList = builder.build();
     }
 
@@ -47,29 +54,13 @@ public class BasalzModel<T extends Entity> extends SegmentedModel<T> {
 
     public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
-        float f = ageInTicks * (float) Math.PI * -0.1F;
-        for (int i = 0; i < 4; ++i) {
-            this.shards[i].y = -2.0F + MathHelper.cos(((float) (i * 2) + ageInTicks) * 0.25F);
-            this.shards[i].x = MathHelper.cos(f) * 13.0F;
-            this.shards[i].z = MathHelper.sin(f) * 13.0F;
-            ++f;
+        core.y = MathHelper.sin(ageInTicks * 0.1F);
+
+        float partialTicks = ageInTicks - entityIn.tickCount;
+        for (ModelRenderer pillar : pillars) {
+            pillar.yRot = (ageInTicks * 6 - MathHelper.lerp(partialTicks, entityIn.yBodyRotO, entityIn.yBodyRot)) * (float) Math.PI / 180.0F;
         }
 
-        f = ((float) Math.PI / 4F) + ageInTicks * (float) Math.PI * 0.03F;
-        for (int j = 4; j < 8; ++j) {
-            this.shards[j].y = 5.0F + MathHelper.cos(((float) (j * 2) + ageInTicks) * 0.25F);
-            this.shards[j].x = MathHelper.cos(f) * 9.0F;
-            this.shards[j].z = MathHelper.sin(f) * 9.0F;
-            ++f;
-        }
-
-        f = 0.47123894F + ageInTicks * (float) Math.PI * -0.05F;
-        for (int k = 8; k < 12; ++k) {
-            this.shards[k].y = 12.0F + MathHelper.cos(((float) k * 1.5F + ageInTicks) * 0.5F);
-            this.shards[k].x = MathHelper.cos(f) * 5.0F;
-            this.shards[k].z = MathHelper.sin(f) * 5.0F;
-            ++f;
-        }
         this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
