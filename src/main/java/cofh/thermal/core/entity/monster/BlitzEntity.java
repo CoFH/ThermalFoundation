@@ -70,9 +70,9 @@ public class BlitzEntity extends MonsterEntity {
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
 
         return MonsterEntity.createMonsterAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 3.0D)
+                .add(Attributes.ATTACK_DAMAGE, 6.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.23F)
-                .add(Attributes.FLYING_SPEED, 0.4F)
+                .add(Attributes.FLYING_SPEED, 0.6F)
                 .add(Attributes.FOLLOW_RANGE, 48.0D);
     }
 

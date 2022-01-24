@@ -2,6 +2,7 @@ package cofh.thermal.core.entity.projectile;
 
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.monster.BasalzEntity;
+import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -58,7 +59,7 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
                 living.addEffect(new EffectInstance(SHOCKED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
-        if (Utils.isServerWorld(level)) {
+        if (ThermalConfig.mobBlitzLightning && Utils.isServerWorld(level)) {
             BlockPos pos = new BlockPos(result.getLocation());
             if (level.canSeeSky(pos) && random.nextFloat() < (level.isRainingAt(pos) ? (level.isThundering() ? 0.2F : 0.1F) : 0.04F)) {
                 Utils.spawnLightningBolt(level, pos);

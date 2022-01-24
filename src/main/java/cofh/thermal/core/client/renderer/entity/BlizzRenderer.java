@@ -66,7 +66,7 @@ public class BlizzRenderer extends MobRenderer<BlizzEntity, BlizzModel<BlizzEnti
     @Override
     public ResourceLocation getTextureLocation(BlizzEntity entity) {
 
-        return entity.isAngry() ? CALM_TEXTURE : ANGRY_TEXTURE;
+        return entity.isAngry() ? ANGRY_TEXTURE : CALM_TEXTURE;
     }
 
     public static Vector3d[] getGaussOffsets(int num, float horzScale, float yScale) {

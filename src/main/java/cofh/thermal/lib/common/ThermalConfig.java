@@ -166,6 +166,10 @@ public class ThermalConfig {
                 .comment("If TRUE, the Blizz Mob is enabled.")
                 .define("Blizz", true);
 
+        flagMobBlitzLightning = SERVER_CONFIG
+                .comment("If TRUE, the Blitz can occasionally call down lightning bolts.")
+                .define("Blitz Lightning", true);
+
         SERVER_CONFIG.pop(2);
 
         SERVER_CONFIG.push("Augments");
@@ -519,6 +523,8 @@ public class ThermalConfig {
 
         SatchelItem.setBannedItems(satchelBans.get());
 
+        mobBlitzLightning = flagMobBlitzLightning.get();
+
         refreshDeviceConfig();
         refreshDynamoConfig();
         refreshMachineConfig();
@@ -679,6 +685,8 @@ public class ThermalConfig {
     private static BooleanValue flagMobBlitz;
     private static BooleanValue flagMobBlizz;
 
+    private static BooleanValue flagMobBlitzLightning;
+
     private static BooleanValue worldGenApatite;
     private static BooleanValue worldGenCinnabar;
     private static BooleanValue worldGenNiter;
@@ -723,6 +731,8 @@ public class ThermalConfig {
     private static IntValue machineCrafterPower;
 
     public static ForgeConfigSpec.ConfigValue<List<String>> satchelBans;
+
+    public static boolean mobBlitzLightning;
     // endregion
 
     // region CLIENT VARIABLES
