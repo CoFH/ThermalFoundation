@@ -3,7 +3,11 @@ package cofh.thermal.core;
 import cofh.core.init.CoreEnchantments;
 import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
+import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
+import cofh.lib.entity.AbstractGrenadeEntity;
+import cofh.lib.entity.AbstractTNTEntity;
+import cofh.lib.entity.AbstractTNTMinecartEntity;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -12,6 +16,7 @@ import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.renderer.entity.*;
+import cofh.thermal.core.entity.explosive.DetonateUtil;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
@@ -35,6 +40,7 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -215,35 +221,16 @@ public class ThermalCore {
         RenderingRegistry.registerEntityRenderingHandler(BLITZ_PROJECTILE_ENTITY, BlitzProjectileRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(EXPLOSIVE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(SLIME_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ENDER_GRENADE_ENTITY, SpriteRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(PHYTO_GRENADE_ENTITY, SpriteRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(FIRE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(EARTH_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ICE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(LIGHTNING_GRENADE_ENTITY, SpriteRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(NUKE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(SLIME_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ENDER_TNT_ENTITY, TNTRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(PHYTO_TNT_ENTITY, TNTRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(FIRE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(EARTH_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ICE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(LIGHTNING_TNT_ENTITY, TNTRendererCoFH::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(NUKE_TNT_ENTITY, TNTRendererCoFH::new);
+        // EXPLOSIVES
+        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtil.grenades) {
+            RenderingRegistry.registerEntityRenderingHandler(grenade.get(), SpriteRendererCoFH::new);
+        }
+        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtil.tnt) {
+            RenderingRegistry.registerEntityRenderingHandler(tnt.get(), TNTRendererCoFH::new);
+        }
+        for (RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> cart : DetonateUtil.tntCarts) {
+            RenderingRegistry.registerEntityRenderingHandler(cart.get(), TNTMinecartRendererCoFH::new);
+        }
     }
 
     private void registerTileEntityRenderers() {

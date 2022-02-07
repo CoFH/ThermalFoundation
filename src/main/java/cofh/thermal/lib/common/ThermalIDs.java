@@ -208,6 +208,7 @@ public class ThermalIDs {
     public static final String ID_LIGHTNING_GRENADE = "lightning_grenade";
 
     public static final String ID_NUKE_GRENADE = "nuke_grenade";
+    public static final String ID_GRAVITY_GRENADE = "gravity_grenade";
 
     public static final String ID_SLIME_TNT = "slime_tnt";
     public static final String ID_REDSTONE_TNT = "redstone_tnt";
@@ -222,6 +223,7 @@ public class ThermalIDs {
     public static final String ID_LIGHTNING_TNT = "lightning_tnt";
 
     public static final String ID_NUKE_TNT = "nuke_tnt";
+    public static final String ID_GRAVITY_TNT = "gravity_tnt";
     // endregion
 
     // region TOOLS

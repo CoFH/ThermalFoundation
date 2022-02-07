@@ -1,5 +1,6 @@
 package cofh.thermal.core.entity.monster;
 
+import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
@@ -17,7 +18,9 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -49,6 +52,7 @@ public class BlitzEntity extends MonsterEntity {
 
         super(type, world);
         this.moveControl = new FlyingMovementController(this, 20, true);
+        this.navigation = new FlyingPathNavigator(this, world);
         this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
         this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);
         this.xpReward = 10;
@@ -111,29 +115,18 @@ public class BlitzEntity extends MonsterEntity {
             //            if (this.rand.nextInt(256) == 0 && !this.isSilent()) {
             //                this.world.playSound(this.getPosX() + 0.5D, this.getPosY() + 0.5D, this.getPosZ() + 0.5D, SOUND_BLITZ_ROAM, this.getSoundCategory(), 0.5F + 0.25F * this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, true);
             //            }
-            if (this.random.nextInt(2) == 0) {
-                this.level.addParticle(ParticleTypes.CLOUD, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+            if (this.random.nextInt(3) == 0) {
+                this.level.addParticle(isAngry() ? CoreReferences.SPARK_PARTICLE : ParticleTypes.CLOUD, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
         }
         super.aiStep();
     }
 
-    //@Override
-    //protected void customServerAiStep() {
-    //
-    //    --this.heightOffsetUpdateTime;
-    //    if (this.heightOffsetUpdateTime <= 0) {
-    //        this.heightOffsetUpdateTime = 100;
-    //        this.heightOffset = 0.5F + (float) this.random.nextGaussian() * 3.0F;
-    //    }
-    //    LivingEntity livingentity = this.getTarget();
-    //    if (livingentity != null && livingentity.getEyeY() > this.getEyeY() + (double) this.heightOffset && this.canAttack(livingentity)) {
-    //        Vector3d vec3d = this.getDeltaMovement();
-    //        this.setDeltaMovement(this.getDeltaMovement().add(0.0D, (0.3F - vec3d.y) * 0.3F, 0.0D));
-    //        this.hasImpulse = true;
-    //    }
-    //    super.customServerAiStep();
-    //}
+    @Override
+    public boolean canBeAffected(EffectInstance effect) {
+
+        return super.canBeAffected(effect) && !effect.equals(CoreReferences.SHOCKED);
+    }
 
     @Override
     public boolean causeFallDamage(float distance, float damageMultiplier) {
@@ -175,7 +168,7 @@ public class BlitzEntity extends MonsterEntity {
 
         private final BlitzEntity blitz;
         private int attackTime;
-        private int chaseStep;
+        private int navTime;
 
         public BlitzAttackGoal(BlitzEntity blitzIn) {
 
@@ -198,6 +191,7 @@ public class BlitzEntity extends MonsterEntity {
          */
         public void start() {
 
+            this.navTime = 0;
         }
 
         /**
@@ -206,7 +200,7 @@ public class BlitzEntity extends MonsterEntity {
         public void stop() {
 
             this.blitz.setAngry(false);
-            this.chaseStep = 0;
+            this.navTime = 0;
         }
 
         /**
@@ -215,6 +209,7 @@ public class BlitzEntity extends MonsterEntity {
         public void tick() {
 
             --attackTime;
+            --navTime;
             LivingEntity target = blitz.getTarget();
             if (target == null) {
                 return;
@@ -224,15 +219,14 @@ public class BlitzEntity extends MonsterEntity {
             Vector3d diff = targetPos.subtract(pos);
             double distSqr = blitz.distanceToSqr(target);
             if (blitz.getSensing().canSee(target) && distSqr < getFollowDistance() * getFollowDistance()) {
-                chaseStep = 0;
                 blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+                blitz.setAngry(true);
                 if (distSqr < 4.0) {
                     if (attackTime <= 0) {
                         attackTime = 20;
                         blitz.doHurtTarget(target);
                     }
                 } else if (distSqr < 576.0) {
-                    blitz.setAngry(true);
                     if (attackTime <= 0) {
                         attackTime = 20;
                         World world = blitz.level;
@@ -249,19 +243,20 @@ public class BlitzEntity extends MonsterEntity {
                         projectile.setOwner(blitz);
                         world.addFreshEntity(projectile);
                     }
-                    if (distSqr < 400.0) {
+                    if (distSqr > 400.0) {
+                        blitz.navigation.stop();
+                        navTime = 0;
+                    } else if (navTime <= 0) {
                         Vector3d want = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
-                        blitz.getMoveControl().setWantedPosition(pos.x + want.x, blitz.getY(), pos.z + want.z, 1.0D);
-                        blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+                        blitz.navigation.moveTo(targetPos.x + want.x, targetPos.y, targetPos.z + want.z, 1.0D);
+                        navTime = 15;
                     }
-                    return;
+                } else if (navTime <= 0) {
+                    blitz.navigation.moveTo(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+                    navTime = 15;
                 }
             } else {
                 blitz.setAngry(false);
-            }
-            if (chaseStep < 5) {
-                ++chaseStep;
-                blitz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
             }
             super.tick();
         }

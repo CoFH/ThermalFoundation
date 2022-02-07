@@ -6,7 +6,6 @@ import cofh.core.block.TileBlockCoFH;
 import cofh.core.item.BlockItemCoFH;
 import cofh.lib.block.impl.*;
 import cofh.thermal.core.block.*;
-import cofh.thermal.core.entity.item.*;
 import cofh.thermal.core.item.EnergyCellBlockItem;
 import cofh.thermal.core.item.FluidCellBlockItem;
 import cofh.thermal.core.tileentity.ChargeBenchTile;
@@ -93,6 +92,7 @@ public class TCoreBlocks {
         DispenserBlock.registerBehavior(BLOCKS.get(ID_LIGHTNING_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
 
         DispenserBlock.registerBehavior(BLOCKS.get(ID_NUKE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_GRAVITY_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
     }
 
     // region HELPERS
@@ -260,19 +260,6 @@ public class TCoreBlocks {
 
     private static void registerMisc() {
 
-        registerBlock(ID_SLIME_TNT, () -> new TNTBlockCoFH(SlimeTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.TERRACOTTA_GREEN).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_BASIC_EXPLOSIVES));
-        registerBlock(ID_REDSTONE_TNT, () -> new TNTBlockCoFH(RedstoneTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.COLOR_RED).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_BASIC_EXPLOSIVES));
-        registerBlock(ID_GLOWSTONE_TNT, () -> new TNTBlockCoFH(GlowstoneTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_BASIC_EXPLOSIVES));
-        registerBlock(ID_ENDER_TNT, () -> new TNTBlockCoFH(EnderTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.COLOR_GREEN).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_BASIC_EXPLOSIVES));
-
-        registerBlock(ID_PHYTO_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.COLOR_GREEN).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_PHYTOGRO_EXPLOSIVES));
-
-        registerBlock(ID_EARTH_TNT, () -> new TNTBlockCoFH(EarthTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.PODZOL).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_ELEMENTAL_EXPLOSIVES));
-        registerBlock(ID_FIRE_TNT, () -> new TNTBlockCoFH(FireTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.COLOR_RED).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_ELEMENTAL_EXPLOSIVES));
-        registerBlock(ID_ICE_TNT, () -> new TNTBlockCoFH(IceTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.ICE).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_ELEMENTAL_EXPLOSIVES));
-        registerBlock(ID_LIGHTNING_TNT, () -> new TNTBlockCoFH(LightningTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_ELEMENTAL_EXPLOSIVES));
-
-        registerBlock(ID_NUKE_TNT, () -> new TNTBlockCoFH(NukeTNTEntity::new, of(Material.EXPLOSIVE, MaterialColor.TERRACOTTA_LIGHT_GREEN).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, Rarity.UNCOMMON, getFlag(FLAG_NUCLEAR_EXPLOSIVES));
     }
 
     private static void registerTileBlocks() {

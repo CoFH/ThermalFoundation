@@ -76,6 +76,7 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
 
+    // A cross between a sin and a square wave function. Has period 4, returns a value between -1 and 1.
     public static float bevel(float f) {
 
         int floor = MathHelper.floor(f);

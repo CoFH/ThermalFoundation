@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Quaternion;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -35,13 +36,13 @@ public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<Basalz
     @Override
     public void render(BasalzEntity entity, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
 
-        if (entity.isAngry()) {
+        if (entity.isAngry() && entity.isAlive()) {
             matrixStackIn.pushPose();
             float time = entity.tickCount + partialTicks;
             matrixStackIn.translate(0, entity.getBbHeight() * 0.7, 0);
             int orbit = entity.getOrbit();
             float inv = 1.0F / orbit;
-            float rot = 360.0F * inv;
+            Quaternion rot = Vector3f.YP.rotationDegrees(360.0F * inv);
             matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(time * Math.max(36 * inv, 12)));
             for (int i = 0; i < orbit; ++i) {
                 matrixStackIn.pushPose();
@@ -54,7 +55,7 @@ public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<Basalz
                 this.projectileModel.renderToBuffer(matrixStackIn, builder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
                 matrixStackIn.popPose();
 
-                matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(rot));
+                matrixStackIn.mulPose(rot);
             }
             matrixStackIn.popPose();
         }

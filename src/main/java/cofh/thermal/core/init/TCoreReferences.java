@@ -1,10 +1,11 @@
 package cofh.thermal.core.init;
 
-import cofh.thermal.core.entity.item.*;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
-import cofh.thermal.core.entity.projectile.*;
+import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.core.inventory.container.ProjectBenchContainer;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
@@ -21,7 +22,6 @@ import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -49,86 +49,10 @@ public class TCoreReferences {
     public static final EntityType<BlitzProjectileEntity> BLITZ_PROJECTILE_ENTITY = null;
     @ObjectHolder (ID_BLIZZ_PROJECTILE)
     public static final EntityType<BlizzProjectileEntity> BLIZZ_PROJECTILE_ENTITY = null;
-
-    @ObjectHolder (ID_EXPLOSIVE_GRENADE)
-    public static final EntityType<ExplosiveGrenadeEntity> EXPLOSIVE_GRENADE_ENTITY = null;
-
-    @ObjectHolder (ID_SLIME_GRENADE)
-    public static final EntityType<SlimeGrenadeEntity> SLIME_GRENADE_ENTITY = null;
-    @ObjectHolder (ID_REDSTONE_GRENADE)
-    public static final EntityType<RedstoneGrenadeEntity> REDSTONE_GRENADE_ENTITY = null;
-    @ObjectHolder (ID_GLOWSTONE_GRENADE)
-    public static final EntityType<GlowstoneGrenadeEntity> GLOWSTONE_GRENADE_ENTITY = null;
-    @ObjectHolder (ID_ENDER_GRENADE)
-    public static final EntityType<EnderGrenadeEntity> ENDER_GRENADE_ENTITY = null;
-
-    @ObjectHolder (ID_PHYTO_GRENADE)
-    public static final EntityType<PhytoGrenadeEntity> PHYTO_GRENADE_ENTITY = null;
-
-    @ObjectHolder (ID_FIRE_GRENADE)
-    public static final EntityType<FireGrenadeEntity> FIRE_GRENADE_ENTITY = null;
-    @ObjectHolder (ID_EARTH_GRENADE)
-    public static final EntityType<EarthGrenadeEntity> EARTH_GRENADE_ENTITY = null;
-    @ObjectHolder (ID_ICE_GRENADE)
-    public static final EntityType<IceGrenadeEntity> ICE_GRENADE_ENTITY = null;
-    @ObjectHolder (ID_LIGHTNING_GRENADE)
-    public static final EntityType<LightningGrenadeEntity> LIGHTNING_GRENADE_ENTITY = null;
-
-    @ObjectHolder (ID_NUKE_GRENADE)
-    public static final EntityType<LightningGrenadeEntity> NUKE_GRENADE_ENTITY = null;
-
-    @ObjectHolder (ID_SLIME_TNT)
-    public static final EntityType<SlimeTNTEntity> SLIME_TNT_ENTITY = null;
-    @ObjectHolder (ID_REDSTONE_TNT)
-    public static final EntityType<RedstoneTNTEntity> REDSTONE_TNT_ENTITY = null;
-    @ObjectHolder (ID_GLOWSTONE_TNT)
-    public static final EntityType<GlowstoneTNTEntity> GLOWSTONE_TNT_ENTITY = null;
-    @ObjectHolder (ID_ENDER_TNT)
-    public static final EntityType<EnderTNTEntity> ENDER_TNT_ENTITY = null;
-
-    @ObjectHolder (ID_PHYTO_TNT)
-    public static final EntityType<PhytoTNTEntity> PHYTO_TNT_ENTITY = null;
-
-    @ObjectHolder (ID_FIRE_TNT)
-    public static final EntityType<FireTNTEntity> FIRE_TNT_ENTITY = null;
-    @ObjectHolder (ID_EARTH_TNT)
-    public static final EntityType<EarthTNTEntity> EARTH_TNT_ENTITY = null;
-    @ObjectHolder (ID_ICE_TNT)
-    public static final EntityType<IceTNTEntity> ICE_TNT_ENTITY = null;
-    @ObjectHolder (ID_LIGHTNING_TNT)
-    public static final EntityType<LightningTNTEntity> LIGHTNING_TNT_ENTITY = null;
-
-    @ObjectHolder (ID_NUKE_TNT)
-    public static final EntityType<NukeTNTEntity> NUKE_TNT_ENTITY = null;
     // endregion
 
     // region ITEMS
-    @ObjectHolder (ID_EXPLOSIVE_GRENADE)
-    public static final Item EXPLOSIVE_GRENADE_ITEM = null;
 
-    @ObjectHolder (ID_SLIME_GRENADE)
-    public static final Item SLIME_GRENADE_ITEM = null;
-    @ObjectHolder (ID_REDSTONE_GRENADE)
-    public static final Item REDSTONE_GRENADE_ITEM = null;
-    @ObjectHolder (ID_GLOWSTONE_GRENADE)
-    public static final Item GLOWSTONE_GRENADE_ITEM = null;
-    @ObjectHolder (ID_ENDER_GRENADE)
-    public static final Item ENDER_GRENADE_ITEM = null;
-
-    @ObjectHolder (ID_PHYTO_GRENADE)
-    public static final Item PHYTO_GRENADE_ITEM = null;
-
-    @ObjectHolder (ID_FIRE_GRENADE)
-    public static final Item FIRE_GRENADE_ITEM = null;
-    @ObjectHolder (ID_EARTH_GRENADE)
-    public static final Item EARTH_GRENADE_ITEM = null;
-    @ObjectHolder (ID_ICE_GRENADE)
-    public static final Item ICE_GRENADE_ITEM = null;
-    @ObjectHolder (ID_LIGHTNING_GRENADE)
-    public static final Item LIGHTNING_GRENADE_ITEM = null;
-
-    @ObjectHolder (ID_NUKE_GRENADE)
-    public static final Item NUKE_GRENADE_ITEM = null;
     // endregion
 
     // region DEVICES
