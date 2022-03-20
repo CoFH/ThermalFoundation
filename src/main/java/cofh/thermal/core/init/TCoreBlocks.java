@@ -16,21 +16,23 @@ import cofh.thermal.core.tileentity.storage.EnergyCellTile;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.lib.block.TileBlockCell;
 import cofh.thermal.lib.common.ThermalConfig;
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
-import net.minecraft.item.Rarity;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ToolType;
 
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
@@ -45,9 +47,10 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATO
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.*;
-import static net.minecraft.block.AbstractBlock.Properties.copy;
-import static net.minecraft.block.AbstractBlock.Properties.of;
+import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
+import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of;
 
+// TODO Harvest level and Harvest tool for all, requires datagen.
 public class TCoreBlocks {
 
     private TCoreBlocks() {
@@ -98,64 +101,64 @@ public class TCoreBlocks {
     // region HELPERS
     private static void registerVanilla() {
 
-        registerBlockAndItem(ID_CHARCOAL_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_BLACK).strength(5.0F, 6.0F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()),
+        registerBlockAndItem(ID_CHARCOAL_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_BLACK).strength(5.0F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_CHARCOAL_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(16000).setShowInGroups(getFlag(FLAG_VANILLA_BLOCKS)));
-        registerBlock(ID_GUNPOWDER_BLOCK, () -> new GunpowderBlock(of(Material.EXPLOSIVE, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)), getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_SUGAR_CANE_BLOCK, () -> new RotatedPillarBlock(of(Material.GRASS, MaterialColor.PLANT).strength(1.0F).sound(SoundType.CROP).harvestTool(ToolType.HOE)) {
+        registerBlock(ID_GUNPOWDER_BLOCK, () -> new GunpowderBlock(of(Material.EXPLOSIVE, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.SAND)), getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_SUGAR_CANE_BLOCK, () -> new RotatedPillarBlock(of(Material.GRASS, MaterialColor.PLANT).strength(1.0F).sound(SoundType.CROP)) {
 
             @Override
-            public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+            public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) {
 
-                entityIn.causeFallDamage(fallDistance, 0.6F);
+                entityIn.causeFallDamage(fallDistance, 0.6F, DamageSource.FALL);
             }
         }, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_BAMBOO_BLOCK, () -> new RotatedPillarBlock(of(Material.GRASS, MaterialColor.PLANT).strength(1.0F).sound(SoundType.BAMBOO).harvestTool(ToolType.AXE)) {
+        registerBlock(ID_BAMBOO_BLOCK, () -> new RotatedPillarBlock(of(Material.GRASS, MaterialColor.PLANT).strength(1.0F).sound(SoundType.BAMBOO)) {
 
             @Override
-            public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+            public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) {
 
-                entityIn.causeFallDamage(fallDistance, 0.8F);
+                entityIn.causeFallDamage(fallDistance, 0.8F, DamageSource.FALL);
             }
         }, getFlag(FLAG_VANILLA_BLOCKS));
 
-        registerBlock(ID_APPLE_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_RED).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_CARROT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_ORANGE).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_POTATO_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_BEETROOT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_APPLE_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_RED).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_CARROT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_ORANGE).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_POTATO_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_BEETROOT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
     }
 
     private static void registerResources() {
 
-        registerBlock(ID_APATITE_ORE, () -> new OreBlockCoFH(1).xp(0, 2), getFlag(FLAG_RESOURCE_APATITE));
-        registerBlock(ID_CINNABAR_ORE, () -> new OreBlockCoFH(1).xp(1, 3), getFlag(FLAG_RESOURCE_CINNABAR));
-        registerBlock(ID_NITER_ORE, () -> new OreBlockCoFH(1).xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
-        registerBlock(ID_SULFUR_ORE, () -> new OreBlockCoFH(1).xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
+        registerBlock(ID_APATITE_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_APATITE));
+        registerBlock(ID_CINNABAR_ORE, () -> new OreBlockCoFH().xp(1, 3), getFlag(FLAG_RESOURCE_CINNABAR));
+        registerBlock(ID_NITER_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
+        registerBlock(ID_SULFUR_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
 
-        registerBlock(ID_COPPER_ORE, () -> new OreBlockCoFH(1), getFlag(FLAG_RESOURCE_COPPER));
-        registerBlock(ID_TIN_ORE, () -> new OreBlockCoFH(1), getFlag(FLAG_RESOURCE_TIN));
-        registerBlock(ID_LEAD_ORE, () -> new OreBlockCoFH(2), getFlag(FLAG_RESOURCE_LEAD));
-        registerBlock(ID_SILVER_ORE, () -> new OreBlockCoFH(2), getFlag(FLAG_RESOURCE_SILVER));
-        registerBlock(ID_NICKEL_ORE, () -> new OreBlockCoFH(2), getFlag(FLAG_RESOURCE_NICKEL));
+        registerBlock(ID_COPPER_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_COPPER));
+        registerBlock(ID_TIN_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_TIN));
+        registerBlock(ID_LEAD_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_LEAD));
+        registerBlock(ID_SILVER_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_SILVER));
+        registerBlock(ID_NICKEL_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_NICKEL));
 
-        registerBlock(ID_RUBY_ORE, () -> new OreBlockCoFH(2).xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
-        registerBlock(ID_SAPPHIRE_ORE, () -> new OreBlockCoFH(2).xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
+        registerBlock(ID_RUBY_ORE, () -> new OreBlockCoFH().xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
+        registerBlock(ID_SAPPHIRE_ORE, () -> new OreBlockCoFH().xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
 
-        registerBlockAndItem(ID_OIL_SAND, () -> new SandBlock(14406560, copy(Blocks.SAND).harvestTool(ToolType.SHOVEL)),
+        registerBlockAndItem(ID_OIL_SAND, () -> new SandBlock(14406560, copy(Blocks.SAND)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_SAND), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
 
-        registerBlockAndItem(ID_OIL_RED_SAND, () -> new SandBlock(11098145, copy(Blocks.RED_SAND).harvestTool(ToolType.SHOVEL)),
+        registerBlockAndItem(ID_OIL_RED_SAND, () -> new SandBlock(11098145, copy(Blocks.RED_SAND)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));
     }
 
     private static void registerStorage() {
 
-        registerBlock(ID_APATITE_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_BLUE).strength(3.0F, 3.0F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_CINNABAR_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(3.0F, 3.0F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_NITER_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).strength(3.0F, 3.0F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlockAndItem(ID_SULFUR_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_YELLOW).strength(3.0F, 3.0F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()) {
+        registerBlock(ID_APATITE_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_BLUE).strength(3.0F, 3.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
+        registerBlock(ID_CINNABAR_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(3.0F, 3.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
+        registerBlock(ID_NITER_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).strength(3.0F, 3.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
+        registerBlockAndItem(ID_SULFUR_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_YELLOW).strength(3.0F, 3.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()) {
 
             @Override
-            public boolean isFireSource(BlockState state, IWorldReader world, BlockPos pos, Direction side) {
+            public boolean isFireSource(BlockState state, LevelReader world, BlockPos pos, Direction side) {
 
                 return side == Direction.UP;
             }
@@ -172,18 +175,18 @@ public class TCoreBlocks {
         registerBlock(ID_INVAR_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_INVAR));
         registerBlock(ID_CONSTANTAN_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_CONSTANTAN));
 
-        registerBlock(ID_SIGNALUM_BLOCK, () -> new SignalumBlock(of(Material.METAL, MaterialColor.COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().lightLevel(lightValue(7)).noOcclusion()), Rarity.UNCOMMON);
-        registerBlock(ID_LUMIUM_BLOCK, () -> new LumiumBlock(of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(5.0F, 6.0F).sound(SoundType.METAL).harvestLevel(1).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().lightLevel(lightValue(15)).noOcclusion()), Rarity.UNCOMMON);
-        registerBlock(ID_ENDERIUM_BLOCK, () -> new EnderiumBlock(of(Material.METAL, MaterialColor.COLOR_CYAN).strength(25.0F, 30.0F).sound(SoundType.LODESTONE).harvestLevel(2).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().lightLevel(lightValue(3)).noOcclusion()), Rarity.UNCOMMON);
+        registerBlock(ID_SIGNALUM_BLOCK, () -> new SignalumBlock(of(Material.METAL, MaterialColor.COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(7)).noOcclusion()), Rarity.UNCOMMON);
+        registerBlock(ID_LUMIUM_BLOCK, () -> new LumiumBlock(of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(15)).noOcclusion()), Rarity.UNCOMMON);
+        registerBlock(ID_ENDERIUM_BLOCK, () -> new EnderiumBlock(of(Material.METAL, MaterialColor.COLOR_CYAN).strength(25.0F, 30.0F).sound(SoundType.LODESTONE).requiresCorrectToolForDrops().lightLevel(lightValue(3)).noOcclusion()), Rarity.UNCOMMON);
 
         registerBlock(ID_RUBY_BLOCK, () -> storageBlock(MaterialColor.COLOR_RED, 1), getFlag(FLAG_RESOURCE_RUBY));
         registerBlock(ID_SAPPHIRE_BLOCK, () -> storageBlock(MaterialColor.COLOR_BLUE, 1), getFlag(FLAG_RESOURCE_SAPPHIRE));
 
-        registerBlockAndItem(ID_SAWDUST_BLOCK, () -> new FallingBlock(of(Material.WOOD).strength(1.0F, 1.0F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)) {
+        registerBlockAndItem(ID_SAWDUST_BLOCK, () -> new FallingBlock(of(Material.WOOD).strength(1.0F, 1.0F).sound(SoundType.SAND)) {
 
             @OnlyIn (Dist.CLIENT)
             @Override
-            public int getDustColor(BlockState state, IBlockReader reader, BlockPos pos) {
+            public int getDustColor(BlockState state, BlockGetter reader, BlockPos pos) {
 
                 return 11507581;
             }
@@ -195,35 +198,35 @@ public class TCoreBlocks {
         registerBlockAndItem(ID_BITUMEN_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BLACK).strength(5.0F, 10.0F).sound(SoundType.NETHERRACK).requiresCorrectToolForDrops()),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_BITUMEN_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(16000));
 
-        registerBlockAndItem(ID_TAR_BLOCK, () -> new Block(of(Material.CLAY, MaterialColor.COLOR_BLACK).strength(2.0F, 4.0F).speedFactor(0.8F).jumpFactor(0.8F).sound(SoundType.NETHERRACK).harvestTool(ToolType.SHOVEL)) {
+        registerBlockAndItem(ID_TAR_BLOCK, () -> new Block(of(Material.CLAY, MaterialColor.COLOR_BLACK).strength(2.0F, 4.0F).speedFactor(0.8F).jumpFactor(0.8F).sound(SoundType.NETHERRACK)) {
 
             @Override
-            public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+            public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) {
 
-                entityIn.causeFallDamage(fallDistance, 0.8F);
+                entityIn.causeFallDamage(fallDistance, 0.8F, DamageSource.FALL);
             }
         }, () -> new BlockItemCoFH(BLOCKS.get(ID_TAR_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(8000));
 
-        registerBlockAndItem(ID_ROSIN_BLOCK, () -> new Block(of(Material.CLAY, MaterialColor.COLOR_ORANGE).strength(2.0F, 4.0F).speedFactor(0.8F).jumpFactor(0.8F).sound(SoundType.HONEY_BLOCK).harvestTool(ToolType.SHOVEL)) {
+        registerBlockAndItem(ID_ROSIN_BLOCK, () -> new Block(of(Material.CLAY, MaterialColor.COLOR_ORANGE).strength(2.0F, 4.0F).speedFactor(0.8F).jumpFactor(0.8F).sound(SoundType.HONEY_BLOCK)) {
 
             @Override
-            public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+            public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) {
 
-                entityIn.causeFallDamage(fallDistance, 0.8F);
+                entityIn.causeFallDamage(fallDistance, 0.8F, DamageSource.FALL);
             }
         }, () -> new BlockItemCoFH(BLOCKS.get(ID_ROSIN_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(8000));
 
         registerBlock(ID_RUBBER_BLOCK, () -> new RubberBlock(of(Material.CLAY, MaterialColor.TERRACOTTA_WHITE).strength(3.0F, 3.0F).jumpFactor(1.25F).sound(SoundType.FUNGUS)));
         registerBlock(ID_CURED_RUBBER_BLOCK, () -> new RubberBlock(of(Material.CLAY, MaterialColor.TERRACOTTA_BLACK).strength(3.0F, 3.0F).jumpFactor(1.25F).sound(SoundType.FUNGUS)));
-        registerBlock(ID_SLAG_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_RICH_SLAG_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
+        registerBlock(ID_SLAG_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_RICH_SLAG_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
     }
 
     private static void registerBuildingBlocks() {
 
-        registerBlock(ID_MACHINE_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion()), getFlag(ID_MACHINE_FRAME));
-        registerBlock(ID_ENERGY_CELL_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion()), getFlag(ID_ENERGY_CELL_FRAME));
-        registerBlock(ID_FLUID_CELL_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion()), getFlag(ID_FLUID_CELL_FRAME));
+        registerBlock(ID_MACHINE_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion()), getFlag(ID_MACHINE_FRAME));
+        registerBlock(ID_ENERGY_CELL_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion()), getFlag(ID_ENERGY_CELL_FRAME));
+        registerBlock(ID_FLUID_CELL_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion()), getFlag(ID_FLUID_CELL_FRAME));
         // registerBlock(ID_ITEM_CELL_FRAME, () -> new Block(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion()), getFlag(ID_ITEM_CELL_FRAME));
 
         registerBlock(ID_OBSIDIAN_GLASS, () -> new HardenedGlassBlock(of(Material.GLASS, MaterialColor.PODZOL).strength(5.0F, 1000.0F).sound(SoundType.GLASS).noOcclusion()));
@@ -248,14 +251,14 @@ public class TCoreBlocks {
         registerBlock(ID_RED_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_RED).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
         registerBlock(ID_BLACK_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BLACK).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
 
-        registerBlock(ID_POLISHED_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_CHISELED_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_CRACKED_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_POLISHED_RICH_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_CHISELED_RICH_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_RICH_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
-        registerBlock(ID_CRACKED_RICH_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops()));
+        registerBlock(ID_POLISHED_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_CHISELED_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_CRACKED_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_POLISHED_RICH_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_CHISELED_RICH_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_RICH_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+        registerBlock(ID_CRACKED_RICH_SLAG_BRICKS, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
     }
 
     private static void registerMisc() {
@@ -279,28 +282,28 @@ public class TCoreBlocks {
 
         IntSupplier deviceAugs = () -> ThermalConfig.deviceAugments;
 
-        registerAugmentableBlock(ID_DEVICE_HIVE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).harvestTool(ToolType.AXE), DeviceHiveExtractorTile::new), deviceAugs, DeviceHiveExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_HIVE_EXTRACTOR));
-        registerAugmentableBlock(ID_DEVICE_TREE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).harvestTool(ToolType.AXE), DeviceTreeExtractorTile::new), deviceAugs, DeviceTreeExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_TREE_EXTRACTOR));
-        registerAugmentableBlock(ID_DEVICE_FISHER, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).harvestTool(ToolType.AXE), DeviceFisherTile::new), deviceAugs, DeviceFisherTile.AUG_VALIDATOR, getFlag(ID_DEVICE_FISHER));
-        registerAugmentableBlock(ID_DEVICE_SOIL_INFUSER, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).harvestTool(ToolType.AXE).lightLevel(lightValue(ACTIVE, 10)), DeviceSoilInfuserTile::new), deviceAugs, DeviceSoilInfuserTile.AUG_VALIDATOR, getFlag(ID_DEVICE_SOIL_INFUSER));
+        registerAugmentableBlock(ID_DEVICE_HIVE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceHiveExtractorTile.class, () -> DEVICE_HIVE_EXTRACTOR_TILE), deviceAugs, DeviceHiveExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_HIVE_EXTRACTOR));
+        registerAugmentableBlock(ID_DEVICE_TREE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceTreeExtractorTile.class, () -> DEVICE_TREE_EXTRACTOR_TILE), deviceAugs, DeviceTreeExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_TREE_EXTRACTOR));
+        registerAugmentableBlock(ID_DEVICE_FISHER, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceFisherTile.class, () -> DEVICE_FISHER_TILE), deviceAugs, DeviceFisherTile.AUG_VALIDATOR, getFlag(ID_DEVICE_FISHER));
+        registerAugmentableBlock(ID_DEVICE_SOIL_INFUSER, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).lightLevel(lightValue(ACTIVE, 10)), DeviceSoilInfuserTile.class, () -> DEVICE_FISHER_TILE), deviceAugs, DeviceSoilInfuserTile.AUG_VALIDATOR, getFlag(ID_DEVICE_SOIL_INFUSER));
 
-        registerAugmentableBlock(ID_DEVICE_WATER_GEN, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE), DeviceWaterGenTile::new), deviceAugs, DeviceWaterGenTile.AUG_VALIDATOR, getFlag(ID_DEVICE_WATER_GEN));
-        registerAugmentableBlock(ID_DEVICE_ROCK_GEN, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).lightLevel(lightValue(ACTIVE, 14)), DeviceRockGenTile::new), deviceAugs, DeviceRockGenTile.AUG_VALIDATOR, getFlag(ID_DEVICE_ROCK_GEN));
-        registerAugmentableBlock(ID_DEVICE_COLLECTOR, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE), DeviceCollectorTile::new), deviceAugs, DeviceCollectorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_COLLECTOR));
-        registerAugmentableBlock(ID_DEVICE_NULLIFIER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).lightLevel(lightValue(ACTIVE, 7)), DeviceNullifierTile::new), deviceAugs, DeviceNullifierTile.AUG_VALIDATOR, getFlag(ID_DEVICE_NULLIFIER));
-        registerAugmentableBlock(ID_DEVICE_POTION_DIFFUSER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE), DevicePotionDiffuserTile::new), deviceAugs, DevicePotionDiffuserTile.AUG_VALIDATOR, getFlag(ID_DEVICE_POTION_DIFFUSER));
+        registerAugmentableBlock(ID_DEVICE_WATER_GEN, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F), DeviceWaterGenTile.class, () -> DEVICE_WATER_GEN_TILE), deviceAugs, DeviceWaterGenTile.AUG_VALIDATOR, getFlag(ID_DEVICE_WATER_GEN));
+        registerAugmentableBlock(ID_DEVICE_ROCK_GEN, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).lightLevel(lightValue(ACTIVE, 14)), DeviceRockGenTile.class, () -> DEVICE_ROCK_GEN_TILE), deviceAugs, DeviceRockGenTile.AUG_VALIDATOR, getFlag(ID_DEVICE_ROCK_GEN));
+        registerAugmentableBlock(ID_DEVICE_COLLECTOR, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F), DeviceCollectorTile.class, () -> DEVICE_COLLECTOR_TILE), deviceAugs, DeviceCollectorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_COLLECTOR));
+        registerAugmentableBlock(ID_DEVICE_NULLIFIER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DeviceNullifierTile.class, () -> DEVICE_NULLIFIER_TILE), deviceAugs, DeviceNullifierTile.AUG_VALIDATOR, getFlag(ID_DEVICE_NULLIFIER));
+        registerAugmentableBlock(ID_DEVICE_POTION_DIFFUSER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F), DevicePotionDiffuserTile.class, () -> DEVICE_POTION_DIFFUSER_TILE), deviceAugs, DevicePotionDiffuserTile.AUG_VALIDATOR, getFlag(ID_DEVICE_POTION_DIFFUSER));
 
         // registerBlock(ID_CHUNK_LOADER, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(10.0F).harvestTool(ToolType.PICKAXE), DeviceChunkLoaderTile::new), getFlag(ID_CHUNK_LOADER));
 
         IntSupplier storageAugs = () -> ThermalConfig.storageAugments;
 
-        registerAugmentableBlock(ID_TINKER_BENCH, () -> new TileBlockCoFH(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).harvestTool(ToolType.AXE), TinkerBenchTile::new), storageAugs, TinkerBenchTile.AUG_VALIDATOR, getFlag(ID_TINKER_BENCH));
-        registerAugmentableBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).lightLevel(lightValue(ACTIVE, 7)), ChargeBenchTile::new), storageAugs, ChargeBenchTile.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));
+        registerAugmentableBlock(ID_TINKER_BENCH, () -> new TileBlockCoFH(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), TinkerBenchTile.class, () -> TINKER_BENCH_TILE), storageAugs, TinkerBenchTile.AUG_VALIDATOR, getFlag(ID_TINKER_BENCH));
+        registerAugmentableBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), ChargeBenchTile.class, () -> CHARGE_BENCH_TILE), storageAugs, ChargeBenchTile.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));
 
-        BLOCKS.register(ID_ENERGY_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion(), EnergyCellTile::new));
+        BLOCKS.register(ID_ENERGY_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion(), EnergyCellTile.class, () -> ENERGY_CELL_TILE));
         ITEMS.register(ID_ENERGY_CELL, (Supplier<Item>) () -> new EnergyCellBlockItem(BLOCKS.get(ID_ENERGY_CELL), new Item.Properties().tab(THERMAL_DEVICES)).setNumSlots(storageAugs).setAugValidator(ENERGY_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ENERGY_CELL)));
 
-        BLOCKS.register(ID_FLUID_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion(), FluidCellTile::new));
+        BLOCKS.register(ID_FLUID_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion(), FluidCellTile.class, () -> FLUID_CELL_TILE));
         ITEMS.register(ID_FLUID_CELL, (Supplier<Item>) () -> new FluidCellBlockItem(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().tab(THERMAL_DEVICES)).setNumSlots(storageAugs).setAugValidator(FLUID_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_FLUID_CELL)));
 
         //        BLOCKS.register(ID_ITEM_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion(), ItemCellTile::new));
@@ -309,43 +312,39 @@ public class TCoreBlocks {
 
     private static void registerTileEntities() {
 
-        TILE_ENTITIES.register(ID_DEVICE_HIVE_EXTRACTOR, () -> TileEntityType.Builder.of(DeviceHiveExtractorTile::new, DEVICE_HIVE_EXTRACTOR_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_TREE_EXTRACTOR, () -> TileEntityType.Builder.of(DeviceTreeExtractorTile::new, DEVICE_TREE_EXTRACTOR_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_FISHER, () -> TileEntityType.Builder.of(DeviceFisherTile::new, DEVICE_FISHER_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_SOIL_INFUSER, () -> TileEntityType.Builder.of(DeviceSoilInfuserTile::new, DEVICE_SOIL_INFUSER_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_WATER_GEN, () -> TileEntityType.Builder.of(DeviceWaterGenTile::new, DEVICE_WATER_GEN_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_ROCK_GEN, () -> TileEntityType.Builder.of(DeviceRockGenTile::new, DEVICE_ROCK_GEN_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_COLLECTOR, () -> TileEntityType.Builder.of(DeviceCollectorTile::new, DEVICE_COLLECTOR_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_NULLIFIER, () -> TileEntityType.Builder.of(DeviceNullifierTile::new, DEVICE_NULLIFIER_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_DEVICE_POTION_DIFFUSER, () -> TileEntityType.Builder.of(DevicePotionDiffuserTile::new, DEVICE_POTION_DIFFUSER_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_HIVE_EXTRACTOR, () -> BlockEntityType.Builder.of(DeviceHiveExtractorTile::new, DEVICE_HIVE_EXTRACTOR_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_TREE_EXTRACTOR, () -> BlockEntityType.Builder.of(DeviceTreeExtractorTile::new, DEVICE_TREE_EXTRACTOR_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_FISHER, () -> BlockEntityType.Builder.of(DeviceFisherTile::new, DEVICE_FISHER_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_SOIL_INFUSER, () -> BlockEntityType.Builder.of(DeviceSoilInfuserTile::new, DEVICE_SOIL_INFUSER_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_WATER_GEN, () -> BlockEntityType.Builder.of(DeviceWaterGenTile::new, DEVICE_WATER_GEN_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_ROCK_GEN, () -> BlockEntityType.Builder.of(DeviceRockGenTile::new, DEVICE_ROCK_GEN_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_COLLECTOR, () -> BlockEntityType.Builder.of(DeviceCollectorTile::new, DEVICE_COLLECTOR_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_NULLIFIER, () -> BlockEntityType.Builder.of(DeviceNullifierTile::new, DEVICE_NULLIFIER_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DEVICE_POTION_DIFFUSER, () -> BlockEntityType.Builder.of(DevicePotionDiffuserTile::new, DEVICE_POTION_DIFFUSER_BLOCK).build(null));
 
         // TILE_ENTITIES.register(ID_CHUNK_LOADER, () -> TileEntityType.Builder.of(DeviceChunkLoaderTile::new, CHUNK_LOADER_BLOCK).build(null));
 
-        TILE_ENTITIES.register(ID_TINKER_BENCH, () -> TileEntityType.Builder.of(TinkerBenchTile::new, TINKER_BENCH_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_CHARGE_BENCH, () -> TileEntityType.Builder.of(ChargeBenchTile::new, CHARGE_BENCH_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_TINKER_BENCH, () -> BlockEntityType.Builder.of(TinkerBenchTile::new, TINKER_BENCH_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_CHARGE_BENCH, () -> BlockEntityType.Builder.of(ChargeBenchTile::new, CHARGE_BENCH_BLOCK).build(null));
 
-        TILE_ENTITIES.register(ID_ENERGY_CELL, () -> TileEntityType.Builder.of(EnergyCellTile::new, ENERGY_CELL_BLOCK).build(null));
-        TILE_ENTITIES.register(ID_FLUID_CELL, () -> TileEntityType.Builder.of(FluidCellTile::new, FLUID_CELL_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_ENERGY_CELL, () -> BlockEntityType.Builder.of(EnergyCellTile::new, ENERGY_CELL_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_FLUID_CELL, () -> BlockEntityType.Builder.of(FluidCellTile::new, FLUID_CELL_BLOCK).build(null));
         // TILE_ENTITIES.register(ID_ITEM_CELL, () -> TileEntityType.Builder.of(ItemCellTile::new, ITEM_CELL_BLOCK).build(null));
     }
 
     private static Block storageBlock(int harvestLevel) {
 
-        return new Block(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL)
+        return new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL)
                 .strength(5.0F, 6.0F)
                 .sound(SoundType.METAL)
-                .harvestLevel(harvestLevel)
-                .harvestTool(ToolType.PICKAXE)
                 .requiresCorrectToolForDrops());
     }
 
     private static Block storageBlock(MaterialColor color, int harvestLevel) {
 
-        return new Block(AbstractBlock.Properties.of(Material.METAL, color)
+        return new Block(BlockBehaviour.Properties.of(Material.METAL, color)
                 .strength(5.0F, 6.0F)
                 .sound(SoundType.METAL)
-                .harvestLevel(harvestLevel)
-                .harvestTool(ToolType.PICKAXE)
                 .requiresCorrectToolForDrops());
     }
     // endregion

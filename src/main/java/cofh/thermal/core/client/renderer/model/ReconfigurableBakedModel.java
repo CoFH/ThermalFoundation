@@ -6,16 +6,16 @@ import cofh.lib.util.ComparableItemStack;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.client.renderer.model.ItemOverrideList;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.Direction;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 
@@ -27,14 +27,14 @@ import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 import static cofh.lib.util.constants.NBTTags.TAG_SIDES;
 import static cofh.thermal.core.client.ThermalTextures.*;
 import static cofh.thermal.lib.common.ThermalConfig.DEFAULT_MACHINE_SIDES_RAW;
-import static net.minecraft.util.Direction.*;
+import static net.minecraft.core.Direction.*;
 
 public class ReconfigurableBakedModel extends UnderlayBakedModel implements IDynamicBakedModel {
 
     private static final Int2ObjectMap<BakedQuad[]> SIDE_QUAD_CACHE = new Int2ObjectOpenHashMap<>();
 
     private static final Int2ObjectMap<BakedQuad[]> ITEM_QUAD_CACHE = new Int2ObjectOpenHashMap<>();
-    private static final Map<List<Integer>, IBakedModel> MODEL_CACHE = new Object2ObjectOpenHashMap<>();
+    private static final Map<List<Integer>, BakedModel> MODEL_CACHE = new Object2ObjectOpenHashMap<>();
 
     public static void clearCache() {
 
@@ -44,7 +44,7 @@ public class ReconfigurableBakedModel extends UnderlayBakedModel implements IDyn
         MODEL_CACHE.clear();
     }
 
-    public ReconfigurableBakedModel(IBakedModel originalModel) {
+    public ReconfigurableBakedModel(BakedModel originalModel) {
 
         super(originalModel);
     }
@@ -82,23 +82,23 @@ public class ReconfigurableBakedModel extends UnderlayBakedModel implements IDyn
     }
 
     @Override
-    public ItemOverrideList getOverrides() {
+    public ItemOverrides getOverrides() {
 
         return overrideList;
     }
 
-    private final ItemOverrideList overrideList = new ItemOverrideList() {
+    private final ItemOverrides overrideList = new ItemOverrides() {
 
         @Nullable
         @Override
-        public IBakedModel resolve(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
+        public BakedModel resolve(BakedModel model, ItemStack stack, @Nullable ClientLevel worldIn, @Nullable LivingEntity entityIn, int seed) {
 
-            CompoundNBT tag = stack.getTagElement(TAG_BLOCK_ENTITY);
+            CompoundTag tag = stack.getTagElement(TAG_BLOCK_ENTITY);
             byte[] sideConfigRaw = getSideConfigRaw(tag);
             int itemHash = new ComparableItemStack(stack).hashCode();
             int configHash = Arrays.hashCode(sideConfigRaw);
 
-            IBakedModel ret = MODEL_CACHE.get(Arrays.asList(itemHash, configHash));
+            BakedModel ret = MODEL_CACHE.get(Arrays.asList(itemHash, configHash));
             if (ret == null) {
                 ModelUtils.WrappedBakedModelBuilder builder = new ModelUtils.WrappedBakedModelBuilder(model);
 
@@ -146,7 +146,7 @@ public class ReconfigurableBakedModel extends UnderlayBakedModel implements IDyn
         }
     }
 
-    private byte[] getSideConfigRaw(CompoundNBT tag) {
+    private byte[] getSideConfigRaw(CompoundTag tag) {
 
         if (tag == null) {
             return DEFAULT_MACHINE_SIDES_RAW;

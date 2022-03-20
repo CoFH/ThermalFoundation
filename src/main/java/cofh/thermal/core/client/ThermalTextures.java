@@ -1,9 +1,9 @@
 package cofh.thermal.core.client;
 
 import cofh.thermal.core.client.renderer.model.*;
-import net.minecraft.client.renderer.texture.AtlasTexture;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,7 +23,7 @@ public class ThermalTextures {
     @SubscribeEvent
     public static void preStitch(TextureStitchEvent.Pre event) {
 
-        if (!event.getMap().location().toString().equals(BLOCK_ATLAS)) {
+        if (!event.getAtlas().location().toString().equals(BLOCK_ATLAS)) {
             return;
         }
         event.addSprite(DEVICE_COLLECTOR_UNDERLAY_LOC);
@@ -53,7 +53,7 @@ public class ThermalTextures {
     @SubscribeEvent
     public static void postStitch(TextureStitchEvent.Post event) {
 
-        if (!event.getMap().location().toString().equals(BLOCK_ATLAS)) {
+        if (!event.getAtlas().location().toString().equals(BLOCK_ATLAS)) {
             return;
         }
         UnderlayBakedModel.clearCache();
@@ -63,7 +63,7 @@ public class ThermalTextures {
         FluidCellBakedModel.clearCache();
         ItemCellBakedModel.clearCache();
 
-        AtlasTexture map = event.getMap();
+        TextureAtlas map = event.getAtlas();
         MACHINE_CONFIG_NONE = map.getSprite(MACHINE_CONFIG_NONE_LOC);
         MACHINE_CONFIG_INPUT = map.getSprite(MACHINE_CONFIG_INPUT_LOC);
         MACHINE_CONFIG_OUTPUT = map.getSprite(MACHINE_CONFIG_OUTPUT_LOC);

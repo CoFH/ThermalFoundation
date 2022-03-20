@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -74,3 +75,4 @@ public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHand
     }
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -74,3 +75,4 @@ public class CRTFurnaceManager implements IRecipeManager, IRecipeHandler<Furnace
     }
 
 }
+*/

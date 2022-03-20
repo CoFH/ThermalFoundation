@@ -2,10 +2,10 @@ package cofh.thermal.core.util.recipes.device;
 
 import cofh.lib.util.recipes.SerializableRecipe;
 import cofh.thermal.core.init.TCoreRecipeTypes;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ID_BOOST_POTION_DIFFUSER;
@@ -30,13 +30,13 @@ public class PotionDiffuserBoost extends SerializableRecipe {
     }
 
     @Override
-    public IRecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
 
         return RECIPE_SERIALIZERS.get(ID_BOOST_POTION_DIFFUSER);
     }
 
     @Override
-    public IRecipeType<?> getType() {
+    public RecipeType<?> getType() {
 
         return TCoreRecipeTypes.BOOST_POTION_DIFFUSER;
     }

@@ -1,17 +1,17 @@
 package cofh.thermal.lib.util.recipes;
 
 import com.google.gson.JsonObject;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<T> {
+public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<T> {
 
     protected final IFactory<T> factory;
 
@@ -54,7 +54,7 @@ public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeR
 
     @Nullable
     @Override
-    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 
         Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
@@ -68,7 +68,7 @@ public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeR
     }
 
     @Override
-    public void toNetwork(PacketBuffer buffer, T recipe) {
+    public void toNetwork(FriendlyByteBuf buffer, T recipe) {
 
         recipe.ingredient.toNetwork(buffer);
 

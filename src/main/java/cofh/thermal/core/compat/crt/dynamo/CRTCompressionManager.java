@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.dynamo;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -48,3 +49,4 @@ public class CRTCompressionManager implements IRecipeManager {
     }
 
 }
+*/

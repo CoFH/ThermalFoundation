@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
@@ -32,3 +33,4 @@ public class ElementalProjectileModel<T extends Entity> extends SegmentedModel<T
     }
 
 }
+*/

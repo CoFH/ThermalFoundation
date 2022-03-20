@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
@@ -86,3 +87,4 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
     }
 
 }
+*/

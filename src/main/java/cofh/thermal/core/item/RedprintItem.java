@@ -6,26 +6,31 @@ import cofh.lib.item.IPlacementItem;
 import cofh.lib.util.IConveyableData;
 import cofh.lib.util.Utils;
 import cofh.lib.util.control.ISecurable;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.Rarity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.canLocalize;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static net.minecraft.util.text.TextFormatting.DARK_GRAY;
-import static net.minecraft.util.text.TextFormatting.GRAY;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.GRAY;
 
 public class RedprintItem extends ItemCoFH implements IPlacementItem {
 
@@ -33,13 +38,13 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
 
         super(builder);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("has_data"), ((stack, world, entity) -> stack.hasTag() ? 1F : 0F));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("has_data"), ((stack, world, entity, seed) -> stack.hasTag() ? 1F : 0F));
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
-        CompoundNBT conveyableData = stack.getTag();
+        CompoundTag conveyableData = stack.getTag();
 
         if (conveyableData == null) {
             tooltip.add(getTextComponent("info.thermal.redprint.use").withStyle(GRAY));
@@ -53,7 +58,7 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
                     tooltip.add(getTextComponent("info.thermal.redprint.unknown")
                             .withStyle(DARK_GRAY));
                 }
-                tooltip.add(new StringTextComponent(" - ")
+                tooltip.add(new TextComponent(" - ")
                         .append(getTextComponent("info.thermal.redprint.data." + type)
                                 .withStyle(GRAY))
                 );
@@ -67,41 +72,40 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
         return stack.hasTag() ? Rarity.UNCOMMON : Rarity.COMMON;
     }
 
-    protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
+    protected boolean useDelegate(ItemStack stack, UseOnContext context) {
 
-        World world = context.getLevel();
-        PlayerEntity player = context.getPlayer();
+        Level world = context.getLevel();
+        Player player = context.getPlayer();
 
         if (player == null || Utils.isClientWorld(world)) {
             return false;
         }
-        if (player.isSecondaryUseActive() && context.getHand() == Hand.MAIN_HAND) {
+        if (player.isSecondaryUseActive() && context.getHand() == InteractionHand.MAIN_HAND) {
             if (stack.getTag() != null) {
-                player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.3F);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 0.3F);
                 stack.setTag(null);
             }
             return true;
         }
         BlockPos pos = context.getClickedPos();
-        TileEntity tile = world.getBlockEntity(pos);
+        BlockEntity tile = world.getBlockEntity(pos);
 
         if (tile instanceof ISecurable && !((ISecurable) tile).canAccess(player)) {
             return false;
         }
-        if (tile instanceof IConveyableData) {
-            IConveyableData conveyableTile = (IConveyableData) tile;
-            if (stack.getTag() == null && context.getHand() == Hand.MAIN_HAND) {
+        if (tile instanceof IConveyableData conveyableTile) {
+            if (stack.getTag() == null && context.getHand() == InteractionHand.MAIN_HAND) {
                 conveyableTile.writeConveyableData(player, stack.getOrCreateTag());
                 tile.setChanged();
                 if (stack.getTag().isEmpty()) {
                     stack.setTag(null);
                     return false;
                 } else {
-                    player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.7F);
+                    player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 0.7F);
                 }
             } else {
                 conveyableTile.readConveyableData(player, stack.getTag());
-                player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.5F, 0.8F);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundSource.PLAYERS, 0.5F, 0.8F);
             }
             return true;
         }
@@ -109,27 +113,27 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext context) {
+    public InteractionResult useOn(UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player == null) {
-            return ActionResultType.FAIL;
+            return InteractionResult.FAIL;
         }
-        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? InteractionResult.SUCCESS : InteractionResult.FAIL;
     }
 
     @Override
-    public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
+    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player == null) {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         }
-        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }
 
     @Override
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
 
         ItemStack stack = player.getItemInHand(hand);
         if (player.isSecondaryUseActive()) {
@@ -139,12 +143,12 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
             stack.setTag(null);
         }
         player.swing(hand);
-        return ActionResult.success(stack);
+        return InteractionResultHolder.success(stack);
     }
 
     // region IPlacementItem
     @Override
-    public boolean onBlockPlacement(ItemStack stack, ItemUseContext context) {
+    public boolean onBlockPlacement(ItemStack stack, UseOnContext context) {
 
         return useDelegate(stack, context);
     }

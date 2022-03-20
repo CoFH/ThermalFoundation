@@ -5,10 +5,10 @@ import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_CONTAINER;
 
@@ -16,7 +16,7 @@ public class DeviceFisherContainer extends TileContainer {
 
     public final ThermalTileAugmentable tile;
 
-    public DeviceFisherContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+    public DeviceFisherContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
         super(DEVICE_FISHER_CONTAINER, windowId, world, pos, inventory, player);
         this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);

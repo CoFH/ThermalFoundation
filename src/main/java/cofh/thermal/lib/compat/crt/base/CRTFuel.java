@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.crt.base;
 
 import cofh.lib.fluid.FluidIngredient;
@@ -62,3 +63,4 @@ public class CRTFuel {
     }
 
 }
+*/

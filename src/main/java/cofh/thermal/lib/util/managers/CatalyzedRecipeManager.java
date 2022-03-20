@@ -2,7 +2,7 @@ package cofh.thermal.lib.util.managers;
 
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 

@@ -1,18 +1,20 @@
+/*
 package cofh.thermal.core.world.biome;
 
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
-import net.minecraftforge.common.world.MobSpawnInfoBuilder;
+import net.minecraftforge.common.world.MobSpawnSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 import static cofh.thermal.core.init.TCoreReferences.*;
 import static cofh.thermal.core.world.gen.feature.ThermalFeatures.*;
 
+// TODO Lemming, See ConfiguredFeatureCoFH.
 public class ThermalBiomeFeatures {
 
     private ThermalBiomeFeatures() {
@@ -22,7 +24,7 @@ public class ThermalBiomeFeatures {
     public static void addOreGeneration(BiomeLoadingEvent event) {
 
         BiomeGenerationSettingsBuilder generationSettingsBuilder = event.getGeneration();
-        Biome.Category category = event.getCategory();
+        Biome.BiomeCategory category = event.getCategory();
 
         if (isOverworldBiome(category)) {
             withApatiteOre(generationSettingsBuilder);
@@ -41,10 +43,10 @@ public class ThermalBiomeFeatures {
     public static void addOilGeneration(BiomeLoadingEvent event) {
 
         BiomeGenerationSettingsBuilder generationSettingsBuilder = event.getGeneration();
-        Biome.Category category = event.getCategory();
+        Biome.BiomeCategory category = event.getCategory();
 
         if (isOverworldBiome(category)) {
-            if (category == Biome.Category.DESERT || category == Biome.Category.MESA) {
+            if (category == Biome.BiomeCategory.DESERT || category == Biome.BiomeCategory.MESA) {
                 withOilSand(generationSettingsBuilder);
             }
         }
@@ -52,23 +54,23 @@ public class ThermalBiomeFeatures {
 
     public static void addHostileSpawns(BiomeLoadingEvent event) {
 
-        MobSpawnInfoBuilder spawnInfoBuilder = event.getSpawns();
+        MobSpawnSettingsBuilder spawnInfoBuilder = event.getSpawns();
 
-        if (spawnInfoBuilder.getSpawner(EntityClassification.MONSTER).isEmpty()) {
+        if (spawnInfoBuilder.getSpawner(MobCategory.MONSTER).isEmpty()) {
             return;
         }
         ResourceLocation name = event.getName();
-        Biome.Category category = event.getCategory();
-        Biome.Climate climate = event.getClimate();
+        Biome.BiomeCategory category = event.getCategory();
+        Biome.ClimateSettings climate = event.getClimate();
 
         if (isOverworldBiome(category)) {
-            if (category == Biome.Category.EXTREME_HILLS || category == Biome.Category.MESA) {
+            if (category == Biome.BiomeCategory.EXTREME_HILLS || category == Biome.BiomeCategory.MESA) {
                 withBasalz(spawnInfoBuilder);
             }
-            if (category == Biome.Category.DESERT || category == Biome.Category.MESA || category == Biome.Category.SAVANNA) {
+            if (category == Biome.BiomeCategory.DESERT || category == Biome.BiomeCategory.MESA || category == Biome.BiomeCategory.SAVANNA) {
                 withBlitz(spawnInfoBuilder);
             }
-            if (climate.precipitation == Biome.RainType.SNOW & climate.temperature <= 0.3F) {
+            if (climate.precipitation == Biome.Precipitation.SNOW & climate.temperature <= 0.3F) {
                 withBlizz(spawnInfoBuilder);
             }
         } else if (isNetherBiome(category)) {
@@ -81,85 +83,86 @@ public class ThermalBiomeFeatures {
     // region ORES
     public static void withApatiteOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_APATITE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_APATITE);
     }
 
     public static void withCinnabarOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_CINNABAR);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_CINNABAR);
     }
 
     public static void withNiterOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_NITER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_NITER);
     }
 
     public static void withSulfurOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_SULFUR);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_SULFUR);
     }
 
     // TODO: 1.17 remove.
     public static void withCopperOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_COPPER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_COPPER);
     }
 
     public static void withTinOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_TIN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_TIN);
     }
 
     public static void withLeadOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_LEAD);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_LEAD);
     }
 
     public static void withSilverOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_SILVER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_SILVER);
     }
 
     public static void withNickelOre(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ORE_NICKEL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ORE_NICKEL);
     }
     // endregion
 
     // region OIL
     public static void withOilSand(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OIL_SAND);
-        builder.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, OIL_RED_SAND);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, OIL_SAND);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, OIL_RED_SAND);
     }
     // endregion
 
     // region MOBS
-    public static void withBasalz(MobSpawnInfoBuilder builder) {
+    public static void withBasalz(MobSpawnSettingsBuilder builder) {
 
-        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BASALZ_ENTITY, 10, 1, 3));
+        builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ_ENTITY, 10, 1, 3));
     }
 
-    public static void withBlitz(MobSpawnInfoBuilder builder) {
+    public static void withBlitz(MobSpawnSettingsBuilder builder) {
 
-        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BLITZ_ENTITY, 10, 1, 3));
+        builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLITZ_ENTITY, 10, 1, 3));
     }
 
-    public static void withBlizz(MobSpawnInfoBuilder builder) {
+    public static void withBlizz(MobSpawnSettingsBuilder builder) {
 
-        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(BLIZZ_ENTITY, 10, 1, 3));
+        builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLIZZ_ENTITY, 10, 1, 3));
     }
     // endregion
 
     // region HELPERS
-    public static boolean isOverworldBiome(Biome.Category category) {
+    public static boolean isOverworldBiome(Biome.BiomeCategory category) {
 
-        return category != Biome.Category.NONE && category != Biome.Category.THEEND && category != Biome.Category.NETHER;
+        return category != Biome.BiomeCategory.NONE && category != Biome.BiomeCategory.THEEND && category != Biome.BiomeCategory.NETHER;
     }
 
-    public static boolean isNetherBiome(Biome.Category category) {
+    public static boolean isNetherBiome(Biome.BiomeCategory category) {
 
-        return category == Biome.Category.NETHER;
+        return category == Biome.BiomeCategory.NETHER;
     }
     // endregion
 }
+*/

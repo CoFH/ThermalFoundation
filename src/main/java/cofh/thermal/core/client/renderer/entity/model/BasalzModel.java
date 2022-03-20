@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
@@ -6,6 +7,7 @@ import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -66,3 +68,4 @@ public class BasalzModel<T extends LivingEntity> extends SegmentedModel<T> {
     }
 
 }
+*/

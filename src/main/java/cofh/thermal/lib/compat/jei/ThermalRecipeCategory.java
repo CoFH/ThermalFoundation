@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.jei;
 
 import cofh.lib.util.helpers.StringHelper;
@@ -145,3 +146,4 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     }
     // endregion
 }
+*/

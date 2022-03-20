@@ -9,17 +9,17 @@ import cofh.lib.util.helpers.MathHelper;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.client.renderer.model.ItemOverrideList;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.Direction;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.BakedModelWrapper;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
@@ -33,15 +33,15 @@ import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 import static cofh.lib.util.constants.NBTTags.TAG_SIDES;
 import static cofh.thermal.core.client.ThermalTextures.*;
 import static cofh.thermal.lib.common.ThermalConfig.DEFAULT_CELL_SIDES_RAW;
-import static net.minecraft.util.Direction.*;
+import static net.minecraft.core.Direction.*;
 
-public class ItemCellBakedModel extends BakedModelWrapper<IBakedModel> implements IDynamicBakedModel {
+public class ItemCellBakedModel extends BakedModelWrapper<BakedModel> implements IDynamicBakedModel {
 
     private static final Map<List<Integer>, BakedQuad> FACE_QUAD_CACHE = new Object2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<BakedQuad[]> SIDE_QUAD_CACHE = new Int2ObjectOpenHashMap<>();
 
     private static final Int2ObjectMap<BakedQuad[]> ITEM_QUAD_CACHE = new Int2ObjectOpenHashMap<>();
-    private static final Map<List<Integer>, IBakedModel> MODEL_CACHE = new Object2ObjectOpenHashMap<>();
+    private static final Map<List<Integer>, BakedModel> MODEL_CACHE = new Object2ObjectOpenHashMap<>();
 
     public static void clearCache() {
 
@@ -52,7 +52,7 @@ public class ItemCellBakedModel extends BakedModelWrapper<IBakedModel> implement
         MODEL_CACHE.clear();
     }
 
-    public ItemCellBakedModel(IBakedModel originalModel) {
+    public ItemCellBakedModel(BakedModel originalModel) {
 
         super(originalModel);
     }
@@ -105,24 +105,24 @@ public class ItemCellBakedModel extends BakedModelWrapper<IBakedModel> implement
     }
 
     @Override
-    public ItemOverrideList getOverrides() {
+    public ItemOverrides getOverrides() {
 
         return overrideList;
     }
 
-    private final ItemOverrideList overrideList = new ItemOverrideList() {
+    private final ItemOverrides overrideList = new ItemOverrides() {
 
         @Nullable
         @Override
-        public IBakedModel resolve(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
+        public BakedModel resolve(BakedModel model, ItemStack stack, @Nullable ClientLevel worldIn, @Nullable LivingEntity entityIn, int seed) {
 
-            CompoundNBT tag = stack.getTagElement(TAG_BLOCK_ENTITY);
+            CompoundTag tag = stack.getTagElement(TAG_BLOCK_ENTITY);
             byte[] sideConfigRaw = getSideConfigRaw(tag);
             int itemHash = new ComparableItemStack(stack).hashCode();
             int level = getLevel(stack);
             int configHash = Arrays.hashCode(sideConfigRaw);
 
-            IBakedModel ret = MODEL_CACHE.get(Arrays.asList(itemHash, level, configHash));
+            BakedModel ret = MODEL_CACHE.get(Arrays.asList(itemHash, level, configHash));
             if (ret == null) {
                 ModelUtils.WrappedBakedModelBuilder builder = new ModelUtils.WrappedBakedModelBuilder(model);
 
@@ -180,7 +180,7 @@ public class ItemCellBakedModel extends BakedModelWrapper<IBakedModel> implement
         return ITEM_CELL_LEVELS[MathHelper.clamp(level, 0, 8)];
     }
 
-    private byte[] getSideConfigRaw(CompoundNBT tag) {
+    private byte[] getSideConfigRaw(CompoundTag tag) {
 
         if (tag == null) {
             return DEFAULT_CELL_SIDES_RAW;

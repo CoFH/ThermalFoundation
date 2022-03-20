@@ -3,26 +3,26 @@ package cofh.thermal.core.tileentity.device;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.inventory.container.device.DeviceTreeExtractorContainer;
 import cofh.thermal.core.util.managers.device.TreeExtractorManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.NBTUtil;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.network.Connection;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
@@ -46,7 +46,7 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickableTileEntity {
+public class DeviceTreeExtractorTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
 
@@ -73,9 +73,9 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         timeConstant = configConstant;
     }
 
-    public DeviceTreeExtractorTile() {
+    public DeviceTreeExtractorTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_TREE_EXTRACTOR_TILE);
+        super(DEVICE_TREE_EXTRACTOR_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
 
@@ -196,7 +196,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         updateActiveState();
 
@@ -242,7 +242,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceTreeExtractorContainer(i, level, worldPosition, inventory, player);
     }
@@ -257,7 +257,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     // region NETWORK
     @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
 
         super.onDataPacket(net, pkt);
 
@@ -266,7 +266,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     // CONTROL
     @Override
-    public void handleControlPacket(PacketBuffer buffer) {
+    public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
 
@@ -275,7 +275,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     // GUI
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -287,7 +287,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -298,7 +298,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     // STATE
     @Override
-    public PacketBuffer getStatePacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getStatePacket(FriendlyByteBuf buffer) {
 
         super.getStatePacket(buffer);
 
@@ -308,7 +308,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     }
 
     @Override
-    public void handleStatePacket(PacketBuffer buffer) {
+    public void handleStatePacket(FriendlyByteBuf buffer) {
 
         super.handleStatePacket(buffer);
 
@@ -320,9 +320,9 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         boostCycles = nbt.getInt(TAG_BOOST_CYCLES);
         boostMax = nbt.getInt(TAG_BOOST_MAX);
@@ -330,15 +330,15 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         process = nbt.getInt(TAG_PROCESS);
 
         for (int i = 0; i < NUM_LEAVES; ++i) {
-            leafPos[i] = NBTUtil.readBlockPos(nbt.getCompound("Leaf" + i));
+            leafPos[i] = NbtUtils.readBlockPos(nbt.getCompound("Leaf" + i));
         }
-        trunkPos = NBTUtil.readBlockPos(nbt.getCompound("Trunk"));
+        trunkPos = NbtUtils.readBlockPos(nbt.getCompound("Trunk"));
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putInt(TAG_BOOST_CYCLES, boostCycles);
         nbt.putInt(TAG_BOOST_MAX, boostMax);
@@ -346,10 +346,9 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         nbt.putInt(TAG_PROCESS, process);
 
         for (int i = 0; i < NUM_LEAVES; ++i) {
-            nbt.put("Leaf" + i, NBTUtil.writeBlockPos(leafPos[i]));
+            nbt.put("Leaf" + i, NbtUtils.writeBlockPos(leafPos[i]));
         }
-        nbt.put("Trunk", NBTUtil.writeBlockPos(trunkPos));
-        return nbt;
+        nbt.put("Trunk", NbtUtils.writeBlockPos(trunkPos));
     }
     // endregion
 

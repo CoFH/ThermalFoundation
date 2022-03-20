@@ -2,15 +2,17 @@ package cofh.thermal.core.tileentity;
 
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -24,7 +26,7 @@ import static cofh.thermal.core.init.TCoreReferences.CHARGE_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
-public class ChargeBenchTile extends ThermalTileAugmentable implements ITickableTileEntity {
+public class ChargeBenchTile extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FILTER);
 
@@ -34,9 +36,9 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
     protected ItemStorageCoFH[] benchSlots = new ItemStorageCoFH[9];
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
-    public ChargeBenchTile() {
+    public ChargeBenchTile(BlockPos pos, BlockState state) {
 
-        super(CHARGE_BENCH_TILE);
+        super(CHARGE_BENCH_TILE, pos, state);
 
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 
@@ -51,7 +53,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         boolean curActive = isActive;
         isActive = false;
@@ -85,7 +87,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new ChargeBenchContainer(i, level, worldPosition, inventory, player);
     }

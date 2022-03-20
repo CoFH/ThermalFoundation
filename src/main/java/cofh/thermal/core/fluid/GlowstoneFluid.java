@@ -2,18 +2,14 @@ package cofh.thermal.core.fluid;
 
 import cofh.lib.fluid.FluidCoFH;
 import cofh.thermal.lib.common.ThermalItemGroups;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-
-import java.util.function.Supplier;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -43,13 +39,13 @@ public class GlowstoneFluid extends FluidCoFH {
         ).bucket(bucket);//.block(block).levelDecreasePerBlock(4);
     }
 
-    public static class GlowstoneFluidBlock extends FlowingFluidBlock {
+/*    public static class GlowstoneFluidBlock extends FlowingFluidBlock {
 
         public GlowstoneFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
 
             super(supplier, properties);
         }
 
-    }
+    }*/
 
 }

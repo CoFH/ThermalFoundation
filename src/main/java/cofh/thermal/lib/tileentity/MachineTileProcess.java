@@ -4,6 +4,7 @@ import cofh.core.network.packet.client.TileStatePacket;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.TimeTracker;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
@@ -14,13 +15,13 @@ import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.MachineProperties;
 import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
 import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
-public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ITickableTileEntity, IMachineInventory {
+public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ICoFHTickableTile.IServerTickable, IMachineInventory {
 
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
@@ -57,15 +58,15 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     protected TimeTracker timeTracker = new TimeTracker();
     public boolean wasActive;
 
-    public MachineTileProcess(TileEntityType<?> tileEntityTypeIn) {
+    public MachineTileProcess(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
+        super(tileEntityTypeIn, pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
         xpStorage = new XpStorage(getBaseXpStorage());
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         boolean curActive = isActive;
         if (isActive) {
@@ -454,7 +455,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region NETWORK
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -466,7 +467,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -478,9 +479,9 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         wasActive = nbt.getBoolean(TAG_ACTIVE_PREV);
 
@@ -490,17 +491,15 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putBoolean(TAG_ACTIVE_PREV, wasActive);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);
         nbt.putInt(TAG_PROCESS_TICK, processTick);
-
-        return nbt;
     }
     // endregion
 
@@ -529,7 +528,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 

@@ -2,7 +2,7 @@ package cofh.thermal.lib.util.recipes.internal;
 
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;

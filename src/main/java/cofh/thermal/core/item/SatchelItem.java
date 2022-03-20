@@ -19,24 +19,28 @@ import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.item.InventoryContainerItemAugmentable;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.IDyeableArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.*;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.DyeableLeatherItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
@@ -48,7 +52,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentStr
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, IDyeableArmorItem, IFilterableItem, IMultiModeItem, INamedContainerProvider {
+public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, DyeableLeatherItem, IFilterableItem, IMultiModeItem, MenuProvider {
 
     protected static final Set<Item> BANNED_ITEMS = new ObjectOpenHashSet<>();
 
@@ -70,7 +74,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
         super(builder, slots);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity) -> (hasCustomColor(stack) ? 1F : 0));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity, seed) -> (hasCustomColor(stack) ? 1F : 0));
         ProxyUtils.registerColorable(this);
 
         numSlots = () -> ThermalConfig.storageAugments;
@@ -78,23 +82,23 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.satchel.use").withStyle(TextFormatting.GRAY));
+        tooltip.add(getTextComponent("info.thermal.satchel.use").withStyle(ChatFormatting.GRAY));
         if (FilterHelper.hasFilter(stack)) {
-            tooltip.add(getTextComponent("info.thermal.satchel.use.sneak").withStyle(TextFormatting.DARK_GRAY));
+            tooltip.add(getTextComponent("info.thermal.satchel.use.sneak").withStyle(ChatFormatting.DARK_GRAY));
         }
-        tooltip.add(getTextComponent("info.thermal.satchel.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.satchel.mode." + getMode(stack)).withStyle(ChatFormatting.ITALIC));
         addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 
         ItemStack stack = playerIn.getItemInHand(handIn);
-        return useDelegate(stack, playerIn, handIn) ? ActionResult.success(stack) : ActionResult.pass(stack);
+        return useDelegate(stack, playerIn, handIn) ? InteractionResultHolder.success(stack) : InteractionResultHolder.pass(stack);
     }
 
     // region HELPERS
@@ -113,8 +117,8 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
             if (eventItem.getItem().getCount() != count) {
                 container.setPopTime(5);
-                PlayerEntity player = event.getPlayer();
-                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                Player player = event.getPlayer();
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 containerInv.write(satchelItem.getOrCreateInvTag(container));
                 satchelItem.onContainerInventoryChanged(container);
             }
@@ -122,27 +126,27 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
         return eventItem.getItem().getCount() != count;
     }
 
-    protected boolean useDelegate(ItemStack stack, PlayerEntity player, Hand hand) {
+    protected boolean useDelegate(ItemStack stack, Player player, InteractionHand hand) {
 
-        if (Utils.isFakePlayer(player) || hand == Hand.OFF_HAND) {
+        if (Utils.isFakePlayer(player) || hand == InteractionHand.OFF_HAND) {
             return false;
         }
-        if (player instanceof ServerPlayerEntity) {
+        if (player instanceof ServerPlayer) {
             if (!canPlayerAccess(stack, player)) {
-                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.cofh.secure_warning", SecurityHelper.getOwnerName(stack)));
+                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_warning", SecurityHelper.getOwnerName(stack)));
                 return false;
             } else if (SecurityHelper.attemptClaimItem(stack, player)) {
-                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.cofh.secure_item"));
+                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_item"));
                 return false;
             }
             if (player.isSecondaryUseActive()) {
                 if (FilterHelper.hasFilter(stack)) {
-                    NetworkHooks.openGui((ServerPlayerEntity) player, getFilter(stack));
+                    NetworkHooks.openGui((ServerPlayer) player, getFilter(stack));
                     return true;
                 }
                 return false;
             }
-            NetworkHooks.openGui((ServerPlayerEntity) player, this);
+            NetworkHooks.openGui((ServerPlayer) player, this);
         }
         return true;
     }
@@ -150,7 +154,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     @Override
     protected SimpleItemInv readInventoryFromNBT(ItemStack container) {
 
-        CompoundNBT containerTag = getOrCreateInvTag(container);
+        CompoundTag containerTag = getOrCreateInvTag(container);
         int numSlots = getContainerSlots(container);
         ArrayList<ItemStorageCoFH> invSlots = new ArrayList<>(numSlots);
         for (int i = 0; i < numSlots; ++i) {
@@ -172,9 +176,9 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     }
 
     @Override
-    protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(ItemStack container, CompoundTag augmentData) {
 
-        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
+        CompoundTag subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -186,14 +190,14 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
     // region INamedContainerProvider
     @Override
-    public ITextComponent getDisplayName() {
+    public Component getDisplayName() {
 
-        return new TranslationTextComponent("item.thermal.satchel");
+        return new TranslatableComponent("item.thermal.satchel");
     }
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new SatchelContainer(i, inventory, player);
     }
@@ -227,10 +231,10 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
     // region IMultiModeItem
     @Override
-    public void onModeChange(PlayerEntity player, ItemStack stack) {
+    public void onModeChange(Player player, ItemStack stack) {
 
-        player.level.playSound(null, player.blockPosition(), SoundEvents.ITEM_PICKUP, SoundCategory.PLAYERS, 0.4F, 0.8F + 0.4F * getMode(stack));
-        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.satchel.mode." + getMode(stack)));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.4F, 0.8F + 0.4F * getMode(stack));
+        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.thermal.satchel.mode." + getMode(stack)));
     }
     // endregion
 }

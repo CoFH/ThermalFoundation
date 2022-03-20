@@ -1,24 +1,24 @@
 package cofh.thermal.core.util.recipes.device;
 
 import com.google.gson.JsonObject;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.loot.LootTables;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<FisherBoost> {
+public class FisherBoostSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<FisherBoost> {
 
     @Override
     public FisherBoost fromJson(ResourceLocation recipeId, JsonObject json) {
 
         Ingredient ingredient;
-        ResourceLocation lootTable = LootTables.FISHING_FISH;
+        ResourceLocation lootTable = BuiltInLootTables.FISHING_FISH;
         float outputMod = 1.0F;
         float useChance = 1.0F;
 
@@ -42,7 +42,7 @@ public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<
 
     @Nullable
     @Override
-    public FisherBoost fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+    public FisherBoost fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 
         Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
@@ -54,7 +54,7 @@ public class FisherBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<
     }
 
     @Override
-    public void toNetwork(PacketBuffer buffer, FisherBoost recipe) {
+    public void toNetwork(FriendlyByteBuf buffer, FisherBoost recipe) {
 
         recipe.ingredient.toNetwork(buffer);
 

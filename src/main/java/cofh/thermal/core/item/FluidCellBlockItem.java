@@ -7,13 +7,13 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.lib.item.BlockItemAugmentable;
-import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
@@ -26,7 +26,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
 import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 import static cofh.lib.util.helpers.StringHelper.*;
-import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
+import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
 public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidContainerItem {
@@ -39,7 +39,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
         FluidStack fluid = getFluid(stack);
         if (!fluid.isEmpty()) {
@@ -56,9 +56,9 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
         }
     }
 
-    protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(ItemStack container, CompoundTag augmentData) {
 
-        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
+        CompoundTag subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -75,12 +75,12 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
 
     // region IFluidContainerItem
     @Override
-    public CompoundNBT getOrCreateTankTag(ItemStack container) {
+    public CompoundTag getOrCreateTankTag(ItemStack container) {
 
-        CompoundNBT blockTag = container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
-        ListNBT tanks = blockTag.getList(TAG_TANK_INV, TAG_COMPOUND);
+        CompoundTag blockTag = container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
+        ListTag tanks = blockTag.getList(TAG_TANK_INV, TAG_COMPOUND);
         if (tanks.isEmpty()) {
-            CompoundNBT tag = new CompoundNBT();
+            CompoundTag tag = new CompoundTag();
             tag.putByte(TAG_TANK, (byte) 0);
             new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).write(tag);
             tanks.add(tag);
@@ -92,14 +92,14 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     @Override
     public FluidStack getFluid(ItemStack container) {
 
-        CompoundNBT tag = getOrCreateTankTag(container);
+        CompoundTag tag = getOrCreateTankTag(container);
         return FluidStack.loadFluidStackFromNBT(tag);
     }
 
     @Override
     public int getCapacity(ItemStack container) {
 
-        CompoundNBT tag = getOrCreateTankTag(container);
+        CompoundTag tag = getOrCreateTankTag(container);
         if (tag == null) {
             return 0;
         }
@@ -111,7 +111,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     @Override
     public int fill(ItemStack container, FluidStack resource, FluidAction action) {
 
-        CompoundNBT containerTag = getOrCreateTankTag(container);
+        CompoundTag containerTag = getOrCreateTankTag(container);
         if (resource.isEmpty() || !isFluidValid(container, resource)) {
             return 0;
         }
@@ -131,7 +131,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     @Override
     public FluidStack drain(ItemStack container, int maxDrain, FluidAction action) {
 
-        CompoundNBT containerTag = getOrCreateTankTag(container);
+        CompoundTag containerTag = getOrCreateTankTag(container);
         FluidStorageCoFH tank = new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).setCapacity(getCapacity(container)).read(containerTag);
         if (isCreative(container, FLUID)) {
             return new FluidStack(tank.getFluidStack(), maxDrain);
@@ -146,9 +146,9 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     @Override
     public void updateAugmentState(ItemStack container, List<ItemStack> augments) {
 
-        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundNBT());
+        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundTag());
         for (ItemStack augment : augments) {
-            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(augment);
+            CompoundTag augmentData = AugmentDataHelper.getAugmentData(augment);
             if (augmentData == null) {
                 continue;
             }

@@ -4,11 +4,11 @@ import cofh.core.client.renderer.model.ModelUtils;
 import cofh.core.client.renderer.model.ModelUtils.FluidCacheWrapper;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.BakedModelWrapper;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
@@ -21,7 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class UnderlayBakedModel extends BakedModelWrapper<IBakedModel> implements IDynamicBakedModel {
+public class UnderlayBakedModel extends BakedModelWrapper<BakedModel> implements IDynamicBakedModel {
 
     private static final IdentityHashMap<FluidCacheWrapper, BakedQuad[]> FLUID_QUAD_CACHE = new IdentityHashMap<>();
     private static final IdentityHashMap<BlockState, BakedQuad[]> UNDERLAY_QUAD_CACHE = new IdentityHashMap<>();
@@ -34,7 +34,7 @@ public class UnderlayBakedModel extends BakedModelWrapper<IBakedModel> implement
 
     protected int underlayQuadLevel = 0;
 
-    public UnderlayBakedModel(IBakedModel originalModel) {
+    public UnderlayBakedModel(BakedModel originalModel) {
 
         super(originalModel);
     }

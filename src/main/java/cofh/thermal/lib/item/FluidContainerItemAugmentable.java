@@ -3,9 +3,9 @@ package cofh.thermal.lib.item;
 import cofh.core.item.FluidContainerItem;
 import cofh.lib.item.IAugmentableItem;
 import cofh.lib.util.helpers.AugmentDataHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
@@ -59,9 +59,9 @@ public class FluidContainerItemAugmentable extends FluidContainerItem implements
         return getPropertyWithDefault(stack, TAG_AUGMENT_BASE_MOD, 1.0F);
     }
 
-    protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(ItemStack container, CompoundTag augmentData) {
 
-        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
+        CompoundTag subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -70,12 +70,12 @@ public class FluidContainerItemAugmentable extends FluidContainerItem implements
         setAttributeFromAugmentMax(subTag, augmentData, TAG_AUGMENT_FLUID_CREATIVE);
     }
 
-    protected int getEffectAmplifier(EffectInstance effect, ItemStack stack) {
+    protected int getEffectAmplifier(MobEffectInstance effect, ItemStack stack) {
 
         return Math.min(MAX_POTION_AMPLIFIER, Math.round(effect.getAmplifier() + getPotionAmplifierMod(stack)));
     }
 
-    protected int getEffectDuration(EffectInstance effect, ItemStack stack) {
+    protected int getEffectDuration(MobEffectInstance effect, ItemStack stack) {
 
         return Math.min(MAX_POTION_DURATION, Math.round(effect.getDuration() * getPotionDurationMod(stack)));
     }
@@ -116,9 +116,9 @@ public class FluidContainerItemAugmentable extends FluidContainerItem implements
     @Override
     public void updateAugmentState(ItemStack container, List<ItemStack> augments) {
 
-        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundNBT());
+        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundTag());
         for (ItemStack augment : augments) {
-            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(augment);
+            CompoundTag augmentData = AugmentDataHelper.getAugmentData(augment);
             if (augmentData == null) {
                 continue;
             }

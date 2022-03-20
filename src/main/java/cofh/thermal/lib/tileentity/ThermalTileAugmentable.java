@@ -28,38 +28,38 @@ import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.init.TCoreSounds;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -79,9 +79,9 @@ import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.lib.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.ItemHelper.consumeItem;
 import static cofh.lib.util.references.CoreReferences.HOLDING;
-import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
+import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
-public abstract class ThermalTileAugmentable extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, INamedContainerProvider, IFilterableTile {
+public abstract class ThermalTileAugmentable extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, MenuProvider, IFilterableTile {
 
     protected static final int BASE_ENERGY = 50000;
     protected static final int BASE_PROCESS_TICK = 20;
@@ -97,14 +97,14 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     protected RedstoneControlModule redstoneControl = new RedstoneControlModule(this);
 
     protected List<ItemStorageCoFH> augments = Collections.emptyList();
-    protected ListNBT enchantments = new ListNBT();
+    protected ListTag enchantments = new ListTag();
 
     public boolean isActive;
     protected FluidStack renderFluid = FluidStack.EMPTY;
 
-    public ThermalTileAugmentable(TileEntityType<?> tileEntityTypeIn) {
+    public ThermalTileAugmentable(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
+        super(tileEntityTypeIn, pos, state);
         redstoneControl.setEnabled(() -> redstoneControlFeature);
     }
 
@@ -195,7 +195,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void onPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void onPlacedBy(Level worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
 
         super.onPlacedBy(worldIn, pos, state, placer, stack);
 
@@ -210,11 +210,11 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState) {
+    public void onReplaced(BlockState state, Level worldIn, BlockPos pos, BlockState newState) {
 
         if (!keepItems()) {
             for (int i = 0; i < invSize() - augSize(); ++i) {
-                InventoryHelper.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+                Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
         if (!ThermalConfig.keepAugments.get()) {
@@ -223,14 +223,14 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
             }
         }
         if (xpStorage.getStored() > 0) {
-            spawnXpOrbs(level, xpStorage.getStored(), Vector3d.atBottomCenterOf(pos));
+            spawnXpOrbs(level, xpStorage.getStored(), Vec3.atBottomCenterOf(pos));
         }
     }
 
     @Override
     public ItemStack createItemStackTag(ItemStack stack) {
 
-        CompoundNBT nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
+        CompoundTag nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         if (keepEnergy()) {
             getEnergyStorage().writeWithParams(nbt);
         }
@@ -271,20 +271,20 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public boolean onActivatedDelegate(World world, BlockPos pos, BlockState state, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+    public boolean onActivatedDelegate(Level world, BlockPos pos, BlockState state, Player player, InteractionHand hand, BlockHitResult result) {
 
         if (player.isSecondaryUseActive()) {
-            return openFilterGui((ServerPlayerEntity) player);
+            return openFilterGui((ServerPlayer) player);
         }
         ItemStack stack = player.getItemInHand(hand);
         if (augValidator().test(stack)) {
             if (attemptAugmentInstall(stack)) {
-                if (!player.abilities.instabuild) {
+                if (!player.getAbilities().instabuild) {
                     player.setItemInHand(hand, consumeItem(stack, 1));
                 }
-                player.level.playSound(null, player.blockPosition(), TCoreSounds.SOUND_TINKER, SoundCategory.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
+                player.level.playSound(null, player.blockPosition(), TCoreSounds.SOUND_TINKER, SoundSource.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
             } else {
-                player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.1F, 0.25F);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundSource.PLAYERS, 0.1F, 0.25F);
             }
             return true;
         }
@@ -410,7 +410,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // CONTROL
     @Override
-    public PacketBuffer getControlPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getControlPacket(FriendlyByteBuf buffer) {
 
         super.getControlPacket(buffer);
 
@@ -423,7 +423,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void handleControlPacket(PacketBuffer buffer) {
+    public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
 
@@ -435,7 +435,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // GUI
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -452,7 +452,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -469,7 +469,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // REDSTONE
     @Override
-    public PacketBuffer getRedstonePacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getRedstonePacket(FriendlyByteBuf buffer) {
 
         super.getRedstonePacket(buffer);
 
@@ -479,7 +479,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void handleRedstonePacket(PacketBuffer buffer) {
+    public void handleRedstonePacket(FriendlyByteBuf buffer) {
 
         super.handleRedstonePacket(buffer);
 
@@ -488,7 +488,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // STATE
     @Override
-    public PacketBuffer getStatePacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getStatePacket(FriendlyByteBuf buffer) {
 
         super.getStatePacket(buffer);
 
@@ -499,7 +499,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void handleStatePacket(PacketBuffer buffer) {
+    public void handleStatePacket(FriendlyByteBuf buffer) {
 
         super.handleStatePacket(buffer);
 
@@ -516,9 +516,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         isActive = nbt.getBoolean(TAG_ACTIVE);
 
@@ -543,9 +543,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putBoolean(TAG_ACTIVE, isActive);
 
@@ -561,9 +561,8 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         redstoneControl.write(nbt);
 
         if (!renderFluid.isEmpty()) {
-            nbt.put(TAG_RENDER_FLUID, renderFluid.writeToNBT(new CompoundNBT()));
+            nbt.put(TAG_RENDER_FLUID, renderFluid.writeToNBT(new CompoundTag()));
         }
-        return nbt;
     }
     // endregion
 
@@ -576,7 +575,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     // protected boolean creativeSlots = false;
 
     // This is CLEARED after augments are finalized.
-    protected CompoundNBT augmentNBT;
+    protected CompoundTag augmentNBT;
 
     protected final boolean attemptAugmentInstall(ItemStack stack) {
 
@@ -612,7 +611,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         resetAttributes();
         for (ItemStorageCoFH slot : augments) {
             ItemStack augment = slot.getItemStack();
-            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(augment);
+            CompoundTag augmentData = AugmentDataHelper.getAugmentData(augment);
             if (augmentData == null) {
                 continue;
             }
@@ -634,7 +633,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     protected void resetAttributes() {
 
-        augmentNBT = new CompoundNBT();
+        augmentNBT = new CompoundTag();
 
         redstoneControlFeature = defaultRedstoneControlState();
         xpStorageFeature = defaultXpStorageState();
@@ -644,7 +643,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         // creativeSlots = false;
     }
 
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         redstoneControlFeature |= getAttributeMod(augmentData, TAG_AUGMENT_FEATURE_RS_CONTROL) > 0;
         xpStorageFeature |= getAttributeMod(augmentData, TAG_AUGMENT_FEATURE_XP_STORAGE) > 0;
@@ -687,10 +686,10 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         int storedXp = xpStorage.getStored();
         xpStorage.applyModifiers(xpStorageMod * (xpStorageFeature ? 1 : 0));
         if (storedXp > 0 && xpStorage.getStored() < storedXp) {
-            spawnXpOrbs(level, storedXp - xpStorage.getStored(), Vector3d.atBottomCenterOf(worldPosition));
+            spawnXpOrbs(level, storedXp - xpStorage.getStored(), Vec3.atBottomCenterOf(worldPosition));
         }
 
-        CompoundNBT filterNBT = filter.write(new CompoundNBT());
+        CompoundTag filterNBT = filter.write(new CompoundTag());
         filter = FilterRegistry.getTileFilter(getAttributeModString(augmentNBT, TAG_FILTER_TYPE), this, filterNBT);
     }
 
@@ -808,7 +807,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public boolean openGui(ServerPlayerEntity player) {
+    public boolean openGui(ServerPlayer player) {
 
         if (canOpenGui()) {
             NetworkHooks.openGui(player, this, worldPosition);
@@ -818,7 +817,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public boolean openFilterGui(ServerPlayerEntity player) {
+    public boolean openFilterGui(ServerPlayer player) {
 
         if (FilterHelper.hasFilter(this)) {
             NetworkHooks.openGui(player, getFilter(), worldPosition);
@@ -830,9 +829,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // region INamedContainerProvider
     @Override
-    public ITextComponent getDisplayName() {
+    public Component getDisplayName() {
 
-        return new TranslationTextComponent(this.getBlockState().getBlock().getDescriptionId());
+        return new TranslatableComponent(this.getBlockState().getBlock().getDescriptionId());
     }
     // endregion
 
@@ -866,7 +865,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // region IConveyableData
     @Override
-    public void readConveyableData(PlayerEntity player, CompoundNBT tag) {
+    public void readConveyableData(Player player, CompoundTag tag) {
 
         redstoneControl.readSettings(tag);
 
@@ -874,7 +873,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public void writeConveyableData(PlayerEntity player, CompoundNBT tag) {
+    public void writeConveyableData(Player player, CompoundTag tag) {
 
         redstoneControl.writeSettings(tag);
     }

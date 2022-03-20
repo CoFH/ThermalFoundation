@@ -5,10 +5,10 @@ import cofh.core.client.gui.element.SimpleTooltip;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.generatePanelInfo;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -21,7 +21,7 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
 
     public static final String TEX_TRASH = ID_THERMAL + ":textures/gui/container/nullifier_empty_bin.png";
 
-    public DeviceNullifierScreen(DeviceNullifierContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public DeviceNullifierScreen(DeviceNullifierContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_nullifier"));
         texture = TEXTURE;
@@ -45,7 +45,7 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
         }
                 .setSize(20, 20)
                 .setTexture(TEX_TRASH, 60, 20)
-                .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.device_nullifier_empty_bin")))
+                .setTooltipFactory(new SimpleTooltip(new TranslatableComponent("info.thermal.device_nullifier_empty_bin")))
                 .setEnabled(() -> !menu.tile.binHasItems()));
     }
 

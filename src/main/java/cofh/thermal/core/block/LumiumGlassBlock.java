@@ -1,15 +1,15 @@
 package cofh.thermal.core.block;
 
 import cofh.lib.block.impl.HardenedGlassBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import static cofh.lib.util.constants.Constants.FULL_CUBE_COLLISION;
 
@@ -23,17 +23,16 @@ public class LumiumGlassBlock extends HardenedGlassBlock {
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 
         return FULL_CUBE_COLLISION;
     }
 
     @Override
-    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
 
-        if (entityIn instanceof LivingEntity) {
-            LivingEntity mob = (LivingEntity) entityIn;
-            if (mob.getMobType() == CreatureAttribute.UNDEAD) {
+        if (entityIn instanceof LivingEntity mob) {
+            if (mob.getMobType() == MobType.UNDEAD) {
                 mob.setSecondsOnFire(duration);
             }
         }

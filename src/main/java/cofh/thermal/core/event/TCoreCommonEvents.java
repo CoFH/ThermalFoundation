@@ -5,12 +5,12 @@ import cofh.lib.util.filter.IFilterOptions;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.item.DivingArmorItem;
 import cofh.thermal.core.item.SatchelItem;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -30,18 +30,18 @@ public class TCoreCommonEvents {
         if (event.isCanceled()) {
             return;
         }
-        PlayerEntity player = event.getPlayer();
+        Player player = event.getPlayer();
         if (player.isEyeInFluid(FluidTags.WATER)) {
-            boolean diveChest = player.getItemBySlot(EquipmentSlotType.CHEST).getItem() instanceof DivingArmorItem;
+            boolean diveChest = player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof DivingArmorItem;
             if (!EnchantmentHelper.hasAquaAffinity(player) && diveChest) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
-            boolean diveLegs = player.getItemBySlot(EquipmentSlotType.LEGS).getItem() instanceof DivingArmorItem;
+            boolean diveLegs = player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof DivingArmorItem;
             if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, AIR_AFFINITY) <= 0)) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
         } else if (player.isInWater()) {
-            boolean diveLegs = player.getItemBySlot(EquipmentSlotType.LEGS).getItem() instanceof DivingArmorItem;
+            boolean diveLegs = player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof DivingArmorItem;
             if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, AIR_AFFINITY) <= 0)) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
@@ -54,12 +54,12 @@ public class TCoreCommonEvents {
         if (event.isCanceled()) {
             return;
         }
-        PlayerEntity player = event.getPlayer();
+        Player player = event.getPlayer();
         if (player.containerMenu instanceof SatchelContainer || player.containerMenu instanceof IFilterOptions) {
             return;
         }
-        PlayerInventory inventory = player.inventory;
-        final boolean[] cancel = {false};
+        Inventory inventory = player.getInventory();
+        final boolean[] cancel = { false };
         for (int i = 0; i < inventory.getContainerSize(); ++i) {
             ItemStack stack = inventory.getItem(i);
             if (stack.getItem() instanceof SatchelItem) {

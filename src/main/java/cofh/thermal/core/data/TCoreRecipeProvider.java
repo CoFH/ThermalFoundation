@@ -4,15 +4,15 @@ import cofh.lib.data.RecipeProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.lib.util.references.ItemTagsCoFH;
 import cofh.thermal.lib.common.ThermalFlags;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.data.ShapelessRecipeBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -37,7 +37,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
     }
 
     @Override
-    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -130,7 +130,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
     }
 
     // region HELPERS
-    private void generateAlloyRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateAlloyRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -311,7 +311,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, ID_THERMAL + ":fire_charge/enderium_glass_2");
     }
 
-    private void generateArmorRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateArmorRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
         String folder = "armor";
@@ -464,7 +464,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(FLAG_HAZMAT_ARMOR), this.modid + ":" + folder + "/" + name(result));
     }
 
-    private void generateAugmentRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateAugmentRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
         String folder = "augments";
@@ -736,7 +736,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag("xp_storage_augment"), this.modid + ":" + folder + "/" + name(result));
     }
 
-    private void generateBasicRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateBasicRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
         String folder = "tools";
@@ -909,7 +909,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, ID_THERMAL + ":rubber_from_vine");
     }
 
-    private void generateChargeRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateChargeRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -1041,7 +1041,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         // endregion
     }
 
-    private void generateComponentRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateComponentRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -1122,7 +1122,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         //                .save(withConditions(consumer).flag(ID_ITEM_CELL_FRAME));
     }
 
-    private void generateExplosiveRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateExplosiveRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -1316,7 +1316,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES));
     }
 
-    private void generateRockwoolRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateRockwoolRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -1454,7 +1454,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, recipeId);
     }
 
-    private void generateSlagRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateSlagRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -1482,7 +1482,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateStonecuttingRecipe(reg, consumer, reg.get(ID_POLISHED_RICH_SLAG), reg.get(ID_CHISELED_RICH_SLAG), "stonecutting");
     }
 
-    private void generateTileRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateTileRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 

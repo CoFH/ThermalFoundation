@@ -4,10 +4,10 @@ import cofh.core.client.gui.element.ElementEnergyStorage;
 import cofh.lib.inventory.container.ContainerCoFH;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.entity.player.Inventory;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class DynamoScreenBase<T extends ContainerCoFH> extends ThermalTileScreen
 
     protected DynamoTileBase tile;
 
-    public DynamoScreenBase(T container, PlayerInventory inv, DynamoTileBase tile, ITextComponent titleIn) {
+    public DynamoScreenBase(T container, Inventory inv, DynamoTileBase tile, Component titleIn) {
 
         super(container, inv, tile, titleIn);
         this.tile = tile;
@@ -35,10 +35,10 @@ public class DynamoScreenBase<T extends ContainerCoFH> extends ThermalTileScreen
             ElementEnergyStorage throttle = (ElementEnergyStorage) new ElementEnergyStorage(this, 125, 22, tile.getEnergyStorage()) {
 
                 @Override
-                public void addTooltip(List<ITextComponent> tooltipList, int mouseX, int mouseY) {
+                public void addTooltip(List<Component> tooltipList, int mouseX, int mouseY) {
 
-                    tooltipList.add(new TranslationTextComponent("info.cofh.output")
-                            .append(new StringTextComponent(": " + DF0.format(100 * (double) tile.getCurSpeed() / tile.getMaxSpeed()) + "%")));
+                    tooltipList.add(new TranslatableComponent("info.cofh.output")
+                            .append(new TextComponent(": " + DF0.format(100 * (double) tile.getCurSpeed() / tile.getMaxSpeed()) + "%")));
                 }
             }
                     .setSize(16, 42)

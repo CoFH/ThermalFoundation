@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.jei;
 
 import cofh.core.util.helpers.FluidHelper;
@@ -129,3 +130,4 @@ public class TCoreJeiPlugin implements IModPlugin {
     }
     // endregion
 }
+*/

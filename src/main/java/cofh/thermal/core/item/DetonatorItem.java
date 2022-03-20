@@ -5,22 +5,27 @@ import cofh.core.util.ProxyUtils;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.item.IMultiModeItem;
 import cofh.lib.util.Utils;
-import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.nbt.NBTUtil;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nullable;
 import java.util.IdentityHashMap;
@@ -29,14 +34,14 @@ import java.util.Map;
 
 import static cofh.lib.util.constants.NBTTags.TAG_PRIMED;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
+import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
 public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
 
-    protected static final Map<Block, ITNTFactory<? extends TNTEntity>> TNT_MAP = new IdentityHashMap<>();
+    protected static final Map<Block, ITNTFactory<? extends PrimedTnt>> TNT_MAP = new IdentityHashMap<>();
     protected static final int MAX_PRIMED = 16;
 
-    public static void registerTNT(Block block, ITNTFactory<? extends TNTEntity> factory) {
+    public static void registerTNT(Block block, ITNTFactory<? extends PrimedTnt> factory) {
 
         if (block == null) {
             return;
@@ -47,24 +52,24 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
     public DetonatorItem(Properties builder) {
 
         super(builder);
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("primed"), (stack, world, living) -> (getMode(stack) == 0 && getPrimedCount(stack) > 0 ? 1.0F : 0.0F));
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("armed"), (stack, world, living) -> (getMode(stack) == 1 && getPrimedCount(stack) > 0 ? 1.0F : 0.0F));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("primed"), (stack, world, living, seed) -> (getMode(stack) == 0 && getPrimedCount(stack) > 0 ? 1.0F : 0.0F));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("armed"), (stack, world, living, seed) -> (getMode(stack) == 1 && getPrimedCount(stack) > 0 ? 1.0F : 0.0F));
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.detonator.use." + getMode(stack)).withStyle(TextFormatting.GRAY));
-        tooltip.add(getTextComponent("info.thermal.detonator.primed").withStyle(TextFormatting.GRAY).append(getTextComponent(" " + getPrimedCount(stack) + "/" + MAX_PRIMED).withStyle(getPrimedCount(stack) <= 0 ? TextFormatting.RED : getMode(stack) == 0 ? TextFormatting.YELLOW : TextFormatting.GREEN)));
-        tooltip.add(getTextComponent("info.thermal.detonator.use.sneak").withStyle(TextFormatting.DARK_GRAY));
+        tooltip.add(getTextComponent("info.thermal.detonator.use." + getMode(stack)).withStyle(ChatFormatting.GRAY));
+        tooltip.add(getTextComponent("info.thermal.detonator.primed").withStyle(ChatFormatting.GRAY).append(getTextComponent(" " + getPrimedCount(stack) + "/" + MAX_PRIMED).withStyle(getPrimedCount(stack) <= 0 ? ChatFormatting.RED : getMode(stack) == 0 ? ChatFormatting.YELLOW : ChatFormatting.GREEN)));
+        tooltip.add(getTextComponent("info.thermal.detonator.use.sneak").withStyle(ChatFormatting.DARK_GRAY));
 
-        tooltip.add(getTextComponent("info.thermal.detonator.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.detonator.mode." + getMode(stack)).withStyle(ChatFormatting.ITALIC));
         if (getPrimedCount(stack) > 0) {
             addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
         }
     }
 
-    protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
+    protected boolean useDelegate(ItemStack stack, UseOnContext context) {
 
         if (getMode(stack) == 0) {
             return primeTNT(stack, context.getLevel(), context.getClickedPos(), context.getPlayer());
@@ -72,14 +77,14 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         return detonateTNT(stack, context.getLevel(), context.getPlayer());
     }
 
-    protected boolean primeTNT(ItemStack stack, World world, BlockPos pos, PlayerEntity player) {
+    protected boolean primeTNT(ItemStack stack, Level world, BlockPos pos, Player player) {
 
         if (player == null || world.isEmptyBlock(pos)) {
             return false;
         }
         if (TNT_MAP.containsKey(world.getBlockState(pos).getBlock())) {
-            ListNBT primedTNT = stack.getOrCreateTag().getList(TAG_PRIMED, TAG_COMPOUND);
-            CompoundNBT tntPos = NBTUtil.writeBlockPos(pos);
+            ListTag primedTNT = stack.getOrCreateTag().getList(TAG_PRIMED, TAG_COMPOUND);
+            CompoundTag tntPos = NbtUtils.writeBlockPos(pos);
             if (primedTNT.size() >= MAX_PRIMED || primedTNT.contains(tntPos)) {
                 return false;
             }
@@ -90,15 +95,15 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         return false;
     }
 
-    protected boolean detonateTNT(ItemStack stack, World world, PlayerEntity player) {
+    protected boolean detonateTNT(ItemStack stack, Level world, Player player) {
 
         if (player == null) {
             return false;
         }
         if (Utils.isServerWorld(world)) {
-            ListNBT primedTNT = stack.getOrCreateTag().getList(TAG_PRIMED, TAG_COMPOUND);
+            ListTag primedTNT = stack.getOrCreateTag().getList(TAG_PRIMED, TAG_COMPOUND);
             for (int i = 0; i < primedTNT.size(); ++i) {
-                BlockPos tntPos = NBTUtil.readBlockPos(primedTNT.getCompound(i));
+                BlockPos tntPos = NbtUtils.readBlockPos(primedTNT.getCompound(i));
                 attemptDetonate(world, tntPos, player, 0);
             }
             stack.removeTagKey(TAG_PRIMED);
@@ -107,7 +112,7 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         return true;
     }
 
-    protected void attemptDetonate(World world, BlockPos pos, PlayerEntity player, int fuse) {
+    protected void attemptDetonate(Level world, BlockPos pos, Player player, int fuse) {
 
         if (!world.isLoaded(pos)) {
             return;
@@ -115,10 +120,10 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         Block block = world.getBlockState(pos).getBlock();
         if (TNT_MAP.containsKey(block)) {
             world.removeBlock(pos, false);
-            TNTEntity tnt = TNT_MAP.get(block).createTNT(world, pos.getX(), pos.getY(), pos.getZ(), player);
+            PrimedTnt tnt = TNT_MAP.get(block).createTNT(world, pos.getX(), pos.getY(), pos.getZ(), player);
             tnt.setFuse(fuse);
             world.addFreshEntity(tnt);
-            world.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
         }
     }
 
@@ -127,45 +132,45 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         if (!stack.hasTag()) {
             return 0;
         }
-        ListNBT primedTNT = stack.getTag().getList(TAG_PRIMED, TAG_COMPOUND);
+        ListTag primedTNT = stack.getTag().getList(TAG_PRIMED, TAG_COMPOUND);
         return primedTNT.size();
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext context) {
+    public InteractionResult useOn(UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player == null) {
-            return ActionResultType.FAIL;
+            return InteractionResult.FAIL;
         }
-        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? InteractionResult.SUCCESS : InteractionResult.FAIL;
     }
 
     @Override
-    public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
+    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player == null) {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         }
-        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }
 
     @Override
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
 
         ItemStack stack = player.getItemInHand(hand);
         if (player.isSecondaryUseActive()) {
             stack.removeTagKey(TAG_PRIMED);
             player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, 0.3F);
-            return ActionResult.success(stack);
+            return InteractionResultHolder.success(stack);
         }
         if (getMode(stack) == 1 && detonateTNT(stack, world, player)) {
             player.swing(hand);
             player.playSound(SoundEvents.LEVER_CLICK, 0.4F, 1.0F);
-            return ActionResult.success(stack);
+            return InteractionResultHolder.success(stack);
         }
-        return ActionResult.pass(stack);
+        return InteractionResultHolder.pass(stack);
     }
 
     // region IMultiModeItem
@@ -176,17 +181,17 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
     }
 
     @Override
-    public void onModeChange(PlayerEntity player, ItemStack stack) {
+    public void onModeChange(Player player, ItemStack stack) {
 
-        player.level.playSound(null, player.blockPosition(), SoundEvents.LEVER_CLICK, SoundCategory.PLAYERS, 0.4F, 1.0F - 0.3F * getMode(stack));
-        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.detonator.mode." + getMode(stack)));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.LEVER_CLICK, SoundSource.PLAYERS, 0.4F, 1.0F - 0.3F * getMode(stack));
+        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.thermal.detonator.mode." + getMode(stack)));
     }
     // endregion
 
     // region FACTORY
-    public interface ITNTFactory<T extends TNTEntity> {
+    public interface ITNTFactory<T extends PrimedTnt> {
 
-        T createTNT(World world, double x, double y, double z, LivingEntity igniter);
+        T createTNT(Level world, double x, double y, double z, LivingEntity igniter);
 
     }
     // endregion

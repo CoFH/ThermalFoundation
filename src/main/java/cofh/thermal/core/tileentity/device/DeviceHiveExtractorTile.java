@@ -6,14 +6,14 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.device.DeviceHiveExtractorContainer;
 import cofh.thermal.core.util.managers.device.HiveExtractorManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.block.BeehiveBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.BeehiveTileEntity;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.BeehiveBlock;
+import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -37,9 +37,9 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_MEDIUM);
 
-    public DeviceHiveExtractorTile() {
+    public DeviceHiveExtractorTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_HIVE_EXTRACTOR_TILE);
+        super(DEVICE_HIVE_EXTRACTOR_TILE, pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
 
@@ -71,7 +71,7 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
             return;
         }
         BlockState hive = level.getBlockState(above);
-        if (hive.hasProperty(BeehiveBlock.HONEY_LEVEL) && BeehiveTileEntity.getHoneyLevel(hive) >= 5) {
+        if (hive.hasProperty(BeehiveBlock.HONEY_LEVEL) && BeehiveBlockEntity.getHoneyLevel(hive) >= 5) {
             ItemStack comb = HiveExtractorManager.instance().getItem(hive);
             FluidStack honey = HiveExtractorManager.instance().getFluid(hive);
 
@@ -84,7 +84,7 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceHiveExtractorContainer(i, level, worldPosition, inventory, player);
     }

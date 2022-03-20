@@ -1,6 +1,5 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.tileentity.TileCoFH;
 import cofh.core.util.control.IReconfigurableTile;
 import cofh.core.util.control.ITransferControllableTile;
 import cofh.core.util.control.ReconfigControlModule;
@@ -10,18 +9,17 @@ import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
@@ -51,26 +49,20 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     protected ReconfigControlModule reconfigControl = new ReconfigControlModule(this);
     protected TransferControlModule transferControl = new TransferControlModule(this);
 
-    public ReconfigurableTile4Way(TileEntityType<?> tileEntityTypeIn) {
+    public ReconfigurableTile4Way(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
+        super(tileEntityTypeIn, pos, state);
         reconfigControl.setEnabled(() -> reconfigControlFeature);
         transferControl.setEnabled(() -> reconfigControlFeature);
-    }
-
-    @Override
-    public TileCoFH worldContext(BlockState state, IBlockReader world) {
 
         reconfigControl.setFacing(state.getValue(FACING_HORIZONTAL));
         updateHandlers();
-
-        return this;
     }
 
     @Override
-    public void clearCache() {
+    public void setBlockState(BlockState state) {
 
-        super.clearCache();
+        super.setBlockState(state);
         updateSideCache();
     }
 
@@ -236,7 +228,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     // region NETWORK
     @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
 
         super.onDataPacket(net, pkt);
 
@@ -245,7 +237,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     // CONTROL
     @Override
-    public PacketBuffer getControlPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getControlPacket(FriendlyByteBuf buffer) {
 
         super.getControlPacket(buffer);
 
@@ -256,7 +248,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     }
 
     @Override
-    public void handleControlPacket(PacketBuffer buffer) {
+    public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
 
@@ -268,7 +260,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     // STATE
     @Override
-    public void handleStatePacket(PacketBuffer buffer) {
+    public void handleStatePacket(FriendlyByteBuf buffer) {
 
         super.handleStatePacket(buffer);
 
@@ -278,9 +270,9 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         reconfigControl.setFacing(Direction.from3DDataValue(nbt.getByte(TAG_FACING)));
         reconfigControl.read(nbt);
@@ -293,9 +285,9 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putByte(TAG_FACING, (byte) reconfigControl.getFacing().get3DDataValue());
         reconfigControl.write(nbt);
@@ -303,8 +295,6 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
         nbt.putInt(TAG_TRACK_IN, inputTracker);
         nbt.putInt(TAG_TRACK_OUT, outputTracker);
-
-        return nbt;
     }
     // endregion
 
@@ -320,7 +310,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 
@@ -452,7 +442,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     // region IConveyableData
     @Override
-    public void readConveyableData(PlayerEntity player, CompoundNBT tag) {
+    public void readConveyableData(Player player, CompoundTag tag) {
 
         reconfigControl.readSettings(tag);
         transferControl.readSettings(tag);
@@ -461,7 +451,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     }
 
     @Override
-    public void writeConveyableData(PlayerEntity player, CompoundNBT tag) {
+    public void writeConveyableData(Player player, CompoundTag tag) {
 
         reconfigControl.writeSettings(tag);
         transferControl.writeSettings(tag);

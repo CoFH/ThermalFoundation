@@ -1,24 +1,15 @@
 package cofh.thermal.core.fluid;
 
 import cofh.lib.fluid.FluidCoFH;
-import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.common.ThermalItemGroups;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-
-import java.util.function.Supplier;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -50,7 +41,7 @@ public class RedstoneFluid extends FluidCoFH {
         ).bucket(bucket);//.block(block);
     }
 
-    public static class RedstoneFluidBlock extends FlowingFluidBlock {
+/*    public static class RedstoneFluidBlock extends FlowingFluidBlock {
 
         public RedstoneFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
 
@@ -69,6 +60,6 @@ public class RedstoneFluid extends FluidCoFH {
             return signal ? MathHelper.clamp(blockState.getValue(LEVEL) * 2 - 1, 1, 15) : 0;
         }
 
-    }
+    }*/
 
 }

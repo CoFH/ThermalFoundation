@@ -3,19 +3,21 @@ package cofh.thermal.core.tileentity.storage;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
 import cofh.lib.energy.EnergyStorageAdjustable;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
@@ -30,15 +32,15 @@ import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
-public class EnergyCellTile extends CellTileBase implements ITickableTileEntity {
+public class EnergyCellTile extends CellTileBase implements ICoFHTickableTile.IServerTickable {
 
     public static final int BASE_CAPACITY = 1000000;
     public static final int BASE_RECV = 1000;
     public static final int BASE_SEND = 1000;
 
-    public EnergyCellTile() {
+    public EnergyCellTile(BlockPos pos, BlockState state) {
 
-        super(ENERGY_CELL_TILE);
+        super(ENERGY_CELL_TILE, pos, state);
 
         energyStorage = new EnergyStorageAdjustable(BASE_CAPACITY, BASE_RECV, BASE_SEND).setTransferLimits(() -> amountInput, () -> amountOutput);
 
@@ -60,7 +62,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
     //    }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         if (redstoneControl.getState()) {
             transferOut();
@@ -123,7 +125,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
 
     protected void attemptTransferIn(Direction side) {
 
-        TileEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
+        BlockEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountInput, energyStorage.getSpace());
@@ -138,7 +140,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
 
     protected void attemptTransferOut(Direction side) {
 
-        TileEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
+        BlockEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountOutput, energyStorage.getEnergyStored());
@@ -167,7 +169,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new EnergyCellContainer(i, level, worldPosition, inventory, player);
     }
@@ -246,16 +248,12 @@ public class EnergyCellTile extends CellTileBase implements ITickableTileEntity 
         if (side == null) {
             return super.getEnergyCapability(side);
         }
-        switch (reconfigControl.getSideConfig(side)) {
-            case SIDE_NONE:
-                return LazyOptional.empty();
-            case SIDE_INPUT:
-                return inputEnergyCap.cast();
-            case SIDE_OUTPUT:
-                return outputEnergyCap.cast();
-            default:
-                return super.getEnergyCapability(side);
-        }
+        return switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE -> LazyOptional.empty();
+            case SIDE_INPUT -> inputEnergyCap.cast();
+            case SIDE_OUTPUT -> outputEnergyCap.cast();
+            default -> super.getEnergyCapability(side);
+        };
     }
     // endregion
 }

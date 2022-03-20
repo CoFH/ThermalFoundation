@@ -1,31 +1,31 @@
 package cofh.thermal.core.entity.projectile;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileHelper;
-import net.minecraft.network.IPacket;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 
-public abstract class ElementalProjectileEntity extends DamagingProjectileEntity {
+public abstract class ElementalProjectileEntity extends AbstractHurtingProjectile {
 
-    public ElementalProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
+    public ElementalProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public ElementalProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, LivingEntity shooter, double accelX, double accelY, double accelZ, World world) {
+    public ElementalProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(type, shooter, accelX, accelY, accelZ, world);
     }
 
-    public ElementalProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, double x, double y, double z, double accelX, double accelY, double accelZ, World world) {
+    public ElementalProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(type, x, y, z, accelX, accelY, accelZ, world);
     }
@@ -34,27 +34,27 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
     public void tick() {
 
         Entity owner = getOwner();
-        if (level.isClientSide || (owner == null || !owner.removed) && level.hasChunkAt(blockPosition())) {
+        if (level.isClientSide || (owner == null || !owner.isRemoved()) && level.hasChunkAt(blockPosition())) {
             if (!leftOwner) {
                 leftOwner = checkLeftOwner();
             }
             if (!level.isClientSide) {
-                setSharedFlag(6, isGlowing());
+                setSharedFlag(6, isCurrentlyGlowing());
             }
             baseTick();
             if (shouldBurn()) {
                 setSecondsOnFire(1);
             }
 
-            RayTraceResult entityResult = ProjectileHelper.getHitResult(this, this::canHitEntity);
-            if (entityResult.getType() != RayTraceResult.Type.MISS && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, entityResult)) {
+            HitResult entityResult = ProjectileUtil.getHitResult(this, this::canHitEntity);
+            if (entityResult.getType() != HitResult.Type.MISS && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, entityResult)) {
                 onHit(entityResult);
             }
 
             checkInsideBlocks();
-            Vector3d velocity = getDeltaMovement();
-            Vector3d pos = position();
-            ProjectileHelper.rotateTowardsMovement(this, 0.2F);
+            Vec3 velocity = getDeltaMovement();
+            Vec3 pos = position();
+            ProjectileUtil.rotateTowardsMovement(this, 0.2F);
             float resistance = getInertia();
             if (isInWater()) {
                 for (int i = 0; i < 4; ++i) {
@@ -67,7 +67,7 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
             setDeltaMovement(velocity.add(xPower, yPower, zPower).scale(resistance));
             setPos(pos.x + velocity.x, pos.y + velocity.y, pos.z + velocity.z);
         } else {
-            remove();
+            discard();
         }
 
     }
@@ -89,7 +89,7 @@ public abstract class ElementalProjectileEntity extends DamagingProjectileEntity
     }
 
     @Override
-    public IPacket<?> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }

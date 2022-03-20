@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.crt.actions;
 
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
@@ -79,3 +80,4 @@ public class ActionRemoveThermalRecipeByOutput extends ActionRecipeBase {
     }
 
 }
+*/

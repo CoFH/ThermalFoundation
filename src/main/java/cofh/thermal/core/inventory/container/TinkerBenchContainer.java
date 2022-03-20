@@ -7,14 +7,14 @@ import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperItem;
 import cofh.lib.util.helpers.AugmentableHelper;
 import cofh.thermal.core.tileentity.TinkerBenchTile;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class TinkerBenchContainer extends TileContainer {
         }
     };
 
-    public TinkerBenchContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+    public TinkerBenchContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
         super(TINKER_BENCH_CONTAINER, windowId, world, pos, inventory, player);
         this.tile = (TinkerBenchTile) world.getBlockEntity(pos);
@@ -48,7 +48,7 @@ public class TinkerBenchContainer extends TileContainer {
         tinkerSlot = new SlotCoFH(tileInv, 0, 44, 26) {
 
             @Override
-            public ItemStack onTake(PlayerEntity thePlayer, ItemStack stack) {
+            public void onTake(Player thePlayer, ItemStack stack) {
 
                 writeAugmentsToItem(stack);
                 itemInventory.clearContent();
@@ -56,7 +56,7 @@ public class TinkerBenchContainer extends TileContainer {
                 //                if (AugmentableHelper.isAugmentableItem(stack)) {
                 //                    ProxyUtils.playSimpleSound(SOUND_TINKER, 0.2F, 1.0F);
                 //                }
-                return super.onTake(thePlayer, stack);
+                super.onTake(thePlayer, stack);
             }
 
             @Override
@@ -104,13 +104,13 @@ public class TinkerBenchContainer extends TileContainer {
         }
     }
 
-    private void bindTinkerSlots(IInventory inventory, int startIndex, int numSlots) {
+    private void bindTinkerSlots(Container inventory, int startIndex, int numSlots) {
 
         for (int i = 0; i < numSlots; ++i) {
             SlotCoFH slot = new SlotCoFH(inventory, i + startIndex, 0, 0, 1) {
 
                 @Override
-                public boolean mayPickup(PlayerEntity player) {
+                public boolean mayPickup(Player player) {
 
                     return tile.allowAugmentation();
                 }
@@ -142,14 +142,14 @@ public class TinkerBenchContainer extends TileContainer {
     }
 
     @Override
-    public void removed(PlayerEntity playerIn) {
+    public void removed(Player playerIn) {
 
         writeAugmentsToItem(tinkerSlot.getItem());
         super.removed(playerIn);
     }
 
     @Override
-    public ItemStack quickMoveStack(PlayerEntity player, int index) {
+    public ItemStack quickMoveStack(Player player, int index) {
 
         if (index == tinkerSlot.getSlotIndex()) {
             writeAugmentsToItem(tinkerSlot.getItem());
@@ -159,7 +159,7 @@ public class TinkerBenchContainer extends TileContainer {
 
     // region NETWORK
     @Override
-    public void handleContainerPacket(PacketBuffer buffer) {
+    public void handleContainerPacket(FriendlyByteBuf buffer) {
 
         writeAugmentsToItem(tinkerSlot.getItem());
         tile.toggleTinkerSlotMode();

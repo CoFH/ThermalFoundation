@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.dynamo;
 
 import cofh.thermal.core.util.recipes.dynamo.CompressionFuel;
@@ -30,3 +31,4 @@ public class CRTFluidDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> 
     }
 
 }
+*/

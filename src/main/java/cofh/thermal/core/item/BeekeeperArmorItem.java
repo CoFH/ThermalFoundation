@@ -2,12 +2,12 @@ package cofh.thermal.core.item;
 
 import cofh.core.event.ArmorEvents;
 import cofh.core.item.ArmorItemCoFH;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
 
 public class BeekeeperArmorItem extends ArmorItemCoFH {
 
-    public BeekeeperArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+    public BeekeeperArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
 
         super(materialIn, slot, builder);
 

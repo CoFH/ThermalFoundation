@@ -3,42 +3,41 @@ package cofh.thermal.core.entity.projectile;
 import cofh.lib.entity.AbstractGrenadeEntity;
 import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
-import net.minecraft.entity.*;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 import static cofh.thermal.core.init.TCoreReferences.GLOWSTONE_GRENADE_ENTITY;
 import static cofh.thermal.core.init.TCoreReferences.GLOWSTONE_GRENADE_ITEM;
-import static net.minecraft.potion.Effects.GLOWING;
+import static net.minecraft.world.effect.MobEffects.GLOWING;
 
 public class GlowstoneGrenadeEntity extends AbstractGrenadeEntity {
 
     public static int effectDuration = 15; // In seconds
 
-    public GlowstoneGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
+    public GlowstoneGrenadeEntity(EntityType<? extends ThrowableItemProjectile> type, Level worldIn) {
 
         super(type, worldIn);
     }
 
-    public GlowstoneGrenadeEntity(World worldIn, double x, double y, double z) {
+    public GlowstoneGrenadeEntity(Level worldIn, double x, double y, double z) {
 
         super(GLOWSTONE_GRENADE_ENTITY, x, y, z, worldIn);
     }
 
-    public GlowstoneGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
+    public GlowstoneGrenadeEntity(Level worldIn, LivingEntity livingEntityIn) {
 
         super(GLOWSTONE_GRENADE_ENTITY, livingEntityIn, worldIn);
     }
@@ -50,7 +49,7 @@ public class GlowstoneGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
+    protected void onHit(HitResult result) {
 
         if (Utils.isServerWorld(level)) {
             if (!this.isInWater()) {
@@ -59,18 +58,18 @@ public class GlowstoneGrenadeEntity extends AbstractGrenadeEntity {
                 makeAreaOfEffectCloud();
             }
             this.level.broadcastEntityEvent(this, (byte) 3);
-            this.remove();
+            this.discard();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
+        if (result.getType() == HitResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
         this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
-        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
+        AreaEffectCloud cloud = new AreaEffectCloud(level, getX(), getY(), getZ());
         cloud.setRadius(1);
         cloud.setParticle(ParticleTypes.INSTANT_EFFECT);
         cloud.setDuration(CLOUD_DURATION);
@@ -80,13 +79,13 @@ public class GlowstoneGrenadeEntity extends AbstractGrenadeEntity {
         level.addFreshEntity(cloud);
     }
 
-    public static void affectNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
+    public static void affectNearbyEntities(Entity entity, Level worldIn, BlockPos pos, int radius, @Nullable Entity source) {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
-        List<LivingEntity> mobs = worldIn.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
+        AABB area = new AABB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
+        List<LivingEntity> mobs = worldIn.getEntitiesOfClass(LivingEntity.class, area, EntitySelector.ENTITY_STILL_ALIVE);
         for (LivingEntity mob : mobs) {
-            mob.addEffect(new EffectInstance(GLOWING, effectDuration * 20, 0, false, false));
-            if (mob.getMobType() == CreatureAttribute.UNDEAD) {
+            mob.addEffect(new MobEffectInstance(GLOWING, effectDuration * 20, 0, false, false));
+            if (mob.getMobType() == MobType.UNDEAD) {
                 mob.hurt(DamageSource.explosion(source instanceof LivingEntity ? (LivingEntity) source : null), 4.0F);
                 mob.setSecondsOnFire(effectDuration);
             }

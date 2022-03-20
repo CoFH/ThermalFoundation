@@ -2,7 +2,7 @@ package cofh.thermal.lib.util.recipes;
 
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
 
 import static cofh.lib.util.constants.Constants.AUG_SCALE_MAX;
 import static cofh.lib.util.constants.Constants.AUG_SCALE_MIN;
@@ -29,7 +29,7 @@ public class MachineProperties implements IRecipeCatalyst {
         minOutputChance = 0.0F;
     }
 
-    public void setAttributesFromAugment(CompoundNBT augmentData) {
+    public void setAttributesFromAugment(CompoundTag augmentData) {
 
         primaryMod += getAttributeMod(augmentData, TAG_AUGMENT_MACHINE_PRIMARY);
         secondaryMod += getAttributeMod(augmentData, TAG_AUGMENT_MACHINE_SECONDARY);

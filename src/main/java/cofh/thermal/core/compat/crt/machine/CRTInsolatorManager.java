@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -79,3 +80,4 @@ public class CRTInsolatorManager implements IRecipeManager, IRecipeHandler<Insol
     }
 
 }
+*/

@@ -3,24 +3,20 @@ package cofh.thermal.core.entity.projectile;
 import cofh.lib.entity.AbstractGrenadeEntity;
 import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.EndermanEntity;
-import net.minecraft.entity.monster.EndermiteEntity;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Endermite;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -33,17 +29,17 @@ public class EnderGrenadeEntity extends AbstractGrenadeEntity {
 
     public static int effectDuration = 300;
 
-    public EnderGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
+    public EnderGrenadeEntity(EntityType<? extends ThrowableItemProjectile> type, Level worldIn) {
 
         super(type, worldIn);
     }
 
-    public EnderGrenadeEntity(World worldIn, double x, double y, double z) {
+    public EnderGrenadeEntity(Level worldIn, double x, double y, double z) {
 
         super(ENDER_GRENADE_ENTITY, x, y, z, worldIn);
     }
 
-    public EnderGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
+    public EnderGrenadeEntity(Level worldIn, LivingEntity livingEntityIn) {
 
         super(ENDER_GRENADE_ENTITY, livingEntityIn, worldIn);
     }
@@ -55,7 +51,7 @@ public class EnderGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
+    protected void onHit(HitResult result) {
 
         if (Utils.isServerWorld(level)) {
             if (!this.isInWater()) {
@@ -64,18 +60,18 @@ public class EnderGrenadeEntity extends AbstractGrenadeEntity {
                 makeAreaOfEffectCloud();
             }
             this.level.broadcastEntityEvent(this, (byte) 3);
-            this.remove();
+            this.discard();
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
+        if (result.getType() == HitResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
         this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
-        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
+        AreaEffectCloud cloud = new AreaEffectCloud(level, getX(), getY(), getZ());
         cloud.setRadius(1);
         cloud.setParticle(ParticleTypes.PORTAL);
         cloud.setDuration(CLOUD_DURATION);
@@ -85,14 +81,14 @@ public class EnderGrenadeEntity extends AbstractGrenadeEntity {
         level.addFreshEntity(cloud);
     }
 
-    public static void affectNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
+    public static void affectNearbyEntities(Entity entity, Level worldIn, BlockPos pos, int radius, @Nullable Entity source) {
 
-        AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
-        List<LivingEntity> mobs = worldIn.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
+        AABB area = new AABB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
+        List<LivingEntity> mobs = worldIn.getEntitiesOfClass(LivingEntity.class, area, EntitySelector.ENTITY_STILL_ALIVE);
 
         for (LivingEntity mob : mobs) {
-            if (mob instanceof EndermanEntity || mob instanceof EndermiteEntity) {
-                mob.addEffect(new EffectInstance(ENDERFERENCE, effectDuration, 0, false, true));
+            if (mob instanceof EnderMan || mob instanceof Endermite) {
+                mob.addEffect(new MobEffectInstance(ENDERFERENCE, effectDuration, 0, false, true));
                 mob.hurt(DamageSource.explosion(source instanceof LivingEntity ? (LivingEntity) source : null), 4.0F);
             }
         }

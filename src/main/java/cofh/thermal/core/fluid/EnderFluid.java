@@ -1,30 +1,16 @@
 package cofh.thermal.core.fluid;
 
 import cofh.lib.fluid.FluidCoFH;
-import cofh.lib.util.Utils;
 import cofh.thermal.lib.common.ThermalItemGroups;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.Rarity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
-import java.util.function.Supplier;
-
-import static cofh.lib.util.references.CoreReferences.ENDERFERENCE;
 import static cofh.thermal.core.ThermalCore.FLUIDS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.lib.common.ThermalIDs.ID_FLUID_ENDER;
@@ -56,7 +42,7 @@ public class EnderFluid extends FluidCoFH {
         ).bucket(bucket);//.block(block).levelDecreasePerBlock(2);
     }
 
-    public static class EnderFluidBlock extends FlowingFluidBlock {
+/*    public static class EnderFluidBlock extends FlowingFluidBlock {
 
         public EnderFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
 
@@ -86,6 +72,6 @@ public class EnderFluid extends FluidCoFH {
             }
         }
 
-    }
+    }*/
 
 }

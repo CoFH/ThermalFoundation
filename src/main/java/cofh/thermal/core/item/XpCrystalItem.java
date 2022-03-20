@@ -5,17 +5,17 @@ import cofh.core.util.ProxyUtils;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.item.IMultiModeItem;
 import cofh.lib.util.Utils;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -29,23 +29,23 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
 
         super(builder, xpCapacity);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("stored"), (stack, world, living) -> ((float) getStoredXp(stack)) / getCapacityXP(stack));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("stored"), (stack, world, living, seed) -> ((float) getStoredXp(stack)) / getCapacityXP(stack));
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
-        tooltip.add(getTextComponent("info.thermal.xp_crystal.use").withStyle(TextFormatting.GRAY));
-        tooltip.add(getTextComponent("info.thermal.xp_crystal.use.sneak").withStyle(TextFormatting.DARK_GRAY));
+        tooltip.add(getTextComponent("info.thermal.xp_crystal.use").withStyle(ChatFormatting.GRAY));
+        tooltip.add(getTextComponent("info.thermal.xp_crystal.use.sneak").withStyle(ChatFormatting.DARK_GRAY));
 
-        tooltip.add(getTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
+        tooltip.add(getTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)).withStyle(ChatFormatting.ITALIC));
         addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+    public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
         if (Utils.isClientWorld(worldIn) || Utils.isFakePlayer(entityIn) || getMode(stack) <= 0) {
             return;
@@ -55,10 +55,10 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
 
     // region IMultiModeItem
     @Override
-    public void onModeChange(PlayerEntity player, ItemStack stack) {
+    public void onModeChange(Player player, ItemStack stack) {
 
-        player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.4F, 0.6F + 0.2F * getMode(stack));
-        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)));
+        player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.4F, 0.6F + 0.2F * getMode(stack));
+        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.thermal.xp_crystal.mode." + getMode(stack)));
     }
     // endregion
 }

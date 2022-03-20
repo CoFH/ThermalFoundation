@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.world.gen.feature;
 
 import cofh.core.world.gen.feature.ConfiguredFeatureCoFH;
@@ -20,6 +21,7 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
+// TODO Lemming, See ConfiguredFeatureCoFH.
 public class ThermalFeatures {
 
     private ThermalFeatures() {
@@ -133,3 +135,4 @@ public class ThermalFeatures {
     public static final RuleTest RED_SAND = new BlockMatchRuleTest(Blocks.RED_SAND);
 
 }
+*/

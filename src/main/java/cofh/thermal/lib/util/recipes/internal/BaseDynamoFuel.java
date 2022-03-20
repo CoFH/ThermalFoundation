@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util.recipes.internal;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;

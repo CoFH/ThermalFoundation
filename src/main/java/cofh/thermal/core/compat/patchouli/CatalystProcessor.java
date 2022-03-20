@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.patchouli;
 
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
@@ -79,3 +80,4 @@ public class CatalystProcessor implements IComponentProcessor {
     }
 
 }
+*/

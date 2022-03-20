@@ -3,10 +3,10 @@ package cofh.thermal.lib.util.recipes;
 import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.helpers.MathHelper;
 import com.google.gson.JsonObject;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<T> {
+public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<T> {
 
     protected final int defaultEnergy;
     protected final int minEnergy;
@@ -63,7 +63,7 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
 
     @Nullable
     @Override
-    public T fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+    public T fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 
         int energy = buffer.readVarInt();
 
@@ -82,7 +82,7 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
     }
 
     @Override
-    public void toNetwork(PacketBuffer buffer, T recipe) {
+    public void toNetwork(FriendlyByteBuf buffer, T recipe) {
 
         buffer.writeVarInt(recipe.energy);
 

@@ -2,8 +2,8 @@ package cofh.thermal.lib.item;
 
 import cofh.core.item.BlockItemCoFH;
 import cofh.lib.item.IAugmentableItem;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 import java.util.function.BiPredicate;

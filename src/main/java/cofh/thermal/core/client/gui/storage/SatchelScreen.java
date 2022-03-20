@@ -5,13 +5,12 @@ import cofh.core.client.gui.element.panel.SecurityPanel;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
-import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 
 import static cofh.core.util.helpers.GuiHelper.createSlot;
 import static cofh.core.util.helpers.GuiHelper.generatePanelInfo;
@@ -26,7 +25,7 @@ public class SatchelScreen extends ContainerScreenCoFH<SatchelContainer> {
 
     protected int renderExtension;
 
-    public SatchelScreen(SatchelContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public SatchelScreen(SatchelContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, titleIn);
 
@@ -50,32 +49,34 @@ public class SatchelScreen extends ContainerScreenCoFH<SatchelContainer> {
     }
 
     @Override
-    protected void renderBg(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack matrixStack, float partialTicks, int mouseX, int mouseY) {
 
-        RenderHelper.resetColor();
-        RenderHelper.bindTexture(texture);
+        RenderHelper.resetShaderColor();
+        RenderHelper.setPosTexShader();
+        RenderHelper.setShaderTexture0(texture);
 
         drawTexturedModalRect(leftPos, topPos, 0, 0, imageWidth, imageHeight);
         if (renderExtension > 0) {
-            RenderHelper.bindTexture(TEXTURE_EXT);
+            RenderHelper.setShaderTexture0(TEXTURE_EXT);
             drawTexturedModalRect(leftPos, topPos + renderExtension, 0, 0, imageWidth, imageHeight);
         }
-        RenderSystem.pushMatrix();
-        RenderSystem.translatef(leftPos, topPos, 0.0F);
+        matrixStack.pushPose();
+        matrixStack.translate(leftPos, topPos, 0.0F);
 
         drawPanels(matrixStack, false);
         drawElements(matrixStack, false);
 
-        RenderSystem.popMatrix();
+        matrixStack.popPose();
     }
 
     @Override
-    protected void renderLabels(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
 
         super.renderLabels(matrixStack, mouseX, mouseY);
 
         GlStateManager._enableBlend();
-        RenderHelper.bindTexture(SLOT_OVERLAY);
+        RenderHelper.setPosTexShader();
+        RenderHelper.setShaderTexture0(SLOT_OVERLAY);
         drawTexturedModalRect(menu.lockedSlot.x, menu.lockedSlot.y, 0, 0, 16, 16, 16, 16);
         GlStateManager._disableBlend();
     }

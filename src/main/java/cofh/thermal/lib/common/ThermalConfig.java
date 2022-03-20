@@ -6,13 +6,14 @@ import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
 import cofh.thermal.core.util.managers.dynamo.*;
 import cofh.thermal.core.util.managers.machine.*;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.ArrayList;
@@ -127,7 +128,7 @@ public class ThermalConfig {
                 .comment("If TRUE, the Satchel is enabled.")
                 .define("Satchel", true);
 
-        String[] shulkerBoxes = new String[]{
+        String[] shulkerBoxes = new String[] {
                 ID_THERMAL + ":" + ID_SATCHEL,
                 Items.SHULKER_BOX.getRegistryName().toString(),
                 Items.WHITE_SHULKER_BOX.getRegistryName().toString(),
@@ -637,8 +638,8 @@ public class ThermalConfig {
     // endregion
 
     // region GLOBALS
-    public static final byte[] DEFAULT_MACHINE_SIDES_RAW = new byte[]{0, 0, 0, 0, 0, 0};
-    public static final byte[] DEFAULT_CELL_SIDES_RAW = new byte[]{0, 0, 0, 0, 0, 0};
+    public static final byte[] DEFAULT_MACHINE_SIDES_RAW = new byte[] { 0, 0, 0, 0, 0, 0 };
+    public static final byte[] DEFAULT_CELL_SIDES_RAW = new byte[] { 0, 0, 0, 0, 0, 0 };
     // endregion
 
     // region SERVER VARIABLES
@@ -747,7 +748,7 @@ public class ThermalConfig {
 
     // region CONFIGURATION
     @SubscribeEvent
-    public static void configLoading(final ModConfig.Loading event) {
+    public static void configLoading(ModConfigEvent.Loading event) {
 
         switch (event.getConfig().getType()) {
             case CLIENT:
@@ -759,7 +760,7 @@ public class ThermalConfig {
     }
 
     @SubscribeEvent
-    public static void configReloading(ModConfig.Reloading event) {
+    public static void configReloading(ModConfigEvent.Reloading event) {
 
         switch (event.getConfig().getType()) {
             case CLIENT:

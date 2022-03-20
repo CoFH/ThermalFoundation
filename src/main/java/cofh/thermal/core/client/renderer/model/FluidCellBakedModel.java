@@ -11,18 +11,18 @@ import cofh.lib.util.helpers.MathHelper;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.client.renderer.model.ItemOverrideList;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.util.Direction;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.fluids.FluidStack;
@@ -35,8 +35,8 @@ import static cofh.lib.item.ContainerType.FLUID;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.client.ThermalTextures.*;
 import static cofh.thermal.lib.common.ThermalConfig.DEFAULT_CELL_SIDES_RAW;
-import static net.minecraft.util.Direction.*;
-import static net.minecraftforge.common.util.Constants.NBT.TAG_COMPOUND;
+import static net.minecraft.core.Direction.*;
+import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
 public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicBakedModel {
 
@@ -45,7 +45,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
 
     private static final Int2ObjectMap<BakedQuad[]> ITEM_UNDERLAY_QUAD_CACHE = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<BakedQuad[]> ITEM_QUAD_CACHE = new Int2ObjectOpenHashMap<>();
-    private static final Map<List<Integer>, IBakedModel> MODEL_CACHE = new Object2ObjectOpenHashMap<>();
+    private static final Map<List<Integer>, BakedModel> MODEL_CACHE = new Object2ObjectOpenHashMap<>();
 
     public static void clearCache() {
 
@@ -57,7 +57,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
         MODEL_CACHE.clear();
     }
 
-    public FluidCellBakedModel(IBakedModel originalModel) {
+    public FluidCellBakedModel(BakedModel originalModel) {
 
         super(originalModel);
         underlayQuadLevel = 1;
@@ -114,18 +114,18 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     }
 
     @Override
-    public ItemOverrideList getOverrides() {
+    public ItemOverrides getOverrides() {
 
         return overrideList;
     }
 
-    private final ItemOverrideList overrideList = new ItemOverrideList() {
+    private final ItemOverrides overrideList = new ItemOverrides() {
 
         @Nullable
         @Override
-        public IBakedModel resolve(IBakedModel model, ItemStack stack, @Nullable ClientWorld worldIn, @Nullable LivingEntity entityIn) {
+        public BakedModel resolve(BakedModel model, ItemStack stack, @Nullable ClientLevel worldIn, @Nullable LivingEntity entityIn, int seed) {
 
-            CompoundNBT tag = stack.getTagElement(TAG_BLOCK_ENTITY);
+            CompoundTag tag = stack.getTagElement(TAG_BLOCK_ENTITY);
             byte[] sideConfigRaw = getSideConfigRaw(tag);
             int itemHash = new ComparableItemStack(stack).hashCode();
             int level = getLevel(stack);
@@ -134,7 +134,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
             FluidStack fluid = getFluid(tag);
             int fluidHash = fluid.isEmpty() ? 0 : FluidHelper.fluidHashcode(fluid);
 
-            IBakedModel ret = MODEL_CACHE.get(Arrays.asList(itemHash, level, configHash, fluidHash));
+            BakedModel ret = MODEL_CACHE.get(Arrays.asList(itemHash, level, configHash, fluidHash));
             if (ret == null) {
                 ModelUtils.WrappedBakedModelBuilder builder = new ModelUtils.WrappedBakedModelBuilder(model);
 
@@ -216,19 +216,19 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
         return FLUID_CELL_LEVELS[MathHelper.clamp(level, 0, 8)];
     }
 
-    private FluidStack getFluid(CompoundNBT tag) {
+    private FluidStack getFluid(CompoundTag tag) {
 
         if (tag == null) {
             return FluidStack.EMPTY;
         }
-        ListNBT tanks = tag.getList(TAG_TANK_INV, TAG_COMPOUND);
+        ListTag tanks = tag.getList(TAG_TANK_INV, TAG_COMPOUND);
         if (tanks.isEmpty()) {
             return FluidStack.EMPTY;
         }
         return FluidStack.loadFluidStackFromNBT(tanks.getCompound(0));
     }
 
-    private byte[] getSideConfigRaw(CompoundNBT tag) {
+    private byte[] getSideConfigRaw(CompoundTag tag) {
 
         if (tag == null) {
             return DEFAULT_CELL_SIDES_RAW;

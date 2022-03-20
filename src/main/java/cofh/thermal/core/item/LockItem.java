@@ -5,18 +5,18 @@ import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.item.IPlacementItem;
 import cofh.lib.util.Utils;
 import cofh.lib.util.control.ISecurable;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -29,30 +29,29 @@ public class LockItem extends ItemCoFH implements IPlacementItem {
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
     }
 
-    protected boolean useDelegate(ItemStack stack, ItemUseContext context) {
+    protected boolean useDelegate(ItemStack stack, UseOnContext context) {
 
-        World world = context.getLevel();
-        PlayerEntity player = context.getPlayer();
+        Level world = context.getLevel();
+        Player player = context.getPlayer();
 
         if (player == null || Utils.isClientWorld(world)) {
             return false;
         }
         BlockPos pos = context.getClickedPos();
-        TileEntity tile = world.getBlockEntity(pos);
+        BlockEntity tile = world.getBlockEntity(pos);
 
-        if (tile instanceof ISecurable) {
-            ISecurable securable = (ISecurable) tile;
+        if (tile instanceof ISecurable securable) {
             if (securable.setOwner(player.getGameProfile())) {
                 securable.setAccess(ISecurable.AccessMode.PUBLIC);
-                if (!player.abilities.instabuild) {
+                if (!player.getAbilities().instabuild) {
                     stack.shrink(1);
                 }
-                player.level.playSound(null, player.blockPosition(), SoundEvents.FLINTANDSTEEL_USE, SoundCategory.PLAYERS, 0.5F, 0.8F);
-                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.cofh.secure_block"));
+                player.level.playSound(null, player.blockPosition(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS, 0.5F, 0.8F);
+                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_block"));
             }
             return true;
         }
@@ -60,28 +59,28 @@ public class LockItem extends ItemCoFH implements IPlacementItem {
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext context) {
+    public InteractionResult useOn(UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player == null) {
-            return ActionResultType.FAIL;
+            return InteractionResult.FAIL;
         }
-        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand()) ? InteractionResult.SUCCESS : InteractionResult.FAIL;
     }
 
     @Override
-    public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
+    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player == null) {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         }
-        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        return player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), stack) && useDelegate(stack, context) ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }
 
     // region IPlacementItem
     @Override
-    public boolean onBlockPlacement(ItemStack stack, ItemUseContext context) {
+    public boolean onBlockPlacement(ItemStack stack, UseOnContext context) {
 
         return useDelegate(stack, context);
     }

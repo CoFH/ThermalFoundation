@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.patchouli;
 
 import net.minecraft.client.Minecraft;
@@ -64,3 +65,4 @@ public class CraftingProcessor implements IComponentProcessor {
     }
 
 }
+*/

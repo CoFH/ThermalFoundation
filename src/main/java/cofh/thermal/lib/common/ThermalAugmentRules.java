@@ -3,8 +3,8 @@ package cofh.thermal.lib.common;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.ItemHelper;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
 import java.util.List;

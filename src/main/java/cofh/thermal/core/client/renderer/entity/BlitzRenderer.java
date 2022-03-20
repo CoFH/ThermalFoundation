@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity;
 
 import cofh.thermal.core.client.renderer.entity.model.BlitzModel;
@@ -35,3 +36,4 @@ public class BlitzRenderer extends MobRenderer<BlitzEntity, BlitzModel<BlitzEnti
     }
 
 }
+*/

@@ -7,10 +7,10 @@ import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.internal.*;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -82,12 +82,12 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_INSOLATOR);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_INSOLATOR);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((InsolatorRecipe) entry.getValue());
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_INSOLATOR);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_INSOLATOR);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : catalysts.entrySet()) {
             addCatalyst((ThermalCatalyst) entry.getValue());
         }
     }

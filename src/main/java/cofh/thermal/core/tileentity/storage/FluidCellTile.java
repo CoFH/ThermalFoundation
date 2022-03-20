@@ -5,18 +5,20 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidHandlerRestrictionWrapper;
 import cofh.lib.fluid.FluidStorageAdjustable;
 import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
@@ -37,16 +39,16 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATO
 import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
+public class FluidCellTile extends CellTileBase implements ICoFHTickableTile.IServerTickable {
 
     public static final int BASE_CAPACITY = TANK_MEDIUM * 4;
 
     protected FluidStorageCoFH fluidStorage = new FluidStorageAdjustable(BASE_CAPACITY, fluid -> filter.valid(fluid))
             .setTransferLimits(() -> amountInput, () -> amountOutput);
 
-    public FluidCellTile() {
+    public FluidCellTile(BlockPos pos, BlockState state) {
 
-        super(FLUID_CELL_TILE);
+        super(FLUID_CELL_TILE, pos, state);
 
         amountInput = BUCKET_VOLUME;
         amountOutput = BUCKET_VOLUME;
@@ -68,7 +70,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
     //    }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         if (redstoneControl.getState()) {
             transferOut();
@@ -137,7 +139,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
     // This is used rather than the generic in FluidHelper as it can be optimized somewhat.
     protected void attemptTransferOut(Direction side) {
 
-        TileEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
+        BlockEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
             int maxTransfer = Math.min(amountOutput, fluidStorage.getAmount());
@@ -166,7 +168,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new FluidCellContainer(i, level, worldPosition, inventory, player);
     }
@@ -247,16 +249,12 @@ public class FluidCellTile extends CellTileBase implements ITickableTileEntity {
         if (side == null) {
             return super.getFluidHandlerCapability(side);
         }
-        switch (reconfigControl.getSideConfig(side)) {
-            case SIDE_NONE:
-                return LazyOptional.empty();
-            case SIDE_INPUT:
-                return inputFluidCap.cast();
-            case SIDE_OUTPUT:
-                return outputFluidCap.cast();
-            default:
-                return super.getFluidHandlerCapability(side);
-        }
+        return switch (reconfigControl.getSideConfig(side)) {
+            case SIDE_NONE -> LazyOptional.empty();
+            case SIDE_INPUT -> inputFluidCap.cast();
+            case SIDE_OUTPUT -> outputFluidCap.cast();
+            default -> super.getFluidHandlerCapability(side);
+        };
     }
     // endregion
 }

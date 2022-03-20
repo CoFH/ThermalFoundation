@@ -4,8 +4,8 @@ import cofh.core.client.gui.element.panel.ConfigPanel;
 import cofh.lib.inventory.container.ContainerCoFH;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.createDefaultEnergyStorage;
 import static cofh.core.util.helpers.GuiHelper.setClearable;
@@ -14,7 +14,7 @@ public class MachineScreenReconfigurable<T extends ContainerCoFH> extends Therma
 
     protected ReconfigurableTile4Way tile;
 
-    public MachineScreenReconfigurable(T container, PlayerInventory inv, ReconfigurableTile4Way tile, ITextComponent titleIn) {
+    public MachineScreenReconfigurable(T container, Inventory inv, ReconfigurableTile4Way tile, Component titleIn) {
 
         super(container, inv, tile, titleIn);
         this.tile = tile;

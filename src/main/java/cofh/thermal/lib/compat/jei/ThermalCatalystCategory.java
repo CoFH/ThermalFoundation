@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.jei;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
@@ -103,3 +104,4 @@ public abstract class ThermalCatalystCategory<T extends ThermalCatalyst> impleme
     }
     // endregion
 }
+*/

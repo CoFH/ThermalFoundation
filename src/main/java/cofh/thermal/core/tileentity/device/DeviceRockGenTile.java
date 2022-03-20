@@ -2,25 +2,25 @@ package cofh.thermal.core.tileentity.device;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.device.DeviceRockGenContainer;
 import cofh.thermal.core.util.managers.device.RockGenManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.fluids.FluidStack;
@@ -42,7 +42,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEntity {
+public class DeviceRockGenTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE);
 
@@ -61,9 +61,9 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     protected int processMax = RockGenManager.instance().getDefaultEnergy();
     protected int genAmount = 1;
 
-    public DeviceRockGenTile() {
+    public DeviceRockGenTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_ROCK_GEN_TILE);
+        super(DEVICE_ROCK_GEN_TILE, pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
 
@@ -98,7 +98,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
         valid = false;
 
         Block[] adjBlocks = new Block[4];
-        BlockPos[] cardinals = new BlockPos[]{
+        BlockPos[] cardinals = new BlockPos[] {
                 worldPosition.north(),
                 worldPosition.south(),
                 worldPosition.west(),
@@ -133,7 +133,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
                 }
                 processMax = recipe.getTime();
                 genAmount = Math.max(1, result.getCount());
-                if (level.getBiome(worldPosition).getBiomeCategory() == Biome.Category.NETHER) {
+                if (level.getBiome(worldPosition).value().getBiomeCategory() == Biome.BiomeCategory.NETHER) {
                     processMax = Math.max(1, processMax / 2);
                 }
                 process = processMax;
@@ -159,7 +159,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         updateActiveState();
 
@@ -185,7 +185,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceRockGenContainer(i, level, worldPosition, inventory, player);
     }
@@ -203,7 +203,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
 
     // region NETWORK
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -214,7 +214,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -224,7 +224,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
 
     // STATE
     @Override
-    public PacketBuffer getStatePacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getStatePacket(FriendlyByteBuf buffer) {
 
         super.getStatePacket(buffer);
 
@@ -238,7 +238,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     }
 
     @Override
-    public void handleStatePacket(PacketBuffer buffer) {
+    public void handleStatePacket(FriendlyByteBuf buffer) {
 
         super.handleStatePacket(buffer);
 
@@ -252,9 +252,9 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
@@ -265,9 +265,9 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);
@@ -275,8 +275,6 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTileEn
 
         nbt.putString("Below", ForgeRegistries.BLOCKS.getKey(below).toString());
         nbt.putString("Adjacent", ForgeRegistries.BLOCKS.getKey(adjacent).toString());
-
-        return nbt;
     }
     // endregion
 

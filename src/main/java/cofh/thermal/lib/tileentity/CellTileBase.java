@@ -1,19 +1,18 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.tileentity.TileCoFH;
 import cofh.core.util.control.*;
 import cofh.lib.util.helpers.MathHelper;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.ModelDataManager;
 
 import java.util.Map;
@@ -38,18 +37,12 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     protected ReconfigControlModule reconfigControl = new ReconfigControlModuleLimited(this);
     protected TransferControlModule transferControl = new TransferControlModule(this);
 
-    public CellTileBase(TileEntityType<?> tileEntityTypeIn) {
+    public CellTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
-    }
-
-    @Override
-    public TileCoFH worldContext(BlockState state, IBlockReader world) {
+        super(tileEntityTypeIn, pos, state);
 
         reconfigControl.setFacing(state.getValue(FACING_HORIZONTAL));
         updateHandlers();
-
-        return this;
     }
 
     @Override
@@ -59,16 +52,16 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public void clearCache() {
+    public void setBlockState(BlockState state) {
 
-        super.clearCache();
+        super.setBlockState(state);
         updateSideCache();
     }
 
     @Override
     public ItemStack createItemStackTag(ItemStack stack) {
 
-        CompoundNBT nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
+        CompoundTag nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
 
         nbt.putInt(TAG_AMOUNT_IN, amountInput);
         nbt.putInt(TAG_AMOUNT_OUT, amountOutput);
@@ -121,7 +114,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // region NETWORK
     @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
 
         super.onDataPacket(net, pkt);
 
@@ -131,7 +124,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // CONFIG
     @Override
-    public PacketBuffer getConfigPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getConfigPacket(FriendlyByteBuf buffer) {
 
         super.getConfigPacket(buffer);
 
@@ -142,7 +135,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public void handleConfigPacket(PacketBuffer buffer) {
+    public void handleConfigPacket(FriendlyByteBuf buffer) {
 
         super.handleConfigPacket(buffer);
 
@@ -152,7 +145,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // CONTROL
     @Override
-    public PacketBuffer getControlPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getControlPacket(FriendlyByteBuf buffer) {
 
         super.getControlPacket(buffer);
 
@@ -166,7 +159,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public void handleControlPacket(PacketBuffer buffer) {
+    public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
 
@@ -181,7 +174,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // GUI
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -192,7 +185,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -202,7 +195,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // STATE
     @Override
-    public PacketBuffer getStatePacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getStatePacket(FriendlyByteBuf buffer) {
 
         super.getStatePacket(buffer);
 
@@ -214,7 +207,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public void handleStatePacket(PacketBuffer buffer) {
+    public void handleStatePacket(FriendlyByteBuf buffer) {
 
         super.handleStatePacket(buffer);
 
@@ -231,9 +224,9 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         reconfigControl.setFacing(Direction.from3DDataValue(nbt.getByte(TAG_FACING)));
         reconfigControl.read(nbt);
@@ -247,9 +240,9 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putByte(TAG_FACING, (byte) reconfigControl.getFacing().get3DDataValue());
         reconfigControl.write(nbt);
@@ -257,8 +250,6 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
         nbt.putInt(TAG_AMOUNT_IN, amountInput);
         nbt.putInt(TAG_AMOUNT_OUT, amountOutput);
-
-        return nbt;
     }
     // endregion
 
@@ -298,7 +289,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
 
     // region IConveyableData
     @Override
-    public void readConveyableData(PlayerEntity player, CompoundNBT tag) {
+    public void readConveyableData(Player player, CompoundTag tag) {
 
         reconfigControl.readSettings(tag);
         transferControl.readSettings(tag);
@@ -307,7 +298,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     }
 
     @Override
-    public void writeConveyableData(PlayerEntity player, CompoundNBT tag) {
+    public void writeConveyableData(Player player, CompoundTag tag) {
 
         reconfigControl.writeSettings(tag);
         transferControl.writeSettings(tag);

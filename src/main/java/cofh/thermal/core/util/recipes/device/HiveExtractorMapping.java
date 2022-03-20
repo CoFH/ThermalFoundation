@@ -2,11 +2,11 @@ package cofh.thermal.core.util.recipes.device;
 
 import cofh.lib.util.recipes.SerializableRecipe;
 import cofh.thermal.core.init.TCoreRecipeTypes;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
@@ -28,13 +28,13 @@ public class HiveExtractorMapping extends SerializableRecipe {
     }
 
     @Override
-    public IRecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
 
         return RECIPE_SERIALIZERS.get(ID_MAPPING_HIVE_EXTRACTOR);
     }
 
     @Override
-    public IRecipeType<?> getType() {
+    public RecipeType<?> getType() {
 
         return TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR;
     }

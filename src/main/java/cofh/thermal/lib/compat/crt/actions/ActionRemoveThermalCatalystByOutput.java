@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.crt.actions;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
@@ -43,3 +44,4 @@ public class ActionRemoveThermalCatalystByOutput extends ActionRecipeBase {
     }
 
 }
+*/

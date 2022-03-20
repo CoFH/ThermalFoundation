@@ -14,10 +14,10 @@ import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import cofh.thermal.lib.util.recipes.internal.*;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -219,16 +219,16 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.CATALYZED);
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER_RECYCLE);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recycle.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER_RECYCLE);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recycle.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_SMELTER);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_SMELTER);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : catalysts.entrySet()) {
             addCatalyst((ThermalCatalyst) entry.getValue());
         }
     }

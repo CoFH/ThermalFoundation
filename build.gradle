@@ -92,16 +92,16 @@ dependencies {
 
     compile fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-
-    compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crt_version}")
-
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+//    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+//
+//    compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crt_version}")
+//
+//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+//
+//    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+//    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 }
 
 signing {

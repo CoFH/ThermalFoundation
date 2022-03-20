@@ -2,9 +2,9 @@ package cofh.thermal.lib.util.recipes;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.recipes.SerializableRecipe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;

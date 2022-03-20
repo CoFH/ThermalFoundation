@@ -6,10 +6,10 @@ import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.PotionDiffuserBoost;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Map;
@@ -69,8 +69,8 @@ public class PotionDiffuserManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_POTION_DIFFUSER);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_POTION_DIFFUSER);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((PotionDiffuserBoost) entry.getValue());
         }
     }

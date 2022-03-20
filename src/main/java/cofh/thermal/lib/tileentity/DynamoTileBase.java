@@ -1,24 +1,23 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.tileentity.TileCoFH;
 import cofh.lib.energy.EnergyStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.common.util.LazyOptional;
 
@@ -34,7 +33,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 
-public abstract class DynamoTileBase extends ThermalTileAugmentable implements ITickableTileEntity {
+public abstract class DynamoTileBase extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable {
 
     protected Direction facing;
 
@@ -47,9 +46,9 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     protected int processTick = baseProcessTick;
     protected int minProcessTick = processTick / 10;
 
-    public DynamoTileBase(TileEntityType<?> tileEntityTypeIn) {
+    public DynamoTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
+        super(tileEntityTypeIn, pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), 0, getBaseEnergyXfer()) {
 
             @Override
@@ -58,6 +57,8 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
                 return false;
             }
         };
+        facing = state.getValue(FACING_ALL);
+        updateHandlers();
     }
 
     // region BASE PARAMETERS
@@ -68,18 +69,9 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     // endregion
 
     @Override
-    public TileCoFH worldContext(BlockState state, IBlockReader world) {
+    public void setBlockState(BlockState state) {
 
-        facing = state.getValue(FACING_ALL);
-        updateHandlers();
-
-        return this;
-    }
-
-    @Override
-    public void clearCache() {
-
-        super.clearCache();
+        super.setBlockState(state);
         updateFacing();
     }
 
@@ -92,7 +84,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     //    }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         boolean curActive = isActive;
         if (isActive) {
@@ -152,7 +144,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     // region HELPERS
     protected void transferRF() {
 
-        TileEntity adjTile = BlockHelper.getAdjacentTileEntity(this, getFacing());
+        BlockEntity adjTile = BlockHelper.getAdjacentTileEntity(this, getFacing());
         if (adjTile != null) {
             Direction opposite = getFacing().getOpposite();
             int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
@@ -210,7 +202,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // region NETWORK
     @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
 
         super.onDataPacket(net, pkt);
 
@@ -219,7 +211,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // CONTROL
     @Override
-    public void handleControlPacket(PacketBuffer buffer) {
+    public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
 
@@ -228,7 +220,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // GUI
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -239,7 +231,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -249,7 +241,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // STATE
     @Override
-    public void handleStatePacket(PacketBuffer buffer) {
+    public void handleStatePacket(FriendlyByteBuf buffer) {
 
         super.handleStatePacket(buffer);
 
@@ -259,9 +251,9 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         fuelMax = nbt.getInt(TAG_FUEL_MAX);
         fuel = nbt.getInt(TAG_FUEL);
@@ -273,17 +265,15 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putInt(TAG_FUEL_MAX, fuelMax);
         nbt.putInt(TAG_FUEL, fuel);
         nbt.putInt(TAG_COOLANT_MAX, coolantMax);
         nbt.putInt(TAG_COOLANT, coolant);
         nbt.putInt(TAG_PROCESS_TICK, processTick);
-
-        return nbt;
     }
     // endregion
 
@@ -308,7 +298,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 

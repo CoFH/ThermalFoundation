@@ -5,10 +5,10 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.tileentity.device.DevicePotionDiffuserTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class ThermalProxyClient extends ThermalProxy {
 
@@ -18,14 +18,14 @@ public class ThermalProxyClient extends ThermalProxy {
         int color = FluidHelper.color(tile.getRenderFluid());
         int radius = tile.getRadius();
 
-        Vector3d vector3d = Vector3d.upFromBottomCenterOf(tile.getBlockPos(), 2);
-        World world = tile.world();
+        Vec3 vector3d = Vec3.upFromBottomCenterOf(tile.getBlockPos(), 2);
+        Level world = tile.world();
 
         float r = (float) (color >> 16 & 255) / 255.0F;
         float g = (float) (color >> 8 & 255) / 255.0F;
         float b = (float) (color & 255) / 255.0F;
 
-        IParticleData particleData = tile.isInstant() ? ParticleTypes.INSTANT_EFFECT : ParticleTypes.EFFECT;
+        ParticleOptions particleData = tile.isInstant() ? ParticleTypes.INSTANT_EFFECT : ParticleTypes.EFFECT;
         double speedY = 0;
 
         for (int i = 0; i < 4 * radius * radius; ++i) {

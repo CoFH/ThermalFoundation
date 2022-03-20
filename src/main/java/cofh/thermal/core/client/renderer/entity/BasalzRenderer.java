@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity;
 
 import cofh.thermal.core.client.renderer.entity.model.BasalzModel;
@@ -74,3 +75,4 @@ public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<Basalz
     }
 
 }
+*/

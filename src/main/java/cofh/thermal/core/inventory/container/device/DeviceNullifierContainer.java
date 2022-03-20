@@ -5,11 +5,11 @@ import cofh.core.network.packet.server.ContainerPacket;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.core.tileentity.device.DeviceNullifierTile;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_NULLIFIER_CONTAINER;
 
@@ -17,7 +17,7 @@ public class DeviceNullifierContainer extends TileContainer {
 
     public final DeviceNullifierTile tile;
 
-    public DeviceNullifierContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+    public DeviceNullifierContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
         super(DEVICE_NULLIFIER_CONTAINER, windowId, world, pos, inventory, player);
         this.tile = (DeviceNullifierTile) world.getBlockEntity(pos);
@@ -46,7 +46,7 @@ public class DeviceNullifierContainer extends TileContainer {
 
     // region NETWORK
     @Override
-    public void handleContainerPacket(PacketBuffer buffer) {
+    public void handleContainerPacket(FriendlyByteBuf buffer) {
 
         tile.emptyBin();
     }

@@ -5,10 +5,10 @@ import cofh.lib.util.ComparableItemStack;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.internal.BaseMachineRecipe;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import org.apache.commons.lang3.tuple.Pair;
@@ -32,7 +32,7 @@ public class CrafterRecipe extends BaseMachineRecipe {
     public static final List<Float> CHANCE = Collections.singletonList(1.0F);
     public static final Pair<List<Integer>, List<Integer>> EMPTY_PAIR = Pair.of(Collections.emptyList(), Collections.emptyList());
 
-    public CrafterRecipe(int energy, IRecipe<?> recipe) {
+    public CrafterRecipe(int energy, Recipe<?> recipe) {
 
         super(energy, 0);
 

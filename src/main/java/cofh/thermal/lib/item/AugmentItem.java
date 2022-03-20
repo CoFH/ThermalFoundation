@@ -2,22 +2,22 @@ package cofh.thermal.lib.item;
 
 import cofh.core.item.ItemCoFH;
 import cofh.lib.item.IAugmentItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nullable;
 
 public class AugmentItem extends ItemCoFH implements IAugmentItem {
 
-    private CompoundNBT augmentData;
+    private CompoundTag augmentData;
 
-    public AugmentItem(Properties builder, CompoundNBT augmentData) {
+    public AugmentItem(Properties builder, CompoundTag augmentData) {
 
         super(builder);
         setAugmentData(augmentData);
     }
 
-    public boolean setAugmentData(CompoundNBT augmentData) {
+    public boolean setAugmentData(CompoundTag augmentData) {
 
         if (augmentData == null || augmentData.isEmpty()) {
             return false;
@@ -29,7 +29,7 @@ public class AugmentItem extends ItemCoFH implements IAugmentItem {
     // region IAugmentItem
     @Nullable
     @Override
-    public CompoundNBT getAugmentData(ItemStack augment) {
+    public CompoundTag getAugmentData(ItemStack augment) {
 
         return augmentData;
     }

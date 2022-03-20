@@ -1,30 +1,24 @@
 package cofh.thermal.core.event;
 
-import cofh.core.client.CoreRenderType;
-import cofh.core.util.ProxyClient;
-import cofh.lib.tileentity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.item.WrenchItem;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Matrix4f;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Matrix4f;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.client.event.RenderLevelLastEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -46,26 +40,26 @@ public class TCoreClientEvents {
     @SubscribeEvent
     public static void handleItemTooltipEvent(ItemTooltipEvent event) {
 
-        List<ITextComponent> tooltip = event.getToolTip();
+        List<Component> tooltip = event.getToolTip();
         if (tooltip.isEmpty()) {
             return;
         }
         ItemStack stack = event.getItemStack();
 
         if (AugmentDataHelper.hasAugmentData(stack)) {
-            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(stack);
+            CompoundTag augmentData = AugmentDataHelper.getAugmentData(stack);
             if (augmentData == null || augmentData.isEmpty()) {
                 return;
             }
             String type = augmentData.getString(TAG_TYPE);
             if (!type.isEmpty()) {
-                IFormattableTextComponent typeText = getTextComponent("info.thermal.augment.type." + type).withStyle(TextFormatting.WHITE);
+                MutableComponent typeText = getTextComponent("info.thermal.augment.type." + type).withStyle(ChatFormatting.WHITE);
 
                 //                if (isTypeExclusive(type)) {
                 //                    typeText.mergeStyle(TextFormatting.UNDERLINE);
                 //                }
                 tooltip.add(getTextComponent("info.cofh.type")
-                        .withStyle(TextFormatting.YELLOW)
+                        .withStyle(ChatFormatting.YELLOW)
                         .append(": ")
                         .append(typeText)
                 );
@@ -79,17 +73,17 @@ public class TCoreClientEvents {
                         || isAdditive(mod) && value > 0 && isInverse(mod)
                         || isMultiplicative(mod) && (isInverse(mod) ? value > 1.0 : value < 1.0);
 
-                IFormattableTextComponent modText = new StringTextComponent("" +
+                MutableComponent modText = new TextComponent("" +
                         (isAdditive(mod) && value > 0 ? "+" : "") +
                         (isInteger(mod) ? DF0.format(value) : isMultiplicative(mod) ? DF2.format(value) + "x" : DF0.format(value * 100) + "%"))
-                        .withStyle(bad ? TextFormatting.RED : TextFormatting.GREEN);
+                        .withStyle(bad ? ChatFormatting.RED : ChatFormatting.GREEN);
 
                 if (isMaximized(mod)) {
-                    modText.withStyle(TextFormatting.UNDERLINE);
+                    modText.withStyle(ChatFormatting.UNDERLINE);
                 }
                 tooltip.add(getTextComponent("info.thermal.augment.attr." + mod)
                         .append(": ")
-                        .withStyle(TextFormatting.GRAY)
+                        .withStyle(ChatFormatting.GRAY)
                         .append(modText)
                 );
             }
@@ -97,25 +91,25 @@ public class TCoreClientEvents {
     }
 
     @SubscribeEvent
-    public static void handleRenderWorldLast(RenderWorldLastEvent event) {
+    public static void handleRenderWorldLast(RenderLevelLastEvent event) {
 
-        ClientPlayerEntity player = Minecraft.getInstance().player;
+        LocalPlayer player = Minecraft.getInstance().player;
 
         if (player != null) {
             Item heldItem = player.getMainHandItem().getItem();
             if (heldItem instanceof WrenchItem && ((WrenchItem) heldItem).getMode(player.getMainHandItem()) > 0) {
-                renderOperationalAreas(player, event.getMatrixStack());
+                renderOperationalAreas(player, event.getPoseStack());
             }
         }
     }
 
     // region HELPERS
-    private static boolean playerWithinDistance(BlockPos pos, PlayerEntity player, double distanceSq) {
+    private static boolean playerWithinDistance(BlockPos pos, Player player, double distanceSq) {
 
-        return pos.distSqr(player.position(), true) <= distanceSq;
+        return pos.distToCenterSqr(player.position()) <= distanceSq;
     }
 
-    private static void line(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, float dx1, float dy1, float dz1, float dx2, float dy2, float dz2, int r, int g, int b, int a) {
+    private static void line(VertexConsumer builder, Matrix4f positionMatrix, BlockPos pos, float dx1, float dy1, float dz1, float dx2, float dy2, float dz2, int r, int g, int b, int a) {
 
         builder.vertex(positionMatrix, pos.getX() + dx1, pos.getY() + dy1, pos.getZ() + dz1)
                 .color(r, g, b, a)
@@ -125,7 +119,7 @@ public class TCoreClientEvents {
                 .endVertex();
     }
 
-    private static void box(IVertexBuilder builder, Matrix4f positionMatrix, BlockPos pos, AxisAlignedBB area, int color) {
+    private static void box(VertexConsumer builder, Matrix4f positionMatrix, BlockPos pos, AABB area, int color) {
 
         float lenX = (float) (area.maxX - area.minX);
         float lenY = (float) (area.maxY - area.minY);
@@ -152,29 +146,30 @@ public class TCoreClientEvents {
         line(builder, positionMatrix, pos, lenX, 0, lenZ, lenX, lenY, lenZ, r, g, b, a);
     }
 
-    private static void renderOperationalAreas(ClientPlayerEntity player, MatrixStack matrixStack) {
+    private static void renderOperationalAreas(LocalPlayer player, PoseStack matrixStack) {
 
-        IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().renderBuffers().bufferSource();
-        IVertexBuilder builder = buffer.getBuffer(CoreRenderType.OVERLAY_LINES);
+        // TODO Covers, CoreRenderTypes.
+/*        MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
+        VertexConsumer builder = buffer.getBuffer(CoreRenderType.OVERLAY_LINES);
         matrixStack.pushPose();
 
-        Vector3d projectedView = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
+        Vec3 projectedView = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
         matrixStack.translate(-projectedView.x, -projectedView.y, -projectedView.z);
 
         Matrix4f positionMatrix = matrixStack.last().pose();
-        BlockPos.Mutable pos = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
         for (IAreaEffectTile tile : ProxyClient.getAreaEffectTiles()) {
             if (!tile.canPlayerAccess(player) || !playerWithinDistance(tile.pos(), player, 32 * 32)) {
                 continue;
             }
-            AxisAlignedBB area = tile.getArea();
+            AABB area = tile.getArea();
             pos.set(area.minX, area.minY, area.minZ);
             box(builder, positionMatrix, pos, area, tile.getColor());
         }
         matrixStack.popPose();
         RenderSystem.disableDepthTest();
-        buffer.endBatch(CoreRenderType.OVERLAY_LINES);
+        buffer.endBatch(CoreRenderType.OVERLAY_LINES);*/
     }
     // endregion
 }

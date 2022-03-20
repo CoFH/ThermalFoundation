@@ -19,8 +19,8 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.lib.util.constants.Constants.TRUE;
 import static cofh.lib.util.control.IReconfigurable.SideConfig.*;
 import static cofh.thermal.core.client.ThermalTextures.*;
-import static net.minecraft.util.Direction.DOWN;
-import static net.minecraft.util.Direction.UP;
+import static net.minecraft.core.Direction.DOWN;
+import static net.minecraft.core.Direction.UP;
 
 public class ThermalGuiHelper {
 
@@ -102,7 +102,7 @@ public class ThermalGuiHelper {
 
     public static ElementConditionalLayered[] createDefaultMachineConfigs(IGuiAccess gui, String machine, ReconfigurableTile4Way tile) {
 
-        return new ElementConditionalLayered[]{
+        return new ElementConditionalLayered[] {
                 createDefaultMachineConfigTop(gui, machine, tile),
                 createDefaultMachineConfigLeft(gui, machine, tile),
                 createDefaultMachineConfigFace(gui, machine, tile),
@@ -213,7 +213,7 @@ public class ThermalGuiHelper {
 
     public static ElementConditionalLayered[] createDefaultCellConfigs(IGuiAccess gui, String cell, CellTileBase tile) {
 
-        return new ElementConditionalLayered[]{
+        return new ElementConditionalLayered[] {
                 createDefaultCellConfigTop(gui, cell, tile),
                 createDefaultCellConfigLeft(gui, cell, tile),
                 createDefaultCellConfigFace(gui, cell, tile),

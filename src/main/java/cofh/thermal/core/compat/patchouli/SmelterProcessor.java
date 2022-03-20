@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.patchouli;
 
 import cofh.thermal.core.util.recipes.machine.SmelterRecipe;
@@ -50,3 +51,4 @@ public class SmelterProcessor implements IComponentProcessor {
     }
 
 }
+*/

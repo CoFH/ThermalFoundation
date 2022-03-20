@@ -3,11 +3,12 @@ package cofh.thermal.lib.tileentity;
 import cofh.core.tileentity.TileCoFH;
 import cofh.core.util.control.ISecurableTile;
 import cofh.core.util.control.SecurityControlModule;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
 import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 
@@ -15,15 +16,15 @@ public class ThermalTileSecurable extends TileCoFH implements ISecurableTile {
 
     protected SecurityControlModule securityControl = new SecurityControlModule(this);
 
-    public ThermalTileSecurable(TileEntityType<?> tileEntityTypeIn) {
+    public ThermalTileSecurable(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
+        super(tileEntityTypeIn, pos, state);
     }
 
     @Override
     public ItemStack createItemStackTag(ItemStack stack) {
 
-        CompoundNBT nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
+        CompoundTag nbt = stack.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         if (hasSecurity()) {
             securityControl().write(nbt);
         }
@@ -35,21 +36,19 @@ public class ThermalTileSecurable extends TileCoFH implements ISecurableTile {
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         securityControl.read(nbt);
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         securityControl.write(nbt);
-
-        return nbt;
     }
     // endregion
 
@@ -57,7 +56,7 @@ public class ThermalTileSecurable extends TileCoFH implements ISecurableTile {
 
     // CONTROL
     @Override
-    public PacketBuffer getControlPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getControlPacket(FriendlyByteBuf buffer) {
 
         super.getControlPacket(buffer);
 
@@ -67,7 +66,7 @@ public class ThermalTileSecurable extends TileCoFH implements ISecurableTile {
     }
 
     @Override
-    public void handleControlPacket(PacketBuffer buffer) {
+    public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
 

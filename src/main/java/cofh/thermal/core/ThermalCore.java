@@ -2,8 +2,6 @@ package cofh.thermal.core;
 
 import cofh.core.init.CoreEnchantments;
 import cofh.lib.capability.CapabilityRedstoneFlux;
-import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
-import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -11,31 +9,29 @@ import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
-import cofh.thermal.core.client.renderer.entity.*;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
 import cofh.thermal.core.init.*;
-import cofh.thermal.core.world.gen.feature.ThermalFeatures;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalProxy;
 import cofh.thermal.lib.common.ThermalProxyClient;
-import net.minecraft.block.Block;
-import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.entity.EntityType;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -59,12 +55,12 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<Item> ITEMS = DeferredRegisterCoFH.create(ForgeRegistries.ITEMS, ID_THERMAL);
     public static final DeferredRegisterCoFH<Fluid> FLUIDS = DeferredRegisterCoFH.create(ForgeRegistries.FLUIDS, ID_THERMAL);
 
-    public static final DeferredRegisterCoFH<ContainerType<?>> CONTAINERS = DeferredRegisterCoFH.create(ForgeRegistries.CONTAINERS, ID_THERMAL);
+    public static final DeferredRegisterCoFH<MenuType<?>> CONTAINERS = DeferredRegisterCoFH.create(ForgeRegistries.CONTAINERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<EntityType<?>> ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.ENTITIES, ID_THERMAL).preventDataFixers(true);
     public static final DeferredRegisterCoFH<GlobalLootModifierSerializer<?>> LOOT_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, ID_THERMAL);
-    public static final DeferredRegisterCoFH<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_SERIALIZERS, ID_THERMAL);
+    public static final DeferredRegisterCoFH<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_SERIALIZERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
-    public static final DeferredRegisterCoFH<TileEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.TILE_ENTITIES, ID_THERMAL);
+    public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
 
     static {
         TCoreBlocks.register();
@@ -87,6 +83,7 @@ public class ThermalCore {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::entitySetup);
+        modEventBus.addListener(this::capSetup);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
 
@@ -128,9 +125,12 @@ public class ThermalCore {
         event.put(BLIZZ_ENTITY, BlizzEntity.registerAttributes().build());
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void capSetup(RegisterCapabilitiesEvent event) {
 
-        CapabilityRedstoneFlux.register();
+        CapabilityRedstoneFlux.register(event);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
 
         // DO NOT ENQUEUE
         ThermalConfig.setup();
@@ -138,7 +138,8 @@ public class ThermalCore {
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);
         event.enqueueWork(TCoreEntities::setup);
-        event.enqueueWork(ThermalFeatures::setup);
+        // TODO Lemming, See ConfiguredFeatureCoFH.
+//        event.enqueueWork(ThermalFeatures::setup);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -155,95 +156,96 @@ public class ThermalCore {
     // region HELPERS
     private void registerGuiFactories() {
 
-        ScreenManager.register(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
-        ScreenManager.register(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
-        ScreenManager.register(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
-        ScreenManager.register(DEVICE_FISHER_CONTAINER, DeviceFisherScreen::new);
-        ScreenManager.register(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
-        ScreenManager.register(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
-        ScreenManager.register(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
-        ScreenManager.register(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
-        ScreenManager.register(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
+        MenuScreens.register(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
+        MenuScreens.register(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
+        MenuScreens.register(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
+        MenuScreens.register(DEVICE_FISHER_CONTAINER, DeviceFisherScreen::new);
+        MenuScreens.register(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
+        MenuScreens.register(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
+        MenuScreens.register(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
+        MenuScreens.register(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
+        MenuScreens.register(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
 
-        // ScreenManager.register(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
+        // MenuScreens.register(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
 
-        ScreenManager.register(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
-        ScreenManager.register(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
+        MenuScreens.register(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
+        MenuScreens.register(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
 
-        ScreenManager.register(SATCHEL_CONTAINER, SatchelScreen::new);
+        MenuScreens.register(SATCHEL_CONTAINER, SatchelScreen::new);
 
-        ScreenManager.register(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
-        ScreenManager.register(FLUID_CELL_CONTAINER, FluidCellScreen::new);
-        // ScreenManager.register(ITEM_CELL_CONTAINER, ItemCellScreen::new);
+        MenuScreens.register(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
+        MenuScreens.register(FLUID_CELL_CONTAINER, FluidCellScreen::new);
+        // MenuScreens.register(ITEM_CELL_CONTAINER, ItemCellScreen::new);
     }
 
     private void registerRenderLayers() {
 
         RenderType cutout = RenderType.cutout();
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_OBSIDIAN_GLASS), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_SIGNALUM_GLASS), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_LUMIUM_GLASS), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ENDERIUM_GLASS), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_OBSIDIAN_GLASS), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_SIGNALUM_GLASS), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_LUMIUM_GLASS), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_ENDERIUM_GLASS), cutout);
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_FRAME), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_FRAME), cutout);
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ENERGY_CELL_FRAME), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ENERGY_CELL), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_ENERGY_CELL_FRAME), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_ENERGY_CELL), cutout);
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLUID_CELL_FRAME), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLUID_CELL), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_FLUID_CELL_FRAME), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_FLUID_CELL), cutout);
 
-        //        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL_FRAME), cutout);
-        //        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ITEM_CELL), cutout);
+        //        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_ITEM_CELL_FRAME), cutout);
+        //        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_ITEM_CELL), cutout);
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_WATER_GEN), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_ROCK_GEN), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_COLLECTOR), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_POTION_DIFFUSER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DEVICE_NULLIFIER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_WATER_GEN), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_ROCK_GEN), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_COLLECTOR), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_POTION_DIFFUSER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_NULLIFIER), cutout);
     }
 
     private void registerEntityRenderingHandlers() {
 
-        RenderingRegistry.registerEntityRenderingHandler(BASALZ_ENTITY, BasalzRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(BLITZ_ENTITY, BlitzRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(BLIZZ_ENTITY, BlizzRenderer::new);
+        // TODO Covers, All entity Rendering needs to be re-evaluated.
+/*        EntityRenderers.registerEntityRenderingHandler(BASALZ_ENTITY, BasalzRenderer::new);
+        EntityRenderers.registerEntityRenderingHandler(BLITZ_ENTITY, BlitzRenderer::new);
+        EntityRenderers.registerEntityRenderingHandler(BLIZZ_ENTITY, BlizzRenderer::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(BASALZ_PROJECTILE_ENTITY, BasalzProjectileRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(BLITZ_PROJECTILE_ENTITY, BlitzProjectileRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
+        EntityRenderers.registerEntityRenderingHandler(BASALZ_PROJECTILE_ENTITY, BasalzProjectileRenderer::new);
+        EntityRenderers.registerEntityRenderingHandler(BLITZ_PROJECTILE_ENTITY, BlitzProjectileRenderer::new);
+        EntityRenderers.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(EXPLOSIVE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(EXPLOSIVE_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(SLIME_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ENDER_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(SLIME_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(REDSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(GLOWSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(ENDER_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(PHYTO_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(PHYTO_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(FIRE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(EARTH_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ICE_GRENADE_ENTITY, SpriteRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(LIGHTNING_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(FIRE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(EARTH_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(ICE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(LIGHTNING_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(NUKE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(NUKE_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(SLIME_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ENDER_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(SLIME_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(REDSTONE_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(GLOWSTONE_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(ENDER_TNT_ENTITY, TNTRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(PHYTO_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(PHYTO_TNT_ENTITY, TNTRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(FIRE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(EARTH_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(ICE_TNT_ENTITY, TNTRendererCoFH::new);
-        RenderingRegistry.registerEntityRenderingHandler(LIGHTNING_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(FIRE_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(EARTH_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(ICE_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(LIGHTNING_TNT_ENTITY, TNTRendererCoFH::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(NUKE_TNT_ENTITY, TNTRendererCoFH::new);
+        EntityRenderers.registerEntityRenderingHandler(NUKE_TNT_ENTITY, TNTRendererCoFH::new);*/
     }
 
     private void registerTileEntityRenderers() {
