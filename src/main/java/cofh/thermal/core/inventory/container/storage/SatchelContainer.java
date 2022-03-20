@@ -13,10 +13,10 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.item.SatchelItem;
 import com.mojang.authlib.GameProfile;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 import static cofh.thermal.core.init.TCoreReferences.SATCHEL_CONTAINER;
 
@@ -40,7 +40,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
         return stack.getItem() instanceof SatchelItem;
     }
 
-    public SatchelContainer(int windowId, PlayerInventory inventory, PlayerEntity player) {
+    public SatchelContainer(int windowId, Inventory inventory, Player player) {
 
         super(SATCHEL_CONTAINER, windowId, inventory, player);
 
@@ -72,7 +72,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     }
 
     @Override
-    protected void bindPlayerInventory(PlayerInventory inventory) {
+    protected void bindPlayerInventory(Inventory inventory) {
 
         int xOffset = getPlayerInventoryHorizontalOffset();
         int yOffset = getPlayerInventoryVerticalOffset();
@@ -115,13 +115,13 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     }
 
     @Override
-    public boolean stillValid(PlayerEntity playerIn) {
+    public boolean stillValid(Player playerIn) {
 
         return true;
     }
 
     @Override
-    public void removed(PlayerEntity playerIn) {
+    public void removed(Player playerIn) {
 
         itemInventory.write(containerItem.getOrCreateInvTag(containerStack));
         containerItem.onContainerInventoryChanged(containerStack);

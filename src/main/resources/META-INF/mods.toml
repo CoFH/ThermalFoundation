@@ -20,7 +20,7 @@ Contains all of the common components for the Thermal Series, such as materials 
 [[dependencies.thermal]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16.5,)"
+versionRange = "[1.18.2,)"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -54,7 +54,7 @@ Contains the ores and world generation for the Thermal Series.
 [[dependencies.thermal_foundation]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16.5,)"
+versionRange = "[1.18.2,)"
 ordering = "AFTER"
 side = "BOTH"
 

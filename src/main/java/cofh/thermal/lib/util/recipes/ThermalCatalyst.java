@@ -1,8 +1,8 @@
 package cofh.thermal.lib.util.recipes;
 
 import cofh.lib.util.recipes.SerializableRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
 
 /**
  * This class really just serves as a way to ride on Mojang's automated recipe syncing and datapack functionality.

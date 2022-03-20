@@ -1,7 +1,7 @@
 package cofh.thermal.lib.common;
 
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -15,7 +15,7 @@ public class ThermalItemGroups {
 
     }
 
-    public static final ItemGroup THERMAL_BLOCKS = new ItemGroup(-1, ID_THERMAL + ".blocks") {
+    public static final CreativeModeTab THERMAL_BLOCKS = new CreativeModeTab(-1, ID_THERMAL + ".blocks") {
 
         @Override
         @OnlyIn (Dist.CLIENT)
@@ -25,7 +25,7 @@ public class ThermalItemGroups {
         }
     };
 
-    public static final ItemGroup THERMAL_DEVICES = new ItemGroup(-1, ID_THERMAL + ".devices") {
+    public static final CreativeModeTab THERMAL_DEVICES = new CreativeModeTab(-1, ID_THERMAL + ".devices") {
 
         @Override
         @OnlyIn (Dist.CLIENT)
@@ -35,7 +35,7 @@ public class ThermalItemGroups {
         }
     };
 
-    public static final ItemGroup THERMAL_ITEMS = new ItemGroup(-1, ID_THERMAL + ".items") {
+    public static final CreativeModeTab THERMAL_ITEMS = new CreativeModeTab(-1, ID_THERMAL + ".items") {
 
         @Override
         @OnlyIn (Dist.CLIENT)
@@ -45,7 +45,7 @@ public class ThermalItemGroups {
         }
     };
 
-    public static final ItemGroup THERMAL_FOODS = new ItemGroup(-1, ID_THERMAL + ".foods") {
+    public static final CreativeModeTab THERMAL_FOODS = new CreativeModeTab(-1, ID_THERMAL + ".foods") {
 
         @Override
         @OnlyIn (Dist.CLIENT)
@@ -55,7 +55,7 @@ public class ThermalItemGroups {
         }
     };
 
-    public static final ItemGroup THERMAL_TOOLS = new ItemGroup(-1, ID_THERMAL + ".tools") {
+    public static final CreativeModeTab THERMAL_TOOLS = new CreativeModeTab(-1, ID_THERMAL + ".tools") {
 
         @Override
         @OnlyIn (Dist.CLIENT)
@@ -65,6 +65,6 @@ public class ThermalItemGroups {
         }
     };
 
-    public static ItemGroup THERMAL_MISC; // TODO: Florbs, Morbs
+    public static CreativeModeTab THERMAL_MISC; // TODO: Florbs, Morbs
 
 }

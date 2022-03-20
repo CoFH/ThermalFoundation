@@ -2,17 +2,17 @@ package cofh.thermal.core.util.recipes.device;
 
 import cofh.thermal.core.util.managers.device.TreeExtractorManager;
 import com.google.gson.JsonObject;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<TreeExtractorBoost> {
+public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<TreeExtractorBoost> {
 
     @Override
     public TreeExtractorBoost fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -37,7 +37,7 @@ public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<IRecipeSeri
 
     @Nullable
     @Override
-    public TreeExtractorBoost fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+    public TreeExtractorBoost fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 
         Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
@@ -48,7 +48,7 @@ public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<IRecipeSeri
     }
 
     @Override
-    public void toNetwork(PacketBuffer buffer, TreeExtractorBoost recipe) {
+    public void toNetwork(FriendlyByteBuf buffer, TreeExtractorBoost recipe) {
 
         recipe.ingredient.toNetwork(buffer);
 

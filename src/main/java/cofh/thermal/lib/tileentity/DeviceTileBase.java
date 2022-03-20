@@ -1,14 +1,14 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.lib.util.helpers.AugmentDataHelper;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -23,9 +23,9 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_VALIDATOR;
 
 public abstract class DeviceTileBase extends ThermalTileAugmentable {
 
-    public DeviceTileBase(TileEntityType<?> tileEntityTypeIn) {
+    public DeviceTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
-        super(tileEntityTypeIn);
+        super(tileEntityTypeIn, pos, state);
     }
 
     protected void updateValidity() {
@@ -53,7 +53,7 @@ public abstract class DeviceTileBase extends ThermalTileAugmentable {
     }
 
     @Override
-    public void onPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void onPlacedBy(Level worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
 
         super.onPlacedBy(worldIn, pos, state, placer, stack);
         updateValidity();

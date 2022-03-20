@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.jei;
 
 import cofh.lib.util.helpers.StringHelper;
@@ -107,3 +108,4 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
     // endregion
 }
+*/

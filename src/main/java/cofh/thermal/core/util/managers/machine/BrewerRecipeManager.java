@@ -7,7 +7,6 @@ import cofh.lib.fluid.IFluidStackAccess;
 import cofh.lib.inventory.FalseIInventory;
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.lib.util.ComparableItemStack;
-import cofh.lib.util.helpers.BrewingRecipeHelper;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
@@ -19,14 +18,14 @@ import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
 import cofh.thermal.lib.util.recipes.internal.SimpleMachineRecipe;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionBrewing;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.*;
@@ -156,8 +155,8 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
                 addRecipe(recipe);
             }
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BREWER);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BREWER);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
     }
@@ -173,14 +172,9 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
 
     protected void createConvertedRecipes() {
 
-        for (Object mixpredicate : PotionBrewing.POTION_MIXES) {
-            createConvertedRecipe(mixpredicate);
+        for (PotionBrewing.Mix<Potion> mix : PotionBrewing.POTION_MIXES) {
+            createConvertedRecipe(mix.from.get(), mix.ingredient, mix.to.get());
         }
-    }
-
-    protected boolean createConvertedRecipe(Object mixpredicate) {
-
-        return createConvertedRecipe(BrewingRecipeHelper.getFromPotion(mixpredicate), BrewingRecipeHelper.getIngredient(mixpredicate), BrewingRecipeHelper.getToPotion(mixpredicate));
     }
 
     protected boolean createConvertedRecipe(Potion inputPotion, Ingredient reagent, Potion outputPotion) {

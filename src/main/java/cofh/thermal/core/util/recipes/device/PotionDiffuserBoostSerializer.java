@@ -2,17 +2,17 @@ package cofh.thermal.core.util.recipes.device;
 
 import cofh.thermal.core.util.managers.device.PotionDiffuserManager;
 import com.google.gson.JsonObject;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PotionDiffuserBoost> {
+public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<PotionDiffuserBoost> {
 
     @Override
     public PotionDiffuserBoost fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -39,7 +39,7 @@ public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<IRecipeSer
 
     @Nullable
     @Override
-    public PotionDiffuserBoost fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+    public PotionDiffuserBoost fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 
         Ingredient ingredient = Ingredient.fromNetwork(buffer);
 
@@ -51,7 +51,7 @@ public class PotionDiffuserBoostSerializer extends ForgeRegistryEntry<IRecipeSer
     }
 
     @Override
-    public void toNetwork(PacketBuffer buffer, PotionDiffuserBoost recipe) {
+    public void toNetwork(FriendlyByteBuf buffer, PotionDiffuserBoost recipe) {
 
         recipe.ingredient.toNetwork(buffer);
 

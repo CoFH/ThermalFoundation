@@ -3,6 +3,7 @@ package cofh.thermal.core.tileentity.device;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemHandler;
 import cofh.lib.tileentity.IAreaEffectTile;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
@@ -11,25 +12,25 @@ import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.inventory.container.device.DeviceFisherContainer;
 import cofh.thermal.core.util.managers.device.FisherManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameterSets;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.loot.LootTable;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
@@ -47,7 +48,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEntity, IAreaEffectTile {
+public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
@@ -63,7 +64,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
 
     protected static final int RADIUS = 2;
     public int radius = RADIUS;
-    protected AxisAlignedBB area;
+    protected AABB area;
 
     protected int process = timeConstant / 2;
 
@@ -78,9 +79,9 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         timeReductionWater = configConstant;
     }
 
-    public DeviceFisherTile() {
+    public DeviceFisherTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_FISHER_TILE);
+        super(DEVICE_FISHER_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 15, item -> filter.valid(item));
@@ -93,9 +94,9 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     }
 
     @Override
-    public void clearCache() {
+    public void setLevel(Level level) {
 
-        super.clearCache();
+        super.setLevel(level);
         updateValidity();
     }
 
@@ -144,7 +145,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         updateActiveState();
 
@@ -160,7 +161,8 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         }
         if (valid) {
             LootTable table = level.getServer().getLootTables().get(FisherManager.instance().getBoostLootTable(inputSlot.getItemStack()));
-            LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) level).withParameter(LootParameters.ORIGIN, Vector3d.atLowerCornerOf(getBlockPos())).withRandom(level.random);
+            LootContext.Builder contextBuilder = new LootContext.Builder((ServerLevel) level)
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atLowerCornerOf(getBlockPos())).withRandom(level.random);
 
             float lootBase = baseMod * FisherManager.instance().getBoostOutputMod(inputSlot.getItemStack());
             float lootExtra = lootBase - (int) lootBase;
@@ -169,7 +171,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
             int caught = 0;
 
             for (int i = 0; i < lootCount; ++i) {
-                for (ItemStack stack : table.getRandomItems(contextBuilder.create(LootParameterSets.EMPTY))) {
+                for (ItemStack stack : table.getRandomItems(contextBuilder.create(LootContextParamSets.EMPTY))) {
                     if (InventoryHelper.insertStackIntoInventory(internalHandler, stack, false).isEmpty()) {
                         ++caught;
                     }
@@ -182,38 +184,36 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
                 if (xpStorageFeature) {
                     xpStorage.receiveXp(caught + level.random.nextInt(2 * caught), false);
                 }
-                Vector3d splashVec = Vector3d.upFromBottomCenterOf(worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL)), 1.0);
-                ((ServerWorld) level).sendParticles(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
+                Vec3 splashVec = Vec3.upFromBottomCenterOf(worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL)), 1.0);
+                ((ServerLevel) level).sendParticles(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
             }
         }
     }
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceFisherContainer(i, level, worldPosition, inventory, player);
     }
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         process = nbt.getInt(TAG_PROCESS);
         valid = nbt.getBoolean(TAG_VALID);
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putBoolean(TAG_VALID, valid);
-
-        return nbt;
     }
     // endregion
 
@@ -266,7 +266,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 
@@ -284,15 +284,15 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
 
     // region IAreaEffectTile
     @Override
-    public AxisAlignedBB getArea() {
+    public AABB getArea() {
 
         if (area == null) {
             if (!valid) {
                 BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), 2);
-                area = new AxisAlignedBB(areaPos.offset(-1, 0, -1), areaPos.offset(2, 1, 2));
+                area = new AABB(areaPos.offset(-1, 0, -1), areaPos.offset(2, 1, 2));
             } else {
                 BlockPos areaPos = worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL), radius);
-                area = new AxisAlignedBB(areaPos.offset(-radius, -1 - radius, -radius), areaPos.offset(1 + radius, -1 + radius, 1 + radius));
+                area = new AABB(areaPos.offset(-radius, -1 - radius, -radius), areaPos.offset(1 + radius, -1 + radius, 1 + radius));
             }
         }
         return area;

@@ -9,11 +9,15 @@ import cofh.thermal.lib.util.managers.AbstractManager;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.block.*;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -119,12 +123,12 @@ public class TreeExtractorManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : mappings.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : mappings.entrySet()) {
             addMapping((TreeExtractorMapping) entry.getValue());
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_TREE_EXTRACTOR);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_TREE_EXTRACTOR);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((TreeExtractorBoost) entry.getValue());
         }
     }

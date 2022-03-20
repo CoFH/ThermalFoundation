@@ -4,20 +4,20 @@ import cofh.lib.entity.ElectricArcEntity;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.lib.common.ThermalConfig;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.IndirectEntityDamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 
 import static cofh.lib.util.references.CoreReferences.SHOCKED;
 import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
@@ -29,30 +29,31 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
 
-    public BlitzProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
+    public BlitzProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public BlitzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, World world) {
+    public BlitzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLITZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
     }
 
-    public BlitzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, World world) {
+    public BlitzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLITZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
     }
 
     @Override
-    protected IParticleData getTrailParticle() {
+    protected ParticleOptions getTrailParticle() {
 
         return ParticleTypes.INSTANT_EFFECT;
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
+    protected void onHit(HitResult result) {
 
+<<<<<<< HEAD
         Entity owner = getOwner();
         level.addFreshEntity((new ElectricArcEntity(level, result.getLocation())).setCosmetic(true).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         if (result.getType() == RayTraceResult.Type.ENTITY) {
@@ -60,6 +61,12 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
             if (entity.hurt(BlitzDamageSource.causeDamage(this, owner), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(SHOCKED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+=======
+        if (result.getType() == HitResult.Type.ENTITY) {
+            Entity entity = ((EntityHitResult) result).getEntity();
+            if (entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity living) {
+                living.addEffect(new MobEffectInstance(SHOCKED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
             }
         }
         if (ThermalConfig.mobBlitzLightning && Utils.isServerWorld(level)) {
@@ -67,7 +74,7 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
             if (level.canSeeSky(pos) && random.nextFloat() < (level.isRainingAt(pos) ? (level.isThundering() ? 0.2F : 0.1F) : 0.04F)) {
                 Utils.spawnLightningBolt(level, pos);
             }
-            this.remove();
+            this.discard();
         }
     }
 

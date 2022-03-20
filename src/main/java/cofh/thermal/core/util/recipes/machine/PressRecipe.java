@@ -3,11 +3,11 @@ package cofh.thermal.core.util.recipes.machine;
 import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
@@ -24,14 +24,14 @@ public class PressRecipe extends ThermalRecipe {
 
     @Nonnull
     @Override
-    public IRecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
 
         return RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_RECIPE_PRESS);
     }
 
     @Nonnull
     @Override
-    public IRecipeType<?> getType() {
+    public RecipeType<?> getType() {
 
         return TCoreRecipeTypes.RECIPE_PRESS;
     }

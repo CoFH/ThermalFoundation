@@ -6,22 +6,23 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.filter.IFilter;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.AugmentableHelper;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
@@ -40,7 +41,7 @@ import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
 
-public class TinkerBenchTile extends ThermalTileAugmentable implements ITickableTileEntity {
+public class TinkerBenchTile extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FLUID);
 
@@ -65,9 +66,9 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     //    protected LazyOptional<?> chargeEnergyCap = LazyOptional.empty();
     //    protected LazyOptional<?> tankFluidCap = LazyOptional.empty();
 
-    public TinkerBenchTile() {
+    public TinkerBenchTile(BlockPos pos, BlockState state) {
 
-        super(TINKER_BENCH_TILE);
+        super(TINKER_BENCH_TILE, pos, state);
 
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 
@@ -82,7 +83,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         if (redstoneControl.getState()) {
             chargeEnergy();
@@ -148,7 +149,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new TinkerBenchContainer(i, level, worldPosition, inventory, player);
     }
@@ -163,7 +164,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     // region NETWORK
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -173,7 +174,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -183,21 +184,19 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         mode = nbt.getByte(TAG_MODE);
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putByte(TAG_MODE, mode);
-
-        return nbt;
     }
     // endregion
 
@@ -217,13 +216,13 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
     }
 
     @Override
-    public boolean openGui(ServerPlayerEntity player) {
+    public boolean openGui(ServerPlayer player) {
 
         return false;
     }
 
     @Override
-    public boolean openFilterGui(ServerPlayerEntity player) {
+    public boolean openFilterGui(ServerPlayer player) {
 
         return false;
     }

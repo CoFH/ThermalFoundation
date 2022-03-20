@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.dynamo;
 
 import cofh.thermal.core.util.recipes.dynamo.*;
@@ -55,3 +56,4 @@ public class CRTItemDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> {
     }
 
 }
+*/

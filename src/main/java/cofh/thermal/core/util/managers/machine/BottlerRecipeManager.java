@@ -18,14 +18,14 @@ import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
 import cofh.thermal.lib.util.recipes.internal.SimpleMachineRecipe;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -185,10 +185,10 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
             ThermalCore.LOG.debug("Adding default Bucket recipes to the Fluid Encapsulator...");
             Set<Fluid> bucketFluids = new ObjectOpenHashSet<>(32);
             for (Fluid fluid : ForgeRegistries.FLUIDS) {
-                if (fluid instanceof FlowingFluid) {
+                if (fluid instanceof FlowingFluid flowing) {
                     Fluid still = null;
                     try {
-                        still = ((FlowingFluid) fluid).getSource();
+                        still = flowing.getSource();
                     } catch (Exception e) {
                         ThermalCore.LOG.error("Fluid " + fluid.getRegistryName() + " had a critical error when attempting to query its still form!");
                     }
@@ -208,8 +208,8 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
             ThermalCore.LOG.debug("Adding default Potion recipes to the Fluid Encapsulator...");
             addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(FLUID_POTION, BOTTLE_VOLUME), new ItemStack(Items.POTION)));
         }
-        Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BOTTLER);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BOTTLER);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
     }

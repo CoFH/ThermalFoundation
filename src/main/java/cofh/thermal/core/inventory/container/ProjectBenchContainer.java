@@ -3,10 +3,10 @@ package cofh.thermal.core.inventory.container;
 import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.core.tileentity.ProjectBenchTile;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import static cofh.thermal.core.init.TCoreReferences.PROJECT_BENCH_CONTAINER;
 
@@ -14,7 +14,7 @@ public class ProjectBenchContainer extends TileContainer {
 
     public final ProjectBenchTile tile;
 
-    public ProjectBenchContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+    public ProjectBenchContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
         super(PROJECT_BENCH_CONTAINER, windowId, world, pos, inventory, player);
         this.tile = (ProjectBenchTile) world.getBlockEntity(pos);

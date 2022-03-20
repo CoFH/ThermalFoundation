@@ -6,17 +6,31 @@ import cofh.core.util.filter.FilterRegistry;
 import cofh.lib.block.impl.TNTBlockCoFH;
 import cofh.lib.item.ArmorMaterialCoFH;
 import cofh.lib.item.impl.SpawnEggItemCoFH;
-import cofh.lib.util.constants.ToolTypes;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.item.*;
 import cofh.thermal.lib.item.AugmentItem;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
+<<<<<<< HEAD
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.SoundEvents;
+=======
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.HoneyBottleItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.IEnergyStorage;
 
@@ -30,7 +44,7 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.flagUniqueAugment;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.*;
-import static net.minecraft.item.Items.GLASS_BOTTLE;
+import static net.minecraft.world.item.Items.GLASS_BOTTLE;
 
 public class TCoreItems {
 
@@ -52,7 +66,7 @@ public class TCoreItems {
 
     public static void setup() {
 
-        DetonatorItem.registerTNT(Blocks.TNT, TNTEntity::new);
+        DetonatorItem.registerTNT(Blocks.TNT, PrimedTnt::new);
 
         DetonatorItem.registerTNT(BLOCKS.get(ID_SLIME_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_SLIME_TNT))).getFactory());
         DetonatorItem.registerTNT(BLOCKS.get(ID_REDSTONE_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_REDSTONE_TNT))).getFactory());
@@ -99,7 +113,7 @@ public class TCoreItems {
     // region HELPERS
     private static void registerResources() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("sawdust", group);
         registerItem("coal_coke", () -> new ItemCoFH(new Item.Properties().tab(group)).setBurnTime(3200));
@@ -139,7 +153,7 @@ public class TCoreItems {
 
     private static void registerParts() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("redstone_servo", group);
         registerItem("rf_coil", group);
@@ -151,7 +165,7 @@ public class TCoreItems {
 
     private static void registerMaterials() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("ender_pearl_dust", group);
 
@@ -187,9 +201,10 @@ public class TCoreItems {
 
     private static void registerTools() {
 
-        ItemGroup group = THERMAL_TOOLS;
+        CreativeModeTab group = THERMAL_TOOLS;
 
-        registerItem(ID_WRENCH, () -> new WrenchItem(new Item.Properties().stacksTo(1).tab(group).addToolType(ToolTypes.WRENCH, 1)).setShowInGroups(getFlag(ID_WRENCH)));
+        // TODO Wrench tool type.
+        registerItem(ID_WRENCH, () -> new WrenchItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_WRENCH)));
         registerItem(ID_REDPRINT, () -> new RedprintItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_REDPRINT)));
         registerItem(ID_RF_POTATO, () -> new EnergyContainerItem(new Item.Properties().stacksTo(1).tab(group), 100000, 40) {
 
@@ -218,26 +233,198 @@ public class TCoreItems {
 
         registerItem(ID_DETONATOR, () -> new DetonatorItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_DETONATOR)));
 
+<<<<<<< HEAD
+=======
+        registerItem(ID_EXPLOSIVE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new ExplosiveGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new ExplosiveGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)));
+
+        registerItem(ID_SLIME_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new SlimeGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new SlimeGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+        registerItem(ID_REDSTONE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new RedstoneGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new RedstoneGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+        registerItem(ID_GLOWSTONE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new GlowstoneGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new GlowstoneGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+        registerItem(ID_ENDER_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new EnderGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new EnderGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+
+        registerItem(ID_PHYTO_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new PhytoGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new PhytoGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_PHYTOGRO_EXPLOSIVES)));
+
+        registerItem(ID_EARTH_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new EarthGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new EarthGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
+        registerItem(ID_FIRE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new FireGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new FireGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
+        registerItem(ID_ICE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new IceGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new IceGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
+        registerItem(ID_LIGHTNING_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new LightningGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new LightningGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
+
+        registerItem(ID_NUKE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
+
+                return new NukeGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
+
+                return new NukeGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().tab(group).rarity(Rarity.UNCOMMON).stacksTo(16)).setShowInGroups(getFlag(FLAG_NUCLEAR_EXPLOSIVES)));
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
     }
 
     private static void registerArmor() {
 
-        ItemGroup group = THERMAL_TOOLS;
+        CreativeModeTab group = THERMAL_TOOLS;
 
-        ITEMS.register(ID_BEEKEEPER_HELMET, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlotType.HEAD, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
-        ITEMS.register(ID_BEEKEEPER_CHESTPLATE, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlotType.CHEST, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
-        ITEMS.register(ID_BEEKEEPER_LEGGINGS, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlotType.LEGS, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
-        ITEMS.register(ID_BEEKEEPER_BOOTS, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlotType.FEET, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
+        ITEMS.register(ID_BEEKEEPER_HELMET, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlot.HEAD, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
+        ITEMS.register(ID_BEEKEEPER_CHESTPLATE, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlot.CHEST, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
+        ITEMS.register(ID_BEEKEEPER_LEGGINGS, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlot.LEGS, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
+        ITEMS.register(ID_BEEKEEPER_BOOTS, () -> new BeekeeperArmorItem(BEEKEEPER, EquipmentSlot.FEET, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_BEEKEEPER_ARMOR)));
 
-        ITEMS.register(ID_DIVING_HELMET, () -> new DivingArmorItem(DIVING, EquipmentSlotType.HEAD, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
-        ITEMS.register(ID_DIVING_CHESTPLATE, () -> new DivingArmorItem(DIVING, EquipmentSlotType.CHEST, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
-        ITEMS.register(ID_DIVING_LEGGINGS, () -> new DivingArmorItem(DIVING, EquipmentSlotType.LEGS, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
-        ITEMS.register(ID_DIVING_BOOTS, () -> new DivingArmorItem(DIVING, EquipmentSlotType.FEET, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
+        ITEMS.register(ID_DIVING_HELMET, () -> new DivingArmorItem(DIVING, EquipmentSlot.HEAD, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
+        ITEMS.register(ID_DIVING_CHESTPLATE, () -> new DivingArmorItem(DIVING, EquipmentSlot.CHEST, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
+        ITEMS.register(ID_DIVING_LEGGINGS, () -> new DivingArmorItem(DIVING, EquipmentSlot.LEGS, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
+        ITEMS.register(ID_DIVING_BOOTS, () -> new DivingArmorItem(DIVING, EquipmentSlot.FEET, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_DIVING_ARMOR)));
 
-        ITEMS.register(ID_HAZMAT_HELMET, () -> new HazmatArmorItem(HAZMAT, EquipmentSlotType.HEAD, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
-        ITEMS.register(ID_HAZMAT_CHESTPLATE, () -> new HazmatArmorItem(HAZMAT, EquipmentSlotType.CHEST, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
-        ITEMS.register(ID_HAZMAT_LEGGINGS, () -> new HazmatArmorItem(HAZMAT, EquipmentSlotType.LEGS, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
-        ITEMS.register(ID_HAZMAT_BOOTS, () -> new HazmatArmorItem(HAZMAT, EquipmentSlotType.FEET, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
+        ITEMS.register(ID_HAZMAT_HELMET, () -> new HazmatArmorItem(HAZMAT, EquipmentSlot.HEAD, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
+        ITEMS.register(ID_HAZMAT_CHESTPLATE, () -> new HazmatArmorItem(HAZMAT, EquipmentSlot.CHEST, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
+        ITEMS.register(ID_HAZMAT_LEGGINGS, () -> new HazmatArmorItem(HAZMAT, EquipmentSlot.LEGS, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
+        ITEMS.register(ID_HAZMAT_BOOTS, () -> new HazmatArmorItem(HAZMAT, EquipmentSlot.FEET, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_HAZMAT_ARMOR)));
     }
 
     // region AUGMENTS
@@ -255,8 +442,8 @@ public class TCoreItems {
 
     private static void registerUpgradeAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
-        final float[] upgradeMods = new float[]{1.0F, 2.0F, 3.0F, 4.0F, 6.0F, 8.5F};
+        CreativeModeTab group = THERMAL_ITEMS;
+        final float[] upgradeMods = new float[] { 1.0F, 2.0F, 3.0F, 4.0F, 6.0F, 8.5F };
         // final float[] upgradeMods = new float[]{1.0F, 1.5F, 2.0F, 2.5F, 3.0F, 3.5F};
 
         for (int i = 1; i <= 3; ++i) {
@@ -271,7 +458,7 @@ public class TCoreItems {
 
     private static void registerFeatureAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("rs_control_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -291,7 +478,7 @@ public class TCoreItems {
 
     private static void registerStorageAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("rf_coil_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -338,7 +525,7 @@ public class TCoreItems {
 
     private static void registerFilterAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("item_filter_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -361,7 +548,7 @@ public class TCoreItems {
 
     private static void registerMachineAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("machine_speed_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -418,7 +605,7 @@ public class TCoreItems {
 
     private static void registerDynamoAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("dynamo_output_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -436,7 +623,7 @@ public class TCoreItems {
 
     private static void registerAreaAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("area_radius_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -447,7 +634,7 @@ public class TCoreItems {
 
     private static void registerPotionAugments() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("potion_amplifier_augment", () -> new AugmentItem(new Item.Properties().tab(group),
                 AugmentDataHelper.builder()
@@ -466,7 +653,7 @@ public class TCoreItems {
 
     private static void registerSpawnEggs() {
 
-        ItemGroup group = THERMAL_ITEMS;
+        CreativeModeTab group = THERMAL_ITEMS;
 
         registerItem("basalz_spawn_egg", () -> new SpawnEggItemCoFH(() -> BASALZ_ENTITY, 0x363840, 0x080407, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BASALZ)));
         registerItem("blizz_spawn_egg", () -> new SpawnEggItemCoFH(() -> BLIZZ_ENTITY, 0xD8DBE5, 0x91D9FC, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BLIZZ)));
@@ -474,8 +661,8 @@ public class TCoreItems {
     }
     // endregion
 
-    public static final ArmorMaterialCoFH BEEKEEPER = new ArmorMaterialCoFH("thermal:beekeeper", 4, new int[]{1, 2, 3, 1}, 16, SoundEvents.ARMOR_EQUIP_ELYTRA, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("beekeeper_fabric")));
-    public static final ArmorMaterialCoFH DIVING = new ArmorMaterialCoFH("thermal:diving", 12, new int[]{1, 4, 5, 2}, 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("diving_fabric")));
-    public static final ArmorMaterialCoFH HAZMAT = new ArmorMaterialCoFH("thermal:hazmat", 6, new int[]{1, 4, 5, 2}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("hazmat_fabric")));
+    public static final ArmorMaterialCoFH BEEKEEPER = new ArmorMaterialCoFH("thermal:beekeeper", 4, new int[] { 1, 2, 3, 1 }, 16, SoundEvents.ARMOR_EQUIP_ELYTRA, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("beekeeper_fabric")));
+    public static final ArmorMaterialCoFH DIVING = new ArmorMaterialCoFH("thermal:diving", 12, new int[] { 1, 4, 5, 2 }, 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("diving_fabric")));
+    public static final ArmorMaterialCoFH HAZMAT = new ArmorMaterialCoFH("thermal:hazmat", 6, new int[] { 1, 4, 5, 2 }, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("hazmat_fabric")));
 
 }

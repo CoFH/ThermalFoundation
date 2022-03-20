@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util.recipes;
 
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
 
 public class EmptyMachineProperties extends MachineProperties {
 
@@ -10,7 +10,7 @@ public class EmptyMachineProperties extends MachineProperties {
 
     }
 
-    public void setAttributesFromAugment(CompoundNBT augmentData) {
+    public void setAttributesFromAugment(CompoundTag augmentData) {
 
     }
 

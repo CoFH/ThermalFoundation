@@ -3,7 +3,7 @@ package cofh.thermal.lib.util.managers;
 import cofh.lib.util.ComparableItemStack;
 import cofh.lib.util.ComparableItemStackNBT;
 import cofh.lib.util.helpers.MathHelper;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 public abstract class AbstractManager implements IManager {
 

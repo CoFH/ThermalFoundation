@@ -7,10 +7,12 @@ import cofh.lib.inventory.NullItemStorage;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -35,9 +37,9 @@ public class DeviceNullifierTile extends DeviceTileBase {
 
     protected FluidStorageCoFH nullTank = new NullFluidStorage(BUCKET_VOLUME * 64, fluid -> filter.valid(fluid)).setEnabled(() -> isActive);
 
-    public DeviceNullifierTile() {
+    public DeviceNullifierTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_NULLIFIER_TILE);
+        super(DEVICE_NULLIFIER_TILE, pos, state);
 
         inventory.addSlot(nullSlot, INPUT);
 
@@ -71,7 +73,7 @@ public class DeviceNullifierTile extends DeviceTileBase {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceNullifierContainer(i, level, worldPosition, inventory, player);
     }

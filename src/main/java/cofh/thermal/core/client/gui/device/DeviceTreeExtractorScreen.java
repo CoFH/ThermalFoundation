@@ -4,9 +4,9 @@ import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceTreeExtractorContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -16,7 +16,7 @@ public class DeviceTreeExtractorScreen extends ThermalTileScreenBase<DeviceTreeE
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/tree_extractor.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public DeviceTreeExtractorScreen(DeviceTreeExtractorContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public DeviceTreeExtractorScreen(DeviceTreeExtractorContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_tree_extractor"));
         texture = TEXTURE;

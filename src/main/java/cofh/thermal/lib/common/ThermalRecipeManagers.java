@@ -2,7 +2,7 @@ package cofh.thermal.lib.common;
 
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.lib.util.managers.IManager;
-import net.minecraft.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.ArrayList;
 import java.util.List;

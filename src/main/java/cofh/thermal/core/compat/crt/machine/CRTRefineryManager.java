@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -71,3 +72,4 @@ public class CRTRefineryManager implements IRecipeManager, IRecipeHandler<Refine
     }
 
 }
+*/

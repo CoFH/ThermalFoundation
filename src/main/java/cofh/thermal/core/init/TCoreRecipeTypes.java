@@ -4,7 +4,7 @@ import cofh.lib.util.recipes.SerializableRecipeType;
 import cofh.thermal.core.util.recipes.device.*;
 import cofh.thermal.core.util.recipes.dynamo.*;
 import cofh.thermal.core.util.recipes.machine.*;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 

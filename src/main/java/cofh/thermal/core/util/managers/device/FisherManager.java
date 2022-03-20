@@ -6,11 +6,11 @@ import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.FisherBoost;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.loot.LootTables;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Map;
@@ -46,7 +46,7 @@ public class FisherManager extends AbstractManager {
 
     public ResourceLocation getBoostLootTable(ItemStack item) {
 
-        return validBoost(item) ? boostMap.get(convert(item)).getLeft() : LootTables.FISHING_FISH;
+        return validBoost(item) ? boostMap.get(convert(item)).getLeft() : BuiltInLootTables.FISHING_FISH;
     }
 
     public float getBoostOutputMod(ItemStack item) {
@@ -65,8 +65,8 @@ public class FisherManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_FISHER);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : boosts.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_FISHER);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : boosts.entrySet()) {
             addBoost((FisherBoost) entry.getValue());
         }
     }

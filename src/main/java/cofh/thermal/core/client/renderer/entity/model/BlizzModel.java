@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
@@ -78,4 +79,18 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
 
+<<<<<<< HEAD
 }
+=======
+    public static float bevel(float f) {
+
+        int floor = MathHelper.floor(f);
+        if (f - floor < 0.66667F && (floor & 1) == 0) {
+            return -MathHelper.cos((float) Math.PI * 1.5F * f);
+        }
+        return ((floor >> 1) & 1) == 0 ? 1 : -1;
+    }
+
+}
+*/
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)

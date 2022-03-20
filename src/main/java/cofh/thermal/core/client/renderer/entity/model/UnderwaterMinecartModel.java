@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity.model;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -40,3 +41,4 @@ public class UnderwaterMinecartModel<T extends Entity> extends EntityModel<T> {
     }
 
 }
+*/

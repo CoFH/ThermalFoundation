@@ -4,6 +4,7 @@ import cofh.core.item.ItemCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.core.init.TCoreSounds;
+<<<<<<< HEAD
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
@@ -20,6 +21,23 @@ import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+=======
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import java.util.Random;
 
@@ -35,58 +53,66 @@ public class LightningChargeItem extends ItemCoFH {
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext context) {
+    public InteractionResult useOn(UseOnContext context) {
 
-        PlayerEntity player = context.getPlayer();
-        World world = context.getLevel();
+        Player player = context.getPlayer();
+        Level world = context.getLevel();
         BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
 
         //        if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getClickedFace(), context.getItemInHand()))) {
         //            return ActionResultType.FAIL;
         //        }
         if (world.canSeeSky(pos)) {
+<<<<<<< HEAD
             if (world instanceof ServerWorld) {
                 if (player != null) {
                     player.addEffect(new EffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
                 }
+=======
+            if (world instanceof ServerLevel) {
+                //                if (player != null) {
+                //                    player.addPotionEffect(new EffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
+                //                }
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
                 Utils.spawnLightningBolt(world, pos, player);
                 // world.addFreshEntity(new ElectricArcEntity(world, Vector3d.atBottomCenterOf(pos)).setOwner(player));
             }
             playUseSound(world, pos);
             context.getItemInHand().shrink(1);
-            return ActionResultType.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
-        return ActionResultType.FAIL;
+        return InteractionResult.FAIL;
     }
 
-    private void playUseSound(World worldIn, BlockPos pos) {
+    private void playUseSound(Level worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT, SoundCategory.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT, SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR
-    private static final IDispenseItemBehavior DISPENSER_BEHAVIOR = new DefaultDispenseItemBehavior() {
+    private static final DispenseItemBehavior DISPENSER_BEHAVIOR = new DefaultDispenseItemBehavior() {
 
         @Override
-        public ItemStack execute(IBlockSource source, ItemStack stack) {
+        public ItemStack execute(BlockSource source, ItemStack stack) {
 
             Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
-            IPosition iposition = DispenserBlock.getDispensePosition(source);
+            Position iposition = DispenserBlock.getDispensePosition(source);
             double d0 = iposition.x() + (double) ((float) direction.getStepX() * 0.3F);
             double d1 = iposition.y() + (double) ((float) direction.getStepY() * 0.3F);
             double d2 = iposition.z() + (double) ((float) direction.getStepZ() * 0.3F);
-            World world = source.getLevel();
+            Level world = source.getLevel();
             Random random = world.random;
             double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
             double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
             double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
+            // TODO What? Why is this in a Util.make? - covers1624 - 1.18.2 port.
             world.addFreshEntity(Util.make(() -> new BlitzProjectileEntity(d0, d1, d2, d3, d4, d5, world)));
             stack.shrink(1);
             return stack;
         }
 
         @Override
-        protected void playSound(IBlockSource source) {
+        protected void playSound(BlockSource source) {
 
             source.getLevel().levelEvent(1018, source.getPos(), 0);
         }

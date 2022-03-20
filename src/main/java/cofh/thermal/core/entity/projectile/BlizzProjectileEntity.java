@@ -2,6 +2,7 @@ package cofh.thermal.core.entity.projectile;
 
 import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
+<<<<<<< HEAD
 import cofh.lib.util.references.CoreReferences;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
@@ -17,6 +18,22 @@ import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+=======
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import static cofh.lib.util.references.CoreReferences.CHILLED;
 import static cofh.thermal.core.init.TCoreReferences.BLIZZ_PROJECTILE_ENTITY;
@@ -30,38 +47,37 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
     public static int effectDuration = 100;
     public static int effectRadius = 2;
 
-    public BlizzProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, World world) {
+    public BlizzProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public BlizzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, World world) {
+    public BlizzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLIZZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
     }
 
-    public BlizzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, World world) {
+    public BlizzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLIZZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
     }
 
     @Override
-    protected IParticleData getTrailParticle() {
+    protected ParticleOptions getTrailParticle() {
 
         return ParticleTypes.ITEM_SNOWBALL;
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
+    protected void onHit(HitResult result) {
 
-        if (result.getType() == RayTraceResult.Type.ENTITY) {
-            Entity entity = ((EntityRayTraceResult) result).getEntity();
+        if (result.getType() == HitResult.Type.ENTITY) {
+            Entity entity = ((EntityHitResult) result).getEntity();
             if (entity.isOnFire()) {
                 entity.clearFire();
             }
-            if (entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
-                LivingEntity living = (LivingEntity) entity;
-                living.addEffect(new EffectInstance(CHILLED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+            if (entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity living) {
+                living.addEffect(new MobEffectInstance(CHILLED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
         if (Utils.isServerWorld(level)) {
@@ -72,13 +88,13 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
                 makeAreaOfEffectCloud();
             }
             this.level.broadcastEntityEvent(this, (byte) 3);
-            this.remove();
+            this.discard();
         }
     }
 
     private void makeAreaOfEffectCloud() {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
+        AreaEffectCloud cloud = new AreaEffectCloud(level, getX(), getY(), getZ());
         cloud.setRadius(1);
         cloud.setParticle(CoreReferences.FROST_PARTICLE);
         cloud.setDuration(CLOUD_DURATION);

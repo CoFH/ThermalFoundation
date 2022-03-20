@@ -2,27 +2,30 @@ package cofh.thermal.core.item;
 
 import cofh.core.item.ItemCoFH;
 import cofh.lib.util.Utils;
-import net.minecraft.block.*;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.particles.ParticleTypes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.block.BambooBlock;
+import net.minecraft.world.level.block.BaseCoralWallFanBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.Optional;
 
 public class PhytoGroItem extends ItemCoFH {
 
@@ -42,25 +45,25 @@ public class PhytoGroItem extends ItemCoFH {
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext context) {
+    public InteractionResult useOn(UseOnContext context) {
 
-        World world = context.getLevel();
+        Level world = context.getLevel();
         BlockPos pos = context.getClickedPos();
 
         if (attemptGrowPlant(world, pos, context, strength)) {
             if (!world.isClientSide) {
                 world.levelEvent(2005, pos, 0);
             }
-            return ActionResultType.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
-        return ActionResultType.PASS;
+        return InteractionResult.PASS;
     }
 
-    protected static boolean attemptGrowPlant(World world, BlockPos pos, ItemUseContext context, int strength) {
+    protected static boolean attemptGrowPlant(Level world, BlockPos pos, UseOnContext context, int strength) {
 
         ItemStack stack = context.getItemInHand();
         BlockState state = world.getBlockState(pos);
-        PlayerEntity player = context.getPlayer();
+        Player player = context.getPlayer();
         if (player != null) {
             int hook = ForgeEventFactory.onApplyBonemeal(player, world, pos, state, stack);
             if (hook != 0) {
@@ -76,13 +79,12 @@ public class PhytoGroItem extends ItemCoFH {
         return used;
     }
 
-    protected static boolean growPlant(World worldIn, BlockPos pos, BlockState state, int strength) {
+    protected static boolean growPlant(Level worldIn, BlockPos pos, BlockState state, int strength) {
 
-        if (state.getBlock() instanceof IGrowable) {
-            IGrowable growable = (IGrowable) state.getBlock();
+        if (state.getBlock() instanceof BonemealableBlock growable) {
             boolean used = false;
             if (growable.isValidBonemealTarget(worldIn, pos, state, worldIn.isClientSide)) {
-                if (worldIn instanceof ServerWorld) {
+                if (worldIn instanceof ServerLevel) {
                     boolean canUse = false;
                     for (int i = 0; i < strength; ++i) {
                         canUse |= growable.isBonemealSuccess(worldIn, worldIn.random, pos, state);
@@ -90,7 +92,7 @@ public class PhytoGroItem extends ItemCoFH {
                     if (canUse) {
                         // TODO: Remove try/catch when Mojang fixes base issue.
                         try {
-                            growable.performBonemeal((ServerWorld) worldIn, worldIn.random, pos, state);
+                            growable.performBonemeal((ServerLevel) worldIn, worldIn.random, pos, state);
                         } catch (Exception e) {
                             // Vanilla issue causes bamboo to crash if grown close to world height
                             if (!(growable instanceof BambooBlock)) {
@@ -106,10 +108,10 @@ public class PhytoGroItem extends ItemCoFH {
         return false;
     }
 
-    public static boolean growSeagrass(World worldIn, BlockPos pos, @Nullable Direction side) {
+    public static boolean growSeagrass(Level worldIn, BlockPos pos, @Nullable Direction side) {
 
         if (worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getFluidState(pos).getAmount() == 8) {
-            if (!(worldIn instanceof ServerWorld)) {
+            if (!(worldIn instanceof ServerLevel)) {
                 return true;
             } else {
                 label79:
@@ -123,17 +125,24 @@ public class PhytoGroItem extends ItemCoFH {
                             continue label79;
                         }
                     }
-                    Optional<RegistryKey<Biome>> optional = worldIn.getBiomeName(blockpos);
-                    if (Objects.equals(optional, Optional.of(Biomes.WARM_OCEAN)) || Objects.equals(optional, Optional.of(Biomes.DEEP_WARM_OCEAN))) {
+                    Holder<Biome> biomeHolder = worldIn.getBiome(blockpos);
+                    // TODO Lemming, fix this.
+                    if (biomeHolder.is(Biomes.WARM_OCEAN.location()) /*|| biomeHolder.is(Biomes.DEEP_WARM_OCEAN.location())*/) {
                         if (i == 0 && side != null && side.getAxis().isHorizontal()) {
-                            blockstate = (BlockTags.WALL_CORALS.getRandomElement(worldIn.random)).defaultBlockState().setValue(DeadCoralWallFanBlock.FACING, side);
+                            blockstate = Registry.BLOCK.getTag(BlockTags.WALL_CORALS)
+                                    .flatMap(e -> e.getRandomElement(worldIn.random))
+                                    .map(e -> e.value().defaultBlockState().setValue(BaseCoralWallFanBlock.FACING, side))
+                                    .orElse(blockstate);
                         } else if (random.nextInt(4) == 0) {
-                            blockstate = (BlockTags.UNDERWATER_BONEMEALS.getRandomElement(random)).defaultBlockState();
+                            blockstate = Registry.BLOCK.getTag(BlockTags.UNDERWATER_BONEMEALS)
+                                    .flatMap(e -> e.getRandomElement(worldIn.random))
+                                    .map(e -> e.value().defaultBlockState())
+                                    .orElse(blockstate);
                         }
                     }
-                    if (blockstate.getBlock().is(BlockTags.WALL_CORALS)) {
+                    if (blockstate.is(BlockTags.WALL_CORALS)) {
                         for (int k = 0; !blockstate.canSurvive(worldIn, blockpos) && k < 4; ++k) {
-                            blockstate = blockstate.setValue(DeadCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
+                            blockstate = blockstate.setValue(BaseCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
                         }
                     }
                     if (blockstate.canSurvive(worldIn, blockpos)) {
@@ -141,7 +150,7 @@ public class PhytoGroItem extends ItemCoFH {
                         if (blockstate1.is(Blocks.WATER) && worldIn.getFluidState(blockpos).getAmount() == 8) {
                             worldIn.setBlock(blockpos, blockstate, 3);
                         } else if (blockstate1.is(Blocks.SEAGRASS) && random.nextInt(10) == 0) {
-                            ((IGrowable) Blocks.SEAGRASS).performBonemeal((ServerWorld) worldIn, random, blockpos, blockstate1);
+                            ((BonemealableBlock) Blocks.SEAGRASS).performBonemeal((ServerLevel) worldIn, random, blockpos, blockstate1);
                         }
                     }
                 }
@@ -152,10 +161,10 @@ public class PhytoGroItem extends ItemCoFH {
         }
     }
 
-    protected static void makeAreaOfEffectCloud(World world, BlockPos pos, int radius) {
+    protected static void makeAreaOfEffectCloud(Level world, BlockPos pos, int radius) {
 
         boolean isPlant = world.getBlockState(pos).getBlock() instanceof IPlantable;
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, pos.getX() + 0.5D, pos.getY() + (isPlant ? 0.0D : 1.0D), pos.getZ() + 0.5D);
+        AreaEffectCloud cloud = new AreaEffectCloud(world, pos.getX() + 0.5D, pos.getY() + (isPlant ? 0.0D : 1.0D), pos.getZ() + 0.5D);
         cloud.setRadius(1);
         cloud.setParticle(ParticleTypes.HAPPY_VILLAGER);
         cloud.setDuration(CLOUD_DURATION);

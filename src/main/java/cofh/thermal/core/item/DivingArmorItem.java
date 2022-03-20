@@ -3,24 +3,24 @@ package cofh.thermal.core.item;
 import cofh.core.item.ArmorItemCoFH;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import static net.minecraftforge.common.ForgeMod.SWIM_SPEED;
 
 public class DivingArmorItem extends ArmorItemCoFH {
 
-    protected static final double[] SWIM_SPEED_BONUS = new double[]{0.60D, 0.30D, 0.10D, 0.0D};
+    protected static final double[] SWIM_SPEED_BONUS = new double[] { 0.60D, 0.30D, 0.10D, 0.0D };
     protected static final int AIR_DURATION = 1800;
 
     private Multimap<Attribute, AttributeModifier> armorAttributes;
 
-    public DivingArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+    public DivingArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
 
         super(materialIn, slot, builder);
 
@@ -37,15 +37,15 @@ public class DivingArmorItem extends ArmorItemCoFH {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
 
         return slot == this.slot ? armorAttributes : ImmutableMultimap.of();
     }
 
     @Override
-    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+    public void onArmorTick(ItemStack stack, Level world, Player player) {
 
-        if (this.slot == EquipmentSlotType.HEAD) {
+        if (this.slot == EquipmentSlot.HEAD) {
             if (player.getAirSupply() < player.getMaxAirSupply() && world.random.nextInt(5) > 0) {
                 player.setAirSupply(player.getAirSupply() + 1);
             }

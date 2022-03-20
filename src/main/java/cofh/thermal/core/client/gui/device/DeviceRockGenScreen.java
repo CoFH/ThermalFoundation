@@ -7,11 +7,11 @@ import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceRockGenContainer;
 import cofh.thermal.core.tileentity.device.DeviceRockGenTile;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 import static cofh.core.util.helpers.GuiHelper.*;
@@ -27,7 +27,7 @@ public class DeviceRockGenScreen extends ThermalTileScreenBase<DeviceRockGenCont
 
     protected DeviceRockGenTile myTile;
 
-    public DeviceRockGenScreen(DeviceRockGenContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public DeviceRockGenScreen(DeviceRockGenContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_rock_gen"));
         texture = TEXTURE;

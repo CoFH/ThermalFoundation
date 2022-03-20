@@ -7,10 +7,10 @@ import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.core.tileentity.device.DeviceSoilInfuserTile;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -24,7 +24,7 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
 
     protected DeviceSoilInfuserTile tile;
 
-    public DeviceSoilInfuserScreen(DeviceSoilInfuserContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public DeviceSoilInfuserScreen(DeviceSoilInfuserContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_soil_infuser"));
         tile = container.tile;
@@ -48,7 +48,7 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
     }
 
     @Override
-    protected void renderLabels(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
 
         String radius = format(1 + 2 * tile.getRadius());
 

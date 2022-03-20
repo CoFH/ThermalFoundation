@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.crt.base;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
@@ -44,3 +45,4 @@ public class CRTCatalyst {
     }
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.lib.compat.jei;
 
 import mezz.jei.api.gui.drawable.IDrawableStatic;
@@ -161,3 +162,4 @@ public class Drawables {
     }
 
 }
+*/

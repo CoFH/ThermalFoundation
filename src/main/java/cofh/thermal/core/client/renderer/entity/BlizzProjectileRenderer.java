@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity;
 
 import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
@@ -48,3 +49,4 @@ public class BlizzProjectileRenderer extends EntityRenderer<BlizzProjectileEntit
     }
 
 }
+*/

@@ -11,8 +11,8 @@ import cofh.lib.inventory.container.ContainerCoFH;
 import cofh.lib.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
 
 import java.util.Collections;
 
@@ -22,7 +22,7 @@ public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScr
 
     protected ThermalTileAugmentable tile;
 
-    public ThermalTileScreenBase(T container, PlayerInventory inv, ThermalTileAugmentable tile, ITextComponent titleIn) {
+    public ThermalTileScreenBase(T container, Inventory inv, ThermalTileAugmentable tile, Component titleIn) {
 
         super(container, inv, titleIn);
         this.tile = tile;

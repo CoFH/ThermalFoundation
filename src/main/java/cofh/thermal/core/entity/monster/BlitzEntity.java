@@ -4,6 +4,7 @@ import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
+<<<<<<< HEAD
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -30,6 +31,33 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+=======
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -39,22 +67,28 @@ import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BLITZ;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
-public class BlitzEntity extends MonsterEntity {
+public class BlitzEntity extends Monster {
 
-    private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BlitzEntity.class, DataSerializers.BYTE);
+    private static final EntityDataAccessor<Byte> ANGRY = SynchedEntityData.defineId(BlitzEntity.class, EntityDataSerializers.BYTE);
 
-    public static boolean canSpawn(EntityType<BlitzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+    public static boolean canSpawn(EntityType<BlitzEntity> entityType, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 
-        return ThermalFlags.getFlag(FLAG_MOB_BLITZ).getAsBoolean() && MonsterEntity.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
+        return ThermalFlags.getFlag(FLAG_MOB_BLITZ).getAsBoolean() && Monster.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
     }
 
-    public BlitzEntity(EntityType<? extends BlitzEntity> type, World world) {
+    public BlitzEntity(EntityType<? extends BlitzEntity> type, Level world) {
 
         super(type, world);
+<<<<<<< HEAD
         this.moveControl = new FlyingMovementController(this, 20, true);
         this.navigation = new FlyingPathNavigator(this, world);
         this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
         this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);
+=======
+        this.moveControl = new FlyingMoveControl(this, 20, true);
+        this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.LAVA, -1.0F);
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
         this.xpReward = 10;
     }
 
@@ -63,17 +97,17 @@ public class BlitzEntity extends MonsterEntity {
 
         this.goalSelector.addGoal(4, new BlitzAttackGoal(this));
         this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0D));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
-        this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        this.goalSelector.addGoal(8, new SwimGoal(this));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D, 0.0F));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(8, new FloatGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+    public static AttributeSupplier.Builder registerAttributes() {
 
-        return MonsterEntity.createMonsterAttributes()
+        return Monster.createMonsterAttributes()
                 .add(Attributes.ATTACK_DAMAGE, 6.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.23F)
                 .add(Attributes.FLYING_SPEED, 0.6F)
@@ -129,13 +163,13 @@ public class BlitzEntity extends MonsterEntity {
     }
 
     @Override
-    public boolean causeFallDamage(float distance, float damageMultiplier) {
+    public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
 
         return false;
     }
 
     @Override
-    public ItemStack getPickedResult(RayTraceResult target) {
+    public ItemStack getPickedResult(HitResult target) {
 
         return new ItemStack(ITEMS.get("blitz_spawn_egg"));
     }
@@ -214,11 +248,16 @@ public class BlitzEntity extends MonsterEntity {
             if (target == null) {
                 return;
             }
-            Vector3d pos = blitz.getEyePosition(0.5F);
-            Vector3d targetPos = target.position().add(0, target.getBbHeight() * 0.5F, 0);
-            Vector3d diff = targetPos.subtract(pos);
+            Vec3 pos = blitz.getEyePosition(0.5F);
+            Vec3 targetPos = target.position().add(0, target.getBbHeight() * 0.5F, 0);
+            Vec3 diff = targetPos.subtract(pos);
             double distSqr = blitz.distanceToSqr(target);
+<<<<<<< HEAD
             if (blitz.getSensing().canSee(target) && distSqr < getFollowDistance() * getFollowDistance()) {
+=======
+            if (blitz.getSensing().hasLineOfSight(target) && distSqr < getFollowDistance() * getFollowDistance()) {
+                chaseStep = 0;
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
                 blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
                 blitz.setAngry(true);
                 if (distSqr < 4.0) {
@@ -229,20 +268,21 @@ public class BlitzEntity extends MonsterEntity {
                 } else if (distSqr < 576.0) {
                     if (attackTime <= 0) {
                         attackTime = 20;
-                        World world = blitz.level;
-                        world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                        Level world = blitz.level;
+                        world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundSource.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         // imagine using what you learn in school
                         float gravity = 0.05F;
                         float horzSpeed = 0.8F;
-                        double horzDist = MathHelper.sqrt(getHorizontalDistanceSqr(diff));
+                        double horzDist = Math.sqrt(diff.horizontalDistanceSqr());
                         double time = 1.25F * horzDist;
-                        Vector3d horzVel = diff.scale(horzSpeed / horzDist);
+                        Vec3 horzVel = diff.scale(horzSpeed / horzDist);
 
                         BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
                         projectile.setDeltaMovement(horzVel.x, gravity * time + diff.y / time, horzVel.z);
                         projectile.setOwner(blitz);
                         world.addFreshEntity(projectile);
                     }
+<<<<<<< HEAD
                     if (distSqr > 400.0) {
                         blitz.navigation.stop();
                         navTime = 0;
@@ -250,6 +290,12 @@ public class BlitzEntity extends MonsterEntity {
                         Vector3d want = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
                         blitz.navigation.moveTo(targetPos.x + want.x, targetPos.y, targetPos.z + want.z, 1.0D);
                         navTime = 15;
+=======
+                    if (distSqr < 400.0) {
+                        Vec3 want = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
+                        blitz.getMoveControl().setWantedPosition(pos.x + want.x, blitz.getY(), pos.z + want.z, 1.0D);
+                        blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+>>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
                     }
                 } else if (navTime <= 0) {
                     blitz.navigation.moveTo(targetPos.x, targetPos.y, targetPos.z, 1.0D);

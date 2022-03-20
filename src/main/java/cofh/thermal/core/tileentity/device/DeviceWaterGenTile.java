@@ -4,18 +4,19 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.device.DeviceWaterGenContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.fluids.FluidStack;
@@ -40,7 +41,7 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileEntity {
+public class DeviceWaterGenTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
 
@@ -53,9 +54,9 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
     protected boolean cached;
     protected boolean valid;
 
-    public DeviceWaterGenTile() {
+    public DeviceWaterGenTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_WATER_GEN_TILE);
+        super(DEVICE_WATER_GEN_TILE, pos, state);
 
         inventory.addSlot(fillSlot, INTERNAL);
 
@@ -76,7 +77,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
         int adjWaterSource = 0;
         valid = false;
 
-        BlockPos[] cardinals = new BlockPos[]{
+        BlockPos[] cardinals = new BlockPos[] {
                 worldPosition.north(),
                 worldPosition.south(),
                 worldPosition.west(),
@@ -124,7 +125,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         updateActiveState();
 
@@ -145,7 +146,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceWaterGenContainer(i, level, worldPosition, inventory, player);
     }
@@ -153,7 +154,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTileE
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_DEVICE_WATER_GEN, SoundCategory.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSound(SOUND_DEVICE_WATER_GEN, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region AUGMENTS

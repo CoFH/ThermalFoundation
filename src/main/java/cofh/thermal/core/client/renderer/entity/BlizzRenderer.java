@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity;
 
 import cofh.thermal.core.client.renderer.entity.model.BlizzModel;
@@ -80,3 +81,4 @@ public class BlizzRenderer extends MobRenderer<BlizzEntity, BlizzModel<BlizzEnti
     }
 
 }
+*/

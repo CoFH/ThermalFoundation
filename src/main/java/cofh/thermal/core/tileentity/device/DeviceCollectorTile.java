@@ -1,23 +1,25 @@
 package cofh.thermal.core.tileentity.device;
 
 import cofh.lib.tileentity.IAreaEffectTile;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.client.ThermalTextures;
 import cofh.thermal.core.inventory.container.device.DeviceCollectorContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.items.IItemHandler;
@@ -37,7 +39,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_COLLECTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceCollectorTile extends DeviceTileBase implements ITickableTileEntity, IAreaEffectTile {
+public class DeviceCollectorTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
@@ -51,19 +53,19 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
         if (!item.isAlive() || item.hasPickUpDelay()) {
             return false;
         }
-        CompoundNBT data = item.getPersistentData();
+        CompoundTag data = item.getPersistentData();
         return !data.getBoolean(TAG_CONVEYOR_COMPAT) || data.getBoolean(TAG_DEMAGNETIZE_COMPAT);
     };
 
     protected static final int RADIUS = 4;
     public int radius = RADIUS;
-    protected AxisAlignedBB area;
+    protected AABB area;
 
     protected int process = 1;
 
-    public DeviceCollectorTile() {
+    public DeviceCollectorTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_COLLECTOR_TILE);
+        super(DEVICE_COLLECTOR_TILE, pos, state);
 
         inventory.addSlots(ACCESSIBLE, 15, item -> filter.valid(item));
 
@@ -83,7 +85,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         updateActiveState();
 
@@ -107,7 +109,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceCollectorContainer(i, level, worldPosition, inventory, player);
     }
@@ -132,7 +134,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
         }
     }
 
-    protected void collectItems(AxisAlignedBB area) {
+    protected void collectItems(AABB area) {
 
         IItemHandler handler = inventory.getHandler(ACCESSIBLE);
         List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, area, VALID_ITEM_ENTITY);
@@ -145,21 +147,21 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
             }
             entityStack = InventoryHelper.insertStackIntoInventory(handler, entityStack, false);
             if (entityStack.isEmpty()) {
-                item.remove();
+                item.discard();
             } else {
                 item.setItem(entityStack);
             }
         }
     }
 
-    protected void collectXpOrbs(AxisAlignedBB area) {
+    protected void collectXpOrbs(AABB area) {
 
-        List<ExperienceOrbEntity> orbs = level.getEntitiesOfClass(ExperienceOrbEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE);
+        List<ExperienceOrb> orbs = level.getEntitiesOfClass(ExperienceOrb.class, area, EntitySelector.ENTITY_STILL_ALIVE);
 
-        for (ExperienceOrbEntity orb : orbs) {
+        for (ExperienceOrb orb : orbs) {
             orb.value -= xpStorage.receiveXp(orb.getValue(), false);
             if (orb.value <= 0) {
-                orb.remove();
+                orb.discard();
             }
         }
     }
@@ -181,7 +183,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 
@@ -199,10 +201,10 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     // region IAreaEffectTile
     @Override
-    public AxisAlignedBB getArea() {
+    public AABB getArea() {
 
         if (area == null) {
-            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
+            area = new AABB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1 + radius, 1 + radius));
         }
         return area;
     }

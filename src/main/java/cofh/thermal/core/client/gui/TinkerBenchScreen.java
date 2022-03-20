@@ -6,10 +6,10 @@ import cofh.core.client.gui.element.SimpleTooltip;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -23,7 +23,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
     public static final String TEX_AUGMENT = ID_THERMAL + ":textures/gui/container/tinker_bench_mode_augment.png";
     public static final String TEX_REPLENISH = ID_THERMAL + ":textures/gui/container/tinker_bench_mode_replenish.png";
 
-    public TinkerBenchScreen(TinkerBenchContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public TinkerBenchScreen(TinkerBenchContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.tinker_bench"));
         texture = TEXTURE;
@@ -51,7 +51,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
         }
                 .setSize(20, 20)
                 .setTexture(TEX_AUGMENT, 40, 20)
-                .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.tinker_bench_mode_augment")))
+                .setTooltipFactory(new SimpleTooltip(new TranslatableComponent("info.thermal.tinker_bench_mode_augment")))
                 .setVisible(menu.tile::allowAugmentation));
 
         addElement(new ElementButton(this, 42, 51) {
@@ -65,7 +65,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
         }
                 .setSize(20, 20)
                 .setTexture(TEX_REPLENISH, 40, 20)
-                .setTooltipFactory(new SimpleTooltip(new TranslationTextComponent("info.thermal.tinker_bench_mode_charge")))
+                .setTooltipFactory(new SimpleTooltip(new TranslatableComponent("info.thermal.tinker_bench_mode_charge")))
                 .setVisible(() -> !menu.tile.allowAugmentation()));
     }
 

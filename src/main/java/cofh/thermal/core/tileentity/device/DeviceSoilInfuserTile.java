@@ -4,22 +4,22 @@ import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.tileentity.IAreaEffectTile;
+import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -34,7 +34,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
-public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITickableTileEntity, IAreaEffectTile {
+public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT);
 
@@ -44,15 +44,15 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     protected static final int RADIUS = 2;
     protected int radius = RADIUS;
-    protected AxisAlignedBB area;
+    protected AABB area;
 
     protected int process;
     protected int processMax = BASE_PROCESS_MAX * radius * radius;
     protected int processTick = getBaseProcessTick() / 4 * radius;
 
-    public DeviceSoilInfuserTile() {
+    public DeviceSoilInfuserTile(BlockPos pos, BlockState state) {
 
-        super(TCoreReferences.DEVICE_SOIL_INFUSER_TILE);
+        super(TCoreReferences.DEVICE_SOIL_INFUSER_TILE, pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
 
         inventory.addSlot(chargeSlot, INTERNAL);
@@ -62,7 +62,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         boolean curActive = isActive;
         if (isActive) {
@@ -86,7 +86,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DeviceSoilInfuserContainer(i, level, worldPosition, inventory, player);
     }
@@ -110,7 +110,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     // region NETWORK
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -122,7 +122,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
@@ -134,9 +134,9 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     // region NBT
     @Override
-    public void load(BlockState state, CompoundNBT nbt) {
+    public void load(CompoundTag nbt) {
 
-        super.load(state, nbt);
+        super.load(nbt);
 
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
@@ -144,15 +144,13 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt) {
+    public void saveAdditional(CompoundTag nbt) {
 
-        super.save(nbt);
+        super.saveAdditional(nbt);
 
         nbt.putInt(TAG_PROCESS, process);
         nbt.putInt(TAG_PROCESS_MAX, processMax);
         nbt.putInt(TAG_PROCESS_TICK, processTick);
-
-        return nbt;
     }
     // endregion
 
@@ -196,7 +194,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 
@@ -217,10 +215,10 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     // region IAreaEffectTile
     @Override
-    public AxisAlignedBB getArea() {
+    public AABB getArea() {
 
         if (area == null) {
-            area = new AxisAlignedBB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1, 1 + radius));
+            area = new AABB(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(1 + radius, 1, 1 + radius));
         }
         return area;
     }

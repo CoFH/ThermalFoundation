@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -75,3 +76,4 @@ public class CRTFisherBoostManager implements IRecipeManager, IRecipeHandler<Fis
     }
 
 }
+*/

@@ -1,18 +1,15 @@
 package cofh.thermal.core.event;
 
-import cofh.thermal.core.world.biome.ThermalBiomeFeatures;
 import cofh.thermal.lib.common.ThermalRecipeManagers;
-import net.minecraft.client.resources.ReloadListener;
-import net.minecraft.profiler.IProfiler;
-import net.minecraft.resources.IResourceManager;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.client.event.RecipesUpdatedEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.TagsUpdatedEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLModIdMappingEvent;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
@@ -35,33 +32,21 @@ public class TCoreCommonSetupEvents {
     @SubscribeEvent
     public static void addReloadListener(final AddReloadListenerEvent event) {
 
-        event.addListener(
-                new ReloadListener<Void>() {
-
-                    @Override
-                    protected Void prepare(IResourceManager resourceManagerIn, IProfiler profilerIn) {
-
-                        ThermalRecipeManagers.instance().setServerRecipeManager(event.getDataPackRegistries().getRecipeManager());
-                        return null;
-                    }
-
-                    @Override
-                    protected void apply(Void nothing, IResourceManager resourceManagerIn, IProfiler profilerIn) {
-
-                    }
-                }
+        event.addListener((ResourceManagerReloadListener) manager ->
+                ThermalRecipeManagers.instance().setServerRecipeManager(event.getServerResources().getRecipeManager())
         );
     }
 
     // Recipes reload during TagsUpdatedEvent or IdMapping on Server side.
     @SubscribeEvent
-    public static void tagsUpdated(final TagsUpdatedEvent.CustomTagTypes event) {
+    public static void tagsUpdated(final TagsUpdatedEvent event) {
+        // TODO Lemming, CustomTagTypes sub-event was removed, is this still fine?
 
         ThermalRecipeManagers.instance().refreshServer();
     }
 
     @SubscribeEvent
-    public static void idRemap(final FMLModIdMappingEvent event) {
+    public static void idRemap(RegistryEvent.IdMappingEvent event) {
 
         ThermalRecipeManagers.instance().refreshServer();
     }
@@ -76,9 +61,10 @@ public class TCoreCommonSetupEvents {
     @SubscribeEvent (priority = EventPriority.HIGH)
     public static void biomeLoadingAdd(final BiomeLoadingEvent event) {
 
-        ThermalBiomeFeatures.addOreGeneration(event);
-        ThermalBiomeFeatures.addOilGeneration(event);
-        ThermalBiomeFeatures.addHostileSpawns(event);
+        // TODO Lemming, See ConfiguredFeatureCoFH.
+//        ThermalBiomeFeatures.addOreGeneration(event);
+//        ThermalBiomeFeatures.addOilGeneration(event);
+//        ThermalBiomeFeatures.addHostileSpawns(event);
     }
     // endregion
 }

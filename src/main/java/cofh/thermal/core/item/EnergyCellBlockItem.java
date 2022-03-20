@@ -4,12 +4,12 @@ import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.energy.IEnergyContainerItem;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.lib.item.BlockItemAugmentable;
-import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
@@ -34,7 +34,7 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
     }
 
     @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
         boolean creative = isCreative(stack, ENERGY);
         if (getMaxEnergyStored(stack) > 0) {
@@ -45,9 +45,9 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
         addEnergyTooltip(stack, worldIn, tooltip, flagIn, getExtract(stack), getReceive(stack), creative);
     }
 
-    protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(ItemStack container, CompoundTag augmentData) {
 
-        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
+        CompoundTag subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -71,9 +71,9 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
     }
 
     @Override
-    public CompoundNBT getOrCreateEnergyTag(ItemStack container) {
+    public CompoundTag getOrCreateEnergyTag(ItemStack container) {
 
-        CompoundNBT blockTag = container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
+        CompoundTag blockTag = container.getOrCreateTagElement(TAG_BLOCK_ENTITY);
         if (!blockTag.contains(TAG_ENERGY_MAX)) {
             new EnergyStorageCoFH(BASE_CAPACITY, BASE_RECV, BASE_SEND).writeWithParams(container.getOrCreateTagElement(TAG_BLOCK_ENTITY));
         }
@@ -83,21 +83,21 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
     @Override
     public int getExtract(ItemStack container) {
 
-        CompoundNBT tag = getOrCreateEnergyTag(container);
+        CompoundTag tag = getOrCreateEnergyTag(container);
         return Math.round(tag.getInt(TAG_ENERGY_SEND));
     }
 
     @Override
     public int getReceive(ItemStack container) {
 
-        CompoundNBT tag = getOrCreateEnergyTag(container);
+        CompoundTag tag = getOrCreateEnergyTag(container);
         return Math.round(tag.getInt(TAG_ENERGY_RECV));
     }
 
     @Override
     public int getMaxEnergyStored(ItemStack container) {
 
-        CompoundNBT tag = getOrCreateEnergyTag(container);
+        CompoundTag tag = getOrCreateEnergyTag(container);
         float base = getPropertyWithDefault(container, TAG_AUGMENT_BASE_MOD, 1.0F);
         float mod = getPropertyWithDefault(container, TAG_AUGMENT_RF_STORAGE, 1.0F);
         return getMaxStored(container, Math.round(tag.getInt(TAG_ENERGY_MAX) * mod * base));
@@ -108,9 +108,9 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
     @Override
     public void updateAugmentState(ItemStack container, List<ItemStack> augments) {
 
-        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundNBT());
+        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundTag());
         for (ItemStack augment : augments) {
-            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(augment);
+            CompoundTag augmentData = AugmentDataHelper.getAugmentData(augment);
             if (augmentData == null) {
                 continue;
             }

@@ -2,15 +2,15 @@ package cofh.thermal.core.data;
 
 import cofh.lib.data.LootTableProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
-import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Item;
-import net.minecraft.loot.ItemLootEntry;
-import net.minecraft.loot.RandomValueRange;
-import net.minecraft.loot.functions.ApplyBonus;
-import net.minecraft.loot.functions.SetCount;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -94,10 +94,10 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_ENERGY_CELL_FRAME));
         createSimpleDropTable(regBlocks.get(ID_FLUID_CELL_FRAME));
 
-        blockLootTables.put(regBlocks.get(ID_OBSIDIAN_GLASS), BlockLootTables.createSilkTouchOnlyTable(regBlocks.get(ID_OBSIDIAN_GLASS)));
-        blockLootTables.put(regBlocks.get(ID_SIGNALUM_GLASS), BlockLootTables.createSilkTouchOnlyTable(regBlocks.get(ID_SIGNALUM_GLASS)));
-        blockLootTables.put(regBlocks.get(ID_LUMIUM_GLASS), BlockLootTables.createSilkTouchOnlyTable(regBlocks.get(ID_LUMIUM_GLASS)));
-        blockLootTables.put(regBlocks.get(ID_ENDERIUM_GLASS), BlockLootTables.createSilkTouchOnlyTable(regBlocks.get(ID_ENDERIUM_GLASS)));
+        blockLootTables.put(regBlocks.get(ID_OBSIDIAN_GLASS), BlockLoot.createSilkTouchOnlyTable(regBlocks.get(ID_OBSIDIAN_GLASS)));
+        blockLootTables.put(regBlocks.get(ID_SIGNALUM_GLASS), BlockLoot.createSilkTouchOnlyTable(regBlocks.get(ID_SIGNALUM_GLASS)));
+        blockLootTables.put(regBlocks.get(ID_LUMIUM_GLASS), BlockLoot.createSilkTouchOnlyTable(regBlocks.get(ID_LUMIUM_GLASS)));
+        blockLootTables.put(regBlocks.get(ID_ENDERIUM_GLASS), BlockLoot.createSilkTouchOnlyTable(regBlocks.get(ID_ENDERIUM_GLASS)));
 
         createSimpleDropTable(regBlocks.get(ID_WHITE_ROCKWOOL));
         createSimpleDropTable(regBlocks.get(ID_ORANGE_ROCKWOOL));
@@ -155,18 +155,18 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
 
         createSimpleDropTable(regBlocks.get(ID_NUKE_TNT));
 
-        blockLootTables.put(regBlocks.get(ID_APATITE_ORE), BlockLootTables.createSilkTouchDispatchTable(regBlocks.get(ID_APATITE_ORE), BlockLootTables.applyExplosionDecay(regBlocks.get(ID_APATITE_ORE), ItemLootEntry.lootTableItem(regItems.get("apatite"))
-                .apply(SetCount.setCount(RandomValueRange.between(4.0F, 9.0F)))
-                .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
-        blockLootTables.put(regBlocks.get(ID_CINNABAR_ORE), BlockLootTables.createSilkTouchDispatchTable(regBlocks.get(ID_CINNABAR_ORE), BlockLootTables.applyExplosionDecay(regBlocks.get(ID_CINNABAR_ORE), ItemLootEntry.lootTableItem(regItems.get("cinnabar"))
-                .apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
-                .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
-        blockLootTables.put(regBlocks.get(ID_NITER_ORE), BlockLootTables.createSilkTouchDispatchTable(regBlocks.get(ID_NITER_ORE), BlockLootTables.applyExplosionDecay(regBlocks.get(ID_NITER_ORE), ItemLootEntry.lootTableItem(regItems.get("niter"))
-                .apply(SetCount.setCount(RandomValueRange.between(3.0F, 5.0F)))
-                .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
-        blockLootTables.put(regBlocks.get(ID_SULFUR_ORE), BlockLootTables.createSilkTouchDispatchTable(regBlocks.get(ID_SULFUR_ORE), BlockLootTables.applyExplosionDecay(regBlocks.get(ID_SULFUR_ORE), ItemLootEntry.lootTableItem(regItems.get("sulfur"))
-                .apply(SetCount.setCount(RandomValueRange.between(3.0F, 5.0F)))
-                .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        blockLootTables.put(regBlocks.get(ID_APATITE_ORE), BlockLoot.createSilkTouchDispatchTable(regBlocks.get(ID_APATITE_ORE), BlockLoot.applyExplosionDecay(regBlocks.get(ID_APATITE_ORE), LootItem.lootTableItem(regItems.get("apatite"))
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F)))
+                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        blockLootTables.put(regBlocks.get(ID_CINNABAR_ORE), BlockLoot.createSilkTouchDispatchTable(regBlocks.get(ID_CINNABAR_ORE), BlockLoot.applyExplosionDecay(regBlocks.get(ID_CINNABAR_ORE), LootItem.lootTableItem(regItems.get("cinnabar"))
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        blockLootTables.put(regBlocks.get(ID_NITER_ORE), BlockLoot.createSilkTouchDispatchTable(regBlocks.get(ID_NITER_ORE), BlockLoot.applyExplosionDecay(regBlocks.get(ID_NITER_ORE), LootItem.lootTableItem(regItems.get("niter"))
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F)))
+                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        blockLootTables.put(regBlocks.get(ID_SULFUR_ORE), BlockLoot.createSilkTouchDispatchTable(regBlocks.get(ID_SULFUR_ORE), BlockLoot.applyExplosionDecay(regBlocks.get(ID_SULFUR_ORE), LootItem.lootTableItem(regItems.get("sulfur"))
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F)))
+                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
 
     }
 

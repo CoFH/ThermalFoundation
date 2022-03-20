@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.jei.device;
 
 import cofh.core.util.helpers.RenderHelper;
@@ -138,3 +139,4 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     }
 
 }
+*/

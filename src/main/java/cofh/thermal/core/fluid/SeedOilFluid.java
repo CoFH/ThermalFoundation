@@ -2,11 +2,11 @@ package cofh.thermal.core.fluid;
 
 import cofh.lib.fluid.FluidCoFH;
 import cofh.thermal.lib.common.ThermalItemGroups;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidAttributes;
 
 import static cofh.thermal.core.ThermalCore.FLUIDS;

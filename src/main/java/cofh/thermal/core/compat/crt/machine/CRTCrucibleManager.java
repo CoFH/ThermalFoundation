@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
@@ -75,3 +76,4 @@ public class CRTCrucibleManager implements IRecipeManager, IRecipeHandler<Crucib
     }
 
 }
+*/

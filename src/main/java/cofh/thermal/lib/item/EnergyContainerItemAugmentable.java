@@ -3,8 +3,8 @@ package cofh.thermal.lib.item;
 import cofh.core.item.EnergyContainerItem;
 import cofh.lib.item.IAugmentableItem;
 import cofh.lib.util.helpers.AugmentDataHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 import java.util.function.BiPredicate;
@@ -48,9 +48,9 @@ public abstract class EnergyContainerItemAugmentable extends EnergyContainerItem
         return getPropertyWithDefault(stack, TAG_AUGMENT_BASE_MOD, 1.0F);
     }
 
-    protected void setAttributesFromAugment(ItemStack container, CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(ItemStack container, CompoundTag augmentData) {
 
-        CompoundNBT subTag = container.getTagElement(TAG_PROPERTIES);
+        CompoundTag subTag = container.getTagElement(TAG_PROPERTIES);
         if (subTag == null) {
             return;
         }
@@ -102,9 +102,9 @@ public abstract class EnergyContainerItemAugmentable extends EnergyContainerItem
     @Override
     public void updateAugmentState(ItemStack container, List<ItemStack> augments) {
 
-        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundNBT());
+        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundTag());
         for (ItemStack augment : augments) {
-            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(augment);
+            CompoundTag augmentData = AugmentDataHelper.getAugmentData(augment);
             if (augmentData == null) {
                 continue;
             }

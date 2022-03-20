@@ -2,9 +2,9 @@ package cofh.thermal.lib.util.recipes.internal;
 
 import cofh.lib.inventory.IItemStackAccess;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;

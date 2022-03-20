@@ -1,3 +1,4 @@
+/*
 package cofh.thermal.core.client.renderer.entity;
 
 import cofh.thermal.core.client.renderer.entity.model.UnderwaterMinecartModel;
@@ -106,3 +107,4 @@ public class UnderwaterMinecartRenderer<T extends AbstractMinecartEntity> extend
     }
 
 }
+*/

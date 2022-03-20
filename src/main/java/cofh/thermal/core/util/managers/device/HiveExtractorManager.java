@@ -4,14 +4,14 @@ import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
 import cofh.thermal.lib.util.managers.AbstractManager;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -70,8 +70,8 @@ public class HiveExtractorManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, IRecipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR);
-        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : mappings.entrySet()) {
+        Map<ResourceLocation, Recipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR);
+        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : mappings.entrySet()) {
             addMapping((HiveExtractorMapping) entry.getValue());
         }
     }

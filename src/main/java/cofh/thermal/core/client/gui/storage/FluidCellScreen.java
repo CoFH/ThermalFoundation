@@ -8,11 +8,11 @@ import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.core.tileentity.storage.FluidCellTile;
 import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import java.util.Collections;
 
@@ -33,7 +33,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
 
     protected FluidCellTile tile;
 
-    public FluidCellScreen(FluidCellContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public FluidCellScreen(FluidCellContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.fluid_cell"));
         tile = container.tile;
@@ -60,7 +60,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
     }
 
     @Override
-    protected void renderLabels(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
 
         String input = format(tile.amountInput);
         String output = format(tile.amountOutput);
@@ -133,7 +133,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new StringTextComponent(
+                        return Collections.singletonList(new TextComponent(
                                 localize("info.cofh.decrease_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
@@ -157,7 +157,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new StringTextComponent(
+                        return Collections.singletonList(new TextComponent(
                                 localize("info.cofh.increase_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
@@ -181,7 +181,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new StringTextComponent(
+                        return Collections.singletonList(new TextComponent(
                                 localize("info.cofh.decrease_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
@@ -205,7 +205,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new StringTextComponent(
+                        return Collections.singletonList(new TextComponent(
                                 localize("info.cofh.increase_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
