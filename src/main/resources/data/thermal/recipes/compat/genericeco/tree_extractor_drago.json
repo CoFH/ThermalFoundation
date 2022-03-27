@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "genericeco:drago_log",
+  "leaves": "genericeco:drago_leaves",
+  "result": {
+    "fluid": "thermal:sap",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "genericeco"
+    }
+  ]
+}
