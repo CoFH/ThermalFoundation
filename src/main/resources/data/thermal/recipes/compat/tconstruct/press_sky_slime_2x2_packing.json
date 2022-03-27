@@ -1,0 +1,24 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "tconstruct:sky_slime_ball",
+      "count": 4
+    },
+    {
+      "item": "thermal:press_packing_2x2_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:sky_congealed_slime"
+    }
+  ],
+  "energy": 400,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}
