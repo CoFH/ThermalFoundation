@@ -1,0 +1,23 @@
+{
+  "type": "thermal:sawmill",
+  "ingredient": {
+    "tag": "tconstruct:greenheart_logs"
+  },
+  "result": [
+    {
+      "item": "tconstruct:greenheart_planks",
+      "count": 6
+    },
+    {
+      "item": "thermal:sawdust",
+      "chance": 1.25
+    }
+  ],
+  "energy": 1000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}
