@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "tconstruct:bloodshroom_log",
+  "leaves": "tconstruct:blood_slime_leaves",
+  "result": {
+    "fluid": "tconstruct:blood",
+    "amount": 20
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

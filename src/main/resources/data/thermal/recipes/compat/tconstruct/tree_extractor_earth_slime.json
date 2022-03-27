@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "tconstruct:greenheart_log",
+  "leaves": "tconstruct:earth_slime_leaves",
+  "result": {
+    "fluid": "tconstruct:earth_slime",
+    "amount": 20
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}
