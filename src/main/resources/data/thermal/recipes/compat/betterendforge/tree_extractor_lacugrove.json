@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "betterendforge:lacugrove_log",
+  "leaves": "betterendforge:lacugrove_leaves",
+  "result": {
+    "fluid": "thermal:latex",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "betterendforge"
+    }
+  ]
+}

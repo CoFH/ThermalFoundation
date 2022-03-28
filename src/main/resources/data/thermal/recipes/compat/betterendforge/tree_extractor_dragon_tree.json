@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "betterendforge:dragon_tree_log",
+  "leaves": "betterendforge:dragon_tree_leaves",
+  "result": {
+    "fluid": "thermal:latex",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "betterendforge"
+    }
+  ]
+}

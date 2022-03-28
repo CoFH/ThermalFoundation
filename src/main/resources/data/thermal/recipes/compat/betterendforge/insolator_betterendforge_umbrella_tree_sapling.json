@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "betterendforge:umbrella_tree_sapling"
+  },
+  "result": [
+    {
+      "item": "betterendforge:umbrella_tree_log",
+      "chance": 6
+    },
+    {
+      "item": "betterendforge:umbrella_tree_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3,
+  "water_mod": 3,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "betterendforge"
+    }
+  ]
+}

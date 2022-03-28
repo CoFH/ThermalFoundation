@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "betterendforge:mossy_glowshroom_log",
+  "leaves": "betterendforge:mossy_glowshroom_cap",
+  "result": {
+    "fluid": "thermal:latex",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "betterendforge"
+    }
+  ]
+}
