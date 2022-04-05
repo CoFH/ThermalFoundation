@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "thermal:lead_ore",
+    "thermal:silver_ore",
+    "thermal:nickel_ore",
+    "thermal:ruby_ore",
+    "thermal:sapphire_ore",
+    "thermal:enderium_block"
+  ]
+}

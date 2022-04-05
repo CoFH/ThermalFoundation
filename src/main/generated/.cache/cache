@@ -559,6 +559,12 @@ a8b265f834bb9be512db71d5558acb203e0f378e data/forge/tags/items/storage_blocks/sl
 694cdc58da2c1023c42cb172bd28ce54974c2f93 data/forge/tags/items/tar.json
 eb25d2730b1cceb3801c23458f10d1a41642bc11 data/forge/tags/items/tools/wrench.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/minecraft/tags/blocks/impermeable.json
+fd4ce6f1ab18e8788e2d238505f7e244650c68c1 data/minecraft/tags/blocks/mineable/axe.json
+37dd9148312dcf897f102f89c06f2e8d00c19ff6 data/minecraft/tags/blocks/mineable/hoe.json
+35834e69d1b3db20408f2f7ace7564c631dae889 data/minecraft/tags/blocks/mineable/pickaxe.json
+bda7e8c7ea5982e771d51009cdedabebd5027b2e data/minecraft/tags/blocks/mineable/shovel.json
+9341e1387060fc00e77ba7717eebf78609bc0ccc data/minecraft/tags/blocks/needs_iron_tool.json
+37c28e1a0ce90dae2db21652065f12fb033eb2ff data/minecraft/tags/blocks/needs_stone_tool.json
 4a052f9583111dcfe0a7b6689f76cead8e730d5a data/thermal/loot_tables/blocks/apatite_block.json
 eb5c71fc2fa0faac49f99ca32801042c263e7a54 data/thermal/loot_tables/blocks/apatite_ore.json
 427859b28cfc90785227dcf10501fcd48e01b520 data/thermal/loot_tables/blocks/apple_block.json

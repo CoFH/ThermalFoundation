@@ -50,7 +50,6 @@ import static cofh.thermal.lib.common.ThermalItemGroups.*;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of;
 
-// TODO Harvest level and Harvest tool for all, requires datagen.
 public class TCoreBlocks {
 
     private TCoreBlocks() {
@@ -134,11 +133,11 @@ public class TCoreBlocks {
         registerBlock(ID_NITER_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
         registerBlock(ID_SULFUR_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
 
-        registerBlock(ID_COPPER_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_COPPER));
-        registerBlock(ID_TIN_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_TIN));
-        registerBlock(ID_LEAD_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_LEAD));
-        registerBlock(ID_SILVER_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_SILVER));
-        registerBlock(ID_NICKEL_ORE, () -> new OreBlockCoFH(), getFlag(FLAG_RESOURCE_NICKEL));
+        registerBlock(ID_COPPER_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_COPPER));
+        registerBlock(ID_TIN_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_TIN));
+        registerBlock(ID_LEAD_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_LEAD));
+        registerBlock(ID_SILVER_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_SILVER));
+        registerBlock(ID_NICKEL_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_NICKEL));
 
         registerBlock(ID_RUBY_ORE, () -> new OreBlockCoFH().xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
         registerBlock(ID_SAPPHIRE_ORE, () -> new OreBlockCoFH().xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
@@ -164,23 +163,23 @@ public class TCoreBlocks {
             }
         }, () -> new BlockItemCoFH(BLOCKS.get(ID_SULFUR_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(12000));
 
-        registerBlock(ID_COPPER_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_COPPER));
-        registerBlock(ID_TIN_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_TIN));
-        registerBlock(ID_LEAD_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_LEAD));
-        registerBlock(ID_SILVER_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_SILVER));
-        registerBlock(ID_NICKEL_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_NICKEL));
+        registerBlock(ID_COPPER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_COPPER));
+        registerBlock(ID_TIN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_TIN));
+        registerBlock(ID_LEAD_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_LEAD));
+        registerBlock(ID_SILVER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_SILVER));
+        registerBlock(ID_NICKEL_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_NICKEL));
 
-        registerBlock(ID_BRONZE_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_BRONZE));
-        registerBlock(ID_ELECTRUM_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_ELECTRUM));
-        registerBlock(ID_INVAR_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_INVAR));
-        registerBlock(ID_CONSTANTAN_BLOCK, () -> storageBlock(1), getFlag(FLAG_RESOURCE_CONSTANTAN));
+        registerBlock(ID_BRONZE_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_BRONZE));
+        registerBlock(ID_ELECTRUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ELECTRUM));
+        registerBlock(ID_INVAR_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_INVAR));
+        registerBlock(ID_CONSTANTAN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_CONSTANTAN));
 
         registerBlock(ID_SIGNALUM_BLOCK, () -> new SignalumBlock(of(Material.METAL, MaterialColor.COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(7)).noOcclusion()), Rarity.UNCOMMON);
         registerBlock(ID_LUMIUM_BLOCK, () -> new LumiumBlock(of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(15)).noOcclusion()), Rarity.UNCOMMON);
         registerBlock(ID_ENDERIUM_BLOCK, () -> new EnderiumBlock(of(Material.METAL, MaterialColor.COLOR_CYAN).strength(25.0F, 30.0F).sound(SoundType.LODESTONE).requiresCorrectToolForDrops().lightLevel(lightValue(3)).noOcclusion()), Rarity.UNCOMMON);
 
-        registerBlock(ID_RUBY_BLOCK, () -> storageBlock(MaterialColor.COLOR_RED, 1), getFlag(FLAG_RESOURCE_RUBY));
-        registerBlock(ID_SAPPHIRE_BLOCK, () -> storageBlock(MaterialColor.COLOR_BLUE, 1), getFlag(FLAG_RESOURCE_SAPPHIRE));
+        registerBlock(ID_RUBY_BLOCK, () -> storageBlock(MaterialColor.COLOR_RED), getFlag(FLAG_RESOURCE_RUBY));
+        registerBlock(ID_SAPPHIRE_BLOCK, () -> storageBlock(MaterialColor.COLOR_BLUE), getFlag(FLAG_RESOURCE_SAPPHIRE));
 
         registerBlockAndItem(ID_SAWDUST_BLOCK, () -> new FallingBlock(of(Material.WOOD).strength(1.0F, 1.0F).sound(SoundType.SAND)) {
 
@@ -332,7 +331,7 @@ public class TCoreBlocks {
         // TILE_ENTITIES.register(ID_ITEM_CELL, () -> TileEntityType.Builder.of(ItemCellTile::new, ITEM_CELL_BLOCK).build(null));
     }
 
-    private static Block storageBlock(int harvestLevel) {
+    private static Block storageBlock() {
 
         return new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL)
                 .strength(5.0F, 6.0F)
@@ -340,7 +339,7 @@ public class TCoreBlocks {
                 .requiresCorrectToolForDrops());
     }
 
-    private static Block storageBlock(MaterialColor color, int harvestLevel) {
+    private static Block storageBlock(MaterialColor color) {
 
         return new Block(BlockBehaviour.Properties.of(Material.METAL, color)
                 .strength(5.0F, 6.0F)
