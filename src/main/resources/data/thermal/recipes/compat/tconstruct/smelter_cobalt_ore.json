@@ -8,9 +8,9 @@
       "item": "tconstruct:cobalt_ingot",
       "chance": 1.0
     },
-	{
+    {
       "item": "minecraft:iron_nugget",
-	  "count": 3,
+      "count": 3,
       "chance": 0.2
     },
     {
