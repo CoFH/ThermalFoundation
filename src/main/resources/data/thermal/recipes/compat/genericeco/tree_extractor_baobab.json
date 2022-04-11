@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "genericeco:baobab_log",
+  "leaves": "genericeco:baobab_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "genericeco"
+    }
+  ]
+}

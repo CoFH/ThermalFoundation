@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "genericeco:teak_sapling"
+  },
+  "result": [
+    {
+      "item": "genericeco:teak_log",
+      "chance": 6
+    },
+    {
+      "item": "genericeco:teak_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3,
+  "water_mod": 3,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "genericeco"
+    }
+  ]
+}

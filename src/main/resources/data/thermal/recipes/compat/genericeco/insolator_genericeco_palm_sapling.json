@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "genericeco:palm_sapling"
+  },
+  "result": [
+    {
+      "item": "genericeco:palm_log",
+      "chance": 6
+    },
+    {
+      "item": "genericeco:palm_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3,
+  "water_mod": 3,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "genericeco"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "genericeco:maggiriyl_log",
+  "leaves": "genericeco:maggiriyl_leaves",
+  "result": {
+    "fluid": "thermal:sap",
+    "amount": 25
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "genericeco"
+    }
+  ]
+}
