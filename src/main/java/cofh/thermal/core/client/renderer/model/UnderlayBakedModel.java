@@ -4,6 +4,7 @@ import cofh.core.client.renderer.model.ModelUtils;
 import cofh.core.client.renderer.model.ModelUtils.FluidCacheWrapper;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
@@ -16,14 +17,11 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.IdentityHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class UnderlayBakedModel extends BakedModelWrapper<IBakedModel> implements IDynamicBakedModel {
 
-    private static final IdentityHashMap<FluidCacheWrapper, BakedQuad[]> FLUID_QUAD_CACHE = new IdentityHashMap<>();
+    private static final Map<FluidCacheWrapper, BakedQuad[]> FLUID_QUAD_CACHE = new Object2ObjectOpenHashMap<>();
     private static final IdentityHashMap<BlockState, BakedQuad[]> UNDERLAY_QUAD_CACHE = new IdentityHashMap<>();
 
     public static void clearCache() {
