@@ -1,0 +1,24 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "tconstruct:ender_slime_ball",
+      "count": 9
+    },
+    {
+      "item": "thermal:press_packing_3x3_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:ender_slime"
+    }
+  ],
+  "energy": 400,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}
