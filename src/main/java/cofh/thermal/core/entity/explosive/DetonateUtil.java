@@ -38,9 +38,9 @@ import static net.minecraft.potion.Effects.WITHER;
 public class DetonateUtil {
 
     // region RENDERING REGISTRATION
-    public static List<RegistryObject<EntityType<? extends AbstractGrenadeEntity>>> grenades = new LinkedList<>();
-    public static List<RegistryObject<EntityType<? extends AbstractTNTEntity>>> tnt = new LinkedList<>();
-    public static List<RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>>> tntCarts = new LinkedList<>();
+    public static List<RegistryObject<EntityType<? extends AbstractGrenadeEntity>>> GRENADES = new LinkedList<>();
+    public static List<RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new LinkedList<>();
+    public static List<RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>>> CARTS = new LinkedList<>();
     // endregion
 
     // region HELPERS
@@ -92,7 +92,7 @@ public class DetonateUtil {
             Utils.spawnLightningBolt(level, blockPos, owner);
         }
         AreaUtils.shockEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
-        level.addFreshEntity(new ElectricDomeEntity(level, pos, radius, 100).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
+        level.addFreshEntity(new ElectricFieldEntity(level, pos, radius, 100).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
     }
 
     public static void ender(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
@@ -207,7 +207,7 @@ public class DetonateUtil {
 
     public static void gravity(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
 
-        level.addFreshEntity(new BlackHoleEntity(level, owner instanceof LivingEntity ? (LivingEntity) owner : null, pos));
+        level.addFreshEntity((new BlackHoleEntity(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         //TODO: particle
     }
     // endregion

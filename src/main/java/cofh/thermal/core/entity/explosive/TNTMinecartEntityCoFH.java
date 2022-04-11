@@ -1,48 +1,54 @@
 package cofh.thermal.core.entity.explosive;
 
+import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecartEntity;
-import cofh.thermal.core.ThermalCore;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.RegistryObject;
 
-import static cofh.thermal.core.ThermalCore.BLOCKS;
+import java.util.HashMap;
+import java.util.Map;
+
+import static cofh.thermal.core.ThermalCore.ITEMS;
 
 public class TNTMinecartEntityCoFH extends AbstractTNTMinecartEntity {
 
-    protected String id;
-    protected String blockId;
+    public static Map<String, RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new HashMap<>();
+    protected Item item;
+    protected Block block;
     protected IDetonateAction detonateAction;
 
-    public TNTMinecartEntityCoFH(EntityType<?> type, World worldIn, String id, String blockId, IDetonateAction detonateAction) {
+    public TNTMinecartEntityCoFH(EntityType<?> type, World worldIn, IDetonateAction detonateAction, Block block) {
 
         super(type, worldIn);
         this.detonateAction = detonateAction;
-        this.id = id;
-        this.blockId = blockId;
+        this.block = block;
+        item = ITEMS.get(type.getRegistryName());
     }
 
-    public TNTMinecartEntityCoFH(EntityType<?> type, World worldIn, String id, String blockId, IDetonateAction detonateAction, double posX, double posY, double posZ) {
+    public TNTMinecartEntityCoFH(EntityType<?> type, World worldIn, IDetonateAction detonateAction, Block block, double posX, double posY, double posZ) {
 
         super(type, worldIn, posX, posY, posZ);
         this.detonateAction = detonateAction;
-        this.id = id;
-        this.blockId = blockId;
+        this.block = block;
+        item = ITEMS.get(type.getRegistryName());
     }
 
     @Override
     public Block getBlock() {
 
-        return BLOCKS.get(blockId);
+        return block;
     }
 
     @Override
     public ItemStack getCartItem() {
 
-        return detonated ? new ItemStack(Items.MINECART) : new ItemStack(ThermalCore.ITEMS.get(id));
+        return detonated ? new ItemStack(Items.MINECART) : new ItemStack(item);
     }
 
     @Override
@@ -50,4 +56,5 @@ public class TNTMinecartEntityCoFH extends AbstractTNTMinecartEntity {
 
         detonateAction.detonate(level, this, null, pos, radius, effectDuration, effectAmplifier);
     }
+
 }

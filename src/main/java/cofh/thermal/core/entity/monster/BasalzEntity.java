@@ -44,9 +44,12 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 public class BasalzEntity extends MonsterEntity {
 
     protected static final int DEFAULT_ORBIT = 8;
+    public static final int DEPLOY_TIME = 6;
     private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BasalzEntity.class, DataSerializers.BYTE);
     private static final Vector3d vert = new Vector3d(0, 1, 0);
     protected int attackTime = 0;
+    public int angerTime = 72000;
+    protected boolean wasAngry = false;
 
     public static boolean canSpawn(EntityType<BasalzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 
@@ -122,6 +125,7 @@ public class BasalzEntity extends MonsterEntity {
             if (this.isAngry() && this.random.nextInt(2) == 0) {
                 this.level.addParticle(ParticleTypes.FALLING_LAVA, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
+            ++angerTime;
         } else if (isAlive() && isAngry() && attackTime <= 0 && getOrbit() > 0) {
             Vector3d pos = this.position();
             for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
@@ -218,6 +222,15 @@ public class BasalzEntity extends MonsterEntity {
     public void resetOrbit() {
 
         setOrbit(DEFAULT_ORBIT);
+    }
+
+    public void onSyncedDataUpdated(DataParameter<?> data) {
+
+        super.onSyncedDataUpdated(data);
+        if (level.isClientSide && data.equals(ANGRY) && (isAngry() != wasAngry)) {
+            angerTime = Math.max(0, DEPLOY_TIME - angerTime);
+            wasAngry = isAngry();
+        }
     }
     // endregion
 

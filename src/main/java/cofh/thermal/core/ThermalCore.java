@@ -222,13 +222,13 @@ public class ThermalCore {
         RenderingRegistry.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
 
         // EXPLOSIVES
-        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtil.grenades) {
+        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtil.GRENADES) {
             RenderingRegistry.registerEntityRenderingHandler(grenade.get(), SpriteRendererCoFH::new);
         }
-        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtil.tnt) {
+        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtil.TNT) {
             RenderingRegistry.registerEntityRenderingHandler(tnt.get(), TNTRendererCoFH::new);
         }
-        for (RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> cart : DetonateUtil.tntCarts) {
+        for (RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> cart : DetonateUtil.CARTS) {
             RenderingRegistry.registerEntityRenderingHandler(cart.get(), TNTMinecartRendererCoFH::new);
         }
     }

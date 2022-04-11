@@ -48,7 +48,7 @@ public class TCoreEntities {
 
         registerExplosives("phyto", DetonateUtil::phyto);
         registerExplosives("nuke", DetonateUtil::nuke);
-        registerExplosives("gravity", DetonateUtil::gravity);
+        //registerExplosives("gravity", DetonateUtil::gravity);
     }
 
     public static void setup() {

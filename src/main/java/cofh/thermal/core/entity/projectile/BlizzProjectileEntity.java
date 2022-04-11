@@ -2,6 +2,7 @@ package cofh.thermal.core.entity.projectile;
 
 import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
+import cofh.lib.util.references.CoreReferences;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -79,7 +80,7 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
 
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, getX(), getY(), getZ());
         cloud.setRadius(1);
-        cloud.setParticle(ParticleTypes.ITEM_SNOWBALL);
+        cloud.setParticle(CoreReferences.FROST_PARTICLE);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((effectRadius - cloud.getRadius()) / (float) cloud.getDuration());

@@ -21,8 +21,8 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 @OnlyIn (Dist.CLIENT)
 public class BlizzRenderer extends MobRenderer<BlizzEntity, BlizzModel<BlizzEntity>> {
 
-    private static final ResourceLocation CALM_TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/blizz.png");
-    private static final ResourceLocation ANGRY_TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/blizz_angry.png");
+    private static final ResourceLocation CALM_TEXTURE = new ResourceLocation(ID_THERMAL, "textures/entity/blizz.png");
+    private static final ResourceLocation ANGRY_TEXTURE = new ResourceLocation(ID_THERMAL, "textures/entity/blizz_angry.png");
     //protected static final Vector3d[] offsets = getGaussOffsets(20, 1.5F, 0.5F);
     //protected static final int ticksPerProj = 5;
 

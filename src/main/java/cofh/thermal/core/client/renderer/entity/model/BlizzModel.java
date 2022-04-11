@@ -11,6 +11,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Arrays;
 
+import static cofh.lib.util.helpers.MathHelper.bevel;
+
 @OnlyIn (Dist.CLIENT)
 public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
 
@@ -76,14 +78,5 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
 
-    // A cross between a sin and a square wave function. Has period 4, returns a value between -1 and 1.
-    public static float bevel(float f) {
-
-        int floor = MathHelper.floor(f);
-        if (f - floor < 0.66667F && (floor & 1) == 0) {
-            return -MathHelper.cos((float) Math.PI * 1.5F * f);
-        }
-        return ((floor >> 1) & 1) == 0 ? 1 : -1;
-    }
 
 }
