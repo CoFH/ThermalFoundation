@@ -65,9 +65,9 @@ public class DetonateUtil {
     public static void fire(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
 
         if (!explosive.isInWater()) {
-            AreaUtils.fireTransform.transformSphere(level, pos, radius, 0.2F, owner);
             AreaUtils.igniteEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
-            AreaUtils.fireTransformSpecial.transformSphere(level, pos, radius, owner);
+            AreaUtils.fireTransformSpecial.transformSphere(level, pos, radius, 0.6F, owner);
+            AreaUtils.fireTransform.transformSphere(level, pos, radius, 0.2F, owner);
             makeAreaOfEffectCloud(level, ParticleTypes.FLAME, pos, radius);
         }
     }

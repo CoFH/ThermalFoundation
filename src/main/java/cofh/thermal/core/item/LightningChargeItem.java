@@ -39,14 +39,14 @@ public class LightningChargeItem extends ItemCoFH {
         World world = context.getLevel();
         BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
 
-        //        if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getFace(), context.getItem()))) {
-        //            return ActionResultType.FAIL;
-        //        }
+        //if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getFace(), context.getItem()))) {
+        //    return ActionResultType.FAIL;
+        //}
         if (world.canSeeSky(pos)) {
             if (world instanceof ServerWorld) {
-                //                if (player != null) {
-                //                    player.addPotionEffect(new EffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
-                //                }
+                //if (player != null) {
+                //    player.addPotionEffect(new EffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
+                //}
                 //Utils.spawnLightningBolt(world, pos, player);
                 world.addFreshEntity(new ElectricArcEntity(world, Vector3d.atBottomCenterOf(pos)).setOwner(player));
             }
