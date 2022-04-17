@@ -1,5 +1,6 @@
 package cofh.thermal.core.entity.projectile;
 
+import cofh.lib.entity.ElectricArcEntity;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.lib.common.ThermalConfig;
@@ -52,9 +53,11 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
     @Override
     protected void onHit(RayTraceResult result) {
 
+        Entity owner = getOwner();
+        level.addFreshEntity((new ElectricArcEntity(level, result.getLocation())).setCosmetic(true).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) result).getEntity();
-            if (entity.hurt(BlitzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
+            if (entity.hurt(BlitzDamageSource.causeDamage(this, owner), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new EffectInstance(SHOCKED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }

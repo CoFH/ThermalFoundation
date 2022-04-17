@@ -1,5 +1,6 @@
 package cofh.thermal.core.entity.monster;
 
+import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
@@ -18,6 +19,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -42,9 +44,12 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 public class BasalzEntity extends MonsterEntity {
 
     protected static final int DEFAULT_ORBIT = 8;
+    public static final int DEPLOY_TIME = 6;
     private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BasalzEntity.class, DataSerializers.BYTE);
     private static final Vector3d vert = new Vector3d(0, 1, 0);
     protected int attackTime = 0;
+    public int angerTime = 72000;
+    protected boolean wasAngry = false;
 
     public static boolean canSpawn(EntityType<BasalzEntity> entityType, IServerWorld world, SpawnReason reason, BlockPos pos, Random rand) {
 
@@ -114,16 +119,17 @@ public class BasalzEntity extends MonsterEntity {
             this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
         }
         if (this.level.isClientSide) {
-            //            if (this.rand.nextInt(256) == 0 && !this.isSilent()) {
-            //                this.world.playSound(this.getPosX() + 0.5D, this.getPosY() + 0.5D, this.getPosZ() + 0.5D, SOUND_BASALZ_ROAM, this.getSoundCategory(), 0.5F + 0.25F * this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, true);
-            //            }
+            //if (this.random.nextInt(256) == 0 && !this.isSilent()) {
+            //    this.playSound(SOUND_BASALZ_ROAM, 0.5F + 0.25F * this.random.nextFloat(), this.random.nextFloat() * 0.7F + 0.3F);
+            //}
             if (this.isAngry() && this.random.nextInt(2) == 0) {
                 this.level.addParticle(ParticleTypes.FALLING_LAVA, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
+            ++angerTime;
         } else if (isAlive() && isAngry() && attackTime <= 0 && getOrbit() > 0) {
             Vector3d pos = this.position();
             for (Entity target : level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0F, 1.0f, 4.0F))) {
-                if (!(target instanceof BasalzEntity) && distanceToSqr(target) < 12.25) {
+                if (!(target instanceof BasalzEntity) && distanceToSqr(target) < 12.25 && canSee(target)) {
                     attackTime = 15;
                     Vector3d targetPos = target.position();
                     Vector3d offset = targetPos.subtract(pos).normalize().cross(vert).scale(0.5);
@@ -131,7 +137,11 @@ public class BasalzEntity extends MonsterEntity {
                     projectile.setDeltaMovement(-offset.x, 0, -offset.z);
                     projectile.setOwner(this);
                     projectile.onHit(new EntityRayTraceResult(target));
-                    reduceOrbit();
+                    if (getOrbit() > 0) {
+                        reduceOrbit();
+                    } else {
+                        break;
+                    }
                 }
             }
         } else {
@@ -144,6 +154,12 @@ public class BasalzEntity extends MonsterEntity {
     public boolean hurt(DamageSource source, float amount) {
 
         return super.hurt(source, source == DamageSource.LIGHTNING_BOLT ? amount + 3 : amount);
+    }
+
+    @Override
+    public boolean canBeAffected(EffectInstance effect) {
+
+        return super.canBeAffected(effect) && !effect.equals(CoreReferences.SUNDERED);
     }
 
     @Override
@@ -200,12 +216,21 @@ public class BasalzEntity extends MonsterEntity {
 
     public void reduceOrbit() {
 
-        setOrbit(getOrbit() - 1);
+        setOrbit(Math.max(getOrbit() - 1, 0));
     }
 
     public void resetOrbit() {
 
         setOrbit(DEFAULT_ORBIT);
+    }
+
+    public void onSyncedDataUpdated(DataParameter<?> data) {
+
+        super.onSyncedDataUpdated(data);
+        if (level.isClientSide && data.equals(ANGRY) && (isAngry() != wasAngry)) {
+            angerTime = Math.max(0, DEPLOY_TIME - angerTime);
+            wasAngry = isAngry();
+        }
     }
     // endregion
 
@@ -215,6 +240,7 @@ public class BasalzEntity extends MonsterEntity {
         private int attackTime;
         private int refreshTime = 100;
         private int chaseStep;
+        private int navTime;
 
         public BasalzAttackGoal(BasalzEntity basalzIn) {
 
@@ -237,6 +263,9 @@ public class BasalzEntity extends MonsterEntity {
          */
         public void start() {
 
+            this.chaseStep = 0;
+            this.navTime = 0;
+            this.refreshTime = 100;
         }
 
         /**
@@ -246,8 +275,8 @@ public class BasalzEntity extends MonsterEntity {
 
             this.basalz.setAngry(false);
             this.chaseStep = 0;
-            refreshTime = 100;
-            basalz.resetOrbit();
+            this.navTime = 0;
+            this.refreshTime = 100;
         }
 
         /**
@@ -256,6 +285,7 @@ public class BasalzEntity extends MonsterEntity {
         public void tick() {
 
             --attackTime;
+            --navTime;
             LivingEntity target = basalz.getTarget();
             if (target == null) {
                 return;
@@ -270,24 +300,33 @@ public class BasalzEntity extends MonsterEntity {
                     if (!basalz.isAngry()) {
                         basalz.setAngry(true);
                         basalz.level.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundCategory.HOSTILE, 2.5F, (basalz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                        navTime = 0;
                     }
                     if (distSqr < 2.25) {
                         if (attackTime <= 0) {
                             attackTime = 20;
                             basalz.doHurtTarget(target);
                         }
-                    } else if (distSqr > 12.25) {
-                        basalz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+                    } else if (distSqr < 12.25) {
+                        basalz.navigation.stop();
+                        navTime = 0;
+                    } else if (navTime <= 0) {
+                        basalz.navigation.moveTo(target, 1.0D);
+                        navTime = 15;
                     }
                 } else {
-                    basalz.setAngry(false);
-                    if (distSqr < 144.0) {
-                        Vector3d diff = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(16);
-                        basalz.getLookControl().setLookAt(targetPos.x + diff.x, basalz.getEyeY(), targetPos.z + diff.z, 10.0F, 10.0F);
-                        basalz.getMoveControl().setWantedPosition(targetPos.x + diff.x, targetPos.y, targetPos.z + diff.z, 1.0D);
+                    if (basalz.isAngry()) {
+                        basalz.setAngry(false);
+                        navTime = 0;
                     }
                     if (refreshTime > 0) {
                         --refreshTime;
+                        if (distSqr < 144.0 && navTime <= 0) {
+                            Vector3d diff = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(16);
+                            basalz.getLookControl().setLookAt(targetPos.x + diff.x, basalz.getEyeY(), targetPos.z + diff.z, 10.0F, 10.0F);
+                            basalz.navigation.moveTo(targetPos.x + diff.x, targetPos.y, targetPos.z + diff.z, 1.0D);
+                            navTime = 15;
+                        }
                     } else {
                         refreshTime = 100;
                         basalz.resetOrbit();

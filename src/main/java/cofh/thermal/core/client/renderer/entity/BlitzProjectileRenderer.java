@@ -17,7 +17,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class BlitzProjectileRenderer extends EntityRenderer<BlitzProjectileEntity> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/blitz_projectile.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/blitz_projectile.png");
     private static final RenderType RENDER_TYPE = RenderType.entityTranslucent(TEXTURE);
     private final ElementalProjectileModel<BlitzProjectileEntity> model = new ElementalProjectileModel<>();
 

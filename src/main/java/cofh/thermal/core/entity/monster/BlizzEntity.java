@@ -1,5 +1,6 @@
 package cofh.thermal.core.entity.monster;
 
+import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
@@ -17,8 +18,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
+import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -47,7 +49,8 @@ public class BlizzEntity extends MonsterEntity {
     public BlizzEntity(EntityType<? extends BlizzEntity> type, World world) {
 
         super(type, world);
-        this.moveControl = new FlyingMovementController(this, 20, true);
+        this.moveControl = new FlyingMovementController(this, 20, false);
+        this.navigation = new FlyingPathNavigator(this, world);
         //this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
         this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);
         this.xpReward = 10;
@@ -61,7 +64,7 @@ public class BlizzEntity extends MonsterEntity {
         this.goalSelector.addGoal(7, new RandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        //this.goalSelector.addGoal(8, new SwimGoal(this));
+        this.goalSelector.addGoal(8, new SwimGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
@@ -111,7 +114,7 @@ public class BlizzEntity extends MonsterEntity {
             //                this.world.playSound(this.getPosX() + 0.5D, this.getPosY() + 0.5D, this.getPosZ() + 0.5D, SOUND_BLIZZ_ROAM, this.getSoundCategory(), 0.5F + 0.25F * this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, true);
             //            }
             if (this.random.nextInt(2) == 0) {
-                this.level.addParticle(ParticleTypes.ITEM_SNOWBALL, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+                this.level.addParticle(CoreReferences.FROST_PARTICLE, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
         }
         super.aiStep();
@@ -132,6 +135,12 @@ public class BlizzEntity extends MonsterEntity {
     public boolean hurt(DamageSource source, float amount) {
 
         return super.hurt(source, source.isFire() ? amount + 3 : amount);
+    }
+
+    @Override
+    public boolean canBeAffected(EffectInstance effect) {
+
+        return super.canBeAffected(effect) && !effect.equals(CoreReferences.CHILLED);
     }
 
     @Override
@@ -199,6 +208,7 @@ public class BlizzEntity extends MonsterEntity {
          */
         public void start() {
 
+            this.chaseStep = 0;
         }
 
         /**
