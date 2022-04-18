@@ -47,4 +47,5 @@ public class GrenadeEntity extends AbstractGrenadeEntity implements IDetonatable
 
         return item;
     }
+
 }

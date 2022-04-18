@@ -78,5 +78,4 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
 
-
 }

@@ -52,19 +52,19 @@ public class TCoreItems {
 
         DetonatorItem.registerTNT(Blocks.TNT, TNTEntity::new);
 
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_SLIME_TNT), SlimeTNTEntity::new);
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_REDSTONE_TNT), RedstoneTNTEntity::new);
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_GLOWSTONE_TNT), GlowstoneTNTEntity::new);
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_ENDER_TNT), EnderTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_SLIME_TNT), SlimeTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_REDSTONE_TNT), RedstoneTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_GLOWSTONE_TNT), GlowstoneTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_ENDER_TNT), EnderTNTEntity::new);
         //
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_PHYTO_TNT), PhytoTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_PHYTO_TNT), PhytoTNTEntity::new);
         //
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_FIRE_TNT), FireTNTEntity::new);
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_EARTH_TNT), EarthTNTEntity::new);
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_ICE_TNT), IceTNTEntity::new);
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_LIGHTNING_TNT), LightningTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_FIRE_TNT), FireTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_EARTH_TNT), EarthTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_ICE_TNT), IceTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_LIGHTNING_TNT), LightningTNTEntity::new);
         //
-        //DetonatorItem.registerTNT(BLOCKS.get(ID_NUKE_TNT), NukeTNTEntity::new);
+        //        DetonatorItem.registerTNT(BLOCKS.get(ID_NUKE_TNT), NukeTNTEntity::new);
 
         ((DivingArmorItem) ITEMS.get(ID_DIVING_HELMET)).setup();
         ((DivingArmorItem) ITEMS.get(ID_DIVING_CHESTPLATE)).setup();

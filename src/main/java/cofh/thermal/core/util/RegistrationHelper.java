@@ -9,7 +9,7 @@ import cofh.lib.block.impl.crops.CropsBlockTall;
 import cofh.lib.entity.AbstractGrenadeEntity;
 import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecartEntity;
-import cofh.thermal.core.entity.explosive.DetonateUtil;
+import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.explosive.GrenadeEntity;
 import cofh.thermal.core.entity.explosive.TNTEntityCoFH;
 import cofh.thermal.core.entity.explosive.TNTMinecartEntityCoFH;
@@ -350,16 +350,9 @@ public class RegistrationHelper {
     // endregion
 
     // region EXPLOSIVES
-    public static void registerExplosives(String id, IDetonatable.IDetonateAction action) {
+    public static void registerGrenade(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
-        registerGrenade(id + "_grenade", action);
-        registerTNT(id + "_tnt", action);
-        registerTNTMinecart(id + "_tnt_minecart", id + "_tnt", action);
-    }
-
-    public static void registerGrenade(String id, IDetonatable.IDetonateAction action) {
-
-        RegistryObject<EntityType<? extends AbstractGrenadeEntity>> entity = ENTITIES.register(id, () -> EntityType.Builder.<GrenadeEntity>of((type, world) -> new GrenadeEntity(type, world, action), EntityClassification.MISC).sized(0.25F, 0.25F).build(id));
+        RegistryObject<EntityType<? extends AbstractGrenadeEntity>> entity = ENTITIES.register(id + "_grenade", () -> EntityType.Builder.<GrenadeEntity>of((type, world) -> new GrenadeEntity(type, world, action), EntityClassification.MISC).sized(0.25F, 0.25F).build(id));
         registerItem(id, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
             @Override
@@ -374,23 +367,22 @@ public class RegistrationHelper {
                 return new GrenadeEntity(entity.get(), world, action, posX, posY, posZ);
             }
 
-        }, new Item.Properties().tab(THERMAL_TOOLS).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
-        DetonateUtil.GRENADES.add(entity);
+        }, new Item.Properties().tab(THERMAL_TOOLS).stacksTo(16)).setShowInGroups(flag));
+        DetonateUtils.GRENADES.add(entity);
     }
 
-    public static void registerTNT(String id, IDetonatable.IDetonateAction action) {
+    public static void registerTNT(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
         RegistryObject<EntityType<? extends AbstractTNTEntity>> tntEntity = ENTITIES.register(id, () -> EntityType.Builder.<TNTEntityCoFH>of((type, world) -> new TNTEntityCoFH(type, world, action), EntityClassification.MISC).fireImmune().sized(0.98F, 0.98F).build(id));
-        registerBlock(id, () -> new TNTBlockCoFH((world, x, y, z, igniter) -> new TNTEntityCoFH(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, getFlag(FLAG_ELEMENTAL_EXPLOSIVES));
-        DetonateUtil.TNT.add(tntEntity);
-
+        registerBlock(id, () -> new TNTBlockCoFH((world, x, y, z, igniter) -> new TNTEntityCoFH(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, flag);
+        DetonateUtils.TNT.add(tntEntity);
     }
 
-    public static void registerTNTMinecart(String id, String tntId, IDetonatable.IDetonateAction action) {
+    public static void registerTNTMinecart(String id, String tntId, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
         RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> entity = ENTITIES.register(id, () -> EntityType.Builder.<TNTMinecartEntityCoFH>of((type, world) -> new TNTMinecartEntityCoFH(type, world, action, BLOCKS.get(tntId)), EntityClassification.MISC).sized(0.98F, 0.7F).build(id));
-        ITEMS.register(id, () -> new MinecartItemCoFH((world, x, y, z) -> new TNTMinecartEntityCoFH(entity.get(), world, action, BLOCKS.get(tntId), x, y, z), new Item.Properties().tab(THERMAL_TOOLS)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)).setModId(ID_THERMAL_LOCOMOTION));
-        DetonateUtil.CARTS.add(entity);
+        ITEMS.register(id, () -> new MinecartItemCoFH((world, x, y, z) -> new TNTMinecartEntityCoFH(entity.get(), world, action, BLOCKS.get(tntId), x, y, z), new Item.Properties().tab(THERMAL_TOOLS)).setShowInGroups(flag).setModId(ID_THERMAL_LOCOMOTION));
+        DetonateUtils.CARTS.add(entity);
     }
     // endregion
 }

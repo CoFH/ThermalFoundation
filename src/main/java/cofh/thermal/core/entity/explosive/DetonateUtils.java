@@ -35,7 +35,7 @@ import java.util.List;
 import static cofh.lib.util.references.CoreReferences.SLIMED;
 import static net.minecraft.potion.Effects.WITHER;
 
-public class DetonateUtil {
+public class DetonateUtils {
 
     // region RENDERING REGISTRATION
     public static List<RegistryObject<EntityType<? extends AbstractGrenadeEntity>>> GRENADES = new LinkedList<>();
@@ -103,6 +103,7 @@ public class DetonateUtil {
             makeAreaOfEffectCloud(level, ParticleTypes.PORTAL, pos, radius);
         }
     }
+
     public static void glow(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
 
         AreaUtils.glowAirTransform.transformSphere(level, pos, radius, explosive);
@@ -156,7 +157,7 @@ public class DetonateUtil {
         }
         makeAreaOfEffectCloud(level, ParticleTypes.HAPPY_VILLAGER, pos, radius);
     }
-    
+
     public static void explosive(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
 
         boolean explosionsBreakBlocks = true; //TODO: config
@@ -201,7 +202,6 @@ public class DetonateUtil {
                 }
             }
         }
-
         level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), radius * 0.38F, true, explosionsBreakBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
     }
 

@@ -16,7 +16,7 @@ import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
 import cofh.thermal.core.client.renderer.entity.*;
-import cofh.thermal.core.entity.explosive.DetonateUtil;
+import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
@@ -222,13 +222,13 @@ public class ThermalCore {
         RenderingRegistry.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
 
         // EXPLOSIVES
-        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtil.GRENADES) {
+        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtils.GRENADES) {
             RenderingRegistry.registerEntityRenderingHandler(grenade.get(), SpriteRendererCoFH::new);
         }
-        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtil.TNT) {
+        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
             RenderingRegistry.registerEntityRenderingHandler(tnt.get(), TNTRendererCoFH::new);
         }
-        for (RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> cart : DetonateUtil.CARTS) {
+        for (RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> cart : DetonateUtils.CARTS) {
             RenderingRegistry.registerEntityRenderingHandler(cart.get(), TNTMinecartRendererCoFH::new);
         }
     }

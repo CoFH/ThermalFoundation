@@ -14,7 +14,6 @@ import java.util.Map;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 
-
 public class TNTEntityCoFH extends AbstractTNTEntity {
 
     public static Map<String, RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new HashMap<>();
