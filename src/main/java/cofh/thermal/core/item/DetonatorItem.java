@@ -4,10 +4,10 @@ import cofh.core.item.ItemCoFH;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.item.IMultiModeItem;
+import cofh.lib.util.ITNTFactory;
 import cofh.lib.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -180,14 +180,6 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
 
         player.level.playSound(null, player.blockPosition(), SoundEvents.LEVER_CLICK, SoundCategory.PLAYERS, 0.4F, 1.0F - 0.3F * getMode(stack));
         ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslationTextComponent("info.thermal.detonator.mode." + getMode(stack)));
-    }
-    // endregion
-
-    // region FACTORY
-    public interface ITNTFactory<T extends TNTEntity> {
-
-        T createTNT(World world, double x, double y, double z, LivingEntity igniter);
-
     }
     // endregion
 }

@@ -3,6 +3,7 @@ package cofh.thermal.core.init;
 import cofh.core.item.EnergyContainerItem;
 import cofh.core.item.ItemCoFH;
 import cofh.core.util.filter.FilterRegistry;
+import cofh.lib.block.impl.TNTBlockCoFH;
 import cofh.lib.item.ArmorMaterialCoFH;
 import cofh.lib.item.impl.SpawnEggItemCoFH;
 import cofh.lib.util.constants.ToolTypes;
@@ -21,6 +22,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 import static cofh.lib.util.constants.Constants.FALSE;
 import static cofh.lib.util.constants.NBTTags.*;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreReferences.*;
 import static cofh.thermal.core.util.RegistrationHelper.*;
@@ -52,19 +54,18 @@ public class TCoreItems {
 
         DetonatorItem.registerTNT(Blocks.TNT, TNTEntity::new);
 
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_SLIME_TNT), SlimeTNTEntity::new);
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_REDSTONE_TNT), RedstoneTNTEntity::new);
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_GLOWSTONE_TNT), GlowstoneTNTEntity::new);
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_ENDER_TNT), EnderTNTEntity::new);
-        //
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_PHYTO_TNT), PhytoTNTEntity::new);
-        //
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_FIRE_TNT), FireTNTEntity::new);
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_EARTH_TNT), EarthTNTEntity::new);
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_ICE_TNT), IceTNTEntity::new);
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_LIGHTNING_TNT), LightningTNTEntity::new);
-        //
-        //        DetonatorItem.registerTNT(BLOCKS.get(ID_NUKE_TNT), NukeTNTEntity::new);
+        DetonatorItem.registerTNT(BLOCKS.get(ID_SLIME_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_SLIME_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_REDSTONE_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_REDSTONE_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_GLOWSTONE_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_GLOWSTONE_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_ENDER_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_ENDER_TNT))).getFactory());
+
+        DetonatorItem.registerTNT(BLOCKS.get(ID_FIRE_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_FIRE_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_EARTH_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_EARTH_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_ICE_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_ICE_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_LIGHTNING_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_LIGHTNING_TNT))).getFactory());
+
+        DetonatorItem.registerTNT(BLOCKS.get(ID_PHYTO_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_PHYTO_TNT))).getFactory());
+        DetonatorItem.registerTNT(BLOCKS.get(ID_NUKE_TNT), ((TNTBlockCoFH) (BLOCKS.get(ID_NUKE_TNT))).getFactory());
 
         ((DivingArmorItem) ITEMS.get(ID_DIVING_HELMET)).setup();
         ((DivingArmorItem) ITEMS.get(ID_DIVING_CHESTPLATE)).setup();

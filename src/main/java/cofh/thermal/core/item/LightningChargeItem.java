@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
 import cofh.core.item.ItemCoFH;
-import cofh.lib.entity.ElectricArcEntity;
+import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.core.init.TCoreSounds;
 import net.minecraft.block.DispenserBlock;
@@ -12,16 +12,18 @@ import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
+
+import static cofh.lib.util.references.CoreReferences.LIGHTNING_RESISTANCE;
 
 public class LightningChargeItem extends ItemCoFH {
 
@@ -39,18 +41,18 @@ public class LightningChargeItem extends ItemCoFH {
         World world = context.getLevel();
         BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
 
-        //if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getFace(), context.getItem()))) {
-        //    return ActionResultType.FAIL;
-        //}
+        //        if (player != null && (!world.isBlockModifiable(player, pos) || !player.canPlayerEdit(pos, context.getClickedFace(), context.getItemInHand()))) {
+        //            return ActionResultType.FAIL;
+        //        }
         if (world.canSeeSky(pos)) {
             if (world instanceof ServerWorld) {
-                //if (player != null) {
-                //    player.addPotionEffect(new EffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
-                //}
-                //Utils.spawnLightningBolt(world, pos, player);
-                world.addFreshEntity(new ElectricArcEntity(world, Vector3d.atBottomCenterOf(pos)).setOwner(player));
+                if (player != null) {
+                    player.addEffect(new EffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
+                }
+                Utils.spawnLightningBolt(world, pos, player);
+                // world.addFreshEntity(new ElectricArcEntity(world, Vector3d.atBottomCenterOf(pos)).setOwner(player));
             }
-            // playUseSound(world, pos);
+            playUseSound(world, pos);
             context.getItemInHand().shrink(1);
             return ActionResultType.SUCCESS;
         }
