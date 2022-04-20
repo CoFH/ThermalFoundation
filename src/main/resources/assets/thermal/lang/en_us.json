@@ -929,6 +929,9 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+  "block.thermal.energy_duct": "Fluxduct",
+  "block.thermal.fluid_duct": "Fluiduct",
+
   "block.thermal.energy_distributor": "RF Distribution Interface",
   "block.thermal.fluid_distributor": "Fluid Distribution Interface",
 
@@ -945,6 +948,9 @@
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
+
+  "block.thermal.energy_duct.keyword": "energy rf transfer",
+  "block.thermal.fluid_duct.keyword": "energy rf transfer",
 
   "block.thermal.energy_distributor.keyword": "energy rf transfer",
   "block.thermal.fluid_distributor.keyword": "fluid transfer",
