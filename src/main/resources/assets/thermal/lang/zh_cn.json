@@ -929,6 +929,12 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+  "block.thermal.energy_duct": "能量导管",
+  "block.thermal.fluid_duct": "流体导管",
+
+  "block.thermal.energy_distributor": "RF分发接口",
+  "block.thermal.fluid_distributor": "流体分发接口",
+
   "block.thermal.item_buffer": "逻辑物品缓存器",
 
   "info.thermal.item_buffer.0": "限制物品的传送速率和数量。",
@@ -942,6 +948,12 @@
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
+
+  "block.thermal.energy_duct.keyword": "能量 rf 传输",
+  "block.thermal.fluid_duct.keyword": "能量 rf 传输",
+
+  "block.thermal.energy_distributor.keyword": "能量 rf 传输",
+  "block.thermal.fluid_distributor.keyword": "流体 传输",
 
   "block.thermal.ender_tunnel.keyword": "传送 量子 超立方体",
 
