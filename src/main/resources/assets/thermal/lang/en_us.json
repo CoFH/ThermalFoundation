@@ -931,6 +931,7 @@
 
   "block.thermal.energy_duct": "Fluxduct",
   "block.thermal.fluid_duct": "Fluiduct",
+  "block.thermal.fluid_duct_glass": "Fluiduct (Windowed)",
 
   "block.thermal.energy_distributor": "RF Distribution Interface",
   "block.thermal.fluid_distributor": "Fluid Distribution Interface",
