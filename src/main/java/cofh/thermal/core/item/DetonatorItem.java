@@ -6,23 +6,6 @@ import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.item.IMultiModeItem;
 import cofh.lib.util.ITNTFactory;
 import cofh.lib.util.Utils;
-<<<<<<< HEAD
-import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.nbt.NBTUtil;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-=======
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -36,7 +19,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -44,7 +26,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import javax.annotation.Nullable;
 import java.util.IdentityHashMap;
@@ -206,15 +187,4 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
         ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.thermal.detonator.mode." + getMode(stack)));
     }
     // endregion
-<<<<<<< HEAD
-=======
-
-    // region FACTORY
-    public interface ITNTFactory<T extends PrimedTnt> {
-
-        T createTNT(Level world, double x, double y, double z, LivingEntity igniter);
-
-    }
-    // endregion
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 }

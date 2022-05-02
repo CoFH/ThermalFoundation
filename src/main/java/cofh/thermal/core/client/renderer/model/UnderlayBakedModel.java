@@ -4,20 +4,12 @@ import cofh.core.client.renderer.model.ModelUtils;
 import cofh.core.client.renderer.model.ModelUtils.FluidCacheWrapper;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
-<<<<<<< HEAD
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-=======
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import net.minecraftforge.client.model.BakedModelWrapper;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;

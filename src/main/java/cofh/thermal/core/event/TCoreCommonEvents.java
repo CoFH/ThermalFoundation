@@ -59,7 +59,7 @@ public class TCoreCommonEvents {
             return;
         }
         Inventory inventory = player.getInventory();
-        final boolean[] cancel = { false };
+        final boolean[] cancel = {false};
         for (int i = 0; i < inventory.getContainerSize(); ++i) {
             ItemStack stack = inventory.getItem(i);
             if (stack.getItem() instanceof SatchelItem) {

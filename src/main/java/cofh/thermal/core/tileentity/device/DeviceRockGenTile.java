@@ -98,7 +98,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ICoFHTickableTi
         valid = false;
 
         Block[] adjBlocks = new Block[4];
-        BlockPos[] cardinals = new BlockPos[] {
+        BlockPos[] cardinals = new BlockPos[]{
                 worldPosition.north(),
                 worldPosition.south(),
                 worldPosition.west(),

@@ -15,7 +15,7 @@
 //import net.minecraft.entity.player.PlayerInventory;
 //import net.minecraft.inventory.container.Container;
 //import net.minecraft.item.ItemStack;
-//import net.minecraft.nbt.CompoundNBT;
+//import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.network.PacketBuffer;
 //import net.minecraft.tileentity.ITickableTileEntity;
 //import net.minecraft.util.Direction;
@@ -135,7 +135,7 @@
 //    }
 //
 //    //    @Override
-//    //    public boolean onActivatedDelegate(World world, BlockPos pos, BlockState state, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+//    //    public boolean onActivatedDelegate(Level level, BlockPos pos, BlockState state, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
 //    //
 //    //        ItemStack heldItem = player.getHeldItem(hand);
 //    //        ItemStack ret = inventory.insertItem(0, heldItem, false);
@@ -280,7 +280,7 @@
 //
 //    // region NBT
 //    @Override
-//    public void load(BlockState state, CompoundNBT nbt) {
+//    public void load(BlockState state, CompoundTag nbt) {
 //
 //        super.load(state, nbt);
 //

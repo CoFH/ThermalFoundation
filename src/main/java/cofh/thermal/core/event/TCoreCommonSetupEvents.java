@@ -62,9 +62,9 @@ public class TCoreCommonSetupEvents {
     public static void biomeLoadingAdd(final BiomeLoadingEvent event) {
 
         // TODO Lemming, See ConfiguredFeatureCoFH.
-//        ThermalBiomeFeatures.addOreGeneration(event);
-//        ThermalBiomeFeatures.addOilGeneration(event);
-//        ThermalBiomeFeatures.addHostileSpawns(event);
+        //        ThermalBiomeFeatures.addOreGeneration(event);
+        //        ThermalBiomeFeatures.addOilGeneration(event);
+        //        ThermalBiomeFeatures.addHostileSpawns(event);
     }
     // endregion
 }

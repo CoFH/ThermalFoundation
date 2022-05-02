@@ -4,37 +4,15 @@ import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
-<<<<<<< HEAD
-import net.minecraft.enchantment.FrostWalkerEnchantment;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.core.BlockPos;
 import net.minecraft.entity.ai.controller.FlyingMovementController;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.FlyingPathNavigator;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
-=======
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.pathfinding.FlyingPathNavigator;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -55,7 +33,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -77,12 +54,12 @@ public class BlizzEntity extends Monster {
     public BlizzEntity(EntityType<? extends BlizzEntity> type, Level world) {
 
         super(type, world);
-<<<<<<< HEAD
+<<<<<<<HEAD
         this.moveControl = new FlyingMovementController(this, 20, false);
         this.navigation = new FlyingPathNavigator(this, world);
 =======
         this.moveControl = new FlyingMoveControl(this, 20, true);
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
         //this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.LAVA, -1.0F);
         this.xpReward = 10;
@@ -93,7 +70,7 @@ public class BlizzEntity extends Monster {
 
         this.goalSelector.addGoal(4, new BlizzAttackGoal(this));
         this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0D));
-<<<<<<< HEAD
+<<<<<<<HEAD
         this.goalSelector.addGoal(7, new RandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
@@ -103,7 +80,7 @@ public class BlizzEntity extends Monster {
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         //this.goalSelector.addGoal(8, new FloatGoal(this));
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
@@ -177,7 +154,8 @@ public class BlizzEntity extends Monster {
     }
 
     @Override
-<<<<<<< HEAD
+<<<<<<<HEAD
+
     public boolean canBeAffected(EffectInstance effect) {
 
         return super.canBeAffected(effect) && !effect.equals(CoreReferences.CHILLED);
@@ -186,155 +164,155 @@ public class BlizzEntity extends Monster {
     @Override
     public boolean causeFallDamage(float distance, float damageMultiplier) {
 =======
-    public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+        public boolean causeFallDamage ( float distance, float damageMultiplier, DamageSource source){
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
 
-        return false;
-    }
-
-    @Override
-    public ItemStack getPickedResult(HitResult target) {
-
-        return new ItemStack(ITEMS.get("blizz_spawn_egg"));
-    }
-
-    @Override
-    public boolean isInvulnerableTo(DamageSource source) {
-
-        return source.msgId.equals(ID_BLIZZ) || super.isInvulnerableTo(source);
-    }
-
-    // region ANGER MANAGEMENT
-    public boolean isAngry() {
-
-        return (this.entityData.get(ANGRY) & 1) != 0;
-    }
-
-    protected void setAngry(boolean angry) {
-
-        byte b0 = this.entityData.get(ANGRY);
-        if (angry) {
-            b0 = (byte) (b0 | 1);
-        } else {
-            b0 = (byte) (b0 & -2);
-        }
-        this.entityData.set(ANGRY, b0);
-    }
-    // endregion
-
-    static class BlizzAttackGoal extends Goal {
-
-        private final BlizzEntity blizz;
-        private final Vec3[] hoverOffsets = getHoverOffsets(new Vec3(1.5, 2.25, 0), 16);
-        private int attackTime;
-        private int hoverStep;
-        private int chaseStep;
-
-        public BlizzAttackGoal(BlizzEntity blizzIn) {
-
-            this.blizz = blizzIn;
-            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+            return false;
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
-        public boolean canUse() {
+        @Override
+        public ItemStack getPickedResult (HitResult target){
 
-            LivingEntity target = this.blizz.getTarget();
-            return target != null && target.isAlive() && this.blizz.canAttack(target);
+            return new ItemStack(ITEMS.get("blizz_spawn_egg"));
         }
 
-        /**
-         * Execute a one shot task or start executing a continuous task
-         */
-        public void start() {
+        @Override
+        public boolean isInvulnerableTo (DamageSource source){
 
-            this.chaseStep = 0;
+            return source.msgId.equals(ID_BLIZZ) || super.isInvulnerableTo(source);
         }
 
-        /**
-         * Reset the task's internal state. Called when this task is interrupted by another one
-         */
-        public void stop() {
+        // region ANGER MANAGEMENT
+        public boolean isAngry () {
 
-            this.blizz.setAngry(false);
-            this.chaseStep = 0;
+            return (this.entityData.get(ANGRY) & 1) != 0;
         }
 
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
-        public void tick() {
+        protected void setAngry ( boolean angry){
 
-            --attackTime;
-            LivingEntity target = blizz.getTarget();
-            if (target == null) {
-                return;
+            byte b0 = this.entityData.get(ANGRY);
+            if (angry) {
+                b0 = (byte) (b0 | 1);
+            } else {
+                b0 = (byte) (b0 & -2);
             }
-            Vec3 pos = blizz.position();
-            Vec3 targetPos = target.getEyePosition(0.5F);
-            Vec3 diff = pos.subtract(targetPos);
-            double distSqr = blizz.distanceToSqr(target);
-            double horzDistSqr = diff.horizontalDistanceSqr();
-            if (blizz.getSensing().hasLineOfSight(target) && distSqr < getFollowDistance() * getFollowDistance()) {
-                chaseStep = 0;
-                blizz.getLookControl().setLookAt(target, 10.0F, 10.0F);
-                if (distSqr < 4.0) {
-                    if (attackTime <= 0) {
-                        attackTime = 20;
-                        blizz.doHurtTarget(target);
-                    }
-                } else if (pos.y > target.getY() + 2) {
-                    blizz.setAngry(true);
-                    if (attackTime <= 0) {
-                        attackTime = 7;
-                        Random rand = blizz.getRandom();
-                        Level world = blizz.level;
-                        //TODO: less annoying sound
-                        //world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (rand.nextFloat() - 0.5F) * 0.2F + 1.0F);
-                        BlizzProjectileEntity projectile;
-                        if (horzDistSqr < 9) {
-                            projectile = new BlizzProjectileEntity(targetPos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() * 0.5F - 0.2F, targetPos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
-                        } else {
-                            projectile = new BlizzProjectileEntity(pos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() - 0.2F, pos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
-                        }
-                        projectile.setOwner(blizz);
-                        world.addFreshEntity(projectile);
-                        ++hoverStep;
-                        hoverStep %= hoverOffsets.length;
-                    }
-                    blizz.getMoveControl().setWantedPosition(targetPos.x + hoverOffsets[hoverStep].x, targetPos.y + hoverOffsets[hoverStep].y, targetPos.z + hoverOffsets[hoverStep].z, 1.0D);
+            this.entityData.set(ANGRY, b0);
+        }
+        // endregion
+
+        static class BlizzAttackGoal extends Goal {
+
+            private final BlizzEntity blizz;
+            private final Vec3[] hoverOffsets = getHoverOffsets(new Vec3(1.5, 2.25, 0), 16);
+            private int attackTime;
+            private int hoverStep;
+            private int chaseStep;
+
+            public BlizzAttackGoal(BlizzEntity blizzIn) {
+
+                this.blizz = blizzIn;
+                this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+            }
+
+            /**
+             * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
+             * method as well.
+             */
+            public boolean canUse() {
+
+                LivingEntity target = this.blizz.getTarget();
+                return target != null && target.isAlive() && this.blizz.canAttack(target);
+            }
+
+            /**
+             * Execute a one shot task or start executing a continuous task
+             */
+            public void start() {
+
+                this.chaseStep = 0;
+            }
+
+            /**
+             * Reset the task's internal state. Called when this task is interrupted by another one
+             */
+            public void stop() {
+
+                this.blizz.setAngry(false);
+                this.chaseStep = 0;
+            }
+
+            /**
+             * Keep ticking a continuous task that has already been started
+             */
+            public void tick() {
+
+                --attackTime;
+                LivingEntity target = blizz.getTarget();
+                if (target == null) {
                     return;
+                }
+                Vec3 pos = blizz.position();
+                Vec3 targetPos = target.getEyePosition(0.5F);
+                Vec3 diff = pos.subtract(targetPos);
+                double distSqr = blizz.distanceToSqr(target);
+                double horzDistSqr = diff.horizontalDistanceSqr();
+                if (blizz.getSensing().hasLineOfSight(target) && distSqr < getFollowDistance() * getFollowDistance()) {
+                    chaseStep = 0;
+                    blizz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+                    if (distSqr < 4.0) {
+                        if (attackTime <= 0) {
+                            attackTime = 20;
+                            blizz.doHurtTarget(target);
+                        }
+                    } else if (pos.y > target.getY() + 2) {
+                        blizz.setAngry(true);
+                        if (attackTime <= 0) {
+                            attackTime = 7;
+                            Random rand = blizz.getRandom();
+                            Level world = blizz.level;
+                            //TODO: less annoying sound
+                            //world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (rand.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                            BlizzProjectileEntity projectile;
+                            if (horzDistSqr < 9) {
+                                projectile = new BlizzProjectileEntity(targetPos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() * 0.5F - 0.2F, targetPos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
+                            } else {
+                                projectile = new BlizzProjectileEntity(pos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() - 0.2F, pos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
+                            }
+                            projectile.setOwner(blizz);
+                            world.addFreshEntity(projectile);
+                            ++hoverStep;
+                            hoverStep %= hoverOffsets.length;
+                        }
+                        blizz.getMoveControl().setWantedPosition(targetPos.x + hoverOffsets[hoverStep].x, targetPos.y + hoverOffsets[hoverStep].y, targetPos.z + hoverOffsets[hoverStep].z, 1.0D);
+                        return;
+                    } else {
+                        blizz.setAngry(false);
+                    }
                 } else {
                     blizz.setAngry(false);
                 }
-            } else {
-                blizz.setAngry(false);
+                if (chaseStep < 5) {
+                    ++chaseStep;
+                    blizz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y + hoverOffsets[0].y, targetPos.z, 1.0D);
+                }
+                super.tick();
             }
-            if (chaseStep < 5) {
-                ++chaseStep;
-                blizz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y + hoverOffsets[0].y, targetPos.z, 1.0D);
+
+            private double getFollowDistance() {
+
+                return this.blizz.getAttributeValue(Attributes.FOLLOW_RANGE);
             }
-            super.tick();
-        }
 
-        private double getFollowDistance() {
+            protected static Vec3[] getHoverOffsets(Vec3 start, int steps) {
 
-            return this.blizz.getAttributeValue(Attributes.FOLLOW_RANGE);
-        }
-
-        protected static Vec3[] getHoverOffsets(Vec3 start, int steps) {
-
-            float stepRad = (float) Math.PI * 2 / steps;
-            Vec3[] offsets = new Vec3[steps];
-            for (int i = 0; i < steps; ++i) {
-                offsets[i] = start.yRot(stepRad * i);
+                float stepRad = (float) Math.PI * 2 / steps;
+                Vec3[] offsets = new Vec3[steps];
+                for (int i = 0; i < steps; ++i) {
+                    offsets[i] = start.yRot(stepRad * i);
+                }
+                return offsets;
             }
-            return offsets;
+
         }
 
     }
-
-}

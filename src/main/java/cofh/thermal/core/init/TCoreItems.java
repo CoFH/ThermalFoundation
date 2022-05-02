@@ -10,17 +10,8 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.item.*;
 import cofh.thermal.lib.item.AugmentItem;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
-<<<<<<< HEAD
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.SoundEvents;
-=======
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
@@ -28,9 +19,7 @@ import net.minecraft.world.item.HoneyBottleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.IEnergyStorage;
 
@@ -232,179 +221,6 @@ public class TCoreItems {
         registerItem("lightning_charge", () -> new LightningChargeItem(new Item.Properties().tab(group)));
 
         registerItem(ID_DETONATOR, () -> new DetonatorItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_DETONATOR)));
-
-<<<<<<< HEAD
-=======
-        registerItem(ID_EXPLOSIVE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new ExplosiveGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new ExplosiveGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)));
-
-        registerItem(ID_SLIME_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new SlimeGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new SlimeGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
-        registerItem(ID_REDSTONE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new RedstoneGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new RedstoneGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
-        registerItem(ID_GLOWSTONE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new GlowstoneGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new GlowstoneGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
-        registerItem(ID_ENDER_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new EnderGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new EnderGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
-
-        registerItem(ID_PHYTO_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new PhytoGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new PhytoGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_PHYTOGRO_EXPLOSIVES)));
-
-        registerItem(ID_EARTH_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new EarthGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new EarthGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
-        registerItem(ID_FIRE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new FireGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new FireGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
-        registerItem(ID_ICE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new IceGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new IceGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
-        registerItem(ID_LIGHTNING_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new LightningGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new LightningGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).stacksTo(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
-
-        registerItem(ID_NUKE_GRENADE, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, LivingEntity living) {
-
-                return new NukeGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(Level world, double posX, double posY, double posZ) {
-
-                return new NukeGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().tab(group).rarity(Rarity.UNCOMMON).stacksTo(16)).setShowInGroups(getFlag(FLAG_NUCLEAR_EXPLOSIVES)));
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
     }
 
     private static void registerArmor() {
@@ -443,7 +259,7 @@ public class TCoreItems {
     private static void registerUpgradeAugments() {
 
         CreativeModeTab group = THERMAL_ITEMS;
-        final float[] upgradeMods = new float[] { 1.0F, 2.0F, 3.0F, 4.0F, 6.0F, 8.5F };
+        final float[] upgradeMods = new float[]{1.0F, 2.0F, 3.0F, 4.0F, 6.0F, 8.5F};
         // final float[] upgradeMods = new float[]{1.0F, 1.5F, 2.0F, 2.5F, 3.0F, 3.5F};
 
         for (int i = 1; i <= 3; ++i) {
@@ -661,8 +477,8 @@ public class TCoreItems {
     }
     // endregion
 
-    public static final ArmorMaterialCoFH BEEKEEPER = new ArmorMaterialCoFH("thermal:beekeeper", 4, new int[] { 1, 2, 3, 1 }, 16, SoundEvents.ARMOR_EQUIP_ELYTRA, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("beekeeper_fabric")));
-    public static final ArmorMaterialCoFH DIVING = new ArmorMaterialCoFH("thermal:diving", 12, new int[] { 1, 4, 5, 2 }, 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("diving_fabric")));
-    public static final ArmorMaterialCoFH HAZMAT = new ArmorMaterialCoFH("thermal:hazmat", 6, new int[] { 1, 4, 5, 2 }, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("hazmat_fabric")));
+    public static final ArmorMaterialCoFH BEEKEEPER = new ArmorMaterialCoFH("thermal:beekeeper", 4, new int[]{1, 2, 3, 1}, 16, SoundEvents.ARMOR_EQUIP_ELYTRA, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("beekeeper_fabric")));
+    public static final ArmorMaterialCoFH DIVING = new ArmorMaterialCoFH("thermal:diving", 12, new int[]{1, 4, 5, 2}, 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("diving_fabric")));
+    public static final ArmorMaterialCoFH HAZMAT = new ArmorMaterialCoFH("thermal:hazmat", 6, new int[]{1, 4, 5, 2}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ITEMS.get("hazmat_fabric")));
 
 }

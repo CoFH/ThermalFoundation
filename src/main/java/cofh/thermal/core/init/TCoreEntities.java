@@ -4,21 +4,13 @@ import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
-<<<<<<< HEAD
 import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntitySpawnPlacementRegistry;
-import net.minecraft.entity.EntityType;
-import net.minecraft.world.gen.Heightmap;
-=======
-import cofh.thermal.core.entity.projectile.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import static cofh.thermal.core.ThermalCore.ENTITIES;
 import static cofh.thermal.core.init.TCoreReferences.*;
@@ -43,7 +35,7 @@ public class TCoreEntities {
         ENTITIES.register(ID_BLIZZ_PROJECTILE, () -> EntityType.Builder.<BlizzProjectileEntity>of(BlizzProjectileEntity::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BLIZZ_PROJECTILE));
         ENTITIES.register(ID_BLITZ_PROJECTILE, () -> EntityType.Builder.<BlitzProjectileEntity>of(BlitzProjectileEntity::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BLITZ_PROJECTILE));
 
-<<<<<<< HEAD
+<<<<<<<HEAD
         registerGrenade(ID_EXPLOSIVE_GRENADE, DetonateUtils::explosive, getFlag(FLAG_BASIC_EXPLOSIVES));
 
         registerGrenade(ID_FIRE_GRENADE, DetonateUtils::fire, getFlag(FLAG_ELEMENTAL_EXPLOSIVES));
@@ -102,7 +94,7 @@ public class TCoreEntities {
         ENTITIES.register(ID_LIGHTNING_TNT, () -> EntityType.Builder.<LightningTNTEntity>of(LightningTNTEntity::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_LIGHTNING_TNT));
 
         ENTITIES.register(ID_NUKE_TNT, () -> EntityType.Builder.<NukeTNTEntity>of(NukeTNTEntity::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(ID_NUKE_TNT));
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
     }
 
     public static void setup() {

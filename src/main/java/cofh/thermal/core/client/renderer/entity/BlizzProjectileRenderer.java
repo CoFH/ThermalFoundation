@@ -26,20 +26,20 @@ public class BlizzProjectileRenderer extends EntityRenderer<BlizzProjectileEntit
     }
 
     @Override
-    public void render(BlizzProjectileEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+    public void render(BlizzProjectileEntity entityIn, float entityYaw, float partialTicks, MatrixStack poseStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
 
-        matrixStackIn.pushPose();
+        poseStackIn.pushPose();
         float f = MathHelper.rotlerp(entityIn.yRotO, entityIn.yRot, partialTicks);
         float f1 = MathHelper.lerp(partialTicks, entityIn.xRotO, entityIn.xRot);
         float f2 = (float) entityIn.tickCount + partialTicks;
-        matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(MathHelper.sin(f2 * 0.1F) * 180.0F));
-        matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(MathHelper.cos(f2 * 0.1F) * 180.0F));
-        matrixStackIn.scale(0.5F, 0.5F, 0.5F);
+        poseStackIn.mulPose(Vector3f.YP.rotationDegrees(MathHelper.sin(f2 * 0.1F) * 180.0F));
+        poseStackIn.mulPose(Vector3f.XP.rotationDegrees(MathHelper.cos(f2 * 0.1F) * 180.0F));
+        poseStackIn.scale(0.5F, 0.5F, 0.5F);
         this.model.setupAnim(entityIn, 0.0F, 0.0F, 0.0F, f, f1);
         IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.model.renderType(TEXTURE));
-        this.model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-        matrixStackIn.popPose();
-        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
+        this.model.renderToBuffer(poseStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        poseStackIn.popPose();
+        super.render(entityIn, entityYaw, partialTicks, poseStackIn, bufferIn, packedLightIn);
     }
 
     @Override

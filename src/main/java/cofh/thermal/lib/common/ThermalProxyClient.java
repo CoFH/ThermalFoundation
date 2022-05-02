@@ -18,7 +18,7 @@ public class ThermalProxyClient extends ThermalProxy {
         int color = FluidHelper.color(tile.getRenderFluid());
         int radius = tile.getRadius();
 
-        Vec3 vector3d = Vec3.upFromBottomCenterOf(tile.getBlockPos(), 2);
+        Vec3 Vec3 = Vec3.upFromBottomCenterOf(tile.getBlockPos(), 2);
         Level world = tile.world();
 
         float r = (float) (color >> 16 & 255) / 255.0F;
@@ -35,7 +35,7 @@ public class ThermalProxyClient extends ThermalProxy {
 
             double speedX = Math.cos(degrees) * speedMult;
             double speedZ = Math.sin(degrees) * speedMult;
-            Particle particle = Minecraft.getInstance().levelRenderer.addParticleInternal(particleData, particleData.getType().getOverrideLimiter(), vector3d.x + speedX * 0.1D, vector3d.y - (world.random.nextDouble() + 0.5D), vector3d.z + speedZ * 0.1D, speedX, speedY, speedZ);
+            Particle particle = Minecraft.getInstance().levelRenderer.addParticleInternal(particleData, particleData.getType().getOverrideLimiter(), Vec3.x + speedX * 0.1D, Vec3.y - (world.random.nextDouble() + 0.5D), Vec3.z + speedZ * 0.1D, speedX, speedY, speedZ);
             if (particle != null) {
                 float colorMult = 0.75F + world.random.nextFloat() * 0.25F;
                 particle.setColor(r * colorMult, g * colorMult, b * colorMult);

@@ -93,4 +93,4 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
 
 }
 */
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3bc6106(Initial1.18.2compile pass.)

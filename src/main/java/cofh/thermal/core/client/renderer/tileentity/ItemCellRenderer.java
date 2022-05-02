@@ -20,23 +20,23 @@
 //    }
 //
 //    @Override
-//    public void render(ItemCellTile tile, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
+//    public void render(ItemCellTile tile, float partialTicks, MatrixStack poseStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
 //
 //        ItemStack item = tile.getRenderItem();
 //
 //        if (!item.isEmpty()) {
-//            matrixStackIn.pushPose();
+//            poseStackIn.pushPose();
 //            float spin = (float) ((CoreClientEvents.renderTime + partialTicks) / Math.PI);
 //            float bob = (float) (Math.sin(((float) CoreClientEvents.renderTime + spin) / 20.0F) * 0.075F + 0.15F);
 //
-//            matrixStackIn.translate(0.5, bob + 0.25, 0.5);
-//            matrixStackIn.mulPose(Vector3f.YP.rotation(((float) CoreClientEvents.renderTime + spin) / 30.0F));
+//            poseStackIn.translate(0.5, bob + 0.25, 0.5);
+//            poseStackIn.mulPose(Vector3f.YP.rotation(((float) CoreClientEvents.renderTime + spin) / 30.0F));
 //
-//            RenderHelper.renderItem().renderStatic(item, ItemCameraTransforms.TransformType.GROUND, combinedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn);
+//            RenderHelper.renderItem().renderStatic(item, ItemCameraTransforms.TransformType.GROUND, combinedLightIn, OverlayTexture.NO_OVERLAY, poseStackIn, bufferIn);
 //
-//            matrixStackIn.popPose();
+//            poseStackIn.popPose();
 //
-//            // RenderHelper.renderItemOnBlockSide(matrixStackIn, item, tile.getFacing(), tile.getBlockPos());
+//            // RenderHelper.renderItemOnBlockSide(poseStackIn, item, tile.getFacing(), tile.getBlockPos());
 //        }
 //    }
 //

@@ -50,7 +50,7 @@ public class EnderFluid extends FluidCoFH {
         }
 
         @Override
-        public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        public void entityInside(BlockState state, Level levelIn, BlockPos pos, Entity entityIn) {
 
             if (!teleport || Utils.isClientWorld(worldIn)) {
                 return;

@@ -58,7 +58,7 @@ public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergy
     }
 
     //    @Override
-    //    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+    //    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
     //
     //        return new EnergyContainerItemWrapper(stack, this);
     //    }

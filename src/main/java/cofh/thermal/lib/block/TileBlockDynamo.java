@@ -17,7 +17,7 @@ import static cofh.lib.util.constants.Constants.FACING_ALL;
 
 public class TileBlockDynamo extends TileBlockActive6Way {
 
-    private static final VoxelShape[] BASE_SHAPE = new VoxelShape[] {
+    private static final VoxelShape[] BASE_SHAPE = new VoxelShape[]{
             Block.box(0, 6, 0, 16, 16, 16),
             Block.box(0, 0, 0, 16, 10, 16),
             Block.box(0, 0, 6, 16, 16, 16),
@@ -26,7 +26,7 @@ public class TileBlockDynamo extends TileBlockActive6Way {
             Block.box(0, 0, 0, 10, 16, 16)
     };
 
-    private static final VoxelShape[] COIL_SHAPE = new VoxelShape[] {
+    private static final VoxelShape[] COIL_SHAPE = new VoxelShape[]{
             Block.box(4, 0, 4, 12, 6, 12),
             Block.box(4, 10, 4, 12, 16, 12),
             Block.box(4, 4, 0, 12, 12, 6),
@@ -35,7 +35,7 @@ public class TileBlockDynamo extends TileBlockActive6Way {
             Block.box(10, 4, 4, 16, 12, 12)
     };
 
-    private static final VoxelShape[] DYNAMO_SHAPE = new VoxelShape[] {
+    private static final VoxelShape[] DYNAMO_SHAPE = new VoxelShape[]{
             Shapes.or(BASE_SHAPE[0], COIL_SHAPE[0]),
             Shapes.or(BASE_SHAPE[1], COIL_SHAPE[1]),
             Shapes.or(BASE_SHAPE[2], COIL_SHAPE[2]),

@@ -128,7 +128,7 @@ public class ThermalConfig {
                 .comment("If TRUE, the Satchel is enabled.")
                 .define("Satchel", true);
 
-        String[] shulkerBoxes = new String[] {
+        String[] shulkerBoxes = new String[]{
                 ID_THERMAL + ":" + ID_SATCHEL,
                 Items.SHULKER_BOX.getRegistryName().toString(),
                 Items.WHITE_SHULKER_BOX.getRegistryName().toString(),
@@ -638,8 +638,8 @@ public class ThermalConfig {
     // endregion
 
     // region GLOBALS
-    public static final byte[] DEFAULT_MACHINE_SIDES_RAW = new byte[] { 0, 0, 0, 0, 0, 0 };
-    public static final byte[] DEFAULT_CELL_SIDES_RAW = new byte[] { 0, 0, 0, 0, 0, 0 };
+    public static final byte[] DEFAULT_MACHINE_SIDES_RAW = new byte[]{0, 0, 0, 0, 0, 0};
+    public static final byte[] DEFAULT_CELL_SIDES_RAW = new byte[]{0, 0, 0, 0, 0, 0};
     // endregion
 
     // region SERVER VARIABLES

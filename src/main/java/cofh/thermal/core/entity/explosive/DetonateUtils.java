@@ -4,49 +4,47 @@ import cofh.core.network.packet.client.PlayerMotionPacket;
 import cofh.lib.entity.*;
 import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
+import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.item.PhytoGroItem;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.particles.RedstoneParticleData;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
 
 import static cofh.lib.util.references.CoreReferences.SLIMED;
-import static net.minecraft.potion.Effects.WITHER;
 
 public class DetonateUtils {
 
     // region RENDERING REGISTRATION
     public static List<RegistryObject<EntityType<? extends AbstractGrenadeEntity>>> GRENADES = new LinkedList<>();
     public static List<RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new LinkedList<>();
-    public static List<RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>>> CARTS = new LinkedList<>();
+    public static List<RegistryObject<EntityType<? extends AbstractTNTMinecart>>> CARTS = new LinkedList<>();
     // endregion
 
     // region HELPERS
-    public static void makeAreaOfEffectCloud(World level, IParticleData particle, Vector3d pos, float radius, int duration) {
+    public static void makeAreaOfEffectCloud(Level level, ParticleOptions particle, Vec3 pos, float radius, int duration) {
 
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(level, pos.x, pos.y, pos.z);
+        AreaEffectCloud cloud = new AreaEffectCloud(level, pos.x, pos.y, pos.z);
         cloud.setRadius(1);
         cloud.setParticle(particle);
         cloud.setDuration(duration);
@@ -55,14 +53,14 @@ public class DetonateUtils {
         level.addFreshEntity(cloud);
     }
 
-    public static void makeAreaOfEffectCloud(World level, IParticleData particle, Vector3d pos, float radius) {
+    public static void makeAreaOfEffectCloud(Level level, ParticleType<?> particle, Vec3 pos, float radius) {
 
         makeAreaOfEffectCloud(level, particle, pos, radius, 20);
     }
     // endregion
 
     // region DETONATE ACTIONS
-    public static void fire(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void fire(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         if (!explosive.isInWater()) {
             AreaUtils.igniteEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
@@ -72,20 +70,20 @@ public class DetonateUtils {
         }
     }
 
-    public static void ice(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void ice(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         AreaUtils.iceTransform.transformSphere(level, pos, radius, owner);
         AreaUtils.chillEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
         makeAreaOfEffectCloud(level, CoreReferences.FROST_PARTICLE, pos, radius);
     }
 
-    public static void earth(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void earth(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         AreaUtils.earthTransform.transformSphere(level, pos, radius, owner);
         AreaUtils.sunderEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
     }
 
-    public static void lightning(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void lightning(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         BlockPos blockPos = new BlockPos(pos);
         if (level.canSeeSky(blockPos)) {
@@ -95,7 +93,7 @@ public class DetonateUtils {
         level.addFreshEntity(new ElectricFieldEntity(level, pos, radius, 100).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
     }
 
-    public static void ender(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void ender(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         if (!explosive.isInWater()) {
             AreaUtils.enderAirTransform.transformSphere(level, pos, radius, owner);
@@ -104,26 +102,26 @@ public class DetonateUtils {
         }
     }
 
-    public static void glow(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void glow(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         AreaUtils.glowAirTransform.transformSphere(level, pos, radius, explosive);
         AreaUtils.glowEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
         makeAreaOfEffectCloud(level, ParticleTypes.INSTANT_EFFECT, pos, radius);
     }
 
-    public static void redstone(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void redstone(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         AreaUtils.signalAirTransform.transformSphere(level, pos, radius, owner);
         makeAreaOfEffectCloud(level, RedstoneParticleData.REDSTONE, pos, radius);
     }
 
-    public static void slime(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void slime(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         BlockPos blockPos = new BlockPos(pos);
         AxisAlignedBB area = new AxisAlignedBB(blockPos.offset(-radius, -radius, -radius), blockPos.offset(1 + radius, 1 + radius, 1 + radius));
 
         for (LivingEntity mob : level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE)) {
-            mob.addEffect(new EffectInstance(SLIMED, duration, amplifier, false, true));
+            mob.addEffect(new MobEffectInstance(SLIMED, duration, amplifier, false, true));
 
             double d5 = mob.getX() - explosive.getX();
             double d7 = mob.getY() - explosive.getY();
@@ -138,9 +136,9 @@ public class DetonateUtils {
                 double d14 = Explosion.getSeenPercent(explosive.position(), mob);
                 double d11 = (radius - d12) * d14;
                 d11 *= (1.0D - mob.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                if (mob instanceof ServerPlayerEntity) {
+                if (mob instanceof ServerPlayer) {
                     d11 /= 4.0D;
-                    PlayerMotionPacket.sendToClient(d5 * d11, d7 * d11, d9 * d11, (ServerPlayerEntity) mob);
+                    PlayerMotionPacket.sendToClient(d5 * d11, d7 * d11, d9 * d11, (ServerPlayer) mob);
                 } else {
                     mob.setDeltaMovement(mob.getDeltaMovement().add(d5 * d11, d7 * d11, d9 * d11));
                 }
@@ -149,7 +147,7 @@ public class DetonateUtils {
         makeAreaOfEffectCloud(level, ParticleTypes.ITEM_SLIME, pos, radius);
     }
 
-    public static void phyto(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void phyto(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         AreaUtils.growPlants.transformSphere(level, pos, radius, owner);
         for (int i = 0; i < 2; ++i) {
@@ -158,13 +156,13 @@ public class DetonateUtils {
         makeAreaOfEffectCloud(level, ParticleTypes.HAPPY_VILLAGER, pos, radius);
     }
 
-    public static void explosive(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void explosive(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         boolean explosionsBreakBlocks = true; //TODO: config
         level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), 1.9F, false, explosionsBreakBlocks ? Explosion.Mode.BREAK : Explosion.Mode.NONE);
     }
 
-    public static void nuke(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void nuke(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         boolean explosionsBreakBlocks = true; //TODO: config
         level.setBlockAndUpdate(explosive.blockPosition(), Blocks.AIR.defaultBlockState());
@@ -205,7 +203,7 @@ public class DetonateUtils {
         level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), radius * 0.38F, true, explosionsBreakBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
     }
 
-    public static void gravity(World level, Entity explosive, @Nullable Entity owner, Vector3d pos, float radius, int duration, int amplifier) {
+    public static void gravity(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         level.addFreshEntity((new BlackHoleEntity(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         //TODO: particle

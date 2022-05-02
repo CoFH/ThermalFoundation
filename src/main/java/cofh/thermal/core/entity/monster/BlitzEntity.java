@@ -4,34 +4,6 @@ import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
-<<<<<<< HEAD
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.FlyingMovementController;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.FlyingPathNavigator;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
-=======
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -40,6 +12,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
@@ -49,6 +22,7 @@ import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -57,7 +31,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -79,16 +52,12 @@ public class BlitzEntity extends Monster {
     public BlitzEntity(EntityType<? extends BlitzEntity> type, Level world) {
 
         super(type, world);
-<<<<<<< HEAD
-        this.moveControl = new FlyingMovementController(this, 20, true);
-        this.navigation = new FlyingPathNavigator(this, world);
-        this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
-        this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);
-=======
+
         this.moveControl = new FlyingMoveControl(this, 20, true);
+        this.navigation = new FlyingPathNavigation(this, world);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.LAVA, -1.0F);
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+
         this.xpReward = 10;
     }
 
@@ -157,9 +126,9 @@ public class BlitzEntity extends Monster {
     }
 
     @Override
-    public boolean canBeAffected(EffectInstance effect) {
+    public boolean canBeAffected(MobEffectInstance effect) {
 
-        return super.canBeAffected(effect) && !effect.equals(CoreReferences.SHOCKED);
+        return super.canBeAffected(effect) && !effect.getEffect().equals(CoreReferences.SHOCKED);
     }
 
     @Override
@@ -252,66 +221,66 @@ public class BlitzEntity extends Monster {
             Vec3 targetPos = target.position().add(0, target.getBbHeight() * 0.5F, 0);
             Vec3 diff = targetPos.subtract(pos);
             double distSqr = blitz.distanceToSqr(target);
-<<<<<<< HEAD
+<<<<<<<HEAD
             if (blitz.getSensing().canSee(target) && distSqr < getFollowDistance() * getFollowDistance()) {
 =======
-            if (blitz.getSensing().hasLineOfSight(target) && distSqr < getFollowDistance() * getFollowDistance()) {
-                chaseStep = 0;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
-                blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
-                blitz.setAngry(true);
-                if (distSqr < 4.0) {
-                    if (attackTime <= 0) {
-                        attackTime = 20;
-                        blitz.doHurtTarget(target);
-                    }
-                } else if (distSqr < 576.0) {
-                    if (attackTime <= 0) {
-                        attackTime = 20;
-                        Level world = blitz.level;
-                        world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundSource.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
-                        // imagine using what you learn in school
-                        float gravity = 0.05F;
-                        float horzSpeed = 0.8F;
-                        double horzDist = Math.sqrt(diff.horizontalDistanceSqr());
-                        double time = 1.25F * horzDist;
-                        Vec3 horzVel = diff.scale(horzSpeed / horzDist);
+                if (blitz.getSensing().hasLineOfSight(target) && distSqr < getFollowDistance() * getFollowDistance()) {
+                    chaseStep = 0;
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
+                    blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+                    blitz.setAngry(true);
+                    if (distSqr < 4.0) {
+                        if (attackTime <= 0) {
+                            attackTime = 20;
+                            blitz.doHurtTarget(target);
+                        }
+                    } else if (distSqr < 576.0) {
+                        if (attackTime <= 0) {
+                            attackTime = 20;
+                            Level world = blitz.level;
+                            world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundSource.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                            // imagine using what you learn in school
+                            float gravity = 0.05F;
+                            float horzSpeed = 0.8F;
+                            double horzDist = Math.sqrt(diff.horizontalDistanceSqr());
+                            double time = 1.25F * horzDist;
+                            Vec3 horzVel = diff.scale(horzSpeed / horzDist);
 
-                        BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
-                        projectile.setDeltaMovement(horzVel.x, gravity * time + diff.y / time, horzVel.z);
-                        projectile.setOwner(blitz);
-                        world.addFreshEntity(projectile);
-                    }
-<<<<<<< HEAD
-                    if (distSqr > 400.0) {
-                        blitz.navigation.stop();
-                        navTime = 0;
-                    } else if (navTime <= 0) {
-                        Vector3d want = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
-                        blitz.navigation.moveTo(targetPos.x + want.x, targetPos.y, targetPos.z + want.z, 1.0D);
-                        navTime = 15;
+                            BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
+                            projectile.setDeltaMovement(horzVel.x, gravity * time + diff.y / time, horzVel.z);
+                            projectile.setOwner(blitz);
+                            world.addFreshEntity(projectile);
+                        }
+<<<<<<<HEAD
+                        if (distSqr > 400.0) {
+                            blitz.navigation.stop();
+                            navTime = 0;
+                        } else if (navTime <= 0) {
+                            Vec3 want = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
+                            blitz.navigation.moveTo(targetPos.x + want.x, targetPos.y, targetPos.z + want.z, 1.0D);
+                            navTime = 15;
 =======
-                    if (distSqr < 400.0) {
-                        Vec3 want = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
-                        blitz.getMoveControl().setWantedPosition(pos.x + want.x, blitz.getY(), pos.z + want.z, 1.0D);
-                        blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+                            if (distSqr < 400.0) {
+                                Vec3 want = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(30);
+                                blitz.getMoveControl().setWantedPosition(pos.x + want.x, blitz.getY(), pos.z + want.z, 1.0D);
+                                blitz.getLookControl().setLookAt(target, 10.0F, 10.0F);
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
+                            }
+                        } else if (navTime <= 0) {
+                            blitz.navigation.moveTo(targetPos.x, targetPos.y, targetPos.z, 1.0D);
+                            navTime = 15;
+                        }
+                    } else {
+                        blitz.setAngry(false);
                     }
-                } else if (navTime <= 0) {
-                    blitz.navigation.moveTo(targetPos.x, targetPos.y, targetPos.z, 1.0D);
-                    navTime = 15;
+                    super.tick();
                 }
-            } else {
-                blitz.setAngry(false);
+
+                private double getFollowDistance () {
+
+                    return this.blitz.getAttributeValue(Attributes.FOLLOW_RANGE);
+                }
+
             }
-            super.tick();
+
         }
-
-        private double getFollowDistance() {
-
-            return this.blitz.getAttributeValue(Attributes.FOLLOW_RANGE);
-        }
-
-    }
-
-}

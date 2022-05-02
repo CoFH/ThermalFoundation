@@ -15,7 +15,7 @@ import static net.minecraftforge.common.ForgeMod.SWIM_SPEED;
 
 public class DivingArmorItem extends ArmorItemCoFH {
 
-    protected static final double[] SWIM_SPEED_BONUS = new double[] { 0.60D, 0.30D, 0.10D, 0.0D };
+    protected static final double[] SWIM_SPEED_BONUS = new double[]{0.60D, 0.30D, 0.10D, 0.0D};
     protected static final int AIR_DURATION = 1800;
 
     private Multimap<Attribute, AttributeModifier> armorAttributes;

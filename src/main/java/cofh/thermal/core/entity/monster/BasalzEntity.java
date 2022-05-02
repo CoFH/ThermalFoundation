@@ -4,42 +4,21 @@ import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
-<<<<<<< HEAD
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
-=======
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -59,7 +38,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -74,14 +52,17 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 public class BasalzEntity extends Monster {
 
     protected static final int DEFAULT_ORBIT = 8;
-<<<<<<< HEAD
+<<<<<<<HEAD
     public static final int DEPLOY_TIME = 6;
     private static final DataParameter<Byte> ANGRY = EntityDataManager.defineId(BasalzEntity.class, DataSerializers.BYTE);
-    private static final Vector3d vert = new Vector3d(0, 1, 0);
+    private static final Vec3 vert = new Vec3(0, 1, 0);
 =======
     private static final EntityDataAccessor<Byte> ANGRY = SynchedEntityData.defineId(BasalzEntity.class, EntityDataSerializers.BYTE);
     private static final Vec3 vert = new Vec3(0, 1, 0);
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3
+
+    bc6106(Initial 1.18.2compile pass.)
+
     protected int attackTime = 0;
     public int angerTime = 72000;
     protected boolean wasAngry = false;
@@ -171,7 +152,7 @@ public class BasalzEntity extends Monster {
                     BasalzProjectileEntity projectile = new BasalzProjectileEntity(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
                     projectile.setDeltaMovement(-offset.x, 0, -offset.z);
                     projectile.setOwner(this);
-<<<<<<< HEAD
+<<<<<<<HEAD
                     projectile.onHit(new EntityRayTraceResult(target));
                     if (getOrbit() > 0) {
                         reduceOrbit();
@@ -181,7 +162,7 @@ public class BasalzEntity extends Monster {
 =======
                     projectile.onHit(new EntityHitResult(target));
                     reduceOrbit();
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
                 }
             }
         } else {
@@ -197,17 +178,13 @@ public class BasalzEntity extends Monster {
     }
 
     @Override
-<<<<<<< HEAD
-    public boolean canBeAffected(EffectInstance effect) {
+    public boolean canBeAffected(MobEffectInstance effect) {
 
-        return super.canBeAffected(effect) && !effect.equals(CoreReferences.SUNDERED);
+        return super.canBeAffected(effect) && !effect.getEffect().equals(CoreReferences.SUNDERED);
     }
 
     @Override
-    public boolean causeFallDamage(float distance, float damageMultiplier) {
-=======
     public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 
         return false;
     }
@@ -343,12 +320,12 @@ public class BasalzEntity extends Monster {
                     basalz.getLookControl().setLookAt(target, 10.0F, 10.0F);
                     if (!basalz.isAngry()) {
                         basalz.setAngry(true);
-<<<<<<< HEAD
+<<<<<<<HEAD
                         basalz.level.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundCategory.HOSTILE, 2.5F, (basalz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         navTime = 0;
 =======
                         basalz.level.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundSource.HOSTILE, 2.5F, (basalz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
                     }
                     if (distSqr < 2.25) {
                         if (attackTime <= 0) {
@@ -363,47 +340,47 @@ public class BasalzEntity extends Monster {
                         navTime = 15;
                     }
                 } else {
-<<<<<<< HEAD
+<<<<<<<HEAD
                     if (basalz.isAngry()) {
                         basalz.setAngry(false);
                         navTime = 0;
 =======
-                    basalz.setAngry(false);
-                    if (distSqr < 144.0) {
-                        Vec3 diff = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(16);
-                        basalz.getLookControl().setLookAt(targetPos.x + diff.x, basalz.getEyeY(), targetPos.z + diff.z, 10.0F, 10.0F);
-                        basalz.getMoveControl().setWantedPosition(targetPos.x + diff.x, targetPos.y, targetPos.z + diff.z, 1.0D);
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
-                    }
-                    if (refreshTime > 0) {
-                        --refreshTime;
-                        if (distSqr < 144.0 && navTime <= 0) {
-                            Vector3d diff = (new Vector3d(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(16);
+                        basalz.setAngry(false);
+                        if (distSqr < 144.0) {
+                            Vec3 diff = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(16);
                             basalz.getLookControl().setLookAt(targetPos.x + diff.x, basalz.getEyeY(), targetPos.z + diff.z, 10.0F, 10.0F);
-                            basalz.navigation.moveTo(targetPos.x + diff.x, targetPos.y, targetPos.z + diff.z, 1.0D);
-                            navTime = 15;
+                            basalz.getMoveControl().setWantedPosition(targetPos.x + diff.x, targetPos.y, targetPos.z + diff.z, 1.0D);
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
                         }
+                        if (refreshTime > 0) {
+                            --refreshTime;
+                            if (distSqr < 144.0 && navTime <= 0) {
+                                Vec3 diff = (new Vec3(pos.x - targetPos.x, 0, pos.z - targetPos.z)).normalize().scale(16);
+                                basalz.getLookControl().setLookAt(targetPos.x + diff.x, basalz.getEyeY(), targetPos.z + diff.z, 10.0F, 10.0F);
+                                basalz.navigation.moveTo(targetPos.x + diff.x, targetPos.y, targetPos.z + diff.z, 1.0D);
+                                navTime = 15;
+                            }
+                        } else {
+                            refreshTime = 100;
+                            basalz.resetOrbit();
+                        }
+                    }
+                } else{
+                    if (chaseStep < 5) {
+                        ++chaseStep;
+                        basalz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
                     } else {
-                        refreshTime = 100;
-                        basalz.resetOrbit();
+                        basalz.setAngry(false);
                     }
                 }
-            } else {
-                if (chaseStep < 5) {
-                    ++chaseStep;
-                    basalz.getMoveControl().setWantedPosition(targetPos.x, targetPos.y, targetPos.z, 1.0D);
-                } else {
-                    basalz.setAngry(false);
-                }
+                super.tick();
             }
-            super.tick();
-        }
 
-        private double getFollowDistance() {
+            private double getFollowDistance () {
 
-            return this.basalz.getAttributeValue(Attributes.FOLLOW_RANGE);
+                return this.basalz.getAttributeValue(Attributes.FOLLOW_RANGE);
+            }
+
         }
 
     }
-
-}

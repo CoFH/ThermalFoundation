@@ -92,7 +92,7 @@ public class TCoreJeiPlugin implements IModPlugin {
     private RecipeManager getRecipeManager() {
 
         RecipeManager recipeManager = null;
-        ClientWorld world = Minecraft.getInstance().level;
+        ClientLevel level = Minecraft.getInstance().level;
         if (world != null) {
             recipeManager = world.getRecipeManager();
         }

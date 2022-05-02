@@ -42,19 +42,19 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
     }
 
     //    @Override
-    //    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+    //    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
     //
     //        return new FluidContainerItemWrapper(stack, this);
     //    }
 
     //    // region IFluidContainerItem
     //    @Override
-    //    public CompoundNBT getOrCreateTankTag(ItemStack container) {
+    //    public CompoundTag getOrCreateTankTag(ItemStack container) {
     //
-    //        CompoundNBT blockTag = container.getOrCreateChildTag(TAG_BLOCK_ENTITY);
+    //        CompoundTag blockTag = container.getOrCreateChildTag(TAG_BLOCK_ENTITY);
     //        ListNBT tanks = blockTag.getList(TAG_TANK_INV, TAG_COMPOUND);
     //        if (tanks.isEmpty()) {
-    //            CompoundNBT tag = new CompoundNBT();
+    //            CompoundTag tag = new CompoundTag();
     //            tag.putByte(TAG_TANK, (byte) 0);
     //            new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).write(tag);
     //            tanks.add(tag);
@@ -66,14 +66,14 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
     //    @Override
     //    public FluidStack getFluid(ItemStack container) {
     //
-    //        CompoundNBT tag = getOrCreateTankTag(container);
+    //        CompoundTag tag = getOrCreateTankTag(container);
     //        return FluidStack.loadFluidStackFromNBT(tag);
     //    }
     //
     //    @Override
     //    public int getCapacity(ItemStack container) {
     //
-    //        CompoundNBT tag = getOrCreateTankTag(container);
+    //        CompoundTag tag = getOrCreateTankTag(container);
     //        if (tag == null) {
     //            return 0;
     //        }
@@ -85,7 +85,7 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
     //    @Override
     //    public int fill(ItemStack container, FluidStack resource, FluidAction action) {
     //
-    //        CompoundNBT containerTag = getOrCreateTankTag(container);
+    //        CompoundTag containerTag = getOrCreateTankTag(container);
     //        if (resource.isEmpty() || !isFluidValid(container, resource)) {
     //            return 0;
     //        }
@@ -105,7 +105,7 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
     //    @Override
     //    public FluidStack drain(ItemStack container, int maxDrain, FluidAction action) {
     //
-    //        CompoundNBT containerTag = getOrCreateTankTag(container);
+    //        CompoundTag containerTag = getOrCreateTankTag(container);
     //        FluidStorageCoFH tank = new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).setCapacity(getCapacity(container)).read(containerTag);
     //        if (isCreative(container, FLUID)) {
     //            return new FluidStack(tank.getFluidStack(), maxDrain);
@@ -120,9 +120,9 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
     //    @Override
     //    public void updateAugmentState(ItemStack container, List<ItemStack> augments) {
     //
-    //        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundNBT());
+    //        container.getOrCreateTag().put(TAG_PROPERTIES, new CompoundTag());
     //        for (ItemStack augment : augments) {
-    //            CompoundNBT augmentData = AugmentDataHelper.getAugmentData(augment);
+    //            CompoundTag augmentData = AugmentDataHelper.getAugmentData(augment);
     //            if (augmentData == null) {
     //                continue;
     //            }

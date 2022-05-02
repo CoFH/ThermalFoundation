@@ -77,7 +77,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ICoFHTickableT
         int adjWaterSource = 0;
         valid = false;
 
-        BlockPos[] cardinals = new BlockPos[] {
+        BlockPos[] cardinals = new BlockPos[]{
                 worldPosition.north(),
                 worldPosition.south(),
                 worldPosition.west(),

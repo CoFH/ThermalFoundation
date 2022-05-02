@@ -68,7 +68,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     }
 
     //    @Override
-    //    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+    //    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
     //
     //        return new FluidContainerItemWrapper(stack, this);
     //    }

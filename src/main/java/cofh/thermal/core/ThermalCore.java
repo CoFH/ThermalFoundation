@@ -2,15 +2,6 @@ package cofh.thermal.core;
 
 import cofh.core.init.CoreEnchantments;
 import cofh.lib.capability.CapabilityRedstoneFlux;
-<<<<<<< HEAD
-import cofh.lib.client.renderer.entity.SpriteRendererCoFH;
-import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
-import cofh.lib.client.renderer.entity.TNTRendererCoFH;
-import cofh.lib.entity.AbstractGrenadeEntity;
-import cofh.lib.entity.AbstractTNTEntity;
-import cofh.lib.entity.AbstractTNTMinecartEntity;
-=======
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -18,11 +9,6 @@ import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
-<<<<<<< HEAD
-import cofh.thermal.core.client.renderer.entity.*;
-import cofh.thermal.core.entity.explosive.DetonateUtils;
-=======
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import cofh.thermal.core.entity.monster.BasalzEntity;
 import cofh.thermal.core.entity.monster.BlitzEntity;
 import cofh.thermal.core.entity.monster.BlizzEntity;
@@ -46,11 +32,6 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
-<<<<<<< HEAD
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-=======
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -158,7 +139,7 @@ public class ThermalCore {
         event.enqueueWork(TCoreItems::setup);
         event.enqueueWork(TCoreEntities::setup);
         // TODO Lemming, See ConfiguredFeatureCoFH.
-//        event.enqueueWork(ThermalFeatures::setup);
+        //        event.enqueueWork(ThermalFeatures::setup);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -277,7 +258,7 @@ public class ThermalCore {
         EntityRenderers.registerEntityRenderingHandler(LIGHTNING_TNT_ENTITY, TNTRendererCoFH::new);
 
         EntityRenderers.registerEntityRenderingHandler(NUKE_TNT_ENTITY, TNTRendererCoFH::new);*/
->>>>>>> 3bc6106 (Initial 1.18.2 compile pass.)
+>>>>>>>3 bc6106(Initial 1.18 .2 compile pass.)
     }
 
     private void registerTileEntityRenderers() {

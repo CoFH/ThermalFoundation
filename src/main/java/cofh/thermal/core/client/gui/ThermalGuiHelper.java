@@ -102,7 +102,7 @@ public class ThermalGuiHelper {
 
     public static ElementConditionalLayered[] createDefaultMachineConfigs(IGuiAccess gui, String machine, ReconfigurableTile4Way tile) {
 
-        return new ElementConditionalLayered[] {
+        return new ElementConditionalLayered[]{
                 createDefaultMachineConfigTop(gui, machine, tile),
                 createDefaultMachineConfigLeft(gui, machine, tile),
                 createDefaultMachineConfigFace(gui, machine, tile),
@@ -213,7 +213,7 @@ public class ThermalGuiHelper {
 
     public static ElementConditionalLayered[] createDefaultCellConfigs(IGuiAccess gui, String cell, CellTileBase tile) {
 
-        return new ElementConditionalLayered[] {
+        return new ElementConditionalLayered[]{
                 createDefaultCellConfigTop(gui, cell, tile),
                 createDefaultCellConfigLeft(gui, cell, tile),
                 createDefaultCellConfigFace(gui, cell, tile),

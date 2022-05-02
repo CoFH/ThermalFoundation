@@ -28,40 +28,40 @@ public class BlitzRenderer extends MobRenderer<BlitzEntity, BlitzModel<BlitzEnti
     }
 
     //@Override
-    //public void render(BlitzEntity entity, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+    //public void render(BlitzEntity entity, float entityYaw, float partialTicks, MatrixStack poseStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
     //
     //    if (entity.isAngry() && entity.isAlive()) {
     //        Random random = new Random(69420);
-    //        matrixStackIn.pushPose();
-    //        matrixStackIn.translate(0, entity.getBbHeight() + 1.5F, 0);
-    //        matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(45.0F));
+    //        poseStackIn.pushPose();
+    //        poseStackIn.translate(0, entity.getBbHeight() + 1.5F, 0);
+    //        poseStackIn.mulPose(Vector3f.YP.rotationDegrees(45.0F));
     //        float time = entity.tickCount + partialTicks;
     //        Quaternion rot90 = Vector3f.YP.rotationDegrees(90.0F);
     //        Quaternion rot = Vector3f.YP.rotationDegrees(6 * time);
     //        Quaternion yRot = Vector3f.YP.rotationDegrees(MathHelper.sin(time * 0.1F) * 180.0F);
     //        Quaternion xRot = Vector3f.XP.rotationDegrees(MathHelper.cos(time * 0.1F) * 180.0F);
     //        for (int i = 0; i < 4; ++i) {
-    //            matrixStackIn.pushPose();
-    //            matrixStackIn.translate(3, 0, 0);
-    //            matrixStackIn.mulPose(rot);
+    //            poseStackIn.pushPose();
+    //            poseStackIn.translate(3, 0, 0);
+    //            poseStackIn.mulPose(rot);
     //
-    //            matrixStackIn.pushPose();
-    //            matrixStackIn.translate(4.0, 0, 0);
-    //            RenderHelper.renderArcs(matrixStackIn, bufferIn.getBuffer(RENDER_TYPE), packedLightIn, new Vector3f(0, -5, 0),
+    //            poseStackIn.pushPose();
+    //            poseStackIn.translate(4.0, 0, 0);
+    //            RenderHelper.renderArcs(poseStackIn, bufferIn.getBuffer(RENDER_TYPE), packedLightIn, new Vector3f(0, -5, 0),
     //                    2, 0.2F, RenderHelper.getSeedWithTime(random.nextInt(), time), -0.25F);
-    //            matrixStackIn.mulPose(yRot);
-    //            matrixStackIn.mulPose(xRot);
-    //            matrixStackIn.scale(0.5F, 0.5F, 0.5F);
+    //            poseStackIn.mulPose(yRot);
+    //            poseStackIn.mulPose(xRot);
+    //            poseStackIn.scale(0.5F, 0.5F, 0.5F);
     //            IVertexBuilder builder = bufferIn.getBuffer(projectileModel.renderType(BlitzProjectileRenderer.TEXTURE));
-    //            this.projectileModel.renderToBuffer(matrixStackIn, builder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
-    //            matrixStackIn.popPose();
+    //            this.projectileModel.renderToBuffer(poseStackIn, builder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
+    //            poseStackIn.popPose();
     //
-    //            matrixStackIn.popPose();
-    //            matrixStackIn.mulPose(rot90);
+    //            poseStackIn.popPose();
+    //            poseStackIn.mulPose(rot90);
     //        }
-    //        matrixStackIn.popPose();
+    //        poseStackIn.popPose();
     //    }
-    //    super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
+    //    super.render(entity, entityYaw, partialTicks, poseStackIn, bufferIn, packedLightIn);
     //}
 
     @Override

@@ -1,12 +1,12 @@
 package cofh.thermal.core.entity.explosive;
 
 import cofh.lib.entity.AbstractTNTEntity;
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -14,20 +14,20 @@ import java.util.Map;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 
-public class TNTEntityCoFH extends AbstractTNTEntity {
+public class ThermalTNTEntity extends AbstractTNTEntity {
 
     public static Map<String, RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new HashMap<>();
     protected Block block;
     protected IDetonateAction detonateAction;
 
-    public TNTEntityCoFH(EntityType<? extends AbstractTNTEntity> type, World worldIn, IDetonateAction detonateAction) {
+    public ThermalTNTEntity(EntityType<? extends AbstractTNTEntity> type, Level worldIn, IDetonateAction detonateAction) {
 
         super(type, worldIn);
         this.detonateAction = detonateAction;
         block = BLOCKS.get(type.getRegistryName());
     }
 
-    public TNTEntityCoFH(EntityType<? extends AbstractTNTEntity> type, World worldIn, IDetonateAction detonateAction, double x, double y, double z, @Nullable LivingEntity igniter) {
+    public ThermalTNTEntity(EntityType<? extends AbstractTNTEntity> type, Level worldIn, IDetonateAction detonateAction, double x, double y, double z, @Nullable LivingEntity igniter) {
 
         super(type, worldIn, x, y, z, igniter);
         this.detonateAction = detonateAction;
@@ -35,7 +35,7 @@ public class TNTEntityCoFH extends AbstractTNTEntity {
     }
 
     @Override
-    public void detonate(Vector3d pos) {
+    public void detonate(Vec3 pos) {
 
         detonateAction.detonate(level, this, getOwner(), this.position(), radius, effectDuration, effectAmplifier);
     }
