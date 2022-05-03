@@ -561,7 +561,7 @@ eb25d2730b1cceb3801c23458f10d1a41642bc11 data/forge/tags/items/tools/wrench.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/minecraft/tags/blocks/impermeable.json
 fd4ce6f1ab18e8788e2d238505f7e244650c68c1 data/minecraft/tags/blocks/mineable/axe.json
 37dd9148312dcf897f102f89c06f2e8d00c19ff6 data/minecraft/tags/blocks/mineable/hoe.json
-35834e69d1b3db20408f2f7ace7564c631dae889 data/minecraft/tags/blocks/mineable/pickaxe.json
+6e38bdba41e3190b1065197fed68321674e894a4 data/minecraft/tags/blocks/mineable/pickaxe.json
 bda7e8c7ea5982e771d51009cdedabebd5027b2e data/minecraft/tags/blocks/mineable/shovel.json
 9341e1387060fc00e77ba7717eebf78609bc0ccc data/minecraft/tags/blocks/needs_iron_tool.json
 37c28e1a0ce90dae2db21652065f12fb033eb2ff data/minecraft/tags/blocks/needs_stone_tool.json

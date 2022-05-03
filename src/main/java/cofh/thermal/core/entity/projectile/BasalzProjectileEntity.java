@@ -1,7 +1,7 @@
 package cofh.thermal.core.entity.projectile;
 
 import cofh.lib.util.Utils;
-import cofh.thermal.core.entity.monster.BlitzEntity;
+import cofh.thermal.core.entity.monster.Blitz;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.damagesource.DamageSource;
@@ -71,7 +71,7 @@ public class BasalzProjectileEntity extends ElementalProjectileEntity {
     @Override
     public float getDamage(Entity target) {
 
-        return target instanceof BlitzEntity ? defaultDamage + 3.0F : defaultDamage;
+        return target instanceof Blitz ? defaultDamage + 3.0F : defaultDamage;
     }
 
     @Override

@@ -11,6 +11,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.ModelDataManager;
@@ -42,13 +43,19 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
         super(tileEntityTypeIn, pos, state);
 
         reconfigControl.setFacing(state.getValue(FACING_HORIZONTAL));
-        updateHandlers();
     }
 
     @Override
     public int getComparatorInputOverride() {
 
         return compareTracker;
+    }
+
+    @Override
+    public void setLevel(Level level) {
+
+        super.setLevel(level);
+        updateHandlers();
     }
 
     @Override

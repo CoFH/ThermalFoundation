@@ -499,7 +499,9 @@
   "block.thermal.item_cell_frame": "Item Cell Frame",
 
   "block.thermal.charge_bench": "Energetic Infuser",
+  "block.thermal.charge_bench.desc": "Used to charge multiple items quickly.",
   "block.thermal.tinker_bench": "Tinker's Workbench",
+  "block.thermal.tinker_bench.desc": "Used to augment, charge, and fill items.",
 
   "block.thermal.chunk_loader": "Continuum Anchor",
 

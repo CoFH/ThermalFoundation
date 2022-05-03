@@ -1,9 +1,9 @@
 package cofh.thermal.core.tileentity.device;
 
+import cofh.lib.block.entity.IAreaEffectTile;
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemHandler;
-import cofh.lib.tileentity.IAreaEffectTile;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;

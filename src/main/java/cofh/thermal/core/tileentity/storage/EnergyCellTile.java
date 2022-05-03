@@ -1,9 +1,9 @@
 package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
 import cofh.lib.energy.EnergyStorageAdjustable;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;

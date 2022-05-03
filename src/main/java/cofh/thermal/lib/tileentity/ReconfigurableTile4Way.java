@@ -17,6 +17,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -56,6 +57,12 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
         transferControl.setEnabled(() -> reconfigControlFeature);
 
         reconfigControl.setFacing(state.getValue(FACING_HORIZONTAL));
+    }
+
+    @Override
+    public void setLevel(Level level) {
+
+        super.setLevel(level);
         updateHandlers();
     }
 

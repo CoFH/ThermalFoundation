@@ -5,7 +5,7 @@ buildscript {
         maven { url 'https://maven.minecraftforge.net/' }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.+'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 
@@ -17,7 +17,7 @@ plugins {
 
 apply plugin: 'net.minecraftforge.gradle'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 sourceSets.main.resources.srcDirs += "src/main/generated"
 
@@ -90,18 +90,18 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    compile fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
+    implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
 
-//    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
-//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-//
-//    compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crt_version}")
-//
-//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-//
-//    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-//    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
+    // compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${mc_version}:${crt_version}")
+
+    // compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    // runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 }
 
 signing {

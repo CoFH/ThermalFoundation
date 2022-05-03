@@ -1,10 +1,10 @@
 package cofh.thermal.core.tileentity.device;
 
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.inventory.container.device.DeviceWaterGenContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;

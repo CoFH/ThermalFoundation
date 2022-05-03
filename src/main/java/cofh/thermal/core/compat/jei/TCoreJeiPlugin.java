@@ -1,4 +1,3 @@
-/*
 package cofh.thermal.core.compat.jei;
 
 import cofh.core.util.helpers.FluidHelper;
@@ -18,10 +17,10 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -93,8 +92,8 @@ public class TCoreJeiPlugin implements IModPlugin {
 
         RecipeManager recipeManager = null;
         ClientLevel level = Minecraft.getInstance().level;
-        if (world != null) {
-            recipeManager = world.getRecipeManager();
+        if (level != null) {
+            recipeManager = level.getRecipeManager();
         }
         return recipeManager;
     }
@@ -130,4 +129,3 @@ public class TCoreJeiPlugin implements IModPlugin {
     }
     // endregion
 }
-*/

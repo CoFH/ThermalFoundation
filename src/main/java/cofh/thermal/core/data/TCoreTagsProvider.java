@@ -35,7 +35,7 @@ public class TCoreTagsProvider {
         @Override
         protected void addTags() {
 
-            // region Vanilla Blocks
+            // region VANILLA BLOCKS
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHARCOAL_BLOCK));
 
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_GUNPOWDER_BLOCK));
@@ -46,9 +46,9 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_CARROT_BLOCK));
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_POTATO_BLOCK));
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_BEETROOT_BLOCK));
-            //endregion
+            // endregion
 
-            //region Resources
+            // region RESOURCES
             tag(BlockTagsCoFH.ORES_APATITE).add(BLOCKS.get(ID_APATITE_ORE));
             tag(BlockTagsCoFH.ORES_CINNABAR).add(BLOCKS.get(ID_CINNABAR_ORE));
             tag(BlockTagsCoFH.ORES_COPPER).add(BLOCKS.get(ID_COPPER_ORE));
@@ -103,9 +103,9 @@ public class TCoreTagsProvider {
 
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_OIL_SAND));
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_OIL_RED_SAND));
-            //endregion
+            // endregion
 
-            //region Storage
+            // region STORAGE
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_APATITE_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CINNABAR_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NITER_BLOCK));
@@ -208,9 +208,9 @@ public class TCoreTagsProvider {
                     BlockTagsCoFH.STORAGE_BLOCKS_TAR,
                     BlockTagsCoFH.STORAGE_BLOCKS_TIN
             );
-            //endregion
+            // endregion
 
-            //region Building Blocks
+            // region BUILDING BLOCKS
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_FRAME));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ENERGY_CELL_FRAME));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_FLUID_CELL_FRAME));
@@ -256,19 +256,20 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHISELED_RICH_SLAG));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RICH_SLAG_BRICKS));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CRACKED_RICH_SLAG_BRICKS));
-            //endregion
+            // endregion
 
-            //region TileBlocks
+            // region TILE BLOCKS
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_HIVE_EXTRACTOR));
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR));
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_FISHER));
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
 
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_WATER_GEN));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_ROCK_GEN));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_COLLECTOR));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_NULLIFIER));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_POTION_DIFFUSER));
 
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_TINKER_BENCH));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHARGE_BENCH));
@@ -276,7 +277,7 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ENERGY_CELL));
 
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_FLUID_CELL));
-            //endregion
+            // endregion
         }
 
     }

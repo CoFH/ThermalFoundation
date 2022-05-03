@@ -1,10 +1,10 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.TimeTracker;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;

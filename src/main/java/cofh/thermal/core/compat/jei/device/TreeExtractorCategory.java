@@ -1,11 +1,10 @@
-/*
 package cofh.thermal.core.compat.jei.device;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.jei.Drawables;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -16,9 +15,9 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     protected final ResourceLocation uid;
     protected IDrawable background;
     protected IDrawable icon;
-    protected ITextComponent name;
+    protected Component name;
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
@@ -72,9 +71,9 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     }
 
     @Override
-    public String getTitle() {
+    public Component getTitle() {
 
-        return name.getString();
+        return name;
     }
 
     @Override
@@ -129,7 +128,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     }
 
     @Override
-    public void draw(TreeExtractorMapping recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(TreeExtractorMapping recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 
         tankBackground.draw(matrixStack, 115, 10);
 
@@ -139,4 +138,3 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     }
 
 }
-*/

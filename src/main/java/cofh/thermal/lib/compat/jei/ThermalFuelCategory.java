@@ -1,17 +1,16 @@
-/*
 package cofh.thermal.lib.compat.jei;
 
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     protected final ResourceLocation uid;
     protected IDrawable background;
     protected IDrawable icon;
-    protected ITextComponent name;
+    protected Component name;
 
     protected IDrawableStatic energyBackground;
     protected IDrawableStatic durationBackground;
@@ -61,9 +60,9 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
 
     @Override
-    public String getTitle() {
+    public Component getTitle() {
 
-        return name.getString();
+        return name;
     }
 
     @Override
@@ -79,7 +78,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
 
     @Override
-    public void draw(T recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(T recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 
         if (energyBackground != null) {
             energyBackground.draw(matrixStack, ENERGY_X, ENERGY_Y);
@@ -97,9 +96,9 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
 
     @Override
-    public List<ITextComponent> getTooltipStrings(T recipe, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(T recipe, double mouseX, double mouseY) {
 
-        List<ITextComponent> tooltip = new ArrayList<>();
+        List<Component> tooltip = new ArrayList<>();
 
         if (energy != null && mouseX > ENERGY_X && mouseX < ENERGY_X + energy.getWidth() - 1 && mouseY > ENERGY_Y && mouseY < ENERGY_Y + energy.getHeight() - 1) {
             tooltip.add(getTextComponent("info.cofh.energy").append(": " + StringHelper.format(recipe.getEnergy()) + " RF"));
@@ -108,4 +107,3 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
     // endregion
 }
-*/

@@ -1,7 +1,7 @@
 package cofh.thermal.lib.tileentity;
 
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
@@ -15,6 +15,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -58,7 +59,6 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
             }
         };
         facing = state.getValue(FACING_ALL);
-        updateHandlers();
     }
 
     // region BASE PARAMETERS
@@ -67,6 +67,13 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
         return getBaseProcessTick() * 100;
     }
     // endregion
+
+    @Override
+    public void setLevel(Level level) {
+
+        super.setLevel(level);
+        updateHandlers();
+    }
 
     @Override
     public void setBlockState(BlockState state) {

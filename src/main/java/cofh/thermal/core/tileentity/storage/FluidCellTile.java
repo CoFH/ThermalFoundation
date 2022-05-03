@@ -2,10 +2,10 @@ package cofh.thermal.core.tileentity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.fluid.FluidHandlerRestrictionWrapper;
 import cofh.lib.fluid.FluidStorageAdjustable;
 import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;

@@ -78,10 +78,7 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
         this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
-
-<<<<<<< HEAD
 }
-=======
     public static float bevel(float f) {
 
         int floor = MathHelper.floor(f);
@@ -93,4 +90,3 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
 
 }
 */
->>>>>>>3bc6106(Initial1.18.2compile pass.)

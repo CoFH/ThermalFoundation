@@ -7,23 +7,20 @@ import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.item.PhytoGroItem;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -32,6 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static cofh.lib.util.references.CoreReferences.SLIMED;
+import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public class DetonateUtils {
 
@@ -53,7 +51,7 @@ public class DetonateUtils {
         level.addFreshEntity(cloud);
     }
 
-    public static void makeAreaOfEffectCloud(Level level, ParticleType<?> particle, Vec3 pos, float radius) {
+    public static void makeAreaOfEffectCloud(Level level, ParticleOptions particle, Vec3 pos, float radius) {
 
         makeAreaOfEffectCloud(level, particle, pos, radius, 20);
     }
@@ -112,21 +110,21 @@ public class DetonateUtils {
     public static void redstone(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         AreaUtils.signalAirTransform.transformSphere(level, pos, radius, owner);
-        makeAreaOfEffectCloud(level, RedstoneParticleData.REDSTONE, pos, radius);
+        makeAreaOfEffectCloud(level, DustParticleOptions.REDSTONE, pos, radius);
     }
 
     public static void slime(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         BlockPos blockPos = new BlockPos(pos);
-        AxisAlignedBB area = new AxisAlignedBB(blockPos.offset(-radius, -radius, -radius), blockPos.offset(1 + radius, 1 + radius, 1 + radius));
+        AABB area = new AABB(blockPos.offset(-radius, -radius, -radius), blockPos.offset(1 + radius, 1 + radius, 1 + radius));
 
-        for (LivingEntity mob : level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE)) {
+        for (LivingEntity mob : level.getEntitiesOfClass(LivingEntity.class, area, EntitySelector.ENTITY_STILL_ALIVE)) {
             mob.addEffect(new MobEffectInstance(SLIMED, duration, amplifier, false, true));
 
             double d5 = mob.getX() - explosive.getX();
             double d7 = mob.getY() - explosive.getY();
             double d9 = mob.getZ() - explosive.getZ();
-            double d13 = MathHelper.sqrt(d5 * d5 + d7 * d7 + d9 * d9);
+            double d13 = Math.sqrt(d5 * d5 + d7 * d7 + d9 * d9);
 
             if (d13 != 0.0D) {
                 d5 = d5 / d13;
@@ -159,7 +157,7 @@ public class DetonateUtils {
     public static void explosive(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         boolean explosionsBreakBlocks = true; //TODO: config
-        level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), 1.9F, false, explosionsBreakBlocks ? Explosion.Mode.BREAK : Explosion.Mode.NONE);
+        level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), 1.9F, false, explosionsBreakBlocks ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE);
     }
 
     public static void nuke(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
@@ -173,15 +171,15 @@ public class DetonateUtils {
         // ENTITIES
         float entityRadius = radius * 3;
         BlockPos blockPos = new BlockPos(pos);
-        AxisAlignedBB area = new AxisAlignedBB(blockPos.offset(-entityRadius, -entityRadius, -entityRadius), blockPos.offset(1 + entityRadius, 1 + entityRadius, 1 + entityRadius));
+        AABB area = new AABB(blockPos.offset(-entityRadius, -entityRadius, -entityRadius), blockPos.offset(1 + entityRadius, 1 + entityRadius, 1 + entityRadius));
         double entityRadiusSqr = entityRadius * entityRadius;
-        level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE)
+        level.getEntitiesOfClass(LivingEntity.class, area, EntitySelector.ENTITY_STILL_ALIVE)
                 .forEach(target -> {
                     double distSqr = pos.distanceToSqr(target.position());
                     if (distSqr < entityRadiusSqr) {
                         float damage = (float) MathHelper.clamp(entityRadiusSqr - distSqr, entityRadius, entityRadiusSqr);
                         target.hurt(DamageSource.explosion(owner instanceof LivingEntity ? (LivingEntity) owner : null), damage);
-                        target.addEffect(new EffectInstance(WITHER, duration, amplifier, false, false));
+                        target.addEffect(new MobEffectInstance(WITHER, duration, amplifier, false, false));
                     }
                 });
 
@@ -192,15 +190,15 @@ public class DetonateUtils {
         float f2 = f * f;
 
         for (BlockPos iterPos : BlockPos.betweenClosed(blockPos.offset(-f, -f / 2, -f), blockPos.offset(f, f, f))) {
-            double distance = iterPos.distSqr(explosive.position(), true);
+            double distance = iterPos.distToCenterSqr(explosive.position());
             if (distance < f2) {
                 BlockState state = level.getBlockState(iterPos);
-                if (!state.isAir(level, iterPos) && state.getBlock().getExplosionResistance(state, level, iterPos, null) < maxResistance - (maxResistance * distance / f2)) {
+                if (!state.isAir() && state.getBlock().getExplosionResistance(state, level, iterPos, null) < maxResistance - (maxResistance * distance / f2)) {
                     level.setBlockAndUpdate(iterPos, Blocks.AIR.defaultBlockState());
                 }
             }
         }
-        level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), radius * 0.38F, true, explosionsBreakBlocks ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+        level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), radius * 0.38F, true, explosionsBreakBlocks ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
     }
 
     public static void gravity(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {

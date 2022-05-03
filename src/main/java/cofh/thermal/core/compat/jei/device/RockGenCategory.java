@@ -1,11 +1,10 @@
-/*
 package cofh.thermal.core.compat.jei.device;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.thermal.core.client.gui.device.DeviceRockGenScreen;
 import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.lib.compat.jei.Drawables;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -16,14 +15,14 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     protected final ResourceLocation uid;
     protected IDrawable background;
     protected IDrawable icon;
-    protected ITextComponent name;
+    protected Component name;
 
     protected IDrawableStatic slot;
     protected IDrawableStatic progressFluidBackground;
@@ -77,9 +76,9 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     }
 
     @Override
-    public String getTitle() {
+    public Component getTitle() {
 
-        return name.getString();
+        return name;
     }
 
     @Override
@@ -104,14 +103,14 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
         Block adjacent = recipe.getAdjacent();
         Block below = recipe.getBelow();
 
-        if (adjacent instanceof FlowingFluidBlock) {
-            Fluid fluid = ((FlowingFluidBlock) adjacent).getFluid();
+        if (adjacent instanceof LiquidBlock) {
+            Fluid fluid = ((LiquidBlock) adjacent).getFluid();
             inputFluids.add(new FluidStack(fluid, BUCKET_VOLUME));
         } else if (adjacent != Blocks.AIR) {
             inputItems.add(new ItemStack(adjacent));
         }
-        if (below instanceof FlowingFluidBlock) {
-            Fluid fluid = ((FlowingFluidBlock) below).getFluid();
+        if (below instanceof LiquidBlock) {
+            Fluid fluid = ((LiquidBlock) below).getFluid();
             inputFluids.add(new FluidStack(fluid, BUCKET_VOLUME));
         } else if (below != Blocks.AIR) {
             inputItems.add(new ItemStack(below));
@@ -143,7 +142,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
         guiItemStacks.set(0, outputs.get(0));
         guiFluidStacks.set(0, inputFluids.get(0));
 
-        if (adjacent instanceof FlowingFluidBlock) {
+        if (adjacent instanceof LiquidBlock) {
             guiFluidStacks.init(fluidCount, true, 45, 13, 16, 16, BUCKET_VOLUME, false, null);
             guiFluidStacks.set(fluidCount, inputFluids.get(fluidCount));
             ++fluidCount;
@@ -152,7 +151,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
             guiItemStacks.set(itemCount, inputItems.get(itemCount - 1));
             ++itemCount;
         }
-        if (below instanceof FlowingFluidBlock) {
+        if (below instanceof LiquidBlock) {
             guiFluidStacks.init(fluidCount, true, 33, 33, 16, 16, BUCKET_VOLUME, false, null);
             guiFluidStacks.set(fluidCount, inputFluids.get(fluidCount));
         } else if (below != Blocks.AIR) {
@@ -162,7 +161,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     }
 
     @Override
-    public void draw(RockGenMapping recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(RockGenMapping recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 
         if (recipe.getBelow() != Blocks.AIR) {
             slot.draw(matrixStack, 33, 33);
@@ -173,4 +172,4 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     }
 
 }
-*/
+

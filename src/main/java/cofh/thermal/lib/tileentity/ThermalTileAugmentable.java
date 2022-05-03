@@ -1,9 +1,9 @@
 package cofh.thermal.lib.tileentity;
 
+import cofh.core.block.entity.TileCoFH;
 import cofh.core.network.packet.client.TileControlPacket;
 import cofh.core.network.packet.client.TileRedstonePacket;
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.core.tileentity.TileCoFH;
 import cofh.core.util.control.*;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;

@@ -34,7 +34,7 @@
 //
 //    protected ItemCellTile tile;
 //
-//    public ItemCellScreen(ItemCellContainer container, PlayerInventory inv, ITextComponent titleIn) {
+//    public ItemCellScreen(ItemCellContainer container, Inventory inv, Component titleIn) {
 //
 //        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.item_cell"));
 //        tile = container.tile;

@@ -1,8 +1,8 @@
 package cofh.thermal.lib.block;
 
 import cofh.core.block.TileBlock4Way;
-import cofh.core.tileentity.TileCoFH;
-import cofh.lib.tileentity.ITileCallback;
+import cofh.core.block.entity.TileCoFH;
+import cofh.lib.block.entity.ITileCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntityType;

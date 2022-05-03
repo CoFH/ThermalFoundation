@@ -1,10 +1,10 @@
 package cofh.thermal.core.tileentity.device;
 
+import cofh.lib.block.entity.IAreaEffectTile;
+import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.tileentity.IAreaEffectTile;
-import cofh.lib.tileentity.ICoFHTickableTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;

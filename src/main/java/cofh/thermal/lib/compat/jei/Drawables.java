@@ -1,9 +1,8 @@
-/*
 package cofh.thermal.lib.compat.jei;
 
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 
@@ -162,4 +161,3 @@ public class Drawables {
     }
 
 }
-*/

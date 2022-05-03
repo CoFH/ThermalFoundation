@@ -1,8 +1,8 @@
 package cofh.thermal.core.init;
 
-import cofh.thermal.core.entity.monster.BasalzEntity;
-import cofh.thermal.core.entity.monster.BlitzEntity;
-import cofh.thermal.core.entity.monster.BlizzEntity;
+import cofh.thermal.core.entity.monster.Basalz;
+import cofh.thermal.core.entity.monster.Blitz;
+import cofh.thermal.core.entity.monster.Blizz;
 import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
 import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
 import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
@@ -37,11 +37,11 @@ public class TCoreReferences {
 
     // region ENTITIES
     @ObjectHolder (ID_BASALZ)
-    public static final EntityType<BasalzEntity> BASALZ_ENTITY = null;
+    public static final EntityType<Basalz> BASALZ_ENTITY = null;
     @ObjectHolder (ID_BLITZ)
-    public static final EntityType<BlitzEntity> BLITZ_ENTITY = null;
+    public static final EntityType<Blitz> BLITZ_ENTITY = null;
     @ObjectHolder (ID_BLIZZ)
-    public static final EntityType<BlizzEntity> BLIZZ_ENTITY = null;
+    public static final EntityType<Blizz> BLIZZ_ENTITY = null;
 
     @ObjectHolder (ID_BASALZ_PROJECTILE)
     public static final EntityType<BasalzProjectileEntity> BASALZ_PROJECTILE_ENTITY = null;
