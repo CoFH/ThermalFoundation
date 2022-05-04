@@ -52,7 +52,6 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
         simpleBlock(reg.getSup(ID_NITER_ORE));
         simpleBlock(reg.getSup(ID_SULFUR_ORE));
 
-        simpleBlock(reg.getSup(ID_COPPER_ORE));
         simpleBlock(reg.getSup(ID_LEAD_ORE));
         simpleBlock(reg.getSup(ID_NICKEL_ORE));
         simpleBlock(reg.getSup(ID_SILVER_ORE));
@@ -72,7 +71,11 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
         simpleBlock(reg.getSup(ID_NITER_BLOCK));
         simpleBlock(reg.getSup(ID_SULFUR_BLOCK));
 
-        simpleBlock(reg.getSup(ID_COPPER_BLOCK));
+        simpleBlock(reg.getSup(ID_RAW_LEAD_BLOCK));
+        simpleBlock(reg.getSup(ID_RAW_NICKEL_BLOCK));
+        simpleBlock(reg.getSup(ID_RAW_SILVER_BLOCK));
+        simpleBlock(reg.getSup(ID_RAW_TIN_BLOCK));
+
         simpleBlock(reg.getSup(ID_LEAD_BLOCK));
         simpleBlock(reg.getSup(ID_NICKEL_BLOCK));
         simpleBlock(reg.getSup(ID_SILVER_BLOCK));

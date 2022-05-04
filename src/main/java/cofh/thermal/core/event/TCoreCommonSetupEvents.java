@@ -37,12 +37,12 @@ public class TCoreCommonSetupEvents {
         );
     }
 
-    // Recipes reload during TagsUpdatedEvent or IdMapping on Server side.
+    // Recipes reload during TagsUpdatedEvent (and IdMapping on Server side)
     @SubscribeEvent
     public static void tagsUpdated(final TagsUpdatedEvent event) {
-        // TODO Lemming, CustomTagTypes sub-event was removed, is this still fine?
 
         ThermalRecipeManagers.instance().refreshServer();
+        ThermalRecipeManagers.instance().refreshClient();
     }
 
     @SubscribeEvent
@@ -51,11 +51,11 @@ public class TCoreCommonSetupEvents {
         ThermalRecipeManagers.instance().refreshServer();
     }
 
-    // Recipes reload during RecipesUpdatedEvent on Client side.
+    // Capture RecipeManager when Recipes update on Client side.
     @SubscribeEvent
     public static void recipesUpdated(final RecipesUpdatedEvent event) {
 
-        ThermalRecipeManagers.instance().refreshClient(event.getRecipeManager());
+        ThermalRecipeManagers.instance().setClientRecipeManager(event.getRecipeManager());
     }
 
     @SubscribeEvent (priority = EventPriority.HIGH)

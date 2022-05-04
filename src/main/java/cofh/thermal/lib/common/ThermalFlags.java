@@ -73,7 +73,6 @@ public class ThermalFlags {
     public static String FLAG_RESOURCE_NITER = "niter";
     public static String FLAG_RESOURCE_SULFUR = "sulfur";
 
-    public static String FLAG_RESOURCE_COPPER = "copper";
     public static String FLAG_RESOURCE_TIN = "tin";
     public static String FLAG_RESOURCE_LEAD = "lead";
     public static String FLAG_RESOURCE_SILVER = "silver";
@@ -113,10 +112,10 @@ public class ThermalFlags {
     // endregion
 
     static {
-        setFlag(FLAG_RESOURCE_BRONZE, () -> getFlag(FLAG_RESOURCE_COPPER).getAsBoolean() && getFlag(FLAG_RESOURCE_TIN).getAsBoolean());
+        setFlag(FLAG_RESOURCE_BRONZE, getFlag(FLAG_RESOURCE_TIN));
         setFlag(FLAG_RESOURCE_ELECTRUM, getFlag(FLAG_RESOURCE_SILVER));
         setFlag(FLAG_RESOURCE_INVAR, getFlag(FLAG_RESOURCE_NICKEL));
-        setFlag(FLAG_RESOURCE_CONSTANTAN, () -> getFlag(FLAG_RESOURCE_COPPER).getAsBoolean() && getFlag(FLAG_RESOURCE_NICKEL).getAsBoolean());
+        setFlag(FLAG_RESOURCE_CONSTANTAN, getFlag(FLAG_RESOURCE_NICKEL));
 
         setFlag(FLAG_CREATIVE_STORAGE_AUGMENTS, () -> getFlag(FLAG_STORAGE_AUGMENTS).getAsBoolean() && getFlag(FLAG_CREATIVE_AUGMENTS).getAsBoolean());
         setFlag(FLAG_CREATIVE_MACHINE_AUGMENTS, () -> getFlag(FLAG_MACHINE_AUGMENTS).getAsBoolean() && getFlag(FLAG_CREATIVE_AUGMENTS).getAsBoolean());

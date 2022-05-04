@@ -24,7 +24,6 @@ public class ThermalIDs {
     public static final String ID_NITER_ORE = "niter_ore";
     public static final String ID_SULFUR_ORE = "sulfur_ore";
 
-    public static final String ID_COPPER_ORE = "copper_ore";
     public static final String ID_LEAD_ORE = "lead_ore";
     public static final String ID_NICKEL_ORE = "nickel_ore";
     public static final String ID_SILVER_ORE = "silver_ore";
@@ -53,7 +52,11 @@ public class ThermalIDs {
     public static final String ID_NITER_BLOCK = "niter_block";
     public static final String ID_SULFUR_BLOCK = "sulfur_block";
 
-    public static final String ID_COPPER_BLOCK = "copper_block";
+    public static final String ID_RAW_LEAD_BLOCK = "raw_lead_block";
+    public static final String ID_RAW_NICKEL_BLOCK = "raw_nickel_block";
+    public static final String ID_RAW_SILVER_BLOCK = "raw_silver_block";
+    public static final String ID_RAW_TIN_BLOCK = "raw_tin_block";
+
     public static final String ID_LEAD_BLOCK = "lead_block";
     public static final String ID_NICKEL_BLOCK = "nickel_block";
     public static final String ID_SILVER_BLOCK = "silver_block";

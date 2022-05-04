@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "thermal:copper_block"
+      "item": "minecraft:netherite_ingot"
     }
   ],
   "result": {
-    "item": "thermal:copper_ingot",
+    "item": "thermal:netherite_nugget",
     "count": 9
   }
 }

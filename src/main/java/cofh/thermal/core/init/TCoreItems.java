@@ -158,6 +158,7 @@ public class TCoreItems {
 
         registerItem("ender_pearl_dust", group);
 
+        registerVanillaMetalSet("copper", group);
         registerVanillaMetalSet("iron", group);
         registerVanillaMetalSet("gold", group);
         registerVanillaMetalSet("netherite", group);
@@ -167,7 +168,6 @@ public class TCoreItems {
         registerVanillaGemSet("emerald", group);
         registerVanillaGemSet("quartz", group);
 
-        registerMetalSet("copper", group, getFlag(FLAG_RESOURCE_COPPER));
         registerMetalSet("tin", group, getFlag(FLAG_RESOURCE_TIN));
         registerMetalSet("lead", group, getFlag(FLAG_RESOURCE_LEAD));
         registerMetalSet("silver", group, getFlag(FLAG_RESOURCE_SILVER));

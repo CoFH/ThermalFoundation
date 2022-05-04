@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "thermal:block/copper_ore"
+    "all": "thermal:block/raw_lead_block"
   }
 }

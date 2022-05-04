@@ -133,7 +133,6 @@ public class TCoreBlocks {
         registerBlock(ID_NITER_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
         registerBlock(ID_SULFUR_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
 
-        registerBlock(ID_COPPER_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_COPPER));
         registerBlock(ID_TIN_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_TIN));
         registerBlock(ID_LEAD_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_LEAD));
         registerBlock(ID_SILVER_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_SILVER));
@@ -163,7 +162,11 @@ public class TCoreBlocks {
             }
         }, () -> new BlockItemCoFH(BLOCKS.get(ID_SULFUR_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(12000));
 
-        registerBlock(ID_COPPER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_COPPER));
+        registerBlock(ID_RAW_TIN_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(ID_RAW_LEAD_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(ID_RAW_SILVER_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GRAY).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(ID_RAW_NICKEL_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_YELLOW).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+
         registerBlock(ID_TIN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_TIN));
         registerBlock(ID_LEAD_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_LEAD));
         registerBlock(ID_SILVER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_SILVER));

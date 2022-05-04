@@ -18,7 +18,6 @@ public class ThermalFoundation {
         setFlag(FLAG_RESOURCE_NITER, true);
         setFlag(FLAG_RESOURCE_SULFUR, true);
 
-        setFlag(FLAG_RESOURCE_COPPER, true);
         setFlag(FLAG_RESOURCE_TIN, true);
         setFlag(FLAG_RESOURCE_LEAD, true);
         setFlag(FLAG_RESOURCE_SILVER, true);

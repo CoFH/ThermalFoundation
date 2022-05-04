@@ -245,9 +245,6 @@ public class ThermalConfig {
                 .comment("Set to FALSE to prevent 'Thermal Series' Sulfur from generating.")
                 .define("Sulfur", true);
 
-        worldGenCopper = SERVER_CONFIG
-                .comment("Set to FALSE to prevent 'Thermal Series' Copper from generating.")
-                .define("Copper", true);
         worldGenTin = SERVER_CONFIG
                 .comment("Set to FALSE to prevent 'Thermal Series' Tin from generating.")
                 .define("Tin", true);
@@ -621,7 +618,6 @@ public class ThermalConfig {
         setFlag(FLAG_GEN_NITER, () -> getFlag(FLAG_RESOURCE_NITER).getAsBoolean() && worldGenNiter.get());
         setFlag(FLAG_GEN_SULFUR, () -> getFlag(FLAG_RESOURCE_SULFUR).getAsBoolean() && worldGenSulfur.get());
 
-        setFlag(FLAG_GEN_COPPER, () -> getFlag(FLAG_RESOURCE_COPPER).getAsBoolean() && worldGenCopper.get());
         setFlag(FLAG_GEN_TIN, () -> getFlag(FLAG_RESOURCE_TIN).getAsBoolean() && worldGenTin.get());
         setFlag(FLAG_GEN_LEAD, () -> getFlag(FLAG_RESOURCE_LEAD).getAsBoolean() && worldGenLead.get());
         setFlag(FLAG_GEN_SILVER, () -> getFlag(FLAG_RESOURCE_SILVER).getAsBoolean() && worldGenSilver.get());
@@ -693,7 +689,6 @@ public class ThermalConfig {
     private static BooleanValue worldGenNiter;
     private static BooleanValue worldGenSulfur;
 
-    private static BooleanValue worldGenCopper;
     private static BooleanValue worldGenTin;
     private static BooleanValue worldGenLead;
     private static BooleanValue worldGenSilver;

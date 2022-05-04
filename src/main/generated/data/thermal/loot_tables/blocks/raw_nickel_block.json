@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "thermal:copper_ore"
+          "name": "thermal:raw_nickel_block"
         }
       ],
       "conditions": [

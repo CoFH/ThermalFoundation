@@ -2,7 +2,7 @@ package cofh.thermal.core.data;
 
 import cofh.lib.data.RecipeProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
-import cofh.lib.util.references.ItemTagsCoFH;
+import cofh.lib.util.references.CoFHTags;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -10,7 +10,6 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
@@ -41,22 +40,21 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CHARCOAL_BLOCK), Items.CHARCOAL);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BAMBOO_BLOCK), Items.BAMBOO);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_SUGAR_CANE_BLOCK), Items.SUGAR_CANE);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_GUNPOWDER_BLOCK), Items.GUNPOWDER);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CHARCOAL_BLOCK), net.minecraft.world.item.Items.CHARCOAL);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BAMBOO_BLOCK), net.minecraft.world.item.Items.BAMBOO);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_SUGAR_CANE_BLOCK), net.minecraft.world.item.Items.SUGAR_CANE);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_GUNPOWDER_BLOCK), net.minecraft.world.item.Items.GUNPOWDER);
 
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_APPLE_BLOCK), Items.APPLE);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BEETROOT_BLOCK), Items.BEETROOT);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CARROT_BLOCK), Items.CARROT);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_POTATO_BLOCK), Items.POTATO);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_APPLE_BLOCK), net.minecraft.world.item.Items.APPLE);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BEETROOT_BLOCK), net.minecraft.world.item.Items.BEETROOT);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CARROT_BLOCK), net.minecraft.world.item.Items.CARROT);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_POTATO_BLOCK), net.minecraft.world.item.Items.POTATO);
 
         generateStorageRecipes(consumer, reg.get(ID_APATITE_BLOCK), reg.get("apatite"));
         generateStorageRecipes(consumer, reg.get(ID_CINNABAR_BLOCK), reg.get("cinnabar"));
         generateStorageRecipes(consumer, reg.get(ID_NITER_BLOCK), reg.get("niter"));
         generateStorageRecipes(consumer, reg.get(ID_SULFUR_BLOCK), reg.get("sulfur"));
 
-        generateTypeRecipes(reg, consumer, "copper");
         generateTypeRecipes(reg, consumer, "tin");
         generateTypeRecipes(reg, consumer, "lead");
         generateTypeRecipes(reg, consumer, "silver");
@@ -78,20 +76,22 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateSmeltingAndBlastingRecipes(reg, consumer, "invar", 0);
         generateSmeltingAndBlastingRecipes(reg, consumer, "constantan", 0);
 
-        generateGearRecipe(consumer, reg.get("iron_gear"), Items.IRON_INGOT, forgeTag("ingots/iron"));
-        generateGearRecipe(consumer, reg.get("gold_gear"), Items.GOLD_INGOT, forgeTag("ingots/gold"));
-        generateGearRecipe(consumer, reg.get("netherite_gear"), Items.NETHERITE_INGOT, forgeTag("ingots/netherite"));
+        generateGearRecipe(consumer, reg.get("copper_gear"), net.minecraft.world.item.Items.COPPER_INGOT, forgeTag("ingots/copper"));
+        generateGearRecipe(consumer, reg.get("iron_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("ingots/iron"));
+        generateGearRecipe(consumer, reg.get("gold_gear"), net.minecraft.world.item.Items.GOLD_INGOT, forgeTag("ingots/gold"));
+        generateGearRecipe(consumer, reg.get("netherite_gear"), net.minecraft.world.item.Items.NETHERITE_INGOT, forgeTag("ingots/netherite"));
 
-        generateGearRecipe(consumer, reg.get("diamond_gear"), Items.IRON_INGOT, forgeTag("gems/diamond"));
-        generateGearRecipe(consumer, reg.get("emerald_gear"), Items.IRON_INGOT, forgeTag("gems/emerald"));
-        generateGearRecipe(consumer, reg.get("quartz_gear"), Items.IRON_INGOT, forgeTag("gems/quartz"));
-        generateGearRecipe(consumer, reg.get("lapis_gear"), Items.IRON_INGOT, forgeTag("gems/lapis"));
+        generateGearRecipe(consumer, reg.get("diamond_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/diamond"));
+        generateGearRecipe(consumer, reg.get("emerald_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/emerald"));
+        generateGearRecipe(consumer, reg.get("quartz_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/quartz"));
+        generateGearRecipe(consumer, reg.get("lapis_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/lapis"));
 
         generateStorageRecipes(consumer, reg.get(ID_SAWDUST_BLOCK), reg.get("sawdust"));
         generateStorageRecipes(consumer, reg.get(ID_COAL_COKE_BLOCK), reg.get("coal_coke"));
         generateStorageRecipes(consumer, reg.get(ID_BITUMEN_BLOCK), reg.get("bitumen"));
         generateStorageRecipes(consumer, reg.get(ID_TAR_BLOCK), reg.get("tar"));
         generateStorageRecipes(consumer, reg.get(ID_ROSIN_BLOCK), reg.get("rosin"));
+
         generateSmallStorageRecipes(consumer, reg.get(ID_RUBBER_BLOCK), reg.get("rubber"));
         generateSmallStorageRecipes(consumer, reg.get(ID_CURED_RUBBER_BLOCK), reg.get("cured_rubber"));
         generateSmallStorageRecipes(consumer, reg.get(ID_SLAG_BLOCK), reg.get("slag"));
@@ -105,16 +105,23 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateSmeltingAndBlastingRecipes(reg, consumer, "lumium", 0);
         generateSmeltingAndBlastingRecipes(reg, consumer, "enderium", 0);
 
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("iron_dust"), Items.IRON_INGOT, 0.0F, "smelting", "_dust");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("gold_dust"), Items.GOLD_INGOT, 0.0F, "smelting", "_dust");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("netherite_dust"), Items.NETHERITE_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("copper_dust"), net.minecraft.world.item.Items.COPPER_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("iron_dust"), net.minecraft.world.item.Items.IRON_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("gold_dust"), net.minecraft.world.item.Items.GOLD_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("netherite_dust"), net.minecraft.world.item.Items.NETHERITE_INGOT, 0.0F, "smelting", "_dust");
+
+        generatePackingRecipe(consumer, net.minecraft.world.item.Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_nuggets");
+        generatePackingRecipe(consumer, net.minecraft.world.item.Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_nuggets");
+
+        generateUnpackingRecipe(consumer, net.minecraft.world.item.Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_ingot");
+        generateUnpackingRecipe(consumer, net.minecraft.world.item.Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_ingot");
 
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_APATITE_ORE), reg.get("apatite"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_CINNABAR_ORE), reg.get("cinnabar"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_NITER_ORE), reg.get("niter"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_SULFUR_ORE), reg.get("sulfur"), 0.5F, "smelting");
 
-        generateSmeltingRecipe(reg, consumer, Items.GRAVEL, reg.get("slag"), 0.1F, "smelting");
+        generateSmeltingRecipe(reg, consumer, net.minecraft.world.item.Items.GRAVEL, reg.get("slag"), 0.1F, "smelting");
         generateSmeltingRecipe(reg, consumer, reg.get("rubber"), reg.get("cured_rubber"), 0.2F, "smelting");
 
         generateAlloyRecipes(consumer);
@@ -135,41 +142,41 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
         ShapelessRecipeBuilder.shapeless(reg.get("bronze_dust"), 4)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_TIN)
-                .unlockedBy("has_copper_dust", has(ItemTagsCoFH.DUSTS_COPPER))
-                .unlockedBy("has_tin_dust", has(ItemTagsCoFH.DUSTS_TIN))
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_TIN)
+                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
+                .unlockedBy("has_tin_dust", has(CoFHTags.Items.DUSTS_TIN))
                 .save(consumer, ID_THERMAL + ":bronze_dust_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("electrum_dust"), 2)
-                .requires(ItemTagsCoFH.DUSTS_GOLD)
-                .requires(ItemTagsCoFH.DUSTS_SILVER)
-                .unlockedBy("has_gold_dust", has(ItemTagsCoFH.DUSTS_GOLD))
-                .unlockedBy("has_silver_dust", has(ItemTagsCoFH.DUSTS_SILVER))
+                .requires(CoFHTags.Items.DUSTS_GOLD)
+                .requires(CoFHTags.Items.DUSTS_SILVER)
+                .unlockedBy("has_gold_dust", has(CoFHTags.Items.DUSTS_GOLD))
+                .unlockedBy("has_silver_dust", has(CoFHTags.Items.DUSTS_SILVER))
                 .save(consumer, ID_THERMAL + ":electrum_dust_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("invar_dust"), 3)
-                .requires(ItemTagsCoFH.DUSTS_IRON)
-                .requires(ItemTagsCoFH.DUSTS_IRON)
-                .requires(ItemTagsCoFH.DUSTS_NICKEL)
-                .unlockedBy("has_iron_dust", has(ItemTagsCoFH.DUSTS_IRON))
-                .unlockedBy("has_nickel_dust", has(ItemTagsCoFH.DUSTS_NICKEL))
+                .requires(CoFHTags.Items.DUSTS_IRON)
+                .requires(CoFHTags.Items.DUSTS_IRON)
+                .requires(CoFHTags.Items.DUSTS_NICKEL)
+                .unlockedBy("has_iron_dust", has(CoFHTags.Items.DUSTS_IRON))
+                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
                 .save(consumer, ID_THERMAL + ":invar_dust_3");
 
         ShapelessRecipeBuilder.shapeless(reg.get("constantan_dust"), 2)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_NICKEL)
-                .unlockedBy("has_copper_dust", has(ItemTagsCoFH.DUSTS_COPPER))
-                .unlockedBy("has_nickel_dust", has(ItemTagsCoFH.DUSTS_NICKEL))
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_NICKEL)
+                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
+                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
                 .save(consumer, ID_THERMAL + ":constantan_dust_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("signalum_dust"), 4)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_COPPER)
-                .requires(ItemTagsCoFH.DUSTS_SILVER)
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_COPPER)
+                .requires(CoFHTags.Items.DUSTS_SILVER)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
@@ -178,136 +185,136 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, ID_THERMAL + ":signalum_dust_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("lumium_dust"), 4)
-                .requires(ItemTagsCoFH.DUSTS_TIN)
-                .requires(ItemTagsCoFH.DUSTS_TIN)
-                .requires(ItemTagsCoFH.DUSTS_TIN)
-                .requires(ItemTagsCoFH.DUSTS_SILVER)
+                .requires(CoFHTags.Items.DUSTS_TIN)
+                .requires(CoFHTags.Items.DUSTS_TIN)
+                .requires(CoFHTags.Items.DUSTS_TIN)
+                .requires(CoFHTags.Items.DUSTS_SILVER)
                 .requires(Tags.Items.DUSTS_GLOWSTONE)
                 .requires(Tags.Items.DUSTS_GLOWSTONE)
                 .unlockedBy("has_glowstone_dust", has(Tags.Items.DUSTS_GLOWSTONE))
                 .save(consumer, ID_THERMAL + ":lumium_dust_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("enderium_dust"), 2)
-                .requires(ItemTagsCoFH.DUSTS_LEAD)
-                .requires(ItemTagsCoFH.DUSTS_LEAD)
-                .requires(ItemTagsCoFH.DUSTS_LEAD)
-                .requires(ItemTagsCoFH.DUSTS_DIAMOND)
-                .requires(fromTags(Tags.Items.ENDER_PEARLS, ItemTagsCoFH.DUSTS_ENDER_PEARL))
-                .requires(fromTags(Tags.Items.ENDER_PEARLS, ItemTagsCoFH.DUSTS_ENDER_PEARL))
+                .requires(CoFHTags.Items.DUSTS_LEAD)
+                .requires(CoFHTags.Items.DUSTS_LEAD)
+                .requires(CoFHTags.Items.DUSTS_LEAD)
+                .requires(CoFHTags.Items.DUSTS_DIAMOND)
+                .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
+                .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
                 .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(consumer, ID_THERMAL + ":enderium_dust_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("bronze_ingot"), 4)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_TIN, ItemTagsCoFH.INGOTS_TIN))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_copper_dust", has(ItemTagsCoFH.DUSTS_COPPER))
-                .unlockedBy("has_copper_ingot", has(ItemTagsCoFH.INGOTS_COPPER))
-                .unlockedBy("has_tin_dust", has(ItemTagsCoFH.DUSTS_TIN))
-                .unlockedBy("has_tin_ingot", has(ItemTagsCoFH.INGOTS_TIN))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_TIN, CoFHTags.Items.INGOTS_TIN))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
+                .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
+                .unlockedBy("has_tin_dust", has(CoFHTags.Items.DUSTS_TIN))
+                .unlockedBy("has_tin_ingot", has(CoFHTags.Items.INGOTS_TIN))
                 .save(consumer, ID_THERMAL + ":fire_charge/bronze_ingot_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("electrum_ingot"), 2)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_GOLD, Tags.Items.INGOTS_GOLD))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_SILVER, ItemTagsCoFH.INGOTS_SILVER))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_gold_dust", has(ItemTagsCoFH.DUSTS_GOLD))
+                .requires(fromTags(CoFHTags.Items.DUSTS_GOLD, Tags.Items.INGOTS_GOLD))
+                .requires(fromTags(CoFHTags.Items.DUSTS_SILVER, CoFHTags.Items.INGOTS_SILVER))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_gold_dust", has(CoFHTags.Items.DUSTS_GOLD))
                 .unlockedBy("has_gold_ingot", has(Tags.Items.INGOTS_GOLD))
-                .unlockedBy("has_silver_dust", has(ItemTagsCoFH.DUSTS_SILVER))
-                .unlockedBy("has_silver_ingot", has(ItemTagsCoFH.INGOTS_SILVER))
+                .unlockedBy("has_silver_dust", has(CoFHTags.Items.DUSTS_SILVER))
+                .unlockedBy("has_silver_ingot", has(CoFHTags.Items.INGOTS_SILVER))
                 .save(consumer, ID_THERMAL + ":fire_charge/electrum_ingot_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("invar_ingot"), 3)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_IRON, Tags.Items.INGOTS_IRON))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_IRON, Tags.Items.INGOTS_IRON))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_NICKEL, ItemTagsCoFH.INGOTS_NICKEL))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_iron_dust", has(ItemTagsCoFH.DUSTS_IRON))
+                .requires(fromTags(CoFHTags.Items.DUSTS_IRON, Tags.Items.INGOTS_IRON))
+                .requires(fromTags(CoFHTags.Items.DUSTS_IRON, Tags.Items.INGOTS_IRON))
+                .requires(fromTags(CoFHTags.Items.DUSTS_NICKEL, CoFHTags.Items.INGOTS_NICKEL))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_iron_dust", has(CoFHTags.Items.DUSTS_IRON))
                 .unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
-                .unlockedBy("has_nickel_dust", has(ItemTagsCoFH.DUSTS_NICKEL))
-                .unlockedBy("has_nickel_ingot", has(ItemTagsCoFH.INGOTS_NICKEL))
+                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
+                .unlockedBy("has_nickel_ingot", has(CoFHTags.Items.INGOTS_NICKEL))
                 .save(consumer, ID_THERMAL + ":fire_charge/invar_ingot_3");
 
         ShapelessRecipeBuilder.shapeless(reg.get("constantan_ingot"), 2)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_NICKEL, ItemTagsCoFH.INGOTS_NICKEL))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_copper_dust", has(ItemTagsCoFH.DUSTS_COPPER))
-                .unlockedBy("has_copper_ingot", has(ItemTagsCoFH.INGOTS_COPPER))
-                .unlockedBy("has_nickel_dust", has(ItemTagsCoFH.DUSTS_NICKEL))
-                .unlockedBy("has_nickel_ingot", has(ItemTagsCoFH.INGOTS_NICKEL))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_NICKEL, CoFHTags.Items.INGOTS_NICKEL))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
+                .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
+                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
+                .unlockedBy("has_nickel_ingot", has(CoFHTags.Items.INGOTS_NICKEL))
                 .save(consumer, ID_THERMAL + ":fire_charge/constantan_ingot_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("signalum_ingot"), 4)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_COPPER, ItemTagsCoFH.INGOTS_COPPER))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_SILVER, ItemTagsCoFH.INGOTS_SILVER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_SILVER, CoFHTags.Items.INGOTS_SILVER))
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
-                .requires(Items.FIRE_CHARGE)
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
                 .unlockedBy("has_redstone_dust", has(Tags.Items.DUSTS_REDSTONE))
                 .save(consumer, ID_THERMAL + ":fire_charge/signalum_ingot_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("lumium_ingot"), 4)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_TIN, ItemTagsCoFH.INGOTS_TIN))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_TIN, ItemTagsCoFH.INGOTS_TIN))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_TIN, ItemTagsCoFH.INGOTS_TIN))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_SILVER, ItemTagsCoFH.INGOTS_SILVER))
+                .requires(fromTags(CoFHTags.Items.DUSTS_TIN, CoFHTags.Items.INGOTS_TIN))
+                .requires(fromTags(CoFHTags.Items.DUSTS_TIN, CoFHTags.Items.INGOTS_TIN))
+                .requires(fromTags(CoFHTags.Items.DUSTS_TIN, CoFHTags.Items.INGOTS_TIN))
+                .requires(fromTags(CoFHTags.Items.DUSTS_SILVER, CoFHTags.Items.INGOTS_SILVER))
                 .requires(Tags.Items.DUSTS_GLOWSTONE)
                 .requires(Tags.Items.DUSTS_GLOWSTONE)
-                .requires(Items.FIRE_CHARGE)
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
                 .unlockedBy("has_glowstone_dust", has(Tags.Items.DUSTS_GLOWSTONE))
                 .save(consumer, ID_THERMAL + ":fire_charge/lumium_ingot_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("enderium_ingot"), 2)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_LEAD, ItemTagsCoFH.INGOTS_LEAD))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_LEAD, ItemTagsCoFH.INGOTS_LEAD))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_LEAD, ItemTagsCoFH.INGOTS_LEAD))
-                .requires(ItemTagsCoFH.DUSTS_DIAMOND)
-                .requires(fromTags(Tags.Items.ENDER_PEARLS, ItemTagsCoFH.DUSTS_ENDER_PEARL))
-                .requires(fromTags(Tags.Items.ENDER_PEARLS, ItemTagsCoFH.DUSTS_ENDER_PEARL))
-                .requires(Items.FIRE_CHARGE)
+                .requires(fromTags(CoFHTags.Items.DUSTS_LEAD, CoFHTags.Items.INGOTS_LEAD))
+                .requires(fromTags(CoFHTags.Items.DUSTS_LEAD, CoFHTags.Items.INGOTS_LEAD))
+                .requires(fromTags(CoFHTags.Items.DUSTS_LEAD, CoFHTags.Items.INGOTS_LEAD))
+                .requires(CoFHTags.Items.DUSTS_DIAMOND)
+                .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
+                .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
                 .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(consumer, ID_THERMAL + ":fire_charge/enderium_ingot_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("obsidian_glass"), 2)
                 .requires(Tags.Items.OBSIDIAN)
-                .requires(fromTags(ItemTagsCoFH.DUSTS_QUARTZ, Tags.Items.GEMS_QUARTZ))
+                .requires(fromTags(CoFHTags.Items.DUSTS_QUARTZ, Tags.Items.GEMS_QUARTZ))
                 .requires(Tags.Items.SAND)
-                .requires(Items.FIRE_CHARGE)
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
                 .unlockedBy("has_obsidian", has(Tags.Items.OBSIDIAN))
                 .save(consumer, ID_THERMAL + ":fire_charge/obsidian_glass_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("signalum_glass"), 2)
                 .requires(reg.get("obsidian_glass"))
                 .requires(reg.get("obsidian_glass"))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_SIGNALUM, ItemTagsCoFH.INGOTS_SIGNALUM))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_signalum_dust", has(ItemTagsCoFH.DUSTS_SIGNALUM))
-                .unlockedBy("has_signalum_ingot", has(ItemTagsCoFH.INGOTS_SIGNALUM))
+                .requires(fromTags(CoFHTags.Items.DUSTS_SIGNALUM, CoFHTags.Items.INGOTS_SIGNALUM))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_signalum_dust", has(CoFHTags.Items.DUSTS_SIGNALUM))
+                .unlockedBy("has_signalum_ingot", has(CoFHTags.Items.INGOTS_SIGNALUM))
                 .save(consumer, ID_THERMAL + ":fire_charge/signalum_glass_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("lumium_glass"), 2)
                 .requires(reg.get("obsidian_glass"))
                 .requires(reg.get("obsidian_glass"))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_LUMIUM, ItemTagsCoFH.INGOTS_LUMIUM))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_lumium_dust", has(ItemTagsCoFH.DUSTS_LUMIUM))
-                .unlockedBy("has_lumium_ingot", has(ItemTagsCoFH.INGOTS_LUMIUM))
+                .requires(fromTags(CoFHTags.Items.DUSTS_LUMIUM, CoFHTags.Items.INGOTS_LUMIUM))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_lumium_dust", has(CoFHTags.Items.DUSTS_LUMIUM))
+                .unlockedBy("has_lumium_ingot", has(CoFHTags.Items.INGOTS_LUMIUM))
                 .save(consumer, ID_THERMAL + ":fire_charge/lumium_glass_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("enderium_glass"), 2)
                 .requires(reg.get("obsidian_glass"))
                 .requires(reg.get("obsidian_glass"))
-                .requires(fromTags(ItemTagsCoFH.DUSTS_ENDERIUM, ItemTagsCoFH.INGOTS_ENDERIUM))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_enderium_dust", has(ItemTagsCoFH.DUSTS_ENDERIUM))
-                .unlockedBy("has_enderium_ingot", has(ItemTagsCoFH.INGOTS_ENDERIUM))
+                .requires(fromTags(CoFHTags.Items.DUSTS_ENDERIUM, CoFHTags.Items.INGOTS_ENDERIUM))
+                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .unlockedBy("has_enderium_dust", has(CoFHTags.Items.DUSTS_ENDERIUM))
+                .unlockedBy("has_enderium_ingot", has(CoFHTags.Items.INGOTS_ENDERIUM))
                 .save(consumer, ID_THERMAL + ":fire_charge/enderium_glass_2");
     }
 
@@ -323,11 +330,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(beekeeperFabric)
                 .define('S', Tags.Items.STRING)
-                .define('H', Items.HONEYCOMB)
+                .define('H', net.minecraft.world.item.Items.HONEYCOMB)
                 .pattern(" S ")
                 .pattern("SHS")
                 .pattern(" S ")
-                .unlockedBy("has_honeycomb", has(Items.HONEYCOMB))
+                .unlockedBy("has_honeycomb", has(net.minecraft.world.item.Items.HONEYCOMB))
                 .save(withConditions(consumer).flag(FLAG_BEEKEEPER_ARMOR));
 
         result = reg.get(ID_BEEKEEPER_HELMET);
@@ -475,8 +482,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("area_radius_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.GEARS_IRON)
-                .define('I', ItemTagsCoFH.INGOTS_TIN)
+                .define('G', CoFHTags.Items.GEARS_IRON)
+                .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('X', redstoneServo)
                 .pattern(" G ")
                 .pattern("IXI")
@@ -486,24 +493,24 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("dynamo_output_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.GEARS_SILVER)
-                .define('S', ItemTagsCoFH.PLATES_SIGNALUM)
-                .define('X', ItemTagsCoFH.HARDENED_GLASS)
+                .define('G', CoFHTags.Items.GEARS_SILVER)
+                .define('S', CoFHTags.Items.PLATES_SIGNALUM)
+                .define('X', CoFHTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("SXS")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(ItemTagsCoFH.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_DYNAMO_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("dynamo_fuel_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.GEARS_LEAD)
-                .define('L', ItemTagsCoFH.PLATES_LUMIUM)
-                .define('X', ItemTagsCoFH.HARDENED_GLASS)
+                .define('G', CoFHTags.Items.GEARS_LEAD)
+                .define('L', CoFHTags.Items.PLATES_LUMIUM)
+                .define('X', CoFHTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("LXL")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(ItemTagsCoFH.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_DYNAMO_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         //        result = reg.get("dual_filter_augment");
@@ -529,18 +536,18 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("item_filter_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('t', ItemTagsCoFH.NUGGETS_TIN)
-                .define('S', ItemTagsCoFH.INGOTS_SIGNALUM)
+                .define('t', CoFHTags.Items.NUGGETS_TIN)
+                .define('S', CoFHTags.Items.INGOTS_SIGNALUM)
                 .pattern(" t ")
                 .pattern("tSt")
                 .pattern(" t ")
-                .unlockedBy("has_signalum_ingot", has(ItemTagsCoFH.INGOTS_SIGNALUM))
+                .unlockedBy("has_signalum_ingot", has(CoFHTags.Items.INGOTS_SIGNALUM))
                 .save(withConditions(consumer).flag(FLAG_FILTER_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("machine_speed_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('E', ItemTagsCoFH.PLATES_ELECTRUM)
-                .define('L', ItemTagsCoFH.GEARS_LEAD)
+                .define('E', CoFHTags.Items.PLATES_ELECTRUM)
+                .define('L', CoFHTags.Items.GEARS_LEAD)
                 .define('X', rfCoil)
                 .pattern(" L ")
                 .pattern("EXE")
@@ -550,8 +557,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("machine_efficiency_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('L', ItemTagsCoFH.PLATES_LUMIUM)
-                .define('N', ItemTagsCoFH.GEARS_NICKEL)
+                .define('L', CoFHTags.Items.PLATES_LUMIUM)
+                .define('N', CoFHTags.Items.GEARS_NICKEL)
                 .define('X', rfCoil)
                 .pattern(" N ")
                 .pattern("LXL")
@@ -561,8 +568,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("machine_output_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('B', ItemTagsCoFH.GEARS_BRONZE)
-                .define('I', ItemTagsCoFH.PLATES_INVAR)
+                .define('B', CoFHTags.Items.GEARS_BRONZE)
+                .define('I', CoFHTags.Items.PLATES_INVAR)
                 .define('X', redstoneServo)
                 .pattern(" B ")
                 .pattern("IXI")
@@ -572,8 +579,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("machine_catalyst_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('C', ItemTagsCoFH.GEARS_CONSTANTAN)
-                .define('L', ItemTagsCoFH.PLATES_LEAD)
+                .define('C', CoFHTags.Items.GEARS_CONSTANTAN)
+                .define('L', CoFHTags.Items.PLATES_LEAD)
                 .define('X', redstoneServo)
                 .pattern(" C ")
                 .pattern("LXL")
@@ -583,9 +590,9 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("machine_cycle_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('C', ItemTagsCoFH.PLATES_CONSTANTAN)
-                .define('G', ItemTagsCoFH.GEARS_SIGNALUM)
-                .define('S', ItemTagsCoFH.PLATES_SILVER)
+                .define('C', CoFHTags.Items.PLATES_CONSTANTAN)
+                .define('G', CoFHTags.Items.GEARS_SIGNALUM)
+                .define('S', CoFHTags.Items.PLATES_SILVER)
                 .define('X', redstoneServo)
                 .pattern("SGS")
                 .pattern("CXC")
@@ -596,39 +603,39 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get("machine_null_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('i', Tags.Items.NUGGETS_IRON)
-                .define('C', Items.CACTUS)
+                .define('C', net.minecraft.world.item.Items.CACTUS)
                 .pattern(" i ")
                 .pattern("iCi")
                 .pattern(" i ")
-                .unlockedBy("has_cactus", has(Items.CACTUS))
+                .unlockedBy("has_cactus", has(net.minecraft.world.item.Items.CACTUS))
                 .save(withConditions(consumer).flag(FLAG_MACHINE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("potion_amplifier_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.GEARS_SIGNALUM)
-                .define('I', ItemTagsCoFH.INGOTS_COPPER)
-                .define('X', ItemTagsCoFH.HARDENED_GLASS)
+                .define('G', CoFHTags.Items.GEARS_SIGNALUM)
+                .define('I', Tags.Items.INGOTS_COPPER)
+                .define('X', CoFHTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("IXI")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(ItemTagsCoFH.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_POTION_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("potion_duration_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.GEARS_LUMIUM)
-                .define('I', ItemTagsCoFH.INGOTS_COPPER)
-                .define('X', ItemTagsCoFH.HARDENED_GLASS)
+                .define('G', CoFHTags.Items.GEARS_LUMIUM)
+                .define('I', Tags.Items.INGOTS_COPPER)
+                .define('X', CoFHTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("IXI")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(ItemTagsCoFH.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_POTION_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("rf_coil_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', Tags.Items.INGOTS_GOLD)
-                .define('S', ItemTagsCoFH.INGOTS_SILVER)
+                .define('S', CoFHTags.Items.INGOTS_SILVER)
                 .define('X', rfCoil)
                 .pattern(" G ")
                 .pattern("SXS")
@@ -639,7 +646,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get("rf_coil_storage_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', Tags.Items.INGOTS_GOLD)
-                .define('S', ItemTagsCoFH.INGOTS_SILVER)
+                .define('S', CoFHTags.Items.INGOTS_SILVER)
                 .define('X', rfCoil)
                 .pattern(" S ")
                 .pattern("GXG")
@@ -650,7 +657,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get("rf_coil_xfer_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', Tags.Items.INGOTS_GOLD)
-                .define('S', ItemTagsCoFH.INGOTS_SILVER)
+                .define('S', CoFHTags.Items.INGOTS_SILVER)
                 .define('X', rfCoil)
                 .pattern(" S ")
                 .pattern("SXS")
@@ -662,47 +669,47 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(result)
                 .define('I', Tags.Items.INGOTS_IRON)
                 .define('R', ITEMS.get("cured_rubber"))
-                .define('X', ItemTagsCoFH.HARDENED_GLASS)
+                .define('X', CoFHTags.Items.HARDENED_GLASS)
                 .pattern("RIR")
                 .pattern("IXI")
                 .pattern("RIR")
-                .unlockedBy("has_hardened_glass", has(ItemTagsCoFH.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_STORAGE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("upgrade_augment_1");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_INVAR)
+                .define('I', CoFHTags.Items.INGOTS_INVAR)
                 .define('R', Tags.Items.DUSTS_REDSTONE)
-                .define('X', ItemTagsCoFH.GEARS_GOLD)
+                .define('X', CoFHTags.Items.GEARS_GOLD)
                 .pattern("IGI")
                 .pattern("RXR")
                 .pattern("IGI")
-                .unlockedBy("has_invar_ingot", has(ItemTagsCoFH.INGOTS_INVAR))
+                .unlockedBy("has_invar_ingot", has(CoFHTags.Items.INGOTS_INVAR))
                 .save(withConditions(consumer).flag(FLAG_UPGRADE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("upgrade_augment_2");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', Tags.Items.GEMS_QUARTZ)
-                .define('I', ItemTagsCoFH.INGOTS_ELECTRUM)
-                .define('R', ItemTagsCoFH.GEARS_SIGNALUM)
+                .define('I', CoFHTags.Items.INGOTS_ELECTRUM)
+                .define('R', CoFHTags.Items.GEARS_SIGNALUM)
                 .define('X', reg.get("upgrade_augment_1"))
                 .pattern("IGI")
                 .pattern("RXR")
                 .pattern("IGI")
-                .unlockedBy("has_electrum_ingot", has(ItemTagsCoFH.INGOTS_ELECTRUM))
+                .unlockedBy("has_electrum_ingot", has(CoFHTags.Items.INGOTS_ELECTRUM))
                 .save(withConditions(consumer).flag(FLAG_UPGRADE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("upgrade_augment_3");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.HARDENED_GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_ENDERIUM)
-                .define('R', ItemTagsCoFH.GEARS_LUMIUM)
+                .define('G', CoFHTags.Items.HARDENED_GLASS)
+                .define('I', CoFHTags.Items.INGOTS_ENDERIUM)
+                .define('R', CoFHTags.Items.GEARS_LUMIUM)
                 .define('X', reg.get("upgrade_augment_2"))
                 .pattern("IGI")
                 .pattern("RXR")
                 .pattern("IGI")
-                .unlockedBy("has_enderium_ingot", has(ItemTagsCoFH.INGOTS_ENDERIUM))
+                .unlockedBy("has_enderium_ingot", has(CoFHTags.Items.INGOTS_ENDERIUM))
                 .save(withConditions(consumer).flag(FLAG_UPGRADE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("rs_control_augment");
@@ -717,7 +724,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("side_config_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('i', ItemTagsCoFH.NUGGETS_TIN)
+                .define('i', CoFHTags.Items.NUGGETS_TIN)
                 .define('G', Tags.Items.INGOTS_GOLD)
                 .pattern(" i ")
                 .pattern("iGi")
@@ -745,7 +752,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get(ID_WRENCH);
         ShapedRecipeBuilder.shaped(result)
                 .define('I', Tags.Items.INGOTS_IRON)
-                .define('G', ItemTagsCoFH.GEARS_IRON)
+                .define('G', CoFHTags.Items.GEARS_IRON)
                 .pattern("I I")
                 .pattern(" G ")
                 .pattern(" I ")
@@ -754,8 +761,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get(ID_REDPRINT);
         ShapelessRecipeBuilder.shapeless(result)
-                .requires(Items.PAPER)
-                .requires(Items.PAPER)
+                .requires(net.minecraft.world.item.Items.PAPER)
+                .requires(net.minecraft.world.item.Items.PAPER)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .unlockedBy("has_redstone_dust", has(Tags.Items.DUSTS_REDSTONE))
@@ -764,18 +771,18 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get(ID_LOCK);
         ShapedRecipeBuilder.shaped(result)
                 .define('i', Tags.Items.NUGGETS_IRON)
-                .define('S', ItemTagsCoFH.INGOTS_SIGNALUM)
+                .define('S', CoFHTags.Items.INGOTS_SIGNALUM)
                 .pattern(" i ")
                 .pattern("iSi")
                 .pattern("iii")
-                .unlockedBy("has_signalum_ingot", has(ItemTagsCoFH.INGOTS_SIGNALUM))
+                .unlockedBy("has_signalum_ingot", has(CoFHTags.Items.INGOTS_SIGNALUM))
                 .save(withConditions(consumer).flag(ID_LOCK), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get(ID_SATCHEL);
         ShapedRecipeBuilder.shaped(result)
-                .define('I', ItemTagsCoFH.INGOTS_TIN)
+                .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('L', Tags.Items.LEATHER)
-                .define('W', ItemTagsCoFH.ROCKWOOL)
+                .define('W', CoFHTags.Items.ROCKWOOL)
                 .pattern("LWL")
                 .pattern("WIW")
                 .pattern("LWL")
@@ -784,19 +791,19 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get(ID_DETONATOR);
         ShapedRecipeBuilder.shaped(result)
-                .define('G', ItemTagsCoFH.GEARS_SIGNALUM)
+                .define('G', CoFHTags.Items.GEARS_SIGNALUM)
                 .define('I', Tags.Items.INGOTS_IRON)
-                .define('S', ItemTagsCoFH.INGOTS_SILVER)
+                .define('S', CoFHTags.Items.INGOTS_SILVER)
                 .pattern(" S ")
                 .pattern("IGI")
                 .pattern("III")
-                .unlockedBy("has_signalum_ingot", has(ItemTagsCoFH.INGOTS_SIGNALUM))
+                .unlockedBy("has_signalum_ingot", has(CoFHTags.Items.INGOTS_SIGNALUM))
                 .save(withConditions(consumer).flag(ID_DETONATOR), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get(ID_RF_POTATO);
         ShapedRecipeBuilder.shaped(result)
                 .define('D', Tags.Items.DUSTS_REDSTONE)
-                .define('L', ItemTagsCoFH.NUGGETS_LEAD)
+                .define('L', CoFHTags.Items.NUGGETS_LEAD)
                 .define('P', Tags.Items.CROPS_POTATO)
                 .define('R', reg.get("cured_rubber"))
                 .pattern("LDL")
@@ -807,43 +814,43 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get(ID_XP_CRYSTAL);
         ShapedRecipeBuilder.shaped(result)
-                .define('B', Items.EXPERIENCE_BOTTLE)
+                .define('B', net.minecraft.world.item.Items.EXPERIENCE_BOTTLE)
                 .define('E', Tags.Items.GEMS_EMERALD)
                 .define('L', Tags.Items.GEMS_LAPIS)
                 .pattern(" L ")
                 .pattern("EBE")
                 .pattern(" L ")
-                .unlockedBy("has_experience_bottle", has(Items.EXPERIENCE_BOTTLE))
+                .unlockedBy("has_experience_bottle", has(net.minecraft.world.item.Items.EXPERIENCE_BOTTLE))
                 .save(withConditions(consumer).flag(ID_XP_CRYSTAL), this.modid + ":" + folder + "/" + name(result));
 
         ShapelessRecipeBuilder.shapeless(reg.get("phytogro"), 8)
                 .requires(Tags.Items.SAND)
-                .requires(fromTags(ItemTagsCoFH.GEMS_APATITE, ItemTagsCoFH.DUSTS_APATITE))
-                .requires(fromTags(ItemTagsCoFH.GEMS_APATITE, ItemTagsCoFH.DUSTS_APATITE))
-                .requires(fromTags(ItemTagsCoFH.GEMS_NITER, ItemTagsCoFH.DUSTS_NITER))
-                .unlockedBy("has_apatite", has(ItemTagsCoFH.GEMS_APATITE))
+                .requires(fromTags(CoFHTags.Items.GEMS_APATITE, CoFHTags.Items.DUSTS_APATITE))
+                .requires(fromTags(CoFHTags.Items.GEMS_APATITE, CoFHTags.Items.DUSTS_APATITE))
+                .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
+                .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
                 .save(consumer, ID_THERMAL + ":phytogro_8");
 
         ShapelessRecipeBuilder.shapeless(reg.get("phytogro"), 4)
                 .requires(Tags.Items.SAND)
-                .requires(Items.BONE_MEAL)
-                .requires(fromTags(ItemTagsCoFH.GEMS_APATITE, ItemTagsCoFH.DUSTS_APATITE))
-                .requires(fromTags(ItemTagsCoFH.GEMS_NITER, ItemTagsCoFH.DUSTS_NITER))
-                .unlockedBy("has_apatite", has(ItemTagsCoFH.GEMS_APATITE))
+                .requires(net.minecraft.world.item.Items.BONE_MEAL)
+                .requires(fromTags(CoFHTags.Items.GEMS_APATITE, CoFHTags.Items.DUSTS_APATITE))
+                .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
+                .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
                 .save(consumer, ID_THERMAL + ":phytogro_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("phytogro"), 2)
                 .requires(Tags.Items.SAND)
-                .requires(Items.BONE_MEAL)
+                .requires(net.minecraft.world.item.Items.BONE_MEAL)
                 .requires(reg.get("rich_slag"))
-                .requires(fromTags(ItemTagsCoFH.GEMS_NITER, ItemTagsCoFH.DUSTS_NITER))
+                .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
                 .unlockedBy("rich_slag", has(reg.get("rich_slag")))
                 .save(consumer, ID_THERMAL + ":phytogro_2");
 
         ShapedRecipeBuilder.shaped(reg.get("junk_net"), 1)
                 .define('#', Tags.Items.STRING)
                 .define('n', Tags.Items.NUGGETS_IRON)
-                .define('S', Items.STICK)
+                .define('S', net.minecraft.world.item.Items.STICK)
                 .pattern("n#n")
                 .pattern("#S#")
                 .pattern("n#n")
@@ -851,17 +858,17 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER));
 
         ShapelessRecipeBuilder.shapeless(reg.get("aquachow"), 4)
-                .requires(Items.WHEAT)
-                .requires(Items.WHEAT)
-                .requires(Items.SLIME_BALL)
+                .requires(net.minecraft.world.item.Items.WHEAT)
+                .requires(net.minecraft.world.item.Items.WHEAT)
+                .requires(net.minecraft.world.item.Items.SLIME_BALL)
                 .unlockedBy("has_wheat", has(Tags.Items.CROPS_WHEAT))
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER), ID_THERMAL + ":aquachow_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("deep_aquachow"), 4)
-                .requires(Items.WHEAT)
-                .requires(Items.BEETROOT)
-                .requires(Items.SLIME_BALL)
-                .requires(ItemTagsCoFH.NUGGETS_LEAD)
+                .requires(net.minecraft.world.item.Items.WHEAT)
+                .requires(net.minecraft.world.item.Items.BEETROOT)
+                .requires(net.minecraft.world.item.Items.SLIME_BALL)
+                .requires(CoFHTags.Items.NUGGETS_LEAD)
                 .unlockedBy("has_beetroot", has(Tags.Items.CROPS_BEETROOT))
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER), ID_THERMAL + ":deep_aquachow_4");
 
@@ -880,9 +887,9 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_blizz_rod", has(reg.get("blizz_rod")))
                 .save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(Items.CYAN_DYE)
-                .requires(ItemTagsCoFH.GEMS_APATITE)
-                .unlockedBy("has_apatite", has(ItemTagsCoFH.GEMS_APATITE))
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.CYAN_DYE)
+                .requires(CoFHTags.Items.GEMS_APATITE)
+                .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
                 .save(consumer, ID_THERMAL + ":cyan_dye_from_apatite");
 
         ShapelessRecipeBuilder.shapeless(reg.get("rubber"), 3)
@@ -891,21 +898,21 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, ID_THERMAL + ":rubber_3");
 
         ShapedRecipeBuilder.shaped(reg.get("rubber"), 1)
-                .define('B', Items.WATER_BUCKET)
-                .define('#', Items.DANDELION)
+                .define('B', net.minecraft.world.item.Items.WATER_BUCKET)
+                .define('#', net.minecraft.world.item.Items.DANDELION)
                 .pattern("###")
                 .pattern("#B#")
                 .pattern("###")
-                .unlockedBy("has_dandelion", has(Items.DANDELION))
+                .unlockedBy("has_dandelion", has(net.minecraft.world.item.Items.DANDELION))
                 .save(consumer, ID_THERMAL + ":rubber_from_dandelion");
 
         ShapedRecipeBuilder.shaped(reg.get("rubber"), 1)
-                .define('B', Items.WATER_BUCKET)
-                .define('#', Items.VINE)
+                .define('B', net.minecraft.world.item.Items.WATER_BUCKET)
+                .define('#', net.minecraft.world.item.Items.VINE)
                 .pattern("###")
                 .pattern("#B#")
                 .pattern("###")
-                .unlockedBy("has_vine", has(Items.VINE))
+                .unlockedBy("has_vine", has(net.minecraft.world.item.Items.VINE))
                 .save(consumer, ID_THERMAL + ":rubber_from_vine");
     }
 
@@ -920,41 +927,41 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(earthCharge, 3)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(reg.get("basalz_powder"))
-                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .requires(Ingredient.of(net.minecraft.world.item.Items.COAL, net.minecraft.world.item.Items.CHARCOAL))
                 .unlockedBy("has_basalz_powder", has(reg.get("basalz_powder")))
                 .save(consumer, ID_THERMAL + ":earth_charge_3");
 
         ShapelessRecipeBuilder.shapeless(iceCharge, 3)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(reg.get("blizz_powder"))
-                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .requires(Ingredient.of(net.minecraft.world.item.Items.COAL, net.minecraft.world.item.Items.CHARCOAL))
                 .unlockedBy("has_blizz_powder", has(reg.get("blizz_powder")))
                 .save(consumer, ID_THERMAL + ":ice_charge_3");
 
         ShapelessRecipeBuilder.shapeless(lightningCharge, 3)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(reg.get("blitz_powder"))
-                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .requires(Ingredient.of(net.minecraft.world.item.Items.COAL, net.minecraft.world.item.Items.CHARCOAL))
                 .unlockedBy("has_blitz_powder", has(reg.get("blitz_powder")))
                 .save(consumer, ID_THERMAL + ":lightning_charge_3");
 
         // region EARTH CHARGE CONVERSIONS
-        ShapelessRecipeBuilder.shapeless(Items.PRISMARINE_SHARD, 4)
-                .requires(Items.PRISMARINE)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.PRISMARINE_SHARD, 4)
+                .requires(net.minecraft.world.item.Items.PRISMARINE)
                 .requires(earthCharge)
-                .unlockedBy("has_prismarine", has(Items.PRISMARINE))
+                .unlockedBy("has_prismarine", has(net.minecraft.world.item.Items.PRISMARINE))
                 .save(consumer, ID_THERMAL + ":earth_charge/prismarine_shard_from_prismarine");
 
-        ShapelessRecipeBuilder.shapeless(Items.PRISMARINE_SHARD, 9)
-                .requires(Items.PRISMARINE_BRICKS)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.PRISMARINE_SHARD, 9)
+                .requires(net.minecraft.world.item.Items.PRISMARINE_BRICKS)
                 .requires(earthCharge)
-                .unlockedBy("has_prismarine_bricks", has(Items.PRISMARINE_BRICKS))
+                .unlockedBy("has_prismarine_bricks", has(net.minecraft.world.item.Items.PRISMARINE_BRICKS))
                 .save(consumer, ID_THERMAL + ":earth_charge/prismarine_shard_from_prismarine_bricks");
 
-        ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 4)
-                .requires(Items.QUARTZ_BLOCK)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.QUARTZ, 4)
+                .requires(net.minecraft.world.item.Items.QUARTZ_BLOCK)
                 .requires(earthCharge)
-                .unlockedBy("has_quartz_block", has(Items.QUARTZ_BLOCK))
+                .unlockedBy("has_quartz_block", has(net.minecraft.world.item.Items.QUARTZ_BLOCK))
                 .save(consumer, ID_THERMAL + ":earth_charge/quartz_from_quartz_block");
 
         ShapelessRecipeBuilder.shapeless(reg.get("diamond_dust"))
@@ -988,55 +995,55 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, ID_THERMAL + ":earth_charge/quartz_dust_from_quartz");
 
         ShapelessRecipeBuilder.shapeless(reg.get("apatite_dust"))
-                .requires(ItemTagsCoFH.GEMS_APATITE)
+                .requires(CoFHTags.Items.GEMS_APATITE)
                 .requires(earthCharge)
-                .unlockedBy("has_apatite", has(ItemTagsCoFH.GEMS_APATITE))
+                .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
                 .save(consumer, ID_THERMAL + ":earth_charge/apatite_dust_from_apatite");
 
         ShapelessRecipeBuilder.shapeless(reg.get("cinnabar_dust"))
-                .requires(ItemTagsCoFH.GEMS_CINNABAR)
+                .requires(CoFHTags.Items.GEMS_CINNABAR)
                 .requires(earthCharge)
-                .unlockedBy("has_cinnabar", has(ItemTagsCoFH.GEMS_CINNABAR))
+                .unlockedBy("has_cinnabar", has(CoFHTags.Items.GEMS_CINNABAR))
                 .save(consumer, ID_THERMAL + ":earth_charge/cinnabar_dust_from_cinnabar");
 
         ShapelessRecipeBuilder.shapeless(reg.get("niter_dust"))
-                .requires(ItemTagsCoFH.GEMS_NITER)
+                .requires(CoFHTags.Items.GEMS_NITER)
                 .requires(earthCharge)
-                .unlockedBy("has_niter", has(ItemTagsCoFH.GEMS_NITER))
+                .unlockedBy("has_niter", has(CoFHTags.Items.GEMS_NITER))
                 .save(consumer, ID_THERMAL + ":earth_charge/niter_dust_from_niter");
 
         ShapelessRecipeBuilder.shapeless(reg.get("sulfur_dust"))
-                .requires(ItemTagsCoFH.GEMS_SULFUR)
+                .requires(CoFHTags.Items.GEMS_SULFUR)
                 .requires(earthCharge)
-                .unlockedBy("has_sulfur", has(ItemTagsCoFH.GEMS_SULFUR))
+                .unlockedBy("has_sulfur", has(CoFHTags.Items.GEMS_SULFUR))
                 .save(consumer, ID_THERMAL + ":earth_charge/sulfur_dust_from_sulfur");
         // endregion
 
         // region ICE CHARGE CONVERSIONS
-        ShapelessRecipeBuilder.shapeless(Items.OBSIDIAN)
-                .requires(Items.LAVA_BUCKET)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.OBSIDIAN)
+                .requires(net.minecraft.world.item.Items.LAVA_BUCKET)
                 .requires(iceCharge)
-                .unlockedBy("has_lava_bucket", has(Items.LAVA_BUCKET))
+                .unlockedBy("has_lava_bucket", has(net.minecraft.world.item.Items.LAVA_BUCKET))
                 .save(consumer, ID_THERMAL + ":ice_charge/obsidian_from_lava_bucket");
 
-        ShapelessRecipeBuilder.shapeless(Items.ICE)
-                .requires(Items.WATER_BUCKET)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.ICE)
+                .requires(net.minecraft.world.item.Items.WATER_BUCKET)
                 .requires(iceCharge)
-                .unlockedBy("has_water_bucket", has(Items.WATER_BUCKET))
+                .unlockedBy("has_water_bucket", has(net.minecraft.world.item.Items.WATER_BUCKET))
                 .save(consumer, ID_THERMAL + ":ice_charge/ice_from_water_bucket");
         // endregion
 
         // region LIGHTNING CHARGE CONVERSIONS
-        ShapelessRecipeBuilder.shapeless(Items.WITCH_SPAWN_EGG)
-                .requires(Items.VILLAGER_SPAWN_EGG)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.WITCH_SPAWN_EGG)
+                .requires(net.minecraft.world.item.Items.VILLAGER_SPAWN_EGG)
                 .requires(lightningCharge)
-                .unlockedBy("has_villager_spawn_egg", has(Items.VILLAGER_SPAWN_EGG))
+                .unlockedBy("has_villager_spawn_egg", has(net.minecraft.world.item.Items.VILLAGER_SPAWN_EGG))
                 .save(consumer, ID_THERMAL + ":lightning_charge/witch_from_villager");
 
-        ShapelessRecipeBuilder.shapeless(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG)
-                .requires(Items.PIG_SPAWN_EGG)
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.ZOMBIFIED_PIGLIN_SPAWN_EGG)
+                .requires(net.minecraft.world.item.Items.PIG_SPAWN_EGG)
                 .requires(lightningCharge)
-                .unlockedBy("has_pig_spawn_egg", has(Items.PIG_SPAWN_EGG))
+                .unlockedBy("has_pig_spawn_egg", has(net.minecraft.world.item.Items.PIG_SPAWN_EGG))
                 .save(consumer, ID_THERMAL + ":lightning_charge/zombified_piglin_from_pig");
         // endregion
     }
@@ -1064,7 +1071,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(reg.get("drill_head"))
-                .define('C', ItemTagsCoFH.INGOTS_COPPER)
+                .define('C', Tags.Items.INGOTS_COPPER)
                 .define('I', Tags.Items.INGOTS_IRON)
                 .pattern(" I ")
                 .pattern("ICI")
@@ -1073,7 +1080,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(FLAG_TOOL_COMPONENTS));
 
         ShapedRecipeBuilder.shaped(reg.get("saw_blade"))
-                .define('C', ItemTagsCoFH.INGOTS_COPPER)
+                .define('C', Tags.Items.INGOTS_COPPER)
                 .define('I', Tags.Items.INGOTS_IRON)
                 .pattern("II ")
                 .pattern("ICI")
@@ -1084,31 +1091,31 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(reg.get(ID_MACHINE_FRAME))
                 .define('G', Tags.Items.GLASS)
                 .define('I', Tags.Items.INGOTS_IRON)
-                .define('T', ItemTagsCoFH.GEARS_TIN)
+                .define('T', CoFHTags.Items.GEARS_TIN)
                 .pattern("IGI")
                 .pattern("GTG")
                 .pattern("IGI")
-                .unlockedBy("has_tin", has(ItemTagsCoFH.INGOTS_TIN))
+                .unlockedBy("has_tin", has(CoFHTags.Items.INGOTS_TIN))
                 .save(withConditions(consumer).flag(ID_MACHINE_FRAME));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_ENERGY_CELL_FRAME))
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_LEAD)
-                .define('E', ItemTagsCoFH.GEARS_ELECTRUM)
+                .define('I', CoFHTags.Items.INGOTS_LEAD)
+                .define('E', CoFHTags.Items.GEARS_ELECTRUM)
                 .pattern("IGI")
                 .pattern("GEG")
                 .pattern("IGI")
-                .unlockedBy("has_lead", has(ItemTagsCoFH.INGOTS_LEAD))
+                .unlockedBy("has_lead", has(CoFHTags.Items.INGOTS_LEAD))
                 .save(withConditions(consumer).flag(ID_ENERGY_CELL_FRAME));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_FLUID_CELL_FRAME))
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_COPPER)
-                .define('E', ItemTagsCoFH.GEARS_BRONZE)
+                .define('I', Tags.Items.INGOTS_COPPER)
+                .define('E', CoFHTags.Items.GEARS_BRONZE)
                 .pattern("IGI")
                 .pattern("GEG")
                 .pattern("IGI")
-                .unlockedBy("has_copper", has(ItemTagsCoFH.INGOTS_COPPER))
+                .unlockedBy("has_copper", has(Tags.Items.INGOTS_COPPER))
                 .save(withConditions(consumer).flag(ID_FLUID_CELL_FRAME));
 
         //        ShapedRecipeBuilder.shaped(reg.get(ID_ITEM_CELL_FRAME))
@@ -1126,11 +1133,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
-        ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 4)
-                .requires(Items.CHARCOAL)
-                .requires(fromTags(ItemTagsCoFH.GEMS_NITER, ItemTagsCoFH.DUSTS_NITER))
-                .requires(fromTags(ItemTagsCoFH.GEMS_NITER, ItemTagsCoFH.DUSTS_NITER))
-                .requires(fromTags(ItemTagsCoFH.GEMS_SULFUR, ItemTagsCoFH.DUSTS_SULFUR))
+        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.GUNPOWDER, 4)
+                .requires(net.minecraft.world.item.Items.CHARCOAL)
+                .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
+                .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
+                .requires(fromTags(CoFHTags.Items.GEMS_SULFUR, CoFHTags.Items.DUSTS_SULFUR))
                 .unlockedBy("has_gunpowder", has(Tags.Items.GUNPOWDER))
                 .save(consumer, ID_THERMAL + ":gunpowder_4");
 
@@ -1207,11 +1214,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(reg.get(ID_FIRE_GRENADE), 4)
                 .define('G', Tags.Items.GUNPOWDER)
                 .define('I', Tags.Items.INGOTS_IRON)
-                .define('P', Items.BLAZE_POWDER)
+                .define('P', net.minecraft.world.item.Items.BLAZE_POWDER)
                 .pattern("GPG")
                 .pattern("PIP")
                 .pattern("GPG")
-                .unlockedBy("has_blaze_powder", has(Items.BLAZE_POWDER))
+                .unlockedBy("has_blaze_powder", has(net.minecraft.world.item.Items.BLAZE_POWDER))
                 .save(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES), ID_THERMAL + ":fire_grenade_4");
 
         ShapedRecipeBuilder.shaped(reg.get(ID_ICE_GRENADE), 4)
@@ -1290,11 +1297,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get(ID_FIRE_TNT))
                 .define('G', Tags.Items.GUNPOWDER)
-                .define('P', Items.BLAZE_POWDER)
+                .define('P', net.minecraft.world.item.Items.BLAZE_POWDER)
                 .pattern("GPG")
                 .pattern("PGP")
                 .pattern("GPG")
-                .unlockedBy("has_blaze_powder", has(Items.BLAZE_POWDER))
+                .unlockedBy("has_blaze_powder", has(net.minecraft.world.item.Items.BLAZE_POWDER))
                 .save(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_ICE_TNT))
@@ -1493,11 +1500,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         Item rfCoil = reg.get("rf_coil");
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_HIVE_EXTRACTOR))
-                .define('C', Items.SHEARS)
+                .define('C', net.minecraft.world.item.Items.SHEARS)
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
-                .define('X', ItemTagsCoFH.GEARS_IRON)
+                .define('X', CoFHTags.Items.GEARS_IRON)
                 .pattern("IXI")
                 .pattern("GCG")
                 .pattern("IPI")
@@ -1505,11 +1512,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_HIVE_EXTRACTOR));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_TREE_EXTRACTOR))
-                .define('C', Items.BUCKET)
+                .define('C', net.minecraft.world.item.Items.BUCKET)
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
-                .define('X', ItemTagsCoFH.GEARS_IRON)
+                .define('X', CoFHTags.Items.GEARS_IRON)
                 .pattern("IXI")
                 .pattern("GCG")
                 .pattern("IPI")
@@ -1517,11 +1524,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_TREE_EXTRACTOR));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_FISHER))
-                .define('C', Items.FISHING_ROD)
+                .define('C', net.minecraft.world.item.Items.FISHING_ROD)
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
-                .define('X', ItemTagsCoFH.GEARS_COPPER)
+                .define('X', CoFHTags.Items.GEARS_COPPER)
                 .pattern("IXI")
                 .pattern("GCG")
                 .pattern("IPI")
@@ -1532,7 +1539,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .define('C', reg.get("phytogro"))
                 .define('G', Tags.Items.GLASS)
                 .define('P', rfCoil)
-                .define('X', ItemTagsCoFH.GEARS_LUMIUM)
+                .define('X', CoFHTags.Items.GEARS_LUMIUM)
                 .define('W', ItemTags.PLANKS)
                 .pattern("WXW")
                 .pattern("GCG")
@@ -1541,11 +1548,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_SOIL_INFUSER));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_ROCK_GEN))
-                .define('C', Items.PISTON)
+                .define('C', net.minecraft.world.item.Items.PISTON)
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_INVAR)
+                .define('I', CoFHTags.Items.INGOTS_INVAR)
                 .define('P', redstoneServo)
-                .define('X', ItemTagsCoFH.GEARS_CONSTANTAN)
+                .define('X', CoFHTags.Items.GEARS_CONSTANTAN)
                 .pattern("IXI")
                 .pattern("GCG")
                 .pattern("IPI")
@@ -1553,9 +1560,9 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_ROCK_GEN));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_WATER_GEN))
-                .define('C', Items.BUCKET)
+                .define('C', net.minecraft.world.item.Items.BUCKET)
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_COPPER)
+                .define('I', Tags.Items.INGOTS_COPPER)
                 .define('P', redstoneServo)
                 .define('X', Tags.Items.INGOTS_IRON)
                 .pattern("IXI")
@@ -1565,9 +1572,9 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_WATER_GEN));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_COLLECTOR))
-                .define('C', Items.HOPPER)
+                .define('C', net.minecraft.world.item.Items.HOPPER)
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_TIN)
+                .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('P', redstoneServo)
                 .define('X', Tags.Items.ENDER_PEARLS)
                 .pattern("IXI")
@@ -1577,9 +1584,9 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_COLLECTOR));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_NULLIFIER))
-                .define('C', Items.LAVA_BUCKET)
+                .define('C', net.minecraft.world.item.Items.LAVA_BUCKET)
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_TIN)
+                .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('P', redstoneServo)
                 .define('X', Tags.Items.DUSTS_REDSTONE)
                 .pattern("IXI")
@@ -1589,11 +1596,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_NULLIFIER));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_POTION_DIFFUSER))
-                .define('C', Items.GLASS_BOTTLE)
+                .define('C', net.minecraft.world.item.Items.GLASS_BOTTLE)
                 .define('G', Tags.Items.GLASS)
-                .define('I', ItemTagsCoFH.INGOTS_SILVER)
+                .define('I', CoFHTags.Items.INGOTS_SILVER)
                 .define('P', redstoneServo)
-                .define('X', ItemTagsCoFH.GEARS_CONSTANTAN)
+                .define('X', CoFHTags.Items.GEARS_CONSTANTAN)
                 .pattern("IXI")
                 .pattern("GCG")
                 .pattern("IPI")
@@ -1617,7 +1624,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .define('I', Tags.Items.INGOTS_IRON)
                 .define('P', redstoneServo)
                 .define('R', reg.get("cured_rubber"))
-                .define('X', ItemTagsCoFH.HARDENED_GLASS)
+                .define('X', CoFHTags.Items.HARDENED_GLASS)
                 .pattern("RXR")
                 .pattern("ICI")
                 .pattern("RPR")
@@ -1650,9 +1657,9 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get(ID_CHARGE_BENCH))
                 .define('C', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                .define('I', ItemTagsCoFH.INGOTS_ELECTRUM)
+                .define('I', CoFHTags.Items.INGOTS_ELECTRUM)
                 .define('P', rfCoil)
-                .define('X', ItemTagsCoFH.INGOTS_LEAD)
+                .define('X', CoFHTags.Items.INGOTS_LEAD)
                 .pattern("III")
                 .pattern("PCP")
                 .pattern("XPX")

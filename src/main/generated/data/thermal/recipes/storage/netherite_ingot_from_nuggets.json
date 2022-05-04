@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "thermal:copper_nugget"
+      "item": "thermal:netherite_nugget"
     }
   },
   "result": {
-    "item": "minecraft:copper_ingot"
+    "item": "minecraft:netherite_ingot"
   }
 }

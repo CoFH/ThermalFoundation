@@ -48,7 +48,7 @@ public class Basalz extends Monster {
     protected static final int DEFAULT_ORBIT = 8;
     protected static final int DEPLOY_TIME = 6;
 
-    private static final EntityDataAccessor<Byte> ANGRY = SynchedEntityData.defineId(Blitz.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<Byte> ANGRY = SynchedEntityData.defineId(Basalz.class, EntityDataSerializers.BYTE);
     private static final Vec3 VERT = new Vec3(0, 1, 0);
 
     protected int attackTime = 0;

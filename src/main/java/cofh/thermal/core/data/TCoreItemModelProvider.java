@@ -45,6 +45,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
     // region ITEM HELPERS
     private void registerVanilla(DeferredRegisterCoFH<Item> reg) {
 
+        metalSet(reg, "copper", true);
         metalSet(reg, "iron", true);
         metalSet(reg, "gold", true);
         metalSet(reg, "netherite", true);
@@ -114,23 +115,30 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         generated(reg.getSup("syrup_bucket"));
         generated(reg.getSup("tree_oil_bucket"));
 
-        metalSet(reg, "copper");
+        generated(reg.getSup("copper_nugget"));
+        generated(reg.getSup("netherite_nugget"));
+
+        generated(reg.getSup("raw_lead"));
+        generated(reg.getSup("raw_nickel"));
+        generated(reg.getSup("raw_silver"));
+        generated(reg.getSup("raw_tin"));
+
         metalSet(reg, "lead");
         metalSet(reg, "nickel");
         metalSet(reg, "silver");
         metalSet(reg, "tin");
 
-        metalSet(reg, "bronze");
-        metalSet(reg, "constantan");
-        metalSet(reg, "electrum");
-        metalSet(reg, "invar");
+        alloySet(reg, "bronze");
+        alloySet(reg, "constantan");
+        alloySet(reg, "electrum");
+        alloySet(reg, "invar");
 
         gemSet(reg, "ruby");
         gemSet(reg, "sapphire");
 
-        metalSet(reg, "signalum");
-        metalSet(reg, "lumium");
-        metalSet(reg, "enderium");
+        alloySet(reg, "signalum");
+        alloySet(reg, "lumium");
+        alloySet(reg, "enderium");
     }
 
     private void registerParts(DeferredRegisterCoFH<Item> reg) {
@@ -248,7 +256,6 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         blockItem(reg.getSup(ID_NITER_ORE));
         blockItem(reg.getSup(ID_SULFUR_ORE));
 
-        blockItem(reg.getSup(ID_COPPER_ORE));
         blockItem(reg.getSup(ID_LEAD_ORE));
         blockItem(reg.getSup(ID_NICKEL_ORE));
         blockItem(reg.getSup(ID_SILVER_ORE));
@@ -268,7 +275,11 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         blockItem(reg.getSup(ID_NITER_BLOCK));
         blockItem(reg.getSup(ID_SULFUR_BLOCK));
 
-        blockItem(reg.getSup(ID_COPPER_BLOCK));
+        blockItem(reg.getSup(ID_RAW_LEAD_BLOCK));
+        blockItem(reg.getSup(ID_RAW_NICKEL_BLOCK));
+        blockItem(reg.getSup(ID_RAW_SILVER_BLOCK));
+        blockItem(reg.getSup(ID_RAW_TIN_BLOCK));
+
         blockItem(reg.getSup(ID_LEAD_BLOCK));
         blockItem(reg.getSup(ID_NICKEL_BLOCK));
         blockItem(reg.getSup(ID_SILVER_BLOCK));

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "thermal:copper_ingot"
+      "item": "minecraft:copper_ingot"
     }
   ],
   "result": {

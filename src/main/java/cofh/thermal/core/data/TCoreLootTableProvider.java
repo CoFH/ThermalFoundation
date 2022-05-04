@@ -50,11 +50,10 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_NITER_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SULFUR_BLOCK));
 
-        createSimpleDropTable(regBlocks.get(ID_COPPER_ORE));
-        createSimpleDropTable(regBlocks.get(ID_LEAD_ORE));
-        createSimpleDropTable(regBlocks.get(ID_NICKEL_ORE));
-        createSimpleDropTable(regBlocks.get(ID_SILVER_ORE));
-        createSimpleDropTable(regBlocks.get(ID_TIN_ORE));
+        blockLootTables.put(regBlocks.get(ID_LEAD_ORE), getSilkTouchOreTable(regBlocks.get(ID_LEAD_ORE), regItems.get("raw_lead")));
+        blockLootTables.put(regBlocks.get(ID_NICKEL_ORE), getSilkTouchOreTable(regBlocks.get(ID_NICKEL_ORE), regItems.get("raw_nickel")));
+        blockLootTables.put(regBlocks.get(ID_SILVER_ORE), getSilkTouchOreTable(regBlocks.get(ID_SILVER_ORE), regItems.get("raw_silver")));
+        blockLootTables.put(regBlocks.get(ID_TIN_ORE), getSilkTouchOreTable(regBlocks.get(ID_TIN_ORE), regItems.get("raw_tin")));
 
         blockLootTables.put(regBlocks.get(ID_RUBY_ORE), getSilkTouchOreTable(regBlocks.get(ID_RUBY_ORE), regItems.get("ruby")));
         blockLootTables.put(regBlocks.get(ID_SAPPHIRE_ORE), getSilkTouchOreTable(regBlocks.get(ID_SAPPHIRE_ORE), regItems.get("sapphire")));
@@ -62,7 +61,11 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_OIL_RED_SAND));
         createSimpleDropTable(regBlocks.get(ID_OIL_SAND));
 
-        createSimpleDropTable(regBlocks.get(ID_COPPER_BLOCK));
+        createSimpleDropTable(regBlocks.get(ID_RAW_LEAD_BLOCK));
+        createSimpleDropTable(regBlocks.get(ID_RAW_NICKEL_BLOCK));
+        createSimpleDropTable(regBlocks.get(ID_RAW_SILVER_BLOCK));
+        createSimpleDropTable(regBlocks.get(ID_RAW_TIN_BLOCK));
+
         createSimpleDropTable(regBlocks.get(ID_LEAD_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_NICKEL_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SILVER_BLOCK));
