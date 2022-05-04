@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:raw_silver"
+    },
+    "#": {
+      "tag": "forge:raw_materials/silver"
+    }
+  },
+  "result": {
+    "item": "thermal:raw_silver_block"
+  }
+}

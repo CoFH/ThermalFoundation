@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:raw_tin"
+    },
+    "#": {
+      "tag": "forge:raw_materials/tin"
+    }
+  },
+  "result": {
+    "item": "thermal:raw_tin_block"
+  }
+}

@@ -616,6 +616,18 @@ public class TCoreTagsProvider {
                     CoFHTags.Items.PLATES_TIN
             );
 
+            tag(CoFHTags.Items.RAW_MATERIALS_LEAD).add(ITEMS.get("raw_lead"));
+            tag(CoFHTags.Items.RAW_MATERIALS_NICKEL).add(ITEMS.get("raw_nickel"));
+            tag(CoFHTags.Items.RAW_MATERIALS_SILVER).add(ITEMS.get("raw_silver"));
+            tag(CoFHTags.Items.RAW_MATERIALS_TIN).add(ITEMS.get("raw_tin"));
+
+            tag(RAW_MATERIALS).addTags(
+                    CoFHTags.Items.RAW_MATERIALS_LEAD,
+                    CoFHTags.Items.RAW_MATERIALS_NICKEL,
+                    CoFHTags.Items.RAW_MATERIALS_SILVER,
+                    CoFHTags.Items.RAW_MATERIALS_TIN
+            );
+
             tag(CoFHTags.Items.TOOLS_WRENCH).add(ITEMS.get(ID_WRENCH));
 
             tag(CoFHTags.Items.BITUMEN).add(ITEMS.get("bitumen"));

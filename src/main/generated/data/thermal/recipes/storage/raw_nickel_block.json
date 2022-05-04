@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:raw_nickel"
+    },
+    "#": {
+      "tag": "forge:raw_materials/nickel"
+    }
+  },
+  "result": {
+    "item": "thermal:raw_nickel_block"
+  }
+}

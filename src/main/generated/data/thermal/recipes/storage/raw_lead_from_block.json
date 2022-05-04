@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:raw_lead_block"
+    }
+  ],
+  "result": {
+    "item": "thermal:raw_lead",
+    "count": 9
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "I": {
+      "item": "thermal:raw_lead"
+    },
+    "#": {
+      "tag": "forge:raw_materials/lead"
+    }
+  },
+  "result": {
+    "item": "thermal:raw_lead_block"
+  }
+}
