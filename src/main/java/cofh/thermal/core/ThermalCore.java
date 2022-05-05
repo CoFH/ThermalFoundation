@@ -2,6 +2,11 @@ package cofh.thermal.core;
 
 import cofh.core.init.CoreEnchantments;
 import cofh.lib.capability.CapabilityRedstoneFlux;
+import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
+import cofh.lib.client.renderer.entity.TNTRendererCoFH;
+import cofh.lib.entity.AbstractGrenadeEntity;
+import cofh.lib.entity.AbstractTNTEntity;
+import cofh.lib.entity.AbstractTNTMinecart;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -9,6 +14,7 @@ import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
+import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
@@ -19,6 +25,8 @@ import cofh.thermal.lib.common.ThermalProxyClient;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
@@ -37,6 +45,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -219,15 +228,15 @@ public class ThermalCore {
         //        EntityRenderers.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
         //
         //        // EXPLOSIVES
-        //        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtils.GRENADES) {
-        //            RenderingRegistry.registerEntityRenderingHandler(grenade.get(), SpriteRendererCoFH::new);
-        //        }
-        //        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
-        //            RenderingRegistry.registerEntityRenderingHandler(tnt.get(), TNTRendererCoFH::new);
-        //        }
-        //        for (RegistryObject<EntityType<? extends AbstractTNTMinecartEntity>> cart : DetonateUtils.CARTS) {
-        //            RenderingRegistry.registerEntityRenderingHandler(cart.get(), TNTMinecartRendererCoFH::new);
-        //        }
+        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtils.GRENADES) {
+            EntityRenderers.register(grenade.get(), ThrownItemRenderer::new);
+        }
+        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
+            EntityRenderers.register(tnt.get(), TNTRendererCoFH::new);
+        }
+        for (RegistryObject<EntityType<? extends AbstractTNTMinecart>> cart : DetonateUtils.CARTS) {
+            EntityRenderers.register(cart.get(), TNTMinecartRendererCoFH::new);
+        }
     }
 
     private void registerTileEntityRenderers() {
