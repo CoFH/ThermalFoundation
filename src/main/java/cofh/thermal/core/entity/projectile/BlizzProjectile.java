@@ -22,7 +22,7 @@ import static cofh.lib.util.references.CoreReferences.CHILLED;
 import static cofh.thermal.core.init.TCoreReferences.BLIZZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 
-public class BlizzProjectileEntity extends ElementalProjectileEntity {
+public class BlizzProjectile extends ElementalProjectile {
 
     private static final int CLOUD_DURATION = 20;
     public static float defaultDamage = 5.0F;
@@ -30,17 +30,17 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
     public static int effectDuration = 100;
     public static int effectRadius = 2;
 
-    public BlizzProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
+    public BlizzProjectile(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public BlizzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
+    public BlizzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLIZZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
     }
 
-    public BlizzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
+    public BlizzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLIZZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
     }
@@ -115,7 +115,7 @@ public class BlizzProjectileEntity extends ElementalProjectileEntity {
             super(ID_BLIZZ, source);
         }
 
-        public static DamageSource causeDamage(BlizzProjectileEntity entityProj, Entity entitySource) {
+        public static DamageSource causeDamage(BlizzProjectile entityProj, Entity entitySource) {
 
             return (new IndirectEntityDamageSource(ID_BLIZZ, entityProj, entitySource == null ? entityProj : entitySource)).setProjectile();
         }

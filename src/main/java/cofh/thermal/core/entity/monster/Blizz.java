@@ -1,7 +1,7 @@
 package cofh.thermal.core.entity.monster;
 
 import cofh.lib.util.references.CoreReferences;
-import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BlizzProjectile;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.core.BlockPos;
@@ -256,11 +256,11 @@ public class Blizz extends Monster {
                         Level world = blizz.level;
                         //TODO: less annoying sound
                         //world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundCategory.HOSTILE, 1.0F, (rand.nextFloat() - 0.5F) * 0.2F + 1.0F);
-                        BlizzProjectileEntity projectile;
+                        BlizzProjectile projectile;
                         if (horzDistSqr < 9) {
-                            projectile = new BlizzProjectileEntity(targetPos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() * 0.5F - 0.2F, targetPos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
+                            projectile = new BlizzProjectile(targetPos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() * 0.5F - 0.2F, targetPos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
                         } else {
-                            projectile = new BlizzProjectileEntity(pos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() - 0.2F, pos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
+                            projectile = new BlizzProjectile(pos.x + rand.nextGaussian() * 0.8F, pos.y - rand.nextFloat() - 0.2F, pos.z + rand.nextGaussian() * 0.8F, 0, -1.0, 0, world);
                         }
                         projectile.setOwner(blizz);
                         world.addFreshEntity(projectile);

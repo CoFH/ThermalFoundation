@@ -1,7 +1,7 @@
 package cofh.thermal.core.entity.monster;
 
 import cofh.lib.util.references.CoreReferences;
-import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BasalzProjectile;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.core.BlockPos;
@@ -45,14 +45,14 @@ import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 
 public class Basalz extends Monster {
 
-    protected static final int DEFAULT_ORBIT = 8;
-    protected static final int DEPLOY_TIME = 6;
+    public static final int DEFAULT_ORBIT = 8;
+    public static final int DEPLOY_TIME = 6;
 
     private static final EntityDataAccessor<Byte> ANGRY = SynchedEntityData.defineId(Basalz.class, EntityDataSerializers.BYTE);
     private static final Vec3 VERT = new Vec3(0, 1, 0);
 
     protected int attackTime = 0;
-    protected int angerTime = 72000;
+    public int angerTime = 72000;
     protected boolean wasAngry = false;
 
     public static boolean canSpawn(EntityType<Basalz> entityType, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
@@ -140,7 +140,8 @@ public class Basalz extends Monster {
                     attackTime = 15;
                     Vec3 targetPos = target.position();
                     Vec3 offset = targetPos.subtract(pos).normalize().cross(VERT).scale(0.5);
-                    BasalzProjectileEntity projectile = new BasalzProjectileEntity(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
+
+                    BasalzProjectile projectile = new BasalzProjectile(targetPos.x + offset.x, getY() + this.getBbHeight() * 0.5F, targetPos.z + offset.z, 0, 0, 0, level);
                     projectile.setDeltaMovement(-offset.x, 0, -offset.z);
                     projectile.setOwner(this);
                     projectile.onHit(new EntityHitResult(target));

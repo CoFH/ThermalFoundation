@@ -1,6 +1,5 @@
 package cofh.thermal.core.entity.projectile;
 
-import cofh.lib.entity.ElectricArcEntity;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.lib.common.ThermalConfig;
@@ -23,23 +22,23 @@ import static cofh.lib.util.references.CoreReferences.SHOCKED;
 import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
-public class BlitzProjectileEntity extends ElementalProjectileEntity {
+public class BlitzProjectile extends ElementalProjectile {
 
     public static float defaultDamage = 5.0F;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
 
-    public BlitzProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
+    public BlitzProjectile(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public BlitzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
+    public BlitzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLITZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
     }
 
-    public BlitzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
+    public BlitzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(BLITZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
     }
@@ -54,7 +53,7 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
     protected void onHit(HitResult result) {
 
         Entity owner = getOwner();
-        level.addFreshEntity((new ElectricArcEntity(level, result.getLocation())).setCosmetic(true).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
+        // level.addFreshEntity((new ElectricArcEntity(level, result.getLocation())).setCosmetic(true).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         if (result.getType() == HitResult.Type.ENTITY) {
             Entity entity = ((EntityHitResult) result).getEntity();
             if (entity.hurt(BlitzDamageSource.causeDamage(this, owner), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
@@ -105,7 +104,7 @@ public class BlitzProjectileEntity extends ElementalProjectileEntity {
             super(ID_BLITZ, source);
         }
 
-        public static DamageSource causeDamage(BlitzProjectileEntity entityProj, Entity entitySource) {
+        public static DamageSource causeDamage(BlitzProjectile entityProj, Entity entitySource) {
 
             return (new IndirectEntityDamageSource(ID_BLITZ, entityProj, entitySource == null ? entityProj : entitySource)).setProjectile();
         }

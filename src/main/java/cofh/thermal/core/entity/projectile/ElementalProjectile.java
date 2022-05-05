@@ -13,19 +13,19 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
-public abstract class ElementalProjectileEntity extends AbstractHurtingProjectile {
+public abstract class ElementalProjectile extends AbstractHurtingProjectile {
 
-    public ElementalProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
+    public ElementalProjectile(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public ElementalProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
+    public ElementalProjectile(EntityType<? extends AbstractHurtingProjectile> type, LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(type, shooter, accelX, accelY, accelZ, world);
     }
 
-    public ElementalProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
+    public ElementalProjectile(EntityType<? extends AbstractHurtingProjectile> type, double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(type, x, y, z, accelX, accelY, accelZ, world);
     }

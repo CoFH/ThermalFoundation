@@ -1,7 +1,7 @@
 package cofh.thermal.core.entity.monster;
 
 import cofh.lib.util.references.CoreReferences;
-import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BlitzProjectile;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.core.BlockPos;
@@ -243,7 +243,7 @@ public class Blitz extends Monster {
                         double time = 1.25F * horzDist;
                         Vec3 horzVel = diff.scale(horzSpeed / horzDist);
 
-                        BlitzProjectileEntity projectile = new BlitzProjectileEntity(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
+                        BlitzProjectile projectile = new BlitzProjectile(pos.x, pos.y, pos.z, 0, -gravity, 0, world);
                         projectile.setDeltaMovement(horzVel.x, gravity * time + diff.y / time, horzVel.z);
                         projectile.setOwner(blitz);
                         world.addFreshEntity(projectile);

@@ -1,54 +1,31 @@
-/*
 package cofh.thermal.core.client.renderer.entity;
 
-import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
-import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
+import cofh.thermal.core.entity.projectile.BlitzProjectile;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
-public class BlitzProjectileRenderer extends EntityRenderer<BlitzProjectileEntity> {
+public class BlitzProjectileRenderer extends ElementalProjectileRenderer<BlitzProjectile> {
 
     public static final ResourceLocation TEXTURE = new ResourceLocation(ID_THERMAL + ":textures/entity/blitz_projectile.png");
-    private static final RenderType RENDER_TYPE = RenderType.entityTranslucent(TEXTURE);
-    private final ElementalProjectileModel<BlitzProjectileEntity> model = new ElementalProjectileModel<>();
 
-    public BlitzProjectileRenderer(EntityRendererManager manager) {
+    public BlitzProjectileRenderer(EntityRendererProvider.Context ctx) {
 
-        super(manager);
+        super(ctx);
+    }
+
+    protected RenderType getRenderType(BlitzProjectile entityIn) {
+
+        return RenderType.entityTranslucent(TEXTURE);
     }
 
     @Override
-    public void render(BlitzProjectileEntity entityIn, float entityYaw, float partialTicks, MatrixStack poseStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
-
-        poseStackIn.pushPose();
-        float f = MathHelper.rotlerp(entityIn.yRotO, entityIn.yRot, partialTicks);
-        float f1 = MathHelper.lerp(partialTicks, entityIn.xRotO, entityIn.xRot);
-        float f2 = (float) entityIn.tickCount + partialTicks;
-        poseStackIn.mulPose(Vector3f.YP.rotationDegrees(MathHelper.sin(f2 * 0.1F) * 180.0F));
-        poseStackIn.mulPose(Vector3f.XP.rotationDegrees(MathHelper.cos(f2 * 0.1F) * 180.0F));
-        poseStackIn.scale(0.5F, 0.5F, 0.5F);
-        this.model.setupAnim(entityIn, 0.0F, 0.0F, 0.0F, f, f1);
-        IVertexBuilder ivertexbuilder = bufferIn.getBuffer(RENDER_TYPE);
-        this.model.renderToBuffer(poseStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
-        poseStackIn.popPose();
-        super.render(entityIn, entityYaw, partialTicks, poseStackIn, bufferIn, packedLightIn);
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(BlitzProjectileEntity entity) {
+    public ResourceLocation getTextureLocation(BlitzProjectile entity) {
 
         return TEXTURE;
     }
 
 }
-*/
+

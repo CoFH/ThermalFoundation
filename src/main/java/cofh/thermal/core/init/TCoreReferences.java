@@ -3,9 +3,9 @@ package cofh.thermal.core.init;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
-import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
-import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
-import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BasalzProjectile;
+import cofh.thermal.core.entity.projectile.BlitzProjectile;
+import cofh.thermal.core.entity.projectile.BlizzProjectile;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.core.inventory.container.ProjectBenchContainer;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
@@ -44,11 +44,11 @@ public class TCoreReferences {
     public static final EntityType<Blizz> BLIZZ_ENTITY = null;
 
     @ObjectHolder (ID_BASALZ_PROJECTILE)
-    public static final EntityType<BasalzProjectileEntity> BASALZ_PROJECTILE_ENTITY = null;
+    public static final EntityType<BasalzProjectile> BASALZ_PROJECTILE_ENTITY = null;
     @ObjectHolder (ID_BLITZ_PROJECTILE)
-    public static final EntityType<BlitzProjectileEntity> BLITZ_PROJECTILE_ENTITY = null;
+    public static final EntityType<BlitzProjectile> BLITZ_PROJECTILE_ENTITY = null;
     @ObjectHolder (ID_BLIZZ_PROJECTILE)
-    public static final EntityType<BlizzProjectileEntity> BLIZZ_PROJECTILE_ENTITY = null;
+    public static final EntityType<BlizzProjectile> BLIZZ_PROJECTILE_ENTITY = null;
     // endregion
 
     // region ITEMS

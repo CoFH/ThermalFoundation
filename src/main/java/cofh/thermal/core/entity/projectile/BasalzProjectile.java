@@ -21,24 +21,24 @@ import static cofh.lib.util.references.CoreReferences.SUNDERED;
 import static cofh.thermal.core.init.TCoreReferences.BASALZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 
-public class BasalzProjectileEntity extends ElementalProjectileEntity {
+public class BasalzProjectile extends ElementalProjectile {
 
     public static float defaultDamage = 6.0F;
     public static int effectAmplifier = 0;
     public static int effectDuration = 100;
     public static float knockbackStrength = 1.2F;
 
-    public BasalzProjectileEntity(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
+    public BasalzProjectile(EntityType<? extends AbstractHurtingProjectile> type, Level world) {
 
         super(type, world);
     }
 
-    public BasalzProjectileEntity(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
+    public BasalzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
         super(BASALZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
     }
 
-    public BasalzProjectileEntity(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
+    public BasalzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
         super(BASALZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
     }
@@ -95,7 +95,7 @@ public class BasalzProjectileEntity extends ElementalProjectileEntity {
             super(ID_BASALZ, source);
         }
 
-        public static DamageSource causeDamage(BasalzProjectileEntity entityProj, Entity entitySource) {
+        public static DamageSource causeDamage(BasalzProjectile entityProj, Entity entitySource) {
 
             return (new IndirectEntityDamageSource(ID_BASALZ, entityProj, entitySource == null ? entityProj : entitySource)).setProjectile();
         }

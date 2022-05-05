@@ -1,44 +1,44 @@
-/*
 package cofh.thermal.core.client.renderer.entity;
 
+import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.client.renderer.entity.model.BasalzModel;
 import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
-import cofh.thermal.core.entity.monster.BasalzEntity;
-import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import cofh.thermal.core.entity.monster.Basalz;
+import cofh.thermal.core.entity.projectile.BasalzProjectile;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Quaternion;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 @OnlyIn (Dist.CLIENT)
-public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<BasalzEntity>> {
+public class BasalzRenderer extends MobRenderer<Basalz, BasalzModel<Basalz>> {
 
     private static final ResourceLocation CALM_TEXTURE = new ResourceLocation(ID_THERMAL, "textures/entity/basalz.png");
     private static final ResourceLocation ANGRY_TEXTURE = new ResourceLocation(ID_THERMAL, "textures/entity/basalz_angry.png");
 
-    private final ElementalProjectileModel<BasalzProjectileEntity> projectileModel = new ElementalProjectileModel<>();
+    protected ElementalProjectileModel<BasalzProjectile> projectileModel;
 
-    public BasalzRenderer(EntityRendererManager renderManagerIn) {
+    public BasalzRenderer(EntityRendererProvider.Context ctx) {
 
-        super(renderManagerIn, new BasalzModel<>(), 0.5F);
+        super(ctx, new BasalzModel<>(ctx.getModelSet().bakeLayer(BasalzModel.BASALZ_LAYER)), 0.5F);
+        this.projectileModel = new ElementalProjectileModel<>(ctx.getModelSet().bakeLayer(ElementalProjectileModel.PROJECTILE_LAYER));
     }
 
     @Override
-    public void render(BasalzEntity entity, float entityYaw, float partialTicks, MatrixStack poseStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+    public void render(Basalz entity, float entityYaw, float partialTicks, PoseStack poseStackIn, MultiBufferSource bufferIn, int packedLightIn) {
 
         if (entity.isAlive()) {
-            float scale = 1.0F - MathHelper.clamp((entity.angerTime + partialTicks) / BasalzEntity.DEPLOY_TIME, 0.0F, 1.0F);
+            float scale = 1.0F - MathHelper.clamp((entity.angerTime + partialTicks) / Basalz.DEPLOY_TIME, 0.0F, 1.0F);
             scale = 1.0F - scale * scale * scale;
             if (!entity.isAngry()) {
                 scale = 1.0F - scale;
@@ -60,10 +60,9 @@ public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<Basalz
                     poseStackIn.mulPose(Vector3f.XP.rotationDegrees(MathHelper.cos(t * 0.1F) * 180.0F));
                     float invScale = 0.5F / scale;
                     poseStackIn.scale(invScale, invScale, invScale);
-                    IVertexBuilder builder = bufferIn.getBuffer(projectileModel.renderType(BasalzProjectileRenderer.TEXTURE));
+                    VertexConsumer builder = bufferIn.getBuffer(projectileModel.renderType(BasalzProjectileRenderer.TEXTURE));
                     this.projectileModel.renderToBuffer(poseStackIn, builder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.8F);
                     poseStackIn.popPose();
-
                     poseStackIn.mulPose(rot);
                 }
                 poseStackIn.popPose();
@@ -73,16 +72,15 @@ public class BasalzRenderer extends MobRenderer<BasalzEntity, BasalzModel<Basalz
     }
 
     @Override
-    protected int getBlockLightLevel(BasalzEntity entityIn, BlockPos partialTicks) {
+    protected int getBlockLightLevel(Basalz entityIn, BlockPos pos) {
 
-        return entityIn.isAngry() ? 12 : super.getBlockLightLevel(entityIn, partialTicks);
+        return entityIn.isAngry() ? 12 : super.getBlockLightLevel(entityIn, pos);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(BasalzEntity entity) {
+    public ResourceLocation getTextureLocation(Basalz entity) {
 
         return entity.isAngry() ? ANGRY_TEXTURE : CALM_TEXTURE;
     }
 
 }
-*/

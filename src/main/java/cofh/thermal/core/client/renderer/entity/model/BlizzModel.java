@@ -1,69 +1,77 @@
-/*
 package cofh.thermal.core.client.renderer.entity.model;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import cofh.lib.util.helpers.MathHelper;
+import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 
 import java.util.Arrays;
 
-import static cofh.lib.util.helpers.MathHelper.bevel;
+public class BlizzModel<T extends LivingEntity> extends HierarchicalModel<T> {
 
-@OnlyIn (Dist.CLIENT)
-public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
+    public static final ModelLayerLocation BLIZZ_LAYER = new ModelLayerLocation(new ResourceLocation("thermal:blizz"), "main");
+    private static final int CUBES = 4;
 
-    private final ModelRenderer head;
-    private final ModelRenderer[] topCubes;
-    private final ModelRenderer[] botCubes;
-    private final ImmutableList<ModelRenderer> partsList;
+    private final ModelPart root;
+    private final ModelPart[] topCubes;
+    private final ModelPart[] botCubes;
+    private final ModelPart head;
 
-    public BlizzModel() {
+    public BlizzModel(ModelPart root) {
 
-        texWidth = 64;
-        texHeight = 32;
+        this.root = root;
+        this.head = root.getChild("head");
+        this.topCubes = new ModelPart[CUBES];
+        this.botCubes = new ModelPart[CUBES];
 
-        head = new ModelRenderer(this);
-        head.setPos(0.0F, 0.0F, 0.0F);
-        head.texOffs(0, 0).addBox(-4.5F, -4.0F, -4.0F, 9.0F, 8.0F, 8.0F, 0.0F, false);
-        head.texOffs(0, 16).addBox(-4.5F, -4.0F, -6.0F, 9.0F, 4.0F, 2.0F, 0.0F, false);
-
-        this.topCubes = new ModelRenderer[4];
-        for (int i = 0; i < topCubes.length; ++i) {
-            topCubes[i] = new ModelRenderer(this);
-            topCubes[i].setPos(0.0F, 0.0F, 0.0F);
-            topCubes[i].texOffs(34, 8).addBox(-2.0F, 8.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.0F, true);
-        }
-
-        this.botCubes = new ModelRenderer[topCubes.length];
-        for (int i = 0; i < botCubes.length; ++i) {
-            botCubes[i] = new ModelRenderer(this);
-            botCubes[i].setPos(0.0F, 0.0F, 0.0F);
-            botCubes[i].texOffs(34, 2).addBox(-2.0F, 17.0F, -2.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
-        }
-
-        Builder<ModelRenderer> builder = ImmutableList.builder();
-        builder.add(this.head);
-        builder.addAll(Arrays.asList(this.topCubes));
-        builder.addAll(Arrays.asList(this.botCubes));
-        this.partsList = builder.build();
+        Arrays.setAll(this.topCubes, (num) -> root.getChild("cube_top_" + num));
+        Arrays.setAll(this.botCubes, (num) -> root.getChild("cube_bot_" + num));
     }
 
-    public Iterable<ModelRenderer> parts() {
+    public static LayerDefinition createMesh() {
 
-        return this.partsList;
+        MeshDefinition meshdefinition = new MeshDefinition();
+        PartDefinition partdefinition = meshdefinition.getRoot();
+
+        partdefinition.addOrReplaceChild("head",
+                CubeListBuilder.create()
+                        .texOffs(0, 0).addBox(-4.5F, -4.0F, -4.0F, 9.0F, 8.0F, 8.0F)
+                        .texOffs(0, 16).addBox(-4.5F, -4.0F, -6.0F, 9.0F, 4.0F, 2.0F),
+                PartPose.ZERO);
+
+        CubeListBuilder topCube = CubeListBuilder.create()
+                .texOffs(34, 8)
+                .addBox(-2.0F, 8.0F, -2.0F, 4.0F, 4.0F, 4.0F);
+        CubeListBuilder botcube = CubeListBuilder.create()
+                .texOffs(34, 2)
+                .addBox(-2.0F, 17.0F, -2.0F, 3.0F, 3.0F, 3.0F);
+
+        for (int i = 0; i < CUBES; ++i) {
+            partdefinition.addOrReplaceChild("cube_top_" + i, topCube, PartPose.ZERO);
+            partdefinition.addOrReplaceChild("cube_bot_" + i, botcube, PartPose.ZERO);
+        }
+        return LayerDefinition.create(meshdefinition, 64, 32);
     }
 
+    @Override
+    public ModelPart root() {
+
+        return this.root;
+    }
+
+    @Override
     public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
-
-        float x = bevel(ageInTicks * 0.05F);
-        float z = bevel(ageInTicks * 0.05F + 1.0F);
-        for (int i = 0; i < topCubes.length; ++i) {
+        float x = MathHelper.bevel(ageInTicks * 0.05F);
+        float z = MathHelper.bevel(ageInTicks * 0.05F + 1.0F);
+        for (int i = 0; i < CUBES; ++i) {
             topCubes[i].x = x * -4.0F;
             topCubes[i].z = z * 4.0F;
             topCubes[i].y = MathHelper.sin(ageInTicks * 0.2F + i * 4);
@@ -74,19 +82,8 @@ public class BlizzModel<T extends LivingEntity> extends SegmentedModel<T> {
             x = z;
             z = temp;
         }
-
         this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
     }
-}
-    public static float bevel(float f) {
-
-        int floor = MathHelper.floor(f);
-        if (f - floor < 0.66667F && (floor & 1) == 0) {
-            return -MathHelper.cos((float) Math.PI * 1.5F * f);
-        }
-        return ((floor >> 1) & 1) == 0 ? 1 : -1;
-    }
 
 }
-*/

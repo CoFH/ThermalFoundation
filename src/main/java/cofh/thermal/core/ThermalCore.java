@@ -14,6 +14,11 @@ import cofh.thermal.core.client.gui.device.*;
 import cofh.thermal.core.client.gui.storage.EnergyCellScreen;
 import cofh.thermal.core.client.gui.storage.FluidCellScreen;
 import cofh.thermal.core.client.gui.storage.SatchelScreen;
+import cofh.thermal.core.client.renderer.entity.*;
+import cofh.thermal.core.client.renderer.entity.model.BasalzModel;
+import cofh.thermal.core.client.renderer.entity.model.BlitzModel;
+import cofh.thermal.core.client.renderer.entity.model.BlizzModel;
+import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
@@ -25,8 +30,8 @@ import cofh.thermal.lib.common.ThermalProxyClient;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.core.Registry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
@@ -34,7 +39,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -44,6 +53,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
@@ -71,6 +81,10 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
     public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
 
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, ID_THERMAL);
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, ID_THERMAL);
+    public static final DeferredRegister<PlacementModifierType<?>> PLACEMENT_MODIFIERS = DeferredRegister.create(Registry.PLACEMENT_MODIFIER_REGISTRY, ID_THERMAL);
+
     static {
         TCoreBlocks.register();
         TCoreItems.register();
@@ -91,7 +105,9 @@ public class ThermalCore {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::entitySetup);
+        modEventBus.addListener(this::entityAttributeSetup);
+        modEventBus.addListener(this::entityLayerSetup);
+        modEventBus.addListener(this::entityRendererSetup);
         modEventBus.addListener(this::capSetup);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
@@ -106,6 +122,10 @@ public class ThermalCore {
         RECIPE_SERIALIZERS.register(modEventBus);
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
+
+        FEATURES.register(modEventBus);
+        PLACED_FEATURES.register(modEventBus);
+        PLACEMENT_MODIFIERS.register(modEventBus);
 
         ThermalConfig.register();
 
@@ -127,11 +147,40 @@ public class ThermalCore {
     }
 
     // region INITIALIZATION
-    private void entitySetup(final EntityAttributeCreationEvent event) {
+    private void entityAttributeSetup(final EntityAttributeCreationEvent event) {
 
         event.put(BASALZ_ENTITY, Basalz.registerAttributes().build());
         event.put(BLITZ_ENTITY, Blitz.registerAttributes().build());
         event.put(BLIZZ_ENTITY, Blizz.registerAttributes().build());
+    }
+
+    private void entityLayerSetup(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+
+        event.registerLayerDefinition(BasalzModel.BASALZ_LAYER, BasalzModel::createMesh);
+        event.registerLayerDefinition(BlitzModel.BLITZ_LAYER, BlitzModel::createMesh);
+        event.registerLayerDefinition(BlizzModel.BLIZZ_LAYER, BlizzModel::createMesh);
+
+        event.registerLayerDefinition(ElementalProjectileModel.PROJECTILE_LAYER, ElementalProjectileModel::createMesh);
+    }
+
+    private void entityRendererSetup(final EntityRenderersEvent.RegisterRenderers event) {
+
+        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtils.GRENADES) {
+            event.registerEntityRenderer(grenade.get(), ThrownItemRenderer::new);
+        }
+        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
+            event.registerEntityRenderer(tnt.get(), TNTRendererCoFH::new);
+        }
+        for (RegistryObject<EntityType<? extends AbstractTNTMinecart>> cart : DetonateUtils.CARTS) {
+            event.registerEntityRenderer(cart.get(), TNTMinecartRendererCoFH::new);
+        }
+        event.registerEntityRenderer(BASALZ_ENTITY, BasalzRenderer::new);
+        event.registerEntityRenderer(BLITZ_ENTITY, BlitzRenderer::new);
+        event.registerEntityRenderer(BLIZZ_ENTITY, BlizzRenderer::new);
+
+        event.registerEntityRenderer(BASALZ_PROJECTILE_ENTITY, BasalzProjectileRenderer::new);
+        event.registerEntityRenderer(BLITZ_PROJECTILE_ENTITY, BlitzProjectileRenderer::new);
+        event.registerEntityRenderer(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
     }
 
     private void capSetup(RegisterCapabilitiesEvent event) {
@@ -155,8 +204,6 @@ public class ThermalCore {
 
         registerGuiFactories();
         registerRenderLayers();
-        registerEntityRenderingHandlers();
-        registerTileEntityRenderers();
 
         // ThermalItemGroups.setup();
     }
@@ -213,35 +260,6 @@ public class ThermalCore {
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_COLLECTOR), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_POTION_DIFFUSER), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_NULLIFIER), cutout);
-    }
-
-    private void registerEntityRenderingHandlers() {
-
-        // TODO Covers, All entity Rendering needs to be re-evaluated.
-
-        //        EntityRenderers.registerEntityRenderingHandler(BASALZ_ENTITY, BasalzRenderer::new);
-        //        EntityRenderers.registerEntityRenderingHandler(BLITZ_ENTITY, BlitzRenderer::new);
-        //        EntityRenderers.registerEntityRenderingHandler(BLIZZ_ENTITY, BlizzRenderer::new);
-        //
-        //        EntityRenderers.registerEntityRenderingHandler(BASALZ_PROJECTILE_ENTITY, BasalzProjectileRenderer::new);
-        //        EntityRenderers.registerEntityRenderingHandler(BLITZ_PROJECTILE_ENTITY, BlitzProjectileRenderer::new);
-        //        EntityRenderers.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
-        //
-        //        // EXPLOSIVES
-        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtils.GRENADES) {
-            EntityRenderers.register(grenade.get(), ThrownItemRenderer::new);
-        }
-        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
-            EntityRenderers.register(tnt.get(), TNTRendererCoFH::new);
-        }
-        for (RegistryObject<EntityType<? extends AbstractTNTMinecart>> cart : DetonateUtils.CARTS) {
-            EntityRenderers.register(cart.get(), TNTMinecartRendererCoFH::new);
-        }
-    }
-
-    private void registerTileEntityRenderers() {
-
-        // ClientRegistry.bindTileEntityRenderer(ITEM_CELL_TILE, ItemCellRenderer::new);
     }
     // endregion
 }

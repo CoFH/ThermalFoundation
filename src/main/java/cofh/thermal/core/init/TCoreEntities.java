@@ -4,9 +4,9 @@ import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
-import cofh.thermal.core.entity.projectile.BasalzProjectileEntity;
-import cofh.thermal.core.entity.projectile.BlitzProjectileEntity;
-import cofh.thermal.core.entity.projectile.BlizzProjectileEntity;
+import cofh.thermal.core.entity.projectile.BasalzProjectile;
+import cofh.thermal.core.entity.projectile.BlitzProjectile;
+import cofh.thermal.core.entity.projectile.BlizzProjectile;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -31,9 +31,9 @@ public class TCoreEntities {
         ENTITIES.register(ID_BLIZZ, () -> EntityType.Builder.of(Blizz::new, MobCategory.MONSTER).sized(0.6F, 1.8F).build(ID_BLIZZ));
         ENTITIES.register(ID_BLITZ, () -> EntityType.Builder.of(Blitz::new, MobCategory.MONSTER).sized(0.6F, 1.8F).build(ID_BLITZ));
 
-        ENTITIES.register(ID_BASALZ_PROJECTILE, () -> EntityType.Builder.<BasalzProjectileEntity>of(BasalzProjectileEntity::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BASALZ_PROJECTILE));
-        ENTITIES.register(ID_BLIZZ_PROJECTILE, () -> EntityType.Builder.<BlizzProjectileEntity>of(BlizzProjectileEntity::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BLIZZ_PROJECTILE));
-        ENTITIES.register(ID_BLITZ_PROJECTILE, () -> EntityType.Builder.<BlitzProjectileEntity>of(BlitzProjectileEntity::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BLITZ_PROJECTILE));
+        ENTITIES.register(ID_BASALZ_PROJECTILE, () -> EntityType.Builder.<BasalzProjectile>of(BasalzProjectile::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BASALZ_PROJECTILE));
+        ENTITIES.register(ID_BLIZZ_PROJECTILE, () -> EntityType.Builder.<BlizzProjectile>of(BlizzProjectile::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BLIZZ_PROJECTILE));
+        ENTITIES.register(ID_BLITZ_PROJECTILE, () -> EntityType.Builder.<BlitzProjectile>of(BlitzProjectile::new, MobCategory.MISC).sized(0.3125F, 0.3125F).build(ID_BLITZ_PROJECTILE));
 
         registerGrenade(ID_EXPLOSIVE_GRENADE, DetonateUtils::explosive, getFlag(FLAG_BASIC_EXPLOSIVES));
 
