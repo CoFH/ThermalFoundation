@@ -6,7 +6,7 @@ import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperItem;
 import cofh.lib.util.helpers.AugmentableHelper;
-import cofh.thermal.core.tileentity.TinkerBenchTile;
+import cofh.thermal.core.block.entity.TinkerBenchTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;

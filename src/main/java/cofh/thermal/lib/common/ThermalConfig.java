@@ -1,8 +1,8 @@
 package cofh.thermal.lib.common;
 
 import cofh.thermal.core.item.SatchelItem;
-import cofh.thermal.core.tileentity.device.DeviceFisherTile;
-import cofh.thermal.core.tileentity.device.DeviceTreeExtractorTile;
+import cofh.thermal.core.block.entity.device.DeviceFisherTile;
+import cofh.thermal.core.block.entity.device.DeviceTreeExtractorTile;
 import cofh.thermal.core.util.managers.dynamo.*;
 import cofh.thermal.core.util.managers.machine.*;
 import cofh.thermal.lib.util.ThermalEnergyHelper;

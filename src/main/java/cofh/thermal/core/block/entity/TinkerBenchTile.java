@@ -1,4 +1,4 @@
-package cofh.thermal.core.tileentity;
+package cofh.thermal.core.block.entity;
 
 import cofh.core.fluid.PotionFluid;
 import cofh.core.util.filter.EmptyFilter;

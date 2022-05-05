@@ -2,7 +2,7 @@ package cofh.thermal.core.inventory.container.storage;
 
 import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
-import cofh.thermal.core.tileentity.storage.FluidCellTile;
+import cofh.thermal.core.block.entity.storage.FluidCellTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

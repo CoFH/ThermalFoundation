@@ -1,4 +1,4 @@
-package cofh.thermal.core.tileentity;
+package cofh.thermal.core.block.entity;
 
 import cofh.thermal.core.inventory.container.ProjectBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;

@@ -7,7 +7,7 @@
 //import cofh.core.network.packet.server.TileConfigPacket;
 //import cofh.lib.util.helpers.StringHelper;
 //import cofh.thermal.core.inventory.container.storage.ItemCellContainer;
-//import cofh.thermal.core.tileentity.storage.ItemCellTile;
+//import cofh.thermal.core.block.entity.storage.ItemCellTile;
 //import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
 //import com.mojang.blaze3d.matrix.MatrixStack;
 //import net.minecraft.entity.player.PlayerInventory;

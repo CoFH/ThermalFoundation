@@ -1,4 +1,4 @@
-package cofh.thermal.core.tileentity;
+package cofh.thermal.core.block.entity;
 
 import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.energy.EnergyStorageCoFH;

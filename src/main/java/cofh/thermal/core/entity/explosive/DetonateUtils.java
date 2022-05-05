@@ -88,7 +88,7 @@ public class DetonateUtils {
             Utils.spawnLightningBolt(level, blockPos, owner);
         }
         AreaUtils.shockEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
-        level.addFreshEntity(new ElectricFieldEntity(level, pos, radius, 100).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
+        level.addFreshEntity(new ElectricField(level, pos, radius, 100).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
     }
 
     public static void ender(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
@@ -203,7 +203,7 @@ public class DetonateUtils {
 
     public static void gravity(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        level.addFreshEntity((new BlackHoleEntity(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
+        level.addFreshEntity((new BlackHole(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         //TODO: particle
     }
     // endregion

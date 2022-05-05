@@ -1,4 +1,4 @@
-package cofh.thermal.core.tileentity.storage;
+package cofh.thermal.core.block.entity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;

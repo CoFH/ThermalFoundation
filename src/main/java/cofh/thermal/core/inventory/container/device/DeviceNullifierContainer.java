@@ -4,7 +4,7 @@ import cofh.core.inventory.container.TileContainer;
 import cofh.core.network.packet.server.ContainerPacket;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
-import cofh.thermal.core.tileentity.device.DeviceNullifierTile;
+import cofh.thermal.core.block.entity.device.DeviceNullifierTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

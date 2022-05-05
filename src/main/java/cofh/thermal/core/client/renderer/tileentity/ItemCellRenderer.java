@@ -2,7 +2,7 @@
 //
 //import cofh.core.event.CoreClientEvents;
 //import cofh.core.util.helpers.RenderHelper;
-//import cofh.thermal.core.tileentity.storage.ItemCellTile;
+//import cofh.thermal.core.block.entity.storage.ItemCellTile;
 //import com.mojang.blaze3d.matrix.MatrixStack;
 //import net.minecraft.client.renderer.IRenderTypeBuffer;
 //import net.minecraft.client.renderer.model.ItemCameraTransforms;

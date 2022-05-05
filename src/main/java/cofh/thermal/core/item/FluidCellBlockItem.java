@@ -5,7 +5,7 @@ import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.fluid.IFluidContainerItem;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.StringHelper;
-import cofh.thermal.core.tileentity.storage.FluidCellTile;
+import cofh.thermal.core.block.entity.storage.FluidCellTile;
 import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;

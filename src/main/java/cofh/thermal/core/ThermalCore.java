@@ -96,7 +96,6 @@ public class ThermalCore {
 
         TCoreRecipeManagers.register();
         TCoreRecipeSerializers.register();
-        TCoreRecipeTypes.register();
     }
 
     public ThermalCore() {

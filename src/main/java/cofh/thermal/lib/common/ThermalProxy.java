@@ -1,6 +1,6 @@
 package cofh.thermal.lib.common;
 
-import cofh.thermal.core.tileentity.device.DevicePotionDiffuserTile;
+import cofh.thermal.core.block.entity.device.DevicePotionDiffuserTile;
 
 public class ThermalProxy {
 

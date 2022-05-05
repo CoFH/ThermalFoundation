@@ -2,7 +2,7 @@ package cofh.thermal.lib.common;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.util.helpers.MathHelper;
-import cofh.thermal.core.tileentity.device.DevicePotionDiffuserTile;
+import cofh.thermal.core.block.entity.device.DevicePotionDiffuserTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleOptions;

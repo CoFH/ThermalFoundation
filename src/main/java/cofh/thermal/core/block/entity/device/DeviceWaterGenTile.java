@@ -1,4 +1,4 @@
-package cofh.thermal.core.tileentity.device;
+package cofh.thermal.core.block.entity.device;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.block.entity.ICoFHTickableTile;

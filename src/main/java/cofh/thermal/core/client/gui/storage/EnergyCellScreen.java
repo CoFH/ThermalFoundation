@@ -6,7 +6,7 @@ import cofh.core.client.gui.element.ElementTexture;
 import cofh.core.network.packet.server.TileConfigPacket;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
-import cofh.thermal.core.tileentity.storage.EnergyCellTile;
+import cofh.thermal.core.block.entity.storage.EnergyCellTile;
 import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
