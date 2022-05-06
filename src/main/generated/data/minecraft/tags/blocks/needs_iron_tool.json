@@ -6,6 +6,11 @@
     "thermal:nickel_ore",
     "thermal:ruby_ore",
     "thermal:sapphire_ore",
+    "thermal:deepslate_lead_ore",
+    "thermal:deepslate_silver_ore",
+    "thermal:deepslate_nickel_ore",
+    "thermal:deepslate_ruby_ore",
+    "thermal:deepslate_sapphire_ore",
     "thermal:enderium_block"
   ]
 }

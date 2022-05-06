@@ -24,14 +24,11 @@ import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
 import cofh.thermal.core.init.*;
-import cofh.thermal.lib.common.ThermalConfig;
-import cofh.thermal.lib.common.ThermalProxy;
-import cofh.thermal.lib.common.ThermalProxyClient;
+import cofh.thermal.lib.common.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.core.Registry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
@@ -39,13 +36,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -53,7 +48,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
@@ -81,10 +75,6 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
     public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
 
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, ID_THERMAL);
-    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, ID_THERMAL);
-    public static final DeferredRegister<PlacementModifierType<?>> PLACEMENT_MODIFIERS = DeferredRegister.create(Registry.PLACEMENT_MODIFIER_REGISTRY, ID_THERMAL);
-
     static {
         TCoreBlocks.register();
         TCoreItems.register();
@@ -104,6 +94,7 @@ public class ThermalCore {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        modEventBus.addListener(this::registerLootData);
         modEventBus.addListener(this::entityAttributeSetup);
         modEventBus.addListener(this::entityLayerSetup);
         modEventBus.addListener(this::entityRendererSetup);
@@ -122,11 +113,8 @@ public class ThermalCore {
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
 
-        FEATURES.register(modEventBus);
-        PLACED_FEATURES.register(modEventBus);
-        PLACEMENT_MODIFIERS.register(modEventBus);
-
         ThermalConfig.register();
+        ThermalFeatures.register(modEventBus);
 
         CoreEnchantments.registerHoldingEnchantment();
     }
@@ -146,6 +134,11 @@ public class ThermalCore {
     }
 
     // region INITIALIZATION
+    private void registerLootData(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+
+        ThermalFlags.manager().setup();
+    }
+
     private void entityAttributeSetup(final EntityAttributeCreationEvent event) {
 
         event.put(BASALZ_ENTITY, Basalz.registerAttributes().build());

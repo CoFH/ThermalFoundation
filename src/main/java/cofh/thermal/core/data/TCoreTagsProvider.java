@@ -11,6 +11,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.*;
+import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
@@ -58,6 +59,17 @@ public class TCoreTagsProvider {
             tag(CoFHTags.Blocks.ORES_SULFUR).add(BLOCKS.get(ID_SULFUR_ORE));
             tag(CoFHTags.Blocks.ORES_TIN).add(BLOCKS.get(ID_TIN_ORE));
 
+            tag(CoFHTags.Blocks.ORES_APATITE).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
+            tag(CoFHTags.Blocks.ORES_CINNABAR).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
+            tag(CoFHTags.Blocks.ORES_LEAD).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
+            tag(CoFHTags.Blocks.ORES_NICKEL).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
+            tag(CoFHTags.Blocks.ORES_NITER).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
+            tag(CoFHTags.Blocks.ORES_RUBY).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
+            tag(CoFHTags.Blocks.ORES_SAPPHIRE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
+            tag(CoFHTags.Blocks.ORES_SILVER).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
+            tag(CoFHTags.Blocks.ORES_SULFUR).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
+            tag(CoFHTags.Blocks.ORES_TIN).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
+
             tag(Tags.Blocks.ORES).addTags(
                     CoFHTags.Blocks.ORES_APATITE,
                     CoFHTags.Blocks.ORES_CINNABAR,
@@ -82,6 +94,17 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RUBY_ORE));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SAPPHIRE_ORE));
 
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
+
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_APATITE_ORE));
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_CINNABAR_ORE));
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_NITER_ORE));
@@ -94,6 +117,19 @@ public class TCoreTagsProvider {
 
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_RUBY_ORE));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SAPPHIRE_ORE));
+
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
+
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
+
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
 
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_OIL_SAND));
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_OIL_RED_SAND));

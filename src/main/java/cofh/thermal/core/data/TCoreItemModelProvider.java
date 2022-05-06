@@ -10,6 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
+import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreItemModelProvider extends ItemModelProviderCoFH {
@@ -263,6 +264,19 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         blockItem(reg.getSup(ID_RUBY_ORE));
         blockItem(reg.getSup(ID_SAPPHIRE_ORE));
+
+        blockItem(reg.getSup(deepslate(ID_APATITE_ORE)));
+        blockItem(reg.getSup(deepslate(ID_CINNABAR_ORE)));
+        blockItem(reg.getSup(deepslate(ID_NITER_ORE)));
+        blockItem(reg.getSup(deepslate(ID_SULFUR_ORE)));
+
+        blockItem(reg.getSup(deepslate(ID_LEAD_ORE)));
+        blockItem(reg.getSup(deepslate(ID_NICKEL_ORE)));
+        blockItem(reg.getSup(deepslate(ID_SILVER_ORE)));
+        blockItem(reg.getSup(deepslate(ID_TIN_ORE)));
+
+        blockItem(reg.getSup(deepslate(ID_RUBY_ORE)));
+        blockItem(reg.getSup(deepslate(ID_SAPPHIRE_ORE)));
 
         blockItem(reg.getSup(ID_OIL_SAND));
         blockItem(reg.getSup(ID_OIL_RED_SAND));

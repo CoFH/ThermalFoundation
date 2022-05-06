@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thermal:ruby_ore"
+    "thermal:ruby_ore",
+    "thermal:deepslate_ruby_ore"
   ]
 }

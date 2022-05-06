@@ -8,6 +8,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
@@ -48,17 +49,27 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
     private void registerResources(DeferredRegisterCoFH<Block> reg) {
 
         simpleBlock(reg.getSup(ID_APATITE_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_APATITE_ORE)));
         simpleBlock(reg.getSup(ID_CINNABAR_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_CINNABAR_ORE)));
         simpleBlock(reg.getSup(ID_NITER_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_NITER_ORE)));
         simpleBlock(reg.getSup(ID_SULFUR_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_SULFUR_ORE)));
 
         simpleBlock(reg.getSup(ID_LEAD_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_LEAD_ORE)));
         simpleBlock(reg.getSup(ID_NICKEL_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_NICKEL_ORE)));
         simpleBlock(reg.getSup(ID_SILVER_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_SILVER_ORE)));
         simpleBlock(reg.getSup(ID_TIN_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_TIN_ORE)));
 
         simpleBlock(reg.getSup(ID_RUBY_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_RUBY_ORE)));
         simpleBlock(reg.getSup(ID_SAPPHIRE_ORE));
+        simpleBlock(reg.getSup(deepslate(ID_SAPPHIRE_ORE)));
 
         simpleBlock(reg.getSup(ID_OIL_SAND));
         simpleBlock(reg.getSup(ID_OIL_RED_SAND));

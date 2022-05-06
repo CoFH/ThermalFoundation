@@ -6,13 +6,13 @@ import cofh.core.block.TileBlockCoFH;
 import cofh.core.item.BlockItemCoFH;
 import cofh.lib.block.impl.*;
 import cofh.thermal.core.block.*;
-import cofh.thermal.core.item.EnergyCellBlockItem;
-import cofh.thermal.core.item.FluidCellBlockItem;
 import cofh.thermal.core.block.entity.ChargeBenchTile;
 import cofh.thermal.core.block.entity.TinkerBenchTile;
 import cofh.thermal.core.block.entity.device.*;
 import cofh.thermal.core.block.entity.storage.EnergyCellTile;
 import cofh.thermal.core.block.entity.storage.FluidCellTile;
+import cofh.thermal.core.item.EnergyCellBlockItem;
+import cofh.thermal.core.item.FluidCellBlockItem;
 import cofh.thermal.lib.block.TileBlockCell;
 import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.core.BlockPos;
@@ -128,18 +128,29 @@ public class TCoreBlocks {
 
     private static void registerResources() {
 
-        registerBlock(ID_APATITE_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_APATITE));
-        registerBlock(ID_CINNABAR_ORE, () -> new OreBlockCoFH().xp(1, 3), getFlag(FLAG_RESOURCE_CINNABAR));
-        registerBlock(ID_NITER_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
-        registerBlock(ID_SULFUR_ORE, () -> new OreBlockCoFH().xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
+        registerBlock(ID_APATITE_ORE, () -> OreBlockCoFH.createStoneOre().xp(0, 2), getFlag(FLAG_RESOURCE_APATITE));
+        registerBlock(deepslate(ID_APATITE_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(0, 2), getFlag(FLAG_RESOURCE_APATITE));
+        registerBlock(ID_CINNABAR_ORE, () -> OreBlockCoFH.createStoneOre().xp(1, 3), getFlag(FLAG_RESOURCE_CINNABAR));
+        registerBlock(deepslate(ID_CINNABAR_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(1, 3), getFlag(FLAG_RESOURCE_CINNABAR));
+        registerBlock(ID_NITER_ORE, () -> OreBlockCoFH.createStoneOre().xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
+        registerBlock(deepslate(ID_NITER_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(0, 2), getFlag(FLAG_RESOURCE_NITER));
+        registerBlock(ID_SULFUR_ORE, () -> OreBlockCoFH.createStoneOre().xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
+        registerBlock(deepslate(ID_SULFUR_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(0, 2), getFlag(FLAG_RESOURCE_SULFUR));
 
-        registerBlock(ID_TIN_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_TIN));
-        registerBlock(ID_LEAD_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_LEAD));
-        registerBlock(ID_SILVER_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_SILVER));
-        registerBlock(ID_NICKEL_ORE, OreBlockCoFH::new, getFlag(FLAG_RESOURCE_NICKEL));
 
-        registerBlock(ID_RUBY_ORE, () -> new OreBlockCoFH().xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
-        registerBlock(ID_SAPPHIRE_ORE, () -> new OreBlockCoFH().xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
+        registerBlock(ID_TIN_ORE, OreBlockCoFH::createStoneOre, getFlag(FLAG_RESOURCE_TIN));
+        registerBlock(deepslate(ID_TIN_ORE), OreBlockCoFH::createDeepslateOre, getFlag(FLAG_RESOURCE_TIN));
+        registerBlock(ID_LEAD_ORE, OreBlockCoFH::createStoneOre, getFlag(FLAG_RESOURCE_LEAD));
+        registerBlock(deepslate(ID_LEAD_ORE), OreBlockCoFH::createDeepslateOre, getFlag(FLAG_RESOURCE_LEAD));
+        registerBlock(ID_SILVER_ORE, OreBlockCoFH::createStoneOre, getFlag(FLAG_RESOURCE_SILVER));
+        registerBlock(deepslate(ID_SILVER_ORE), OreBlockCoFH::createDeepslateOre, getFlag(FLAG_RESOURCE_SILVER));
+        registerBlock(ID_NICKEL_ORE, OreBlockCoFH::createStoneOre, getFlag(FLAG_RESOURCE_NICKEL));
+        registerBlock(deepslate(ID_NICKEL_ORE), OreBlockCoFH::createDeepslateOre, getFlag(FLAG_RESOURCE_NICKEL));
+
+        registerBlock(ID_RUBY_ORE, () -> OreBlockCoFH.createStoneOre().xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
+        registerBlock(deepslate(ID_RUBY_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(3, 7), getFlag(FLAG_RESOURCE_RUBY));
+        registerBlock(ID_SAPPHIRE_ORE, () -> OreBlockCoFH.createStoneOre().xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
+        registerBlock(deepslate(ID_SAPPHIRE_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(3, 7), getFlag(FLAG_RESOURCE_SAPPHIRE));
 
         registerBlockAndItem(ID_OIL_SAND, () -> new SandBlock(14406560, copy(Blocks.SAND)),
                 () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_SAND), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(2400).setShowInGroups(getFlag(FLAG_RESOURCE_OIL)));

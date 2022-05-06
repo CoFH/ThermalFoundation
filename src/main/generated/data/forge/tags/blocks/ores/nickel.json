@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thermal:nickel_ore"
+    "thermal:nickel_ore",
+    "thermal:deepslate_nickel_ore"
   ]
 }

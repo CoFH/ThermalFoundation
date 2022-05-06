@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "thermal:block/deepslate_niter_ore"
+    }
+  }
+}

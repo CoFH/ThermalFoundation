@@ -26,6 +26,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class PhytoGroItem extends ItemCoFH {
 
@@ -72,7 +73,7 @@ public class PhytoGroItem extends ItemCoFH {
         }
         boolean used;
         used = growPlant(world, pos, state, strength);
-        used |= growSeagrass(world, pos, context.getClickedFace());
+        used |= growWaterPlant(world, pos, context.getClickedFace());
         if (Utils.isServerWorld(world) && used && world.random.nextInt(strength) == 0) {
             stack.shrink(1);
         }
@@ -108,39 +109,35 @@ public class PhytoGroItem extends ItemCoFH {
         return false;
     }
 
-    public static boolean growSeagrass(Level worldIn, BlockPos pos, @Nullable Direction side) {
+    public static boolean growWaterPlant(Level worldIn, BlockPos pos, @Nullable Direction side) {
 
         if (worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getFluidState(pos).getAmount() == 8) {
             if (!(worldIn instanceof ServerLevel)) {
                 return true;
             } else {
-                label79:
+                Random random = worldIn.getRandom();
+                label78:
                 for (int i = 0; i < 128; ++i) {
                     BlockPos blockpos = pos;
                     BlockState blockstate = Blocks.SEAGRASS.defaultBlockState();
-
                     for (int j = 0; j < i / 16; ++j) {
                         blockpos = blockpos.offset(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
                         if (worldIn.getBlockState(blockpos).isCollisionShapeFullBlock(worldIn, blockpos)) {
-                            continue label79;
+                            continue label78;
                         }
                     }
-                    Holder<Biome> biomeHolder = worldIn.getBiome(blockpos);
-                    // TODO Lemming, fix this.
-                    if (biomeHolder.is(Biomes.WARM_OCEAN.location()) /*|| biomeHolder.is(Biomes.DEEP_WARM_OCEAN.location())*/) {
+                    Holder<Biome> holder = worldIn.getBiome(blockpos);
+                    if (holder.is(Biomes.WARM_OCEAN)) {
                         if (i == 0 && side != null && side.getAxis().isHorizontal()) {
-                            blockstate = Registry.BLOCK.getTag(BlockTags.WALL_CORALS)
-                                    .flatMap(e -> e.getRandomElement(worldIn.random))
-                                    .map(e -> e.value().defaultBlockState().setValue(BaseCoralWallFanBlock.FACING, side))
-                                    .orElse(blockstate);
+                            blockstate = Registry.BLOCK.getTag(BlockTags.WALL_CORALS).flatMap((p_204098_) -> p_204098_.getRandomElement(worldIn.random)).map((p_204100_) -> p_204100_.value().defaultBlockState()).orElse(blockstate);
+                            if (blockstate.hasProperty(BaseCoralWallFanBlock.FACING)) {
+                                blockstate = blockstate.setValue(BaseCoralWallFanBlock.FACING, side);
+                            }
                         } else if (random.nextInt(4) == 0) {
-                            blockstate = Registry.BLOCK.getTag(BlockTags.UNDERWATER_BONEMEALS)
-                                    .flatMap(e -> e.getRandomElement(worldIn.random))
-                                    .map(e -> e.value().defaultBlockState())
-                                    .orElse(blockstate);
+                            blockstate = Registry.BLOCK.getTag(BlockTags.UNDERWATER_BONEMEALS).flatMap((p_204091_) -> p_204091_.getRandomElement(worldIn.random)).map((p_204095_) -> p_204095_.value().defaultBlockState()).orElse(blockstate);
                         }
                     }
-                    if (blockstate.is(BlockTags.WALL_CORALS)) {
+                    if (blockstate.is(BlockTags.WALL_CORALS, (p_204093_) -> p_204093_.hasProperty(BaseCoralWallFanBlock.FACING))) {
                         for (int k = 0; !blockstate.canSurvive(worldIn, blockpos) && k < 4; ++k) {
                             blockstate = blockstate.setValue(BaseCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
                         }

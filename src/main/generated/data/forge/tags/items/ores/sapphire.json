@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "thermal:sapphire_ore"
+    "thermal:sapphire_ore",
+    "thermal:deepslate_sapphire_ore"
   ]
 }

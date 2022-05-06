@@ -1,5 +1,11 @@
 package cofh.thermal.core.init;
 
+import cofh.thermal.core.block.entity.ChargeBenchTile;
+import cofh.thermal.core.block.entity.ProjectBenchTile;
+import cofh.thermal.core.block.entity.TinkerBenchTile;
+import cofh.thermal.core.block.entity.device.*;
+import cofh.thermal.core.block.entity.storage.EnergyCellTile;
+import cofh.thermal.core.block.entity.storage.FluidCellTile;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
@@ -13,12 +19,6 @@ import cofh.thermal.core.inventory.container.device.*;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
-import cofh.thermal.core.block.entity.ChargeBenchTile;
-import cofh.thermal.core.block.entity.ProjectBenchTile;
-import cofh.thermal.core.block.entity.TinkerBenchTile;
-import cofh.thermal.core.block.entity.device.*;
-import cofh.thermal.core.block.entity.storage.EnergyCellTile;
-import cofh.thermal.core.block.entity.storage.FluidCellTile;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.Block;
