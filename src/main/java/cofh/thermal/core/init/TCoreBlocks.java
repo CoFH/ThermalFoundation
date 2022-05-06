@@ -11,10 +11,10 @@ import cofh.thermal.core.block.entity.TinkerBenchTile;
 import cofh.thermal.core.block.entity.device.*;
 import cofh.thermal.core.block.entity.storage.EnergyCellTile;
 import cofh.thermal.core.block.entity.storage.FluidCellTile;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.EnergyCellBlockItem;
 import cofh.thermal.core.item.FluidCellBlockItem;
 import cofh.thermal.lib.block.TileBlockCell;
-import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.damagesource.DamageSource;
@@ -280,7 +280,7 @@ public class TCoreBlocks {
 
     private static void registerTileBlocks() {
 
-        IntSupplier deviceAugs = () -> ThermalConfig.deviceAugments;
+        IntSupplier deviceAugs = () -> ThermalCoreConfig.deviceAugments;
 
         registerAugmentableBlock(ID_DEVICE_HIVE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceHiveExtractorTile.class, () -> DEVICE_HIVE_EXTRACTOR_TILE), deviceAugs, DeviceHiveExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_HIVE_EXTRACTOR));
         registerAugmentableBlock(ID_DEVICE_TREE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceTreeExtractorTile.class, () -> DEVICE_TREE_EXTRACTOR_TILE), deviceAugs, DeviceTreeExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_TREE_EXTRACTOR));
@@ -295,7 +295,7 @@ public class TCoreBlocks {
 
         // registerBlock(ID_CHUNK_LOADER, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(10.0F).harvestTool(ToolType.PICKAXE), DeviceChunkLoaderTile::new), getFlag(ID_CHUNK_LOADER));
 
-        IntSupplier storageAugs = () -> ThermalConfig.storageAugments;
+        IntSupplier storageAugs = () -> ThermalCoreConfig.storageAugments;
 
         registerAugmentableBlock(ID_TINKER_BENCH, () -> new TileBlockCoFH(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), TinkerBenchTile.class, () -> TINKER_BENCH_TILE), storageAugs, TinkerBenchTile.AUG_VALIDATOR, getFlag(ID_TINKER_BENCH));
         registerAugmentableBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), ChargeBenchTile.class, () -> CHARGE_BENCH_TILE), storageAugs, ChargeBenchTile.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));

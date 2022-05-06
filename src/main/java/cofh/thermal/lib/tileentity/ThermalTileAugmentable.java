@@ -25,8 +25,9 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SoundHelper;
 import cofh.lib.xp.EmptyXpStorage;
 import cofh.lib.xp.XpStorage;
+import cofh.thermal.core.config.ThermalClientConfig;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.init.TCoreSounds;
-import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -217,7 +218,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
                 Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
-        if (!ThermalConfig.keepAugments.get()) {
+        if (!ThermalCoreConfig.keepAugments) {
             for (int i = invSize() - augSize(); i < invSize(); ++i) {
                 Utils.dropItemStackIntoWorldWithRandomness(inventory.getStackInSlot(i), worldIn, pos);
             }
@@ -237,7 +238,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         if (keepItems()) {
             getItemInv().writeSlotsToNBT(nbt, 0, invSize() - augSize());
         }
-        if (ThermalConfig.keepAugments.get() && augSize() > 0) {
+        if (ThermalCoreConfig.keepAugments && augSize() > 0) {
             getItemInv().writeSlotsToNBTUnordered(nbt, TAG_AUGMENTS, invSize() - augSize());
             if (stack.getItem() instanceof IAugmentableItem) {
                 List<ItemStack> items = getAugmentsAsList();
@@ -249,13 +250,13 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         }
         // TODO: Keep XP?
 
-        if (ThermalConfig.keepRSControl.get() && redstoneControlFeature) {
+        if (ThermalCoreConfig.keepRSControl && redstoneControlFeature) {
             redstoneControl().writeSettings(nbt);
         }
-        if (ThermalConfig.keepSideConfig.get() && this instanceof IReconfigurableTile) {
+        if (ThermalCoreConfig.keepSideConfig && this instanceof IReconfigurableTile) {
             ((IReconfigurableTile) this).reconfigControl().writeSettings(nbt);
         }
-        if (ThermalConfig.keepTransferControl.get() && this instanceof ITransferControllableTile) {
+        if (ThermalCoreConfig.keepTransferControl && this instanceof ITransferControllableTile) {
             ((ITransferControllableTile) this).transferControl().writeSettings(nbt);
         }
         if (hasSecurity()) {
@@ -293,17 +294,17 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     protected boolean keepEnergy() {
 
-        return ThermalConfig.keepEnergy.get();
+        return ThermalCoreConfig.keepEnergy;
     }
 
     protected boolean keepFluids() {
 
-        return ThermalConfig.keepFluids.get();
+        return ThermalCoreConfig.keepFluids;
     }
 
     protected boolean keepItems() {
 
-        return ThermalConfig.keepItems.get();
+        return ThermalCoreConfig.keepItems;
     }
     // endregion
 
@@ -508,7 +509,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         isActive = buffer.readBoolean();
         renderFluid = buffer.readFluidStack();
 
-        if (ThermalConfig.blockAmbientSounds && isActive && !prevActive) {
+        if (ThermalClientConfig.blockAmbientSounds && isActive && !prevActive) {
             SoundHelper.playSound(getSound());
         }
     }
@@ -567,8 +568,8 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     // endregion
 
     // region AUGMENTS
-    protected boolean redstoneControlFeature = ThermalConfig.flagRSControl.get();
-    protected boolean xpStorageFeature = ThermalConfig.flagXPStorage.get();
+    protected boolean redstoneControlFeature = ThermalCoreConfig.defaultRSControl;
+    protected boolean xpStorageFeature = ThermalCoreConfig.defaultXPStorage;
 
     protected boolean creativeEnergy = false;
     protected boolean creativeTanks = false;
@@ -695,17 +696,17 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     protected boolean defaultReconfigState() {
 
-        return ThermalConfig.flagReconfigSides.get();
+        return ThermalCoreConfig.defaultReconfigSides;
     }
 
     protected boolean defaultRedstoneControlState() {
 
-        return ThermalConfig.flagRSControl.get();
+        return ThermalCoreConfig.defaultRSControl;
     }
 
     protected boolean defaultXpStorageState() {
 
-        return ThermalConfig.flagXPStorage.get();
+        return ThermalCoreConfig.defaultXPStorage;
     }
 
     protected float getHoldingMod(Map<Enchantment, Integer> enchantmentMap) {

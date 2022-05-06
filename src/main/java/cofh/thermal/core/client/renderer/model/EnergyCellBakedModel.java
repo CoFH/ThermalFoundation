@@ -32,7 +32,7 @@ import static cofh.lib.item.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 import static cofh.lib.util.constants.NBTTags.TAG_SIDES;
 import static cofh.thermal.core.client.ThermalTextures.*;
-import static cofh.thermal.lib.common.ThermalConfig.DEFAULT_CELL_SIDES_RAW;
+import static cofh.thermal.lib.util.Constants.DEFAULT_CELL_SIDES_RAW;
 import static net.minecraft.core.Direction.*;
 
 public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implements IDynamicBakedModel {

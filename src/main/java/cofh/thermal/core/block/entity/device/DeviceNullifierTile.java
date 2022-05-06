@@ -5,6 +5,7 @@ import cofh.lib.fluid.NullFluidStorage;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.NullItemStorage;
 import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
@@ -25,7 +26,6 @@ import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_FILTER;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_NULLIFIER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
 public class DeviceNullifierTile extends DeviceTileBase {
 
@@ -50,7 +50,7 @@ public class DeviceNullifierTile extends DeviceTileBase {
         }
         tankInv.addTank(nullTank, INPUT);
 
-        addAugmentSlots(deviceAugments);
+        addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
     }
 

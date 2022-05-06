@@ -149,7 +149,7 @@ public class DetonateUtils {
 
         AreaUtils.growPlants.transformSphere(level, pos, radius, owner);
         for (int i = 0; i < 2; ++i) {
-            PhytoGroItem.growSeagrass(level, explosive.blockPosition(), null);
+            PhytoGroItem.growWaterPlant(level, explosive.blockPosition(), null);
         }
         makeAreaOfEffectCloud(level, ParticleTypes.HAPPY_VILLAGER, pos, radius);
     }

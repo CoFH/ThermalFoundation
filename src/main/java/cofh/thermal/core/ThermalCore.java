@@ -4,6 +4,7 @@ import cofh.core.init.CoreEnchantments;
 import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
+import cofh.lib.config.ConfigManager;
 import cofh.lib.entity.AbstractGrenadeEntity;
 import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecart;
@@ -19,12 +20,16 @@ import cofh.thermal.core.client.renderer.entity.model.BasalzModel;
 import cofh.thermal.core.client.renderer.entity.model.BlitzModel;
 import cofh.thermal.core.client.renderer.entity.model.BlizzModel;
 import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
+import cofh.thermal.core.config.*;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
 import cofh.thermal.core.init.*;
-import cofh.thermal.lib.common.*;
+import cofh.thermal.lib.common.ThermalFeatures;
+import cofh.thermal.lib.common.ThermalFlags;
+import cofh.thermal.lib.common.ThermalProxy;
+import cofh.thermal.lib.common.ThermalProxyClient;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -63,6 +68,7 @@ public class ThermalCore {
 
     public static final Logger LOG = LogManager.getLogger(ID_THERMAL);
     public static final ThermalProxy PROXY = DistExecutor.unsafeRunForDist(() -> ThermalProxyClient::new, () -> ThermalProxy::new);
+    public static final ConfigManager CONFIG_MANAGER = new ConfigManager();
 
     public static final DeferredRegisterCoFH<Block> BLOCKS = DeferredRegisterCoFH.create(ForgeRegistries.BLOCKS, ID_THERMAL);
     public static final DeferredRegisterCoFH<Item> ITEMS = DeferredRegisterCoFH.create(ForgeRegistries.ITEMS, ID_THERMAL);
@@ -94,13 +100,13 @@ public class ThermalCore {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::registerLootData);
         modEventBus.addListener(this::entityAttributeSetup);
         modEventBus.addListener(this::entityLayerSetup);
         modEventBus.addListener(this::entityRendererSetup);
         modEventBus.addListener(this::capSetup);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootData);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -113,7 +119,14 @@ public class ThermalCore {
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
 
-        ThermalConfig.register();
+        CONFIG_MANAGER.register(modEventBus)
+                .addClientConfig(new ThermalClientConfig())
+                .addServerConfig(new ThermalCoreConfig())
+                .addServerConfig(new ThermalDeviceConfig())
+                .addServerConfig(new ThermalDynamoConfig())
+                .addServerConfig(new ThermalMachineConfig());
+        CONFIG_MANAGER.setupClient();
+
         ThermalFeatures.register(modEventBus);
 
         CoreEnchantments.registerHoldingEnchantment();
@@ -182,8 +195,7 @@ public class ThermalCore {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
-        // DO NOT ENQUEUE
-        ThermalConfig.setup();
+        CONFIG_MANAGER.setupServer();
 
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);

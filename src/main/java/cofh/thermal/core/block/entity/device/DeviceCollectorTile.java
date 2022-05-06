@@ -6,6 +6,7 @@ import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.client.ThermalTextures;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceCollectorContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
@@ -37,7 +38,6 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_COLLECTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
 public class DeviceCollectorTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable, IAreaEffectTile {
 
@@ -71,7 +71,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ICoFHTickable
 
         xpStorage = new XpStorage(getBaseXpStorage());
 
-        addAugmentSlots(deviceAugments);
+        addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
     }
 

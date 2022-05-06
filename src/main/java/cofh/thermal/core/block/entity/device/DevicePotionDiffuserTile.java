@@ -9,6 +9,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.ThermalCore;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DevicePotionDiffuserContainer;
 import cofh.thermal.core.util.managers.device.PotionDiffuserManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -48,7 +49,6 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_POTION_DIFFUSER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
 public class DevicePotionDiffuserTile extends DeviceTileBase implements ICoFHTickableTile, IAreaEffectTile {
 
@@ -83,7 +83,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ICoFHTic
 
         tankInv.addTank(inputTank, ACCESSIBLE);
 
-        addAugmentSlots(deviceAugments);
+        addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
     }
 

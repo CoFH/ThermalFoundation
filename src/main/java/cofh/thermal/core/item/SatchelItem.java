@@ -15,8 +15,8 @@ import cofh.lib.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
-import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.item.InventoryContainerItemAugmentable;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.ChatFormatting;
@@ -77,7 +77,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
         ProxyUtils.registerItemModelProperty(this, new ResourceLocation("color"), (stack, world, entity, seed) -> (hasCustomColor(stack) ? 1F : 0));
         ProxyUtils.registerColorable(this);
 
-        numSlots = () -> ThermalConfig.storageAugments;
+        numSlots = () -> ThermalCoreConfig.storageAugments;
         augValidator = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
     }
 

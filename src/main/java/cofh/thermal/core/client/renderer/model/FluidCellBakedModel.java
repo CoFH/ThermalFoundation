@@ -34,7 +34,7 @@ import java.util.*;
 import static cofh.lib.item.ContainerType.FLUID;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.client.ThermalTextures.*;
-import static cofh.thermal.lib.common.ThermalConfig.DEFAULT_CELL_SIDES_RAW;
+import static cofh.thermal.lib.util.Constants.DEFAULT_CELL_SIDES_RAW;
 import static net.minecraft.core.Direction.*;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 

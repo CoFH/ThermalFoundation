@@ -29,10 +29,10 @@ import java.util.List;
 
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.thermal.core.config.ThermalClientConfig.jeiBucketTanks;
 import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_BLOCK;
-import static cofh.thermal.lib.common.ThermalConfig.jeiBucketTanks;
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_ROCK_GEN;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;

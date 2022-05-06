@@ -28,8 +28,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import java.util.Random;
 
 import static cofh.lib.util.references.CoreReferences.GLOSSED_MAGMA;
-import static cofh.thermal.lib.common.ThermalConfig.permanentLava;
-import static cofh.thermal.lib.common.ThermalConfig.permanentWater;
+import static cofh.thermal.core.config.ThermalCoreConfig.permanentLava;
+import static cofh.thermal.core.config.ThermalCoreConfig.permanentWater;
 import static net.minecraft.world.level.block.Blocks.*;
 
 public class IceChargeItem extends ItemCoFH {

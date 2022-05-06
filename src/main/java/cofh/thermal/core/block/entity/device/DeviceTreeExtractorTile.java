@@ -7,6 +7,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceTreeExtractorContainer;
 import cofh.thermal.core.util.managers.device.TreeExtractorManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -43,7 +44,6 @@ import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
 public class DeviceTreeExtractorTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
@@ -81,7 +81,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ICoFHTick
 
         tankInv.addTank(outputTank, OUTPUT);
 
-        addAugmentSlots(deviceAugments);
+        addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
 
         trunkPos = new BlockPos(worldPosition);

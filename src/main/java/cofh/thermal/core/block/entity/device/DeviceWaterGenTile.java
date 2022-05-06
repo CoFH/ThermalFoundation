@@ -6,6 +6,7 @@ import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceWaterGenContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
@@ -38,7 +39,6 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_WATER_GEN_TILE;
 import static cofh.thermal.core.init.TCoreSounds.SOUND_DEVICE_WATER_GEN;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
 public class DeviceWaterGenTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
@@ -62,7 +62,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ICoFHTickableT
 
         tankInv.addTank(tank, OUTPUT);
 
-        addAugmentSlots(deviceAugments);
+        addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
 
         renderFluid = new FluidStack(Fluids.WATER, BUCKET_VOLUME);

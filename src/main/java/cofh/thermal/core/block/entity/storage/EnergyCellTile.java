@@ -28,9 +28,9 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
+import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
-import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 
 public class EnergyCellTile extends CellTileBase implements ICoFHTickableTile.IServerTickable {
 

@@ -35,9 +35,9 @@ import static cofh.lib.util.StorageGroup.INPUT;
 import static cofh.lib.util.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
+import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreReferences.TINKER_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
 

@@ -3,6 +3,7 @@ package cofh.thermal.core.block.entity.device;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceHiveExtractorContainer;
 import cofh.thermal.core.util.managers.device.HiveExtractorManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -27,7 +28,6 @@ import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_FLUID;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_UPGRADE;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_HIVE_EXTRACTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
 public class DeviceHiveExtractorTile extends DeviceTileBase {
@@ -45,7 +45,7 @@ public class DeviceHiveExtractorTile extends DeviceTileBase {
 
         tankInv.addTank(outputTank, OUTPUT);
 
-        addAugmentSlots(deviceAugments);
+        addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
     }
 

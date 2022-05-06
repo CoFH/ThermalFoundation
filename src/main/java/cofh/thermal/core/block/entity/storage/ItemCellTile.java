@@ -33,7 +33,7 @@
 //import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 //import static cofh.thermal.core.init.TCoreReferences.ITEM_CELL_TILE;
 //import static cofh.thermal.lib.common.ThermalAugmentRules.ITEM_STORAGE_VALIDATOR;
-//import static cofh.thermal.lib.common.ThermalConfig.storageAugments;
+//import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 //
 //public class ItemCellTile extends CellTileBase implements ITickableTileEntity {
 //
