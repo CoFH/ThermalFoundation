@@ -156,18 +156,17 @@ public class DetonateUtils {
 
     public static void explosive(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        boolean explosionsBreakBlocks = true; //TODO: config
+        boolean explosionsBreakBlocks = true; // TODO: config
         level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), 1.9F, false, explosionsBreakBlocks ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE);
     }
 
     public static void nuke(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        boolean explosionsBreakBlocks = true; //TODO: config
+        boolean explosionsBreakBlocks = true; // TODO: config
         level.setBlockAndUpdate(explosive.blockPosition(), Blocks.AIR.defaultBlockState());
         if (radius <= 0) {
             return;
         }
-
         // ENTITIES
         float entityRadius = radius * 3;
         BlockPos blockPos = new BlockPos(pos);
@@ -204,7 +203,7 @@ public class DetonateUtils {
     public static void gravity(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         level.addFreshEntity((new BlackHole(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
-        //TODO: particle
+        // TODO: particle
     }
     // endregion
 

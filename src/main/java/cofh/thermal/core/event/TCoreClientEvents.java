@@ -1,13 +1,18 @@
 package cofh.thermal.core.event;
 
+import cofh.core.util.ProxyClient;
+import cofh.core.util.helpers.vfx.RenderTypes;
+import cofh.lib.block.entity.IAreaEffectTile;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.item.WrenchItem;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix4f;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -17,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLevelLastEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -148,9 +154,8 @@ public class TCoreClientEvents {
 
     private static void renderOperationalAreas(LocalPlayer player, PoseStack matrixStack) {
 
-        // TODO Covers, CoreRenderTypes.
-/*        MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
-        VertexConsumer builder = buffer.getBuffer(CoreRenderType.OVERLAY_LINES);
+        MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
+        VertexConsumer builder = buffer.getBuffer(RenderTypes.OVERLAY_LINES);
         matrixStack.pushPose();
 
         Vec3 projectedView = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
@@ -169,7 +174,7 @@ public class TCoreClientEvents {
         }
         matrixStack.popPose();
         RenderSystem.disableDepthTest();
-        buffer.endBatch(CoreRenderType.OVERLAY_LINES);*/
+        buffer.endBatch(RenderTypes.OVERLAY_LINES);
     }
     // endregion
 }
