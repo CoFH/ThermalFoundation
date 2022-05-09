@@ -6,11 +6,11 @@ import cofh.lib.block.impl.TNTBlockCoFH;
 import cofh.lib.block.impl.crops.CropsBlockCoFH;
 import cofh.lib.block.impl.crops.CropsBlockPerennial;
 import cofh.lib.block.impl.crops.CropsBlockTall;
-import cofh.lib.entity.AbstractGrenadeEntity;
+import cofh.lib.entity.AbstractGrenade;
 import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecart;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
-import cofh.thermal.core.entity.explosive.GrenadeEntity;
+import cofh.thermal.core.entity.explosive.Grenade;
 import cofh.thermal.core.entity.explosive.ThermalTNTEntity;
 import cofh.thermal.core.entity.explosive.ThermalTNTMinecart;
 import cofh.thermal.lib.item.BlockItemAugmentable;
@@ -350,19 +350,19 @@ public class RegistrationHelper {
     // region EXPLOSIVES
     public static void registerGrenade(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
-        RegistryObject<EntityType<? extends AbstractGrenadeEntity>> entity = ENTITIES.register(id + "_grenade", () -> EntityType.Builder.<GrenadeEntity>of((type, world) -> new GrenadeEntity(type, world, action), MobCategory.MISC).sized(0.25F, 0.25F).build(id));
+        RegistryObject<EntityType<? extends AbstractGrenade>> entity = ENTITIES.register(id + "_grenade", () -> EntityType.Builder.<Grenade>of((type, world) -> new Grenade(type, world, action), MobCategory.MISC).sized(0.25F, 0.25F).build(id));
         registerItem(id, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<>() {
 
             @Override
-            public AbstractGrenadeEntity createGrenade(Level level, LivingEntity living) {
+            public AbstractGrenade createGrenade(Level level, LivingEntity living) {
 
-                return new GrenadeEntity(entity.get(), level, action, living);
+                return new Grenade(entity.get(), level, action, living);
             }
 
             @Override
-            public AbstractGrenadeEntity createGrenade(Level level, double posX, double posY, double posZ) {
+            public AbstractGrenade createGrenade(Level level, double posX, double posY, double posZ) {
 
-                return new GrenadeEntity(entity.get(), level, action, posX, posY, posZ);
+                return new Grenade(entity.get(), level, action, posX, posY, posZ);
             }
 
         }, new Item.Properties().tab(THERMAL_TOOLS).stacksTo(16)).setShowInGroups(flag));

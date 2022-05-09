@@ -65,7 +65,7 @@ public class DetonatorItem extends ItemCoFH implements IMultiModeItem {
 
         tooltip.add(getTextComponent("info.thermal.detonator.mode." + getMode(stack)).withStyle(ChatFormatting.ITALIC));
         if (getPrimedCount(stack) > 0) {
-            addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
+            addModeChangeTooltip(this, stack, worldIn, tooltip, flagIn);
         }
     }
 

@@ -1,7 +1,7 @@
 package cofh.thermal.core.entity.explosive;
 
 import cofh.lib.block.IDetonatable;
-import cofh.lib.entity.AbstractGrenadeEntity;
+import cofh.lib.entity.AbstractGrenade;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -10,26 +10,26 @@ import net.minecraft.world.phys.Vec3;
 
 import static cofh.thermal.core.ThermalCore.ITEMS;
 
-public class GrenadeEntity extends AbstractGrenadeEntity implements IDetonatable {
+public class Grenade extends AbstractGrenade implements IDetonatable {
 
     protected Item item;
     protected IDetonateAction detonateAction;
 
-    public GrenadeEntity(EntityType<? extends AbstractGrenadeEntity> type, Level worldIn, IDetonateAction detonateAction) {
+    public Grenade(EntityType<? extends AbstractGrenade> type, Level worldIn, IDetonateAction detonateAction) {
 
         super(type, worldIn);
         this.detonateAction = detonateAction;
         item = ITEMS.get(type.getRegistryName());
     }
 
-    public GrenadeEntity(EntityType<? extends AbstractGrenadeEntity> type, Level worldIn, IDetonateAction detonateAction, double x, double y, double z) {
+    public Grenade(EntityType<? extends AbstractGrenade> type, Level worldIn, IDetonateAction detonateAction, double x, double y, double z) {
 
         super(type, x, y, z, worldIn);
         this.detonateAction = detonateAction;
         item = ITEMS.get(type.getRegistryName());
     }
 
-    public GrenadeEntity(EntityType<? extends AbstractGrenadeEntity> type, Level worldIn, IDetonateAction detonateAction, LivingEntity livingEntityIn) {
+    public Grenade(EntityType<? extends AbstractGrenade> type, Level worldIn, IDetonateAction detonateAction, LivingEntity livingEntityIn) {
 
         super(type, livingEntityIn, worldIn);
         this.detonateAction = detonateAction;

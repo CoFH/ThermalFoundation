@@ -34,7 +34,7 @@ import static net.minecraft.world.effect.MobEffects.WITHER;
 public class DetonateUtils {
 
     // region RENDERING REGISTRATION
-    public static List<RegistryObject<EntityType<? extends AbstractGrenadeEntity>>> GRENADES = new LinkedList<>();
+    public static List<RegistryObject<EntityType<? extends AbstractGrenade>>> GRENADES = new LinkedList<>();
     public static List<RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new LinkedList<>();
     public static List<RegistryObject<EntityType<? extends AbstractTNTMinecart>>> CARTS = new LinkedList<>();
     // endregion

@@ -39,7 +39,7 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
         tooltip.add(getTextComponent("info.thermal.xp_crystal.use.sneak").withStyle(ChatFormatting.DARK_GRAY));
 
         tooltip.add(getTextComponent("info.thermal.xp_crystal.mode." + getMode(stack)).withStyle(ChatFormatting.ITALIC));
-        addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
+        addModeChangeTooltip(this, stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
     }

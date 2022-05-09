@@ -55,7 +55,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 
         tooltip.add(getTextComponent("info.thermal.wrench.mode." + getMode(stack)).withStyle(ChatFormatting.ITALIC));
-        addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
+        addModeChangeTooltip(this, stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
     }

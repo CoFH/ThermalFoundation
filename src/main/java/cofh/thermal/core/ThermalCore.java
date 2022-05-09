@@ -5,7 +5,7 @@ import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.config.ConfigManager;
-import cofh.lib.entity.AbstractGrenadeEntity;
+import cofh.lib.entity.AbstractGrenade;
 import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecart;
 import cofh.lib.util.DeferredRegisterCoFH;
@@ -170,7 +170,7 @@ public class ThermalCore {
 
     private void entityRendererSetup(final EntityRenderersEvent.RegisterRenderers event) {
 
-        for (RegistryObject<EntityType<? extends AbstractGrenadeEntity>> grenade : DetonateUtils.GRENADES) {
+        for (RegistryObject<EntityType<? extends AbstractGrenade>> grenade : DetonateUtils.GRENADES) {
             event.registerEntityRenderer(grenade.get(), ThrownItemRenderer::new);
         }
         for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
