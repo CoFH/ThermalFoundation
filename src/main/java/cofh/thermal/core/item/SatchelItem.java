@@ -85,7 +85,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
             tooltip.add(getTextComponent("info.thermal.satchel.use.sneak").withStyle(TextFormatting.DARK_GRAY));
         }
         tooltip.add(getTextComponent("info.thermal.satchel.mode." + getMode(stack)).withStyle(TextFormatting.ITALIC));
-        addIncrementModeChangeTooltip(stack, worldIn, tooltip, flagIn);
+        addModeChangeTooltip(this, stack, worldIn, tooltip, flagIn);
 
         super.tooltipDelegate(stack, worldIn, tooltip, flagIn);
     }
