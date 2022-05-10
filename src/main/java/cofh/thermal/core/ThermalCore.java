@@ -20,7 +20,9 @@ import cofh.thermal.core.client.renderer.entity.model.BasalzModel;
 import cofh.thermal.core.client.renderer.entity.model.BlitzModel;
 import cofh.thermal.core.client.renderer.entity.model.BlizzModel;
 import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
-import cofh.thermal.core.config.*;
+import cofh.thermal.core.config.ThermalClientConfig;
+import cofh.thermal.core.config.ThermalCoreConfig;
+import cofh.thermal.core.config.ThermalDeviceConfig;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
@@ -122,9 +124,7 @@ public class ThermalCore {
         CONFIG_MANAGER.register(modEventBus)
                 .addClientConfig(new ThermalClientConfig())
                 .addServerConfig(new ThermalCoreConfig())
-                .addServerConfig(new ThermalDeviceConfig())
-                .addServerConfig(new ThermalDynamoConfig())
-                .addServerConfig(new ThermalMachineConfig());
+                .addServerConfig(new ThermalDeviceConfig());
         CONFIG_MANAGER.setupClient();
 
         ThermalFeatures.register(modEventBus);

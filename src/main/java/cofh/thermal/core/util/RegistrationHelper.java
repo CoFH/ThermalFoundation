@@ -350,7 +350,7 @@ public class RegistrationHelper {
     // region EXPLOSIVES
     public static void registerGrenade(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
-        RegistryObject<EntityType<? extends AbstractGrenade>> entity = ENTITIES.register(id + "_grenade", () -> EntityType.Builder.<Grenade>of((type, world) -> new Grenade(type, world, action), MobCategory.MISC).sized(0.25F, 0.25F).build(id));
+        RegistryObject<EntityType<? extends AbstractGrenade>> entity = ENTITIES.register(id, () -> EntityType.Builder.<Grenade>of((type, world) -> new Grenade(type, world, action), MobCategory.MISC).sized(0.25F, 0.25F).build(id));
         registerItem(id, () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<>() {
 
             @Override
