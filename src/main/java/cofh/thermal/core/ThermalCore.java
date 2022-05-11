@@ -50,6 +50,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -111,7 +112,7 @@ public class ThermalCore {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootData);
-        modEventBus.addListener(this::registrySetup);
+        modEventBus.addListener(EventPriority.HIGHEST, true, this::registrySetup);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
