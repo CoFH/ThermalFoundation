@@ -16,12 +16,12 @@
     },
     {
       "flag": "!mod:thermal_expansion",
-      "type": "text",
+      "type": "patchouli:text",
       "text": "가루는 $(l:thermal:equipment/charges/earth_charge)대지구$(/l)를 주괴와 조합하여 얻을 수 있으며 제작(주로 합금) 또는 제련(금속 가루만 해당)에 사용됩니다. 특정 재료의 주괴/보석 4개로 철 조각을 둘러싸 기어를 제작할 수 있습니다."
     },
     {
       "flag": "mod:thermal_expansion",
-      "type": "text",
+      "type": "patchouli:text",
       "text": "가루는 일반적으로 $(l:thermal:technology/machines/pulverizer)분쇄기$(/l)를 통해 생산되며 제작(주로 합금) 또는 제련(금속 가루만 해당)에 사용됩니다. 판금과 동전은 $(l:thermal:technology/machines/press)멀티 서보 압착기$(/l)에서만 만들수 있으며 다양한 조합법에 사용됩니다. 특정 재료의 주괴/보석 4개로 철 조각을 둘러싸 기어를 제작할 수 있으며 멀티 서보 압착기에서 4개의 주괴만 사용하여 제작할수도 있습니다."
     }
   ]

@@ -1,11 +1,10 @@
-/*
 package cofh.thermal.core.compat.patchouli;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.crafting.ICraftingRecipe;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipe;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import org.apache.logging.log4j.LogManager;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
@@ -17,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class CraftingProcessor implements IComponentProcessor {
 
-    private ICraftingRecipe recipe;
+    private CraftingRecipe recipe;
 
     @Override
     public void setup(IVariableProvider variables) {
@@ -25,9 +24,9 @@ public class CraftingProcessor implements IComponentProcessor {
         if (!variables.has("recipe"))
             return;
         ResourceLocation recipeId = new ResourceLocation(variables.get("recipe").asString());
-        Optional<? extends IRecipe<?>> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(recipeId);
-        if (recipe.isPresent() && recipe.get() instanceof ICraftingRecipe) {
-            this.recipe = (ICraftingRecipe) recipe.get();
+        Optional<? extends Recipe<?>> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(recipeId);
+        if (recipe.isPresent() && recipe.get() instanceof CraftingRecipe) {
+            this.recipe = (CraftingRecipe) recipe.get();
         } else {
             LogManager.getLogger().warn("Thermalpedia missing the crafting recipe: " + recipeId);
         }
@@ -65,4 +64,3 @@ public class CraftingProcessor implements IComponentProcessor {
     }
 
 }
-*/

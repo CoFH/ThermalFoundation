@@ -6,7 +6,7 @@
   "flag": "mod:thermal_expansion",
   "pages": [
     {
-      "type": "2_item_page",
+      "type": "thermal:2_item_page",
       "title": "Slag and Rockwool",
       "item1": "thermal:slag",
       "item2": "tag:thermal:rockwool",

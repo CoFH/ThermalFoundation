@@ -5,7 +5,7 @@
   "read_by_default": true,
   "pages": [
     {
-      "type": "text",
+      "type": "patchouli:text",
       "text": "Portable XP Storage! The Insightful Crystal can hold 10K exp, equivalent to about 63 levels. This can be increased by enchanting it with $(l:thermal:world/holding)Holding$(/l)."
     },
     {

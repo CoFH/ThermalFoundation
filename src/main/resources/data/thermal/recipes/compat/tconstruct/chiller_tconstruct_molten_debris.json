@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "fluid": "tconstruct:molten_debris",
-      "amount": 144
+      "amount": 90
     },
     {
       "item": "thermal:chiller_ingot_cast"

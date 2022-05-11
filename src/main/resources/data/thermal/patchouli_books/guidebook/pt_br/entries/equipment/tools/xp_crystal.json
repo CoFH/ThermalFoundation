@@ -5,7 +5,7 @@
   "read_by_default": true,
   "pages": [
     {
-      "type": "text",
+      "type": "patchouli:text",
       "text": "Armazenamento XP portátil! O Cristal Perspicaz pode conter 10K exp, o equivalente a cerca de 63 níveis. Isso pode ser aumentado encantando-o com $(l:thermal:world/holding)Segurando$(/l)."
     },
     {

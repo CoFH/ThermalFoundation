@@ -97,7 +97,7 @@ dependencies {
 
     // compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${mc_version}:${crt_version}")
 
-    // compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     // runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")

@@ -6,7 +6,7 @@
   "flag": "mod:thermal_expansion",
   "pages": [
     {
-      "type": "text",
+      "type": "patchouli:text",
       "title": "유도 용광로",
       "text": "유도 용광로는 여러 금속을 함께 재련하여 합금을 생산하는 기계입니다. 또한 $(l:thermal:world/materials/catalysts)촉매제$(/l)의 영향을 받는 광석들을 주괴와 보석으로 제련할 수 있습니다. 광석 제련은 촉매제로 사용하거나 $(l:thermal:world/plants/phytogro)픽토 그로$(/l)를 만드는 데 사용되는 슬래그가 부산물로 나올 수 있습니다. 자갈을 제련하면 부싯돌과 슬래그가 생성됩니다."
     },
@@ -16,7 +16,7 @@
       "title": "유도 용광로"
     },
     {
-      "type": "text",
+      "type": "patchouli:text",
       "title": "호환되는 부착물",
       "text": "$(li)$(l:thermal:technology/augments/integral_components)통합 구성 요소$(/l)$(li)$(l:thermal:technology/augments/item_filter)아이템 필터$(/l)$(li)$(l:thermal:technology/augments/xp_storage)지식 농축 장치$(/l)$(li)$(l:thermal:technology/augments/rf_coil)확장 RF 코일$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)안정화 RF 코일$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)고출력 RF 코일$(/l)$(li)$(l:thermal:technology/augments/machine_speed)플럭스 결합 증폭기$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)플럭스 효율$(/l)$(li)$(l:thermal:technology/augments/machine_output)보조 처리 필터$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)촉매 재회수 챔버$(/l)"
     }

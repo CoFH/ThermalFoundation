@@ -6,7 +6,7 @@
   "flag": "mod:thermal_expansion",
   "pages": [
     {
-      "type": "text",
+      "type": "patchouli:text",
       "title": "Fundidora de Indução",
       "text": "A fundição por indução é uma máquina que funde vários itens juntos, produzindo ligas. Ele também pode fundir minérios em lingotes e gemas, que é afetado por $(l:thermal:world/materials/catalysts)catalisadores$(/l). A fundição de minérios tem a chance de produzir escória rica como uma saída secundária, que pode ser usada como um catalisador ou para fazer $(l:thermal:world/plants/phytogro)phyto-gro$(/l). A fundição de cascalho produz pederneira e escória."
     },
@@ -16,7 +16,7 @@
       "title": "Fundidora de Indução"
     },
     {
-      "type": "text",
+      "type": "patchouli:text",
       "title": "Compatibilidade de Aprimoramento",
       "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)$(li)$(l:thermal:technology/augments/machine_output)Auxiliary Process Sieve$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)Catalytic Reclamation Chamber$(/l)"
     }

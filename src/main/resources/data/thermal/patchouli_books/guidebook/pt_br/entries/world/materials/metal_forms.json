@@ -16,12 +16,12 @@
     },
     {
       "flag": "!mod:thermal_expansion",
-      "type": "text",
+      "type": "patchouli:text",
       "text": "Poeiras podem vir de lingote de fabricação com $(l:thermal:equipment/charges/earth_charge)Carga de Terra$(/l) e pode ser usado em receitas (tipicamente ligas) ou fundido (apenas pós de metal). Engrenagens podem ser feitas usando uma pepita de ferro cercada por 4 lingote/gemas de um material específico."
     },
     {
       "flag": "mod:thermal_expansion",
-      "type": "text",
+      "type": "patchouli:text",
       "text": "As poeiras normalmente vêm do $(l:thermal:technology/machines/pulverizer)Pulverizador$(/l) e pode ser usado em receitas (tipicamente ligas) ou fundido (apenas pós de metal). As placas e moedas são feitas exclusivamente no $(l:thermal:technology/machines/press)Prensa Multiservo$(/l) e são usados em várias receitas. As engrenagens podem ser feitas usando uma pepita de ferro cercada por 4 lingotes / gemas de um determinado material. Engrenagens de metal também podem ser criadas na prensa para 4 lingotes."
     }
   ]

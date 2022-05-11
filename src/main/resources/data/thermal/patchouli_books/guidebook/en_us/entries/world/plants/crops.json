@@ -6,7 +6,7 @@
   "category": "thermal:plants",
   "pages": [
     {
-      "type": "text",
+      "type": "patchouli:text",
       "text": "Thermal Cultivation adds a variety of crops, the seeds of which may be purchased from villagers. These crops can be harvested by right clicking with an empty hand. Mushroom crops may be planted on $(l:thermal:world/plants/phytogro)phyto-soil$(/l), mycelium, or podzol, but cannot be bonemealed or phyto-gro'ed. They are still affected by phyto-soil and $(l:thermal:equipment/tools/watering_can)watering can$(/l) growth bonuses."
     },
     {

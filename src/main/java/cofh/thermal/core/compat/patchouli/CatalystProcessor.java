@@ -1,11 +1,10 @@
-/*
 package cofh.thermal.core.compat.patchouli;
 
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.lib.util.managers.CatalyzedRecipeManager;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.api.IVariableProvider;
@@ -17,7 +16,7 @@ import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class CatalystProcessor implements IComponentProcessor {
 
-    private ArrayList<CatalyzedRecipeManager> managers = new ArrayList<>();
+    private final ArrayList<CatalyzedRecipeManager> managers = new ArrayList<>();
 
     @Override
     public void setup(IVariableProvider variables) {
@@ -80,4 +79,3 @@ public class CatalystProcessor implements IComponentProcessor {
     }
 
 }
-*/
