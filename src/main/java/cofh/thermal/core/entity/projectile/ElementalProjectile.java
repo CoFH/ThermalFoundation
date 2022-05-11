@@ -45,12 +45,10 @@ public abstract class ElementalProjectile extends AbstractHurtingProjectile {
             if (shouldBurn()) {
                 setSecondsOnFire(1);
             }
-
             HitResult entityResult = ProjectileUtil.getHitResult(this, this::canHitEntity);
             if (entityResult.getType() != HitResult.Type.MISS && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, entityResult)) {
                 onHit(entityResult);
             }
-
             checkInsideBlocks();
             Vec3 velocity = getDeltaMovement();
             Vec3 pos = position();
@@ -62,7 +60,6 @@ public abstract class ElementalProjectile extends AbstractHurtingProjectile {
                 }
                 resistance = getWaterInertia();
             }
-
             level.addParticle(getTrailParticle(), pos.x, pos.y, pos.z, 0.0D, 0.0D, 0.0D);
             setDeltaMovement(velocity.add(xPower, yPower, zPower).scale(resistance));
             setPos(pos.x + velocity.x, pos.y + velocity.y, pos.z + velocity.z);

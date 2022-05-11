@@ -1,15 +1,46 @@
 package cofh.thermal.lib.common;
 
+import cofh.lib.config.world.OreConfig;
+import cofh.thermal.core.config.ThermalWorldConfig;
+import cofh.thermal.lib.world.DimensionPlacement;
+import it.unimi.dsi.fastutil.Pair;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestType;
+import net.minecraftforge.common.world.MobSpawnSettingsBuilder;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.init.TCoreReferences.*;
+import static cofh.thermal.core.util.RegistrationHelper.deepslate;
+import static cofh.thermal.core.util.RegistrationHelper.netherrack;
 
+@Mod.EventBusSubscriber (modid = ID_THERMAL)
 public class ThermalFeatures {
 
     public static final DeferredRegister<ConfiguredFeature<?, ?>> FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, ID_THERMAL);
@@ -17,6 +48,8 @@ public class ThermalFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, ID_THERMAL);
     public static final DeferredRegister<PlacementModifierType<?>> PLACEMENT_MODIFIERS = DeferredRegister.create(Registry.PLACEMENT_MODIFIER_REGISTRY, ID_THERMAL);
     public static final DeferredRegister<RuleTestType<?>> RULE_TESTS = DeferredRegister.create(Registry.RULE_TEST_REGISTRY, ID_THERMAL);
+
+    public static final RegistryObject<PlacementModifierType<?>> DIMENSION_PLACEMENT = PLACEMENT_MODIFIERS.register("dimension_placement", DimensionPlacement.Type::new);
 
     public static void register(IEventBus bus) {
 
@@ -27,10 +60,113 @@ public class ThermalFeatures {
         RULE_TESTS.register(bus);
     }
 
-    //    private static final RegistryObject<ConfiguredFeature<?, ?>> CONFIGURED_LEAD_ORE = CONFIGURED_FEATURES.register("lead_ore", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.LEAD_ORE.getDefaultState()), OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_LEAD_ORE.getDefaultState())), ConfigManager.LEAD_ORE.getSize())));
-    //
-    //    public static final RegistryObject<PlacedFeature> LEAD_ORE = PLACED_FEATURES.register("lead_ore", () -> new PlacedFeature(CONFIGURED_LEAD_ORE.getHolder().get(), List.of(CountPlacement.of(ConfigManager.LEAD_ORE.getChance()), InSquarePlacement.spread(), DimensionPlacement.of(ConfigManager.LEAD_ORE.getDimensions()), BiomeFilter.biome(), HeightRangePlacement.uniform(VerticalAnchor.absolute(ConfigManager.LEAD_ORE.getMinY()), VerticalAnchor.absolute(ConfigManager.LEAD_ORE.getMaxY())))));
+    // region REGISTRATION
+    public static void registerDefaultTriangleOreFeature(final String oreName) {
 
+        registerDefaultOreFeature(oreName, true);
+    }
+
+    public static void registerDefaultUniformOreFeature(final String oreName) {
+
+        registerDefaultOreFeature(oreName, false);
+    }
+
+    public static void registerDefaultOreFeature(final String oreName, boolean triangle) {
+
+        final Supplier<OreConfig> oreConfig = () -> ThermalWorldConfig.getOreConfig(oreName);
+
+        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.get().getSize())));
+
+        oreFeatures.add(Pair.of(oreName, PLACED_FEATURES.register(oreName, () -> new PlacedFeature(configuredOre.getHolder().get(),
+                List.of(CountPlacement.of(oreConfig.get().getCount()),
+                        InSquarePlacement.spread(),
+                        BiomeFilter.biome(),
+                        // DimensionPlacement.of(oreConfig.get().getDimensions()),
+                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY())) :
+                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY()))
+                )
+        ))));
+    }
+    // endregion
+
+    public static List<Pair<String, RegistryObject<PlacedFeature>>> oreFeatures = new ArrayList<>();
+    public static List<Holder<PlacedFeature>> oresToGenerate = null;
+
+    @SubscribeEvent (priority = EventPriority.HIGH)
+    public static void onBiomeLoad(BiomeLoadingEvent event) {
+
+        if (isOverworldBiome(event.getCategory())) {
+            if (oresToGenerate == null) {
+                oresToGenerate = new ArrayList<>();
+                for (Pair<String, RegistryObject<PlacedFeature>> entry : oreFeatures) {
+                    OreConfig config = ThermalWorldConfig.getOreConfig(entry.left());
+                    if (config != null && config.shouldGenerate()) {
+                        oresToGenerate.add(entry.right().getHolder().get());
+                    }
+                }
+            }
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).addAll(oresToGenerate);
+        }
+        addHostileSpawns(event);
+    }
+
+    public static void addHostileSpawns(BiomeLoadingEvent event) {
+
+        MobSpawnSettingsBuilder builder = event.getSpawns();
+
+        if (builder.getSpawner(MobCategory.MONSTER).isEmpty()) {
+            return;
+        }
+        ResourceLocation name = event.getName();
+        Biome.BiomeCategory category = event.getCategory();
+        Biome.ClimateSettings climate = event.getClimate();
+
+        if (isOverworldBiome(category)) {
+            if (category == Biome.BiomeCategory.EXTREME_HILLS || category == Biome.BiomeCategory.MESA) {
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ_ENTITY, 10, 1, 3));
+            }
+            if (category == Biome.BiomeCategory.DESERT || category == Biome.BiomeCategory.MESA || category == Biome.BiomeCategory.SAVANNA) {
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLITZ_ENTITY, 10, 1, 3));
+            }
+            if (climate.precipitation == Biome.Precipitation.SNOW & climate.temperature <= 0.3F) {
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLIZZ_ENTITY, 10, 1, 3));
+            }
+        } else if (isNetherBiome(category)) {
+            if (name != null && name.toString().equals("minecraft:basalt_deltas")) {
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ_ENTITY, 10, 1, 3));
+            }
+        }
+    }
+
+    public static final RuleTest SAND = new BlockMatchTest(Blocks.SAND);
+    public static final RuleTest RED_SAND = new BlockMatchTest(Blocks.RED_SAND);
+
+    // region HELPERS
+    public static List<OreConfiguration.TargetBlockState> getOreReplacements(String oreName) {
+
+        final List<OreConfiguration.TargetBlockState> oreReplacements = new ArrayList<>();
+
+        if (BLOCKS.get(oreName) != null) {
+            oreReplacements.add(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, BLOCKS.get(oreName).defaultBlockState()));
+        }
+        if (BLOCKS.get(deepslate(oreName)) != null) {
+            oreReplacements.add(OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, BLOCKS.get(deepslate(oreName)).defaultBlockState()));
+        }
+        if (BLOCKS.get(netherrack(oreName)) != null) {
+            oreReplacements.add(OreConfiguration.target(OreFeatures.NETHERRACK, BLOCKS.get(netherrack(oreName)).defaultBlockState()));
+        }
+        return oreReplacements;
+    }
+
+    public static boolean isOverworldBiome(Biome.BiomeCategory category) {
+
+        return category != Biome.BiomeCategory.NONE && category != Biome.BiomeCategory.THEEND && category != Biome.BiomeCategory.NETHER;
+    }
+
+    public static boolean isNetherBiome(Biome.BiomeCategory category) {
+
+        return category == Biome.BiomeCategory.NETHER;
+    }
 
     //    private static void tryPlaceFeature(BiomeLoadingEvent event, Set<BiomeDictionary.Type> types, FeatureConfig config, RegistryObject<PlacedFeature> feature) {
     //
@@ -61,41 +197,5 @@ public class ThermalFeatures {
     //            event.getGeneration().getFeatures(config.getStage()).add(feature.getHolder().get());
     //        }
     //    }
-    //
-    //    public static List<Holder<PlacedFeature>> ORE_FEATURES = null;
-    //
-    //    @SubscribeEvent
-    //    public static void onBiomeLoad(BiomeLoadingEvent event) {
-    //
-    //        if (ORE_FEATURES == null) {
-    //            ORE_FEATURES = new ArrayList<>();
-    //            if (ConfigManager.TIN_ORE.shouldGenerate()) {
-    //                ORE_FEATURES.add(TIN_ORE.getHolder().get());
-    //            }
-    //            if (ConfigManager.SILVER_ORE.shouldGenerate()) {
-    //                ORE_FEATURES.add(SILVER_ORE.getHolder().get());
-    //            }
-    //            if (ConfigManager.LEAD_ORE.shouldGenerate()) {
-    //                ORE_FEATURES.add(LEAD_ORE.getHolder().get());
-    //            }
-    //            if (ConfigManager.SAPPHIRE_ORE.shouldGenerate()) {
-    //                ORE_FEATURES.add(SAPPHIRE_ORE.getHolder().get());
-    //            }
-    //            if (ConfigManager.GRANITE_QUARTZ_ORE.shouldGenerate()) {
-    //                ORE_FEATURES.add(GRANITE_QUARTZ_ORE.getHolder().get());
-    //            }
-    //        }
-    //        event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).addAll(ORE_FEATURES);
-    //        if (event.getName() != null) {
-    //            ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY, event.getName());
-    //            Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(key);
-    //            ModEntities.registerEntity(event, types);
-    //            if (!ModList.get().isLoaded("dynamictrees")) {
-    //                tryPlaceFeature(event, types, ConfigManager.DEAD_TREE_CONFIG, CHARRED_TREE);
-    //            }
-    //            tryPlaceFeature(event, types, ConfigManager.STONEPETAL_CONFIG, STONEPETAL_PATCH);
-    //            tryPlaceFeature(event, types, ConfigManager.WILD_AUBERGINE, WILD_AUBERGINE_PATCH);
-    //        }
-    //    }
-
+    // endregion
 }

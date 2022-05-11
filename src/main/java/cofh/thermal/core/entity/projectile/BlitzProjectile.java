@@ -67,6 +67,7 @@ public class BlitzProjectile extends ElementalProjectile {
             if (level.canSeeSky(pos) && random.nextFloat() < (level.isRainingAt(pos) ? (level.isThundering() ? 0.2F : 0.1F) : 0.04F)) {
                 Utils.spawnLightningBolt(level, pos);
             }
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.discard();
         }
     }

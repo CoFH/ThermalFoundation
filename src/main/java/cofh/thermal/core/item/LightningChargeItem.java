@@ -4,7 +4,6 @@ import cofh.core.item.ItemCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.projectile.BlitzProjectile;
 import cofh.thermal.core.init.TCoreSounds;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
@@ -82,7 +81,7 @@ public class LightningChargeItem extends ItemCoFH {
             double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
             double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
             // TODO What? Why is this in a Util.make? - covers1624 - 1.18.2 port.
-            world.addFreshEntity(Util.make(() -> new BlitzProjectile(d0, d1, d2, d3, d4, d5, world)));
+            world.addFreshEntity(new BlitzProjectile(d0, d1, d2, d3, d4, d5, world));
             stack.shrink(1);
             return stack;
         }

@@ -23,6 +23,7 @@ import cofh.thermal.core.client.renderer.entity.model.ElementalProjectileModel;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.config.ThermalDeviceConfig;
+import cofh.thermal.core.config.ThermalWorldConfig;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
@@ -56,6 +57,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.NewRegistryEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -109,6 +111,7 @@ public class ThermalCore {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootData);
+        modEventBus.addListener(this::registrySetup);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -124,8 +127,9 @@ public class ThermalCore {
         CONFIG_MANAGER.register(modEventBus)
                 .addClientConfig(new ThermalClientConfig())
                 .addServerConfig(new ThermalCoreConfig())
-                .addServerConfig(new ThermalDeviceConfig());
-        CONFIG_MANAGER.setupClient();
+                .addServerConfig(new ThermalDeviceConfig())
+                .addServerConfig(new ThermalWorldConfig());
+        // CONFIG_MANAGER.setupClient();
 
         ThermalFeatures.register(modEventBus);
 
@@ -195,21 +199,21 @@ public class ThermalCore {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
-        CONFIG_MANAGER.setupServer();
-
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);
         event.enqueueWork(TCoreEntities::setup);
-        // TODO Lemming, See ConfiguredFeatureCoFH.
-        //        event.enqueueWork(ThermalFeatures::setup);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
         registerGuiFactories();
         registerRenderLayers();
+    }
 
-        // ThermalItemGroups.setup();
+    private void registrySetup(final NewRegistryEvent event) {
+
+        CONFIG_MANAGER.setupClient();
+        CONFIG_MANAGER.setupServer();
     }
     // endregion
 

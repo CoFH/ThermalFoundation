@@ -57,14 +57,5 @@ public class TCoreCommonSetupEvents {
 
         ThermalRecipeManagers.instance().setClientRecipeManager(event.getRecipeManager());
     }
-
-    @SubscribeEvent (priority = EventPriority.HIGH)
-    public static void biomeLoadingAdd(final BiomeLoadingEvent event) {
-
-        // TODO Lemming, See ConfiguredFeatureCoFH.
-        //        ThermalBiomeFeatures.addOreGeneration(event);
-        //        ThermalBiomeFeatures.addOilGeneration(event);
-        //        ThermalBiomeFeatures.addHostileSpawns(event);
-    }
     // endregion
 }

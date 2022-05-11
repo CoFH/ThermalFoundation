@@ -331,6 +331,11 @@ public class RegistrationHelper {
         return "deepslate_" + id;
     }
 
+    public static String netherrack(String id) {
+
+        return "netherrack_" + id;
+    }
+
     public static String block(String id) {
 
         return id + "_block";

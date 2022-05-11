@@ -63,6 +63,7 @@ public class BasalzProjectile extends ElementalProjectile {
             }
         }
         if (Utils.isServerWorld(level)) {
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.discard();
         }
     }
