@@ -7,7 +7,7 @@
     "mock_pyrolyzer_recipe" is only added so that it can be removed later, as Thermal does not ship with any default recipes that can be removed with just an IItemStack.
 */
 
-// <recipetype:thermal:pyrolyzer>.addRecipe(name as string, outputs as MCWeightedItemStack[], outputFluid as IFluidStack, ingredient as IIngredient, energy as int);
+// <recipetype:thermal:pyrolyzer>.addRecipe(name as string, outputs as Percentaged<IItemStack>[], outputFluid as IFluidStack, ingredient as IIngredient, energy as int);
 
 <recipetype:thermal:pyrolyzer>.addRecipe("fluidless_custom_pyrolyzer_recipe", [<item:minecraft:diamond>], <fluid:minecraft:empty>, <item:minecraft:dirt>, 500);
 <recipetype:thermal:pyrolyzer>.addRecipe("fluid_custom_pyrolyzer_recipe", [<item:minecraft:arrow>], <fluid:thermal:latex> * 100, <item:minecraft:white_wool>, 500);

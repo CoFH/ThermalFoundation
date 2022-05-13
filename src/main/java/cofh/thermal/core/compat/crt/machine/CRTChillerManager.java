@@ -1,26 +1,26 @@
-/*
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.ChillerRecipe;
+import cofh.thermal.lib.compat.crt.RecipePrintingUtil;
 import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalRecipeByOutput;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import cofh.thermal.lib.compat.crt.base.CRTRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
-import com.blamejared.crafttweaker.api.annotations.ZenRegister;
+import com.blamejared.crafttweaker.api.action.recipe.ActionAddRecipe;
+import com.blamejared.crafttweaker.api.annotation.ZenRegister;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
-import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
+import com.blamejared.crafttweaker.api.ingredient.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import com.blamejared.crafttweaker.api.recipes.ReplacementHandlerHelper;
-import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import com.blamejared.crafttweaker.impl.item.MCItemStack;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.item.MCItemStack;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.handler.helper.ReplacementHandlerHelper;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.util.List;
@@ -43,19 +43,19 @@ public class CRTChillerManager implements IRecipeManager, IRecipeHandler<Chiller
     }
 
     @Override
-    public IRecipeType<ChillerRecipe> getRecipeType() {
+    public RecipeType<ChillerRecipe> getRecipeType() {
 
         return TCoreRecipeTypes.RECIPE_CHILLER;
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void remove(IIngredient output) {
 
-        removeRecipe(new IItemStack[]{output});
+        removeRecipe(output);
     }
 
     @ZenCodeType.Method
-    public void removeRecipe(IItemStack... output) {
+    public void removeRecipe(IIngredient... output) {
 
         CraftTweakerAPI.apply(new ActionRemoveThermalRecipeByOutput(this, output));
     }
@@ -78,4 +78,3 @@ public class CRTChillerManager implements IRecipeManager, IRecipeHandler<Chiller
     }
 
 }
-*/

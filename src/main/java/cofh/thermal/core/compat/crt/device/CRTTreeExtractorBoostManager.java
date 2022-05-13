@@ -1,22 +1,21 @@
-/*
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.TreeExtractorBoost;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
-import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
+import com.blamejared.crafttweaker.api.action.recipe.ActionAddRecipe;
+import com.blamejared.crafttweaker.api.action.recipe.ActionRemoveRecipe;
+import com.blamejared.crafttweaker.api.annotation.ZenRegister;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
+import com.blamejared.crafttweaker.api.ingredient.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.util.List;
@@ -39,13 +38,13 @@ public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHand
     }
 
     @Override
-    public IRecipeType<TreeExtractorBoost> getRecipeType() {
+    public RecipeType<TreeExtractorBoost> getRecipeType() {
 
         return TCoreRecipeTypes.BOOST_TREE_EXTRACTOR;
     }
 
     @Override
-    public void removeRecipe(IItemStack input) {
+    public void removeByInput(IItemStack input) {
 
         removeBoost(input);
     }
@@ -75,4 +74,3 @@ public class CRTTreeExtractorBoostManager implements IRecipeManager, IRecipeHand
     }
 
 }
-*/

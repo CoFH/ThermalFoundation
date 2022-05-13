@@ -1,22 +1,21 @@
-/*
 package cofh.thermal.core.compat.crt.machine;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.SmelterCatalyst;
-import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalCatalystByOutput;
+import cofh.thermal.lib.compat.crt.actions.ActionRemoveThermalCatalystByInput;
 import cofh.thermal.lib.compat.crt.base.CRTCatalyst;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
-import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
+import com.blamejared.crafttweaker.api.action.recipe.ActionAddRecipe;
+import com.blamejared.crafttweaker.api.annotation.ZenRegister;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
+import com.blamejared.crafttweaker.api.ingredient.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.util.List;
@@ -39,19 +38,19 @@ public class CRTSmelterCatalystManager implements IRecipeManager, IRecipeHandler
     }
 
     @Override
-    public void removeRecipe(IItemStack output) {
+    public void removeByInput(IItemStack input) {
 
-        removeCatalyst(output);
+        removeCatalyst(input);
     }
 
     @ZenCodeType.Method
     public void removeCatalyst(IItemStack input) {
 
-        CraftTweakerAPI.apply(new ActionRemoveThermalCatalystByOutput(this, input));
+        CraftTweakerAPI.apply(new ActionRemoveThermalCatalystByInput(this, input));
     }
 
     @Override
-    public IRecipeType<SmelterCatalyst> getRecipeType() {
+    public RecipeType<SmelterCatalyst> getRecipeType() {
 
         return TCoreRecipeTypes.CATALYST_SMELTER;
     }
@@ -70,4 +69,3 @@ public class CRTSmelterCatalystManager implements IRecipeManager, IRecipeHandler
     }
 
 }
-*/

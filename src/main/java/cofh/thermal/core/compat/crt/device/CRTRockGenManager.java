@@ -1,22 +1,21 @@
-/*
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
-import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.action.recipe.ActionAddRecipe;
+import com.blamejared.crafttweaker.api.action.recipe.ActionRemoveRecipe;
+import com.blamejared.crafttweaker.api.annotation.ZenRegister;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
-import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
-import com.blamejared.crafttweaker.impl_native.blocks.ExpandBlock;
-import net.minecraft.block.Block;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.item.MCItemStack;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import com.blamejared.crafttweaker.natives.block.ExpandBlock;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.util.List;
@@ -39,13 +38,13 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
     }
 
     @Override
-    public IRecipeType<RockGenMapping> getRecipeType() {
+    public RecipeType<RockGenMapping> getRecipeType() {
 
         return TCoreRecipeTypes.MAPPING_ROCK_GEN;
     }
 
     @Override
-    public void removeRecipe(IIngredient output) {
+    public void remove(IIngredient output) {
 
         removeMapping(output);
     }
@@ -55,7 +54,7 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
 
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof RockGenMapping) {
-                return output.matches(new MCItemStackMutable(((RockGenMapping) recipe).getResult()));
+                return output.matches(new MCItemStack(((RockGenMapping) recipe).getResult()));
             }
             return false;
         }));
@@ -64,7 +63,7 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
     @Override
     public String dumpToCommandString(IRecipeManager manager, RockGenMapping recipe) {
 
-        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), new MCItemStackMutable(recipe.getResult()).getCommandString(), ExpandBlock.getCommandString(recipe.getAdjacent()), ExpandBlock.getCommandString(recipe.getBelow()), recipe.getTime());
+        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s, %s);", recipe.getType(), recipe.getId(), new MCItemStack(recipe.getResult()).getCommandString(), ExpandBlock.getCommandString(recipe.getAdjacent()), ExpandBlock.getCommandString(recipe.getBelow()), recipe.getTime());
     }
 
     @Override
@@ -74,4 +73,3 @@ public class CRTRockGenManager implements IRecipeManager, IRecipeHandler<RockGen
     }
 
 }
-*/

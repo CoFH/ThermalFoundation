@@ -1,16 +1,15 @@
-/*
 package cofh.thermal.lib.compat.crt.actions;
 
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
+import com.blamejared.crafttweaker.api.action.recipe.ActionRecipeBase;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionRecipeBase;
-import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
-import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import com.blamejared.crafttweaker.api.fluid.MCFluidStackMutable;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
+import com.blamejared.crafttweaker.api.item.MCItemStack;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -45,17 +44,15 @@ public class ActionRemoveThermalRecipeByOutput extends ActionRecipeBase {
     @Override
     public void apply() {
 
-        Iterator<Map.Entry<ResourceLocation, IRecipe<?>>> iter = getManager().getRecipes().entrySet().iterator();
+        Iterator<Map.Entry<ResourceLocation, Recipe<?>>> iter = getManager().getRecipes().entrySet().iterator();
         while (iter.hasNext()) {
             ThermalRecipe recipe = (ThermalRecipe) iter.next().getValue();
-
             if (recipe.getOutputItems().size() != outputs.length || recipe.getOutputFluids().size() != fluids.length) {
                 continue;
             }
-
             boolean valid = true;
             for (int i = 0; i < recipe.getOutputItems().size(); ++i) {
-                if (!outputs[i].matches(new MCItemStackMutable(recipe.getOutputItems().get(i)))) {
+                if (!outputs[i].matches(new MCItemStack(recipe.getOutputItems().get(i)))) {
                     valid = false;
                     break;
                 }
@@ -80,4 +77,3 @@ public class ActionRemoveThermalRecipeByOutput extends ActionRecipeBase {
     }
 
 }
-*/

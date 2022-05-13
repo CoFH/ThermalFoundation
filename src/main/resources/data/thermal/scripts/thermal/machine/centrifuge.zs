@@ -4,7 +4,7 @@
     The second recipe will, when given a Cake, use 500 RF to output 500 Water.
 */
 
-// <recipetype:thermal:centrifuge>.addRecipe(name as string, outputs as MCWeightedItemStack[], outputFluid as IFluidStack, ingredient as IIngredient, energy as int);
+// <recipetype:thermal:centrifuge>.addRecipe(name as string, outputs as Percentaged<IItemStack>[], outputFluid as IFluidStack, ingredient as IIngredient, energy as int);
 
 <recipetype:thermal:centrifuge>.addRecipe("fluidless_custom_bottler_recipe", [<item:minecraft:apple> % 50, (<item:minecraft:arrow> * 4) % 25], <fluid:minecraft:empty>, <item:minecraft:diamond>, 500);
 <recipetype:thermal:centrifuge>.addRecipe("fluid_custom_bottler_recipe", [], <fluid:minecraft:water> * 500, <item:minecraft:cake>, 500);

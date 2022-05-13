@@ -4,7 +4,7 @@
     The second recipe will use 500 RF, Dirt and a Diamond to output Bone Meal, and Rich Slag.
 */
 
-// <recipetype:thermal:smelter>.addRecipe(name as string, outputs as MCWeightedItemStack[], ingredients as IIngredient[], experience as float, energy as int);
+// <recipetype:thermal:smelter>.addRecipe(name as string, outputs as Percentaged<IItemStack>[], ingredients as IIngredient[], experience as float, energy as int);
 
 <recipetype:thermal:smelter>.addRecipe("custom_smelter_recipe", [<item:minecraft:diamond>, <item:minecraft:apple> % 50], [<item:minecraft:glass>, <item:minecraft:arrow>], 3, 500);
 <recipetype:thermal:smelter>.addRecipe("slag_custom_smelter_recipe", [<item:minecraft:bone_meal>, <item:thermal:rich_slag>], [<item:minecraft:dirt>, <item:minecraft:diamond>], 2, 500);

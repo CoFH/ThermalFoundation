@@ -1,16 +1,15 @@
-/*
 package cofh.thermal.lib.compat.crt.base;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
+import com.blamejared.crafttweaker.api.ingredient.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.impl.item.MCWeightedItemStack;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.util.random.Percentaged;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
@@ -48,23 +47,16 @@ public class CRTRecipe {
         return this;
     }
 
-    public CRTRecipe output(MCWeightedItemStack... stack) {
+    public CRTRecipe output(Percentaged<IItemStack>... stack) {
 
-        this.outputItems = Arrays.stream(stack).filter(weightedStack -> !weightedStack.getItemStack().isEmpty()).map(weightedStack -> weightedStack.getItemStack().getInternal()).collect(Collectors.toList());
-        this.outputItemChances = Arrays.stream(stack).filter(weightedStack -> !weightedStack.getItemStack().isEmpty()).map(weightedStack -> (float) weightedStack.getWeight()).collect(Collectors.toList());
+        this.outputItems = Arrays.stream(stack).filter(weightedStack -> !weightedStack.getData().isEmpty()).map(weightedStack -> weightedStack.getData().getInternal()).collect(Collectors.toList());
+        this.outputItemChances = Arrays.stream(stack).filter(weightedStack -> !weightedStack.getData().isEmpty()).map(weightedStack -> (float) weightedStack.getPercentage()).collect(Collectors.toList());
         return this;
     }
 
     public CRTRecipe output(IItemStack... stack) {
 
-        this.outputItems = Arrays.stream(stack).filter(iItemStack -> !iItemStack.isEmpty()).map(IItemStack::getInternal).collect(Collectors.toList());
-        this.outputItemChances = Arrays.stream(stack).filter(iItemStack -> !iItemStack.isEmpty()).map(iItemStack -> {
-            if (iItemStack instanceof MCWeightedItemStack) {
-                return (float) ((MCWeightedItemStack) iItemStack).getWeight();
-            }
-            return 1.0f;
-        }).collect(Collectors.toList());
-        return this;
+        return output(Arrays.stream(stack).map(IItemStack::asWeightedItemStack).toArray(Percentaged[]::new));
     }
 
     public CRTRecipe output(FluidStack... stack) {
@@ -137,4 +129,3 @@ public class CRTRecipe {
     }
 
 }
-*/

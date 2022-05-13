@@ -1,27 +1,26 @@
-/*
 package cofh.thermal.core.compat.crt.device;
 
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
-import com.blamejared.crafttweaker.api.annotations.ZenRegister;
+import com.blamejared.crafttweaker.api.action.recipe.ActionAddRecipe;
+import com.blamejared.crafttweaker.api.action.recipe.ActionRemoveRecipe;
+import com.blamejared.crafttweaker.api.annotation.ZenRegister;
 import com.blamejared.crafttweaker.api.fluid.CTFluidIngredient;
 import com.blamejared.crafttweaker.api.fluid.IFluidStack;
-import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.fluid.MCFluidStackMutable;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipe;
-import com.blamejared.crafttweaker.impl.fluid.MCFluidStackMutable;
-import com.blamejared.crafttweaker.impl.item.MCItemStackMutable;
-import com.blamejared.crafttweaker.impl_native.blocks.ExpandBlock;
-import net.minecraft.block.BeehiveBlock;
-import net.minecraft.block.Block;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.item.MCItemStack;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import com.blamejared.crafttweaker.natives.block.ExpandBlock;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.BeehiveBlock;
+import net.minecraft.world.level.block.Block;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.util.List;
@@ -48,13 +47,13 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
     }
 
     @Override
-    public IRecipeType<HiveExtractorMapping> getRecipeType() {
+    public RecipeType<HiveExtractorMapping> getRecipeType() {
 
         return TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR;
     }
 
     @Override
-    public void removeRecipe(IIngredient output) {
+    public void remove(IIngredient output) {
 
         removeMapping(output);
     }
@@ -64,7 +63,7 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
 
         CraftTweakerAPI.apply(new ActionRemoveRecipe(this, recipe -> {
             if (recipe instanceof HiveExtractorMapping) {
-                return output.matches(new MCItemStackMutable(((HiveExtractorMapping) recipe).getItem()));
+                return output.matches(new MCItemStack(((HiveExtractorMapping) recipe).getItem()));
             }
             return false;
         }));
@@ -95,7 +94,7 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
     @Override
     public String dumpToCommandString(IRecipeManager manager, HiveExtractorMapping recipe) {
 
-        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(), ExpandBlock.getCommandString(recipe.getHive()), new MCItemStackMutable(recipe.getItem()).getCommandString(), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
+        return String.format("<recipetype:%s>.addMapping(\"%s\", %s, %s, %s);", recipe.getType(), recipe.getId(), ExpandBlock.getCommandString(recipe.getHive()), new MCItemStack(recipe.getItem()).getCommandString(), new MCFluidStackMutable(recipe.getFluid()).getCommandString());
     }
 
     @Override
@@ -105,4 +104,3 @@ public class CRTHiveExtractorManager implements IRecipeManager, IRecipeHandler<H
     }
 
 }
-*/

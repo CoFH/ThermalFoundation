@@ -5,7 +5,7 @@
     The third recipe will use 500 RF and will Press an Arrow into an Apple and 250 mB of Lava.
 */
 
-// <recipetype:thermal:press>.addRecipe(name as string, outputs as MCWeightedItemStack[], outputFluid as IFluidStack, ingredients as IIngredient[], int energy);
+// <recipetype:thermal:press>.addRecipe(name as string, outputs as Percentaged<IItemStack>[], outputFluid as IFluidStack, ingredients as IIngredient[], int energy);
 
 <recipetype:thermal:press>.addRecipe("fluidless_custom_press_recipe", [<item:minecraft:diamond>], <fluid:minecraft:empty>, [<item:minecraft:dirt>], 500);
 <recipetype:thermal:press>.addRecipe("itemless_custom_press_recipe", [], <fluid:minecraft:water> * 250, [<item:minecraft:glass>], 500);

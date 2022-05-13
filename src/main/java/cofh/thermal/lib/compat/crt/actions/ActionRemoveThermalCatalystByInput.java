@@ -1,23 +1,22 @@
-/*
 package cofh.thermal.lib.compat.crt.actions;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
-import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.action.recipe.ActionRecipeBase;
+import com.blamejared.crafttweaker.api.ingredient.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.impl.actions.recipes.ActionRecipeBase;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
 
 import java.util.Iterator;
 import java.util.Map;
 
-public class ActionRemoveThermalCatalystByOutput extends ActionRecipeBase {
+public class ActionRemoveThermalCatalystByInput extends ActionRecipeBase {
 
     private final IItemStack input;
 
-    public ActionRemoveThermalCatalystByOutput(IRecipeManager manager, IItemStack input) {
+    public ActionRemoveThermalCatalystByInput(IRecipeManager manager, IItemStack input) {
 
         super(manager);
         this.input = input;
@@ -26,7 +25,7 @@ public class ActionRemoveThermalCatalystByOutput extends ActionRecipeBase {
     @Override
     public void apply() {
 
-        Iterator<Map.Entry<ResourceLocation, IRecipe<?>>> iter = getManager().getRecipes().entrySet().iterator();
+        Iterator<Map.Entry<ResourceLocation, Recipe<?>>> iter = getManager().getRecipes().entrySet().iterator();
         while (iter.hasNext()) {
             ThermalCatalyst fuel = (ThermalCatalyst) iter.next().getValue();
 
@@ -44,4 +43,3 @@ public class ActionRemoveThermalCatalystByOutput extends ActionRecipeBase {
     }
 
 }
-*/

@@ -1,14 +1,13 @@
-/*
 package cofh.thermal.core.compat.crt.dynamo;
 
 import cofh.thermal.core.util.recipes.dynamo.CompressionFuel;
 import cofh.thermal.core.util.recipes.dynamo.MagmaticFuel;
 import cofh.thermal.lib.compat.crt.base.CRTHelper;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,4 +30,4 @@ public class CRTFluidDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> 
     }
 
 }
-*/
+

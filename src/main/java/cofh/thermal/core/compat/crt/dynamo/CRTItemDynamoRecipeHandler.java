@@ -1,16 +1,15 @@
-/*
 package cofh.thermal.core.compat.crt.dynamo;
 
 import cofh.thermal.core.util.recipes.dynamo.*;
+import cofh.thermal.lib.compat.crt.RecipePrintingUtil;
 import cofh.thermal.lib.compat.crt.base.CRTFuel;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
-import com.blamejared.crafttweaker.api.managers.IRecipeManager;
-import com.blamejared.crafttweaker.api.recipes.IRecipeHandler;
-import com.blamejared.crafttweaker.api.recipes.IReplacementRule;
-import com.blamejared.crafttweaker.api.recipes.ReplacementHandlerHelper;
-import com.blamejared.crafttweaker.api.util.RecipePrintingUtil;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.recipe.handler.IRecipeHandler;
+import com.blamejared.crafttweaker.api.recipe.handler.IReplacementRule;
+import com.blamejared.crafttweaker.api.recipe.handler.helper.ReplacementHandlerHelper;
+import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,4 +55,4 @@ public class CRTItemDynamoRecipeHandler implements IRecipeHandler<ThermalFuel> {
     }
 
 }
-*/
+

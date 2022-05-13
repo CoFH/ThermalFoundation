@@ -158,9 +158,9 @@ public class TCoreItems {
 
         registerItem("ender_pearl_dust", group);
 
-        registerVanillaMetalSet("copper", group);
         registerVanillaMetalSet("iron", group);
         registerVanillaMetalSet("gold", group);
+        registerVanillaMetalSet("copper", group);
         registerVanillaMetalSet("netherite", group);
 
         registerVanillaGemSet("lapis", group);

@@ -1,10 +1,9 @@
-/*
 package cofh.thermal.lib.compat.crt.base;
 
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
-import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import com.blamejared.crafttweaker.api.ingredient.IIngredientWithAmount;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class CRTCatalyst {
 
@@ -45,4 +44,3 @@ public class CRTCatalyst {
     }
 
 }
-*/
