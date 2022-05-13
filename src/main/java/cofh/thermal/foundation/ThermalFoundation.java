@@ -1,11 +1,16 @@
 package cofh.thermal.foundation;
 
 import cofh.lib.config.world.OreConfig;
+import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.config.ThermalWorldConfig;
 import cofh.thermal.foundation.init.TFndFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.NewRegistryEvent;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +26,9 @@ public class ThermalFoundation {
         setFeatureFlags();
         addWorldConfigs();
 
-        TFndFeatures.register();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        modEventBus.addListener(this::registrySetup);
     }
 
     private void setFeatureFlags() {
@@ -48,4 +55,13 @@ public class ThermalFoundation {
         ThermalWorldConfig.addOreConfig("nickel_ore", new OreConfig("Nickel", 4, -40, 120, 8, defaultDimensions));
     }
 
+    // region INITIALIZATION
+    private void registrySetup(final NewRegistryEvent event) {
+
+        while (!ThermalCore.CONFIG_MANAGER.isServerInit()) {
+
+        }
+        TFndFeatures.register();
+    }
+    // endregion
 }

@@ -130,7 +130,6 @@ public class ThermalCore {
                 .addServerConfig(new ThermalCoreConfig())
                 .addServerConfig(new ThermalDeviceConfig())
                 .addServerConfig(new ThermalWorldConfig());
-        // CONFIG_MANAGER.setupClient();
 
         ThermalFeatures.register(modEventBus);
 
@@ -207,14 +206,14 @@ public class ThermalCore {
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
-        registerGuiFactories();
-        registerRenderLayers();
+        event.enqueueWork(this::registerGuiFactories);
+        event.enqueueWork(this::registerRenderLayers);
     }
 
     private void registrySetup(final NewRegistryEvent event) {
 
-        CONFIG_MANAGER.setupClient();
         CONFIG_MANAGER.setupServer();
+        CONFIG_MANAGER.setupClient();
     }
     // endregion
 
