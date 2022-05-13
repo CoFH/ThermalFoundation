@@ -39,12 +39,12 @@ public class ThermalFoundation {
 
         List<ResourceKey<Level>> defaultDimensions = Collections.singletonList(Level.OVERWORLD);
 
-        ThermalWorldConfig.addOreConfig("niter_ore", new OreConfig("Niter", 1, -16, 64, 7, defaultDimensions));
-        ThermalWorldConfig.addOreConfig("sulfur_ore", new OreConfig("Sulfur", 1, -16, 32, 7, defaultDimensions));
+        ThermalWorldConfig.addOreConfig("niter_ore", new OreConfig("Niter", 2, -16, 64, 7, defaultDimensions));
+        ThermalWorldConfig.addOreConfig("sulfur_ore", new OreConfig("Sulfur", 2, -16, 32, 7, defaultDimensions));
 
-        ThermalWorldConfig.addOreConfig("tin_ore", new OreConfig("Tin", 4, -20, 60, 9, defaultDimensions));
-        ThermalWorldConfig.addOreConfig("lead_ore", new OreConfig("Lead", 4, -20, 40, 8, defaultDimensions));
-        ThermalWorldConfig.addOreConfig("silver_ore", new OreConfig("Silver", 2, -20, 40, 8, defaultDimensions));
+        ThermalWorldConfig.addOreConfig("tin_ore", new OreConfig("Tin", 6, -20, 60, 9, defaultDimensions));
+        ThermalWorldConfig.addOreConfig("lead_ore", new OreConfig("Lead", 6, -60, 40, 8, defaultDimensions));
+        ThermalWorldConfig.addOreConfig("silver_ore", new OreConfig("Silver", 4, -60, 40, 8, defaultDimensions));
         ThermalWorldConfig.addOreConfig("nickel_ore", new OreConfig("Nickel", 4, -40, 120, 8, defaultDimensions));
     }
 

@@ -33,7 +33,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         registerBlockItemModels();
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         registerVanilla(reg);
         registerResources(reg);
@@ -227,7 +227,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
     private void registerBlockItemModels() {
 
-        DeferredRegisterCoFH<Block> reg = BLOCKS;
+        var reg = BLOCKS;
 
         registerVanillaBlocks(reg);
         registerResourceBlocks(reg);

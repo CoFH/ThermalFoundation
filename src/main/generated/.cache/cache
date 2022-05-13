@@ -393,6 +393,8 @@ f4710de982d03533aa773b90240ef349f268ca89 assets/thermal/models/item/tin_ore.json
 02c9749aabf1d7723fe39c26c3f3f4d6a873bd28 assets/thermal/models/item/wrench.json
 5bc82e00c3dce83cf2ca7b88d7b061269b8c9738 assets/thermal/models/item/xp_storage_augment.json
 2d561887966a608266804d7ba1cd0867ec8a36da assets/thermal/models/item/yellow_rockwool.json
+70834853165c38a72257a698135e5fc68c818145 data/cofh_core/tags/items/crafting/locks.json
+0193a9d29b0b19e40f0d0d35c1235a91e4fff3f8 data/cofh_core/tags/items/crafting/securable.json
 4127b8ef2716d93738eff71c0fabe32722c84fb6 data/forge/tags/blocks/ores.json
 c50c1cb20472796aea3dccf1223d5161644a0905 data/forge/tags/blocks/ores/apatite.json
 4c40512361214681ffba4a88a9e95a5474027121 data/forge/tags/blocks/ores/cinnabar.json
@@ -421,6 +423,10 @@ b07553cb4c27c9ded9f82c4972a9024b401af2d4 data/forge/tags/blocks/storage_blocks/l
 cbe346d210ede27d7e10f41a3bf93a0949c87e1f data/forge/tags/blocks/storage_blocks/lumium.json
 8ba80b376e0204fb5afbf989120b1308fa50c98b data/forge/tags/blocks/storage_blocks/nickel.json
 0a22aa70d40a083acfe237530ba831d5ebd56a67 data/forge/tags/blocks/storage_blocks/niter.json
+60af3269d2bb4e1365bb4bb9d0f03117efe13c4e data/forge/tags/blocks/storage_blocks/raw_lead.json
+09f10cdad4789b6061b70c717f9a92ea80071c98 data/forge/tags/blocks/storage_blocks/raw_nickel.json
+71315f27ca83fb9e17da110b1d776dd586882741 data/forge/tags/blocks/storage_blocks/raw_silver.json
+7d57996518f17593d71ad3997f5481a93d7107d2 data/forge/tags/blocks/storage_blocks/raw_tin.json
 24dc14598e782c97f52991f2bd72359b14b64eb1 data/forge/tags/blocks/storage_blocks/ruby.json
 869df5f5e31e3aa33209ef71bf71ea1b6755b8d2 data/forge/tags/blocks/storage_blocks/sapphire.json
 8d0a2cabf5b03a95902999bda98bf6e97af516e2 data/forge/tags/blocks/storage_blocks/signalum.json
@@ -588,6 +594,10 @@ b07553cb4c27c9ded9f82c4972a9024b401af2d4 data/forge/tags/items/storage_blocks/le
 cbe346d210ede27d7e10f41a3bf93a0949c87e1f data/forge/tags/items/storage_blocks/lumium.json
 8ba80b376e0204fb5afbf989120b1308fa50c98b data/forge/tags/items/storage_blocks/nickel.json
 0a22aa70d40a083acfe237530ba831d5ebd56a67 data/forge/tags/items/storage_blocks/niter.json
+60af3269d2bb4e1365bb4bb9d0f03117efe13c4e data/forge/tags/items/storage_blocks/raw_lead.json
+09f10cdad4789b6061b70c717f9a92ea80071c98 data/forge/tags/items/storage_blocks/raw_nickel.json
+71315f27ca83fb9e17da110b1d776dd586882741 data/forge/tags/items/storage_blocks/raw_silver.json
+7d57996518f17593d71ad3997f5481a93d7107d2 data/forge/tags/items/storage_blocks/raw_tin.json
 24dc14598e782c97f52991f2bd72359b14b64eb1 data/forge/tags/items/storage_blocks/ruby.json
 869df5f5e31e3aa33209ef71bf71ea1b6755b8d2 data/forge/tags/items/storage_blocks/sapphire.json
 8d0a2cabf5b03a95902999bda98bf6e97af516e2 data/forge/tags/items/storage_blocks/signalum.json
@@ -602,7 +612,7 @@ eb25d2730b1cceb3801c23458f10d1a41642bc11 data/forge/tags/items/tools/wrench.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/minecraft/tags/blocks/impermeable.json
 fd4ce6f1ab18e8788e2d238505f7e244650c68c1 data/minecraft/tags/blocks/mineable/axe.json
 37dd9148312dcf897f102f89c06f2e8d00c19ff6 data/minecraft/tags/blocks/mineable/hoe.json
-934d3a17560b9511c088fb9780f2ce778201f46f data/minecraft/tags/blocks/mineable/pickaxe.json
+f35ddb9fb8b45d24dc034752f1ccb9727ce8b914 data/minecraft/tags/blocks/mineable/pickaxe.json
 bda7e8c7ea5982e771d51009cdedabebd5027b2e data/minecraft/tags/blocks/mineable/shovel.json
 132de534af6a056ef0444b07d2da7bb60bd961d8 data/minecraft/tags/blocks/needs_iron_tool.json
 96346a86aa8c6b0946d376258b505402270c81f4 data/minecraft/tags/blocks/needs_stone_tool.json
@@ -1054,7 +1064,5 @@ ff823b0670df97ebf275d6d43a365688e3b180d8 data/thermal/recipes/tools/lock.json
 127df1536c3c47f8c1492bb313e09571e6a88cea data/thermal/recipes/tools/xp_crystal.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/thermal/tags/blocks/glass/hardened.json
 388909eb99b785904435e66837b8fed71a38b7ba data/thermal/tags/blocks/rockwool.json
-70834853165c38a72257a698135e5fc68c818145 data/thermal/tags/items/crafting/locks.json
-0193a9d29b0b19e40f0d0d35c1235a91e4fff3f8 data/thermal/tags/items/crafting/securable.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/thermal/tags/items/glass/hardened.json
 388909eb99b785904435e66837b8fed71a38b7ba data/thermal/tags/items/rockwool.json

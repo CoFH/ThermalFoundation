@@ -166,11 +166,11 @@ public class ThermalCore {
 
     private void entityLayerSetup(final EntityRenderersEvent.RegisterLayerDefinitions event) {
 
-        event.registerLayerDefinition(BasalzModel.BASALZ_LAYER, BasalzModel::createMesh);
-        event.registerLayerDefinition(BlitzModel.BLITZ_LAYER, BlitzModel::createMesh);
-        event.registerLayerDefinition(BlizzModel.BLIZZ_LAYER, BlizzModel::createMesh);
+        event.registerLayerDefinition(BasalzModel.BASALZ_LAYER, BasalzModel::createBodyLayer);
+        event.registerLayerDefinition(BlitzModel.BLITZ_LAYER, BlitzModel::createBodyLayer);
+        event.registerLayerDefinition(BlizzModel.BLIZZ_LAYER, BlizzModel::createBodyLayer);
 
-        event.registerLayerDefinition(ElementalProjectileModel.PROJECTILE_LAYER, ElementalProjectileModel::createMesh);
+        event.registerLayerDefinition(ElementalProjectileModel.PROJECTILE_LAYER, ElementalProjectileModel::createBodyLayer);
     }
 
     private void entityRendererSetup(final EntityRenderersEvent.RegisterRenderers event) {

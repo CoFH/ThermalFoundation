@@ -24,7 +24,7 @@ public class ElementalProjectileModel<T extends Entity> extends HierarchicalMode
         this.cube = root.getChild("cube");
     }
 
-    public static LayerDefinition createMesh() {
+    public static LayerDefinition createBodyLayer() {
 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();

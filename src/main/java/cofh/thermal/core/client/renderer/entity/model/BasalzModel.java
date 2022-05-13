@@ -38,7 +38,7 @@ public class BasalzModel<T extends LivingEntity> extends HierarchicalModel<T> {
         Arrays.setAll(this.pillars, (num) -> root.getChild("pillar_" + num));
     }
 
-    public static LayerDefinition createMesh() {
+    public static LayerDefinition createBodyLayer() {
 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();

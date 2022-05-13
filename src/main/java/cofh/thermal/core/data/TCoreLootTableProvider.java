@@ -1,12 +1,9 @@
 package cofh.thermal.core.data;
 
 import cofh.lib.data.LootTableProviderCoFH;
-import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -33,8 +30,8 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
     @Override
     protected void addTables() {
 
-        DeferredRegisterCoFH<Block> regBlocks = BLOCKS;
-        DeferredRegisterCoFH<Item> regItems = ITEMS;
+        var regBlocks = BLOCKS;
+        var regItems = ITEMS;
 
         createSimpleDropTable(regBlocks.get(ID_BAMBOO_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_CHARCOAL_BLOCK));

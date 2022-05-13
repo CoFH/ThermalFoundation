@@ -1,9 +1,9 @@
 package cofh.thermal.core.data;
 
 import cofh.lib.data.RecipeProviderCoFH;
-import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.lib.util.references.CoFHTags;
 import cofh.thermal.lib.common.ThermalFlags;
+import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -38,7 +38,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CHARCOAL_BLOCK), net.minecraft.world.item.Items.CHARCOAL);
         generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BAMBOO_BLOCK), net.minecraft.world.item.Items.BAMBOO);
@@ -139,7 +139,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
     // region HELPERS
     private void generateAlloyRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         ShapelessRecipeBuilder.shapeless(reg.get("bronze_dust"), 4)
                 .requires(CoFHTags.Items.DUSTS_COPPER)
@@ -320,7 +320,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateArmorRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
         String folder = "armor";
         Item result;
 
@@ -473,7 +473,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateAugmentRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
         String folder = "augments";
         Item result;
 
@@ -495,22 +495,22 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(result)
                 .define('G', CoFHTags.Items.GEARS_SILVER)
                 .define('S', CoFHTags.Items.PLATES_SIGNALUM)
-                .define('X', CoFHTags.Items.HARDENED_GLASS)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("SXS")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(ThermalTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_DYNAMO_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("dynamo_fuel_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', CoFHTags.Items.GEARS_LEAD)
                 .define('L', CoFHTags.Items.PLATES_LUMIUM)
-                .define('X', CoFHTags.Items.HARDENED_GLASS)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("LXL")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(ThermalTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_DYNAMO_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         //        result = reg.get("dual_filter_augment");
@@ -614,22 +614,22 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(result)
                 .define('G', CoFHTags.Items.GEARS_SIGNALUM)
                 .define('I', Tags.Items.INGOTS_COPPER)
-                .define('X', CoFHTags.Items.HARDENED_GLASS)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("IXI")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(ThermalTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_POTION_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("potion_duration_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', CoFHTags.Items.GEARS_LUMIUM)
                 .define('I', Tags.Items.INGOTS_COPPER)
-                .define('X', CoFHTags.Items.HARDENED_GLASS)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("IXI")
                 .pattern(" G ")
-                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(ThermalTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_POTION_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("rf_coil_augment");
@@ -669,11 +669,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(result)
                 .define('I', Tags.Items.INGOTS_IRON)
                 .define('R', ITEMS.get("cured_rubber"))
-                .define('X', CoFHTags.Items.HARDENED_GLASS)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern("RIR")
                 .pattern("IXI")
                 .pattern("RIR")
-                .unlockedBy("has_hardened_glass", has(CoFHTags.Items.HARDENED_GLASS))
+                .unlockedBy("has_hardened_glass", has(ThermalTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_STORAGE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("upgrade_augment_1");
@@ -702,7 +702,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("upgrade_augment_3");
         ShapedRecipeBuilder.shaped(result)
-                .define('G', CoFHTags.Items.HARDENED_GLASS)
+                .define('G', ThermalTags.Items.HARDENED_GLASS)
                 .define('I', CoFHTags.Items.INGOTS_ENDERIUM)
                 .define('R', CoFHTags.Items.GEARS_LUMIUM)
                 .define('X', reg.get("upgrade_augment_2"))
@@ -745,7 +745,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateBasicRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
         String folder = "tools";
         Item result;
 
@@ -782,7 +782,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(result)
                 .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('L', Tags.Items.LEATHER)
-                .define('W', CoFHTags.Items.ROCKWOOL)
+                .define('W', ThermalTags.Items.ROCKWOOL)
                 .pattern("LWL")
                 .pattern("WIW")
                 .pattern("LWL")
@@ -918,7 +918,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateChargeRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         Item earthCharge = reg.get("earth_charge");
         Item iceCharge = reg.get("ice_charge");
@@ -1050,7 +1050,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateComponentRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         ShapedRecipeBuilder.shaped(reg.get("redstone_servo"))
                 .define('I', Tags.Items.INGOTS_IRON)
@@ -1131,7 +1131,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateExplosiveRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.GUNPOWDER, 4)
                 .requires(net.minecraft.world.item.Items.CHARCOAL)
@@ -1325,7 +1325,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateRockwoolRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         Item rockwool = reg.get(ID_WHITE_ROCKWOOL);
         String folder = "rockwool";
@@ -1463,7 +1463,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateSlagRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         generateSmeltingRecipe(reg, consumer, reg.get(ID_SLAG_BLOCK), reg.get(ID_POLISHED_SLAG), 0.1F, "smelting");
         generateSmeltingRecipe(reg, consumer, reg.get(ID_RICH_SLAG_BLOCK), reg.get(ID_POLISHED_RICH_SLAG), 0.1F, "smelting");
@@ -1491,7 +1491,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
     private void generateTileRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         Item energyCellFrame = reg.get(ID_ENERGY_CELL_FRAME);
         Item fluidCellFrame = reg.get(ID_FLUID_CELL_FRAME);
@@ -1624,7 +1624,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .define('I', Tags.Items.INGOTS_IRON)
                 .define('P', redstoneServo)
                 .define('R', reg.get("cured_rubber"))
-                .define('X', CoFHTags.Items.HARDENED_GLASS)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern("RXR")
                 .pattern("ICI")
                 .pattern("RPR")

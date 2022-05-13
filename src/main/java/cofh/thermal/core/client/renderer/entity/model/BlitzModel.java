@@ -36,7 +36,7 @@ public class BlitzModel<T extends LivingEntity> extends HierarchicalModel<T> {
         Arrays.setAll(this.body, (num) -> root.getChild("body_" + num));
     }
 
-    public static LayerDefinition createMesh() {
+    public static LayerDefinition createBodyLayer() {
 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();

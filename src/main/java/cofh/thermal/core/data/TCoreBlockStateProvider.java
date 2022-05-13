@@ -27,7 +27,7 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
     @Override
     protected void registerStatesAndModels() {
 
-        DeferredRegisterCoFH<Block> reg = BLOCKS;
+        var reg = BLOCKS;
 
         registerVanilla(reg);
         registerResources(reg);

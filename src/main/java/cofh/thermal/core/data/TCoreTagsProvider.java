@@ -1,6 +1,7 @@
 package cofh.thermal.core.data;
 
 import cofh.lib.util.references.CoFHTags;
+import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.FluidTagsProvider;
@@ -105,6 +106,11 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
 
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_LEAD_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_NICKEL_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_SILVER_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_TIN_BLOCK));
+
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_APATITE_ORE));
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_CINNABAR_ORE));
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_NITER_ORE));
@@ -198,6 +204,10 @@ public class TCoreTagsProvider {
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_LUMIUM).add(BLOCKS.get(ID_LUMIUM_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_NICKEL).add(BLOCKS.get(ID_NICKEL_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_NITER).add(BLOCKS.get(ID_NITER_BLOCK));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_LEAD).add(BLOCKS.get(ID_RAW_LEAD_BLOCK));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL).add(BLOCKS.get(ID_RAW_NICKEL_BLOCK));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_SILVER).add(BLOCKS.get(ID_RAW_SILVER_BLOCK));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_TIN).add(BLOCKS.get(ID_RAW_TIN_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_RUBY).add(BLOCKS.get(ID_RUBY_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_SAPPHIRE).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_SIGNALUM).add(BLOCKS.get(ID_SIGNALUM_BLOCK));
@@ -242,7 +252,7 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ENERGY_CELL_FRAME));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_FLUID_CELL_FRAME));
 
-            tag(CoFHTags.Blocks.HARDENED_GLASS).add(
+            tag(ThermalTags.Blocks.HARDENED_GLASS).add(
                     BLOCKS.get(ID_OBSIDIAN_GLASS),
                     BLOCKS.get(ID_SIGNALUM_GLASS),
                     BLOCKS.get(ID_LUMIUM_GLASS),
@@ -256,7 +266,7 @@ public class TCoreTagsProvider {
                     BLOCKS.get(ID_ENDERIUM_GLASS)
             );
 
-            tag(CoFHTags.Blocks.ROCKWOOL).add(
+            tag(ThermalTags.Blocks.ROCKWOOL).add(
                     BLOCKS.get(ID_WHITE_ROCKWOOL),
                     BLOCKS.get(ID_ORANGE_ROCKWOOL),
                     BLOCKS.get(ID_MAGENTA_ROCKWOOL),
@@ -325,8 +335,8 @@ public class TCoreTagsProvider {
         @Override
         protected void addTags() {
 
-            copy(CoFHTags.Blocks.HARDENED_GLASS, CoFHTags.Items.HARDENED_GLASS);
-            copy(CoFHTags.Blocks.ROCKWOOL, CoFHTags.Items.ROCKWOOL);
+            copy(ThermalTags.Blocks.HARDENED_GLASS, ThermalTags.Items.HARDENED_GLASS);
+            copy(ThermalTags.Blocks.ROCKWOOL, ThermalTags.Items.ROCKWOOL);
 
             copy(CoFHTags.Blocks.ORES_APATITE, CoFHTags.Items.ORES_APATITE);
             copy(CoFHTags.Blocks.ORES_CINNABAR, CoFHTags.Items.ORES_CINNABAR);
@@ -368,6 +378,10 @@ public class TCoreTagsProvider {
             copy(CoFHTags.Blocks.STORAGE_BLOCKS_LUMIUM, CoFHTags.Items.STORAGE_BLOCKS_LUMIUM);
             copy(CoFHTags.Blocks.STORAGE_BLOCKS_NICKEL, CoFHTags.Items.STORAGE_BLOCKS_NICKEL);
             copy(CoFHTags.Blocks.STORAGE_BLOCKS_NITER, CoFHTags.Items.STORAGE_BLOCKS_NITER);
+            copy(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_LEAD, CoFHTags.Items.STORAGE_BLOCKS_RAW_LEAD);
+            copy(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL, CoFHTags.Items.STORAGE_BLOCKS_RAW_NICKEL);
+            copy(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_SILVER, CoFHTags.Items.STORAGE_BLOCKS_RAW_SILVER);
+            copy(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_TIN, CoFHTags.Items.STORAGE_BLOCKS_RAW_TIN);
             copy(CoFHTags.Blocks.STORAGE_BLOCKS_RUBY, CoFHTags.Items.STORAGE_BLOCKS_RUBY);
             copy(CoFHTags.Blocks.STORAGE_BLOCKS_SAPPHIRE, CoFHTags.Items.STORAGE_BLOCKS_SAPPHIRE);
             copy(CoFHTags.Blocks.STORAGE_BLOCKS_SIGNALUM, CoFHTags.Items.STORAGE_BLOCKS_SIGNALUM);
@@ -666,11 +680,11 @@ public class TCoreTagsProvider {
 
             tag(CoFHTags.Items.TOOLS_WRENCH).add(ITEMS.get(ID_WRENCH));
 
-            tag(CoFHTags.Items.BITUMEN).add(ITEMS.get("bitumen"));
-            tag(CoFHTags.Items.COAL_COKE).add(ITEMS.get("coal_coke"));
-            tag(CoFHTags.Items.SAWDUST).add(ITEMS.get("sawdust"));
-            tag(CoFHTags.Items.SLAG).add(ITEMS.get("slag"));
-            tag(CoFHTags.Items.TAR).add(ITEMS.get("tar"));
+            tag(ThermalTags.Items.BITUMEN).add(ITEMS.get("bitumen"));
+            tag(ThermalTags.Items.COAL_COKE).add(ITEMS.get("coal_coke"));
+            tag(ThermalTags.Items.SAWDUST).add(ITEMS.get("sawdust"));
+            tag(ThermalTags.Items.SLAG).add(ITEMS.get("slag"));
+            tag(ThermalTags.Items.TAR).add(ITEMS.get("tar"));
 
             tag(CoFHTags.Items.DUSTS_APATITE).add(ITEMS.get("apatite_dust"));
             tag(CoFHTags.Items.DUSTS_CINNABAR).add(ITEMS.get("cinnabar_dust"));
@@ -702,14 +716,14 @@ public class TCoreTagsProvider {
         @Override
         protected void addTags() {
 
-            tag(CoFHTags.Fluids.REDSTONE).add(FLUIDS.get(ID_FLUID_REDSTONE));
-            tag(CoFHTags.Fluids.GLOWSTONE).add(FLUIDS.get(ID_FLUID_GLOWSTONE));
-            tag(CoFHTags.Fluids.ENDER).add(FLUIDS.get(ID_FLUID_ENDER));
+            tag(ThermalTags.Fluids.REDSTONE).add(FLUIDS.get(ID_FLUID_REDSTONE));
+            tag(ThermalTags.Fluids.GLOWSTONE).add(FLUIDS.get(ID_FLUID_GLOWSTONE));
+            tag(ThermalTags.Fluids.ENDER).add(FLUIDS.get(ID_FLUID_ENDER));
 
-            tag(CoFHTags.Fluids.LATEX).add(FLUIDS.get(ID_FLUID_LATEX));
+            tag(ThermalTags.Fluids.LATEX).add(FLUIDS.get(ID_FLUID_LATEX));
 
-            tag(CoFHTags.Fluids.CREOSOTE).add(FLUIDS.get(ID_FLUID_CREOSOTE));
-            tag(CoFHTags.Fluids.CRUDE_OIL).add(FLUIDS.get(ID_FLUID_CRUDE_OIL));
+            tag(ThermalTags.Fluids.CREOSOTE).add(FLUIDS.get(ID_FLUID_CREOSOTE));
+            tag(ThermalTags.Fluids.CRUDE_OIL).add(FLUIDS.get(ID_FLUID_CRUDE_OIL));
         }
 
     }

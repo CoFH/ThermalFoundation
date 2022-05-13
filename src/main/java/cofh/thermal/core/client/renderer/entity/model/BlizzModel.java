@@ -35,7 +35,7 @@ public class BlizzModel<T extends LivingEntity> extends HierarchicalModel<T> {
         Arrays.setAll(this.botCubes, (num) -> root.getChild("cube_bot_" + num));
     }
 
-    public static LayerDefinition createMesh() {
+    public static LayerDefinition createBodyLayer() {
 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
