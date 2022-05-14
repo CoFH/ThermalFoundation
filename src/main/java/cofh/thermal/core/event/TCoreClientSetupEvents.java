@@ -2,7 +2,6 @@ package cofh.thermal.core.event;
 
 import cofh.lib.client.model.SimpleModel;
 import cofh.thermal.core.client.renderer.model.*;
-import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -23,7 +22,7 @@ public class TCoreClientSetupEvents {
     @SubscribeEvent
     public static void colorSetupBlock(final ColorHandlerEvent.Block event) {
 
-        BlockColors colors = event.getBlockColors();
+        // BlockColors colors = event.getBlockColors();
 
         // colors.register((state, reader, pos, tintIndex) -> (reader == null || pos == null) ? FoliageColors.getDefault() : BiomeColors.getFoliageColor(reader, pos), BLOCKS.get(ID_RUBBER_LEAVES));
     }
@@ -37,16 +36,6 @@ public class TCoreClientSetupEvents {
         ModelLoaderRegistry.registerLoader(new ResourceLocation(ID_THERMAL, "energy_cell"), new SimpleModel.Loader(EnergyCellBakedModel::new));
         ModelLoaderRegistry.registerLoader(new ResourceLocation(ID_THERMAL, "fluid_cell"), new SimpleModel.Loader(FluidCellBakedModel::new));
         ModelLoaderRegistry.registerLoader(new ResourceLocation(ID_THERMAL, "item_cell"), new SimpleModel.Loader(ItemCellBakedModel::new));
-
-        // TODO Covers, Entity Rendering, ArmorModelFullSuit
-        //        ProxyUtils.addModel(ITEMS.get(ID_BEEKEEPER_HELMET), ArmorModelFullSuit.LARGE);
-        //        ProxyUtils.addModel(ITEMS.get(ID_BEEKEEPER_CHESTPLATE), ArmorModelFullSuit.DEFAULT);
-        //
-        //        ProxyUtils.addModel(ITEMS.get(ID_DIVING_HELMET), ArmorModelFullSuit.LARGE);
-        //        ProxyUtils.addModel(ITEMS.get(ID_DIVING_CHESTPLATE), ArmorModelFullSuit.DEFAULT);
-        //
-        //        ProxyUtils.addModel(ITEMS.get(ID_HAZMAT_HELMET), ArmorModelFullSuit.LARGE);
-        //        ProxyUtils.addModel(ITEMS.get(ID_HAZMAT_CHESTPLATE), ArmorModelFullSuit.DEFAULT);
     }
 
 }

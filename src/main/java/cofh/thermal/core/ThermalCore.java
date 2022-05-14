@@ -5,6 +5,7 @@ import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.config.ConfigManager;
+import cofh.lib.config.world.OreConfig;
 import cofh.lib.entity.AbstractGrenade;
 import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecart;
@@ -37,11 +38,13 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
@@ -50,7 +53,6 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -58,10 +60,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.NewRegistryEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Collections;
+import java.util.List;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.init.TCoreReferences.*;
@@ -97,11 +101,14 @@ public class ThermalCore {
 
         TCoreRecipeManagers.register();
         TCoreRecipeSerializers.register();
+
+        ThermalFeatures.register();
     }
 
     public ThermalCore() {
 
         setFeatureFlags();
+        addWorldConfigs();
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -112,7 +119,6 @@ public class ThermalCore {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootData);
-        modEventBus.addListener(EventPriority.HIGHEST, true, this::registrySetup);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -129,7 +135,10 @@ public class ThermalCore {
                 .addClientConfig(new ThermalClientConfig())
                 .addServerConfig(new ThermalCoreConfig())
                 .addServerConfig(new ThermalDeviceConfig())
-                .addServerConfig(new ThermalWorldConfig());
+                .addCommonConfig(new ThermalWorldConfig());
+        CONFIG_MANAGER.setupCommon();
+        CONFIG_MANAGER.setupClient();
+        CONFIG_MANAGER.setupServer();
 
         ThermalFeatures.register(modEventBus);
 
@@ -148,6 +157,24 @@ public class ThermalCore {
         setFlag(ID_TINKER_BENCH, true);
 
         // setFlag(ID_CHUNK_LOADER, true);
+    }
+
+    private void addWorldConfigs() {
+
+        List<ResourceKey<Level>> defaultDimensions = Collections.singletonList(Level.OVERWORLD);
+
+        ThermalWorldConfig.addOreConfig("niter_ore", new OreConfig("Niter", 2, -16, 64, 7, defaultDimensions, getFlag(FLAG_RESOURCE_NITER)));
+        ThermalWorldConfig.addOreConfig("sulfur_ore", new OreConfig("Sulfur", 2, -16, 32, 7, defaultDimensions, getFlag(FLAG_RESOURCE_NITER)));
+
+        ThermalWorldConfig.addOreConfig("tin_ore", new OreConfig("Tin", 6, -20, 60, 9, defaultDimensions, getFlag(FLAG_RESOURCE_TIN)));
+        ThermalWorldConfig.addOreConfig("lead_ore", new OreConfig("Lead", 6, -60, 40, 8, defaultDimensions, getFlag(FLAG_RESOURCE_LEAD)));
+        ThermalWorldConfig.addOreConfig("silver_ore", new OreConfig("Silver", 4, -60, 40, 8, defaultDimensions, getFlag(FLAG_RESOURCE_SILVER)));
+        ThermalWorldConfig.addOreConfig("nickel_ore", new OreConfig("Nickel", 4, -40, 120, 8, defaultDimensions, getFlag(FLAG_RESOURCE_NICKEL)));
+
+        ThermalWorldConfig.addOreConfig("apatite_ore", new OreConfig("Apatite", 4, -16, 96, 9, defaultDimensions, getFlag(FLAG_RESOURCE_APATITE)));
+
+        ThermalWorldConfig.addOreConfig("cinnabar_ore", new OreConfig("Cinnabar", 1, -16, 48, 5, defaultDimensions, getFlag(FLAG_RESOURCE_CINNABAR)));
+        ThermalWorldConfig.addOreConfig("oil_sand", new OreConfig("Oil Sand", 2, 40, 80, 24, defaultDimensions, getFlag(FLAG_RESOURCE_OIL)));
     }
 
     // region INITIALIZATION
@@ -208,12 +235,6 @@ public class ThermalCore {
 
         event.enqueueWork(this::registerGuiFactories);
         event.enqueueWork(this::registerRenderLayers);
-    }
-
-    private void registrySetup(final NewRegistryEvent event) {
-
-        CONFIG_MANAGER.setupServer();
-        CONFIG_MANAGER.setupClient();
     }
     // endregion
 

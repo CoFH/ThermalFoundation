@@ -60,6 +60,32 @@ public class ThermalFeatures {
         RULE_TESTS.register(bus);
     }
 
+    public static void register() {
+
+        registerDefaultTriangleOreFeature("niter_ore");
+        registerDefaultTriangleOreFeature("sulfur_ore");
+
+        registerDefaultTriangleOreFeature("tin_ore");
+        registerDefaultTriangleOreFeature("lead_ore");
+        registerDefaultTriangleOreFeature("silver_ore");
+        registerDefaultTriangleOreFeature("nickel_ore");
+
+        registerDefaultTriangleOreFeature("apatite_ore");
+
+        registerDefaultTriangleOreFeature("cinnabar_ore");
+
+        Supplier<OreConfig> oilSandConfig = () -> ThermalWorldConfig.getOreConfig("oil_sand");
+        configuredOilSand = CONFIGURED_FEATURES.register("oil_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOilSandReplacements(), oilSandConfig.get().getSize())));
+        placedOilSand = PLACED_FEATURES.register("oil_sand", () -> new PlacedFeature(configuredOilSand.getHolder().get(),
+                List.of(CountPlacement.of(oilSandConfig.get().getCount()),
+                        InSquarePlacement.spread(),
+                        BiomeFilter.biome(),
+                        // DimensionPlacement.of(oreConfig.get().getDimensions()),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(oilSandConfig.get().getMinY()), VerticalAnchor.absolute(oilSandConfig.get().getMaxY()))
+                )
+        ));
+    }
+
     // region REGISTRATION
     public static void registerDefaultTriangleOreFeature(final String oreName) {
 
@@ -73,17 +99,17 @@ public class ThermalFeatures {
 
     public static void registerDefaultOreFeature(final String oreName, boolean triangle) {
 
-        final Supplier<OreConfig> oreConfig = () -> ThermalWorldConfig.getOreConfig(oreName);
+        final OreConfig oreConfig = ThermalWorldConfig.getOreConfig(oreName);
 
-        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.get().getSize())));
+        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.getSize())));
 
         oreFeatures.add(Pair.of(oreName, PLACED_FEATURES.register(oreName, () -> new PlacedFeature(configuredOre.getHolder().get(),
-                List.of(CountPlacement.of(oreConfig.get().getCount()),
+                List.of(CountPlacement.of(oreConfig.getCount()),
                         InSquarePlacement.spread(),
                         BiomeFilter.biome(),
                         // DimensionPlacement.of(oreConfig.get().getDimensions()),
-                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY())) :
-                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY()))
+                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.getMinY()), VerticalAnchor.absolute(oreConfig.getMaxY())) :
+                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.getMinY()), VerticalAnchor.absolute(oreConfig.getMaxY()))
                 )
         ))));
     }
@@ -106,6 +132,11 @@ public class ThermalFeatures {
                 }
             }
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).addAll(oresToGenerate);
+
+            Biome.BiomeCategory category = event.getCategory();
+            if (category == Biome.BiomeCategory.DESERT || category == Biome.BiomeCategory.MESA) {
+                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(placedOilSand.getHolder().get());
+            }
         }
         addHostileSpawns(event);
     }
@@ -138,6 +169,9 @@ public class ThermalFeatures {
         }
     }
 
+    private static RegistryObject<ConfiguredFeature<?, ?>> configuredOilSand;
+    private static RegistryObject<PlacedFeature> placedOilSand;
+
     public static final RuleTest SAND = new BlockMatchTest(Blocks.SAND);
     public static final RuleTest RED_SAND = new BlockMatchTest(Blocks.RED_SAND);
 
@@ -156,6 +190,11 @@ public class ThermalFeatures {
             oreReplacements.add(OreConfiguration.target(OreFeatures.NETHERRACK, BLOCKS.get(netherrack(oreName)).defaultBlockState()));
         }
         return oreReplacements;
+    }
+
+    private static List<OreConfiguration.TargetBlockState> getOilSandReplacements() {
+
+        return List.of(OreConfiguration.target(SAND, BLOCKS.get("oil_sand").defaultBlockState()), OreConfiguration.target(RED_SAND, BLOCKS.get("oil_red_sand").defaultBlockState()));
     }
 
     public static boolean isOverworldBiome(Biome.BiomeCategory category) {
