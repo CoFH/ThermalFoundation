@@ -60,6 +60,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.NewRegistryEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -101,8 +102,6 @@ public class ThermalCore {
 
         TCoreRecipeManagers.register();
         TCoreRecipeSerializers.register();
-
-        ThermalFeatures.register();
     }
 
     public ThermalCore() {
@@ -119,6 +118,7 @@ public class ThermalCore {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootData);
+        modEventBus.addListener(this::registrySetup);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -235,6 +235,11 @@ public class ThermalCore {
 
         event.enqueueWork(this::registerGuiFactories);
         event.enqueueWork(this::registerRenderLayers);
+    }
+
+    private void registrySetup(final NewRegistryEvent event) {
+
+        ThermalFeatures.register();
     }
     // endregion
 

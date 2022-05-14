@@ -99,17 +99,17 @@ public class ThermalFeatures {
 
     public static void registerDefaultOreFeature(final String oreName, boolean triangle) {
 
-        final OreConfig oreConfig = ThermalWorldConfig.getOreConfig(oreName);
+        final Supplier<OreConfig> oreConfig = () -> ThermalWorldConfig.getOreConfig(oreName);
 
-        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.getSize())));
+        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.get().getSize())));
 
         oreFeatures.add(Pair.of(oreName, PLACED_FEATURES.register(oreName, () -> new PlacedFeature(configuredOre.getHolder().get(),
-                List.of(CountPlacement.of(oreConfig.getCount()),
+                List.of(CountPlacement.of(oreConfig.get().getCount()),
                         InSquarePlacement.spread(),
                         BiomeFilter.biome(),
                         // DimensionPlacement.of(oreConfig.get().getDimensions()),
-                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.getMinY()), VerticalAnchor.absolute(oreConfig.getMaxY())) :
-                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.getMinY()), VerticalAnchor.absolute(oreConfig.getMaxY()))
+                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY())) :
+                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY()))
                 )
         ))));
     }
