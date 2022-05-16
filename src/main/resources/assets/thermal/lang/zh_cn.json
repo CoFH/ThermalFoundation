@@ -13,7 +13,6 @@
   "block.thermal.niter_ore": "硝石矿石",
   "block.thermal.sulfur_ore": "硫矿石",
 
-  "block.thermal.copper_ore": "铜矿石",
   "block.thermal.lead_ore": "铅矿石",
   "block.thermal.nickel_ore": "镍矿石",
   "block.thermal.silver_ore": "银矿石",
@@ -21,6 +20,19 @@
 
   "block.thermal.ruby_ore": "红宝石矿石",
   "block.thermal.sapphire_ore": "蓝宝石矿石",
+
+  "block.thermal.deepslate_apatite_ore": "深层磷灰石矿石",
+  "block.thermal.deepslate_cinnabar_ore": "深层朱砂矿石",
+  "block.thermal.deepslate_niter_ore": "深层硝石矿石",
+  "block.thermal.deepslate_sulfur_ore": "深层硫矿石",
+  
+  "block.thermal.deepslate_lead_ore": "深层铅矿石",
+  "block.thermal.deepslate_nickel_ore": "深层镍矿石",
+  "block.thermal.deepslate_silver_ore": "深层银矿石",
+  "block.thermal.deepslate_tin_ore": "深层锡矿石",
+  
+  "block.thermal.deepslate_ruby_ore": "深层红宝石矿石",
+  "block.thermal.deepslate_sapphire_ore": "深层蓝宝石矿石",
 
   "block.thermal.oil_sand": "沥青沙",
   "block.thermal.oil_red_sand": "沥青红沙",
@@ -30,7 +42,6 @@
   "block.thermal.niter_block": "硝石块",
   "block.thermal.sulfur_block": "硫块",
 
-  "block.thermal.copper_block": "铜块",
   "block.thermal.lead_block": "铅块",
   "block.thermal.nickel_block": "镍块",
   "block.thermal.silver_block": "银块",
@@ -243,12 +254,10 @@
   "item.thermal.junk_net": "垃圾打捞网",
   "item.thermal.junk_net.desc": "用以在§e§o水产捕捞器§r§6中打捞垃圾。不会在使用中被消耗。",
 
-  "item.thermal.copper_coin": "铜币",
-  "item.thermal.copper_dust": "铜粉",
-  "item.thermal.copper_gear": "铜齿轮",
-  "item.thermal.copper_ingot": "铜锭",
-  "item.thermal.copper_nugget": "铜粒",
-  "item.thermal.copper_plate": "铜板",
+  "item.thermal.raw_lead": "粗铅",
+  "item.thermal.raw_nickel": "粗镍",
+  "item.thermal.raw_silver": "粗银",
+  "item.thermal.raw_tin": "粗锡",
 
   "item.thermal.lead_coin": "铅币",
   "item.thermal.lead_dust": "铅粉",
@@ -434,7 +443,7 @@
   "item.thermal.machine_cycle_augment": "循环处理升级",
   "item.thermal.machine_cycle_augment.desc": "装配产物可循环至输入槽以进行下一步合成。",
   "item.thermal.machine_efficiency_augment": "通量效率升级",
-  "item.thermal.machine_efficiency_augment.desc": "以处理速度降低为代价提升 RF 效率。",
+  "item.thermal.machine_efficiency_augment.desc": "以处理速度降低为代价提升RF效率。",
   "item.thermal.machine_efficiency_creative_augment": "创造通量提效",
   "item.thermal.machine_efficiency_creative_augment.desc": "不消耗能量，处理速度极快。",
   "item.thermal.machine_null_augment": "仙人掌升级",
@@ -442,7 +451,7 @@
   "item.thermal.machine_output_augment": "辅助筛取升级",
   "item.thermal.machine_output_augment.desc": "增加副产物的产出",
   "item.thermal.machine_speed_augment": "通量链接升级",
-  "item.thermal.machine_speed_augment.desc": "以 RF 效率降低为代价提升处理速度。",
+  "item.thermal.machine_speed_augment.desc": "以RF效率降低为代价提升处理速度。",
 
   "item.thermal.potion_amplifier_augment": "强效炼药升级",
   "item.thermal.potion_amplifier_augment.desc": "增强药水的效果等级。",
@@ -452,7 +461,7 @@
   "item.thermal.rf_coil_augment": "扩展通量线圈",
 
   "item.thermal.rf_coil_creative_augment": "创造通量线圈",
-  "item.thermal.rf_coil_creative_augment.desc": "功能性无限的 RF 能量",
+  "item.thermal.rf_coil_creative_augment.desc": "功能性无限的RF能量",
 
   "item.thermal.rf_coil_storage_augment": "稳态通量线圈",
   "item.thermal.rf_coil_xfer_augment": "强导通量线圈",
@@ -499,7 +508,9 @@
   "block.thermal.item_cell_frame": "物品单元框架",
 
   "block.thermal.charge_bench": "能量灌注机",
+  "block.thermal.charge_bench.desc": "用于快速充能多个物品。",
   "block.thermal.tinker_bench": "工匠工作台",
+  "block.thermal.tinker_bench.desc": "用于强化，充能和装填物品。",
 
   "block.thermal.chunk_loader": "连续锚",
 
@@ -646,6 +657,17 @@
   "block.thermal.carrot_block": "箱装胡萝卜",
   "block.thermal.potato_block": "箱装马铃薯",
 
+  "block.thermal.raw_lead_block": "粗铅块",
+  "block.thermal.raw_nickel_block": "粗镍块",
+  "block.thermal.raw_silver_block": "粗银块",
+  "block.thermal.raw_tin_block": "粗锡块",
+
+  "item.thermal.copper_coin": "铜币",
+  "item.thermal.copper_dust": "铜粉",
+  "item.thermal.copper_gear": "铜齿轮",
+  "item.thermal.copper_nugget": "铜粒",
+  "item.thermal.copper_plate": "铜板",
+
   "item.thermal.diamond_coin": "钻石币",
   "item.thermal.diamond_dust": "钻石粉",
   "item.thermal.diamond_gear": "钻石齿轮",
@@ -679,6 +701,7 @@
   "item.thermal.netherite_coin": "下界合金币",
   "item.thermal.netherite_dust": "下界合金粉",
   "item.thermal.netherite_gear": "下界合金齿轮",
+  "item.thermal.netherite_nugget": "下界合金粒",
   "item.thermal.netherite_plate": "下界合金板",
 
   "item.thermal.quartz_coin": "石英币",
@@ -929,6 +952,12 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+  "block.thermal.energy_duct": "能量导管",
+  "block.thermal.fluid_duct": "流体导管",
+
+  "block.thermal.energy_distributor": "RF分发接口",
+  "block.thermal.fluid_distributor": "流体分发接口",
+
   "block.thermal.item_buffer": "逻辑物品缓存器",
 
   "info.thermal.item_buffer.0": "限制物品的传送速率和数量。",
@@ -942,6 +971,12 @@
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
+
+  "block.thermal.energy_duct.keyword": "能量 rf 传输",
+  "block.thermal.fluid_duct.keyword": "能量 rf 传输",
+
+  "block.thermal.energy_distributor.keyword": "能量 rf 传输",
+  "block.thermal.fluid_distributor.keyword": "流体 传输",
 
   "block.thermal.ender_tunnel.keyword": "传送 量子 超立方体",
 
@@ -1208,6 +1243,8 @@
   "entity.thermal.redstone_tnt_minecart": "红石发信炸药矿车",
   "entity.thermal.slime_tnt_minecart": "弹力黏着炸药矿车",
 
+  "entity.thermal.energy_minecart": "通量存储矿车",
+  "entity.thermal.fluid_minecart": "流体储罐矿车",
   "entity.thermal.underwater_minecart": "水下矿车",
 
   "item.thermal.earth_tnt_minecart": "地岩碎裂炸药矿车",
@@ -1221,6 +1258,8 @@
   "item.thermal.redstone_tnt_minecart": "红石发信炸药矿车",
   "item.thermal.slime_tnt_minecart": "弹力黏着炸药矿车",
 
+  "item.thermal.energy_minecart": "通量存储矿车",
+  "item.thermal.fluid_minecart": "流体储罐矿车",
   "item.thermal.underwater_minecart": "水下矿车",
 
   "_comment": "========================================================================================================",
