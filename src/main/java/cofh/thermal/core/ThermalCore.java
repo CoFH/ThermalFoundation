@@ -136,7 +136,6 @@ public class ThermalCore {
                 .addServerConfig(new ThermalCoreConfig())
                 .addServerConfig(new ThermalDeviceConfig())
                 .addCommonConfig(new ThermalWorldConfig());
-        CONFIG_MANAGER.setupCommon();
         CONFIG_MANAGER.setupClient();
         CONFIG_MANAGER.setupServer();
 
@@ -239,6 +238,7 @@ public class ThermalCore {
 
     private void registrySetup(final NewRegistryEvent event) {
 
+        CONFIG_MANAGER.setupCommon();
         ThermalFeatures.register();
     }
     // endregion

@@ -32,7 +32,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
@@ -74,14 +73,14 @@ public class ThermalFeatures {
 
         registerDefaultTriangleOreFeature("cinnabar_ore");
 
-        Supplier<OreConfig> oilSandConfig = () -> ThermalWorldConfig.getOreConfig("oil_sand");
-        configuredOilSand = CONFIGURED_FEATURES.register("oil_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOilSandReplacements(), oilSandConfig.get().getSize())));
+        final OreConfig oilSandConfig = ThermalWorldConfig.getOreConfig("oil_sand");
+        configuredOilSand = CONFIGURED_FEATURES.register("oil_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOilSandReplacements(), oilSandConfig.getSize())));
         placedOilSand = PLACED_FEATURES.register("oil_sand", () -> new PlacedFeature(configuredOilSand.getHolder().get(),
-                List.of(CountPlacement.of(oilSandConfig.get().getCount()),
+                List.of(CountPlacement.of(oilSandConfig.getCount()),
                         InSquarePlacement.spread(),
                         BiomeFilter.biome(),
                         // DimensionPlacement.of(oreConfig.get().getDimensions()),
-                        HeightRangePlacement.triangle(VerticalAnchor.absolute(oilSandConfig.get().getMinY()), VerticalAnchor.absolute(oilSandConfig.get().getMaxY()))
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(oilSandConfig.getMinY()), VerticalAnchor.absolute(oilSandConfig.getMaxY()))
                 )
         ));
     }
@@ -99,17 +98,17 @@ public class ThermalFeatures {
 
     public static void registerDefaultOreFeature(final String oreName, boolean triangle) {
 
-        final Supplier<OreConfig> oreConfig = () -> ThermalWorldConfig.getOreConfig(oreName);
+        final OreConfig oreConfig = ThermalWorldConfig.getOreConfig(oreName);
 
-        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.get().getSize())));
+        RegistryObject<ConfiguredFeature<?, ?>> configuredOre = CONFIGURED_FEATURES.register(oreName, () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOreReplacements(oreName), oreConfig.getSize())));
 
         oreFeatures.add(Pair.of(oreName, PLACED_FEATURES.register(oreName, () -> new PlacedFeature(configuredOre.getHolder().get(),
-                List.of(CountPlacement.of(oreConfig.get().getCount()),
+                List.of(CountPlacement.of(oreConfig.getCount()),
                         InSquarePlacement.spread(),
                         BiomeFilter.biome(),
                         // DimensionPlacement.of(oreConfig.get().getDimensions()),
-                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY())) :
-                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.get().getMinY()), VerticalAnchor.absolute(oreConfig.get().getMaxY()))
+                        triangle ? HeightRangePlacement.triangle(VerticalAnchor.absolute(oreConfig.getMinY()), VerticalAnchor.absolute(oreConfig.getMaxY())) :
+                                HeightRangePlacement.uniform(VerticalAnchor.absolute(oreConfig.getMinY()), VerticalAnchor.absolute(oreConfig.getMaxY()))
                 )
         ))));
     }

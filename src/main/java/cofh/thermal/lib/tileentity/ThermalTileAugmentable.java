@@ -292,6 +292,15 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         return super.onActivatedDelegate(world, pos, state, player, hand, result);
     }
 
+    public void markChunkUnsaved() {
+
+        if (this.level != null) {
+            if (this.level.hasChunkAt(this.worldPosition)) {
+                this.level.getChunkAt(this.worldPosition).setUnsaved(true);
+            }
+        }
+    }
+
     protected boolean keepEnergy() {
 
         return ThermalCoreConfig.keepEnergy;
@@ -845,7 +854,14 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
         if (slot >= invSize() - augSize()) {
             updateAugmentState();
         }
+        markChunkUnsaved();
     }
+
+    //    @Override
+    //    public void onTankChanged(int tank) {
+    //
+    //        markChunkUnsaved();
+    //    }
 
     @Override
     public void onControlUpdate() {
