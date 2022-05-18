@@ -111,6 +111,12 @@ public class ThermalCore {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        CONFIG_MANAGER.register(modEventBus)
+                .addClientConfig(new ThermalClientConfig())
+                .addServerConfig(new ThermalCoreConfig())
+                .addServerConfig(new ThermalDeviceConfig())
+                .addCommonConfig(new ThermalWorldConfig());
+
         modEventBus.addListener(this::entityAttributeSetup);
         modEventBus.addListener(this::entityLayerSetup);
         modEventBus.addListener(this::entityRendererSetup);
@@ -130,14 +136,6 @@ public class ThermalCore {
         RECIPE_SERIALIZERS.register(modEventBus);
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
-
-        CONFIG_MANAGER.register(modEventBus)
-                .addClientConfig(new ThermalClientConfig())
-                .addServerConfig(new ThermalCoreConfig())
-                .addServerConfig(new ThermalDeviceConfig())
-                .addCommonConfig(new ThermalWorldConfig());
-        CONFIG_MANAGER.setupClient();
-        CONFIG_MANAGER.setupServer();
 
         ThermalFeatures.register(modEventBus);
 
@@ -238,6 +236,8 @@ public class ThermalCore {
 
     private void registrySetup(final NewRegistryEvent event) {
 
+        CONFIG_MANAGER.setupClient();
+        CONFIG_MANAGER.setupServer();
         CONFIG_MANAGER.setupCommon();
         ThermalFeatures.register();
     }
