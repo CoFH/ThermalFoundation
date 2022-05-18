@@ -1,7 +1,6 @@
 package cofh.thermal.core.client.gui.device;
 
 import cofh.core.client.gui.element.ElementBlock;
-import cofh.core.client.gui.element.ElementFluid;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.block.entity.device.DeviceRockGenTile;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
@@ -42,11 +41,11 @@ public class DeviceRockGenScreen extends ThermalTileScreenBase<DeviceRockGenCont
 
         addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 84, 34, PROG_ARROW_FLUID_RIGHT, tile));
 
-        addElement(createSlot(this, 44, 46).setVisible(() -> myTile.isActive && myTile.getBelow() != Blocks.AIR));
+        addElement(createSlot(this, 44, 46).setVisible(() -> myTile.getBelow() != Blocks.AIR));
 
-        addElement(new ElementFluid(this, 33, 24).setFluid(LAVA).setSize(16, 16).setVisible(() -> myTile.getAdjLava() > 0));
-        addElement(new ElementBlock(this, 55, 24).setBlock(() -> myTile.getAdjacent()).setVisible(() -> myTile.isActive && myTile.getAdjacent() != Blocks.AIR));
-        addElement(new ElementBlock(this, 44, 46).setBlock(() -> myTile.getBelow()).setVisible(() -> myTile.isActive && myTile.getBelow() != Blocks.AIR));
+        addElement(new ElementBlock(this, 33, 24).setBlock(() -> Blocks.LAVA).setVisible(() -> myTile.getAdjLava() > 0));
+        addElement(new ElementBlock(this, 55, 24).setBlock(() -> myTile.getAdjacent()).setVisible(() -> myTile.getAdjacent() != Blocks.AIR));
+        addElement(new ElementBlock(this, 44, 46).setBlock(() -> myTile.getBelow()).setVisible(() -> myTile.getBelow() != Blocks.AIR));
     }
 
 }
