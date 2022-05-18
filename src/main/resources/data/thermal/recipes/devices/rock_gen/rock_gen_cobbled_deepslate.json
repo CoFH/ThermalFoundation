@@ -1,0 +1,7 @@
+{
+  "type": "thermal:rock_gen",
+  "adjacent": "minecraft:blue_ice",
+  "result": {
+    "item": "minecraft:cobbled_deepslate"
+  }
+}
