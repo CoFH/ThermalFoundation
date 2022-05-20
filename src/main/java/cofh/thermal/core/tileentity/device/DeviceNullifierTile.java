@@ -19,7 +19,7 @@ import java.util.function.Predicate;
 
 import static cofh.lib.util.StorageGroup.INPUT;
 import static cofh.lib.util.StorageGroup.INTERNAL;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.constants.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_FILTER;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_NULLIFIER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
@@ -33,7 +33,7 @@ public class DeviceNullifierTile extends DeviceTileBase {
     protected ItemStorageCoFH[] binSlots;
     // protected ItemStorageCoFH tankSlot = new ItemStorageCoFH(1, (item) -> FluidHelper.hasFluidHandlerCap(item) || item.getItem() == Items.POTION);
 
-    protected FluidStorageCoFH nullTank = new NullFluidStorage(BUCKET_VOLUME * 64, fluid -> filter.valid(fluid)).setEnabled(() -> isActive);
+    protected FluidStorageCoFH nullTank = new NullFluidStorage(TANK_SMALL, fluid -> filter.valid(fluid)).setEnabled(() -> isActive);
 
     public DeviceNullifierTile() {
 
