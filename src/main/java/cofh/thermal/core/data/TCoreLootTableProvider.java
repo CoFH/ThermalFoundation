@@ -12,6 +12,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
+import static cofh.thermal.core.util.RegistrationHelper.raw;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreLootTableProvider extends LootTableProviderCoFH {
@@ -48,10 +49,12 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_NITER_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SULFUR_BLOCK));
 
+        blockLootTables.put(regBlocks.get(ID_ALUMINUM_ORE), getSilkTouchOreTable(regBlocks.get(ID_ALUMINUM_ORE), regItems.get("raw_aluminum")));
         blockLootTables.put(regBlocks.get(ID_LEAD_ORE), getSilkTouchOreTable(regBlocks.get(ID_LEAD_ORE), regItems.get("raw_lead")));
         blockLootTables.put(regBlocks.get(ID_NICKEL_ORE), getSilkTouchOreTable(regBlocks.get(ID_NICKEL_ORE), regItems.get("raw_nickel")));
         blockLootTables.put(regBlocks.get(ID_SILVER_ORE), getSilkTouchOreTable(regBlocks.get(ID_SILVER_ORE), regItems.get("raw_silver")));
         blockLootTables.put(regBlocks.get(ID_TIN_ORE), getSilkTouchOreTable(regBlocks.get(ID_TIN_ORE), regItems.get("raw_tin")));
+        blockLootTables.put(regBlocks.get(ID_URANIUM_ORE), getSilkTouchOreTable(regBlocks.get(ID_URANIUM_ORE), regItems.get("raw_uranium")));
 
         blockLootTables.put(regBlocks.get(ID_RUBY_ORE), getSilkTouchOreTable(regBlocks.get(ID_RUBY_ORE), regItems.get("ruby")));
         blockLootTables.put(regBlocks.get(ID_SAPPHIRE_ORE), getSilkTouchOreTable(regBlocks.get(ID_SAPPHIRE_ORE), regItems.get("sapphire")));
@@ -67,20 +70,26 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_OIL_RED_SAND));
         createSimpleDropTable(regBlocks.get(ID_OIL_SAND));
 
-        createSimpleDropTable(regBlocks.get(ID_RAW_LEAD_BLOCK));
-        createSimpleDropTable(regBlocks.get(ID_RAW_NICKEL_BLOCK));
-        createSimpleDropTable(regBlocks.get(ID_RAW_SILVER_BLOCK));
-        createSimpleDropTable(regBlocks.get(ID_RAW_TIN_BLOCK));
+        //        createSimpleDropTable(regBlocks.get(raw(ID_ALUMINUM_BLOCK)));
+        createSimpleDropTable(regBlocks.get(raw(ID_LEAD_BLOCK)));
+        createSimpleDropTable(regBlocks.get(raw(ID_NICKEL_BLOCK)));
+        createSimpleDropTable(regBlocks.get(raw(ID_SILVER_BLOCK)));
+        createSimpleDropTable(regBlocks.get(raw(ID_TIN_BLOCK)));
+        //        createSimpleDropTable(regBlocks.get(raw(ID_URANIUM_BLOCK)));
 
+        //        createSimpleDropTable(regBlocks.get(ID_ALUMINUM_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_LEAD_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_NICKEL_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SILVER_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_TIN_BLOCK));
+        //        createSimpleDropTable(regBlocks.get(ID_URANIUM_BLOCK));
 
         createSimpleDropTable(regBlocks.get(ID_BRONZE_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_CONSTANTAN_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_ELECTRUM_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_INVAR_BLOCK));
+        //        createSimpleDropTable(regBlocks.get(ID_ROSE_GOLD_BLOCK));
+        //        createSimpleDropTable(regBlocks.get(ID_STEEL_BLOCK));
 
         createSimpleDropTable(regBlocks.get(ID_RUBY_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SAPPHIRE_BLOCK));

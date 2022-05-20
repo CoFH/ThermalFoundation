@@ -188,7 +188,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     }
     // endregion
 
-    // region INamedContainerProvider
+    // region MenuProvider
     @Override
     public Component getDisplayName() {
 

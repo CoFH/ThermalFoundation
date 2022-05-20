@@ -11,6 +11,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
+import static cofh.thermal.core.util.RegistrationHelper.raw;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreItemModelProvider extends ItemModelProviderCoFH {
@@ -289,10 +290,10 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         blockItem(reg.getSup(ID_NITER_BLOCK));
         blockItem(reg.getSup(ID_SULFUR_BLOCK));
 
-        blockItem(reg.getSup(ID_RAW_LEAD_BLOCK));
-        blockItem(reg.getSup(ID_RAW_NICKEL_BLOCK));
-        blockItem(reg.getSup(ID_RAW_SILVER_BLOCK));
-        blockItem(reg.getSup(ID_RAW_TIN_BLOCK));
+        blockItem(reg.getSup(raw(ID_LEAD_BLOCK)));
+        blockItem(reg.getSup(raw(ID_NICKEL_BLOCK)));
+        blockItem(reg.getSup(raw(ID_SILVER_BLOCK)));
+        blockItem(reg.getSup(raw(ID_TIN_BLOCK)));
 
         blockItem(reg.getSup(ID_LEAD_BLOCK));
         blockItem(reg.getSup(ID_NICKEL_BLOCK));

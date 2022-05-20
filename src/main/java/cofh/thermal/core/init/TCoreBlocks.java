@@ -173,20 +173,26 @@ public class TCoreBlocks {
             }
         }, () -> new BlockItemCoFH(BLOCKS.get(ID_SULFUR_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(12000));
 
-        registerBlock(ID_RAW_TIN_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
-        registerBlock(ID_RAW_LEAD_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
-        registerBlock(ID_RAW_SILVER_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GRAY).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
-        registerBlock(ID_RAW_NICKEL_BLOCK, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_YELLOW).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(raw(ID_TIN_BLOCK), () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(raw(ID_LEAD_BLOCK), () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(raw(ID_SILVER_BLOCK), () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GRAY).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+        registerBlock(raw(ID_NICKEL_BLOCK), () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_YELLOW).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
 
         registerBlock(ID_TIN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_TIN));
         registerBlock(ID_LEAD_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_LEAD));
         registerBlock(ID_SILVER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_SILVER));
         registerBlock(ID_NICKEL_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_NICKEL));
 
+        //        registerBlock(ID_ALUMINUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ALUMINUM));
+        //        registerBlock(ID_URANIUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_URANIUM));
+
         registerBlock(ID_BRONZE_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_BRONZE));
         registerBlock(ID_ELECTRUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ELECTRUM));
         registerBlock(ID_INVAR_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_INVAR));
         registerBlock(ID_CONSTANTAN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_CONSTANTAN));
+
+        //        registerBlock(ID_STEEL_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_STEEL));
+        //        registerBlock(ID_ROSE_GOLD_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ROSE_GOLD));
 
         registerBlock(ID_SIGNALUM_BLOCK, () -> new SignalumBlock(of(Material.METAL, MaterialColor.COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(7)).noOcclusion()), Rarity.UNCOMMON);
         registerBlock(ID_LUMIUM_BLOCK, () -> new LumiumBlock(of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(15)).noOcclusion()), Rarity.UNCOMMON);

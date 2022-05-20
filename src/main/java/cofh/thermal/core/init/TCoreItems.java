@@ -173,10 +173,16 @@ public class TCoreItems {
         registerMetalSet("silver", group, getFlag(FLAG_RESOURCE_SILVER));
         registerMetalSet("nickel", group, getFlag(FLAG_RESOURCE_NICKEL));
 
+        //        registerMetalSet("aluminum", group, getFlag(FLAG_RESOURCE_ALUMINUM));
+        //        registerMetalSet("uranium", group, getFlag(FLAG_RESOURCE_URANIUM));
+
         registerAlloySet("bronze", group, getFlag(FLAG_RESOURCE_BRONZE));
         registerAlloySet("electrum", group, getFlag(FLAG_RESOURCE_ELECTRUM));
         registerAlloySet("invar", group, getFlag(FLAG_RESOURCE_INVAR));
         registerAlloySet("constantan", group, getFlag(FLAG_RESOURCE_CONSTANTAN));
+
+        //        registerAlloySet("steel", group, getFlag(FLAG_RESOURCE_STEEL));
+        //        registerAlloySet("rose_gold", group, getFlag(FLAG_RESOURCE_ROSE_GOLD));
 
         Rarity rarity = Rarity.UNCOMMON;
 

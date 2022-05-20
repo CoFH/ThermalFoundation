@@ -13,6 +13,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.*;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
+import static cofh.thermal.core.util.RegistrationHelper.raw;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
@@ -106,10 +107,10 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
 
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_LEAD_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_NICKEL_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_SILVER_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RAW_TIN_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
 
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_APATITE_ORE));
             tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_CINNABAR_ORE));
@@ -204,10 +205,10 @@ public class TCoreTagsProvider {
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_LUMIUM).add(BLOCKS.get(ID_LUMIUM_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_NICKEL).add(BLOCKS.get(ID_NICKEL_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_NITER).add(BLOCKS.get(ID_NITER_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_LEAD).add(BLOCKS.get(ID_RAW_LEAD_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL).add(BLOCKS.get(ID_RAW_NICKEL_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_SILVER).add(BLOCKS.get(ID_RAW_SILVER_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_TIN).add(BLOCKS.get(ID_RAW_TIN_BLOCK));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_LEAD).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_SILVER).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
+            tag(CoFHTags.Blocks.STORAGE_BLOCKS_RAW_TIN).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_RUBY).add(BLOCKS.get(ID_RUBY_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_SAPPHIRE).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
             tag(CoFHTags.Blocks.STORAGE_BLOCKS_SIGNALUM).add(BLOCKS.get(ID_SIGNALUM_BLOCK));

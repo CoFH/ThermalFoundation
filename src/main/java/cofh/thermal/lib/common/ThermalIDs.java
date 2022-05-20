@@ -24,10 +24,12 @@ public class ThermalIDs {
     public static final String ID_NITER_ORE = "niter_ore";
     public static final String ID_SULFUR_ORE = "sulfur_ore";
 
+    public static final String ID_ALUMINUM_ORE = "aluminum_ore";
     public static final String ID_LEAD_ORE = "lead_ore";
     public static final String ID_NICKEL_ORE = "nickel_ore";
     public static final String ID_SILVER_ORE = "silver_ore";
     public static final String ID_TIN_ORE = "tin_ore";
+    public static final String ID_URANIUM_ORE = "uranium_ore";
 
     public static final String ID_RUBY_ORE = "ruby_ore";
     public static final String ID_SAPPHIRE_ORE = "sapphire_ore";
@@ -52,20 +54,19 @@ public class ThermalIDs {
     public static final String ID_NITER_BLOCK = "niter_block";
     public static final String ID_SULFUR_BLOCK = "sulfur_block";
 
-    public static final String ID_RAW_LEAD_BLOCK = "raw_lead_block";
-    public static final String ID_RAW_NICKEL_BLOCK = "raw_nickel_block";
-    public static final String ID_RAW_SILVER_BLOCK = "raw_silver_block";
-    public static final String ID_RAW_TIN_BLOCK = "raw_tin_block";
-
+    public static final String ID_ALUMINUM_BLOCK = "aluminum_block";
     public static final String ID_LEAD_BLOCK = "lead_block";
     public static final String ID_NICKEL_BLOCK = "nickel_block";
     public static final String ID_SILVER_BLOCK = "silver_block";
     public static final String ID_TIN_BLOCK = "tin_block";
+    public static final String ID_URANIUM_BLOCK = "uranium_block";
 
     public static final String ID_BRONZE_BLOCK = "bronze_block";
     public static final String ID_CONSTANTAN_BLOCK = "constantan_block";
     public static final String ID_ELECTRUM_BLOCK = "electrum_block";
     public static final String ID_INVAR_BLOCK = "invar_block";
+    public static final String ID_ROSE_GOLD_BLOCK = "rose_gold_block";
+    public static final String ID_STEEL_BLOCK = "steel_block";
 
     public static final String ID_RUBY_BLOCK = "ruby_block";
     public static final String ID_SAPPHIRE_BLOCK = "sapphire_block";

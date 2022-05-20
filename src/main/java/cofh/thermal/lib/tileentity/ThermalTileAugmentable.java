@@ -837,7 +837,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
     // endregion
 
-    // region INamedContainerProvider
+    // region MenuProvider
     @Override
     public Component getDisplayName() {
 

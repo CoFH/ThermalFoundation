@@ -22,7 +22,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -93,12 +92,12 @@ public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTil
         internalHandler = new SimpleItemHandler(this, inventory.getOutputSlots());
     }
 
-    @Override
-    public void setLevel(Level level) {
-
-        super.setLevel(level);
-        updateValidity();
-    }
+    //    @Override
+    //    public void setLevel(Level level) {
+    //
+    //        super.setLevel(level);
+    //        updateValidity();
+    //    }
 
     @Override
     protected void updateValidity() {
@@ -132,8 +131,11 @@ public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTil
     protected void updateActiveState() {
 
         if (!cached) {
+            boolean wasValid = valid;
             updateValidity();
-            process = Math.max(minTimeConstant, MathHelper.RANDOM.nextInt(getTimeConstant()));
+            if (!wasValid && valid) {
+                process = Math.max(minTimeConstant, MathHelper.RANDOM.nextInt(getTimeConstant()));
+            }
         }
         super.updateActiveState();
     }

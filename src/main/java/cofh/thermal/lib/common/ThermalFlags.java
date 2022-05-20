@@ -78,6 +78,9 @@ public class ThermalFlags {
     public static String FLAG_RESOURCE_SILVER = "silver";
     public static String FLAG_RESOURCE_NICKEL = "nickel";
 
+    public static String FLAG_RESOURCE_ALUMINUM = "aluminum";
+    public static String FLAG_RESOURCE_URANIUM = "uranium";
+
     public static String FLAG_RESOURCE_RUBY = "ruby";
     public static String FLAG_RESOURCE_SAPPHIRE = "sapphire";
 
@@ -87,6 +90,9 @@ public class ThermalFlags {
     public static String FLAG_RESOURCE_ELECTRUM = "electrum";
     public static String FLAG_RESOURCE_INVAR = "invar";
     public static String FLAG_RESOURCE_CONSTANTAN = "constantan";
+
+    public static String FLAG_RESOURCE_STEEL = "steel";
+    public static String FLAG_RESOURCE_ROSE_GOLD = "rose_gold";
 
     public static String FLAG_MOB_BASALZ = "basalz";
     public static String FLAG_MOB_BLITZ = "blitz";

@@ -3,19 +3,31 @@ package cofh.thermal.lib.block;
 import cofh.core.block.TileBlockActive6Way;
 import cofh.core.block.entity.TileCoFH;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
 import static cofh.lib.util.constants.Constants.FACING_ALL;
 
-public class TileBlockDynamo extends TileBlockActive6Way {
+public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterloggedBlock {
+
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     private static final VoxelShape[] BASE_SHAPE = new VoxelShape[]{
             Block.box(0, 6, 0, 16, 16, 16),
@@ -50,9 +62,39 @@ public class TileBlockDynamo extends TileBlockActive6Way {
     }
 
     @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+
+        super.createBlockStateDefinition(builder);
+        builder.add(WATERLOGGED);
+    }
+
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 
         return DYNAMO_SHAPE[state.getValue(FACING_ALL).ordinal()];
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+
+        boolean flag = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
+        return super.getStateForPlacement(context).setValue(WATERLOGGED, flag);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
+
+        if (stateIn.getValue(WATERLOGGED)) {
+            worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
+        }
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
 }

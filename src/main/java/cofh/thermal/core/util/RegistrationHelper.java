@@ -336,6 +336,11 @@ public class RegistrationHelper {
         return "netherrack_" + id;
     }
 
+    public static String raw(String id) {
+
+        return "raw_" + id;
+    }
+
     public static String block(String id) {
 
         return id + "_block";
