@@ -74,7 +74,7 @@ public class ThermalFeatures {
         registerDefaultTriangleOreFeature("cinnabar_ore");
 
         final OreConfig oilSandConfig = ThermalWorldConfig.getOreConfig("oil_sand");
-        configuredOilSand = CONFIGURED_FEATURES.register("oil_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOilSandReplacements(), oilSandConfig.getSize())));
+        RegistryObject<ConfiguredFeature<?, ?>> configuredOilSand = CONFIGURED_FEATURES.register("oil_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(getOilSandReplacements(), oilSandConfig.getSize())));
         placedOilSand = PLACED_FEATURES.register("oil_sand", () -> new PlacedFeature(configuredOilSand.getHolder().get(),
                 List.of(CountPlacement.of(oilSandConfig.getCount()),
                         InSquarePlacement.spread(),
@@ -168,7 +168,6 @@ public class ThermalFeatures {
         }
     }
 
-    private static RegistryObject<ConfiguredFeature<?, ?>> configuredOilSand;
     private static RegistryObject<PlacedFeature> placedOilSand;
 
     public static final RuleTest SAND = new BlockMatchTest(Blocks.SAND);
