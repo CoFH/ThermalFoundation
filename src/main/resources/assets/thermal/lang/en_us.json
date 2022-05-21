@@ -13,7 +13,6 @@
   "block.thermal.niter_ore": "Niter Ore",
   "block.thermal.sulfur_ore": "Sulfur Ore",
 
-  "block.thermal.copper_ore": "Copper Ore",
   "block.thermal.lead_ore": "Lead Ore",
   "block.thermal.nickel_ore": "Nickel Ore",
   "block.thermal.silver_ore": "Silver Ore",
@@ -21,6 +20,19 @@
 
   "block.thermal.ruby_ore": "Ruby Ore",
   "block.thermal.sapphire_ore": "Sapphire Ore",
+
+  "block.thermal.deepslate_apatite_ore": "Deepslate Apatite Ore",
+  "block.thermal.deepslate_cinnabar_ore": "Deepslate Cinnabar Ore",
+  "block.thermal.deepslate_niter_ore": "Deepslate Niter Ore",
+  "block.thermal.deepslate_sulfur_ore": "Deepslate Sulfur Ore",
+
+  "block.thermal.deepslate_lead_ore": "Deepslate Lead Ore",
+  "block.thermal.deepslate_nickel_ore": "Deepslate Nickel Ore",
+  "block.thermal.deepslate_silver_ore": "Deepslate Silver Ore",
+  "block.thermal.deepslate_tin_ore": "Deepslate Tin Ore",
+
+  "block.thermal.deepslate_ruby_ore": "Deepslate Ruby Ore",
+  "block.thermal.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
 
   "block.thermal.oil_sand": "Bituminous Sand",
   "block.thermal.oil_red_sand": "Bituminous Red Sand",
@@ -30,7 +42,6 @@
   "block.thermal.niter_block": "Block of Niter",
   "block.thermal.sulfur_block": "Block of Sulfur",
 
-  "block.thermal.copper_block": "Block of Copper",
   "block.thermal.lead_block": "Block of Lead",
   "block.thermal.nickel_block": "Block of Nickel",
   "block.thermal.silver_block": "Block of Silver",
@@ -243,12 +254,10 @@
   "item.thermal.junk_net": "Junk Net",
   "item.thermal.junk_net.desc": "Use in the §e§oAquatic Entangler§r§6 to catch junk. Not consumable.",
 
-  "item.thermal.copper_coin": "Copper Coin",
-  "item.thermal.copper_dust": "Copper Dust",
-  "item.thermal.copper_gear": "Copper Gear",
-  "item.thermal.copper_ingot": "Copper Ingot",
-  "item.thermal.copper_nugget": "Copper Nugget",
-  "item.thermal.copper_plate": "Copper Plate",
+  "item.thermal.raw_lead": "Raw Lead",
+  "item.thermal.raw_nickel": "Raw Nickel",
+  "item.thermal.raw_silver": "Raw Silver",
+  "item.thermal.raw_tin": "Raw Tin",
 
   "item.thermal.lead_coin": "Lead Coin",
   "item.thermal.lead_dust": "Lead Dust",
@@ -499,7 +508,9 @@
   "block.thermal.item_cell_frame": "Item Cell Frame",
 
   "block.thermal.charge_bench": "Energetic Infuser",
+  "block.thermal.charge_bench.desc": "Used to charge multiple items quickly.",
   "block.thermal.tinker_bench": "Tinker's Workbench",
+  "block.thermal.tinker_bench.desc": "Used to augment, charge, and fill items.",
 
   "block.thermal.chunk_loader": "Continuum Anchor",
 
@@ -646,6 +657,17 @@
   "block.thermal.carrot_block": "Crate of Carrots",
   "block.thermal.potato_block": "Crate of Potatoes",
 
+  "block.thermal.raw_lead_block": "Block of Raw Lead",
+  "block.thermal.raw_nickel_block": "Block of Raw Nickel",
+  "block.thermal.raw_silver_block": "Block of Raw Silver",
+  "block.thermal.raw_tin_block": "Block of Raw Tin",
+
+  "item.thermal.copper_coin": "Copper Coin",
+  "item.thermal.copper_dust": "Copper Dust",
+  "item.thermal.copper_gear": "Copper Gear",
+  "item.thermal.copper_nugget": "Copper Nugget",
+  "item.thermal.copper_plate": "Copper Plate",
+
   "item.thermal.diamond_coin": "Diamond Coin",
   "item.thermal.diamond_dust": "Diamond Dust",
   "item.thermal.diamond_gear": "Diamond Gear",
@@ -679,6 +701,7 @@
   "item.thermal.netherite_coin": "Netherite Coin",
   "item.thermal.netherite_dust": "Netherite Dust",
   "item.thermal.netherite_gear": "Netherite Gear",
+  "item.thermal.netherite_nugget": "Netherite Nugget",
   "item.thermal.netherite_plate": "Netherite Plate",
 
   "item.thermal.quartz_coin": "Quartz Coin",
@@ -931,7 +954,6 @@
 
   "block.thermal.energy_duct": "Fluxduct",
   "block.thermal.fluid_duct": "Fluiduct",
-  "block.thermal.fluid_duct_glass": "Fluiduct (Windowed)",
 
   "block.thermal.energy_distributor": "RF Distribution Interface",
   "block.thermal.fluid_distributor": "Fluid Distribution Interface",
@@ -1221,6 +1243,8 @@
   "entity.thermal.redstone_tnt_minecart": "Minecart with Redstone Explosive",
   "entity.thermal.slime_tnt_minecart": "Minecart with Slime Explosive",
 
+  "entity.thermal.energy_minecart": "Flux Storage Minecart",
+  "entity.thermal.fluid_minecart": "Fluid Tank Minecart",
   "entity.thermal.underwater_minecart": "Underwater Minecart",
 
   "item.thermal.earth_tnt_minecart": "Minecart with Tectonic Explosive",
@@ -1234,6 +1258,8 @@
   "item.thermal.redstone_tnt_minecart": "Minecart with Redstone Explosive",
   "item.thermal.slime_tnt_minecart": "Minecart with Slime Explosive",
 
+  "item.thermal.energy_minecart": "Flux Storage Minecart",
+  "item.thermal.fluid_minecart": "Fluid Tank Minecart",
   "item.thermal.underwater_minecart": "Underwater Minecart",
 
   "_comment": "========================================================================================================",
@@ -1255,5 +1281,13 @@
   "item.thermal.nuke_tnt_minecart.keyword": "tnt",
   "item.thermal.phyto_tnt_minecart.keyword": "fertilizer tnt",
   "item.thermal.redstone_tnt_minecart.keyword": "tnt",
-  "item.thermal.slime_tnt_minecart.keyword": "tnt"
+  "item.thermal.slime_tnt_minecart.keyword": "tnt",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Guidebooks",
+  "_comment": "========================================================================================================",
+  
+  "thermal.book.name": "Thermalpedia",
+  "thermal.book.landing_text": "Welcome to the Thermal Series' guide book! From all of us who worked on it, we hope you enjoy.",
+  "thermal.book.subtitle": "MC 1.18.2"
 }
