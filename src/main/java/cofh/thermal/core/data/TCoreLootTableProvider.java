@@ -49,12 +49,12 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_NITER_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SULFUR_BLOCK));
 
-        blockLootTables.put(regBlocks.get(ID_ALUMINUM_ORE), getSilkTouchOreTable(regBlocks.get(ID_ALUMINUM_ORE), regItems.get("raw_aluminum")));
+        //        blockLootTables.put(regBlocks.get(ID_ALUMINUM_ORE), getSilkTouchOreTable(regBlocks.get(ID_ALUMINUM_ORE), regItems.get("raw_aluminum")));
         blockLootTables.put(regBlocks.get(ID_LEAD_ORE), getSilkTouchOreTable(regBlocks.get(ID_LEAD_ORE), regItems.get("raw_lead")));
         blockLootTables.put(regBlocks.get(ID_NICKEL_ORE), getSilkTouchOreTable(regBlocks.get(ID_NICKEL_ORE), regItems.get("raw_nickel")));
         blockLootTables.put(regBlocks.get(ID_SILVER_ORE), getSilkTouchOreTable(regBlocks.get(ID_SILVER_ORE), regItems.get("raw_silver")));
         blockLootTables.put(regBlocks.get(ID_TIN_ORE), getSilkTouchOreTable(regBlocks.get(ID_TIN_ORE), regItems.get("raw_tin")));
-        blockLootTables.put(regBlocks.get(ID_URANIUM_ORE), getSilkTouchOreTable(regBlocks.get(ID_URANIUM_ORE), regItems.get("raw_uranium")));
+        //        blockLootTables.put(regBlocks.get(ID_URANIUM_ORE), getSilkTouchOreTable(regBlocks.get(ID_URANIUM_ORE), regItems.get("raw_uranium")));
 
         blockLootTables.put(regBlocks.get(ID_RUBY_ORE), getSilkTouchOreTable(regBlocks.get(ID_RUBY_ORE), regItems.get("ruby")));
         blockLootTables.put(regBlocks.get(ID_SAPPHIRE_ORE), getSilkTouchOreTable(regBlocks.get(ID_SAPPHIRE_ORE), regItems.get("sapphire")));
