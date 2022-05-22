@@ -3,12 +3,16 @@
   "_comment": "Thermal Core",
   "_comment": "========================================================================================================",
 
+  "advancements.thermal.root.title": "써멀 시리즈",
+  "advancements.thermal.root.description": "써멀 세계의 시작입니다!",
+  "advancements.thermal.wrench.title": "렌치 같은 것",
+  "advancements.thermal.wrench.description": "초승달 망치를 만드세요.",
+
   "block.thermal.apatite_ore": "인회석 광석",
   "block.thermal.cinnabar_ore": "진사 광석",
   "block.thermal.niter_ore": "질산칼륨 광석",
   "block.thermal.sulfur_ore": "유황 광석",
 
-  "block.thermal.copper_ore": "구리 광석",
   "block.thermal.lead_ore": "납 광석",
   "block.thermal.nickel_ore": "니켈 광석",
   "block.thermal.silver_ore": "은 광석",
@@ -16,6 +20,19 @@
 
   "block.thermal.ruby_ore": "루비 광석",
   "block.thermal.sapphire_ore": "사파이어 광석",
+  
+  "block.thermal.deepslate_apatite_ore": "심층암 인회석 광석",
+  "block.thermal.deepslate_cinnabar_ore": "심층암 진사 광석",
+  "block.thermal.deepslate_niter_ore": "심층암 질산칼륨 광석",
+  "block.thermal.deepslate_sulfur_ore": "심층암 유황 광석",
+
+  "block.thermal.deepslate_lead_ore": "심층암 납 광석",
+  "block.thermal.deepslate_nickel_ore": "심층암 니켈 광석",
+  "block.thermal.deepslate_silver_ore": "심층암 은 광석",
+  "block.thermal.deepslate_tin_ore": "심층암 주석 광석",
+
+  "block.thermal.deepslate_ruby_ore": "심층암 루비 광석",
+  "block.thermal.deepslate_sapphire_ore": "심층암 사파이어 광석",
 
   "block.thermal.oil_sand": "역청 모래",
   "block.thermal.oil_red_sand": "역청 붉은 모래",
@@ -25,7 +42,6 @@
   "block.thermal.niter_block": "질산칼륨 블록",
   "block.thermal.sulfur_block": "유황 블록",
 
-  "block.thermal.copper_block": "구리 블록",
   "block.thermal.lead_block": "납 블록",
   "block.thermal.nickel_block": "니켈 블록",
   "block.thermal.silver_block": "은 블록",
@@ -44,6 +60,7 @@
   "block.thermal.signalum_block": "시그널륨 블록",
 
   "block.thermal.machine_frame": "기계 프레임",
+  "block.thermal.strongbox": "강화 상자",
 
   "block.thermal.enderium_glass": "엔더리움 유리",
   "block.thermal.lumium_glass": "루미움 유리",
@@ -66,6 +83,15 @@
   "block.thermal.green_rockwool": "초록색 암면",
   "block.thermal.red_rockwool": "빨간색 암면",
   "block.thermal.black_rockwool": "검정색 암면",
+
+  "block.thermal.chiseled_rich_slag": "조각된 풍부한 슬래그",
+  "block.thermal.chiseled_slag": "조각된 슬래그",
+  "block.thermal.cracked_rich_slag_bricks": "금 간 풍부한 슬래그 벽돌",
+  "block.thermal.cracked_slag_bricks": "금 간 슬래그 벽돌",
+  "block.thermal.polished_rich_slag": "윤나는 풍부한 슬래그",
+  "block.thermal.polished_slag": "윤나는 슬래그",
+  "block.thermal.rich_slag_bricks": "풍부한 슬래그 벽돌",
+  "block.thermal.slag_bricks": "슬래그 벽돌",
 
   "block.thermal.bitumen_block": "역청 블록",
   "block.thermal.coal_coke_block": "코크스 블록",
@@ -90,7 +116,6 @@
   "entity.thermal.blizz_projectile": "얼음 화살",
 
   "fluid.thermal.biocrude": "바이오 원유",
-  "fluid.thermal.biofuel": "휘발유",
   "fluid.thermal.creosote": "크레오소트유",
   "fluid.thermal.crude_oil": "원유",
   "fluid.thermal.ender": "공명하는 엔더",
@@ -99,6 +124,7 @@
   "fluid.thermal.latex": "라텍스",
   "fluid.thermal.light_oil": "경유",
   "fluid.thermal.redstone": "불안정한 레드스톤",
+  "fluid.thermal.refined_biofuel": "그래솔린",
   "fluid.thermal.refined_fuel": "정제된 연료",
   "fluid.thermal.resin": "수지",
   "fluid.thermal.sap": "수액",
@@ -107,10 +133,10 @@
   "fluid.thermal.tree_oil": "나무 기름",
 
   "info.thermal.catalysts": "촉매제",
-  "info.thermal.energy_mod": "애네지 배수",
+  "info.thermal.energy_mod": "전력 배율",
   "info.thermal.primary_mod": "기본 배율",
   "info.thermal.secondary_mod": "보조 배율",
-  "info.thermal.use_chance": "소비될 확률",
+  "info.thermal.use_chance": "소비 확률",
 
   "info.thermal.detonator.mode.0": "모드: 지정",
   "info.thermal.detonator.mode.1": "모드: 폭파",
@@ -118,6 +144,9 @@
   "info.thermal.detonator.use.0": "TNT 블록에 사용하여 폭파를 준비합니다.",
   "info.thermal.detonator.use.1": "지정된 TNT를 폭파시키는 데 사용합니다.",
   "info.thermal.detonator.use.sneak": "웅크린 상태로 우클릭하여 리셋합니다.",
+  
+  "info.thermal.lock.use": "보안을 위해 호환되는 블록에 사용할 수 있습니다.",
+  "info.thermal.lock.use.sneak": "웅크린 상태로 사용하여 보조 슬롯에 들고 있는 호환되는 블록에 보안을 겁니다.",
 
   "info.thermal.redprint.contents": "복사된 설정:",
   "info.thermal.redprint.unknown": "알려지지 않은 데이터",
@@ -128,16 +157,33 @@
   "info.thermal.redprint.use.contents": "블록에 우클릭하여 설정을 가져옵니다.",
   "info.thermal.redprint.use.sneak": "웅크린 상태로 우클릭하여 리셋합니다.",
 
+  "info.thermal.satchel.0": "아이템을 저장하고 수집합니다. 보안을 걸 수 있습니다.",
+  "info.thermal.satchel.1": "필터가 설정되어 있다면 웅크린 상태로 사용하여 설정을 변경합니다.",
+  "info.thermal.satchel.2": "필터 설정은 자동 수집에만 적용됩니다.",
+  "info.thermal.satchel.mode.0": "자동 수집 비활성화됨",
+  "info.thermal.satchel.mode.1": "자동 수집 활성화됨",
+  "info.thermal.satchel.use": "사용하여 책가방을 엽니다.",
+  "info.thermal.satchel.use.sneak": "웅크린 상태로 사용하여 설정을 변경합니다.",
+
+  "info.thermal.wrench.mode.0": "기술자 시야 비활성화됨",
+  "info.thermal.wrench.mode.1": "기술자 시야 활성화됨",
+
   "info.thermal.xp_crystal.mode.0": "자동 수집 활성화됨",
   "info.thermal.xp_crystal.mode.1": "자동 수집 비활성화됨",
   "info.thermal.xp_crystal.use": "우클릭으로 사용하여 경험치를 수정으로 옮깁니다.",
   "info.thermal.xp_crystal.use.sneak": "웅크린 상태로 우클릭하여 수정에 저장되어있는 경험치를 가져옵니다.",
 
+  "itemGroup.thermal.blocks": "써멀 시리즈: 블록",
+  "itemGroup.thermal.devices": "써멀 시리즈: 기계",
+  "itemGroup.thermal.foods": "써멀 시리즈: 작물과 음식",
+  "itemGroup.thermal.items": "써멀 시리즈: 아이템",
+  "itemGroup.thermal.resources": "써멀 시리즈: 자원들",
+  "itemGroup.thermal.tools": "써멀 시리즈: 도구들",
+
   "item.thermal.redstone_servo": "레드스톤 서보",
   "item.thermal.rf_coil": "레드스톤 플럭스 코일",
 
   "item.thermal.biocrude_bucket": "바이오 원유 양동이",
-  "item.thermal.biofuel_bucket": "휘발유 양동이",
   "item.thermal.creosote_bucket": "크레오소트유 양동이",
   "item.thermal.crude_oil_bucket": "원유 양동이",
   "item.thermal.ender_bucket": "공명하는 엔더 양동이",
@@ -146,18 +192,14 @@
   "item.thermal.latex_bucket": "라텍스 양동이",
   "item.thermal.light_oil_bucket": "경유 양동이",
   "item.thermal.redstone_bucket": "불안정한 레드스톤 양동이",
+  "item.thermal.refined_biofuel_bucket": "그래솔린 양동이",
   "item.thermal.refined_fuel_bucket": "정제된 연료 양동이",
   "item.thermal.resin_bucket": "수지 양동이",
   "item.thermal.sap_bucket": "수액 양동이",
   "item.thermal.seed_oil_bucket": "씨앗 기름 양동이",
+  "item.thermal.syrup_bottle": "시럽 병",
   "item.thermal.syrup_bucket": "시럽 양동이",
   "item.thermal.tree_oil_bucket": "나무 기름 양동이",
-
-  "itemGroup.thermal.blocks": "써멀 시리즈: 블록",
-  "itemGroup.thermal.foods": "써멀 시리즈: 작물과 음식",
-  "itemGroup.thermal.items": "써멀 시리즈: 아이템",
-  "itemGroup.thermal.resources": "써멀 시리즈: 자원들",
-  "itemGroup.thermal.tools": "써멀 시리즈: 도구들",
 
   "item.thermal.apatite": "인회석",
   "item.thermal.apatite_dust": "인회석 가루",
@@ -198,24 +240,24 @@
   "item.thermal.phytogro.desc": "매우 강력한 비료입니다.",
   "item.thermal.redprint": "적사진",
   "item.thermal.redprint.desc": "블록 간 설정을 복사 및 붙여넣기가 가능합니다.",
+  "item.thermal.satchel": "책가방",
+  "item.thermal.satchel.desc": "아이템을 저장합니다. 필터로 설정할 수 있습니다.",
   "item.thermal.wrench": "초승달 망치",
-  "item.thermal.wrench.desc": "대부분의 블록을 회전시킵니다. 그리고 렌치로 잘 알려져 있습니다.",
+  "item.thermal.wrench.desc": "대부분의 블록을 회전시킵니다. 렌치로 잘 알려져 있습니다.",
   "item.thermal.xp_crystal": "통찰력의 수정",
   "item.thermal.xp_crystal.desc": "경험치를 저장합니다.",
 
-  "item.thermal.junk_net": "쓰레기 회수 그물",
-  "item.thermal.junk_net.desc": "§e§o수생 포획기§r§6를 사용하여 쓰레기를 낚습니다. 소비되지 않습니다.",
   "item.thermal.aquachow": "아쿠아 츄",
   "item.thermal.aquachow.desc": "§e§o수생 포획기§r§6에 사용하여 더 많은 물고기를 낚을 수 있습니다.",
   "item.thermal.deep_aquachow": "심해 아쿠아 츄",
   "item.thermal.deep_aquachow.desc": "§e§o수생 포획기§r§6에 사용하여 심해의 물고기를 낚습니다. 바다 바이옴에서 사용하기에 좋습니다.",
+  "item.thermal.junk_net": "쓰레기 회수 그물",
+  "item.thermal.junk_net.desc": "§e§o수생 포획기§r§6를 사용하여 쓰레기를 낚습니다. 소비되지 않습니다.",
 
-  "item.thermal.copper_coin": "구리 동전",
-  "item.thermal.copper_dust": "구리 가루",
-  "item.thermal.copper_gear": "구리 기어",
-  "item.thermal.copper_ingot": "구리 주괴",
-  "item.thermal.copper_nugget": "구리 조각",
-  "item.thermal.copper_plate": "구리 판",
+  "item.thermal.raw_lead": "납 원석",
+  "item.thermal.raw_nickel": "니켈 원석",
+  "item.thermal.raw_silver": "은 원석",
+  "item.thermal.raw_tin": "주석 원석",
 
   "item.thermal.lead_coin": "납 동전",
   "item.thermal.lead_dust": "납 가루",
@@ -307,15 +349,8 @@
   "item.thermal.signalum_plate": "시그널륨 판",
 
   "subtitles.thermal.block.device_water_gen": "수생 포획기가 뽀글거림",
-
-  "subtitles.thermal.block.machine_bottler": "유체 밀봉기에서 액체를 채움",
-  "subtitles.thermal.block.machine_crucible": "융해 도가니가 윙윙거림",
-  "subtitles.thermal.block.machine_furnace": "레드스톤 화로가 윙윙거리며 안이 타오름",
-  "subtitles.thermal.block.machine_pulverizer": "분쇄기가 아이템을 분쇄함",
-  "subtitles.thermal.block.machine_sawmill": "제재소가 작동함",
-  "subtitles.thermal.block.machine_smelter": "합금 제련기가 윙윙거림",
-
-  "subtitles.thermal.entity.basalz.ambient": "바살즈가 호흡함",
+  
+   "subtitles.thermal.entity.basalz.ambient": "바살즈가 호흡함",
   "subtitles.thermal.entity.basalz.death": "바살즈가 죽음",
   "subtitles.thermal.entity.basalz.hurt": "바살즈가 상처를 입음",
   "subtitles.thermal.entity.basalz.shoot": "바살즈가 조각을 발사함",
@@ -331,6 +366,12 @@
   "subtitles.thermal.entity.blizz.shoot": "블리즈가 얼음 화살을 발사함",
 
   "subtitles.thermal.item.magnet": "자석이 아이템을 끌어옴",
+  
+   "subtitles.thermal.item.equip_beekeeper": "양봉가의 옷이 부스럭거림",
+  "subtitles.thermal.item.equip_diving": "잠수복이 짤랑거림",
+  "subtitles.thermal.item.equip_hazmat": "방호복이 부스럭거림",
+
+  "subtitles.thermal.misc.tinker": "부착물이 설치됨",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Augments",
@@ -405,7 +446,10 @@
   "item.thermal.machine_efficiency_augment.desc": "RF소비 효율을 증가시키지만, 처리 속도가 감소합니다.",
   "item.thermal.machine_efficiency_creative_augment": "크리에이티브 플럭스 효율",
   "item.thermal.machine_efficiency_creative_augment.desc": "RF를 사용하지 않습니다. 처리 속도가 매우 빠릅니다.",
+  "item.thermal.machine_null_augment": "보조 선인장",
+  "item.thermal.machine_null_augment.desc": "부산물이 생산되면 파괴합니다.",
   "item.thermal.machine_output_augment": "보조 처리 필터",
+  "item.thermal.machine_output_augment.desc": "부산물 아이템의 생산량이 증가합니다.",
   "item.thermal.machine_speed_augment": "플럭스 결합 증폭기",
   "item.thermal.machine_speed_augment.desc": "처리 속도를 증가시키지만, RF효율이 감소합니다.",
 
@@ -456,12 +500,38 @@
 
   "block.thermal.energy_cell": "레드스톤 플럭스 셀",
   "block.thermal.energy_cell_frame": "레드스톤 플럭스 셀 프레임",
-
   "block.thermal.fluid_cell": "액체 셀",
   "block.thermal.fluid_cell_frame": "액체 셀 프레임",
+  "block.thermal.item_cell": "아이템 셀",
+  "block.thermal.item_cell_frame": "아이템 셀 프레임",
 
-  "block.thermal.tinker_bench": "땜장이의 작업대",
   "block.thermal.charge_bench": "에너지 충전기",
+  "block.thermal.charge_bench.desc": "여러 아이템을 빠르게 충전하는 데 사용됩니다.",
+  "block.thermal.tinker_bench": "땜장이의 작업대",
+  "block.thermal.tinker_bench.desc": "부착물을 사용하거나, 아이템의 충전 및 채우기에 사용됩니다.",
+  
+  "block.thermal.chunk_loader": "연속체 정박기",
+
+  "block.thermal.earth_tnt": "대지 폭발물",
+  "block.thermal.earth_tnt.desc": "땅과 흙을 산산조각냅니다. 채굴에 매우 좋습니다.",
+  "block.thermal.ender_tnt": "혼란 폭발물",
+  "block.thermal.ender_tnt.desc": "넓은 범위에 걸쳐 멀리 순간이동시키는 충격파를 생성합니다.",
+  "block.thermal.fire_tnt": "지옥불 폭발물",
+  "block.thermal.fire_tnt.desc": "넓은 범위를 불태웁니다.",
+  "block.thermal.glowstone_tnt": "광휘 폭발물",
+  "block.thermal.glowstone_tnt.desc": "넓은 범위를 밝힙니다. 언데드에게 피해를 줍니다.",
+  "block.thermal.ice_tnt": "빙하 폭발물",
+  "block.thermal.ice_tnt.desc": "넓은 범위를 얼립니다.",
+  "block.thermal.lightning_tnt": "전격 폭발물",
+  "block.thermal.lightning_tnt.desc": "넓은 범위에 전기충격을 가합니다. 번개를 매우 잘 불러올겁니다.",
+  "block.thermal.nuke_tnt": "핵폭탄",
+  "block.thermal.nuke_tnt.desc": "근처에 서 있지 마세요.",
+  "block.thermal.phyto_tnt": "PNT",
+  "block.thermal.phyto_tnt.desc": "주변 반경에 픽토그로를 흩뿌립니다. 던질수 없습니다.",
+  "block.thermal.redstone_tnt": "레드스톤 폭발물",
+  "block.thermal.redstone_tnt.desc": "넓은 범위에 레드스톤 신호를 방출합니다.",
+  "block.thermal.slime_tnt": "슬라임 폭발물",
+  "block.thermal.slime_tnt.desc": "넓은 범위에 슬라임을 뿌립니다. 크게 밀쳐냅니다.",
 
   "info.thermal.device_collector.0": "주변 지역에서 아이템을 줍습니다.",
   "info.thermal.device_collector.1": "이 동작은 필터 설정을 적용할 수 있습니다.",
@@ -478,13 +548,13 @@
   "info.thermal.device_nullifier.0": "안에 들어가는 모든것을 소멸시킵니다.",
   "info.thermal.device_nullifier.1": "자동으로 들어간 아이템이나 액체는 즉시 소멸시킵니다.",
   "info.thermal.device_nullifier.2": "수동으로 집어넣은 아이템은 삭제 버튼을 누르지 않으면 소멸되지 않습니다.",
-  "info.thermal.device_nullifier.3": "필터를 사용하여 아이템 입력을 제한할 수 있습니다..",
+  "info.thermal.device_nullifier.3": "필터를 사용하여 아이템 입력을 제한할 수 있습니다.",
 
   "info.thermal.device_nullifier_empty_bin": "아이템 파괴하기",
 
   "info.thermal.device_potion_diffuser.0": "물약을 주변에 살포합니다.",
   "info.thermal.device_potion_diffuser.1": "시약을 사용하여 효과를 증폭시킬 수 있습니다.",
-  "info.thermal.device_potion_diffuser.2": "깊게 숨쉬세요.",
+  "info.thermal.device_potion_diffuser.2": "숨 크게 들이마시세요.",
 
   "info.thermal.device_rock_gen.0": "다양한 돌을 생성합니다.",
   "info.thermal.device_rock_gen.1": "인접한 용암과 냉각제가 필요합니다.",
@@ -507,6 +577,10 @@
 
   "info.thermal.fluid_cell.0": "액체를 저장하거나 전송시킵니다.",
   "info.thermal.fluid_cell.1": "§e§oShift§r 또는 §e§oCtrl§r을 눌러 보다 편하게 입력/출력량을 조절할 수 있습니다.",
+  
+  "info.thermal.charge_bench.0": "RF를 아이템에 충전합니다.",
+  "info.thermal.charge_bench.1": "아이템은 자동으로 입출력 할 수 있습니다.",
+  "info.thermal.charge_bench.2": "소음을 느껴보세요.",
 
   "info.thermal.tinker_bench.0": "개조, 보충, 충전에 사용할 수 있는 다목적 테이블입니다.",
   "info.thermal.tinker_bench.1": "각각의 슬롯에서 저장공간의 충전이 가능합니다.",
@@ -514,10 +588,6 @@
 
   "info.thermal.tinker_bench_mode_augment": "모드: 부착물",
   "info.thermal.tinker_bench_mode_charge": "모드: 충전 및 채우기",
-
-  "info.thermal.charge_bench.0": "RF를 아이템에 충전합니다.",
-  "info.thermal.charge_bench.1": "아이템은 자동으로 입출력 할 수 있습니다.",
-  "info.thermal.charge_bench.2": "소음을 느껴보세요.",
 
   "item.thermal.beekeeper_fabric": "직물",
   "item.thermal.beekeeper_helmet": "양봉가의 후드",
@@ -567,27 +637,6 @@
   "item.thermal.slime_grenade": "슬라임 수류탄",
   "item.thermal.slime_grenade.desc": "일정 범위에 슬라임을 뿌립니다. 크게 밀쳐냅니다.",
 
-  "block.thermal.earth_tnt": "대지 폭발물",
-  "block.thermal.earth_tnt.desc": "땅과 흙을 산산조각냅니다. 채굴에 매우 좋습니다.",
-  "block.thermal.ender_tnt": "혼란 폭발물",
-  "block.thermal.ender_tnt.desc": "넓은 범위에 걸쳐 멀리 순간이동시키는 충격파를 생성합니다.",
-  "block.thermal.fire_tnt": "지옥불 폭발물",
-  "block.thermal.fire_tnt.desc": "넓은 범위를 불태웁니다.",
-  "block.thermal.glowstone_tnt": "광휘 폭발물",
-  "block.thermal.glowstone_tnt.desc": "넓은 범위를 밝힙니다. 언데드에게 피해를 줍니다.",
-  "block.thermal.ice_tnt": "빙하 폭발물",
-  "block.thermal.ice_tnt.desc": "넓은 범위를 얼립니다.",
-  "block.thermal.lightning_tnt": "전격 폭발물",
-  "block.thermal.lightning_tnt.desc": "넓은 범위에 전기충격을 가합니다. 번개를 매우 잘 불러올겁니다.",
-  "block.thermal.nuke_tnt": "핵폭탄",
-  "block.thermal.nuke_tnt.desc": "근처에 서 있지 마세요.",
-  "block.thermal.phyto_tnt": "PNT",
-  "block.thermal.phyto_tnt.desc": "주변 반경에 픽토그로를 흩뿌립니다. 던질수 없습니다.",
-  "block.thermal.redstone_tnt": "레드스톤 폭발물",
-  "block.thermal.redstone_tnt.desc": "넓은 범위에 레드스톤 신호를 방출합니다.",
-  "block.thermal.slime_tnt": "슬라임 폭발물",
-  "block.thermal.slime_tnt.desc": "넓은 범위에 슬라임을 뿌립니다. 크게 밀쳐냅니다.",
-
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Vanilla",
   "_comment": "These deal with 'Vanilla' focused additions.",
@@ -602,6 +651,19 @@
   "block.thermal.beetroot_block": "비트 상자",
   "block.thermal.carrot_block": "당근 상자",
   "block.thermal.potato_block": "감자 상자",
+  
+  "block.thermal.raw_lead_block": "납 원석 블록",
+  "block.thermal.raw_nickel_block": "니켈 원석 블록",
+  "block.thermal.raw_silver_block": "은 원석 블록",
+  "block.thermal.raw_tin_block": "주석 원석 블록",
+  
+   "item.thermal.copper_coin": "구리 동전",
+  "item.thermal.copper_dust": "구리 가루",
+  "item.thermal.copper_gear": "구리 기어",
+  "item.thermal.copper_ingot": "구리 주괴",
+  "item.thermal.copper_nugget": "구리 조각",
+  "item.thermal.copper_plate": "구리 판",
+
 
   "item.thermal.diamond_coin": "다이아몬드 동전",
   "item.thermal.diamond_dust": "다이아몬드 가루",
@@ -632,16 +694,115 @@
   "item.thermal.iron_dust": "철 가루",
   "item.thermal.iron_gear": "철 기어",
   "item.thermal.iron_plate": "철 판",
+  
+  "item.thermal.netherite_coin": "네더라이트 동전",
+  "item.thermal.netherite_dust": "네더라이트 가루",
+  "item.thermal.netherite_gear": "네더라이트 기어",
+  "item.thermal.netherite_nugget": "네더라이트 조각",
+  "item.thermal.netherite_plate": "네더라이트 판",
 
   "item.thermal.quartz_coin": "석영 동전",
   "item.thermal.quartz_dust": "석영 가루",
   "item.thermal.quartz_gear": "석영 기어",
   "item.thermal.quartz_nugget": "석영 조각",
   "item.thermal.quartz_plate": "석영 판",
+  
+  
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
 
-  "_comment": "========================================================================================================",
-  "_comment": "Thermal Atomics",
-  "_comment": "========================================================================================================",
+  "block.thermal.earth_tnt.keyword": "basalz earth tnt",
+  "block.thermal.ender_tnt.keyword": "tnt",
+  "block.thermal.fire_tnt.keyword": "blaze fire tnt",
+  "block.thermal.glowstone_tnt.keyword": "tnt",
+  "block.thermal.ice_tnt.keyword": "blizz ice tnt",
+  "block.thermal.lightning_tnt.keyword": "blitz lightning tnt",
+  "block.thermal.nuke_tnt.keyword": "tnt",
+  "block.thermal.phyto_tnt.keyword": "fertilizer tnt",
+  "block.thermal.redstone_tnt.keyword": "tnt",
+  "block.thermal.slime_tnt.keyword": "tnt",
+
+  "block.thermal.energy_cell.keyword": "energy rf storage",
+  "block.thermal.fluid_cell.keyword": "fluid storage tank",
+  "block.thermal.item_cell.keyword": "cache item storage",
+
+  "block.thermal.charge_bench.keyword": "energy recharger rf",
+  "block.thermal.tinker_bench.keyword": "augment recharger refiller upgrade",
+
+  "block.thermal.chunk_loader.keyword": "chunk chunkloader loader",
+
+  "block.thermal.device_collector.keyword": "collector magnet",
+  "block.thermal.device_fisher.keyword": "autofisher bait fishing",
+  "block.thermal.device_hive_extractor.keyword": "bee honey honeycomb",
+  "block.thermal.device_nullifier.keyword": "can trash",
+  "block.thermal.device_potion_diffuser.keyword": "potion",
+  "block.thermal.device_rock_gen.keyword": "cobblegenerator cobblestone",
+  "block.thermal.device_soil_infuser.keyword": "crops farm fertilizer",
+  "block.thermal.device_tree_extractor.keyword": "extractor latex tree",
+  "block.thermal.device_water_gen.keyword": "pump source water",
+
+  "item.thermal.area_depth_augment.keyword": "augment",
+  "item.thermal.area_radius_augment.keyword": "augment drill tool",
+
+  "item.thermal.dynamo_fuel_augment.keyword": "augment dynamo",
+  "item.thermal.dynamo_output_augment.keyword": "augment dynamo",
+
+  "item.thermal.fluid_tank_augment.keyword": "augment fluid storage tank",
+  "item.thermal.fluid_tank_creative_augment.keyword": "augment creative fluid storage tank",
+
+  "item.thermal.dual_filter_augment.keyword": "augment filter",
+  "item.thermal.fluid_filter_augment.keyword": "augment filter",
+  "item.thermal.item_filter_augment.keyword": "augment filter",
+
+  "item.thermal.machine_catalyst_augment.keyword": "augment catalyst machine",
+  "item.thermal.machine_catalyst_creative_augment.keyword": "augment catalyst creative machine",
+  "item.thermal.machine_cycle_augment.keyword": "augment machine",
+  "item.thermal.machine_efficiency_augment.keyword": "augment machine",
+  "item.thermal.machine_efficiency_creative_augment.keyword": "augment creative machine",
+  "item.thermal.machine_null_augment.keyword": "augment machine trash void",
+  "item.thermal.machine_output_augment.keyword": "augment machine",
+  "item.thermal.machine_speed_augment.keyword": "augment machine overclock speed",
+
+  "item.thermal.potion_amplifier_augment.keyword": "augment potion",
+  "item.thermal.potion_duration_augment.keyword": "augment potion",
+
+  "item.thermal.rf_coil_augment.keyword": "augment energy rf storage",
+  "item.thermal.rf_coil_creative_augment.keyword": "augment creative energy rf storage",
+  "item.thermal.rf_coil_storage_augment.keyword": "augment energy rf storage",
+  "item.thermal.rf_coil_xfer_augment.keyword": "augment energy rf storage",
+
+  "item.thermal.rs_control_augment.keyword": "augment redstone",
+  "item.thermal.side_config_augment.keyword": "augment side",
+
+  "item.thermal.upgrade_augment_1.keyword": "augment kit upgrade",
+  "item.thermal.upgrade_augment_2.keyword": "augment kit upgrade",
+  "item.thermal.upgrade_augment_3.keyword": "augment kit upgrade",
+  "item.thermal.upgrade_augment_4.keyword": "augment kit upgrade",
+
+  "item.thermal.xp_storage_augment.keyword": "augment experience xp",
+
+  "item.thermal.beekeeper_helmet.keyword": "armor helmet honey sting",
+  "item.thermal.beekeeper_chestplate.keyword": "armor chestplate honey sting",
+  "item.thermal.beekeeper_leggings.keyword": "armor honey leggings sting",
+  "item.thermal.beekeeper_boots.keyword": "armor honey sting",
+
+  "item.thermal.diving_helmet.keyword": "armor underwater",
+  "item.thermal.diving_chestplate.keyword": "armor chestplate underwater",
+  "item.thermal.diving_leggings.keyword": "armor underwater",
+  "item.thermal.diving_boots.keyword": "armor boots underwater",
+
+  "item.thermal.hazmat_helmet.keyword": "armor radiation",
+  "item.thermal.hazmat_chestplate.keyword": "armor chestplate radiation",
+  "item.thermal.hazmat_leggings.keyword": "armor leggings radiation",
+  "item.thermal.hazmat_boots.keyword": "armor radiation",
+
+  "item.thermal.aquachow.keyword": "bait",
+  "item.thermal.deep_aquachow.keyword": "bait",
+  "item.thermal.junk_net.keyword": "bait",
+
+  "item.thermal.detonator.keyword": "tnt",
+  "item.thermal.rf_potato.keyword": "battery",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Cultivation",
@@ -651,27 +812,55 @@
   "block.thermal.phytosoil": "식물 토양",
   "block.thermal.phytosoil_tilled": "경작한 식물 토양",
 
+  "block.thermal.carrot_cake": "당근 케이크",
+  "block.thermal.cheese_wheel": "치즈 덩이",
   "block.thermal.chocolate_cake": "초콜릿 케이크",
+  "block.thermal.potion_cake": "마녀의 요리 케이크",
   "block.thermal.spice_cake": "향신료 케이크",
+  "block.thermal.stuffed_pumpkin": "속 채운 호박",
 
+  "block.thermal.amaranth": "아마란스",
+  "block.thermal.amaranth_block": "아마란스 더미",
+  "block.thermal.barley": "보리",
   "block.thermal.barley_block": "보리 더미",
+  "block.thermal.bell_pepper": "피망",
   "block.thermal.bell_pepper_block": "피망 상자",
+  "block.thermal.coffee": "커피",
   "block.thermal.coffee_block": "커피 주머니",
+  "block.thermal.corn": "옥수수",
   "block.thermal.corn_block": "옥수수 상자",
+  "block.thermal.eggplant": "가지",
   "block.thermal.eggplant_block": "가지 상자",
+  "block.thermal.flax": "아마",
   "block.thermal.flax_block": "아마 더미",
+  "block.thermal.green_bean": "그린빈",
   "block.thermal.green_bean_block": "그린빈 상자",
+  "block.thermal.hops": "홉",
   "block.thermal.hops_block": "홉 상자",
+  "block.thermal.onion": "양파",
   "block.thermal.onion_block": "양파 상자",
+  "block.thermal.peanut": "땅콩",
   "block.thermal.peanut_block": "땅콩 주머니",
+  "block.thermal.radish": "무",
   "block.thermal.radish_block": "무 상자",
+  "block.thermal.rice": "벼",
   "block.thermal.rice_block": "쌀 주머니",
+  "block.thermal.sadiroot": "새디루트",
   "block.thermal.sadiroot_block": "새디루트 상자",
+  "block.thermal.spinach": "시금치",
   "block.thermal.spinach_block": "시금치 상자",
+  "block.thermal.strawberry": "딸기",
   "block.thermal.strawberry_block": "딸기 상자",
+  "block.thermal.tea": "찻잎",
   "block.thermal.tea_block": "찻잎 주머니",
+  "block.thermal.tomato": "토마토",
   "block.thermal.tomato_block": "토마토 상자",
+  
+   "death.attack.sadiroot": "%1$은(는) 새디루트 엉겅퀴에 찔려 죽었습니다.",
+  "death.attack.sadiroot.player": "%1$은(는) %2$s에게서 도망치다가 새디루트 엉겅퀴에 찔려 죽었습니다.",
 
+  "item.thermal.amaranth": "아마란스",
+  "item.thermal.amaranth_seeds": "아마란스 씨앗",
   "item.thermal.barley": "보리",
   "item.thermal.barley_seeds": "보리 씨앗",
   "item.thermal.bell_pepper": "피망",
@@ -680,12 +869,10 @@
   "item.thermal.coffee_seeds": "커피 콩",
   "item.thermal.corn": "옥수수",
   "item.thermal.corn_seeds": "옥수수 씨앗",
-  "item.thermal.dough": "반죽",
   "item.thermal.eggplant": "가지",
   "item.thermal.eggplant_seeds": "가지 씨앗",
   "item.thermal.flax": "아마",
   "item.thermal.flax_seeds": "아마 씨앗",
-  "item.thermal.flour": "밀가루",
   "item.thermal.frost_melon_seeds": "얼어붙은 수박 씨앗",
   "item.thermal.frost_melon_slice": "얼어붙은 수박 조각",
   "item.thermal.green_bean": "그린빈",
@@ -710,6 +897,23 @@
   "item.thermal.tea_seeds": "찻잎 씨앗",
   "item.thermal.tomato": "토마토",
   "item.thermal.tomato_seeds": "토마토 씨앗",
+  
+  "item.thermal.dough": "반죽",
+  "item.thermal.flour": "밀가루",
+  
+  "item.thermal.jar": "유리병",
+  "item.thermal.jelly": "잼이 담긴 유리병",
+  "item.thermal.peanut_butter": "땅콩버터가 담긴 유리병",
+  "item.thermal.tomato_sauce": "토마토 소스가 담긴 유리병",
+
+  "item.thermal.cheese_wedge": "치즈",
+  "item.thermal.green_bean_pie": "그린빈 파이",
+  "item.thermal.hearty_stew": "푸짐한 스튜",
+  "item.thermal.onion_stew": "양파 스튜",
+  "item.thermal.pbj_sandwich": "PBJ 샌드위치",
+  "item.thermal.spring_salad": "봄 샐러드",
+  "item.thermal.stuffed_pepper": "속 채운 피망",
+  "item.thermal.sushi_maki": "롤 초밥",
   "item.thermal.xp_stew": "명쾌한 스튜",
 
   "item.thermal.glowstone_mushroom": "반짝머리 버섯",
@@ -723,14 +927,37 @@
 
   "item.thermal.watering_can": "물뿌리개",
   "item.thermal.watering_can.desc": "물을 사용하여 식물 성장속도를 향상시킵니다.",
+  
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.phytosoil.keyword": "crops farm mushroom",
+  "block.thermal.phytosoil_tilled.keyword": "crops farm",
+
+  "item.thermal.glowstone_mushroom.keyword": "glowstone",
+  "item.thermal.glowstone_mushroom_spores.keyword": "glowstone",
+  "item.thermal.gunpowder_mushroom.keyword": "gunpowder",
+  "item.thermal.gunpowder_mushroom_spores.keyword": "gunpowder",
+  "item.thermal.redstone_mushroom.keyword": "redstone",
+  "item.thermal.redstone_mushroom_spores.keyword": "redstone",
+  "item.thermal.slime_mushroom.keyword": "slime",
+  "item.thermal.slime_mushroom_spores.keyword": "slime",
+
+  "item.thermal.watering_can.keyword": "crops farm fertilizer",
+
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
-  "block.thermal.logistics_ender_tunnel": "엔더 터널",
-  "block.thermal.logistics_fluid_buffer": "물류 액체 버퍼",
-  "block.thermal.logistics_item_buffer": "물류 아이템 버퍼",
+  "block.thermal.energy_duct": "플럭스덕트",
+  "block.thermal.fluid_duct": "유체덕트",
+  
+  "block.thermal.energy_distributor": "RF 분배 인터페이스",
+  "block.thermal.fluid_distributor": "유체 분배 인터페이스",
+  
+  "block.thermal.item_buffer": "물류 아이템 버퍼",
 
   "info.thermal.logistics_item_buffer.0": "아이템의 수량과 흐름을 제어합니다.",
   "info.thermal.logistics_item_buffer.1": "왼쪽의 그리드를 사용하여 필요한 항목과 수량을 설정합니다.",
@@ -739,33 +966,26 @@
 
   "info.thermal.logistics_item_buffer.mode.0": "I/O: 일반",
   "info.thermal.logistics_item_buffer.mode.1": "I/O: 래치",
-
-  "item.thermal.ender_tuner": "엔더 소리굽쇠",
-  "item.thermal.ender_tuner.desc": "다양한 시공간 조작 장치를 조정하는 데 사용됩니다.",
-
+  
   "_comment": "========================================================================================================",
-  "_comment": "Thermal Essentials",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
 
-  "block.thermal.basic_pulverizer": "망치 분쇄기",
-  "block.thermal.basic_sawmill": "기본 제재소",
+  "block.thermal.energy_duct.keyword": "energy rf transfer",
+  "block.thermal.fluid_duct.keyword": "energy rf transfer",
 
-  "info.thermal.basic_pulverizer.0": "소재를 두들겨 분쇄합니다.",
-  "info.thermal.basic_pulverizer.1": "아이템 처리 및 광석 처리에 유용합니다.",
-  "info.thermal.basic_pulverizer.2": "증기기관-연료와 물이 필요합니다.",
+  "block.thermal.energy_distributor.keyword": "energy rf transfer",
+  "block.thermal.fluid_distributor.keyword": "fluid transfer",
 
-  "info.thermal.basic_sawmill.0": "원목을 판자로 자르는 등 목재를 재가공합니다.",
-  "info.thermal.basic_sawmill.1": "더 많은 나무판자를 제작하는 데 매우 유용합니다.",
-  "info.thermal.basic_sawmill.2": "증기기관-연료와 물이 필요합니다.",
-
+  "block.thermal.ender_tunnel.keyword": "entangloporter quantum tesseract",
+  
   "_comment": "========================================================================================================",
   "_comment": "Thermal Expansion",
   "_comment": "========================================================================================================",
 
-  "block.thermal.device_fluid_buffer": "액체 분배기",
-  "block.thermal.device_item_buffer": "아이템 분배기",
-
   "block.thermal.dynamo_compression": "압축 발전기",
+  "block.thermal.dynamo_disenchantment": "마법 해제 발전기",
+  "block.thermal.dynamo_gourmand": "미식가 발전기",
   "block.thermal.dynamo_lapidary": "보석 발전기",
   "block.thermal.dynamo_magmatic": "용암 발전기",
   "block.thermal.dynamo_numismatic": "화폐 발전기",
@@ -797,6 +1017,13 @@
   "info.thermal.dynamo.throttle": "집어넣는 연료에 따라 열전기를 생산합니다.",
 
   "info.thermal.dynamo_compression.0": "액체 연료를 사용하여 RF를 생산합니다.",
+  
+  "info.thermal.dynamo_disenchantment.0": "마법이 부여된 아이템을 사용하여 RF를 생산합니다.",
+  "info.thermal.dynamo_disenchantment.1": "아이템은 마법 부여와 함께 파괴됩니다. 이것이 잘 작동되는 이유는 바로 이것입니다.",
+
+  "info.thermal.dynamo_gourmand.0": "음식을 사용하여 RF를 생산합니다!",
+  "info.thermal.dynamo_gourmand.1": "당신이 어떤 종류의 짐승에게 먹이를 주는지 누가 알겠습니까?",
+  "info.thermal.dynamo_gourmand.2": "아주 열륭합니다!",
 
   "info.thermal.dynamo_lapidary.0": "보석에서 RF를 생산합니다!",
   "info.thermal.dynamo_lapidary.1": "아마도 이세계의 보석을 좋아하는 고블린이 사는 차원과 연결되어있는듯 합니다.",
@@ -864,7 +1091,7 @@
   "info.thermal.machine_sawmill.1": "더 많은 나무판자를 제작하는 데 매우 유용합니다.",
   "info.thermal.machine_sawmill.2": "손 조심하세요",
 
-  "info.thermal.machine_smelter.0": "고온으로 금속 등의 물질을 용해시킵니다..",
+  "info.thermal.machine_smelter.0": "고온으로 금속 등의 물질을 용해시킵니다.",
   "info.thermal.machine_smelter.1": "광석 처리 및 고급 블록을 만드는 데 사용됩니다.",
   "info.thermal.machine_smelter.2": "음식은 절대 요리할 수 없습니다.",
 
@@ -877,10 +1104,53 @@
   "item.thermal.press_packing_2x2_die": "포장 틀 (2x2)",
   "item.thermal.press_packing_3x3_die": "포장 틀 (3x3)",
   "item.thermal.press_unpacking_die": "포장 해제 틀",
+  
+  "item.thermal.slot_seal": "슬롯 밀봉",
+  "item.thermal.slot_seal.desc": "슬롯 사용을 방지합니다. 여러 입력 슬롯이 있는 기계에 유용합니다.",
+
+  "subtitles.thermal.block.machine_bottler": "유체 밀봉기에서 액체를 채움",
+  "subtitles.thermal.block.machine_crucible": "융해 도가니가 윙윙거림",
+  "subtitles.thermal.block.machine_furnace": "레드스톤 화로가 윙윙거리며 안이 타오름",
+  "subtitles.thermal.block.machine_pulverizer": "분쇄기가 아이템을 분쇄함",
+  "subtitles.thermal.block.machine_sawmill": "제재소가 작동함",
+  "subtitles.thermal.block.machine_smelter": "합금 제련기가 윙윙거림",
 
   "_comment": "========================================================================================================",
-  "_comment": "Thermal Horizon",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
+
+  "block.thermal.dynamo_compression.keyword": "engine fuel generator power",
+  "block.thermal.dynamo_disenchantment.keyword": "book engine generator power",
+  "block.thermal.dynamo_gourmand.keyword": "engine food generator power",
+  "block.thermal.dynamo_lapidary.keyword": "engine gem generator power",
+  "block.thermal.dynamo_magmatic.keyword": "engine generator lava power",
+  "block.thermal.dynamo_numismatic.keyword": "coin engine generator power",
+  "block.thermal.dynamo_stirling.keyword": "charcoal coke engine generator power",
+
+  "block.thermal.machine_bottler.keyword": "bucket filler machine transposer",
+  "block.thermal.machine_brewer.keyword": "brewer brewing machine potion",
+  "block.thermal.machine_centrifuge.keyword": "centrifuge machine",
+  "block.thermal.machine_chiller.keyword": "freezer machine obsidian",
+  "block.thermal.machine_crafter.keyword": "assembler autocrafter autocrafting crafter crafting machine table workbench",
+  "block.thermal.machine_crucible.keyword": "machine melter",
+  "block.thermal.machine_furnace.keyword": "cooking furnace machine",
+  "block.thermal.machine_insolator.keyword": "catalyst cloche crops farm fertilizer machine plant sapling tree",
+  "block.thermal.machine_press.keyword": "coin gear machine",
+  "block.thermal.machine_pulverizer.keyword": "catalyst crusher macerator machine ore",
+  "block.thermal.machine_pyrolyzer.keyword": "charcoal coke creosote machine oven",
+  "block.thermal.machine_refinery.keyword": "machine oil refinery",
+  "block.thermal.machine_sawmill.keyword": "log machine plank",
+  "block.thermal.machine_smelter.keyword": "alloy catalyst machine ore",
+
+  "item.thermal.chiller_ball_cast.keyword": "chiller freezer",
+  "item.thermal.chiller_ingot_cast.keyword": "chiller freezer",
+  "item.thermal.chiller_rod_cast.keyword": "chiller freezer",
+
+  "item.thermal.press_coin_die.keyword": "press",
+  "item.thermal.press_gear_die.keyword": "press",
+  "item.thermal.press_packing_2x2_die.keyword": "press",
+  "item.thermal.press_packing_3x3_die.keyword": "press",
+  "item.thermal.press_unpacking_die.keyword": "press",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Innovation",
@@ -904,9 +1174,12 @@
   "info.thermal.quiver.mode.1": "자동 침투 비활성화",
   "info.thermal.quiver.use": "사용하면 화살을 화살통에 집어넣습니다.",
   "info.thermal.quiver.use.sneak": "웅크린 상태로 사용하여 화살을 회수할 수 있습니다.",
+  
+  "info.thermal.reservoir.mode.0": "모드: 채우기",
+  "info.thermal.reservoir.mode.1": "모드: 비우기",
 
   "item.thermal.fluid_reservoir": "저수통",
-  "item.thermal.fluid_reservoir.desc": "",
+  "item.thermal.fluid_reservoir.desc": "액체를 저장하고 장비 아이템의 탱크를 다시 채웁니다. 또한 액체를 퍼내고 부워넣는 데 사용할 수 있습니다.",
 
   "item.thermal.flux_capacitor": "플럭스 축전지",
   "item.thermal.flux_capacitor.desc": "RF충전하여 다른 아이템을 충전할 수 있습니다.",
@@ -928,6 +1201,17 @@
 
   "item.thermal.potion_quiver": "연금 화살통",
   "item.thermal.potion_quiver.desc": "물약을 화살에 침투시킵니다.",
+  
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "item.thermal.fluid_reservoir.keyword": "refiller",
+  "item.thermal.flux_capacitor.keyword": "battery recharger rf",
+  "item.thermal.flux_drill.keyword": "drill pickaxe shovel tool",
+  "item.thermal.flux_saw.keyword": "axe tool",
+  "item.thermal.potion_infuser.keyword": "potion",
+  "item.thermal.potion_quiver.keyword": "potion",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Locomotion",
@@ -946,20 +1230,63 @@
   "block.thermal.prismarine_detector_rail": "프리즈머린 감지 레일",
   "block.thermal.prismarine_powered_rail": "프리즈머린 전동 레일",
   "block.thermal.prismarine_rail": "프리즈머린 레일",
-
-  "item.thermal.underwater_minecart": "잠수 광산 수레",
-
-  "item.thermal.slime_tnt_minecart": "슬라임 폭발물이 실린 광산 수레",
-  "item.thermal.redstone_tnt_minecart": "레드스톤 폭발물이 실린 광산 수레",
-  "item.thermal.glowstone_tnt_minecart": "광휘 폭발물이 실린 광산 수레",
-  "item.thermal.ender_tnt_minecart": "혼란 폭발물이 실린 광산 수레",
-
-  "item.thermal.phyto_tnt_minecart": "PNT가 실린 광산 수레",
+  
+  "entity.thermal.earth_tnt_minecart": "대지 폭발물이 실린 광산 수레",
+  "entity.thermal.ender_tnt_minecart": "혼란 폭발물이 실린 광산 수레",
+  "entity.thermal.fire_tnt_minecart": "지옥불 폭발물이 실린 광산 수레",
+  "entity.thermal.glowstone_tnt_minecart": "광휘 폭발물이 실린 광산 수레",
+  "entity.thermal.ice_tnt_minecart": "빙하 폭발물이 실린 광산 수레",
+  "entity.thermal.lightning_tnt_minecart": "전격 폭발물이 실린 광산 수레",
+  "entity.thermal.nuke_tnt_minecart": "핵폭탄이 실린 광산 수레",
+  "entity.thermal.phyto_tnt_minecart": "PNT가 실린 광산 수레",
+  "entity.thermal.redstone_tnt_minecart": "레드스톤 폭발물이 실린 광산 수레",
+  "entity.thermal.slime_tnt_minecart": "슬라임 폭발물이 실린 광산 수레",
+  
+  "entity.thermal.energy_minecart": "플럭스 셀이 실린 광산 수레",
+  "entity.thermal.fluid_minecart": "유체 탱크가 실린 광산 수레",
+  "entity.thermal.underwater_minecart": "잠수 광산 수레",
 
   "item.thermal.earth_tnt_minecart": "대지 폭발물이 실린 광산 수레",
+  "item.thermal.ender_tnt_minecart": "혼란 폭발물이 실린 광산 수레",
   "item.thermal.fire_tnt_minecart": "지옥불 폭발물이 실린 광산 수레",
+  "item.thermal.glowstone_tnt_minecart": "광휘 폭발물이 실린 광산 수레",
   "item.thermal.ice_tnt_minecart": "빙하 폭발물이 실린 광산 수레",
   "item.thermal.lightning_tnt_minecart": "전격 폭발물이 실린 광산 수레",
+  "item.thermal.nuke_tnt_minecart": "핵폭탄이 실린 광산 수레",
+  "item.thermal.phyto_tnt_minecart": "PNT가 실린 광산 수레",
+  "item.thermal.redstone_tnt_minecart": "레드스톤 폭발물이 실린 광산 수레",
+  "item.thermal.slime_tnt_minecart": "슬라임 폭발물이 실린 광산 수레",
+  
+  "item.thermal.energy_minecart": "플럭스 셀이 실린 광산 수레",
+  "item.thermal.fluid_minecart": "유체 탱크가 실린 광산 수레",
+  "item.thermal.underwater_minecart": "잠수 광산 수레",
 
-  "item.thermal.nuke_tnt_minecart": "핵폭탄이 실린 광산 수레"
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.prismarine_activator_rail.keyword": "underwater",
+  "block.thermal.prismarine_crossover_rail.keyword": "underwater",
+  "block.thermal.prismarine_detector_rail.keyword": "underwater",
+  "block.thermal.prismarine_powered_rail.keyword": "underwater",
+  "block.thermal.prismarine_rail.keyword": "underwater",
+
+  "item.thermal.earth_tnt_minecart.keyword": "basalz earth tnt",
+  "item.thermal.ender_tnt_minecart.keyword": "tnt",
+  "item.thermal.fire_tnt_minecart.keyword": "blaze fire tnt",
+  "item.thermal.glowstone_tnt_minecart.keyword": "tnt",
+  "item.thermal.ice_tnt_minecart.keyword": "blizz ice tnt",
+  "item.thermal.lightning_tnt_minecart.keyword": "blitz lightning tnt",
+  "item.thermal.nuke_tnt_minecart.keyword": "tnt",
+  "item.thermal.phyto_tnt_minecart.keyword": "fertilizer tnt",
+  "item.thermal.redstone_tnt_minecart.keyword": "tnt",
+  "item.thermal.slime_tnt_minecart.keyword": "tnt",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Guidebooks",
+  "_comment": "========================================================================================================",
+  
+  "thermal.book.name": "써멀피디아",
+  "thermal.book.landing_text": "써멀 시리즈 가이드북에 오신 것을 환영합니다! 당신이 즐겨주셨으면 좋겠네요.",
+  "thermal.book.subtitle": "MC 1.18.2 - 픽셀복셀 옮김"
 }

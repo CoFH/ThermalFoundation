@@ -1281,5 +1281,13 @@
   "item.thermal.nuke_tnt_minecart.keyword": "tnt",
   "item.thermal.phyto_tnt_minecart.keyword": "fertilizer tnt",
   "item.thermal.redstone_tnt_minecart.keyword": "tnt",
-  "item.thermal.slime_tnt_minecart.keyword": "tnt"
+  "item.thermal.slime_tnt_minecart.keyword": "tnt",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Guidebooks",
+  "_comment": "========================================================================================================",
+  
+  "thermal.book.name": "Thermalpedia",
+  "thermal.book.landing_text": "Welcome to the Thermal Series' guide book! From all of us who worked on it, we hope you enjoy.",
+  "thermal.book.subtitle": "MC 1.18.2"
 }
