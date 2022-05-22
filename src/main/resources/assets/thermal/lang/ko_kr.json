@@ -116,7 +116,6 @@
   "entity.thermal.blizz_projectile": "얼음 화살",
 
   "fluid.thermal.biocrude": "바이오 원유",
-  "fluid.thermal.biofuel": "휘발유",
   "fluid.thermal.creosote": "크레오소트유",
   "fluid.thermal.crude_oil": "원유",
   "fluid.thermal.ender": "공명하는 엔더",
@@ -125,6 +124,7 @@
   "fluid.thermal.latex": "라텍스",
   "fluid.thermal.light_oil": "경유",
   "fluid.thermal.redstone": "불안정한 레드스톤",
+  "fluid.thermal.refined_biofuel": "그래솔린",
   "fluid.thermal.refined_fuel": "정제된 연료",
   "fluid.thermal.resin": "수지",
   "fluid.thermal.sap": "수액",
@@ -184,7 +184,6 @@
   "item.thermal.rf_coil": "레드스톤 플럭스 코일",
 
   "item.thermal.biocrude_bucket": "바이오 원유 양동이",
-  "item.thermal.biofuel_bucket": "휘발유 양동이",
   "item.thermal.creosote_bucket": "크레오소트유 양동이",
   "item.thermal.crude_oil_bucket": "원유 양동이",
   "item.thermal.ender_bucket": "공명하는 엔더 양동이",
@@ -193,10 +192,12 @@
   "item.thermal.latex_bucket": "라텍스 양동이",
   "item.thermal.light_oil_bucket": "경유 양동이",
   "item.thermal.redstone_bucket": "불안정한 레드스톤 양동이",
+  "item.thermal.refined_biofuel_bucket": "그래솔린 양동이",
   "item.thermal.refined_fuel_bucket": "정제된 연료 양동이",
   "item.thermal.resin_bucket": "수지 양동이",
   "item.thermal.sap_bucket": "수액 양동이",
   "item.thermal.seed_oil_bucket": "씨앗 기름 양동이",
+  "item.thermal.syrup_bottle": "시럽 병",
   "item.thermal.syrup_bucket": "시럽 양동이",
   "item.thermal.tree_oil_bucket": "나무 기름 양동이",
 
@@ -239,8 +240,10 @@
   "item.thermal.phytogro.desc": "매우 강력한 비료입니다.",
   "item.thermal.redprint": "적사진",
   "item.thermal.redprint.desc": "블록 간 설정을 복사 및 붙여넣기가 가능합니다.",
+  "item.thermal.satchel": "책가방",
+  "item.thermal.satchel.desc": "아이템을 저장합니다. 필터로 설정할 수 있습니다.",
   "item.thermal.wrench": "초승달 망치",
-  "item.thermal.wrench.desc": "대부분의 블록을 회전시킵니다. 그리고 렌치로 잘 알려져 있습니다.",
+  "item.thermal.wrench.desc": "대부분의 블록을 회전시킵니다. 렌치로 잘 알려져 있습니다.",
   "item.thermal.xp_crystal": "통찰력의 수정",
   "item.thermal.xp_crystal.desc": "경험치를 저장합니다.",
 
