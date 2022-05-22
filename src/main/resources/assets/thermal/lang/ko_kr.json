@@ -133,10 +133,10 @@
   "fluid.thermal.tree_oil": "나무 기름",
 
   "info.thermal.catalysts": "촉매제",
-  "info.thermal.energy_mod": "애네지 배수",
+  "info.thermal.energy_mod": "전력 배율",
   "info.thermal.primary_mod": "기본 배율",
   "info.thermal.secondary_mod": "보조 배율",
-  "info.thermal.use_chance": "소비될 확률",
+  "info.thermal.use_chance": "소비 확률",
 
   "info.thermal.detonator.mode.0": "모드: 지정",
   "info.thermal.detonator.mode.1": "모드: 폭파",
