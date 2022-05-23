@@ -178,6 +178,7 @@ public class ThermalCore {
     private void registerLootData(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
 
         ThermalFlags.manager().setup();
+        TCoreRecipeTypes.register();
     }
 
     private void entityAttributeSetup(final EntityAttributeCreationEvent event) {

@@ -14,6 +14,47 @@ public class TCoreRecipeTypes {
 
     }
 
+    public static void register() {
+
+        // Recipes are self-registered as they do not currently have a proper Forge Registry.
+        MAPPING_HIVE_EXTRACTOR.register();
+        MAPPING_TREE_EXTRACTOR.register();
+        BOOST_TREE_EXTRACTOR.register();
+        BOOST_FISHER.register();
+        MAPPING_ROCK_GEN.register();
+        BOOST_POTION_DIFFUSER.register();
+
+        RECIPE_FURNACE.register();
+        RECIPE_SAWMILL.register();
+        RECIPE_PULVERIZER.register();
+        RECIPE_PULVERIZER_RECYCLE.register();
+        RECIPE_SMELTER.register();
+        RECIPE_SMELTER_RECYCLE.register();
+        RECIPE_INSOLATOR.register();
+        RECIPE_CENTRIFUGE.register();
+        RECIPE_PRESS.register();
+        RECIPE_CRUCIBLE.register();
+        RECIPE_CHILLER.register();
+        RECIPE_REFINERY.register();
+        RECIPE_PYROLYZER.register();
+        RECIPE_BOTTLER.register();
+        RECIPE_BREWER.register();
+        // RECIPE_ENCHANTER.register();
+
+        CATALYST_PULVERIZER.register();
+        CATALYST_SMELTER.register();
+        CATALYST_INSOLATOR.register();
+        // CATALYST_ENCHANTER.register();
+
+        FUEL_STIRLING.register();
+        FUEL_COMPRESSION.register();
+        FUEL_MAGMATIC.register();
+        FUEL_NUMISMATIC.register();
+        FUEL_LAPIDARY.register();
+        FUEL_DISENCHANTMENT.register();
+        FUEL_GOURMAND.register();
+    }
+
     // region DEVICES
     public static final ResourceLocation ID_MAPPING_HIVE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "hive_extractor");
     public static final ResourceLocation ID_MAPPING_TREE_EXTRACTOR = new ResourceLocation(ID_THERMAL, "tree_extractor");
