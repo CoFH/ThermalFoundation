@@ -49,6 +49,25 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_BEETROOT_BLOCK));
             // endregion
 
+            tag(BlockTags.BEACON_BASE_BLOCKS).add(
+                    BLOCKS.get(ID_TIN_BLOCK),
+                    BLOCKS.get(ID_LEAD_BLOCK),
+                    BLOCKS.get(ID_SILVER_BLOCK),
+                    BLOCKS.get(ID_NICKEL_BLOCK),
+
+                    BLOCKS.get(ID_RUBY_BLOCK),
+                    BLOCKS.get(ID_SAPPHIRE_BLOCK),
+
+                    BLOCKS.get(ID_BRONZE_BLOCK),
+                    BLOCKS.get(ID_ELECTRUM_BLOCK),
+                    BLOCKS.get(ID_INVAR_BLOCK),
+                    BLOCKS.get(ID_CONSTANTAN_BLOCK),
+
+                    BLOCKS.get(ID_SIGNALUM_BLOCK),
+                    BLOCKS.get(ID_LUMIUM_BLOCK),
+                    BLOCKS.get(ID_ENDERIUM_BLOCK)
+            );
+
             // region RESOURCES
             tag(CoFHTags.Blocks.ORES_APATITE).add(BLOCKS.get(ID_APATITE_ORE));
             tag(CoFHTags.Blocks.ORES_CINNABAR).add(BLOCKS.get(ID_CINNABAR_ORE));

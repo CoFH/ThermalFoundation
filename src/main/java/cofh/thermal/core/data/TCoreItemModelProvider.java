@@ -120,11 +120,6 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         generated(reg.getSup("copper_nugget"));
         generated(reg.getSup("netherite_nugget"));
 
-        generated(reg.getSup("raw_lead"));
-        generated(reg.getSup("raw_nickel"));
-        generated(reg.getSup("raw_silver"));
-        generated(reg.getSup("raw_tin"));
-
         metalSet(reg, "lead");
         metalSet(reg, "nickel");
         metalSet(reg, "silver");

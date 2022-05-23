@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "thermal:tin_block",
+    "thermal:lead_block",
+    "thermal:silver_block",
+    "thermal:nickel_block",
+    "thermal:ruby_block",
+    "thermal:sapphire_block",
+    "thermal:bronze_block",
+    "thermal:electrum_block",
+    "thermal:invar_block",
+    "thermal:constantan_block",
+    "thermal:signalum_block",
+    "thermal:lumium_block",
+    "thermal:enderium_block"
+  ]
+}

@@ -183,16 +183,10 @@ public class TCoreBlocks {
         registerBlock(ID_SILVER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_SILVER));
         registerBlock(ID_NICKEL_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_NICKEL));
 
-        //        registerBlock(ID_ALUMINUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ALUMINUM));
-        //        registerBlock(ID_URANIUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_URANIUM));
-
         registerBlock(ID_BRONZE_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_BRONZE));
         registerBlock(ID_ELECTRUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ELECTRUM));
         registerBlock(ID_INVAR_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_INVAR));
         registerBlock(ID_CONSTANTAN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_CONSTANTAN));
-
-        //        registerBlock(ID_STEEL_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_STEEL));
-        //        registerBlock(ID_ROSE_GOLD_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ROSE_GOLD));
 
         registerBlock(ID_SIGNALUM_BLOCK, () -> new SignalumBlock(of(Material.METAL, MaterialColor.COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(7)).noOcclusion()), Rarity.UNCOMMON);
         registerBlock(ID_LUMIUM_BLOCK, () -> new LumiumBlock(of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops().lightLevel(lightValue(15)).noOcclusion()), Rarity.UNCOMMON);
@@ -338,7 +332,7 @@ public class TCoreBlocks {
         // TILE_ENTITIES.register(ID_ITEM_CELL, () -> TileEntityType.Builder.of(ItemCellTile::new, ITEM_CELL_BLOCK).build(null));
     }
 
-    private static Block storageBlock() {
+    public static Block storageBlock() {
 
         return new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL)
                 .strength(5.0F, 6.0F)
@@ -346,7 +340,7 @@ public class TCoreBlocks {
                 .requiresCorrectToolForDrops());
     }
 
-    private static Block storageBlock(MaterialColor color) {
+    public static Block storageBlock(MaterialColor color) {
 
         return new Block(BlockBehaviour.Properties.of(Material.METAL, color)
                 .strength(5.0F, 6.0F)

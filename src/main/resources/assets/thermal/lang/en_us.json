@@ -55,6 +55,9 @@
   "block.thermal.electrum_block": "Block of Electrum",
   "block.thermal.invar_block": "Block of Invar",
 
+  "block.thermal.steel_block": "Block of Steel",
+  "block.thermal.rose_gold_block": "Block of Rose Gold",
+
   "block.thermal.enderium_block": "Block of Enderium",
   "block.thermal.lumium_block": "Block of Lumium",
   "block.thermal.signalum_block": "Block of Signalum",
@@ -326,6 +329,20 @@
   "item.thermal.invar_ingot": "Invar Ingot",
   "item.thermal.invar_nugget": "Invar Nugget",
   "item.thermal.invar_plate": "Invar Plate",
+
+  "item.thermal.rose_gold_coin": "Rose Gold Coin",
+  "item.thermal.rose_gold_dust": "Rose Gold Blend",
+  "item.thermal.rose_gold_gear": "Rose Gold Gear",
+  "item.thermal.rose_gold_ingot": "Rose Gold Ingot",
+  "item.thermal.rose_gold_nugget": "Rose Gold Nugget",
+  "item.thermal.rose_gold_plate": "Rose Gold Plate",
+
+  "item.thermal.steel_coin": "Steel Coin",
+  "item.thermal.steel_dust": "Steel Blend",
+  "item.thermal.steel_gear": "Steel Gear",
+  "item.thermal.steel_ingot": "Steel Ingot",
+  "item.thermal.steel_nugget": "Steel Nugget",
+  "item.thermal.steel_plate": "Steel Plate",
 
   "item.thermal.enderium_coin": "Enderium Coin",
   "item.thermal.enderium_dust": "Enderium Blend",
@@ -1286,7 +1303,7 @@
   "_comment": "========================================================================================================",
   "_comment": "Guidebooks",
   "_comment": "========================================================================================================",
-  
+
   "thermal.book.name": "Thermalpedia",
   "thermal.book.landing_text": "Welcome to the Thermal Series' guide book! From all of us who worked on it, we hope you enjoy.",
   "thermal.book.subtitle": "MC 1.18.2"

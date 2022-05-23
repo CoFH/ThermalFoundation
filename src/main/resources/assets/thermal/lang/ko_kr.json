@@ -20,7 +20,7 @@
 
   "block.thermal.ruby_ore": "루비 광석",
   "block.thermal.sapphire_ore": "사파이어 광석",
-  
+
   "block.thermal.deepslate_apatite_ore": "심층암 인회석 광석",
   "block.thermal.deepslate_cinnabar_ore": "심층암 진사 광석",
   "block.thermal.deepslate_niter_ore": "심층암 질산칼륨 광석",
@@ -144,7 +144,7 @@
   "info.thermal.detonator.use.0": "TNT 블록에 사용하여 폭파를 준비합니다.",
   "info.thermal.detonator.use.1": "지정된 TNT를 폭파시키는 데 사용합니다.",
   "info.thermal.detonator.use.sneak": "웅크린 상태로 우클릭하여 리셋합니다.",
-  
+
   "info.thermal.lock.use": "보안을 위해 호환되는 블록에 사용할 수 있습니다.",
   "info.thermal.lock.use.sneak": "웅크린 상태로 사용하여 보조 슬롯에 들고 있는 호환되는 블록에 보안을 겁니다.",
 
@@ -349,8 +349,8 @@
   "item.thermal.signalum_plate": "시그널륨 판",
 
   "subtitles.thermal.block.device_water_gen": "수생 포획기가 뽀글거림",
-  
-   "subtitles.thermal.entity.basalz.ambient": "바살즈가 호흡함",
+
+  "subtitles.thermal.entity.basalz.ambient": "바살즈가 호흡함",
   "subtitles.thermal.entity.basalz.death": "바살즈가 죽음",
   "subtitles.thermal.entity.basalz.hurt": "바살즈가 상처를 입음",
   "subtitles.thermal.entity.basalz.shoot": "바살즈가 조각을 발사함",
@@ -366,8 +366,8 @@
   "subtitles.thermal.entity.blizz.shoot": "블리즈가 얼음 화살을 발사함",
 
   "subtitles.thermal.item.magnet": "자석이 아이템을 끌어옴",
-  
-   "subtitles.thermal.item.equip_beekeeper": "양봉가의 옷이 부스럭거림",
+
+  "subtitles.thermal.item.equip_beekeeper": "양봉가의 옷이 부스럭거림",
   "subtitles.thermal.item.equip_diving": "잠수복이 짤랑거림",
   "subtitles.thermal.item.equip_hazmat": "방호복이 부스럭거림",
 
@@ -509,7 +509,7 @@
   "block.thermal.charge_bench.desc": "여러 아이템을 빠르게 충전하는 데 사용됩니다.",
   "block.thermal.tinker_bench": "땜장이의 작업대",
   "block.thermal.tinker_bench.desc": "부착물을 사용하거나, 아이템의 충전 및 채우기에 사용됩니다.",
-  
+
   "block.thermal.chunk_loader": "연속체 정박기",
 
   "block.thermal.earth_tnt": "대지 폭발물",
@@ -577,7 +577,7 @@
 
   "info.thermal.fluid_cell.0": "액체를 저장하거나 전송시킵니다.",
   "info.thermal.fluid_cell.1": "§e§oShift§r 또는 §e§oCtrl§r을 눌러 보다 편하게 입력/출력량을 조절할 수 있습니다.",
-  
+
   "info.thermal.charge_bench.0": "RF를 아이템에 충전합니다.",
   "info.thermal.charge_bench.1": "아이템은 자동으로 입출력 할 수 있습니다.",
   "info.thermal.charge_bench.2": "소음을 느껴보세요.",
@@ -651,13 +651,13 @@
   "block.thermal.beetroot_block": "비트 상자",
   "block.thermal.carrot_block": "당근 상자",
   "block.thermal.potato_block": "감자 상자",
-  
+
   "block.thermal.raw_lead_block": "납 원석 블록",
   "block.thermal.raw_nickel_block": "니켈 원석 블록",
   "block.thermal.raw_silver_block": "은 원석 블록",
   "block.thermal.raw_tin_block": "주석 원석 블록",
-  
-   "item.thermal.copper_coin": "구리 동전",
+
+  "item.thermal.copper_coin": "구리 동전",
   "item.thermal.copper_dust": "구리 가루",
   "item.thermal.copper_gear": "구리 기어",
   "item.thermal.copper_ingot": "구리 주괴",
@@ -694,7 +694,7 @@
   "item.thermal.iron_dust": "철 가루",
   "item.thermal.iron_gear": "철 기어",
   "item.thermal.iron_plate": "철 판",
-  
+
   "item.thermal.netherite_coin": "네더라이트 동전",
   "item.thermal.netherite_dust": "네더라이트 가루",
   "item.thermal.netherite_gear": "네더라이트 기어",
@@ -706,8 +706,8 @@
   "item.thermal.quartz_gear": "석영 기어",
   "item.thermal.quartz_nugget": "석영 조각",
   "item.thermal.quartz_plate": "석영 판",
-  
-  
+
+
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
@@ -855,8 +855,8 @@
   "block.thermal.tea_block": "찻잎 주머니",
   "block.thermal.tomato": "토마토",
   "block.thermal.tomato_block": "토마토 상자",
-  
-   "death.attack.sadiroot": "%1$은(는) 새디루트 엉겅퀴에 찔려 죽었습니다.",
+
+  "death.attack.sadiroot": "%1$은(는) 새디루트 엉겅퀴에 찔려 죽었습니다.",
   "death.attack.sadiroot.player": "%1$은(는) %2$s에게서 도망치다가 새디루트 엉겅퀴에 찔려 죽었습니다.",
 
   "item.thermal.amaranth": "아마란스",
@@ -897,10 +897,10 @@
   "item.thermal.tea_seeds": "찻잎 씨앗",
   "item.thermal.tomato": "토마토",
   "item.thermal.tomato_seeds": "토마토 씨앗",
-  
+
   "item.thermal.dough": "반죽",
   "item.thermal.flour": "밀가루",
-  
+
   "item.thermal.jar": "유리병",
   "item.thermal.jelly": "잼이 담긴 유리병",
   "item.thermal.peanut_butter": "땅콩버터가 담긴 유리병",
@@ -927,7 +927,7 @@
 
   "item.thermal.watering_can": "물뿌리개",
   "item.thermal.watering_can.desc": "물을 사용하여 식물 성장속도를 향상시킵니다.",
-  
+
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
@@ -953,10 +953,10 @@
 
   "block.thermal.energy_duct": "플럭스덕트",
   "block.thermal.fluid_duct": "유체덕트",
-  
+
   "block.thermal.energy_distributor": "RF 분배 인터페이스",
   "block.thermal.fluid_distributor": "유체 분배 인터페이스",
-  
+
   "block.thermal.item_buffer": "물류 아이템 버퍼",
 
   "info.thermal.logistics_item_buffer.0": "아이템의 수량과 흐름을 제어합니다.",
@@ -966,7 +966,7 @@
 
   "info.thermal.logistics_item_buffer.mode.0": "I/O: 일반",
   "info.thermal.logistics_item_buffer.mode.1": "I/O: 래치",
-  
+
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
@@ -978,7 +978,7 @@
   "block.thermal.fluid_distributor.keyword": "fluid transfer",
 
   "block.thermal.ender_tunnel.keyword": "entangloporter quantum tesseract",
-  
+
   "_comment": "========================================================================================================",
   "_comment": "Thermal Expansion",
   "_comment": "========================================================================================================",
@@ -1017,7 +1017,7 @@
   "info.thermal.dynamo.throttle": "집어넣는 연료에 따라 열전기를 생산합니다.",
 
   "info.thermal.dynamo_compression.0": "액체 연료를 사용하여 RF를 생산합니다.",
-  
+
   "info.thermal.dynamo_disenchantment.0": "마법이 부여된 아이템을 사용하여 RF를 생산합니다.",
   "info.thermal.dynamo_disenchantment.1": "아이템은 마법 부여와 함께 파괴됩니다. 이것이 잘 작동되는 이유는 바로 이것입니다.",
 
@@ -1104,7 +1104,7 @@
   "item.thermal.press_packing_2x2_die": "포장 틀 (2x2)",
   "item.thermal.press_packing_3x3_die": "포장 틀 (3x3)",
   "item.thermal.press_unpacking_die": "포장 해제 틀",
-  
+
   "item.thermal.slot_seal": "슬롯 밀봉",
   "item.thermal.slot_seal.desc": "슬롯 사용을 방지합니다. 여러 입력 슬롯이 있는 기계에 유용합니다.",
 
@@ -1174,7 +1174,7 @@
   "info.thermal.quiver.mode.1": "자동 침투 비활성화",
   "info.thermal.quiver.use": "사용하면 화살을 화살통에 집어넣습니다.",
   "info.thermal.quiver.use.sneak": "웅크린 상태로 사용하여 화살을 회수할 수 있습니다.",
-  
+
   "info.thermal.reservoir.mode.0": "모드: 채우기",
   "info.thermal.reservoir.mode.1": "모드: 비우기",
 
@@ -1201,7 +1201,7 @@
 
   "item.thermal.potion_quiver": "연금 화살통",
   "item.thermal.potion_quiver.desc": "물약을 화살에 침투시킵니다.",
-  
+
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
@@ -1230,7 +1230,7 @@
   "block.thermal.prismarine_detector_rail": "프리즈머린 감지 레일",
   "block.thermal.prismarine_powered_rail": "프리즈머린 전동 레일",
   "block.thermal.prismarine_rail": "프리즈머린 레일",
-  
+
   "entity.thermal.earth_tnt_minecart": "대지 폭발물이 실린 광산 수레",
   "entity.thermal.ender_tnt_minecart": "혼란 폭발물이 실린 광산 수레",
   "entity.thermal.fire_tnt_minecart": "지옥불 폭발물이 실린 광산 수레",
@@ -1241,7 +1241,7 @@
   "entity.thermal.phyto_tnt_minecart": "PNT가 실린 광산 수레",
   "entity.thermal.redstone_tnt_minecart": "레드스톤 폭발물이 실린 광산 수레",
   "entity.thermal.slime_tnt_minecart": "슬라임 폭발물이 실린 광산 수레",
-  
+
   "entity.thermal.energy_minecart": "플럭스 셀이 실린 광산 수레",
   "entity.thermal.fluid_minecart": "유체 탱크가 실린 광산 수레",
   "entity.thermal.underwater_minecart": "잠수 광산 수레",
@@ -1256,7 +1256,7 @@
   "item.thermal.phyto_tnt_minecart": "PNT가 실린 광산 수레",
   "item.thermal.redstone_tnt_minecart": "레드스톤 폭발물이 실린 광산 수레",
   "item.thermal.slime_tnt_minecart": "슬라임 폭발물이 실린 광산 수레",
-  
+
   "item.thermal.energy_minecart": "플럭스 셀이 실린 광산 수레",
   "item.thermal.fluid_minecart": "유체 탱크가 실린 광산 수레",
   "item.thermal.underwater_minecart": "잠수 광산 수레",
@@ -1285,7 +1285,7 @@
   "_comment": "========================================================================================================",
   "_comment": "Guidebooks",
   "_comment": "========================================================================================================",
-  
+
   "thermal.book.name": "써멀피디아",
   "thermal.book.landing_text": "써멀 시리즈 가이드북에 오신 것을 환영합니다! 당신이 즐겨주셨으면 좋겠네요.",
   "thermal.book.subtitle": "MC 1.18.2 - 픽셀복셀 옮김"

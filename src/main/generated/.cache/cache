@@ -609,6 +609,7 @@ a8b265f834bb9be512db71d5558acb203e0f378e data/forge/tags/items/storage_blocks/sl
 0f6917cacc9fc532836cb0e6d25c4ea15822b3de data/forge/tags/items/storage_blocks/tin.json
 694cdc58da2c1023c42cb172bd28ce54974c2f93 data/forge/tags/items/tar.json
 eb25d2730b1cceb3801c23458f10d1a41642bc11 data/forge/tags/items/tools/wrench.json
+176f6d5a787fbc7a4395d833f83475ae788672ab data/minecraft/tags/blocks/beacon_base_blocks.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/minecraft/tags/blocks/impermeable.json
 fd4ce6f1ab18e8788e2d238505f7e244650c68c1 data/minecraft/tags/blocks/mineable/axe.json
 37dd9148312dcf897f102f89c06f2e8d00c19ff6 data/minecraft/tags/blocks/mineable/hoe.json
