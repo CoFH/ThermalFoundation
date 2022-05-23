@@ -13,7 +13,6 @@
   "block.thermal.niter_ore": "硝石鉱石",
   "block.thermal.sulfur_ore": "硫黄鉱石",
 
-  "block.thermal.copper_ore": "銅鉱石",
   "block.thermal.lead_ore": "鉛鉱石",
   "block.thermal.nickel_ore": "ニッケル鉱石",
   "block.thermal.silver_ore": "銀鉱石",
@@ -21,6 +20,19 @@
 
   "block.thermal.ruby_ore": "ルビー鉱石",
   "block.thermal.sapphire_ore": "サファイア鉱石",
+
+  "block.thermal.deepslate_apatite_ore": "深層燐灰石鉱石",
+  "block.thermal.deepslate_cinnabar_ore": "深層辰砂鉱石",
+  "block.thermal.deepslate_niter_ore": "深層硝石鉱石",
+  "block.thermal.deepslate_sulfur_ore": "深層硫黄鉱石",
+
+  "block.thermal.deepslate_lead_ore": "深層鉛鉱石",
+  "block.thermal.deepslate_nickel_ore": "深層ニッケル鉱石",
+  "block.thermal.deepslate_silver_ore": "深層銀鉱石",
+  "block.thermal.deepslate_tin_ore": "深層錫鉱石",
+
+  "block.thermal.deepslate_ruby_ore": "深層ルビー鉱石",
+  "block.thermal.deepslate_sapphire_ore": "深層サファイア鉱石",
 
   "block.thermal.oil_sand": "瀝青質の砂",
   "block.thermal.oil_red_sand": "瀝青質の赤い砂",
@@ -30,7 +42,6 @@
   "block.thermal.niter_block": "硝石ブロック",
   "block.thermal.sulfur_block": "硫黄ブロック",
 
-  "block.thermal.copper_block": "銅ブロック",
   "block.thermal.lead_block": "鉛ブロック",
   "block.thermal.nickel_block": "ニッケルブロック",
   "block.thermal.silver_block": "銀ブロック",
@@ -163,6 +174,7 @@
   "info.thermal.xp_crystal.use.sneak": "スニーク中に使用すると、溜め込んだ経験値を取得できます。",
 
   "itemGroup.thermal.blocks": "Thermal Series: ブロック",
+  "itemGroup.thermal.devices": "Thermal Series: 機械",
   "itemGroup.thermal.foods": "Thermal Series: 作物と食料",
   "itemGroup.thermal.items": "Thermal Series: アイテム",
   "itemGroup.thermal.resources": "Thermal Series: 素材",
@@ -242,12 +254,10 @@
   "item.thermal.junk_net": "ガラクタ収集網",
   "item.thermal.junk_net.desc": "§e§o水資源投網機§r§6でガラクタを集めるために使用します。耐久値はありませn。",
 
-  "item.thermal.copper_coin": "銅のコイン",
-  "item.thermal.copper_dust": "銅の粉",
-  "item.thermal.copper_gear": "銅の歯車",
-  "item.thermal.copper_ingot": "銅インゴット",
-  "item.thermal.copper_nugget": "銅塊",
-  "item.thermal.copper_plate": "銅のプレート",
+  "item.thermal.raw_lead": "鉛の原石",
+  "item.thermal.raw_nickel": "ニッケルの原石",
+  "item.thermal.raw_silver": "銀の原石",
+  "item.thermal.raw_tin": "錫の原石",
 
   "item.thermal.lead_coin": "鉛のコイン",
   "item.thermal.lead_dust": "鉛の粉",
@@ -357,6 +367,12 @@
 
   "subtitles.thermal.item.magnet": "フラックスマグネットが引き寄せる",
 
+  "subtitles.thermal.item.equip_beekeeper": "養蜂家のスーツがガサつく",
+  "subtitles.thermal.item.equip_diving": "ダイビングスーツが鳴る",
+  "subtitles.thermal.item.equip_hazmat": "ハズマットスーツがガサつく",
+
+  "subtitles.thermal.misc.tinker": "オーグメントがインストールされる",
+
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Augments",
   "_comment": "========================================================================================================",
@@ -430,12 +446,17 @@
   "item.thermal.machine_efficiency_augment.desc": "RF使用効率を上昇させますが、処理速度が低下します。",
   "item.thermal.machine_efficiency_creative_augment": "クリエイティブフラックス効率",
   "item.thermal.machine_efficiency_creative_augment.desc": "RFを消費せず、処理速度を著しく加速させます。",
+  "item.thermal.machine_null_augment": "追加サボテン",
+  "item.thermal.machine_null_augment.desc": "余剰副産物を破棄します。",
   "item.thermal.machine_output_augment": "補助処理フィルター",
+  "item.thermal.machine_output_augment.desc": "副産物の生産量を増加させます。",
   "item.thermal.machine_speed_augment": "フラックス結合増幅器",
   "item.thermal.machine_speed_augment.desc": "処理速度を加速させますが、RF使用効率が低下します。",
 
   "item.thermal.potion_amplifier_augment": "錬金的増幅回路",
+  "item.thermal.potion_amplifier_augment.desc": "醸造するポーションの効果を増強します。",
   "item.thermal.potion_duration_augment": "錬金的増量剤",
+  "item.thermal.potion_duration_augment.desc": "醸造するポーションの持続時間を増加します。",
 
   "item.thermal.rf_coil_augment": "拡張RFコイル",
 
@@ -487,7 +508,9 @@
   "block.thermal.item_cell_frame": "アイテムセルフレーム",
 
   "block.thermal.charge_bench": "エネルギー充填機",
+  "block.thermal.charge_bench.desc": "複数のアイテムを素早く充電出来ます。",
   "block.thermal.tinker_bench": "鍛冶職人の作業台",
+  "block.thermal.tinker_bench.desc": "アイテムのオーグメントの取り付け・充電・充填が行えます。",
 
   "block.thermal.chunk_loader": "コンティヌウムアンカー",
 
@@ -634,6 +657,17 @@
   "block.thermal.carrot_block": "ニンジンクレート",
   "block.thermal.potato_block": "ジャガイモクレート",
 
+  "block.thermal.raw_lead_block": "鉛の原石ブロック",
+  "block.thermal.raw_nickel_block": "ニッケルの原石ブロック",
+  "block.thermal.raw_silver_block": "銀の原石ブロック",
+  "block.thermal.raw_tin_block": "錫の原石ブロック",
+
+  "item.thermal.copper_coin": "銅のコイン",
+  "item.thermal.copper_dust": "銅の粉",
+  "item.thermal.copper_gear": "銅の歯車",
+  "item.thermal.copper_nugget": "銅塊",
+  "item.thermal.copper_plate": "銅のプレート",
+
   "item.thermal.diamond_coin": "ダイヤモンドのコイン",
   "item.thermal.diamond_dust": "ダイヤモンドの粉",
   "item.thermal.diamond_gear": "ダイヤモンドの歯車",
@@ -667,6 +701,7 @@
   "item.thermal.netherite_coin": "ネザライトのコイン",
   "item.thermal.netherite_dust": "ネザライトの粉",
   "item.thermal.netherite_gear": "ネザライトの歯車",
+  "item.thermal.netherite_nugget": "ネザライト塊",
   "item.thermal.netherite_plate": "ネザライトのプレート",
 
   "item.thermal.quartz_coin": "ネザークォーツのコイン",
@@ -727,6 +762,7 @@
   "item.thermal.machine_cycle_augment.keyword": "augment machine",
   "item.thermal.machine_efficiency_augment.keyword": "augment machine",
   "item.thermal.machine_efficiency_creative_augment.keyword": "augment creative machine",
+  "item.thermal.machine_null_augment.keyword": "augment machine trash void",
   "item.thermal.machine_output_augment.keyword": "augment machine",
   "item.thermal.machine_speed_augment.keyword": "augment machine overclock speed",
 
@@ -763,8 +799,8 @@
   "item.thermal.hazmat_leggings.keyword": "armor leggings radiation",
   "item.thermal.hazmat_boots.keyword": "armor radiation",
 
-  "item.thermal.deep_aquachow.keyword": "bait",
   "item.thermal.aquachow.keyword": "bait",
+  "item.thermal.deep_aquachow.keyword": "bait",
   "item.thermal.junk_net.keyword": "bait",
 
   "item.thermal.detonator.keyword": "tnt",
@@ -911,6 +947,38 @@
   "item.thermal.slime_mushroom_spores.keyword": "slime",
 
   "item.thermal.watering_can.keyword": "crops farm fertilizer",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Dynamics",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.energy_duct": "フラックスダクト",
+  "block.thermal.fluid_duct": "流体ダクト",
+
+  "block.thermal.energy_distributor": "RF配給インターフェイス",
+  "block.thermal.fluid_distributor": "流体配給インターフェイス",
+
+  "block.thermal.item_buffer": "物流アイテムバッファ",
+
+  "info.thermal.item_buffer.0": "アイテムの数と流量を制限します。",
+  "info.thermal.item_buffer.1": "左のグリッドで、希望するアイテムとその個数を設定します。",
+  "info.thermal.item_buffer.2": "ラッチI/Oは、搬出にはすべてのアイテムが存在する必要があります。",
+  "info.thermal.item_buffer.3": "特定のアイテムの比率を維持するのに役立ちます。",
+
+  "info.thermal.item_buffer.mode.0": "I/O: 通常",
+  "info.thermal.item_buffer.mode.1": "I/O: ラッチ",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.energy_duct.keyword": "energy rf transfer",
+  "block.thermal.fluid_duct.keyword": "energy rf transfer",
+
+  "block.thermal.energy_distributor.keyword": "energy rf transfer",
+  "block.thermal.fluid_distributor.keyword": "fluid transfer",
+
+  "block.thermal.ender_tunnel.keyword": "entangloporter quantum tesseract",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Expansion",
@@ -1175,6 +1243,8 @@
   "entity.thermal.redstone_tnt_minecart": "レッドストーン爆弾付きトロッコ",
   "entity.thermal.slime_tnt_minecart": "スライム爆弾付きトロッコ",
 
+  "entity.thermal.energy_minecart": "フラックス貯蔵トロッコ",
+  "entity.thermal.fluid_minecart": "流体タンクトロッコ",
   "entity.thermal.underwater_minecart": "潜水トロッコ",
 
   "item.thermal.earth_tnt_minecart": "地動爆弾付きトロッコ",
@@ -1188,6 +1258,8 @@
   "item.thermal.redstone_tnt_minecart": "レッドストーン爆弾付きトロッコ",
   "item.thermal.slime_tnt_minecart": "スライム爆弾付きトロッコ",
 
+  "item.thermal.energy_minecart": "フラックス貯蔵トロッコ",
+  "item.thermal.fluid_minecart": "流体タンクトロッコ",
   "item.thermal.underwater_minecart": "潜水トロッコ",
 
   "_comment": "========================================================================================================",
@@ -1209,5 +1281,13 @@
   "item.thermal.nuke_tnt_minecart.keyword": "tnt",
   "item.thermal.phyto_tnt_minecart.keyword": "fertilizer tnt",
   "item.thermal.redstone_tnt_minecart.keyword": "tnt",
-  "item.thermal.slime_tnt_minecart.keyword": "tnt"
+  "item.thermal.slime_tnt_minecart.keyword": "tnt",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Guidebooks",
+  "_comment": "========================================================================================================",
+
+  "thermal.book.name": "サーマルペディア",
+  "thermal.book.landing_text": "サーマルシリーズのガイドブックにようこそ!担当者一同、心よりお待ちしております。",
+  "thermal.book.subtitle": "MC 1.18.2"
 }
