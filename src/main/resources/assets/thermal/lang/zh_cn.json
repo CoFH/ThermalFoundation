@@ -55,6 +55,9 @@
   "block.thermal.electrum_block": "琥珀金块",
   "block.thermal.invar_block": "殷钢块",
 
+  "block.thermal.steel_block": "钢块",
+  "block.thermal.rose_gold_block": "玫瑰金块",
+
   "block.thermal.enderium_block": "末影块",
   "block.thermal.lumium_block": "流明块",
   "block.thermal.signalum_block": "信素块",
@@ -326,6 +329,20 @@
   "item.thermal.invar_ingot": "殷钢锭",
   "item.thermal.invar_nugget": "殷钢粒",
   "item.thermal.invar_plate": "殷钢板",
+
+  "item.thermal.rose_gold_coin": "玫瑰金币",
+  "item.thermal.rose_gold_dust": "玫瑰金粉",
+  "item.thermal.rose_gold_gear": "玫瑰金齿轮",
+  "item.thermal.rose_gold_ingot": "玫瑰金锭",
+  "item.thermal.rose_gold_nugget": "玫瑰金粒",
+  "item.thermal.rose_gold_plate": "玫瑰金板",
+
+  "item.thermal.steel_coin": "钢币",
+  "item.thermal.steel_dust": "钢粉",
+  "item.thermal.steel_gear": "钢齿轮",
+  "item.thermal.steel_ingot": "钢锭",
+  "item.thermal.steel_nugget": "钢粒",
+  "item.thermal.steel_plate": "钢板",
 
   "item.thermal.enderium_coin": "末影币",
   "item.thermal.enderium_dust": "末影粉",
@@ -1107,7 +1124,7 @@
   "item.thermal.press_unpacking_die": "解包模具",
 
   "item.thermal.slot_seal": "槽楔",
-  "item.thermal.slot_seal.desc": "可放置在有多个输入槽的机器的输入槽中，机器的各种配方会无视该物品。",
+  "item.thermal.slot_seal.desc": "防止所在槽位被使用。适用于有多个输入槽的机器。",
 
   "subtitles.thermal.block.machine_bottler": "流体灌装机：装填",
   "subtitles.thermal.block.machine_crucible": "热力能源炉：嗡嗡",
@@ -1208,7 +1225,7 @@
   "_comment": "========================================================================================================",
 
   "item.thermal.fluid_reservoir.keyword": "灌注 装填 注水",
-  "item.thermal.flux_capacitor.keyword": "电池 充电器 rf",
+  "item.thermal.flux_capacitor.keyword": "电池 充电器 充能器 rf",
   "item.thermal.flux_drill.keyword": "电钻 镐 锹 工具",
   "item.thermal.flux_saw.keyword": "斧 工具",
   "item.thermal.potion_infuser.keyword": "药水",
@@ -1281,5 +1298,13 @@
   "item.thermal.nuke_tnt_minecart.keyword": "tnt",
   "item.thermal.phyto_tnt_minecart.keyword": "肥料 tnt",
   "item.thermal.redstone_tnt_minecart.keyword": "tnt",
-  "item.thermal.slime_tnt_minecart.keyword": "tnt"
+  "item.thermal.slime_tnt_minecart.keyword": "tnt",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Guidebooks",
+  "_comment": "========================================================================================================",
+
+  "thermal.book.name": "热力百科",
+  "thermal.book.landing_text": "欢迎使用热力系列指导手册！全体制作人员祝你玩得愉快。",
+  "thermal.book.subtitle": "MC 1.18.2"
 }
