@@ -117,7 +117,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
     @Override
     public boolean stillValid(Player playerIn) {
 
-        return true;
+        return lockedSlot.getItem() == containerStack;
     }
 
     @Override
