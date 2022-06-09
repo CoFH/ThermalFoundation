@@ -97,6 +97,8 @@ public class TCoreItems {
         flagUniqueAugment(ITEMS.get("machine_catalyst_creative_augment"));
         flagUniqueAugment(ITEMS.get("machine_cycle_augment"));
         flagUniqueAugment(ITEMS.get("machine_null_augment"));
+
+        flagUniqueAugment(ITEMS.get("dynamo_throttle_augment"));
     }
 
     // region HELPERS
@@ -207,8 +209,9 @@ public class TCoreItems {
         registerItem(ID_LOCK, () -> new LockItem(new Item.Properties().tab(group)).setShowInGroups(getFlag(ID_LOCK)));
         registerItem(ID_SATCHEL, () -> new SatchelItem(new Item.Properties().stacksTo(1).tab(group), 9).setShowInGroups(getFlag(ID_SATCHEL)));
 
-        registerItem("phytogro", () -> new PhytoGroItem(new Item.Properties().tab(group)));
-        // registerItem("fluxed_phytogro", () -> new PhytoGroItem(new Item.Properties().group(group), 5));
+        registerItem("compost", () -> new FertilizerItem(new Item.Properties().tab(group), 2));
+        registerItem("phytogro", () -> new FertilizerItem(new Item.Properties().tab(group)));
+        // registerItem("fluxed_phytogro", () -> new FertilizerItem(new Item.Properties().group(group), 5));
 
         registerItem("junk_net", () -> new ItemCoFH(new Item.Properties().tab(group)).setShowInGroups(getFlag(ID_DEVICE_FISHER)));
         registerItem("aquachow", () -> new ItemCoFH(new Item.Properties().tab(group)).setShowInGroups(getFlag(ID_DEVICE_FISHER)));
@@ -434,6 +437,12 @@ public class TCoreItems {
                 AugmentDataHelper.builder()
                         .type(TAG_AUGMENT_TYPE_DYNAMO)
                         .mod(TAG_AUGMENT_DYNAMO_ENERGY, 1.1F)
+                        .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
+
+        registerItem("dynamo_throttle_augment", () -> new AugmentItem(new Item.Properties().tab(group),
+                AugmentDataHelper.builder()
+                        .type(TAG_AUGMENT_TYPE_DYNAMO)
+                        .mod(TAG_AUGMENT_DYNAMO_THROTTLE, 1.0F)
                         .build()).setShowInGroups(getFlag(FLAG_DYNAMO_AUGMENTS)));
     }
 

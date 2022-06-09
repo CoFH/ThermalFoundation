@@ -70,26 +70,20 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_OIL_RED_SAND));
         createSimpleDropTable(regBlocks.get(ID_OIL_SAND));
 
-        //        createSimpleDropTable(regBlocks.get(raw(ID_ALUMINUM_BLOCK)));
         createSimpleDropTable(regBlocks.get(raw(ID_LEAD_BLOCK)));
         createSimpleDropTable(regBlocks.get(raw(ID_NICKEL_BLOCK)));
         createSimpleDropTable(regBlocks.get(raw(ID_SILVER_BLOCK)));
         createSimpleDropTable(regBlocks.get(raw(ID_TIN_BLOCK)));
-        //        createSimpleDropTable(regBlocks.get(raw(ID_URANIUM_BLOCK)));
 
-        //        createSimpleDropTable(regBlocks.get(ID_ALUMINUM_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_LEAD_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_NICKEL_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SILVER_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_TIN_BLOCK));
-        //        createSimpleDropTable(regBlocks.get(ID_URANIUM_BLOCK));
 
         createSimpleDropTable(regBlocks.get(ID_BRONZE_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_CONSTANTAN_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_ELECTRUM_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_INVAR_BLOCK));
-        //        createSimpleDropTable(regBlocks.get(ID_ROSE_GOLD_BLOCK));
-        //        createSimpleDropTable(regBlocks.get(ID_STEEL_BLOCK));
 
         createSimpleDropTable(regBlocks.get(ID_RUBY_BLOCK));
         createSimpleDropTable(regBlocks.get(ID_SAPPHIRE_BLOCK));
@@ -146,6 +140,7 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSyncDropTable(regBlocks.get(ID_DEVICE_HIVE_EXTRACTOR));
         createSyncDropTable(regBlocks.get(ID_DEVICE_TREE_EXTRACTOR));
         createSyncDropTable(regBlocks.get(ID_DEVICE_FISHER));
+        createSyncDropTable(regBlocks.get(ID_DEVICE_COMPOSTER));
         createSyncDropTable(regBlocks.get(ID_DEVICE_SOIL_INFUSER));
         createSyncDropTable(regBlocks.get(ID_DEVICE_WATER_GEN));
         createSyncDropTable(regBlocks.get(ID_DEVICE_ROCK_GEN));

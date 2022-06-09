@@ -1,0 +1,7 @@
+{
+  "type": "thermal:lapidary_fuel",
+  "ingredient": {
+    "tag": "forge:gems/amethyst"
+  },
+  "energy": 40000
+}

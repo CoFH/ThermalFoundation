@@ -286,6 +286,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
 
     // region AUGMENTS
     protected float energyMod = 1.0F;
+    protected boolean throttleFeature = false;
 
     @Override
     protected Predicate<ItemStack> augValidator() {
@@ -302,6 +303,8 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
         setAttribute(augmentNBT, TAG_AUGMENT_DYNAMO_POWER, 1.0F);
 
         energyMod = 1.0F;
+
+        throttleFeature = false;
     }
 
     @Override
@@ -312,6 +315,8 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
         setAttributeFromAugmentAdd(augmentNBT, augmentData, TAG_AUGMENT_DYNAMO_POWER);
 
         energyMod *= getAttributeModWithDefault(augmentData, TAG_AUGMENT_DYNAMO_ENERGY, 1.0F);
+
+        throttleFeature |= getAttributeMod(augmentData, TAG_AUGMENT_DYNAMO_THROTTLE) > 0;
     }
 
     @Override
@@ -330,7 +335,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
         energyMod = MathHelper.clamp(energyMod, AUG_SCALE_MIN, AUG_SCALE_MAX);
 
         processTick = baseProcessTick;
-        minProcessTick = baseProcessTick / 10;
+        minProcessTick = throttleFeature ? 0 : baseProcessTick / 10;
     }
 
     protected final float getEnergyMod() {

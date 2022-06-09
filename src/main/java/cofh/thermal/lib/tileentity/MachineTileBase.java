@@ -40,7 +40,7 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
-public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ICoFHTickableTile.IServerTickable, IMachineInventory {
+public abstract class MachineTileBase extends ReconfigurableTile4Way implements ICoFHTickableTile.IServerTickable, IMachineInventory {
 
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
@@ -58,7 +58,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     protected TimeTracker timeTracker = new TimeTracker();
     public boolean wasActive;
 
-    public MachineTileProcess(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public MachineTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());

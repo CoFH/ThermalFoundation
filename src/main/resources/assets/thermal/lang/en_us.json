@@ -233,6 +233,7 @@
   "item.thermal.blizz_rod": "Blizz Cube",
   "item.thermal.blizz_spawn_egg": "Blizz Spawn Egg",
 
+  "item.thermal.compost": "Compost",
   "item.thermal.detonator": "Remote Detonator",
   "item.thermal.earth_charge": "Earth Charge",
   "item.thermal.ice_charge": "Ice Charge",
@@ -441,6 +442,8 @@
   "item.thermal.dynamo_fuel_augment.desc": "Increases fuel efficiency.",
   "item.thermal.dynamo_output_augment": "Auxiliary Reaction Chamber",
   "item.thermal.dynamo_output_augment.desc": "Increases generation rate but reduces efficiency.",
+  "item.thermal.dynamo_throttle_augment": "Excitation Field Limiter",
+  "item.thermal.dynamo_throttle_augment.desc": "Prevents RF from being lost after coil saturation.",
 
   "item.thermal.fluid_tank_augment": "Expanded Tank Construction",
 
@@ -508,6 +511,7 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.device_collector": "Vacuumulator",
+  "block.thermal.device_composter": "Batch Composter",
   "block.thermal.device_fisher": "Aquatic Entangler",
   "block.thermal.device_hive_extractor": "Hive Hopper",
   "block.thermal.device_nullifier": "Nullifier",

@@ -249,8 +249,10 @@ public class ThermalCore {
 
         MenuScreens.register(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
         MenuScreens.register(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
-        MenuScreens.register(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
         MenuScreens.register(DEVICE_FISHER_CONTAINER, DeviceFisherScreen::new);
+        MenuScreens.register(DEVICE_COMPOSTER_CONTAINER, DeviceComposterScreen::new);
+        MenuScreens.register(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
+
         MenuScreens.register(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
         MenuScreens.register(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
         MenuScreens.register(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
@@ -290,6 +292,7 @@ public class ThermalCore {
         //        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_ITEM_CELL), cutout);
 
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_COMPOSTER), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_WATER_GEN), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_ROCK_GEN), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DEVICE_COLLECTOR), cutout);

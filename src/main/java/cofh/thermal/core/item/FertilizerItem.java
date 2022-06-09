@@ -28,18 +28,18 @@ import net.minecraftforge.event.ForgeEventFactory;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class PhytoGroItem extends ItemCoFH {
+public class FertilizerItem extends ItemCoFH {
 
     protected static final int CLOUD_DURATION = 20;
 
-    protected int strength = 3;
+    protected int strength = 4;
 
-    public PhytoGroItem(Properties builder) {
+    public FertilizerItem(Properties builder) {
 
         super(builder);
     }
 
-    public PhytoGroItem(Properties builder, int strength) {
+    public FertilizerItem(Properties builder, int strength) {
 
         super(builder);
         this.strength = strength;

@@ -6,7 +6,7 @@ import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.references.CoreReferences;
-import cofh.thermal.core.item.PhytoGroItem;
+import cofh.thermal.core.item.FertilizerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -149,7 +149,7 @@ public class DetonateUtils {
 
         AreaUtils.growPlants.transformSphere(level, pos, radius, owner);
         for (int i = 0; i < 2; ++i) {
-            PhytoGroItem.growWaterPlant(level, explosive.blockPosition(), null);
+            FertilizerItem.growWaterPlant(level, explosive.blockPosition(), null);
         }
         makeAreaOfEffectCloud(level, ParticleTypes.HAPPY_VILLAGER, pos, radius);
     }

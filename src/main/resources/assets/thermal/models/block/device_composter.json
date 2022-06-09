@@ -1,0 +1,36 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "thermal:block/devices/device_composter_side",
+    "top": "thermal:block/devices/device_composter_top",
+    "bottom": "thermal:block/devices/device_composter_bottom",
+    "side": "thermal:block/devices/device_composter_side",
+    "inside": "thermal:block/devices/device_composter_inside",
+    "inside_bot": "thermal:block/devices/device_composter_mixer"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "up": {"texture": "#top", "cullface": "up"},
+        "down": {"texture": "#bottom", "cullface": "down"},
+        "north": {"texture": "#side", "cullface": "north"},
+        "south": {"texture": "#side", "cullface": "south"},
+        "west": {"texture": "#side", "cullface": "west"},
+        "east": {"texture": "#side", "cullface": "east"}
+      }
+    },
+    {
+      "from": [13.125, 16, 13.125],
+      "to": [2.125, 3, 2.125],
+      "faces": {
+        "up": {"texture": "#inside_bot"},
+        "north": {"texture": "#inside"},
+        "south": {"texture": "#inside"},
+        "west": {"texture": "#inside"},
+        "east": {"texture": "#inside"}
+      }
+    }
+  ]
+}
