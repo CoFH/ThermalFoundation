@@ -233,6 +233,7 @@
   "item.thermal.blizz_rod": "暴雪立方",
   "item.thermal.blizz_spawn_egg": "暴雪人刷怪蛋",
 
+  "item.thermal.compost": "堆肥",
   "item.thermal.detonator": "遥控起爆器",
   "item.thermal.earth_charge": "裂岩弹",
   "item.thermal.ice_charge": "瀑冰弹",
@@ -433,16 +434,18 @@
   "item.thermal.area_depth_augment": "轴向范围拓展",
   "item.thermal.area_radius_augment": "径向范围拓展",
 
-  "item.thermal.dynamo_ender_coil_augment": "末影频率调谐",
+  "item.thermal.dynamo_ender_coil_augment": "末影频率调谐器",
   "item.thermal.dynamo_force_coil_augment": "光束投射阵列",
-  "item.thermal.dynamo_steam_coil_augment": "蒸汽锅炉改造",
+  "item.thermal.dynamo_steam_coil_augment": "蒸汽锅炉转换",
 
-  "item.thermal.dynamo_fuel_augment": "多环泵注升级",
+  "item.thermal.dynamo_fuel_augment": "多环泵注器",
   "item.thermal.dynamo_fuel_augment.desc": "提升燃料效率。",
-  "item.thermal.dynamo_output_augment": "辅助反应升级",
+  "item.thermal.dynamo_output_augment": "辅助反应室",
   "item.thermal.dynamo_output_augment.desc": "以效率降低为代价提升发电功率。",
+  "item.thermal.dynamo_throttle_augment": "激发场限制器",
+  "item.thermal.dynamo_throttle_augment.desc": "防止线圈饱和后的RF损失。",
 
-  "item.thermal.fluid_tank_augment": "液槽扩容升级",
+  "item.thermal.fluid_tank_augment": "扩容储罐构造",
 
   "item.thermal.fluid_tank_creative_augment": "创造储罐建构",
   "item.thermal.fluid_tank_creative_augment.desc": "功能性无上限的储罐。",
@@ -454,8 +457,8 @@
   "item.thermal.item_filter_augment": "物品过滤规制",
   "item.thermal.item_filter_augment.desc": "允许对物品进行过滤限制。",
 
-  "item.thermal.machine_catalyst_augment": "触媒回收升级",
-  "item.thermal.machine_catalyst_creative_augment": "创造改制仓室",
+  "item.thermal.machine_catalyst_augment": "触媒回收室",
+  "item.thermal.machine_catalyst_creative_augment": "创造回收室",
   "item.thermal.machine_catalyst_creative_augment.desc": "不消耗催化剂。",
   "item.thermal.machine_cycle_augment": "循环处理升级",
   "item.thermal.machine_cycle_augment.desc": "装配产物可循环至输入槽以进行下一步合成。",
@@ -463,16 +466,16 @@
   "item.thermal.machine_efficiency_augment.desc": "以处理速度降低为代价提升RF效率。",
   "item.thermal.machine_efficiency_creative_augment": "创造通量提效",
   "item.thermal.machine_efficiency_creative_augment.desc": "不消耗能量，处理速度极快。",
-  "item.thermal.machine_null_augment": "仙人掌升级",
+  "item.thermal.machine_null_augment": "辅助仙人掌",
   "item.thermal.machine_null_augment.desc": "销毁多余的副产物。",
-  "item.thermal.machine_output_augment": "辅助筛取升级",
+  "item.thermal.machine_output_augment": "辅助处理筛",
   "item.thermal.machine_output_augment.desc": "增加副产物的产出",
-  "item.thermal.machine_speed_augment": "通量链接升级",
+  "item.thermal.machine_speed_augment": "通量链接放大器",
   "item.thermal.machine_speed_augment.desc": "以RF效率降低为代价提升处理速度。",
 
-  "item.thermal.potion_amplifier_augment": "强效炼药升级",
+  "item.thermal.potion_amplifier_augment": "炼金放大器",
   "item.thermal.potion_amplifier_augment.desc": "增强药水的效果等级。",
-  "item.thermal.potion_duration_augment": "长效炼药升级",
+  "item.thermal.potion_duration_augment": "炼金延长器",
   "item.thermal.potion_duration_augment.desc": "增强药水的效果时长。",
 
   "item.thermal.rf_coil_augment": "扩展通量线圈",
@@ -499,7 +502,7 @@
   "item.thermal.upgrade_augment_4": "超谐振整合组件",
   "item.thermal.upgrade_augment_4.desc": "提升基础属性。其它升级也可能由此得到进一步增强。",
 
-  "item.thermal.xp_storage_augment": "知识浓缩存储",
+  "item.thermal.xp_storage_augment": "知识浓缩器",
   "item.thermal.xp_storage_augment.desc": "允许存储与提取经验。",
 
   "_comment": "========================================================================================================",
@@ -508,6 +511,7 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.device_collector": "真空箱子",
+  "block.thermal.device_composter": "批量堆肥器",
   "block.thermal.device_fisher": "水产捕捞器",
   "block.thermal.device_hive_extractor": "蜂箱漏斗",
   "block.thermal.device_nullifier": "销毁器",
