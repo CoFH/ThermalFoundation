@@ -25,7 +25,7 @@ public class TCoreContainers {
         CONTAINERS.register(ID_DEVICE_FISHER, () -> IForgeMenuType.create((windowId, inv, data) -> new DeviceFisherContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
         CONTAINERS.register(ID_DEVICE_COMPOSTER, () -> IForgeMenuType.create((windowId, inv, data) -> new DeviceComposterContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
         CONTAINERS.register(ID_DEVICE_SOIL_INFUSER, () -> IForgeMenuType.create((windowId, inv, data) -> new DeviceSoilInfuserContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
-        
+
         CONTAINERS.register(ID_DEVICE_WATER_GEN, () -> IForgeMenuType.create((windowId, inv, data) -> new DeviceWaterGenContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
         CONTAINERS.register(ID_DEVICE_ROCK_GEN, () -> IForgeMenuType.create((windowId, inv, data) -> new DeviceRockGenContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
         CONTAINERS.register(ID_DEVICE_COLLECTOR, () -> IForgeMenuType.create((windowId, inv, data) -> new DeviceCollectorContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));

@@ -24,12 +24,12 @@ public class DeviceComposterContainer extends TileContainer {
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-                addSlot(new SlotCoFH(tileInv, i * 3 + j + 1, 44 + j * 18, 17 + i * 18));
+                addSlot(new SlotCoFH(tileInv, i * 3 + j, 26 + j * 18, 17 + i * 18));
             }
         }
-        addSlot(new SlotRemoveOnly(tileInv, 0, 125, 35));
+        addSlot(new SlotRemoveOnly(tileInv, 9, 125, 35));
 
-        bindAugmentSlots(tileInv, 16, this.tile.augSize());
+        bindAugmentSlots(tileInv, 10, this.tile.augSize());
         bindPlayerInventory(inventory);
     }
 

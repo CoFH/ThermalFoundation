@@ -47,7 +47,6 @@ public class DeviceRockGenTile extends DeviceTileBase implements ICoFHTickableTi
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE);
 
     protected static final Supplier<ItemStack> COBBLESTONE = () -> new ItemStack(Blocks.COBBLESTONE, 0);
-
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH(e -> false).setEmptyItem(COBBLESTONE).setEnabled(() -> isActive);
 
     protected Block below = Blocks.AIR;

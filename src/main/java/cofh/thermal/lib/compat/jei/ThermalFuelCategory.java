@@ -3,9 +3,11 @@ package cofh.thermal.lib.compat.jei;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import com.mojang.blaze3d.vertex.PoseStack;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
@@ -44,7 +46,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     public ThermalFuelCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid, boolean drawEnergy) {
 
         this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(icon);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
 
         if (drawEnergy) {
             energyBackground = Drawables.getDrawables(guiHelper).getEnergyEmpty();
@@ -78,7 +80,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
 
     @Override
-    public void draw(T recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(T recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
         if (energyBackground != null) {
             energyBackground.draw(matrixStack, ENERGY_X, ENERGY_Y);

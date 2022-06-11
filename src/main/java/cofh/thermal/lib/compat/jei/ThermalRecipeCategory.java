@@ -3,10 +3,12 @@ package cofh.thermal.lib.compat.jei;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import com.mojang.blaze3d.vertex.PoseStack;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
@@ -46,7 +48,7 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     public ThermalRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
 
         this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(icon);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
 
         energyBackground = Drawables.getDrawables(guiHelper).getEnergyEmpty();
         energy = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getEnergyFill(), 400, IDrawableAnimated.StartDirection.TOP, true);
@@ -122,7 +124,7 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     }
 
     @Override
-    public void draw(T recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(T recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
         if (recipe.getEnergy() > 0) {
             energyBackground.draw(matrixStack, ENERGY_X, ENERGY_Y);
@@ -131,7 +133,7 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     }
 
     @Override
-    public List<Component> getTooltipStrings(T recipe, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(T recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 
         List<Component> tooltip = new ArrayList<>();
 

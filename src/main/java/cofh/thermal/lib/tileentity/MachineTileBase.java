@@ -352,27 +352,34 @@ public abstract class MachineTileBase extends ReconfigurableTile4Way implements 
         for (int i = 0; i < recipeOutputItems.size(); ++i) {
             ItemStack recipeOutput = recipeOutputItems.get(i);
             float chance = recipeOutputChances.get(i);
-            int outputCount = chance <= BASE_CHANCE ? recipeOutput.getCount() : (int) chance;
-            while (level.random.nextFloat() < chance) {
-                boolean matched = false;
+            int recipeCount = recipeOutput.getCount();
+            int outputCount = chance <= BASE_CHANCE ? recipeCount : (int) chance * recipeCount;
+
+            if (MathHelper.RANDOM.nextFloat() < chance) {
+                ItemStorageCoFH matchSlot = null;
                 for (ItemStorageCoFH slot : outputSlots()) {
                     ItemStack output = slot.getItemStack();
                     if (itemsEqualWithTags(output, recipeOutput) && output.getCount() < output.getMaxStackSize()) {
                         output.grow(outputCount);
-                        matched = true;
+                        matchSlot = slot;
                         break;
                     }
                 }
-                if (!matched) {
+                if (matchSlot == null) {
                     for (ItemStorageCoFH slot : outputSlots()) {
                         if (slot.isEmpty()) {
                             slot.setItemStack(cloneStack(recipeOutput, outputCount));
+                            matchSlot = slot;
                             break;
                         }
                     }
                 }
-                chance -= BASE_CHANCE * outputCount;
-                outputCount = 1;
+                if (matchSlot != null && chance > BASE_CHANCE) {
+                    chance -= (int) chance;
+                    if (MathHelper.RANDOM.nextFloat() < chance) {
+                        matchSlot.getItemStack().grow(recipeCount);
+                    }
+                }
             }
         }
         // Output Fluids

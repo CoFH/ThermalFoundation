@@ -1546,15 +1546,27 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_redstone_servo", has(redstoneServo))
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER));
 
+        ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_COMPOSTER))
+                .define('C', Blocks.COMPOSTER)
+                .define('G', Tags.Items.GLASS)
+                .define('I', ItemTags.PLANKS)
+                .define('P', redstoneServo)
+                .define('X', CoFHTags.Items.GEARS_IRON)
+                .pattern("IXI")
+                .pattern("GCG")
+                .pattern("IPI")
+                .unlockedBy("has_redstone_servo", has(redstoneServo))
+                .save(withConditions(consumer).flag(ID_DEVICE_COMPOSTER));
+
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_SOIL_INFUSER))
                 .define('C', reg.get("phytogro"))
                 .define('G', Tags.Items.GLASS)
+                .define('I', ItemTags.PLANKS)
                 .define('P', rfCoil)
                 .define('X', CoFHTags.Items.GEARS_LUMIUM)
-                .define('W', ItemTags.PLANKS)
-                .pattern("WXW")
+                .pattern("IXI")
                 .pattern("GCG")
-                .pattern("WPW")
+                .pattern("IPI")
                 .unlockedBy("has_rf_coil", has(rfCoil))
                 .save(withConditions(consumer).flag(ID_DEVICE_SOIL_INFUSER));
 
