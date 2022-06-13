@@ -556,6 +556,10 @@
   "block.thermal.slime_tnt": "弹力黏着炸药",
   "block.thermal.slime_tnt.desc": "黏着在一大片范围内的目标上。击退性强。",
 
+  "info.thermal.device_composter.0": "使用有机废料生产堆肥。",
+  "info.thermal.device_composter.1": "不同物品的效能不同。",
+  "info.thermal.device_composter.2": "自然的归自然。",
+
   "info.thermal.device_collector.0": "拾取周围一定区域内的掉落物。",
   "info.thermal.device_collector.1": "过滤设置可作用于拾取行为。",
   "info.thermal.device_collector.2": "保持地面清洁！",
