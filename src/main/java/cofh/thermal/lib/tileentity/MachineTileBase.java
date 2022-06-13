@@ -40,7 +40,7 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
-public abstract class MachineTileProcess extends ReconfigurableTile4Way implements ICoFHTickableTile.IServerTickable, IMachineInventory {
+public abstract class MachineTileBase extends ReconfigurableTile4Way implements ICoFHTickableTile.IServerTickable, IMachineInventory {
 
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
@@ -58,7 +58,7 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
     protected TimeTracker timeTracker = new TimeTracker();
     public boolean wasActive;
 
-    public MachineTileProcess(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public MachineTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
@@ -352,27 +352,34 @@ public abstract class MachineTileProcess extends ReconfigurableTile4Way implemen
         for (int i = 0; i < recipeOutputItems.size(); ++i) {
             ItemStack recipeOutput = recipeOutputItems.get(i);
             float chance = recipeOutputChances.get(i);
-            int outputCount = chance <= BASE_CHANCE ? recipeOutput.getCount() : (int) chance;
-            while (level.random.nextFloat() < chance) {
-                boolean matched = false;
+            int recipeCount = recipeOutput.getCount();
+            int outputCount = chance <= BASE_CHANCE ? recipeCount : (int) chance * recipeCount;
+
+            if (MathHelper.RANDOM.nextFloat() < chance) {
+                ItemStorageCoFH matchSlot = null;
                 for (ItemStorageCoFH slot : outputSlots()) {
                     ItemStack output = slot.getItemStack();
                     if (itemsEqualWithTags(output, recipeOutput) && output.getCount() < output.getMaxStackSize()) {
                         output.grow(outputCount);
-                        matched = true;
+                        matchSlot = slot;
                         break;
                     }
                 }
-                if (!matched) {
+                if (matchSlot == null) {
                     for (ItemStorageCoFH slot : outputSlots()) {
                         if (slot.isEmpty()) {
                             slot.setItemStack(cloneStack(recipeOutput, outputCount));
+                            matchSlot = slot;
                             break;
                         }
                     }
                 }
-                chance -= BASE_CHANCE * outputCount;
-                outputCount = 1;
+                if (matchSlot != null && chance > BASE_CHANCE) {
+                    chance -= (int) chance;
+                    if (MathHelper.RANDOM.nextFloat() < chance) {
+                        matchSlot.getItemStack().grow(recipeCount);
+                    }
+                }
             }
         }
         // Output Fluids

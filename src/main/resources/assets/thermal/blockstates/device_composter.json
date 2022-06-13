@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "thermal:block/device_composter"
+    },
+    "active=true": {
+      "model": "thermal:block/device_composter_active"
+    }
+  }
+}

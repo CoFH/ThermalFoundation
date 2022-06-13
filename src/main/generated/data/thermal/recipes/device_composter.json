@@ -7,7 +7,7 @@
   ],
   "key": {
     "C": {
-      "item": "thermal:phytogro"
+      "item": "minecraft:composter"
     },
     "G": {
       "tag": "forge:glass"
@@ -16,18 +16,18 @@
       "tag": "minecraft:planks"
     },
     "P": {
-      "item": "thermal:rf_coil"
+      "item": "thermal:redstone_servo"
     },
     "X": {
-      "tag": "forge:gears/lumium"
+      "tag": "forge:gears/iron"
     }
   },
   "result": {
-    "item": "thermal:device_soil_infuser"
+    "item": "thermal:device_composter"
   },
   "conditions": [
     {
-      "flag": "device_soil_infuser",
+      "flag": "device_composter",
       "type": "thermal:flag"
     }
   ]

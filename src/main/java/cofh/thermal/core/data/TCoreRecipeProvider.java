@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
@@ -40,15 +41,15 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         var reg = ITEMS;
 
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CHARCOAL_BLOCK), net.minecraft.world.item.Items.CHARCOAL);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BAMBOO_BLOCK), net.minecraft.world.item.Items.BAMBOO);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_SUGAR_CANE_BLOCK), net.minecraft.world.item.Items.SUGAR_CANE);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_GUNPOWDER_BLOCK), net.minecraft.world.item.Items.GUNPOWDER);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CHARCOAL_BLOCK), Items.CHARCOAL);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BAMBOO_BLOCK), Items.BAMBOO);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_SUGAR_CANE_BLOCK), Items.SUGAR_CANE);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_GUNPOWDER_BLOCK), Items.GUNPOWDER);
 
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_APPLE_BLOCK), net.minecraft.world.item.Items.APPLE);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BEETROOT_BLOCK), net.minecraft.world.item.Items.BEETROOT);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CARROT_BLOCK), net.minecraft.world.item.Items.CARROT);
-        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_POTATO_BLOCK), net.minecraft.world.item.Items.POTATO);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_APPLE_BLOCK), Items.APPLE);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_BEETROOT_BLOCK), Items.BEETROOT);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CARROT_BLOCK), Items.CARROT);
+        generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_POTATO_BLOCK), Items.POTATO);
 
         generateStorageRecipes(consumer, reg.get(ID_APATITE_BLOCK), reg.get("apatite"));
         generateStorageRecipes(consumer, reg.get(ID_CINNABAR_BLOCK), reg.get("cinnabar"));
@@ -76,15 +77,15 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateSmeltingAndBlastingRecipes(reg, consumer, "invar", 0);
         generateSmeltingAndBlastingRecipes(reg, consumer, "constantan", 0);
 
-        generateGearRecipe(consumer, reg.get("copper_gear"), net.minecraft.world.item.Items.COPPER_INGOT, forgeTag("ingots/copper"));
-        generateGearRecipe(consumer, reg.get("iron_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("ingots/iron"));
-        generateGearRecipe(consumer, reg.get("gold_gear"), net.minecraft.world.item.Items.GOLD_INGOT, forgeTag("ingots/gold"));
-        generateGearRecipe(consumer, reg.get("netherite_gear"), net.minecraft.world.item.Items.NETHERITE_INGOT, forgeTag("ingots/netherite"));
+        generateGearRecipe(consumer, reg.get("copper_gear"), Items.COPPER_INGOT, forgeTag("ingots/copper"));
+        generateGearRecipe(consumer, reg.get("iron_gear"), Items.IRON_INGOT, forgeTag("ingots/iron"));
+        generateGearRecipe(consumer, reg.get("gold_gear"), Items.GOLD_INGOT, forgeTag("ingots/gold"));
+        generateGearRecipe(consumer, reg.get("netherite_gear"), Items.NETHERITE_INGOT, forgeTag("ingots/netherite"));
 
-        generateGearRecipe(consumer, reg.get("diamond_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/diamond"));
-        generateGearRecipe(consumer, reg.get("emerald_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/emerald"));
-        generateGearRecipe(consumer, reg.get("quartz_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/quartz"));
-        generateGearRecipe(consumer, reg.get("lapis_gear"), net.minecraft.world.item.Items.IRON_INGOT, forgeTag("gems/lapis"));
+        generateGearRecipe(consumer, reg.get("diamond_gear"), Items.IRON_INGOT, forgeTag("gems/diamond"));
+        generateGearRecipe(consumer, reg.get("emerald_gear"), Items.IRON_INGOT, forgeTag("gems/emerald"));
+        generateGearRecipe(consumer, reg.get("quartz_gear"), Items.IRON_INGOT, forgeTag("gems/quartz"));
+        generateGearRecipe(consumer, reg.get("lapis_gear"), Items.IRON_INGOT, forgeTag("gems/lapis"));
 
         generateStorageRecipes(consumer, reg.get(ID_SAWDUST_BLOCK), reg.get("sawdust"));
         generateStorageRecipes(consumer, reg.get(ID_COAL_COKE_BLOCK), reg.get("coal_coke"));
@@ -105,23 +106,23 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateSmeltingAndBlastingRecipes(reg, consumer, "lumium", 0);
         generateSmeltingAndBlastingRecipes(reg, consumer, "enderium", 0);
 
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("copper_dust"), net.minecraft.world.item.Items.COPPER_INGOT, 0.0F, "smelting", "_dust");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("iron_dust"), net.minecraft.world.item.Items.IRON_INGOT, 0.0F, "smelting", "_dust");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("gold_dust"), net.minecraft.world.item.Items.GOLD_INGOT, 0.0F, "smelting", "_dust");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("netherite_dust"), net.minecraft.world.item.Items.NETHERITE_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("copper_dust"), Items.COPPER_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("iron_dust"), Items.IRON_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("gold_dust"), Items.GOLD_INGOT, 0.0F, "smelting", "_dust");
+        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("netherite_dust"), Items.NETHERITE_INGOT, 0.0F, "smelting", "_dust");
 
-        generatePackingRecipe(consumer, net.minecraft.world.item.Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_nuggets");
-        generatePackingRecipe(consumer, net.minecraft.world.item.Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_nuggets");
+        generatePackingRecipe(consumer, Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_nuggets");
+        generatePackingRecipe(consumer, Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_nuggets");
 
-        generateUnpackingRecipe(consumer, net.minecraft.world.item.Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_ingot");
-        generateUnpackingRecipe(consumer, net.minecraft.world.item.Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_ingot");
+        generateUnpackingRecipe(consumer, Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_ingot");
+        generateUnpackingRecipe(consumer, Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_ingot");
 
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_APATITE_ORE), reg.get("apatite"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_CINNABAR_ORE), reg.get("cinnabar"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_NITER_ORE), reg.get("niter"), 0.5F, "smelting");
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_SULFUR_ORE), reg.get("sulfur"), 0.5F, "smelting");
 
-        generateSmeltingRecipe(reg, consumer, net.minecraft.world.item.Items.GRAVEL, reg.get("slag"), 0.1F, "smelting");
+        generateSmeltingRecipe(reg, consumer, Items.GRAVEL, reg.get("slag"), 0.1F, "smelting");
         generateSmeltingRecipe(reg, consumer, reg.get("rubber"), reg.get("cured_rubber"), 0.2F, "smelting");
 
         generateAlloyRecipes(consumer);
@@ -209,7 +210,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
                 .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
                 .requires(fromTags(CoFHTags.Items.DUSTS_TIN, CoFHTags.Items.INGOTS_TIN))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
                 .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
                 .unlockedBy("has_tin_dust", has(CoFHTags.Items.DUSTS_TIN))
@@ -219,7 +220,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(reg.get("electrum_ingot"), 2)
                 .requires(fromTags(CoFHTags.Items.DUSTS_GOLD, Tags.Items.INGOTS_GOLD))
                 .requires(fromTags(CoFHTags.Items.DUSTS_SILVER, CoFHTags.Items.INGOTS_SILVER))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_gold_dust", has(CoFHTags.Items.DUSTS_GOLD))
                 .unlockedBy("has_gold_ingot", has(Tags.Items.INGOTS_GOLD))
                 .unlockedBy("has_silver_dust", has(CoFHTags.Items.DUSTS_SILVER))
@@ -230,7 +231,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(fromTags(CoFHTags.Items.DUSTS_IRON, Tags.Items.INGOTS_IRON))
                 .requires(fromTags(CoFHTags.Items.DUSTS_IRON, Tags.Items.INGOTS_IRON))
                 .requires(fromTags(CoFHTags.Items.DUSTS_NICKEL, CoFHTags.Items.INGOTS_NICKEL))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_iron_dust", has(CoFHTags.Items.DUSTS_IRON))
                 .unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
                 .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
@@ -240,7 +241,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(reg.get("constantan_ingot"), 2)
                 .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
                 .requires(fromTags(CoFHTags.Items.DUSTS_NICKEL, CoFHTags.Items.INGOTS_NICKEL))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
                 .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
                 .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
@@ -256,7 +257,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_redstone_dust", has(Tags.Items.DUSTS_REDSTONE))
                 .save(consumer, ID_THERMAL + ":fire_charge/signalum_ingot_4");
 
@@ -267,7 +268,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(fromTags(CoFHTags.Items.DUSTS_SILVER, CoFHTags.Items.INGOTS_SILVER))
                 .requires(Tags.Items.DUSTS_GLOWSTONE)
                 .requires(Tags.Items.DUSTS_GLOWSTONE)
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_glowstone_dust", has(Tags.Items.DUSTS_GLOWSTONE))
                 .save(consumer, ID_THERMAL + ":fire_charge/lumium_ingot_4");
 
@@ -278,7 +279,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(CoFHTags.Items.DUSTS_DIAMOND)
                 .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
                 .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(consumer, ID_THERMAL + ":fire_charge/enderium_ingot_2");
 
@@ -286,7 +287,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(Tags.Items.OBSIDIAN)
                 .requires(fromTags(CoFHTags.Items.DUSTS_QUARTZ, Tags.Items.GEMS_QUARTZ))
                 .requires(Tags.Items.SAND)
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_obsidian", has(Tags.Items.OBSIDIAN))
                 .save(consumer, ID_THERMAL + ":fire_charge/obsidian_glass_2");
 
@@ -294,7 +295,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(reg.get("obsidian_glass"))
                 .requires(reg.get("obsidian_glass"))
                 .requires(fromTags(CoFHTags.Items.DUSTS_SIGNALUM, CoFHTags.Items.INGOTS_SIGNALUM))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_signalum_dust", has(CoFHTags.Items.DUSTS_SIGNALUM))
                 .unlockedBy("has_signalum_ingot", has(CoFHTags.Items.INGOTS_SIGNALUM))
                 .save(consumer, ID_THERMAL + ":fire_charge/signalum_glass_2");
@@ -303,7 +304,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(reg.get("obsidian_glass"))
                 .requires(reg.get("obsidian_glass"))
                 .requires(fromTags(CoFHTags.Items.DUSTS_LUMIUM, CoFHTags.Items.INGOTS_LUMIUM))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_lumium_dust", has(CoFHTags.Items.DUSTS_LUMIUM))
                 .unlockedBy("has_lumium_ingot", has(CoFHTags.Items.INGOTS_LUMIUM))
                 .save(consumer, ID_THERMAL + ":fire_charge/lumium_glass_2");
@@ -312,7 +313,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(reg.get("obsidian_glass"))
                 .requires(reg.get("obsidian_glass"))
                 .requires(fromTags(CoFHTags.Items.DUSTS_ENDERIUM, CoFHTags.Items.INGOTS_ENDERIUM))
-                .requires(net.minecraft.world.item.Items.FIRE_CHARGE)
+                .requires(Items.FIRE_CHARGE)
                 .unlockedBy("has_enderium_dust", has(CoFHTags.Items.DUSTS_ENDERIUM))
                 .unlockedBy("has_enderium_ingot", has(CoFHTags.Items.INGOTS_ENDERIUM))
                 .save(consumer, ID_THERMAL + ":fire_charge/enderium_glass_2");
@@ -330,11 +331,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(beekeeperFabric)
                 .define('S', Tags.Items.STRING)
-                .define('H', net.minecraft.world.item.Items.HONEYCOMB)
+                .define('H', Items.HONEYCOMB)
                 .pattern(" S ")
                 .pattern("SHS")
                 .pattern(" S ")
-                .unlockedBy("has_honeycomb", has(net.minecraft.world.item.Items.HONEYCOMB))
+                .unlockedBy("has_honeycomb", has(Items.HONEYCOMB))
                 .save(withConditions(consumer).flag(FLAG_BEEKEEPER_ARMOR));
 
         result = reg.get(ID_BEEKEEPER_HELMET);
@@ -513,6 +514,16 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_hardened_glass", has(ThermalTags.Items.HARDENED_GLASS))
                 .save(withConditions(consumer).flag(FLAG_DYNAMO_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
+        result = reg.get("dynamo_throttle_augment");
+        ShapedRecipeBuilder.shaped(result)
+                .define('E', CoFHTags.Items.INGOTS_ELECTRUM)
+                .define('l', CoFHTags.Items.NUGGETS_LEAD)
+                .pattern(" l ")
+                .pattern("lEl")
+                .pattern(" l ")
+                .unlockedBy("has_electrum_ingot", has(CoFHTags.Items.INGOTS_ELECTRUM))
+                .save(withConditions(consumer).flag(FLAG_DYNAMO_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
+
         //        result = reg.get("dual_filter_augment");
         //        ShapedRecipeBuilder.shapedRecipe(result)
         //                .key('c', ItemTagsCoFH.NUGGETS_COPPER)
@@ -603,11 +614,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get("machine_null_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('i', Tags.Items.NUGGETS_IRON)
-                .define('C', net.minecraft.world.item.Items.CACTUS)
+                .define('C', Items.CACTUS)
                 .pattern(" i ")
                 .pattern("iCi")
                 .pattern(" i ")
-                .unlockedBy("has_cactus", has(net.minecraft.world.item.Items.CACTUS))
+                .unlockedBy("has_cactus", has(Items.CACTUS))
                 .save(withConditions(consumer).flag(FLAG_MACHINE_AUGMENTS), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("potion_amplifier_augment");
@@ -761,8 +772,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get(ID_REDPRINT);
         ShapelessRecipeBuilder.shapeless(result)
-                .requires(net.minecraft.world.item.Items.PAPER)
-                .requires(net.minecraft.world.item.Items.PAPER)
+                .requires(Items.PAPER)
+                .requires(Items.PAPER)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .requires(Tags.Items.DUSTS_REDSTONE)
                 .unlockedBy("has_redstone_dust", has(Tags.Items.DUSTS_REDSTONE))
@@ -814,13 +825,13 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get(ID_XP_CRYSTAL);
         ShapedRecipeBuilder.shaped(result)
-                .define('B', net.minecraft.world.item.Items.EXPERIENCE_BOTTLE)
+                .define('B', Items.EXPERIENCE_BOTTLE)
                 .define('E', Tags.Items.GEMS_EMERALD)
                 .define('L', Tags.Items.GEMS_LAPIS)
                 .pattern(" L ")
                 .pattern("EBE")
                 .pattern(" L ")
-                .unlockedBy("has_experience_bottle", has(net.minecraft.world.item.Items.EXPERIENCE_BOTTLE))
+                .unlockedBy("has_experience_bottle", has(Items.EXPERIENCE_BOTTLE))
                 .save(withConditions(consumer).flag(ID_XP_CRYSTAL), this.modid + ":" + folder + "/" + name(result));
 
         ShapelessRecipeBuilder.shapeless(reg.get("phytogro"), 8)
@@ -833,7 +844,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapelessRecipeBuilder.shapeless(reg.get("phytogro"), 4)
                 .requires(Tags.Items.SAND)
-                .requires(net.minecraft.world.item.Items.BONE_MEAL)
+                .requires(Items.BONE_MEAL)
                 .requires(fromTags(CoFHTags.Items.GEMS_APATITE, CoFHTags.Items.DUSTS_APATITE))
                 .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
                 .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
@@ -841,7 +852,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapelessRecipeBuilder.shapeless(reg.get("phytogro"), 2)
                 .requires(Tags.Items.SAND)
-                .requires(net.minecraft.world.item.Items.BONE_MEAL)
+                .requires(Items.BONE_MEAL)
                 .requires(reg.get("rich_slag"))
                 .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
                 .unlockedBy("rich_slag", has(reg.get("rich_slag")))
@@ -850,7 +861,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(reg.get("junk_net"), 1)
                 .define('#', Tags.Items.STRING)
                 .define('n', Tags.Items.NUGGETS_IRON)
-                .define('S', net.minecraft.world.item.Items.STICK)
+                .define('S', Items.STICK)
                 .pattern("n#n")
                 .pattern("#S#")
                 .pattern("n#n")
@@ -858,16 +869,16 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER));
 
         ShapelessRecipeBuilder.shapeless(reg.get("aquachow"), 4)
-                .requires(net.minecraft.world.item.Items.WHEAT)
-                .requires(net.minecraft.world.item.Items.WHEAT)
-                .requires(net.minecraft.world.item.Items.SLIME_BALL)
+                .requires(Items.WHEAT)
+                .requires(Items.WHEAT)
+                .requires(Items.SLIME_BALL)
                 .unlockedBy("has_wheat", has(Tags.Items.CROPS_WHEAT))
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER), ID_THERMAL + ":aquachow_4");
 
         ShapelessRecipeBuilder.shapeless(reg.get("deep_aquachow"), 4)
-                .requires(net.minecraft.world.item.Items.WHEAT)
-                .requires(net.minecraft.world.item.Items.BEETROOT)
-                .requires(net.minecraft.world.item.Items.SLIME_BALL)
+                .requires(Items.WHEAT)
+                .requires(Items.BEETROOT)
+                .requires(Items.SLIME_BALL)
                 .requires(CoFHTags.Items.NUGGETS_LEAD)
                 .unlockedBy("has_beetroot", has(Tags.Items.CROPS_BEETROOT))
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER), ID_THERMAL + ":deep_aquachow_4");
@@ -887,7 +898,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_blizz_rod", has(reg.get("blizz_rod")))
                 .save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.CYAN_DYE)
+        ShapelessRecipeBuilder.shapeless(Items.CYAN_DYE)
                 .requires(CoFHTags.Items.GEMS_APATITE)
                 .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
                 .save(consumer, ID_THERMAL + ":cyan_dye_from_apatite");
@@ -898,21 +909,21 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer, ID_THERMAL + ":rubber_3");
 
         ShapedRecipeBuilder.shaped(reg.get("rubber"), 1)
-                .define('B', net.minecraft.world.item.Items.WATER_BUCKET)
-                .define('#', net.minecraft.world.item.Items.DANDELION)
+                .define('B', Items.WATER_BUCKET)
+                .define('#', Items.DANDELION)
                 .pattern("###")
                 .pattern("#B#")
                 .pattern("###")
-                .unlockedBy("has_dandelion", has(net.minecraft.world.item.Items.DANDELION))
+                .unlockedBy("has_dandelion", has(Items.DANDELION))
                 .save(consumer, ID_THERMAL + ":rubber_from_dandelion");
 
         ShapedRecipeBuilder.shaped(reg.get("rubber"), 1)
-                .define('B', net.minecraft.world.item.Items.WATER_BUCKET)
-                .define('#', net.minecraft.world.item.Items.VINE)
+                .define('B', Items.WATER_BUCKET)
+                .define('#', Items.VINE)
                 .pattern("###")
                 .pattern("#B#")
                 .pattern("###")
-                .unlockedBy("has_vine", has(net.minecraft.world.item.Items.VINE))
+                .unlockedBy("has_vine", has(Items.VINE))
                 .save(consumer, ID_THERMAL + ":rubber_from_vine");
     }
 
@@ -927,41 +938,41 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(earthCharge, 3)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(reg.get("basalz_powder"))
-                .requires(Ingredient.of(net.minecraft.world.item.Items.COAL, net.minecraft.world.item.Items.CHARCOAL))
+                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
                 .unlockedBy("has_basalz_powder", has(reg.get("basalz_powder")))
                 .save(consumer, ID_THERMAL + ":earth_charge_3");
 
         ShapelessRecipeBuilder.shapeless(iceCharge, 3)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(reg.get("blizz_powder"))
-                .requires(Ingredient.of(net.minecraft.world.item.Items.COAL, net.minecraft.world.item.Items.CHARCOAL))
+                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
                 .unlockedBy("has_blizz_powder", has(reg.get("blizz_powder")))
                 .save(consumer, ID_THERMAL + ":ice_charge_3");
 
         ShapelessRecipeBuilder.shapeless(lightningCharge, 3)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(reg.get("blitz_powder"))
-                .requires(Ingredient.of(net.minecraft.world.item.Items.COAL, net.minecraft.world.item.Items.CHARCOAL))
+                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
                 .unlockedBy("has_blitz_powder", has(reg.get("blitz_powder")))
                 .save(consumer, ID_THERMAL + ":lightning_charge_3");
 
         // region EARTH CHARGE CONVERSIONS
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.PRISMARINE_SHARD, 4)
-                .requires(net.minecraft.world.item.Items.PRISMARINE)
+        ShapelessRecipeBuilder.shapeless(Items.PRISMARINE_SHARD, 4)
+                .requires(Items.PRISMARINE)
                 .requires(earthCharge)
-                .unlockedBy("has_prismarine", has(net.minecraft.world.item.Items.PRISMARINE))
+                .unlockedBy("has_prismarine", has(Items.PRISMARINE))
                 .save(consumer, ID_THERMAL + ":earth_charge/prismarine_shard_from_prismarine");
 
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.PRISMARINE_SHARD, 9)
-                .requires(net.minecraft.world.item.Items.PRISMARINE_BRICKS)
+        ShapelessRecipeBuilder.shapeless(Items.PRISMARINE_SHARD, 9)
+                .requires(Items.PRISMARINE_BRICKS)
                 .requires(earthCharge)
-                .unlockedBy("has_prismarine_bricks", has(net.minecraft.world.item.Items.PRISMARINE_BRICKS))
+                .unlockedBy("has_prismarine_bricks", has(Items.PRISMARINE_BRICKS))
                 .save(consumer, ID_THERMAL + ":earth_charge/prismarine_shard_from_prismarine_bricks");
 
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.QUARTZ, 4)
-                .requires(net.minecraft.world.item.Items.QUARTZ_BLOCK)
+        ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 4)
+                .requires(Items.QUARTZ_BLOCK)
                 .requires(earthCharge)
-                .unlockedBy("has_quartz_block", has(net.minecraft.world.item.Items.QUARTZ_BLOCK))
+                .unlockedBy("has_quartz_block", has(Items.QUARTZ_BLOCK))
                 .save(consumer, ID_THERMAL + ":earth_charge/quartz_from_quartz_block");
 
         ShapelessRecipeBuilder.shapeless(reg.get("diamond_dust"))
@@ -1020,30 +1031,30 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         // endregion
 
         // region ICE CHARGE CONVERSIONS
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.OBSIDIAN)
-                .requires(net.minecraft.world.item.Items.LAVA_BUCKET)
+        ShapelessRecipeBuilder.shapeless(Items.OBSIDIAN)
+                .requires(Items.LAVA_BUCKET)
                 .requires(iceCharge)
-                .unlockedBy("has_lava_bucket", has(net.minecraft.world.item.Items.LAVA_BUCKET))
+                .unlockedBy("has_lava_bucket", has(Items.LAVA_BUCKET))
                 .save(consumer, ID_THERMAL + ":ice_charge/obsidian_from_lava_bucket");
 
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.ICE)
-                .requires(net.minecraft.world.item.Items.WATER_BUCKET)
+        ShapelessRecipeBuilder.shapeless(Items.ICE)
+                .requires(Items.WATER_BUCKET)
                 .requires(iceCharge)
-                .unlockedBy("has_water_bucket", has(net.minecraft.world.item.Items.WATER_BUCKET))
+                .unlockedBy("has_water_bucket", has(Items.WATER_BUCKET))
                 .save(consumer, ID_THERMAL + ":ice_charge/ice_from_water_bucket");
         // endregion
 
         // region LIGHTNING CHARGE CONVERSIONS
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.WITCH_SPAWN_EGG)
-                .requires(net.minecraft.world.item.Items.VILLAGER_SPAWN_EGG)
+        ShapelessRecipeBuilder.shapeless(Items.WITCH_SPAWN_EGG)
+                .requires(Items.VILLAGER_SPAWN_EGG)
                 .requires(lightningCharge)
-                .unlockedBy("has_villager_spawn_egg", has(net.minecraft.world.item.Items.VILLAGER_SPAWN_EGG))
+                .unlockedBy("has_villager_spawn_egg", has(Items.VILLAGER_SPAWN_EGG))
                 .save(consumer, ID_THERMAL + ":lightning_charge/witch_from_villager");
 
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.ZOMBIFIED_PIGLIN_SPAWN_EGG)
-                .requires(net.minecraft.world.item.Items.PIG_SPAWN_EGG)
+        ShapelessRecipeBuilder.shapeless(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG)
+                .requires(Items.PIG_SPAWN_EGG)
                 .requires(lightningCharge)
-                .unlockedBy("has_pig_spawn_egg", has(net.minecraft.world.item.Items.PIG_SPAWN_EGG))
+                .unlockedBy("has_pig_spawn_egg", has(Items.PIG_SPAWN_EGG))
                 .save(consumer, ID_THERMAL + ":lightning_charge/zombified_piglin_from_pig");
         // endregion
     }
@@ -1133,8 +1144,8 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         var reg = ITEMS;
 
-        ShapelessRecipeBuilder.shapeless(net.minecraft.world.item.Items.GUNPOWDER, 4)
-                .requires(net.minecraft.world.item.Items.CHARCOAL)
+        ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 4)
+                .requires(Items.CHARCOAL)
                 .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
                 .requires(fromTags(CoFHTags.Items.GEMS_NITER, CoFHTags.Items.DUSTS_NITER))
                 .requires(fromTags(CoFHTags.Items.GEMS_SULFUR, CoFHTags.Items.DUSTS_SULFUR))
@@ -1214,11 +1225,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(reg.get(ID_FIRE_GRENADE), 4)
                 .define('G', Tags.Items.GUNPOWDER)
                 .define('I', Tags.Items.INGOTS_IRON)
-                .define('P', net.minecraft.world.item.Items.BLAZE_POWDER)
+                .define('P', Items.BLAZE_POWDER)
                 .pattern("GPG")
                 .pattern("PIP")
                 .pattern("GPG")
-                .unlockedBy("has_blaze_powder", has(net.minecraft.world.item.Items.BLAZE_POWDER))
+                .unlockedBy("has_blaze_powder", has(Items.BLAZE_POWDER))
                 .save(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES), ID_THERMAL + ":fire_grenade_4");
 
         ShapedRecipeBuilder.shaped(reg.get(ID_ICE_GRENADE), 4)
@@ -1297,11 +1308,11 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get(ID_FIRE_TNT))
                 .define('G', Tags.Items.GUNPOWDER)
-                .define('P', net.minecraft.world.item.Items.BLAZE_POWDER)
+                .define('P', Items.BLAZE_POWDER)
                 .pattern("GPG")
                 .pattern("PGP")
                 .pattern("GPG")
-                .unlockedBy("has_blaze_powder", has(net.minecraft.world.item.Items.BLAZE_POWDER))
+                .unlockedBy("has_blaze_powder", has(Items.BLAZE_POWDER))
                 .save(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_ICE_TNT))
@@ -1500,7 +1511,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         Item rfCoil = reg.get("rf_coil");
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_HIVE_EXTRACTOR))
-                .define('C', net.minecraft.world.item.Items.SHEARS)
+                .define('C', Items.SHEARS)
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
@@ -1512,7 +1523,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_HIVE_EXTRACTOR));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_TREE_EXTRACTOR))
-                .define('C', net.minecraft.world.item.Items.BUCKET)
+                .define('C', Items.BUCKET)
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
@@ -1524,7 +1535,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_TREE_EXTRACTOR));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_FISHER))
-                .define('C', net.minecraft.world.item.Items.FISHING_ROD)
+                .define('C', Items.FISHING_ROD)
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
@@ -1535,20 +1546,32 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_redstone_servo", has(redstoneServo))
                 .save(withConditions(consumer).flag(ID_DEVICE_FISHER));
 
+        ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_COMPOSTER))
+                .define('C', Blocks.COMPOSTER)
+                .define('G', Tags.Items.GLASS)
+                .define('I', ItemTags.PLANKS)
+                .define('P', redstoneServo)
+                .define('X', CoFHTags.Items.GEARS_IRON)
+                .pattern("IXI")
+                .pattern("GCG")
+                .pattern("IPI")
+                .unlockedBy("has_redstone_servo", has(redstoneServo))
+                .save(withConditions(consumer).flag(ID_DEVICE_COMPOSTER));
+
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_SOIL_INFUSER))
                 .define('C', reg.get("phytogro"))
                 .define('G', Tags.Items.GLASS)
+                .define('I', ItemTags.PLANKS)
                 .define('P', rfCoil)
                 .define('X', CoFHTags.Items.GEARS_LUMIUM)
-                .define('W', ItemTags.PLANKS)
-                .pattern("WXW")
+                .pattern("IXI")
                 .pattern("GCG")
-                .pattern("WPW")
+                .pattern("IPI")
                 .unlockedBy("has_rf_coil", has(rfCoil))
                 .save(withConditions(consumer).flag(ID_DEVICE_SOIL_INFUSER));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_ROCK_GEN))
-                .define('C', net.minecraft.world.item.Items.PISTON)
+                .define('C', Items.PISTON)
                 .define('G', Tags.Items.GLASS)
                 .define('I', CoFHTags.Items.INGOTS_INVAR)
                 .define('P', redstoneServo)
@@ -1560,7 +1583,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_ROCK_GEN));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_WATER_GEN))
-                .define('C', net.minecraft.world.item.Items.BUCKET)
+                .define('C', Items.BUCKET)
                 .define('G', Tags.Items.GLASS)
                 .define('I', Tags.Items.INGOTS_COPPER)
                 .define('P', redstoneServo)
@@ -1572,7 +1595,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_WATER_GEN));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_COLLECTOR))
-                .define('C', net.minecraft.world.item.Items.HOPPER)
+                .define('C', Items.HOPPER)
                 .define('G', Tags.Items.GLASS)
                 .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('P', redstoneServo)
@@ -1584,7 +1607,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_COLLECTOR));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_NULLIFIER))
-                .define('C', net.minecraft.world.item.Items.LAVA_BUCKET)
+                .define('C', Items.LAVA_BUCKET)
                 .define('G', Tags.Items.GLASS)
                 .define('I', CoFHTags.Items.INGOTS_TIN)
                 .define('P', redstoneServo)
@@ -1596,7 +1619,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .save(withConditions(consumer).flag(ID_DEVICE_NULLIFIER));
 
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_POTION_DIFFUSER))
-                .define('C', net.minecraft.world.item.Items.GLASS_BOTTLE)
+                .define('C', Items.GLASS_BOTTLE)
                 .define('G', Tags.Items.GLASS)
                 .define('I', CoFHTags.Items.INGOTS_SILVER)
                 .define('P', redstoneServo)

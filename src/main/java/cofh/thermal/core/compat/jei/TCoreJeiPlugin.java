@@ -6,16 +6,21 @@ import cofh.thermal.core.client.gui.device.DeviceRockGenScreen;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.compat.jei.device.RockGenCategory;
 import cofh.thermal.core.compat.jei.device.TreeExtractorCategory;
+import cofh.thermal.core.util.recipes.device.RockGenMapping;
+import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotTooltipCallback;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
@@ -27,8 +32,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.config.ThermalClientConfig.jeiBucketTanks;
 import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
@@ -49,10 +54,10 @@ public class TCoreJeiPlugin implements IModPlugin {
             return;
         }
         if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
-            registration.addRecipes(recipeManager.byType(MAPPING_TREE_EXTRACTOR).values(), ID_MAPPING_TREE_EXTRACTOR);
+            registration.addRecipes(TREE_EXTRACTOR, recipeManager.getAllRecipesFor(MAPPING_TREE_EXTRACTOR));
         }
         if (getFlag(ID_DEVICE_ROCK_GEN).getAsBoolean()) {
-            registration.addRecipes(recipeManager.byType(MAPPING_ROCK_GEN).values(), ID_MAPPING_ROCK_GEN);
+            registration.addRecipes(ROCK_GEN, recipeManager.getAllRecipesFor(MAPPING_ROCK_GEN));
         }
     }
 
@@ -70,15 +75,15 @@ public class TCoreJeiPlugin implements IModPlugin {
         int progressW = 24;
         int progressH = 16;
 
-        registration.addRecipeClickArea(DeviceTreeExtractorScreen.class, 80, 35, 16, progressH, ID_MAPPING_TREE_EXTRACTOR);
-        registration.addRecipeClickArea(DeviceRockGenScreen.class, 84, progressY, progressW, progressH, ID_MAPPING_ROCK_GEN);
+        registration.addRecipeClickArea(DeviceTreeExtractorScreen.class, 80, 35, 16, progressH, TREE_EXTRACTOR);
+        registration.addRecipeClickArea(DeviceRockGenScreen.class, 84, progressY, progressW, progressH, ROCK_GEN);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 
-        registration.addRecipeCatalyst(new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), ID_MAPPING_TREE_EXTRACTOR);
-        registration.addRecipeCatalyst(new ItemStack(DEVICE_ROCK_GEN_BLOCK), ID_MAPPING_ROCK_GEN);
+        registration.addRecipeCatalyst(new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), TREE_EXTRACTOR);
+        registration.addRecipeCatalyst(new ItemStack(DEVICE_ROCK_GEN_BLOCK), ROCK_GEN);
     }
 
     @Override
@@ -109,6 +114,58 @@ public class TCoreJeiPlugin implements IModPlugin {
         ingredients.setInputLists(VanillaTypes.FLUID, inputLists);
     }
 
+    public static IRecipeSlotTooltipCallback catalystTooltip() {
+
+        return (recipeSlotView, tooltip) -> tooltip.add(getTextComponent("info.cofh.optional_catalyst"));
+    }
+
+    public static IRecipeSlotTooltipCallback defaultOutputTooltip(float baseChance) {
+
+        return (recipeSlotView, tooltip) -> {
+
+            float chance = Math.abs(baseChance);
+            if (chance < BASE_CHANCE) {
+                tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
+            } else {
+                chance -= (int) chance;
+                if (chance > 0) {
+                    tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
+                }
+            }
+            if (baseChance >= 0) {
+                tooltip.add(getTextComponent("info.cofh.boostable").withStyle(ChatFormatting.GOLD));
+            }
+        };
+    }
+
+    public static IRecipeSlotTooltipCallback catalyzedOutputTooltip(float baseChance, boolean catalyzable) {
+
+        return (recipeSlotView, tooltip) -> {
+
+            float chance = Math.abs(baseChance);
+            if (chance < BASE_CHANCE) {
+                tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
+            } else {
+                chance -= (int) chance;
+                if (chance > 0) {
+                    tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
+                }
+            }
+            if (catalyzable && baseChance >= 0) {
+                tooltip.add(getTextComponent("info.cofh.boostable").withStyle(ChatFormatting.GOLD));
+            }
+        };
+    }
+
+    public static IRecipeSlotTooltipCallback defaultFluidTooltip() {
+
+        return (recipeSlotView, tooltip) -> recipeSlotView.getDisplayedIngredient(VanillaTypes.FLUID).ifPresent((ingredient) -> {
+            if (FluidHelper.hasPotionTag(ingredient)) {
+                FluidHelper.addPotionTooltipStrings(ingredient, tooltip);
+            }
+        });
+    }
+
     public static void addDefaultFluidTooltipCallback(IGuiFluidStackGroup group) {
 
         group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
@@ -127,5 +184,10 @@ public class TCoreJeiPlugin implements IModPlugin {
 
         return jeiBucketTanks ? null : overlay;
     }
+    // endregion
+
+    // region RECIPE TYPES
+    public static final RecipeType<TreeExtractorMapping> TREE_EXTRACTOR = new RecipeType<>(ID_MAPPING_TREE_EXTRACTOR, TreeExtractorMapping.class);
+    public static final RecipeType<RockGenMapping> ROCK_GEN = new RecipeType<>(ID_MAPPING_ROCK_GEN, RockGenMapping.class);
     // endregion
 }

@@ -77,6 +77,13 @@ public class TCoreReferences {
     @ObjectHolder (ID_DEVICE_FISHER)
     public static final MenuType<DeviceFisherContainer> DEVICE_FISHER_CONTAINER = null;
 
+    @ObjectHolder (ID_DEVICE_COMPOSTER)
+    public static final Block DEVICE_COMPOSTER_BLOCK = null;
+    @ObjectHolder (ID_DEVICE_COMPOSTER)
+    public static final BlockEntityType<DeviceComposterTile> DEVICE_COMPOSTER_TILE = null;
+    @ObjectHolder (ID_DEVICE_COMPOSTER)
+    public static final MenuType<DeviceComposterContainer> DEVICE_COMPOSTER_CONTAINER = null;
+
     @ObjectHolder (ID_DEVICE_SOIL_INFUSER)
     public static final Block DEVICE_SOIL_INFUSER_BLOCK = null;
     @ObjectHolder (ID_DEVICE_SOIL_INFUSER)

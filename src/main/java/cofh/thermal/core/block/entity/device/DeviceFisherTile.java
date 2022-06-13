@@ -14,6 +14,7 @@ import cofh.thermal.core.inventory.container.device.DeviceFisherContainer;
 import cofh.thermal.core.util.managers.device.FisherManager;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -32,6 +33,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -39,8 +42,7 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.StorageGroup.OUTPUT;
+import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
@@ -304,6 +306,27 @@ public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTil
     public int getColor() {
 
         return valid ? isActive ? 0x0088FF : 0x555555 : 0xFF0000;
+    }
+    // endregion
+
+    // region CAPABILITIES
+    @Override
+    protected void updateHandlers() {
+
+        LazyOptional<?> prevItemCap = itemCap;
+        IItemHandler invHandler = inventory.getHandler(INPUT_OUTPUT);
+        itemCap = inventory.hasAccessibleSlots() ? LazyOptional.of(() -> invHandler) : LazyOptional.empty();
+        prevItemCap.invalidate();
+    }
+
+    @Override
+    protected <T> LazyOptional<T> getItemHandlerCapability(@Nullable Direction side) {
+
+        if (!itemCap.isPresent() && inventory.hasAccessibleSlots()) {
+            IItemHandler handler = inventory.getHandler(INPUT_OUTPUT);
+            itemCap = LazyOptional.of(() -> handler);
+        }
+        return itemCap.cast();
     }
     // endregion
 }

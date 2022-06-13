@@ -9,6 +9,7 @@
     "thermal:device_hive_extractor",
     "thermal:device_tree_extractor",
     "thermal:device_fisher",
+    "thermal:device_composter",
     "thermal:device_soil_infuser",
     "thermal:tinker_bench"
   ]

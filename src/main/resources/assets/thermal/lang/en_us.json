@@ -233,6 +233,7 @@
   "item.thermal.blizz_rod": "Blizz Cube",
   "item.thermal.blizz_spawn_egg": "Blizz Spawn Egg",
 
+  "item.thermal.compost": "Compost",
   "item.thermal.detonator": "Remote Detonator",
   "item.thermal.earth_charge": "Earth Charge",
   "item.thermal.ice_charge": "Ice Charge",
@@ -441,6 +442,8 @@
   "item.thermal.dynamo_fuel_augment.desc": "Increases fuel efficiency.",
   "item.thermal.dynamo_output_augment": "Auxiliary Reaction Chamber",
   "item.thermal.dynamo_output_augment.desc": "Increases generation rate but reduces efficiency.",
+  "item.thermal.dynamo_throttle_augment": "Excitation Field Limiter",
+  "item.thermal.dynamo_throttle_augment.desc": "Prevents RF from being lost after coil saturation.",
 
   "item.thermal.fluid_tank_augment": "Expanded Tank Construction",
 
@@ -508,6 +511,7 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.device_collector": "Vacuumulator",
+  "block.thermal.device_composter": "Batch Composter",
   "block.thermal.device_fisher": "Aquatic Entangler",
   "block.thermal.device_hive_extractor": "Hive Hopper",
   "block.thermal.device_nullifier": "Nullifier",
@@ -551,6 +555,10 @@
   "block.thermal.redstone_tnt.desc": "Creates a large area of redstone signal.",
   "block.thermal.slime_tnt": "Slime Explosive",
   "block.thermal.slime_tnt.desc": "Slimes targets in a large area. High knockback.",
+
+  "info.thermal.device_composter.0": "Produces compost from organic waste.",
+  "info.thermal.device_composter.1": "Items have varying effectiveness.",
+  "info.thermal.device_composter.2": "Give back to nature.",
 
   "info.thermal.device_collector.0": "Picks up things from the nearby area.",
   "info.thermal.device_collector.1": "Filter configuration will apply to this behavior.",

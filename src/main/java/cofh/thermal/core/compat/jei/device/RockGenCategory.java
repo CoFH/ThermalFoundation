@@ -6,14 +6,14 @@ import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.lib.compat.jei.Drawables;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,12 +21,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
@@ -50,7 +47,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     public RockGenCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
 
         this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(icon);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
 
         background = guiHelper.drawableBuilder(DeviceRockGenScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
@@ -94,74 +91,38 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     }
 
     @Override
-    public void setIngredients(RockGenMapping recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RockGenMapping recipe, IFocusGroup focuses) {
 
-        ArrayList<FluidStack> inputFluids = new ArrayList<>();
-        ArrayList<ItemStack> inputItems = new ArrayList<>();
-        inputFluids.add(LAVA_FLUID);
-
-        Block adjacent = recipe.getAdjacent();
-        Block below = recipe.getBelow();
-
-        if (adjacent instanceof LiquidBlock) {
-            Fluid fluid = ((LiquidBlock) adjacent).getFluid();
-            inputFluids.add(new FluidStack(fluid, BUCKET_VOLUME));
-        } else if (adjacent != Blocks.AIR) {
-            inputItems.add(new ItemStack(adjacent));
-        }
-        if (below instanceof LiquidBlock) {
-            Fluid fluid = ((LiquidBlock) below).getFluid();
-            inputFluids.add(new FluidStack(fluid, BUCKET_VOLUME));
-        } else if (below != Blocks.AIR) {
-            inputItems.add(new ItemStack(below));
-        }
-        ingredients.setInputs(VanillaTypes.FLUID, inputFluids);
-        ingredients.setInputs(VanillaTypes.ITEM, inputItems);
-        ingredients.setOutputs(VanillaTypes.ITEM, Collections.singletonList(recipe.getResult()));
-    }
-
-    @Override
-    public void setRecipe(IRecipeLayout layout, RockGenMapping recipe, IIngredients ingredients) {
-
-        int itemCount = 1;
-        int fluidCount = 1;
-
-        List<List<FluidStack>> inputFluids = ingredients.getInputs(VanillaTypes.FLUID);
-        List<List<ItemStack>> inputItems = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
+        builder.addSlot(RecipeIngredientRole.INPUT, 23, 13)
+                .addIngredients(VanillaTypes.FLUID, List.of(LAVA_FLUID))
+                .setFluidRenderer(BUCKET_VOLUME, false, 16, 16);
 
         Block adjacent = recipe.getAdjacent();
         Block below = recipe.getBelow();
 
-        guiItemStacks.init(0, false, 114, 23);
-        guiFluidStacks.init(0, true, 23, 13, 16, 16, BUCKET_VOLUME, false, null);
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 115, 24)
+                .addItemStack(recipe.getResult());
 
-        guiItemStacks.set(0, outputs.get(0));
-        guiFluidStacks.set(0, inputFluids.get(0));
-
-        if (adjacent instanceof LiquidBlock) {
-            guiFluidStacks.init(fluidCount, true, 45, 13, 16, 16, BUCKET_VOLUME, false, null);
-            guiFluidStacks.set(fluidCount, inputFluids.get(fluidCount));
-            ++fluidCount;
+        if (adjacent instanceof LiquidBlock liquidBlock) {
+            builder.addSlot(RecipeIngredientRole.INPUT, 45, 13)
+                    .addIngredients(VanillaTypes.FLUID, List.of(new FluidStack(liquidBlock.getFluid(), BUCKET_VOLUME)))
+                    .setFluidRenderer(BUCKET_VOLUME, false, 16, 16);
         } else if (adjacent != Blocks.AIR) {
-            guiItemStacks.init(itemCount, true, 44, 12);
-            guiItemStacks.set(itemCount, inputItems.get(itemCount - 1));
-            ++itemCount;
+            builder.addSlot(RecipeIngredientRole.INPUT, 45, 13)
+                    .addItemStack(new ItemStack(adjacent));
         }
-        if (below instanceof LiquidBlock) {
-            guiFluidStacks.init(fluidCount, true, 33, 33, 16, 16, BUCKET_VOLUME, false, null);
-            guiFluidStacks.set(fluidCount, inputFluids.get(fluidCount));
+        if (below instanceof LiquidBlock liquidBlock) {
+            builder.addSlot(RecipeIngredientRole.INPUT, 34, 34)
+                    .addIngredients(VanillaTypes.FLUID, List.of(new FluidStack(liquidBlock.getFluid(), BUCKET_VOLUME)))
+                    .setFluidRenderer(BUCKET_VOLUME, false, 16, 16);
         } else if (below != Blocks.AIR) {
-            guiItemStacks.init(itemCount, true, 33, 33);
-            guiItemStacks.set(itemCount, inputItems.get(itemCount - 1));
+            builder.addSlot(RecipeIngredientRole.INPUT, 34, 34)
+                    .addItemStack(new ItemStack(below));
         }
     }
 
     @Override
-    public void draw(RockGenMapping recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(RockGenMapping recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
         if (recipe.getBelow() != Blocks.AIR) {
             slot.draw(matrixStack, 33, 33);

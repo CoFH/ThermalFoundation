@@ -58,12 +58,14 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
 
     public static void setBannedItems(Collection<String> itemLocs) {
 
-        BANNED_ITEMS.clear();
+        synchronized (BANNED_ITEMS) {
+            BANNED_ITEMS.clear();
 
-        for (String loc : itemLocs) {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(loc));
-            if (item != null) {
-                BANNED_ITEMS.add(item);
+            for (String loc : itemLocs) {
+                Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(loc));
+                if (item != null) {
+                    BANNED_ITEMS.add(item);
+                }
             }
         }
     }

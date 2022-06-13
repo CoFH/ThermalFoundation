@@ -155,6 +155,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         // handheld(reg.getSup("xp_crystal"));
         generated(reg.getSup("rf_potato"));
         generated(reg.getSup("lock"));
+        generated(reg.getSup("compost"));
         generated(reg.getSup("phytogro"));
         // generated(reg.getSup("fluxed_phytogro"));
 
@@ -218,6 +219,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         generated(reg.getSup("dynamo_output_augment"), AUGMENTS);
         generated(reg.getSup("dynamo_fuel_augment"), AUGMENTS);
+        generated(reg.getSup("dynamo_throttle_augment"), AUGMENTS);
     }
     // endregion
 
