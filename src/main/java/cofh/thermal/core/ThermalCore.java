@@ -99,6 +99,7 @@ public class ThermalCore {
         TCoreContainers.register();
         TCoreEntities.register();
         TCoreSounds.register();
+        TCoreTileEntities.register();
 
         TCoreRecipeManagers.register();
         TCoreRecipeSerializers.register();

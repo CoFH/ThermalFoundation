@@ -1,6 +1,6 @@
 {
   "type": "thermal:rock_gen",
-  "adjacent": "minecraft:blue_ice",
+  "adjacent": "minecraft:packed_ice",
   "below": "minecraft:magma_block",
   "result": {
     "item": "minecraft:deepslate"
