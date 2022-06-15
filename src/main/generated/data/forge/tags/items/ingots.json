@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
+    "#forge:ingots/enderium",
+    "#forge:ingots/lumium",
+    "#forge:ingots/signalum",
+    "#forge:ingots/lead",
+    "#forge:ingots/nickel",
+    "#forge:ingots/silver",
+    "#forge:ingots/tin",
     "#forge:ingots/bronze",
     "#forge:ingots/constantan",
     "#forge:ingots/electrum",
-    "#forge:ingots/enderium",
-    "#forge:ingots/invar",
-    "#forge:ingots/lead",
-    "#forge:ingots/lumium",
-    "#forge:ingots/nickel",
-    "#forge:ingots/signalum",
-    "#forge:ingots/silver",
-    "#forge:ingots/tin"
+    "#forge:ingots/invar"
   ]
 }

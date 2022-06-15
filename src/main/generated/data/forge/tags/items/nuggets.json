@@ -1,18 +1,18 @@
 {
   "replace": false,
   "values": [
+    "#forge:nuggets/copper",
+    "#forge:nuggets/netherite",
+    "#forge:nuggets/enderium",
+    "#forge:nuggets/lumium",
+    "#forge:nuggets/signalum",
+    "#forge:nuggets/lead",
+    "#forge:nuggets/nickel",
+    "#forge:nuggets/silver",
+    "#forge:nuggets/tin",
     "#forge:nuggets/bronze",
     "#forge:nuggets/constantan",
-    "#forge:nuggets/copper",
     "#forge:nuggets/electrum",
-    "#forge:nuggets/enderium",
-    "#forge:nuggets/invar",
-    "#forge:nuggets/lead",
-    "#forge:nuggets/lumium",
-    "#forge:nuggets/netherite",
-    "#forge:nuggets/nickel",
-    "#forge:nuggets/signalum",
-    "#forge:nuggets/silver",
-    "#forge:nuggets/tin"
+    "#forge:nuggets/invar"
   ]
 }

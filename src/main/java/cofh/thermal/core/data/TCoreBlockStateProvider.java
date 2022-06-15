@@ -8,8 +8,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.util.RegistrationHelper.deepslate;
-import static cofh.thermal.core.util.RegistrationHelper.raw;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
@@ -31,7 +29,6 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
         var reg = BLOCKS;
 
         registerVanilla(reg);
-        registerResources(reg);
         registerStorage(reg);
         registerBuildingBlocks(reg);
     }
@@ -47,63 +44,11 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
         // TODO: Missing - Food Crates
     }
 
-    private void registerResources(DeferredRegisterCoFH<Block> reg) {
-
-        simpleBlock(reg.getSup(ID_APATITE_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_APATITE_ORE)));
-        simpleBlock(reg.getSup(ID_CINNABAR_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_CINNABAR_ORE)));
-        simpleBlock(reg.getSup(ID_NITER_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_NITER_ORE)));
-        simpleBlock(reg.getSup(ID_SULFUR_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_SULFUR_ORE)));
-
-        simpleBlock(reg.getSup(ID_LEAD_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_LEAD_ORE)));
-        simpleBlock(reg.getSup(ID_NICKEL_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_NICKEL_ORE)));
-        simpleBlock(reg.getSup(ID_SILVER_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_SILVER_ORE)));
-        simpleBlock(reg.getSup(ID_TIN_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_TIN_ORE)));
-
-        simpleBlock(reg.getSup(ID_RUBY_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_RUBY_ORE)));
-        simpleBlock(reg.getSup(ID_SAPPHIRE_ORE));
-        simpleBlock(reg.getSup(deepslate(ID_SAPPHIRE_ORE)));
-
-        simpleBlock(reg.getSup(ID_OIL_SAND));
-        simpleBlock(reg.getSup(ID_OIL_RED_SAND));
-    }
-
     private void registerStorage(DeferredRegisterCoFH<Block> reg) {
-
-        simpleBlock(reg.getSup(ID_APATITE_BLOCK));
-        simpleBlock(reg.getSup(ID_CINNABAR_BLOCK));
-        simpleBlock(reg.getSup(ID_NITER_BLOCK));
-        simpleBlock(reg.getSup(ID_SULFUR_BLOCK));
-
-        simpleBlock(reg.getSup(raw(ID_LEAD_BLOCK)));
-        simpleBlock(reg.getSup(raw(ID_NICKEL_BLOCK)));
-        simpleBlock(reg.getSup(raw(ID_SILVER_BLOCK)));
-        simpleBlock(reg.getSup(raw(ID_TIN_BLOCK)));
-
-        simpleBlock(reg.getSup(ID_LEAD_BLOCK));
-        simpleBlock(reg.getSup(ID_NICKEL_BLOCK));
-        simpleBlock(reg.getSup(ID_SILVER_BLOCK));
-        simpleBlock(reg.getSup(ID_TIN_BLOCK));
-
-        simpleBlock(reg.getSup(ID_BRONZE_BLOCK));
-        simpleBlock(reg.getSup(ID_CONSTANTAN_BLOCK));
-        simpleBlock(reg.getSup(ID_ELECTRUM_BLOCK));
-        simpleBlock(reg.getSup(ID_INVAR_BLOCK));
 
         simpleBlock(reg.getSup(ID_ENDERIUM_BLOCK));
         simpleBlock(reg.getSup(ID_LUMIUM_BLOCK));
         simpleBlock(reg.getSup(ID_SIGNALUM_BLOCK));
-
-        simpleBlock(reg.getSup(ID_RUBY_BLOCK));
-        simpleBlock(reg.getSup(ID_SAPPHIRE_BLOCK));
 
         simpleBlock(reg.getSup(ID_SAWDUST_BLOCK));
         simpleBlock(reg.getSup(ID_COAL_COKE_BLOCK));
@@ -129,6 +74,7 @@ public class TCoreBlockStateProvider extends BlockStateProviderCoFH {
         simpleBlock(reg.getSup(ID_CHISELED_SLAG));
         simpleBlock(reg.getSup(ID_SLAG_BRICKS));
         simpleBlock(reg.getSup(ID_CRACKED_SLAG_BRICKS));
+
         simpleBlock(reg.getSup(ID_POLISHED_RICH_SLAG));
         simpleBlock(reg.getSup(ID_CHISELED_RICH_SLAG));
         simpleBlock(reg.getSup(ID_RICH_SLAG_BRICKS));

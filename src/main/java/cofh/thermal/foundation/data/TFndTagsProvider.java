@@ -1,23 +1,22 @@
-package cofh.thermal.core.data;
+package cofh.thermal.foundation.data;
 
 import cofh.lib.util.references.CoFHTags;
-import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.thermal.core.ThermalCore.*;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.core.util.RegistrationHelper.raw;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
-public class TCoreTagsProvider {
+public class TFndTagsProvider {
 
     public static class Block extends BlockTagsProvider {
 
@@ -35,147 +34,6 @@ public class TCoreTagsProvider {
         @SuppressWarnings ("unchecked")
         @Override
         protected void addTags() {
-
-            // region VANILLA BLOCKS
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_BAMBOO_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHARCOAL_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_GUNPOWDER_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_HOE).add(BLOCKS.get(ID_SUGAR_CANE_BLOCK));
-
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_APPLE_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_CARROT_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_POTATO_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_BEETROOT_BLOCK));
-            // endregion
-
-            tag(BlockTags.BEACON_BASE_BLOCKS).add(
-                    BLOCKS.get(ID_SIGNALUM_BLOCK),
-                    BLOCKS.get(ID_LUMIUM_BLOCK),
-                    BLOCKS.get(ID_ENDERIUM_BLOCK)
-            );
-
-            // region STORAGE
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SIGNALUM_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_LUMIUM_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ENDERIUM_BLOCK));
-
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_SIGNALUM_BLOCK));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_LUMIUM_BLOCK));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_ENDERIUM_BLOCK));
-
-            tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_SAWDUST_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_COAL_COKE_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_BITUMEN_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_TAR_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_ROSIN_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SLAG_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RICH_SLAG_BLOCK));
-
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_ENDERIUM).add(BLOCKS.get(ID_ENDERIUM_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_LUMIUM).add(BLOCKS.get(ID_LUMIUM_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_SIGNALUM).add(BLOCKS.get(ID_SIGNALUM_BLOCK));
-
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_BAMBOO).add(BLOCKS.get(ID_BAMBOO_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_CHARCOAL).add(BLOCKS.get(ID_CHARCOAL_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_GUNPOWDER).add(BLOCKS.get(ID_GUNPOWDER_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE).add(BLOCKS.get(ID_SUGAR_CANE_BLOCK));
-
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_BITUMEN).add(BLOCKS.get(ID_BITUMEN_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_COAL_COKE).add(BLOCKS.get(ID_COAL_COKE_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_SLAG).add(BLOCKS.get(ID_SLAG_BLOCK));
-            tag(CoFHTags.Blocks.STORAGE_BLOCKS_TAR).add(BLOCKS.get(ID_TAR_BLOCK));
-
-            tag(Tags.Blocks.STORAGE_BLOCKS).addTags(
-                    CoFHTags.Blocks.STORAGE_BLOCKS_ENDERIUM,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_LUMIUM,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_SIGNALUM,
-
-                    CoFHTags.Blocks.STORAGE_BLOCKS_BAMBOO,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_CHARCOAL,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_GUNPOWDER,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE,
-
-                    CoFHTags.Blocks.STORAGE_BLOCKS_BITUMEN,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_COAL_COKE,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_SLAG,
-                    CoFHTags.Blocks.STORAGE_BLOCKS_TAR
-            );
-            // endregion
-
-            // region BUILDING BLOCKS
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_FRAME));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ENERGY_CELL_FRAME));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_FLUID_CELL_FRAME));
-
-            tag(ThermalTags.Blocks.HARDENED_GLASS).add(
-                    BLOCKS.get(ID_OBSIDIAN_GLASS),
-                    BLOCKS.get(ID_SIGNALUM_GLASS),
-                    BLOCKS.get(ID_LUMIUM_GLASS),
-                    BLOCKS.get(ID_ENDERIUM_GLASS)
-            );
-
-            tag(BlockTags.IMPERMEABLE).add(
-                    BLOCKS.get(ID_OBSIDIAN_GLASS),
-                    BLOCKS.get(ID_SIGNALUM_GLASS),
-                    BLOCKS.get(ID_LUMIUM_GLASS),
-                    BLOCKS.get(ID_ENDERIUM_GLASS)
-            );
-
-            tag(ThermalTags.Blocks.ROCKWOOL).add(
-                    BLOCKS.get(ID_WHITE_ROCKWOOL),
-                    BLOCKS.get(ID_ORANGE_ROCKWOOL),
-                    BLOCKS.get(ID_MAGENTA_ROCKWOOL),
-                    BLOCKS.get(ID_LIGHT_BLUE_ROCKWOOL),
-                    BLOCKS.get(ID_YELLOW_ROCKWOOL),
-                    BLOCKS.get(ID_LIME_ROCKWOOL),
-                    BLOCKS.get(ID_PINK_ROCKWOOL),
-                    BLOCKS.get(ID_GRAY_ROCKWOOL),
-                    BLOCKS.get(ID_LIGHT_GRAY_ROCKWOOL),
-                    BLOCKS.get(ID_CYAN_ROCKWOOL),
-                    BLOCKS.get(ID_PURPLE_ROCKWOOL),
-                    BLOCKS.get(ID_BLUE_ROCKWOOL),
-                    BLOCKS.get(ID_BROWN_ROCKWOOL),
-                    BLOCKS.get(ID_GREEN_ROCKWOOL),
-                    BLOCKS.get(ID_RED_ROCKWOOL),
-                    BLOCKS.get(ID_BLACK_ROCKWOOL)
-            );
-
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_POLISHED_SLAG));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHISELED_SLAG));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SLAG_BRICKS));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CRACKED_SLAG_BRICKS));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_POLISHED_RICH_SLAG));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHISELED_RICH_SLAG));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RICH_SLAG_BRICKS));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CRACKED_RICH_SLAG_BRICKS));
-            // endregion
-
-            // region TILE BLOCKS
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_HIVE_EXTRACTOR));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_FISHER));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_COMPOSTER));
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_DEVICE_SOIL_INFUSER));
-
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_WATER_GEN));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_ROCK_GEN));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_COLLECTOR));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_NULLIFIER));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DEVICE_POTION_DIFFUSER));
-
-            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get(ID_TINKER_BENCH));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CHARGE_BENCH));
-
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ENERGY_CELL));
-
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_FLUID_CELL));
-            // endregion
-
-            addTFndTags();
-        }
-
-        @SuppressWarnings ("unchecked")
-        protected void addTFndTags() {
 
             tag(BlockTags.BEACON_BASE_BLOCKS).add(
                     BLOCKS.get(ID_LEAD_BLOCK),
@@ -393,189 +251,12 @@ public class TCoreTagsProvider {
         @Override
         public String getName() {
 
-            return "Thermal Core: Item Tags";
+            return "Thermal Foundation: Item Tags";
         }
 
         @SuppressWarnings ("unchecked")
         @Override
         protected void addTags() {
-
-            copy(ThermalTags.Blocks.HARDENED_GLASS, ThermalTags.Items.HARDENED_GLASS);
-            copy(ThermalTags.Blocks.ROCKWOOL, ThermalTags.Items.ROCKWOOL);
-
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_ENDERIUM, CoFHTags.Items.STORAGE_BLOCKS_ENDERIUM);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_LUMIUM, CoFHTags.Items.STORAGE_BLOCKS_LUMIUM);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_SIGNALUM, CoFHTags.Items.STORAGE_BLOCKS_SIGNALUM);
-
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_BAMBOO, CoFHTags.Items.STORAGE_BLOCKS_BAMBOO);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_CHARCOAL, CoFHTags.Items.STORAGE_BLOCKS_CHARCOAL);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_GUNPOWDER, CoFHTags.Items.STORAGE_BLOCKS_GUNPOWDER);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE, CoFHTags.Items.STORAGE_BLOCKS_SUGAR_CANE);
-
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_BITUMEN, CoFHTags.Items.STORAGE_BLOCKS_BITUMEN);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_COAL_COKE, CoFHTags.Items.STORAGE_BLOCKS_COAL_COKE);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_SLAG, CoFHTags.Items.STORAGE_BLOCKS_SLAG);
-            copy(CoFHTags.Blocks.STORAGE_BLOCKS_TAR, CoFHTags.Items.STORAGE_BLOCKS_TAR);
-
-            tag(Tags.Items.STORAGE_BLOCKS).addTags(
-                    CoFHTags.Items.STORAGE_BLOCKS_ENDERIUM,
-                    CoFHTags.Items.STORAGE_BLOCKS_LUMIUM,
-                    CoFHTags.Items.STORAGE_BLOCKS_SIGNALUM,
-
-                    CoFHTags.Items.STORAGE_BLOCKS_BAMBOO,
-                    CoFHTags.Items.STORAGE_BLOCKS_CHARCOAL,
-                    CoFHTags.Items.STORAGE_BLOCKS_GUNPOWDER,
-                    CoFHTags.Items.STORAGE_BLOCKS_SUGAR_CANE,
-
-                    CoFHTags.Items.STORAGE_BLOCKS_BITUMEN,
-                    CoFHTags.Items.STORAGE_BLOCKS_COAL_COKE,
-                    CoFHTags.Items.STORAGE_BLOCKS_SLAG,
-                    CoFHTags.Items.STORAGE_BLOCKS_TAR
-            );
-
-            tag(CoFHTags.Items.COINS_COPPER).add(ITEMS.get("copper_coin"));
-            tag(CoFHTags.Items.COINS_GOLD).add(ITEMS.get("gold_coin"));
-            tag(CoFHTags.Items.COINS_IRON).add(ITEMS.get("iron_coin"));
-            tag(CoFHTags.Items.COINS_NETHERITE).add(ITEMS.get("netherite_coin"));
-
-            tag(CoFHTags.Items.COINS_ENDERIUM).add(ITEMS.get("enderium_coin"));
-            tag(CoFHTags.Items.COINS_LUMIUM).add(ITEMS.get("lumium_coin"));
-            tag(CoFHTags.Items.COINS_SIGNALUM).add(ITEMS.get("signalum_coin"));
-
-            tag(CoFHTags.Items.COINS).addTags(
-                    CoFHTags.Items.COINS_COPPER,
-                    CoFHTags.Items.COINS_GOLD,
-                    CoFHTags.Items.COINS_IRON,
-                    CoFHTags.Items.COINS_NETHERITE,
-
-                    CoFHTags.Items.COINS_ENDERIUM,
-                    CoFHTags.Items.COINS_LUMIUM,
-                    CoFHTags.Items.COINS_SIGNALUM
-            );
-
-            tag(CoFHTags.Items.DUSTS_COPPER).add(ITEMS.get("copper_dust"));
-            tag(CoFHTags.Items.DUSTS_GOLD).add(ITEMS.get("gold_dust"));
-            tag(CoFHTags.Items.DUSTS_IRON).add(ITEMS.get("iron_dust"));
-            tag(CoFHTags.Items.DUSTS_NETHERITE).add(ITEMS.get("netherite_dust"));
-
-            tag(CoFHTags.Items.DUSTS_DIAMOND).add(ITEMS.get("diamond_dust"));
-            tag(CoFHTags.Items.DUSTS_EMERALD).add(ITEMS.get("emerald_dust"));
-            tag(CoFHTags.Items.DUSTS_LAPIS).add(ITEMS.get("lapis_dust"));
-            tag(CoFHTags.Items.DUSTS_QUARTZ).add(ITEMS.get("quartz_dust"));
-
-            tag(CoFHTags.Items.DUSTS_ENDERIUM).add(ITEMS.get("enderium_dust"));
-            tag(CoFHTags.Items.DUSTS_LUMIUM).add(ITEMS.get("lumium_dust"));
-            tag(CoFHTags.Items.DUSTS_SIGNALUM).add(ITEMS.get("signalum_dust"));
-
-            tag(DUSTS).addTags(
-                    CoFHTags.Items.DUSTS_COPPER,
-                    CoFHTags.Items.DUSTS_GOLD,
-                    CoFHTags.Items.DUSTS_IRON,
-                    CoFHTags.Items.DUSTS_NETHERITE,
-
-                    CoFHTags.Items.DUSTS_DIAMOND,
-                    CoFHTags.Items.DUSTS_EMERALD,
-                    CoFHTags.Items.DUSTS_LAPIS,
-                    CoFHTags.Items.DUSTS_QUARTZ,
-
-                    CoFHTags.Items.DUSTS_ENDERIUM,
-                    CoFHTags.Items.DUSTS_LUMIUM,
-                    CoFHTags.Items.DUSTS_SIGNALUM
-            );
-
-            tag(CoFHTags.Items.GEARS_COPPER).add(ITEMS.get("copper_gear"));
-            tag(CoFHTags.Items.GEARS_GOLD).add(ITEMS.get("gold_gear"));
-            tag(CoFHTags.Items.GEARS_IRON).add(ITEMS.get("iron_gear"));
-            tag(CoFHTags.Items.GEARS_NETHERITE).add(ITEMS.get("netherite_gear"));
-
-            tag(CoFHTags.Items.GEARS_DIAMOND).add(ITEMS.get("diamond_gear"));
-            tag(CoFHTags.Items.GEARS_EMERALD).add(ITEMS.get("emerald_gear"));
-            tag(CoFHTags.Items.GEARS_LAPIS).add(ITEMS.get("lapis_gear"));
-            tag(CoFHTags.Items.GEARS_QUARTZ).add(ITEMS.get("quartz_gear"));
-
-            tag(CoFHTags.Items.GEARS_ENDERIUM).add(ITEMS.get("enderium_gear"));
-            tag(CoFHTags.Items.GEARS_LUMIUM).add(ITEMS.get("lumium_gear"));
-            tag(CoFHTags.Items.GEARS_SIGNALUM).add(ITEMS.get("signalum_gear"));
-
-            tag(CoFHTags.Items.GEARS).addTags(
-                    CoFHTags.Items.GEARS_COPPER,
-                    CoFHTags.Items.GEARS_GOLD,
-                    CoFHTags.Items.GEARS_IRON,
-                    CoFHTags.Items.GEARS_NETHERITE,
-
-                    CoFHTags.Items.GEARS_DIAMOND,
-                    CoFHTags.Items.GEARS_EMERALD,
-                    CoFHTags.Items.GEARS_LAPIS,
-                    CoFHTags.Items.GEARS_QUARTZ,
-
-                    CoFHTags.Items.GEARS_ENDERIUM,
-                    CoFHTags.Items.GEARS_LUMIUM,
-                    CoFHTags.Items.GEARS_SIGNALUM
-            );
-
-            tag(CoFHTags.Items.INGOTS_ENDERIUM).add(ITEMS.get("enderium_ingot"));
-            tag(CoFHTags.Items.INGOTS_LUMIUM).add(ITEMS.get("lumium_ingot"));
-            tag(CoFHTags.Items.INGOTS_SIGNALUM).add(ITEMS.get("signalum_ingot"));
-
-            tag(INGOTS).addTags(
-                    CoFHTags.Items.INGOTS_ENDERIUM,
-                    CoFHTags.Items.INGOTS_LUMIUM,
-                    CoFHTags.Items.INGOTS_SIGNALUM
-            );
-
-            tag(CoFHTags.Items.NUGGETS_COPPER).add(ITEMS.get("copper_nugget"));
-            tag(CoFHTags.Items.NUGGETS_NETHERITE).add(ITEMS.get("netherite_nugget"));
-
-            tag(CoFHTags.Items.NUGGETS_ENDERIUM).add(ITEMS.get("enderium_nugget"));
-            tag(CoFHTags.Items.NUGGETS_LUMIUM).add(ITEMS.get("lumium_nugget"));
-            tag(CoFHTags.Items.NUGGETS_SIGNALUM).add(ITEMS.get("signalum_nugget"));
-
-            tag(NUGGETS).addTags(
-                    CoFHTags.Items.NUGGETS_COPPER,
-                    CoFHTags.Items.NUGGETS_NETHERITE,
-
-                    CoFHTags.Items.NUGGETS_ENDERIUM,
-                    CoFHTags.Items.NUGGETS_LUMIUM,
-                    CoFHTags.Items.NUGGETS_SIGNALUM
-            );
-
-            tag(CoFHTags.Items.PLATES_COPPER).add(ITEMS.get("copper_plate"));
-            tag(CoFHTags.Items.PLATES_GOLD).add(ITEMS.get("gold_plate"));
-            tag(CoFHTags.Items.PLATES_IRON).add(ITEMS.get("iron_plate"));
-            tag(CoFHTags.Items.PLATES_NETHERITE).add(ITEMS.get("netherite_plate"));
-
-            tag(CoFHTags.Items.PLATES_ENDERIUM).add(ITEMS.get("enderium_plate"));
-            tag(CoFHTags.Items.PLATES_LUMIUM).add(ITEMS.get("lumium_plate"));
-            tag(CoFHTags.Items.PLATES_SIGNALUM).add(ITEMS.get("signalum_plate"));
-
-            tag(CoFHTags.Items.PLATES).addTags(
-                    CoFHTags.Items.PLATES_COPPER,
-                    CoFHTags.Items.PLATES_GOLD,
-                    CoFHTags.Items.PLATES_IRON,
-                    CoFHTags.Items.PLATES_NETHERITE,
-                    CoFHTags.Items.PLATES_ENDERIUM,
-                    CoFHTags.Items.PLATES_LUMIUM,
-                    CoFHTags.Items.PLATES_SIGNALUM
-            );
-
-            tag(CoFHTags.Items.TOOLS_WRENCH).add(ITEMS.get(ID_WRENCH));
-
-            tag(ThermalTags.Items.BITUMEN).add(ITEMS.get("bitumen"));
-            tag(ThermalTags.Items.COAL_COKE).add(ITEMS.get("coal_coke"));
-            tag(ThermalTags.Items.SAWDUST).add(ITEMS.get("sawdust"));
-            tag(ThermalTags.Items.SLAG).add(ITEMS.get("slag"));
-            tag(ThermalTags.Items.TAR).add(ITEMS.get("tar"));
-            tag(CoFHTags.Items.DUSTS_WOOD).add(ITEMS.get("sawdust"));
-
-            tag(CoFHTags.Items.DUSTS_ENDER_PEARL).add(ITEMS.get("ender_pearl_dust"));
-
-            tag(CoFHTags.Items.LOCKS).add(ITEMS.get(ID_LOCK));
-            tag(CoFHTags.Items.SECURABLE).add(ITEMS.get(ID_SATCHEL));
-
-            addTFndTags();
-        }
-
-        protected void addTFndTags() {
 
             copy(CoFHTags.Blocks.ORES_APATITE, CoFHTags.Items.ORES_APATITE);
             copy(CoFHTags.Blocks.ORES_CINNABAR, CoFHTags.Items.ORES_CINNABAR);
@@ -837,34 +518,6 @@ public class TCoreTagsProvider {
                     CoFHTags.Items.RAW_MATERIALS_SILVER,
                     CoFHTags.Items.RAW_MATERIALS_TIN
             );
-        }
-
-    }
-
-    public static class Fluid extends FluidTagsProvider {
-
-        public Fluid(DataGenerator gen, ExistingFileHelper existingFileHelper) {
-
-            super(gen, ID_THERMAL, existingFileHelper);
-        }
-
-        @Override
-        public String getName() {
-
-            return "Thermal Core: Fluid Tags";
-        }
-
-        @Override
-        protected void addTags() {
-
-            tag(ThermalTags.Fluids.REDSTONE).add(FLUIDS.get(ID_FLUID_REDSTONE));
-            tag(ThermalTags.Fluids.GLOWSTONE).add(FLUIDS.get(ID_FLUID_GLOWSTONE));
-            tag(ThermalTags.Fluids.ENDER).add(FLUIDS.get(ID_FLUID_ENDER));
-
-            tag(ThermalTags.Fluids.LATEX).add(FLUIDS.get(ID_FLUID_LATEX));
-
-            tag(ThermalTags.Fluids.CREOSOTE).add(FLUIDS.get(ID_FLUID_CREOSOTE));
-            tag(ThermalTags.Fluids.CRUDE_OIL).add(FLUIDS.get(ID_FLUID_CRUDE_OIL));
         }
 
     }

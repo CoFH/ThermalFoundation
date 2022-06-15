@@ -397,7 +397,7 @@ f4710de982d03533aa773b90240ef349f268ca89 assets/thermal/models/item/tin_ore.json
 2d561887966a608266804d7ba1cd0867ec8a36da assets/thermal/models/item/yellow_rockwool.json
 70834853165c38a72257a698135e5fc68c818145 data/cofh_core/tags/items/crafting/locks.json
 0193a9d29b0b19e40f0d0d35c1235a91e4fff3f8 data/cofh_core/tags/items/crafting/securable.json
-4127b8ef2716d93738eff71c0fabe32722c84fb6 data/forge/tags/blocks/ores.json
+444bb5496ab2ba2dc20e18d81b14464b47b08cdb data/forge/tags/blocks/ores.json
 c50c1cb20472796aea3dccf1223d5161644a0905 data/forge/tags/blocks/ores/apatite.json
 4c40512361214681ffba4a88a9e95a5474027121 data/forge/tags/blocks/ores/cinnabar.json
 1a76fe7e681c25147ce68ad1f507c7351e85436e data/forge/tags/blocks/ores/lead.json
@@ -408,7 +408,7 @@ de55e09203ac2d350f92369118fb75eeec9250e3 data/forge/tags/blocks/ores/sapphire.js
 7fbd740076ab9650ff9fcc31d8a7e45523400ab1 data/forge/tags/blocks/ores/silver.json
 05e123fbc5ed06cc9da58bc8d27972bda02f494f data/forge/tags/blocks/ores/sulfur.json
 487dbb658b5fb5858ca03ecbc3d24ae813239142 data/forge/tags/blocks/ores/tin.json
-4a8fb43c600249a4e8b86957d1935b17d79adee7 data/forge/tags/blocks/storage_blocks.json
+07549be6cf045973571502ccfa4dc486d5ab9de6 data/forge/tags/blocks/storage_blocks.json
 1c5c12a987922f907bcb55df583600a702411779 data/forge/tags/blocks/storage_blocks/apatite.json
 7ce6198358e12c06c4f0c66cee85def8790e0328 data/forge/tags/blocks/storage_blocks/bamboo.json
 dfd271de06c0f933ba5e2112cf48eaf6c8e0560a data/forge/tags/blocks/storage_blocks/bitumen.json
@@ -446,7 +446,7 @@ a8b265f834bb9be512db71d5558acb203e0f378e data/forge/tags/blocks/storage_blocks/s
 ef667206f26b63a4a43b4aa3721243c7db678536 data/forge/tags/fluids/redstone.json
 2ea9bdd7ab17f13d34aa307a06aa0bfd06f35ceb data/forge/tags/items/bitumen.json
 09894c623366ea7d11f8e657657f15fcf6789803 data/forge/tags/items/coal_coke.json
-863dc9b1aac47e976f269da87c23ae0121d12e27 data/forge/tags/items/coins.json
+57cb2f9bb521fb667708b74c8d518ac514955eef data/forge/tags/items/coins.json
 4d44cbc5ec14895f857bede7ead492cccd245da1 data/forge/tags/items/coins/bronze.json
 00e0d199c0f84ac255fb4ff9270eb9485ec6f372 data/forge/tags/items/coins/constantan.json
 0dd0b9b07d4b9835616414f5b516812bee00384b data/forge/tags/items/coins/copper.json
@@ -462,7 +462,7 @@ b26e196fc52da70929b95f6a7de4616c3fcb1bae data/forge/tags/items/coins/invar.json
 498ba6ee2d4d2a292762193fc293dfc61e2e2f7a data/forge/tags/items/coins/signalum.json
 5dbb93d81ee9f81233473695791b39c5a909a0ea data/forge/tags/items/coins/silver.json
 1cfcd239637b6b48896a4ffa591c9849ce2d27bf data/forge/tags/items/coins/tin.json
-6707fde7e273d1177e7ae67055a0b12ac3fbcc41 data/forge/tags/items/dusts.json
+1d1c13ac56309128b2ac7d76cd5956b30ff32d55 data/forge/tags/items/dusts.json
 94d200c3c242db09c6b477cd4390daa57ef27ce2 data/forge/tags/items/dusts/apatite.json
 49960d2da6e27b265537f468b97ad65902ea02ac data/forge/tags/items/dusts/bronze.json
 422e09d0f57bb410b6e34e713419bb84f4220cda data/forge/tags/items/dusts/cinnabar.json
@@ -490,7 +490,7 @@ b88161ec7b68ca18a3a77e08da34ca470945d2b7 data/forge/tags/items/dusts/signalum.js
 c4f85b261f57b0e155ce99925c6923078d22bf5d data/forge/tags/items/dusts/sulfur.json
 399d88560070d87081598dd12dae01ea9c1cee63 data/forge/tags/items/dusts/tin.json
 9fe877f9147a5edd62c0b5ebcb868a83371d3a88 data/forge/tags/items/dusts/wood.json
-3998ace8140ef658807385ec8b3474d1d772a708 data/forge/tags/items/gears.json
+afd11799adc1273f2bf72076f0cc906e33978e82 data/forge/tags/items/gears.json
 be66b5c9565d7afd1b6a91c84a7e821ae005005f data/forge/tags/items/gears/bronze.json
 ab662a9270b095755c7c01c6dc8479a03c422c1b data/forge/tags/items/gears/constantan.json
 a6c0cbc041697d181e15de2dac4ca07e6f5d29ec data/forge/tags/items/gears/copper.json
@@ -512,14 +512,14 @@ c77e544a3ccc1f134769281990c69321cd9d3428 data/forge/tags/items/gears/sapphire.js
 48c4acf2e2309497759314e091c952014309b846 data/forge/tags/items/gears/signalum.json
 34f8047a98811372f54f9536778c03669de380f6 data/forge/tags/items/gears/silver.json
 d957dd789ebf49365d039232e6d8ba0173b48a52 data/forge/tags/items/gears/tin.json
-9d100e0b1e6e4d6330e55c575765c17876542d07 data/forge/tags/items/gems.json
+85e2e70c8ee850b6fb1bb0ad453581f1a145623f data/forge/tags/items/gems.json
 d4fee8d7b23e0d1dce30752775a29c78893442f7 data/forge/tags/items/gems/apatite.json
 fbb72b39cc0f54d334095e84131c2513c5eb2bef data/forge/tags/items/gems/cinnabar.json
 0d2089a1fd01859ea66337fd88675b29404199e0 data/forge/tags/items/gems/niter.json
 72dffccbad737bead97fb8186708877c6c280945 data/forge/tags/items/gems/ruby.json
 1a952ae8417a570115b7616bbf117a5d9965d33b data/forge/tags/items/gems/sapphire.json
 54c1fd75f3321523c967236b464269a47a8ec19c data/forge/tags/items/gems/sulfur.json
-8db795f858bc16929e4e4186046265fe6cc66291 data/forge/tags/items/ingots.json
+2c1ad85ea4decf1af363b07626376680c958ba5f data/forge/tags/items/ingots.json
 51b82d9d5b892f3a1912fb436bb799b9a6ec1dac data/forge/tags/items/ingots/bronze.json
 7f77bc3bc2ac86f53cf7890162b176199a699267 data/forge/tags/items/ingots/constantan.json
 13d13f04ad86841d862c3d2d22ebed49f38063d7 data/forge/tags/items/ingots/electrum.json
@@ -531,7 +531,7 @@ fbb72b39cc0f54d334095e84131c2513c5eb2bef data/forge/tags/items/gems/cinnabar.jso
 69f9d3a1a75407edc08d887b7f0adf6f12997712 data/forge/tags/items/ingots/signalum.json
 64bee5d2cf6e8e76b1868e8facab305bfa91ba4e data/forge/tags/items/ingots/silver.json
 28ed689e9ed25672c83d2fefd787b9beba5681f5 data/forge/tags/items/ingots/tin.json
-9ed44b4b39bc5143abc6f9700105a1a04e4d5fea data/forge/tags/items/nuggets.json
+66f51295556db58917c654a5164fc6caea40579c data/forge/tags/items/nuggets.json
 a54044a204ea01a61703a77d9ed5b68113995014 data/forge/tags/items/nuggets/bronze.json
 b3c0120d901644d0097c9d8c1c353f3706a19981 data/forge/tags/items/nuggets/constantan.json
 9242cb55b42ab229992c6174a12e9b05e3302fce data/forge/tags/items/nuggets/copper.json
@@ -545,7 +545,7 @@ a28a62d963b05aca339c5d39f9cd14d8a0411381 data/forge/tags/items/nuggets/nickel.js
 25272a0276b3802e87779d9dbe0171fa357ed6a1 data/forge/tags/items/nuggets/signalum.json
 26610c6ae523c14c17acdf44d6b0bd4dba0ababd data/forge/tags/items/nuggets/silver.json
 1c4f278e08cddc942b2b7e0b536ef47929449d0f data/forge/tags/items/nuggets/tin.json
-4127b8ef2716d93738eff71c0fabe32722c84fb6 data/forge/tags/items/ores.json
+444bb5496ab2ba2dc20e18d81b14464b47b08cdb data/forge/tags/items/ores.json
 c50c1cb20472796aea3dccf1223d5161644a0905 data/forge/tags/items/ores/apatite.json
 4c40512361214681ffba4a88a9e95a5474027121 data/forge/tags/items/ores/cinnabar.json
 1a76fe7e681c25147ce68ad1f507c7351e85436e data/forge/tags/items/ores/lead.json
@@ -556,7 +556,7 @@ de55e09203ac2d350f92369118fb75eeec9250e3 data/forge/tags/items/ores/sapphire.jso
 7fbd740076ab9650ff9fcc31d8a7e45523400ab1 data/forge/tags/items/ores/silver.json
 05e123fbc5ed06cc9da58bc8d27972bda02f494f data/forge/tags/items/ores/sulfur.json
 487dbb658b5fb5858ca03ecbc3d24ae813239142 data/forge/tags/items/ores/tin.json
-bc400018237b6a8e36da83c2b01af7fa1a1d66a4 data/forge/tags/items/plates.json
+db98c78b2233ba0ce2a7949f87796fb56ef9c3a1 data/forge/tags/items/plates.json
 af080ccebfc91afc5003d25a82505aea225836b4 data/forge/tags/items/plates/bronze.json
 3295f269a63cdd959e4302e1e9645891324f3c24 data/forge/tags/items/plates/constantan.json
 b42255bf33682e985e20b9de431d7d1e855e4ae7 data/forge/tags/items/plates/copper.json
@@ -579,7 +579,7 @@ b2ba93d486983adfd4dc6c4d42e816ab58f714b0 data/forge/tags/items/raw_materials.jso
 0725e9e63f5b40b45f22a53c8c4eba5d466336a0 data/forge/tags/items/raw_materials/tin.json
 9fe877f9147a5edd62c0b5ebcb868a83371d3a88 data/forge/tags/items/sawdust.json
 f5a55e59f9306728ae045614d57b5b846d677a4e data/forge/tags/items/slag.json
-186f1e81c94a27d4c17b08e62880db72f31c88a9 data/forge/tags/items/storage_blocks.json
+07549be6cf045973571502ccfa4dc486d5ab9de6 data/forge/tags/items/storage_blocks.json
 1c5c12a987922f907bcb55df583600a702411779 data/forge/tags/items/storage_blocks/apatite.json
 7ce6198358e12c06c4f0c66cee85def8790e0328 data/forge/tags/items/storage_blocks/bamboo.json
 dfd271de06c0f933ba5e2112cf48eaf6c8e0560a data/forge/tags/items/storage_blocks/bitumen.json
@@ -611,14 +611,14 @@ a8b265f834bb9be512db71d5558acb203e0f378e data/forge/tags/items/storage_blocks/sl
 0f6917cacc9fc532836cb0e6d25c4ea15822b3de data/forge/tags/items/storage_blocks/tin.json
 694cdc58da2c1023c42cb172bd28ce54974c2f93 data/forge/tags/items/tar.json
 eb25d2730b1cceb3801c23458f10d1a41642bc11 data/forge/tags/items/tools/wrench.json
-176f6d5a787fbc7a4395d833f83475ae788672ab data/minecraft/tags/blocks/beacon_base_blocks.json
+d74faa5dbd21a520e64863fd7e6afd7745f1bc3f data/minecraft/tags/blocks/beacon_base_blocks.json
 17ede6f217024acb2d25a7373bb7be09e7581b1b data/minecraft/tags/blocks/impermeable.json
 3c7bf9540bf0e17c3e2b405f0b2ac199f2f68029 data/minecraft/tags/blocks/mineable/axe.json
 37dd9148312dcf897f102f89c06f2e8d00c19ff6 data/minecraft/tags/blocks/mineable/hoe.json
-9174675da0a1bef895540329bd7294075e90d014 data/minecraft/tags/blocks/mineable/pickaxe.json
-bda7e8c7ea5982e771d51009cdedabebd5027b2e data/minecraft/tags/blocks/mineable/shovel.json
-132de534af6a056ef0444b07d2da7bb60bd961d8 data/minecraft/tags/blocks/needs_iron_tool.json
-96346a86aa8c6b0946d376258b505402270c81f4 data/minecraft/tags/blocks/needs_stone_tool.json
+e8a8b256ea2f020fd02f7fae50a441f383de0248 data/minecraft/tags/blocks/mineable/pickaxe.json
+e1f090cdff119da16d8f5abbb2ccb2793c3e1549 data/minecraft/tags/blocks/mineable/shovel.json
+d80523135682ef2a9fe7327a0f540dfee115a815 data/minecraft/tags/blocks/needs_iron_tool.json
+3dc04b73c67f4a8b5bd69ceae7e632df5fe8966f data/minecraft/tags/blocks/needs_stone_tool.json
 4a052f9583111dcfe0a7b6689f76cead8e730d5a data/thermal/loot_tables/blocks/apatite_block.json
 eb5c71fc2fa0faac49f99ca32801042c263e7a54 data/thermal/loot_tables/blocks/apatite_ore.json
 427859b28cfc90785227dcf10501fcd48e01b520 data/thermal/loot_tables/blocks/apple_block.json

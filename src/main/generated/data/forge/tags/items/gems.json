@@ -4,8 +4,8 @@
     "#forge:gems/apatite",
     "#forge:gems/cinnabar",
     "#forge:gems/niter",
+    "#forge:gems/sulfur",
     "#forge:gems/ruby",
-    "#forge:gems/sapphire",
-    "#forge:gems/sulfur"
+    "#forge:gems/sapphire"
   ]
 }

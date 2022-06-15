@@ -51,32 +51,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_CARROT_BLOCK), Items.CARROT);
         generateStorageRecipes(withConditions(consumer).flag(FLAG_VANILLA_BLOCKS), reg.get(ID_POTATO_BLOCK), Items.POTATO);
 
-        generateStorageRecipes(consumer, reg.get(ID_APATITE_BLOCK), reg.get("apatite"));
-        generateStorageRecipes(consumer, reg.get(ID_CINNABAR_BLOCK), reg.get("cinnabar"));
-        generateStorageRecipes(consumer, reg.get(ID_NITER_BLOCK), reg.get("niter"));
-        generateStorageRecipes(consumer, reg.get(ID_SULFUR_BLOCK), reg.get("sulfur"));
-
-        generateTypeRecipes(reg, consumer, "tin");
-        generateTypeRecipes(reg, consumer, "lead");
-        generateTypeRecipes(reg, consumer, "silver");
-        generateTypeRecipes(reg, consumer, "nickel");
-
-        generateTypeRecipes(reg, consumer, "bronze");
-        generateTypeRecipes(reg, consumer, "electrum");
-        generateTypeRecipes(reg, consumer, "invar");
-        generateTypeRecipes(reg, consumer, "constantan");
-
-        generateSmeltingAndBlastingRecipes(reg, consumer, "copper", 0.6F);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "tin", 0.6F);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "lead", 0.8F);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "silver", 1.0F);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "nickel", 1.0F);
-
-        generateSmeltingAndBlastingRecipes(reg, consumer, "bronze", 0);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "electrum", 0);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "invar", 0);
-        generateSmeltingAndBlastingRecipes(reg, consumer, "constantan", 0);
-
         generateGearRecipe(consumer, reg.get("copper_gear"), Items.COPPER_INGOT, forgeTag("ingots/copper"));
         generateGearRecipe(consumer, reg.get("iron_gear"), Items.IRON_INGOT, forgeTag("ingots/iron"));
         generateGearRecipe(consumer, reg.get("gold_gear"), Items.GOLD_INGOT, forgeTag("ingots/gold"));
@@ -117,11 +91,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         generateUnpackingRecipe(consumer, Items.COPPER_INGOT, reg.get("copper_nugget"), "_from_ingot");
         generateUnpackingRecipe(consumer, Items.NETHERITE_INGOT, reg.get("netherite_nugget"), "_from_ingot");
 
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_APATITE_ORE), reg.get("apatite"), 0.5F, "smelting");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_CINNABAR_ORE), reg.get("cinnabar"), 0.5F, "smelting");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_NITER_ORE), reg.get("niter"), 0.5F, "smelting");
-        generateSmeltingAndBlastingRecipes(reg, consumer, reg.get(ID_SULFUR_ORE), reg.get("sulfur"), 0.5F, "smelting");
-
         generateSmeltingRecipe(reg, consumer, Items.GRAVEL, reg.get("slag"), 0.1F, "smelting");
         generateSmeltingRecipe(reg, consumer, reg.get("rubber"), reg.get("cured_rubber"), 0.2F, "smelting");
 
@@ -141,37 +110,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
     private void generateAlloyRecipes(Consumer<FinishedRecipe> consumer) {
 
         var reg = ITEMS;
-
-        ShapelessRecipeBuilder.shapeless(reg.get("bronze_dust"), 4)
-                .requires(CoFHTags.Items.DUSTS_COPPER)
-                .requires(CoFHTags.Items.DUSTS_COPPER)
-                .requires(CoFHTags.Items.DUSTS_COPPER)
-                .requires(CoFHTags.Items.DUSTS_TIN)
-                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
-                .unlockedBy("has_tin_dust", has(CoFHTags.Items.DUSTS_TIN))
-                .save(consumer, ID_THERMAL + ":bronze_dust_4");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("electrum_dust"), 2)
-                .requires(CoFHTags.Items.DUSTS_GOLD)
-                .requires(CoFHTags.Items.DUSTS_SILVER)
-                .unlockedBy("has_gold_dust", has(CoFHTags.Items.DUSTS_GOLD))
-                .unlockedBy("has_silver_dust", has(CoFHTags.Items.DUSTS_SILVER))
-                .save(consumer, ID_THERMAL + ":electrum_dust_2");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("invar_dust"), 3)
-                .requires(CoFHTags.Items.DUSTS_IRON)
-                .requires(CoFHTags.Items.DUSTS_IRON)
-                .requires(CoFHTags.Items.DUSTS_NICKEL)
-                .unlockedBy("has_iron_dust", has(CoFHTags.Items.DUSTS_IRON))
-                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
-                .save(consumer, ID_THERMAL + ":invar_dust_3");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("constantan_dust"), 2)
-                .requires(CoFHTags.Items.DUSTS_COPPER)
-                .requires(CoFHTags.Items.DUSTS_NICKEL)
-                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
-                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
-                .save(consumer, ID_THERMAL + ":constantan_dust_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("signalum_dust"), 4)
                 .requires(CoFHTags.Items.DUSTS_COPPER)
@@ -204,49 +142,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(fromTags(Tags.Items.ENDER_PEARLS, CoFHTags.Items.DUSTS_ENDER_PEARL))
                 .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(consumer, ID_THERMAL + ":enderium_dust_2");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("bronze_ingot"), 4)
-                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
-                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
-                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
-                .requires(fromTags(CoFHTags.Items.DUSTS_TIN, CoFHTags.Items.INGOTS_TIN))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
-                .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
-                .unlockedBy("has_tin_dust", has(CoFHTags.Items.DUSTS_TIN))
-                .unlockedBy("has_tin_ingot", has(CoFHTags.Items.INGOTS_TIN))
-                .save(consumer, ID_THERMAL + ":fire_charge/bronze_ingot_4");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("electrum_ingot"), 2)
-                .requires(fromTags(CoFHTags.Items.DUSTS_GOLD, Tags.Items.INGOTS_GOLD))
-                .requires(fromTags(CoFHTags.Items.DUSTS_SILVER, CoFHTags.Items.INGOTS_SILVER))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_gold_dust", has(CoFHTags.Items.DUSTS_GOLD))
-                .unlockedBy("has_gold_ingot", has(Tags.Items.INGOTS_GOLD))
-                .unlockedBy("has_silver_dust", has(CoFHTags.Items.DUSTS_SILVER))
-                .unlockedBy("has_silver_ingot", has(CoFHTags.Items.INGOTS_SILVER))
-                .save(consumer, ID_THERMAL + ":fire_charge/electrum_ingot_2");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("invar_ingot"), 3)
-                .requires(fromTags(CoFHTags.Items.DUSTS_IRON, Tags.Items.INGOTS_IRON))
-                .requires(fromTags(CoFHTags.Items.DUSTS_IRON, Tags.Items.INGOTS_IRON))
-                .requires(fromTags(CoFHTags.Items.DUSTS_NICKEL, CoFHTags.Items.INGOTS_NICKEL))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_iron_dust", has(CoFHTags.Items.DUSTS_IRON))
-                .unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
-                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
-                .unlockedBy("has_nickel_ingot", has(CoFHTags.Items.INGOTS_NICKEL))
-                .save(consumer, ID_THERMAL + ":fire_charge/invar_ingot_3");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("constantan_ingot"), 2)
-                .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
-                .requires(fromTags(CoFHTags.Items.DUSTS_NICKEL, CoFHTags.Items.INGOTS_NICKEL))
-                .requires(Items.FIRE_CHARGE)
-                .unlockedBy("has_copper_dust", has(CoFHTags.Items.DUSTS_COPPER))
-                .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
-                .unlockedBy("has_nickel_dust", has(CoFHTags.Items.DUSTS_NICKEL))
-                .unlockedBy("has_nickel_ingot", has(CoFHTags.Items.INGOTS_NICKEL))
-                .save(consumer, ID_THERMAL + ":fire_charge/constantan_ingot_2");
 
         ShapelessRecipeBuilder.shapeless(reg.get("signalum_ingot"), 4)
                 .requires(fromTags(CoFHTags.Items.DUSTS_COPPER, Tags.Items.INGOTS_COPPER))
@@ -1004,30 +899,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .requires(earthCharge)
                 .unlockedBy("has_quartz", has(Tags.Items.GEMS_QUARTZ))
                 .save(consumer, ID_THERMAL + ":earth_charge/quartz_dust_from_quartz");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("apatite_dust"))
-                .requires(CoFHTags.Items.GEMS_APATITE)
-                .requires(earthCharge)
-                .unlockedBy("has_apatite", has(CoFHTags.Items.GEMS_APATITE))
-                .save(consumer, ID_THERMAL + ":earth_charge/apatite_dust_from_apatite");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("cinnabar_dust"))
-                .requires(CoFHTags.Items.GEMS_CINNABAR)
-                .requires(earthCharge)
-                .unlockedBy("has_cinnabar", has(CoFHTags.Items.GEMS_CINNABAR))
-                .save(consumer, ID_THERMAL + ":earth_charge/cinnabar_dust_from_cinnabar");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("niter_dust"))
-                .requires(CoFHTags.Items.GEMS_NITER)
-                .requires(earthCharge)
-                .unlockedBy("has_niter", has(CoFHTags.Items.GEMS_NITER))
-                .save(consumer, ID_THERMAL + ":earth_charge/niter_dust_from_niter");
-
-        ShapelessRecipeBuilder.shapeless(reg.get("sulfur_dust"))
-                .requires(CoFHTags.Items.GEMS_SULFUR)
-                .requires(earthCharge)
-                .unlockedBy("has_sulfur", has(CoFHTags.Items.GEMS_SULFUR))
-                .save(consumer, ID_THERMAL + ":earth_charge/sulfur_dust_from_sulfur");
         // endregion
 
         // region ICE CHARGE CONVERSIONS

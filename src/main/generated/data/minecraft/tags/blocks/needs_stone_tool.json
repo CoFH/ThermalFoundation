@@ -1,27 +1,18 @@
 {
   "replace": false,
   "values": [
+    "thermal:signalum_block",
+    "thermal:lumium_block",
     "thermal:apatite_ore",
     "thermal:cinnabar_ore",
-    "thermal:niter_ore",
-    "thermal:sulfur_ore",
     "thermal:tin_ore",
     "thermal:deepslate_apatite_ore",
     "thermal:deepslate_cinnabar_ore",
-    "thermal:deepslate_niter_ore",
-    "thermal:deepslate_sulfur_ore",
     "thermal:deepslate_tin_ore",
+    "thermal:apatite_block",
+    "thermal:cinnabar_block",
+    "thermal:raw_tin_block",
     "thermal:tin_block",
-    "thermal:lead_block",
-    "thermal:silver_block",
-    "thermal:nickel_block",
-    "thermal:bronze_block",
-    "thermal:electrum_block",
-    "thermal:invar_block",
-    "thermal:constantan_block",
-    "thermal:signalum_block",
-    "thermal:lumium_block",
-    "thermal:ruby_block",
-    "thermal:sapphire_block"
+    "thermal:bronze_block"
   ]
 }

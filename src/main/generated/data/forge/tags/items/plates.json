@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
+    "#forge:plates/copper",
+    "#forge:plates/gold",
+    "#forge:plates/iron",
+    "#forge:plates/netherite",
+    "#forge:plates/enderium",
+    "#forge:plates/lumium",
+    "#forge:plates/signalum",
+    "#forge:plates/lead",
+    "#forge:plates/nickel",
+    "#forge:plates/silver",
+    "#forge:plates/tin",
     "#forge:plates/bronze",
     "#forge:plates/constantan",
-    "#forge:plates/copper",
     "#forge:plates/electrum",
-    "#forge:plates/enderium",
-    "#forge:plates/gold",
-    "#forge:plates/invar",
-    "#forge:plates/iron",
-    "#forge:plates/lead",
-    "#forge:plates/lumium",
-    "#forge:plates/netherite",
-    "#forge:plates/nickel",
-    "#forge:plates/signalum",
-    "#forge:plates/silver",
-    "#forge:plates/tin"
+    "#forge:plates/invar"
   ]
 }
