@@ -71,7 +71,7 @@
 //            transferOut();
 //            transferIn();
 //        }
-//        if (Utils.timeCheck(level)) {
+//        if (Utils.timeCheck()) {
 //            updateTrackers(true);
 //            if (!itemsEqualWithTags(renderItem, itemStorage.getItemStack())) {
 //                renderItem = cloneStack(itemStorage.getItemStack(), 1);

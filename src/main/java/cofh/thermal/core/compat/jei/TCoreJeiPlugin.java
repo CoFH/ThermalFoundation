@@ -69,6 +69,13 @@ public class TCoreJeiPlugin implements IModPlugin {
     }
 
     @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+
+        registration.addRecipeCatalyst(new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), TREE_EXTRACTOR);
+        registration.addRecipeCatalyst(new ItemStack(DEVICE_ROCK_GEN_BLOCK), ROCK_GEN);
+    }
+
+    @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 
         int progressY = 34;
@@ -77,13 +84,6 @@ public class TCoreJeiPlugin implements IModPlugin {
 
         registration.addRecipeClickArea(DeviceTreeExtractorScreen.class, 80, 35, 16, progressH, TREE_EXTRACTOR);
         registration.addRecipeClickArea(DeviceRockGenScreen.class, 84, progressY, progressW, progressH, ROCK_GEN);
-    }
-
-    @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-
-        registration.addRecipeCatalyst(new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), TREE_EXTRACTOR);
-        registration.addRecipeCatalyst(new ItemStack(DEVICE_ROCK_GEN_BLOCK), ROCK_GEN);
     }
 
     @Override

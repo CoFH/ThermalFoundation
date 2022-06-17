@@ -820,6 +820,29 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .pattern("###")
                 .unlockedBy("has_vine", has(Items.VINE))
                 .save(consumer, ID_THERMAL + ":rubber_from_vine");
+
+        ShapelessRecipeBuilder.shapeless(Blocks.DIRT)
+                .requires(reg.get("compost"))
+                .requires(Tags.Items.SAND)
+                .requires(ThermalTags.Items.SLAG)
+                .unlockedBy("has_compost", has(reg.get("compost")))
+                .save(consumer, ID_THERMAL + ":dirt_crafting");
+
+        ShapelessRecipeBuilder.shapeless(Blocks.PODZOL)
+                .requires(reg.get("compost"))
+                .requires(ItemTags.LEAVES)
+                .requires(Tags.Items.SAND)
+                .requires(ThermalTags.Items.SLAG)
+                .unlockedBy("has_compost", has(reg.get("compost")))
+                .save(consumer, ID_THERMAL + ":podzol_crafting");
+
+        ShapelessRecipeBuilder.shapeless(Blocks.MYCELIUM)
+                .requires(reg.get("compost"))
+                .requires(Tags.Items.MUSHROOMS)
+                .requires(Tags.Items.SAND)
+                .requires(ThermalTags.Items.SLAG)
+                .unlockedBy("has_compost", has(reg.get("compost")))
+                .save(consumer, ID_THERMAL + ":mycelium_crafting");
     }
 
     private void generateChargeRecipes(Consumer<FinishedRecipe> consumer) {

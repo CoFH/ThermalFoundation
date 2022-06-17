@@ -56,6 +56,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTil
     protected static int timeConstant = 4800;
     protected static int minTimeConstant = timeConstant / 20;
     protected static int timeReductionWater = 20;
+    protected static boolean particles = true;
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> FisherManager.instance().validBoost(item));
     protected SimpleItemHandler internalHandler;
@@ -78,6 +79,11 @@ public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTil
     public static void setTimeReductionWater(int configConstant) {
 
         timeReductionWater = configConstant;
+    }
+
+    public static void setParticles(boolean configConstant) {
+
+        particles = configConstant;
     }
 
     public DeviceFisherTile(BlockPos pos, BlockState state) {
@@ -188,8 +194,10 @@ public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTil
                 if (xpStorageFeature) {
                     xpStorage.receiveXp(caught + level.random.nextInt(2 * caught), false);
                 }
-                Vec3 splashVec = Vec3.upFromBottomCenterOf(worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL)), 1.0);
-                ((ServerLevel) level).sendParticles(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
+                if (particles) {
+                    Vec3 splashVec = Vec3.upFromBottomCenterOf(worldPosition.relative(getBlockState().getValue(FACING_HORIZONTAL)), 1.0);
+                    ((ServerLevel) level).sendParticles(ParticleTypes.FISHING, splashVec.x, splashVec.y, splashVec.z, 10, 0.1D, 0.0D, 0.1D, 0.02D);
+                }
             }
         }
     }

@@ -76,7 +76,7 @@ public class FluidCellTile extends CellTileBase implements ICoFHTickableTile.ISe
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(level) || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
+        if (Utils.timeCheck() || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
             updateTrackers(true);
         }
     }

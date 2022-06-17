@@ -1,10 +1,84 @@
 {
-  "variants": {
-    "active=false": {
-      "model": "thermal:block/device_composter"
+  "multipart": [
+    {
+      "when": {
+        "active": "false"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter"
+      }
     },
-    "active=true": {
-      "model": "thermal:block/device_composter_active"
+    {
+      "when": {
+        "active": "true"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_active"
+      }
+    },
+    {
+      "when": {
+        "level": "1"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_1"
+      }
+    },
+    {
+      "when": {
+        "level": "2"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_2"
+      }
+    },
+    {
+      "when": {
+        "level": "3"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_3"
+      }
+    },
+    {
+      "when": {
+        "level": "4"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_4"
+      }
+    },
+    {
+      "when": {
+        "level": "5"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_5"
+      }
+    },
+    {
+      "when": {
+        "level": "6"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_6"
+      }
+    },
+    {
+      "when": {
+        "level": "7"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_7"
+      }
+    },
+    {
+      "when": {
+        "level": "8"
+      },
+      "apply": {
+        "model": "thermal:block/device_composter_contents_8"
+      }
     }
-  }
+  ]
 }

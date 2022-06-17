@@ -68,7 +68,7 @@ public class EnergyCellTile extends CellTileBase implements ICoFHTickableTile.IS
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck(level)) {
+        if (Utils.timeCheck()) {
             updateTrackers(true);
         }
     }

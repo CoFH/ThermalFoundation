@@ -2,14 +2,17 @@ package cofh.thermal.core.block.entity.device;
 
 import cofh.lib.block.entity.ICoFHTickableTile;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceComposterContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -27,6 +30,7 @@ import java.util.function.Supplier;
 import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.ThermalCore.ITEMS;
+import static cofh.thermal.core.block.device.TileBlockComposter.LEVEL;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_COMPOSTER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraft.world.level.block.ComposterBlock.COMPOSTABLES;
@@ -35,14 +39,28 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
 
+    protected static int timeConstant = 120;
+    protected static boolean particles = true;
+
     protected static final Supplier<ItemStack> COMPOST = () -> new ItemStack(ITEMS.get("compost"), 0);
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH(e -> false).setEmptyItem(COMPOST);
 
+    protected boolean hasInputsCache;
     protected float compostLevel;
     protected static final float COMPOST_LEVEL_MAX = 8.0F;
 
-    protected int process;
-    protected int processMax = 200;
+    protected int processMax = timeConstant;
+    protected int process = processMax;
+
+    public static void setTimeConstant(int configConstant) {
+
+        timeConstant = configConstant;
+    }
+
+    public static void setParticles(boolean configConstant) {
+
+        particles = configConstant;
+    }
 
     public DeviceComposterTile(BlockPos pos, BlockState state) {
 
@@ -60,6 +78,9 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
 
         updateActiveState();
 
+        if (Utils.timeCheck()) {
+            updateTrackers();
+        }
         if (!isActive) {
             return;
         }
@@ -67,7 +88,7 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
         if (process > 0) {
             return;
         }
-        processMax = 120 / (int) baseMod;
+        processMax = timeConstant / (int) baseMod;
         process = processMax;
         if (!outputSlot.isFull()) {
             for (ItemStorageCoFH slot : inventory.getInputSlots()) {
@@ -76,10 +97,28 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
                     slot.consume(1);
                 }
             }
+            hasInputsCache = hasInputs();
         }
         while (compostLevel >= COMPOST_LEVEL_MAX && !outputSlot.isFull()) {
             compostLevel -= COMPOST_LEVEL_MAX;
             outputSlot.modify(1);
+            if (particles) {
+                ((ServerLevel) level).sendParticles(ParticleTypes.COMPOSTER, worldPosition.getX() + 0.5, worldPosition.getY() + 1.5, worldPosition.getZ() + 0.5, 4, 0.1D, 0.0D, 0.1D, 0.02D);
+            }
+        }
+    }
+
+    @Override
+    protected boolean isValid() {
+
+        return hasInputsCache;
+    }
+
+    protected void updateTrackers() {
+
+        int scaledOutput = 8 * outputSlot.getCount() / outputSlot.getCapacity();
+        if (level != null && scaledOutput != this.getBlockState().getValue(LEVEL)) {
+            level.setBlockAndUpdate(worldPosition, getBlockState().setValue(LEVEL, scaledOutput));
         }
     }
 
@@ -94,21 +133,20 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
     @Override
     public int getScaledProgress(int scale) {
 
-        if (!isActive || processMax <= 0 || outputSlot.isFull() || hasNoInputs()) {
+        if (!isActive || processMax <= 0 || outputSlot.isFull() || !hasInputsCache) {
             return 0;
         }
         return scale * (processMax - process) / processMax;
     }
 
-    // This is only ever called client-side when looking at the GUI, so the inefficiency isn't a problem.
-    protected boolean hasNoInputs() {
+    protected boolean hasInputs() {
 
         for (ItemStorageCoFH slot : inventory.getInputSlots()) {
             if (!slot.isEmpty()) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     // endregion
 
@@ -120,6 +158,7 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
 
         buffer.writeInt(process);
         buffer.writeInt(processMax);
+        buffer.writeBoolean(hasInputsCache);
 
         return buffer;
     }
@@ -131,6 +170,7 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
 
         process = buffer.readInt();
         processMax = buffer.readInt();
+        hasInputsCache = buffer.readBoolean();
     }
     // endregion
 
@@ -143,6 +183,7 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
         process = nbt.getInt(TAG_PROCESS);
         processMax = nbt.getInt(TAG_PROCESS_MAX);
 
+        hasInputsCache = hasInputs();
         compostLevel = nbt.getFloat("Compost");
     }
 
@@ -155,6 +196,21 @@ public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickable
         nbt.putInt(TAG_PROCESS_MAX, processMax);
 
         nbt.putFloat("Compost", compostLevel);
+    }
+    // endregion
+
+    // region ITileCallback
+    @Override
+    public void onInventoryChanged(int slot) {
+
+        if (level != null && Utils.isServerWorld(level) && slot <= 8) {
+            hasInputsCache = hasInputs();
+            if (!hasInputsCache) {
+                processMax = timeConstant / (int) baseMod;
+                process = processMax;
+            }
+        }
+        super.onInventoryChanged(slot);
     }
     // endregion
 

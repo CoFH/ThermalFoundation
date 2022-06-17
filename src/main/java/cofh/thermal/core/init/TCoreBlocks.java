@@ -6,6 +6,7 @@ import cofh.core.block.TileBlockCoFH;
 import cofh.core.item.BlockItemCoFH;
 import cofh.lib.block.impl.*;
 import cofh.thermal.core.block.*;
+import cofh.thermal.core.block.device.TileBlockComposter;
 import cofh.thermal.core.block.entity.ChargeBenchTile;
 import cofh.thermal.core.block.entity.TinkerBenchTile;
 import cofh.thermal.core.block.entity.device.*;
@@ -284,7 +285,7 @@ public class TCoreBlocks {
         registerAugmentableBlock(ID_DEVICE_HIVE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceHiveExtractorTile.class, () -> DEVICE_HIVE_EXTRACTOR_TILE), deviceAugs, DeviceHiveExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_HIVE_EXTRACTOR));
         registerAugmentableBlock(ID_DEVICE_TREE_EXTRACTOR, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceTreeExtractorTile.class, () -> DEVICE_TREE_EXTRACTOR_TILE), deviceAugs, DeviceTreeExtractorTile.AUG_VALIDATOR, getFlag(ID_DEVICE_TREE_EXTRACTOR));
         registerAugmentableBlock(ID_DEVICE_FISHER, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceFisherTile.class, () -> DEVICE_FISHER_TILE), deviceAugs, DeviceFisherTile.AUG_VALIDATOR, getFlag(ID_DEVICE_FISHER));
-        registerAugmentableBlock(ID_DEVICE_COMPOSTER, () -> new TileBlockActive(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceComposterTile.class, () -> DEVICE_COMPOSTER_TILE), deviceAugs, DeviceComposterTile.AUG_VALIDATOR, getFlag(ID_DEVICE_COMPOSTER));
+        registerAugmentableBlock(ID_DEVICE_COMPOSTER, () -> new TileBlockComposter(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), DeviceComposterTile.class, () -> DEVICE_COMPOSTER_TILE), deviceAugs, DeviceComposterTile.AUG_VALIDATOR, getFlag(ID_DEVICE_COMPOSTER));
         registerAugmentableBlock(ID_DEVICE_SOIL_INFUSER, () -> new TileBlockActive4Way(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F).lightLevel(lightValue(ACTIVE, 10)), DeviceSoilInfuserTile.class, () -> DEVICE_SOIL_INFUSER_TILE), deviceAugs, DeviceSoilInfuserTile.AUG_VALIDATOR, getFlag(ID_DEVICE_SOIL_INFUSER));
 
         registerAugmentableBlock(ID_DEVICE_WATER_GEN, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F), DeviceWaterGenTile.class, () -> DEVICE_WATER_GEN_TILE), deviceAugs, DeviceWaterGenTile.AUG_VALIDATOR, getFlag(ID_DEVICE_WATER_GEN));

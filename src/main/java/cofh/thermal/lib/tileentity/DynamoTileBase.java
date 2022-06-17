@@ -104,7 +104,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
                     processStart();
                 }
             }
-        } else if (Utils.timeCheckQuarter(level)) {
+        } else if (Utils.timeCheckQuarter()) {
             if (redstoneControl.getState() && canProcessStart()) {
                 processStart();
                 processTick();
