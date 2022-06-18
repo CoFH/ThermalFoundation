@@ -275,7 +275,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     public boolean onActivatedDelegate(Level world, BlockPos pos, BlockState state, Player player, InteractionHand hand, BlockHitResult result) {
 
         if (player.isSecondaryUseActive()) {
-            return openFilterGui((ServerPlayer) player);
+            return openFilterGui((ServerPlayer) player, 0);
         }
         ItemStack stack = player.getItemInHand(hand);
         if (augValidator().test(stack)) {
@@ -806,18 +806,18 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     // region IFilterableTile
     @Override
-    public IFilter getFilter() {
+    public IFilter getFilter(int filterId) {
 
         return filter;
     }
 
     @Override
-    public void onFilterChanged() {
+    public void onFilterChanged(int filterId) {
 
     }
 
     @Override
-    public boolean openGui(ServerPlayer player) {
+    public boolean openGui(ServerPlayer player, int guiId) {
 
         if (canOpenGui()) {
             NetworkHooks.openGui(player, this, worldPosition);
@@ -827,10 +827,10 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     }
 
     @Override
-    public boolean openFilterGui(ServerPlayer player) {
+    public boolean openFilterGui(ServerPlayer player, int filterId) {
 
-        if (FilterHelper.hasFilter(this)) {
-            NetworkHooks.openGui(player, getFilter(), worldPosition);
+        if (FilterHelper.hasFilter(this, 0)) {
+            NetworkHooks.openGui(player, getFilter(filterId), worldPosition);
             return true;
         }
         return false;

@@ -51,20 +51,20 @@ public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScr
                 .setUV(24, 0)
                 .setSize(24, 21)
                 .setTexture(TAB_TOP, 48, 32)
-                .setVisible(() -> FilterHelper.hasFilter(tile)));
+                .setVisible(() -> FilterHelper.hasFilter(tile, 0)));
         addElement(new ElementTexture(this, 8, -17) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                FilterGuiOpenPacket.openFilterGui(tile);
+                FilterGuiOpenPacket.openFilterGui(tile, (byte) 0);
                 return true;
             }
         }
                 .setSize(16, 16)
                 .setTexture(NAV_FILTER, 16, 16)
-                .setTooltipFactory((element, mouseX, mouseY) -> Collections.singletonList(tile.getFilter().getDisplayName()))
-                .setVisible(() -> FilterHelper.hasFilter(tile)));
+                .setTooltipFactory((element, mouseX, mouseY) -> Collections.singletonList(tile.getFilter(0).getDisplayName()))
+                .setVisible(() -> FilterHelper.hasFilter(tile, 0)));
 
         // TODO: Revisit ItemStack-based
         //        addElement(new ElementItemStack(this, 8, -17) {

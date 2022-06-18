@@ -210,19 +210,19 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ICoFHTick
 
     // region IFilterableTile
     @Override
-    public IFilter getFilter() {
+    public IFilter getFilter(int filterId) {
 
         return EmptyFilter.INSTANCE;
     }
 
     @Override
-    public boolean openGui(ServerPlayer player) {
+    public boolean openGui(ServerPlayer player, int guiId) {
 
         return false;
     }
 
     @Override
-    public boolean openFilterGui(ServerPlayer player) {
+    public boolean openFilterGui(ServerPlayer player, int filterId) {
 
         return false;
     }

@@ -619,6 +619,14 @@
   "info.thermal.tinker_bench_mode_augment": "Mode: Augment",
   "info.thermal.tinker_bench_mode_charge": "Mode: Charge/Fill",
 
+  "info.thermal.beekeeper_armor": "Protects from stings.",
+
+  "info.thermal.diving_helmet": "Greatly increases air supply.",
+
+  "info.thermal.hazmat_armor": "Protects from various hazards.",
+  "info.thermal.hazmat_helmet": "Increases air supply.",
+  "info.thermal.hazmat_boots": "Reduces fall damage.",
+
   "item.thermal.beekeeper_fabric": "Woven Fabric",
   "item.thermal.beekeeper_helmet": "Beekeeper's Hood",
   "item.thermal.beekeeper_chestplate": "Beekeeper's Jacket",
