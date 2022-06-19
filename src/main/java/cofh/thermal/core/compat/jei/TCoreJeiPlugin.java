@@ -1,7 +1,6 @@
 package cofh.thermal.core.compat.jei;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.client.gui.device.DeviceRockGenScreen;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.compat.jei.device.RockGenCategory;
@@ -10,11 +9,9 @@ import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
 import mezz.jei.api.gui.ingredient.IRecipeSlotTooltipCallback;
-import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -26,11 +23,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraftforge.fluids.FluidStack;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
@@ -103,17 +95,6 @@ public class TCoreJeiPlugin implements IModPlugin {
         return recipeManager;
     }
 
-    public static void setInputIngredients(IIngredients ingredients, List<FluidIngredient> inputs) {
-
-        List<List<FluidStack>> inputLists = new ArrayList<>();
-        for (FluidIngredient input : inputs) {
-            FluidStack[] stacks = input.getFluids();
-            List<FluidStack> expandedInput = Arrays.asList(stacks);
-            inputLists.add(expandedInput);
-        }
-        ingredients.setInputLists(VanillaTypes.FLUID, inputLists);
-    }
-
     public static IRecipeSlotTooltipCallback catalystTooltip() {
 
         return (recipeSlotView, tooltip) -> tooltip.add(getTextComponent("info.cofh.optional_catalyst"));
@@ -159,16 +140,7 @@ public class TCoreJeiPlugin implements IModPlugin {
 
     public static IRecipeSlotTooltipCallback defaultFluidTooltip() {
 
-        return (recipeSlotView, tooltip) -> recipeSlotView.getDisplayedIngredient(VanillaTypes.FLUID).ifPresent((ingredient) -> {
-            if (FluidHelper.hasPotionTag(ingredient)) {
-                FluidHelper.addPotionTooltipStrings(ingredient, tooltip);
-            }
-        });
-    }
-
-    public static void addDefaultFluidTooltipCallback(IGuiFluidStackGroup group) {
-
-        group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
+        return (recipeSlotView, tooltip) -> recipeSlotView.getDisplayedIngredient(ForgeTypes.FLUID_STACK).ifPresent((ingredient) -> {
             if (FluidHelper.hasPotionTag(ingredient)) {
                 FluidHelper.addPotionTooltipStrings(ingredient, tooltip);
             }

@@ -6,6 +6,7 @@ import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
 import cofh.thermal.lib.compat.jei.Drawables;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -99,7 +100,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
         builder.addSlot(RecipeIngredientRole.INPUT, 53, 14).addItemStack(leaves);
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 11)
-                .addIngredients(VanillaTypes.FLUID, List.of(recipe.getFluid()))
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.getFluid()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
