@@ -619,6 +619,14 @@
   "info.thermal.tinker_bench_mode_augment": "模式：增强",
   "info.thermal.tinker_bench_mode_charge": "模式：充能/灌装",
 
+  "info.thermal.beekeeper_armor": "保护你免收叮咬伤害。",
+
+  "info.thermal.diving_helmet": "极大增加供氧量。",
+
+  "info.thermal.hazmat_armor": "保护你免受多种危害。",
+  "info.thermal.hazmat_helmet": "增加供氧量。",
+  "info.thermal.hazmat_boots": "减少摔落伤害。",
+
   "item.thermal.beekeeper_fabric": "梭织布",
   "item.thermal.beekeeper_helmet": "养蜂人面罩",
   "item.thermal.beekeeper_chestplate": "养蜂人大褂",
@@ -809,10 +817,10 @@
 
   "item.thermal.xp_storage_augment.keyword": "组件 经验 xp",
 
-  "item.thermal.beekeeper_helmet.keyword": "盔甲 头盔 蜂蜜 蜇",
-  "item.thermal.beekeeper_chestplate.keyword": "盔甲 胸甲 蜂蜜 蜇",
-  "item.thermal.beekeeper_leggings.keyword": "盔甲 蜂蜜 护腿 蜇",
-  "item.thermal.beekeeper_boots.keyword": "盔甲 蜂蜜 蜇",
+  "item.thermal.beekeeper_helmet.keyword": "盔甲 头盔 蜂蜜 蜇 刺叮 叮咬",
+  "item.thermal.beekeeper_chestplate.keyword": "盔甲 胸甲 蜂蜜 蜇 刺叮 叮咬",
+  "item.thermal.beekeeper_leggings.keyword": "盔甲 蜂蜜 护腿 蜇 刺叮 叮咬",
+  "item.thermal.beekeeper_boots.keyword": "盔甲 蜂蜜 蜇 刺叮 叮咬",
 
   "item.thermal.diving_helmet.keyword": "盔甲 水下",
   "item.thermal.diving_chestplate.keyword": "盔甲 胸甲 水下",
