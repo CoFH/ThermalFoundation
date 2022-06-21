@@ -7,13 +7,12 @@ import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.lib.util.constants.Constants.PATH_ELEMENTS;
+import static cofh.lib.util.Constants.PATH_ELEMENTS;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContainer> {
 
@@ -51,7 +50,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
         }
                 .setSize(20, 20)
                 .setTexture(TEX_AUGMENT, 40, 20)
-                .setTooltipFactory(new SimpleTooltip(new TranslatableComponent("info.thermal.tinker_bench_mode_augment")))
+                .setTooltipFactory(new SimpleTooltip(Component.translatable("info.thermal.tinker_bench_mode_augment")))
                 .setVisible(menu.tile::allowAugmentation));
 
         addElement(new ElementButton(this, 42, 51) {
@@ -65,7 +64,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
         }
                 .setSize(20, 20)
                 .setTexture(TEX_REPLENISH, 40, 20)
-                .setTooltipFactory(new SimpleTooltip(new TranslatableComponent("info.thermal.tinker_bench_mode_charge")))
+                .setTooltipFactory(new SimpleTooltip(Component.translatable("info.thermal.tinker_bench_mode_charge")))
                 .setVisible(() -> !menu.tile.allowAugmentation()));
     }
 

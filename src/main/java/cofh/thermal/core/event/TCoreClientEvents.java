@@ -1,9 +1,9 @@
 package cofh.thermal.core.event;
 
 import cofh.core.util.ProxyClient;
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.vfx.RenderTypes;
-import cofh.lib.block.entity.IAreaEffectTile;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.thermal.core.item.WrenchItem;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -17,7 +17,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +30,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.constants.NBTTags.TAG_TYPE;
 import static cofh.lib.util.helpers.StringHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.*;
@@ -79,9 +78,9 @@ public class TCoreClientEvents {
                         || isAdditive(mod) && value > 0 && isInverse(mod)
                         || isMultiplicative(mod) && (isInverse(mod) ? value > 1.0 : value < 1.0);
 
-                MutableComponent modText = new TextComponent("" +
-                        (isAdditive(mod) && value > 0 ? "+" : "") +
-                        (isInteger(mod) ? DF0.format(value) : isMultiplicative(mod) ? DF2.format(value) + "x" : DF0.format(value * 100) + "%"))
+                MutableComponent modText = Component.literal("" +
+                                (isAdditive(mod) && value > 0 ? "+" : "") +
+                                (isInteger(mod) ? DF0.format(value) : isMultiplicative(mod) ? DF2.format(value) + "x" : DF0.format(value * 100) + "%"))
                         .withStyle(bad ? ChatFormatting.RED : ChatFormatting.GREEN);
 
                 if (isMaximized(mod)) {

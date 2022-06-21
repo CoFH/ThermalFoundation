@@ -2,13 +2,15 @@ package cofh.thermal.core.client.renderer.model;
 
 import cofh.core.client.renderer.model.ModelUtils;
 import cofh.core.client.renderer.model.ModelUtils.FluidCacheWrapper;
+import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.client.renderer.model.RetexturedBakedQuad;
+import cofh.lib.client.renderer.block.model.RetexturedBakedQuad;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.BakedModelWrapper;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
@@ -17,7 +19,10 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.IdentityHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class UnderlayBakedModel extends BakedModelWrapper<BakedModel> implements IDynamicBakedModel {
 
@@ -39,13 +44,13 @@ public class UnderlayBakedModel extends BakedModelWrapper<BakedModel> implements
 
     @Override
     @Nonnull
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData) {
 
         return addUnderlayQuads(new LinkedList<>(originalModel.getQuads(state, side, rand, extraData)), state, side, rand, extraData);
     }
 
     // region HELPERS
-    protected List<BakedQuad> addUnderlayQuads(LinkedList<BakedQuad> quads, @Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+    protected List<BakedQuad> addUnderlayQuads(LinkedList<BakedQuad> quads, @Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData) {
 
         if (side == null || quads.isEmpty()) {
             return quads;
@@ -63,7 +68,7 @@ public class UnderlayBakedModel extends BakedModelWrapper<BakedModel> implements
                     cachedFluidQuads = new BakedQuad[6];
                 }
                 if (cachedFluidQuads[sideIndex] == null) {
-                    cachedFluidQuads[sideIndex] = new RetexturedBakedQuad(RenderHelper.mulColor(baseQuad, RenderHelper.getFluidColor(fluid)), RenderHelper.getFluidTexture(fluid));
+                    cachedFluidQuads[sideIndex] = new RetexturedBakedQuad(RenderHelper.mulColor(baseQuad, FluidHelper.color(fluid)), RenderHelper.getFluidTexture(fluid));
                     FLUID_QUAD_CACHE.put(wrapper, cachedFluidQuads);
                 }
                 quads.offerFirst(cachedFluidQuads[sideIndex]);

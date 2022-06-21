@@ -1,9 +1,9 @@
 package cofh.thermal.core.block.entity;
 
-import cofh.lib.block.entity.ICoFHTickableTile;
-import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.core.content.energy.EnergyStorageCoFH;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -19,14 +19,14 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.StorageGroup.ACCESSIBLE;
-import static cofh.lib.util.StorageGroup.INTERNAL;
+import static cofh.lib.api.StorageGroup.ACCESSIBLE;
+import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreReferences.CHARGE_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class ChargeBenchTile extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable {
+public class ChargeBenchTile extends ThermalTileAugmentable implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FILTER);
 

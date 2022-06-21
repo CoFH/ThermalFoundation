@@ -9,8 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
-import static cofh.lib.util.constants.Constants.ID_FORGE;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.Constants.ID_FORGE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 public class ThermalTags {
 

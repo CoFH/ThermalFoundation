@@ -1,10 +1,9 @@
 package cofh.thermal.core.client.renderer.model;
 
 import cofh.core.client.renderer.model.ModelUtils;
-import cofh.lib.client.renderer.model.RetexturedBakedQuad;
-import cofh.lib.energy.IEnergyContainerItem;
-import cofh.lib.item.ICoFHItem;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.api.item.IEnergyContainerItem;
+import cofh.lib.client.renderer.block.model.RetexturedBakedQuad;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.lib.util.helpers.MathHelper;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -16,6 +15,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,9 +26,12 @@ import net.minecraftforge.client.model.data.IModelData;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-import static cofh.lib.item.ContainerType.ENERGY;
+import static cofh.lib.api.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 import static cofh.lib.util.constants.NBTTags.TAG_SIDES;
 import static cofh.thermal.core.client.ThermalTextures.*;
@@ -59,7 +62,7 @@ public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implemen
 
     @Override
     @Nonnull
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData) {
 
         LinkedList<BakedQuad> quads = new LinkedList<>(originalModel.getQuads(state, side, rand, extraData));
         if (side == null || quads.isEmpty()) {
@@ -192,11 +195,13 @@ public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implemen
     private int getLevel(ItemStack stack) {
 
         Item item = stack.getItem();
-        if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, ENERGY)) {
-            return 9;
-        }
-        if (item instanceof IEnergyContainerItem && ((IEnergyContainerItem) item).getEnergyStored(stack) > 0) {
-            return 1 + Math.min(((IEnergyContainerItem) item).getScaledEnergyStored(stack, 8), 7);
+        if (item instanceof IEnergyContainerItem energyContainer) {
+            if (energyContainer.isCreative(stack, ENERGY)) {
+                return 9;
+            }
+            if (energyContainer.getEnergyStored(stack) > 0) {
+                return 1 + Math.min(energyContainer.getScaledEnergyStored(stack, 8), 7);
+            }
         }
         return 0;
     }

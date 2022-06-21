@@ -36,7 +36,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.constants.Constants.ACTIVE;
+import static cofh.lib.util.Constants.ACTIVE;
 import static cofh.lib.util.helpers.BlockHelper.lightValue;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;

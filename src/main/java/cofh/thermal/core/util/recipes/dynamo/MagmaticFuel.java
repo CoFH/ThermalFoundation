@@ -1,6 +1,6 @@
 package cofh.thermal.core.util.recipes.dynamo;
 
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import net.minecraft.resources.ResourceLocation;

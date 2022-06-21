@@ -1,6 +1,7 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.lib.entity.AbstractTNTMinecart;
+import cofh.core.content.entity.AbstractTNTMinecart;
+import cofh.lib.util.Utils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +23,7 @@ public class ThermalTNTMinecart extends AbstractTNTMinecart {
         super(type, worldIn);
         this.detonateAction = detonateAction;
         this.block = block;
-        item = ITEMS.get(type.getRegistryName());
+        item = ITEMS.get(Utils.getRegistryName(type));
     }
 
     public ThermalTNTMinecart(EntityType<?> type, Level worldIn, IDetonateAction detonateAction, Block block, double posX, double posY, double posZ) {
@@ -30,7 +31,7 @@ public class ThermalTNTMinecart extends AbstractTNTMinecart {
         super(type, worldIn, posX, posY, posZ);
         this.detonateAction = detonateAction;
         this.block = block;
-        item = ITEMS.get(type.getRegistryName());
+        item = ITEMS.get(Utils.getRegistryName(type));
     }
 
     @Override

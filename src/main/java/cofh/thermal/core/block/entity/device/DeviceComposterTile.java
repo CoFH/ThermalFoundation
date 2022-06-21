@@ -1,9 +1,9 @@
 package cofh.thermal.core.block.entity.device;
 
-import cofh.lib.block.entity.ICoFHTickableTile;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceComposterContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -27,7 +27,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.StorageGroup.*;
+import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.block.device.TileBlockComposter.LEVEL;
@@ -35,7 +35,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_COMPOSTER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraft.world.level.block.ComposterBlock.COMPOSTABLES;
 
-public class DeviceComposterTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
+public class DeviceComposterTile extends DeviceTileBase implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
 

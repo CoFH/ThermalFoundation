@@ -1,6 +1,6 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.AugmentDataHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeModWithDefault;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_BASE_MOD;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_VALIDATOR;
 

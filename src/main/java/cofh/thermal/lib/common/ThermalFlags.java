@@ -4,7 +4,7 @@ import cofh.lib.util.flags.FlagManager;
 
 import java.util.function.BooleanSupplier;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 public class ThermalFlags {
 

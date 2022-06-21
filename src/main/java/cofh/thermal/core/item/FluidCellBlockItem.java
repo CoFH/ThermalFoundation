@@ -1,9 +1,9 @@
 package cofh.thermal.core.item;
 
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.fluid.IFluidContainerItem;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.lib.api.item.IFluidContainerItem;
+import cofh.lib.content.fluid.FluidStorageCoFH;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.block.entity.storage.FluidCellTile;
 import cofh.thermal.lib.item.BlockItemAugmentable;
@@ -20,11 +20,11 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static cofh.core.util.helpers.AugmentableHelper.getPropertyWithDefault;
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 import static cofh.core.util.helpers.FluidHelper.addPotionTooltip;
-import static cofh.lib.item.ContainerType.FLUID;
+import static cofh.lib.api.ContainerType.FLUID;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 import static cofh.lib.util.helpers.StringHelper.*;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;

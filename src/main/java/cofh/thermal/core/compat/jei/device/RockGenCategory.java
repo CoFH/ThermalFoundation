@@ -27,7 +27,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
 import static cofh.thermal.lib.compat.jei.Drawables.SLOT;

@@ -1,6 +1,5 @@
 package cofh.thermal.core.entity.monster;
 
-import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.entity.projectile.BasalzProjectile;
 import cofh.thermal.lib.common.ThermalFlags;
@@ -11,6 +10,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -36,8 +36,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.EnumSet;
-import java.util.Random;
 
+import static cofh.core.init.CoreMobEffects.SUNDERED;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BASALZ;
@@ -55,7 +55,7 @@ public class Basalz extends Monster {
     public int angerTime = 72000;
     protected boolean wasAngry = false;
 
-    public static boolean canSpawn(EntityType<Basalz> entityType, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
+    public static boolean canSpawn(EntityType<Basalz> entityType, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, RandomSource rand) {
 
         return ThermalFlags.getFlag(FLAG_MOB_BASALZ).getAsBoolean() && Monster.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
     }
@@ -167,7 +167,7 @@ public class Basalz extends Monster {
     @Override
     public boolean canBeAffected(MobEffectInstance effect) {
 
-        return super.canBeAffected(effect) && !effect.getEffect().equals(CoreReferences.SUNDERED);
+        return super.canBeAffected(effect) && !effect.getEffect().equals(SUNDERED.get());
     }
 
     @Override

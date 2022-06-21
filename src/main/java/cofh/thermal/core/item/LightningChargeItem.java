@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.ItemCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.projectile.BlitzProjectile;
 import cofh.thermal.core.init.TCoreSounds;
@@ -20,9 +20,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 
-import java.util.Random;
-
-import static cofh.lib.util.references.CoreReferences.LIGHTNING_RESISTANCE;
+import static cofh.core.init.CoreMobEffects.LIGHTNING_RESISTANCE;
 
 public class LightningChargeItem extends ItemCoFH {
 
@@ -47,7 +45,7 @@ public class LightningChargeItem extends ItemCoFH {
 
             if (world instanceof ServerLevel) {
                 if (player != null) {
-                    player.addEffect(new MobEffectInstance(LIGHTNING_RESISTANCE, 20, 0, false, false, false));
+                    player.addEffect(new MobEffectInstance(LIGHTNING_RESISTANCE.get(), 20, 0, false, false, false));
                 }
                 Utils.spawnLightningBolt(world, pos, player);
                 // world.addFreshEntity(new ElectricArcEntity(world, Vec3.atBottomCenterOf(pos)).setOwner(player));
@@ -61,7 +59,7 @@ public class LightningChargeItem extends ItemCoFH {
 
     private void playUseSound(Level worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT, SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT, SoundSource.BLOCKS, 1.0F, (worldIn.random.nextFloat() - worldIn.random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR
@@ -76,11 +74,9 @@ public class LightningChargeItem extends ItemCoFH {
             double d1 = iposition.y() + (double) ((float) direction.getStepY() * 0.3F);
             double d2 = iposition.z() + (double) ((float) direction.getStepZ() * 0.3F);
             Level world = source.getLevel();
-            Random random = world.random;
-            double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
-            double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
-            double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
-            // TODO What? Why is this in a Util.make? - covers1624 - 1.18.2 port.
+            double d3 = world.random.nextGaussian() * 0.05D + (double) direction.getStepX();
+            double d4 = world.random.nextGaussian() * 0.05D + (double) direction.getStepY();
+            double d5 = world.random.nextGaussian() * 0.05D + (double) direction.getStepZ();
             world.addFreshEntity(new BlitzProjectile(d0, d1, d2, d3, d4, d5, world));
             stack.shrink(1);
             return stack;

@@ -1,7 +1,7 @@
 package cofh.thermal.core.util.recipes.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.internal.BaseMachineRecipe;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static cofh.lib.util.constants.Constants.BASE_CHANCE_LOCKED;
+import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqual;
 import static cofh.thermal.lib.util.managers.AbstractManager.convert;
 

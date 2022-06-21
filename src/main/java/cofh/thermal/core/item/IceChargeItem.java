@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
-import cofh.lib.util.AreaUtils;
+import cofh.core.content.item.ItemCoFH;
+import cofh.core.util.AreaUtils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.entity.projectile.BlizzProjectile;
 import net.minecraft.core.BlockPos;
@@ -24,9 +24,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 
-import java.util.Random;
-
-import static cofh.lib.util.references.CoreReferences.GLOSSED_MAGMA;
+import static cofh.core.init.CoreBlocks.GLOSSED_MAGMA;
 import static cofh.thermal.core.config.ThermalCoreConfig.permanentLava;
 import static cofh.thermal.core.config.ThermalCoreConfig.permanentWater;
 import static net.minecraft.world.level.block.Blocks.*;
@@ -81,10 +79,10 @@ public class IceChargeItem extends ItemCoFH {
         // LAVA
         isFull = state.getBlock() == LAVA && state.getValue(LiquidBlock.LEVEL) == 0;
         if (state.getMaterial() == Material.LAVA && isFull && state.canSurvive(world, pos) && world.isUnobstructed(state, pos, CollisionContext.empty())) {
-            world.setBlockAndUpdate(pos, permanentLava ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.defaultBlockState());
+            world.setBlockAndUpdate(pos, permanentLava ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.get().defaultBlockState());
             used = true;
             if (!permanentLava) {
-                world.scheduleTick(pos, GLOSSED_MAGMA, MathHelper.nextInt(world.random, 60, 120));
+                world.scheduleTick(pos, GLOSSED_MAGMA.get(), MathHelper.nextInt(world.random, 60, 120));
             }
         }
         if (used) {
@@ -98,7 +96,7 @@ public class IceChargeItem extends ItemCoFH {
 
     private void playUseSound(Level worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0F, (worldIn.random.nextFloat() - worldIn.random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR
@@ -113,10 +111,9 @@ public class IceChargeItem extends ItemCoFH {
             double d1 = iposition.y() + (double) ((float) direction.getStepY() * 0.3F);
             double d2 = iposition.z() + (double) ((float) direction.getStepZ() * 0.3F);
             Level world = source.getLevel();
-            Random random = world.random;
-            double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
-            double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
-            double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
+            double d3 = world.random.nextGaussian() * 0.05D + (double) direction.getStepX();
+            double d4 = world.random.nextGaussian() * 0.05D + (double) direction.getStepY();
+            double d5 = world.random.nextGaussian() * 0.05D + (double) direction.getStepZ();
             world.addFreshEntity(new BlizzProjectile(d0, d1, d2, d3, d4, d5, world));
             stack.shrink(1);
             return stack;

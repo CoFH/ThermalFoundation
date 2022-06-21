@@ -1,7 +1,7 @@
 package cofh.thermal.core.event;
 
 import cofh.core.compat.curios.CuriosProxy;
-import cofh.lib.util.filter.IFilterOptions;
+import cofh.core.util.filter.IFilterOptions;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.item.DivingArmorItem;
 import cofh.thermal.core.item.SatchelItem;
@@ -18,7 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import static cofh.lib.util.Utils.getMaxEquippedEnchantmentLevel;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.references.EnsorcReferences.AIR_AFFINITY;
 
 @Mod.EventBusSubscriber (modid = ID_THERMAL)

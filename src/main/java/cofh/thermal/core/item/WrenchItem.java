@@ -1,10 +1,10 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.IMultiModeItem;
+import cofh.core.content.item.ItemCoFH;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.block.IDismantleable;
-import cofh.lib.block.IWrenchable;
-import cofh.lib.item.IMultiModeItem;
+import cofh.lib.api.block.IDismantleable;
+import cofh.lib.api.block.IWrenchable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import com.google.common.collect.ImmutableMultimap;
@@ -12,7 +12,6 @@ import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -34,8 +33,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static cofh.core.init.CoreMobEffects.WRENCHED;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.lib.util.references.CoreReferences.WRENCHED;
 
 public class WrenchItem extends ItemCoFH implements IMultiModeItem {
 
@@ -93,7 +92,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
-        target.addEffect(new MobEffectInstance(WRENCHED, 60, 0, false, false));
+        target.addEffect(new MobEffectInstance(WRENCHED.get(), 60, 0, false, false));
         stack.hurtAndBreak(1, attacker, (entity) -> {
             entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });
@@ -143,7 +142,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     public void onModeChange(Player player, ItemStack stack) {
 
         player.level.playSound(null, player.blockPosition(), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 0.4F, (isActive(stack) ? 0.7F : 0.5F) + 0.1F * getMode(stack));
-        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.thermal.wrench.mode." + getMode(stack)));
+        ChatHelper.sendIndexedChatMessageToPlayer(player, Component.translatable("info.thermal.wrench.mode." + getMode(stack)));
     }
     // endregion
 }

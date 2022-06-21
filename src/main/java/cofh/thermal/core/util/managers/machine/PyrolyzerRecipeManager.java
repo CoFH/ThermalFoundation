@@ -1,14 +1,9 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
-
-import java.util.Map;
 
 public class PyrolyzerRecipeManager extends SingleItemRecipeManager {
 
@@ -31,8 +26,8 @@ public class PyrolyzerRecipeManager extends SingleItemRecipeManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PYROLYZER);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
+        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PYROLYZER);
+        for (var entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
     }

@@ -1,9 +1,9 @@
 package cofh.thermal.core.block.entity.device;
 
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.lib.block.entity.ICoFHTickableTile;
-import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceRockGenContainer;
 import cofh.thermal.core.util.managers.device.RockGenManager;
@@ -35,14 +35,14 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.OUTPUT;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
+import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
+import static cofh.lib.api.StorageGroup.OUTPUT;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceRockGenTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
+public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE);
 

@@ -4,11 +4,11 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
 import net.minecraft.nbt.CompoundTag;
 
-import static cofh.lib.util.constants.Constants.AUG_SCALE_MAX;
-import static cofh.lib.util.constants.Constants.AUG_SCALE_MIN;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeModWithDefault;
+import static cofh.lib.util.Constants.AUG_SCALE_MAX;
+import static cofh.lib.util.Constants.AUG_SCALE_MIN;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault;
 
 public class MachineProperties implements IRecipeCatalyst {
 

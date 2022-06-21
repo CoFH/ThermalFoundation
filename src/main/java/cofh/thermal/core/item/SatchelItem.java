@@ -1,18 +1,18 @@
 package cofh.thermal.core.item;
 
+import cofh.core.content.item.IMultiModeItem;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
+import cofh.core.util.filter.IFilter;
+import cofh.core.util.filter.IFilterableItem;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.inventory.SimpleItemInv;
-import cofh.lib.item.IColorableItem;
-import cofh.lib.item.IMultiModeItem;
+import cofh.core.util.helpers.FilterHelper;
+import cofh.core.util.helpers.InventoryHelper;
+import cofh.lib.api.item.IColorableItem;
+import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.content.inventory.SimpleItemInv;
 import cofh.lib.util.Utils;
-import cofh.lib.util.filter.IFilter;
-import cofh.lib.util.filter.IFilterableItem;
-import cofh.lib.util.helpers.FilterHelper;
-import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -22,7 +22,6 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -135,10 +134,10 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
         }
         if (player instanceof ServerPlayer) {
             if (!canPlayerAccess(stack, player)) {
-                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_warning", SecurityHelper.getOwnerName(stack)));
+                ChatHelper.sendIndexedChatMessageToPlayer(player, Component.translatable("info.cofh.secure_warning", SecurityHelper.getOwnerName(stack)));
                 return false;
             } else if (SecurityHelper.attemptClaimItem(stack, player)) {
-                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_item"));
+                ChatHelper.sendIndexedChatMessageToPlayer(player, Component.translatable("info.cofh.secure_item"));
                 return false;
             }
             if (player.isSecondaryUseActive()) {
@@ -194,7 +193,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     @Override
     public Component getDisplayName() {
 
-        return new TranslatableComponent("item.thermal.satchel");
+        return Component.translatable("item.thermal.satchel");
     }
 
     @Nullable
@@ -236,7 +235,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
     public void onModeChange(Player player, ItemStack stack) {
 
         player.level.playSound(null, player.blockPosition(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.4F, 0.8F + 0.4F * getMode(stack));
-        ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.thermal.satchel.mode." + getMode(stack)));
+        ChatHelper.sendIndexedChatMessageToPlayer(player, Component.translatable("info.thermal.satchel.mode." + getMode(stack)));
     }
     // endregion
 }

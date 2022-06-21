@@ -1,10 +1,9 @@
 package cofh.thermal.core.util.managers.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStackHolder;
-import cofh.lib.fluid.IFluidStackAccess;
-import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
+import cofh.lib.content.fluid.FluidStackHolder;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
@@ -13,9 +12,7 @@ import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
 import cofh.thermal.lib.util.recipes.internal.SimpleMachineRecipe;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -71,7 +68,7 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
         return getRecipe(Collections.emptyList(), Collections.singletonList(new FluidStackHolder(input)));
     }
 
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputTanks.isEmpty() || inputTanks.get(0).isEmpty()) {
             return null;
@@ -125,8 +122,8 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_REFINERY);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
+        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_REFINERY);
+        for (var entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
     }

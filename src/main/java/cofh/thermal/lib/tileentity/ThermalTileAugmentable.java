@@ -1,30 +1,30 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.block.entity.TileCoFH;
+import cofh.core.content.block.entity.TileCoFH;
+import cofh.core.content.energy.EmptyEnergyStorage;
+import cofh.core.content.energy.EnergyStorageCoFH;
+import cofh.core.content.item.IAugmentableItem;
+import cofh.core.content.xp.EmptyXpStorage;
+import cofh.core.content.xp.XpStorage;
 import cofh.core.network.packet.client.TileControlPacket;
 import cofh.core.network.packet.client.TileRedstonePacket;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.control.*;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
-import cofh.lib.energy.EmptyEnergyStorage;
-import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.fluid.ManagedTankInv;
-import cofh.lib.fluid.SimpleTankInv;
-import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.inventory.ManagedItemInv;
-import cofh.lib.inventory.SimpleItemInv;
-import cofh.lib.item.IAugmentableItem;
+import cofh.core.util.filter.IFilter;
+import cofh.core.util.filter.IFilterableTile;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.FilterHelper;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.fluid.ManagedTankInv;
+import cofh.lib.content.fluid.SimpleTankInv;
+import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.content.inventory.ManagedItemInv;
+import cofh.lib.content.inventory.SimpleItemInv;
 import cofh.lib.util.Utils;
-import cofh.lib.util.filter.IFilter;
-import cofh.lib.util.filter.IFilterableTile;
-import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.lib.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SoundHelper;
-import cofh.lib.xp.EmptyXpStorage;
-import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.init.TCoreSounds;
@@ -35,7 +35,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -71,15 +70,15 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static cofh.core.init.CoreEnchantments.HOLDING;
+import static cofh.core.util.helpers.AugmentableHelper.*;
 import static cofh.core.util.helpers.GuiHelper.*;
-import static cofh.lib.util.StorageGroup.ACCESSIBLE;
-import static cofh.lib.util.StorageGroup.INTERNAL;
-import static cofh.lib.util.constants.Constants.ACTIVE;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.consumeItem;
+import static cofh.lib.api.StorageGroup.ACCESSIBLE;
+import static cofh.lib.api.StorageGroup.INTERNAL;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.*;
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
-import static cofh.lib.util.helpers.ItemHelper.consumeItem;
-import static cofh.lib.util.references.CoreReferences.HOLDING;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
 public abstract class ThermalTileAugmentable extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, MenuProvider, IFilterableTile {
@@ -720,7 +719,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
 
     protected float getHoldingMod(Map<Enchantment, Integer> enchantmentMap) {
 
-        int holding = enchantmentMap.getOrDefault(HOLDING, 0);
+        int holding = enchantmentMap.getOrDefault(HOLDING.get(), 0);
         return 1 + holding / 2F;
     }
     // endregion
@@ -841,7 +840,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     @Override
     public Component getDisplayName() {
 
-        return new TranslatableComponent(this.getBlockState().getBlock().getDescriptionId());
+        return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
     // endregion
 

@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.ItemCoFH;
 import cofh.thermal.core.entity.projectile.BasalzProjectile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
@@ -18,8 +18,6 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.SnowyDirtBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-
-import java.util.Random;
 
 import static cofh.lib.util.Utils.destroyBlock;
 
@@ -55,7 +53,7 @@ public class EarthChargeItem extends ItemCoFH {
 
     private void playUseSound(Level worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, worldIn.getBlockState(pos).getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, worldIn.getBlockState(pos).getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, (worldIn.random.nextFloat() - worldIn.random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR
@@ -70,10 +68,9 @@ public class EarthChargeItem extends ItemCoFH {
             double d1 = iposition.y() + (double) ((float) direction.getStepY() * 0.3F);
             double d2 = iposition.z() + (double) ((float) direction.getStepZ() * 0.3F);
             Level world = source.getLevel();
-            Random random = world.random;
-            double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
-            double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
-            double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
+            double d3 = world.random.nextGaussian() * 0.05D + (double) direction.getStepX();
+            double d4 = world.random.nextGaussian() * 0.05D + (double) direction.getStepY();
+            double d5 = world.random.nextGaussian() * 0.05D + (double) direction.getStepZ();
             world.addFreshEntity(new BasalzProjectile(d0, d1, d2, d3, d4, d5, world));
             stack.shrink(1);
             return stack;

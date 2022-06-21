@@ -3,10 +3,9 @@ package cofh.thermal.core.client.renderer.model;
 import cofh.core.client.renderer.model.ModelUtils;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.client.renderer.model.RetexturedBakedQuad;
-import cofh.lib.fluid.IFluidContainerItem;
-import cofh.lib.item.ICoFHItem;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.api.item.IFluidContainerItem;
+import cofh.lib.client.renderer.block.model.RetexturedBakedQuad;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.lib.util.helpers.MathHelper;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -19,6 +18,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,9 +29,12 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-import static cofh.lib.item.ContainerType.FLUID;
+import static cofh.lib.api.ContainerType.FLUID;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.client.ThermalTextures.*;
 import static cofh.thermal.lib.util.Constants.DEFAULT_CELL_SIDES_RAW;
@@ -65,7 +68,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
 
     @Override
     @Nonnull
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData) {
 
         LinkedList<BakedQuad> quads = new LinkedList<>(originalModel.getQuads(state, side, rand, extraData));
 
@@ -147,7 +150,7 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
                     if (cachedUnderlayQuads == null || cachedUnderlayQuads.length < 6) {
                         cachedUnderlayQuads = new BakedQuad[6];
                         TextureAtlasSprite fluidTexture = RenderHelper.getFluidTexture(fluid);
-                        int fluidColor = RenderHelper.getFluidColor(fluid);
+                        int fluidColor = FluidHelper.color(fluid);
 
                         cachedUnderlayQuads[0] = new RetexturedBakedQuad(RenderHelper.mulColor(builder.getQuads(DOWN).get(0), fluidColor), fluidTexture);
                         cachedUnderlayQuads[1] = new RetexturedBakedQuad(RenderHelper.mulColor(builder.getQuads(UP).get(0), fluidColor), fluidTexture);
@@ -240,14 +243,13 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     private int getLevel(ItemStack stack) {
 
         Item item = stack.getItem();
-        if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, FLUID)) {
-            if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
-                return 9;
+        if (item instanceof IFluidContainerItem fluidContainer) {
+            if (fluidContainer.isCreative(stack, FLUID)) {
+                return fluidContainer.getFluidAmount(stack) > 0 ? 9 : 10;
             }
-            return 10;
-        }
-        if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
-            return 1 + Math.min(((IFluidContainerItem) item).getScaledFluidStored(stack, 8), 7);
+            if (fluidContainer.getFluidAmount(stack) > 0) {
+                return 1 + Math.min(((IFluidContainerItem) item).getScaledFluidStored(stack, 8), 7);
+            }
         }
         return 0;
     }

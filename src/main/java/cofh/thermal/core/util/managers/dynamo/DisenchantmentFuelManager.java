@@ -1,17 +1,14 @@
 package cofh.thermal.core.util.managers.dynamo;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.dynamo.DisenchantmentFuel;
 import cofh.thermal.lib.util.managers.SingleItemFuelManager;
-import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -23,7 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.Utils.getName;
+import static cofh.lib.util.Utils.getRegistryName;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
@@ -85,9 +84,9 @@ public class DisenchantmentFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_DISENCHANTMENT);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
-            addFuel((ThermalFuel) entry.getValue());
+        var recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_DISENCHANTMENT);
+        for (var entry : recipes.entrySet()) {
+            addFuel(entry.getValue());
         }
         createConvertedRecipes(recipeManager);
     }
@@ -107,21 +106,20 @@ public class DisenchantmentFuelManager extends SingleItemFuelManager {
         for (Enchantment enchant : ForgeRegistries.ENCHANTMENTS) {
             books.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchant, enchant.getMaxLevel())));
         }
-
         for (ItemStack book : books) {
             try {
                 if (getFuel(book) == null && validFuel(book)) {
                     convertedFuels.add(convert(book, getEnergy(book)));
                 }
             } catch (Exception e) { // pokemon!
-                ThermalCore.LOG.error(book.getItem().getRegistryName() + " threw an exception when querying the fuel value as the mod author is doing non-standard things in their item code (possibly tag related). It may not display in JEI but should function as fuel.");
+                ThermalCore.LOG.error(getRegistryName(book.getItem()) + " threw an exception when querying the fuel value as the mod author is doing non-standard things in their item code (possibly tag related). It may not display in JEI but should function as fuel.");
             }
         }
     }
 
     protected DisenchantmentFuel convert(ItemStack item, int energy) {
 
-        return new DisenchantmentFuel(new ResourceLocation(ID_THERMAL, "disenchantment_" + item.getItem().getRegistryName().getPath()), energy, singletonList(Ingredient.of(item)), emptyList());
+        return new DisenchantmentFuel(new ResourceLocation(ID_THERMAL, "disenchantment_" + getName(item)), energy, singletonList(Ingredient.of(item)), emptyList());
     }
     // endregion
 }

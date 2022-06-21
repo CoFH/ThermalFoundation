@@ -1,6 +1,5 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.FurnaceRecipe;
@@ -16,9 +15,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 public class FurnaceRecipeManager extends SingleItemRecipeManager {
 
@@ -82,8 +80,8 @@ public class FurnaceRecipeManager extends SingleItemRecipeManager {
                 addRecipe(recipe);
             }
         }
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_FURNACE);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
+        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_FURNACE);
+        for (var entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
     }

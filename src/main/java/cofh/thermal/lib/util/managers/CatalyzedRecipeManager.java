@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util.managers;
 
-import cofh.lib.inventory.IItemStackAccess;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
 import net.minecraft.world.item.ItemStack;
 
@@ -10,7 +10,7 @@ public interface CatalyzedRecipeManager {
 
     List<ItemStack> getCatalysts();
 
-    IRecipeCatalyst getCatalyst(IItemStackAccess input);
+    IRecipeCatalyst getCatalyst(IItemStackHolder input);
 
     IRecipeCatalyst getCatalyst(ItemStack input);
 

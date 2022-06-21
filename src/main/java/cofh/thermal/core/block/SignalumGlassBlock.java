@@ -1,6 +1,6 @@
 package cofh.thermal.core.block;
 
-import cofh.lib.block.impl.HardenedGlassBlock;
+import cofh.core.content.block.impl.HardenedGlassBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import static cofh.lib.util.constants.Constants.FULL_CUBE_COLLISION;
+import static cofh.lib.util.Constants.FULL_CUBE_COLLISION;
 
 public class SignalumGlassBlock extends HardenedGlassBlock {
 

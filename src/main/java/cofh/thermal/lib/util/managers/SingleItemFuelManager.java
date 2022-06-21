@@ -1,9 +1,9 @@
 package cofh.thermal.lib.util.managers;
 
-import cofh.lib.fluid.IFluidStackAccess;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.inventory.ItemStackHolder;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
+import cofh.lib.content.inventory.ItemStackHolder;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.BaseDynamoFuel;
@@ -52,7 +52,7 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
         return getFuel(Collections.singletonList(new ItemStackHolder(input)), Collections.emptyList());
     }
 
-    protected IDynamoFuel getFuel(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IDynamoFuel getFuel(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
             return null;

@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static cofh.core.util.helpers.FluidHelper.fluidsEqual;
-import static cofh.lib.util.constants.Constants.BASE_CHANCE_LOCKED;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqual;
+import static cofh.core.util.helpers.ItemHelper.itemsEqual;
+import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
 
 public class BaseMachineRecipe implements IMachineRecipe {
 

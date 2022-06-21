@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.ItemCoFH;
 import cofh.lib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,6 +9,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +27,6 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class FertilizerItem extends ItemCoFH {
 
@@ -115,7 +115,7 @@ public class FertilizerItem extends ItemCoFH {
             if (!(worldIn instanceof ServerLevel)) {
                 return true;
             } else {
-                Random random = worldIn.getRandom();
+                RandomSource random = worldIn.getRandom();
                 label78:
                 for (int i = 0; i < 128; ++i) {
                     BlockPos blockpos = pos;

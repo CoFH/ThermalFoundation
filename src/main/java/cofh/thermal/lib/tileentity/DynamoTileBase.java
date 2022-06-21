@@ -1,6 +1,6 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.lib.block.entity.ICoFHTickableTile;
+import cofh.lib.block.entity.ITickableTile;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.AugmentDataHelper;
@@ -28,13 +28,14 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.util.Constants.AUG_SCALE_MAX;
+import static cofh.lib.util.Constants.AUG_SCALE_MIN;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 
-public abstract class DynamoTileBase extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable {
+public abstract class DynamoTileBase extends ThermalTileAugmentable implements ITickableTile.IServerTickable {
 
     protected Direction facing;
 

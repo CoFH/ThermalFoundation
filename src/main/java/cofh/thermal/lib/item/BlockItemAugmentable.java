@@ -1,7 +1,7 @@
 package cofh.thermal.lib.item;
 
-import cofh.core.item.BlockItemCoFH;
-import cofh.lib.item.IAugmentableItem;
+import cofh.core.content.item.BlockItemCoFH;
+import cofh.core.content.item.IAugmentableItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 

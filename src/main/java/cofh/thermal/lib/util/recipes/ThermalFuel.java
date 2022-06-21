@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util.recipes;
 
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.lib.util.recipes.SerializableRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;

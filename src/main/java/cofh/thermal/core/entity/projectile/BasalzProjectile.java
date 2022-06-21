@@ -17,7 +17,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import static cofh.lib.util.references.CoreReferences.SUNDERED;
+import static cofh.core.init.CoreMobEffects.SUNDERED;
 import static cofh.thermal.core.init.TCoreReferences.BASALZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 
@@ -55,7 +55,7 @@ public class BasalzProjectile extends ElementalProjectile {
         if (result.getType() == HitResult.Type.ENTITY) {
             Entity entity = ((EntityHitResult) result).getEntity();
             if (entity.hurt(BasalzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity living) {
-                living.addEffect(new MobEffectInstance(SUNDERED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+                living.addEffect(new MobEffectInstance(SUNDERED.get(), getEffectDuration(entity), getEffectAmplifier(entity), false, false));
                 Vec3 velocity = this.getDeltaMovement();
                 if (velocity.lengthSqr() > 0.01) {
                     living.knockback(knockbackStrength, -velocity.x, -velocity.z);

@@ -1,13 +1,12 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.ItemCoFH;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.item.IPlacementItem;
+import cofh.lib.api.control.ISecurable;
+import cofh.lib.api.item.IPlacementItem;
 import cofh.lib.util.Utils;
-import cofh.lib.util.control.ISecurable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -51,7 +50,7 @@ public class LockItem extends ItemCoFH implements IPlacementItem {
                     stack.shrink(1);
                 }
                 player.level.playSound(null, player.blockPosition(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS, 0.5F, 0.8F);
-                ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_block"));
+                ChatHelper.sendIndexedChatMessageToPlayer(player, Component.translatable("info.cofh.secure_block"));
             }
             return true;
         }

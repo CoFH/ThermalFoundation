@@ -1,20 +1,16 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import cofh.thermal.lib.util.recipes.internal.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Map;
 
 public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
 
@@ -70,16 +66,16 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
+        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER);
+        for (var entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
-        Map<ResourceLocation, Recipe<FalseIInventory>> recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER_RECYCLE);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recycle.entrySet()) {
+        var recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER_RECYCLE);
+        for (var entry : recycle.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        Map<ResourceLocation, Recipe<FalseIInventory>> catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_PULVERIZER);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : catalysts.entrySet()) {
+        var catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_PULVERIZER);
+        for (var entry : catalysts.entrySet()) {
             addCatalyst((ThermalCatalyst) entry.getValue());
         }
     }

@@ -1,9 +1,8 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.lib.fluid.IFluidStackAccess;
-import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
@@ -14,9 +13,7 @@ import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
 import cofh.thermal.lib.util.recipes.internal.SimpleMachineRecipe;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -81,10 +78,10 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         validDies.clear();
     }
 
-    protected ArrayList<ComparableItemStack> getKeyFromSlots(List<? extends IItemStackAccess> inputSlots) {
+    protected ArrayList<ComparableItemStack> getKeyFromSlots(List<? extends IItemStackHolder> inputSlots) {
 
         ArrayList<ComparableItemStack> key = new ArrayList<>();
-        for (IItemStackAccess slot : inputSlots) {
+        for (IItemStackHolder slot : inputSlots) {
             if (!slot.isEmpty() && !(slot.getItemStack().getItem() instanceof SlotSealItem)) {
                 key.add(convert(slot.getItemStack()));
             }
@@ -103,7 +100,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         return key;
     }
 
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
             return null;
@@ -167,8 +164,8 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         //                addRecipe(recipe);
         //            }
         //        }
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PRESS);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
+        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PRESS);
+        for (var entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
         }
     }

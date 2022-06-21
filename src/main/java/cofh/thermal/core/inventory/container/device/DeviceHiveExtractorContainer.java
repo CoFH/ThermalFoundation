@@ -1,8 +1,8 @@
 package cofh.thermal.core.inventory.container.device;
 
-import cofh.core.inventory.container.TileContainer;
-import cofh.lib.inventory.container.slot.SlotRemoveOnly;
-import cofh.lib.inventory.wrapper.InvWrapperCoFH;
+import cofh.core.content.inventory.container.TileContainer;
+import cofh.lib.content.inventory.container.slot.SlotRemoveOnly;
+import cofh.lib.content.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;

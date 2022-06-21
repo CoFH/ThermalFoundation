@@ -1,15 +1,14 @@
 package cofh.thermal.core.block.entity;
 
-import cofh.core.fluid.PotionFluid;
+import cofh.core.content.energy.EnergyStorageCoFH;
 import cofh.core.util.filter.EmptyFilter;
+import cofh.core.util.filter.IFilter;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.AugmentableHelper;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.block.entity.ICoFHTickableTile;
-import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.filter.IFilter;
-import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.lib.util.helpers.AugmentableHelper;
+import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -31,9 +30,10 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.StorageGroup.INTERNAL;
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.api.StorageGroup.INPUT;
+import static cofh.lib.api.StorageGroup.INTERNAL;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreReferences.TINKER_BENCH_TILE;
@@ -41,7 +41,7 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
 
-public class TinkerBenchTile extends ThermalTileAugmentable implements ICoFHTickableTile.IServerTickable {
+public class TinkerBenchTile extends ThermalTileAugmentable implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FLUID);
 
@@ -124,11 +124,12 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ICoFHTick
         if (!tankSlot.isEmpty()) {
             ItemStack tankStack = tankSlot.getItemStack();
             if (tankStack.getItem() == Items.POTION) {
-                FluidStack potion = PotionFluid.getPotionFluidFromItem(BOTTLE_VOLUME, tankStack);
-                if (tank.fill(potion, SIMULATE) == BOTTLE_VOLUME) {
-                    tank.fill(potion, EXECUTE);
-                    tankSlot.setItemStack(new ItemStack(Items.GLASS_BOTTLE));
-                }
+                // TODO: FIXME
+                //                FluidStack potion = PotionFluid.getPotionFluidFromItem(BOTTLE_VOLUME, tankStack);
+                //                if (tank.fill(potion, SIMULATE) == BOTTLE_VOLUME) {
+                //                    tank.fill(potion, EXECUTE);
+                //                    tankSlot.setItemStack(new ItemStack(Items.GLASS_BOTTLE));
+                //                }
             } else {
                 tankStack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null).ifPresent(c -> {
                     int toFill = tank.fill(new FluidStack(c.getFluidInTank(0), BUCKET_VOLUME), SIMULATE);

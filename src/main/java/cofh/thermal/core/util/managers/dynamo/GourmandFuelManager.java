@@ -1,11 +1,9 @@
 package cofh.thermal.core.util.managers.dynamo;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.dynamo.GourmandFuel;
 import cofh.thermal.lib.util.managers.SingleItemFuelManager;
-import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.ResourceLocation;
@@ -15,16 +13,16 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.Utils.getName;
+import static cofh.lib.util.Utils.getRegistryName;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
@@ -101,9 +99,9 @@ public class GourmandFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_GOURMAND);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
-            addFuel((ThermalFuel) entry.getValue());
+        var recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_GOURMAND);
+        for (var entry : recipes.entrySet()) {
+            addFuel(entry.getValue());
         }
         createConvertedRecipes(recipeManager);
     }
@@ -127,14 +125,14 @@ public class GourmandFuelManager extends SingleItemFuelManager {
                     convertedFuels.add(convert(query, getEnergy(query)));
                 }
             } catch (Exception e) { // pokemon!
-                ThermalCore.LOG.error(query.getItem().getRegistryName() + " threw an exception when querying the fuel value as the mod author is doing non-standard things in their item code (possibly tag related). It may not display in JEI but should function as fuel.");
+                ThermalCore.LOG.error(getRegistryName(query.getItem()) + " threw an exception when querying the fuel value as the mod author is doing non-standard things in their item code (possibly tag related). It may not display in JEI but should function as fuel.");
             }
         }
     }
 
     protected GourmandFuel convert(ItemStack item, int energy) {
 
-        return new GourmandFuel(new ResourceLocation(ID_THERMAL, "gourmand_" + item.getItem().getRegistryName().getPath()), energy, singletonList(Ingredient.of(item)), emptyList());
+        return new GourmandFuel(new ResourceLocation(ID_THERMAL, "gourmand_" + getName(item)), energy, singletonList(Ingredient.of(item)), emptyList());
     }
     // endregion
 }

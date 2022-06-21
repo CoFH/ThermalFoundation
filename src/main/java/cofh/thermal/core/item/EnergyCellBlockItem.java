@@ -1,8 +1,8 @@
 package cofh.thermal.core.item;
 
-import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.energy.IEnergyContainerItem;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.core.content.energy.EnergyStorageCoFH;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.item.IEnergyContainerItem;
 import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -17,10 +17,10 @@ import net.minecraftforge.energy.IEnergyStorage;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.lib.item.ContainerType.ENERGY;
+import static cofh.core.util.helpers.AugmentableHelper.getPropertyWithDefault;
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
+import static cofh.lib.api.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 import static cofh.lib.util.helpers.StringHelper.*;
 import static cofh.thermal.core.block.entity.storage.EnergyCellTile.*;
 

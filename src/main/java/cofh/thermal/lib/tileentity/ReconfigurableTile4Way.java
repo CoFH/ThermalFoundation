@@ -5,9 +5,9 @@ import cofh.core.util.control.ITransferControllableTile;
 import cofh.core.util.control.ReconfigControlModule;
 import cofh.core.util.control.TransferControlModule;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.helpers.InventoryHelper;
+import cofh.core.util.helpers.InventoryHelper;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,11 +35,11 @@ import java.util.Map;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
 import static cofh.core.client.renderer.model.ModelUtils.SIDES;
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.DIRECTIONS;
-import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.DIRECTIONS;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
 public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {

@@ -1,15 +1,14 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.ItemCoFH;
 import cofh.core.util.ProxyUtils;
-import cofh.lib.item.IPlacementItem;
-import cofh.lib.util.IConveyableData;
+import cofh.lib.api.IConveyableData;
+import cofh.lib.api.control.ISecurable;
+import cofh.lib.api.item.IPlacementItem;
 import cofh.lib.util.Utils;
-import cofh.lib.util.control.ISecurable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -58,7 +57,7 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
                     tooltip.add(getTextComponent("info.thermal.redprint.unknown")
                             .withStyle(DARK_GRAY));
                 }
-                tooltip.add(new TextComponent(" - ")
+                tooltip.add(Component.literal(" - ")
                         .append(getTextComponent("info.thermal.redprint.data." + type)
                                 .withStyle(GRAY))
                 );

@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ArmorItemCoFH;
-import cofh.lib.client.renderer.entity.model.ArmorFullSuitModel;
+import cofh.core.client.renderer.entity.model.ArmorFullSuitModel;
+import cofh.core.content.item.ArmorItemCoFH;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;

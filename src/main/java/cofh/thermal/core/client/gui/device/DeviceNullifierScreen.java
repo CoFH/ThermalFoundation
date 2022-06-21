@@ -6,12 +6,11 @@ import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.generatePanelInfo;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 
 public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifierContainer> {
@@ -45,7 +44,7 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
         }
                 .setSize(20, 20)
                 .setTexture(TEX_TRASH, 60, 20)
-                .setTooltipFactory(new SimpleTooltip(new TranslatableComponent("info.thermal.device_nullifier_empty_bin")))
+                .setTooltipFactory(new SimpleTooltip(Component.translatable("info.thermal.device_nullifier_empty_bin")))
                 .setEnabled(() -> !menu.tile.binHasItems()));
     }
 

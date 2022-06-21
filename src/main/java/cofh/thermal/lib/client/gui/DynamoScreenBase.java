@@ -1,17 +1,15 @@
 package cofh.thermal.lib.client.gui;
 
 import cofh.core.client.gui.element.ElementEnergyStorage;
-import cofh.lib.inventory.container.ContainerCoFH;
+import cofh.core.content.inventory.container.ContainerCoFH;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.PATH_ELEMENTS;
+import static cofh.lib.util.Constants.PATH_ELEMENTS;
 import static cofh.lib.util.helpers.StringHelper.DF0;
 
 public class DynamoScreenBase<T extends ContainerCoFH> extends ThermalTileScreenBase<T> {
@@ -37,8 +35,8 @@ public class DynamoScreenBase<T extends ContainerCoFH> extends ThermalTileScreen
                 @Override
                 public void addTooltip(List<Component> tooltipList, int mouseX, int mouseY) {
 
-                    tooltipList.add(new TranslatableComponent("info.cofh.output")
-                            .append(new TextComponent(": " + DF0.format(100 * (double) tile.getCurSpeed() / tile.getMaxSpeed()) + "%")));
+                    tooltipList.add(Component.translatable("info.cofh.output")
+                            .append(Component.literal(": " + DF0.format(100 * (double) tile.getCurSpeed() / tile.getMaxSpeed()) + "%")));
                 }
             }
                     .setSize(16, 42)

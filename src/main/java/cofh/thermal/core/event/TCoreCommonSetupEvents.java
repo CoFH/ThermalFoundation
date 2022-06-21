@@ -4,12 +4,12 @@ import cofh.thermal.lib.common.ThermalRecipeManagers;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.client.event.RecipesUpdatedEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.TagsUpdatedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.IdMappingEvent;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 @Mod.EventBusSubscriber (modid = ID_THERMAL)
 public class TCoreCommonSetupEvents {
@@ -44,7 +44,7 @@ public class TCoreCommonSetupEvents {
     }
 
     @SubscribeEvent
-    public static void idRemap(RegistryEvent.IdMappingEvent event) {
+    public static void idRemap(IdMappingEvent event) {
 
         ThermalRecipeManagers.instance().refreshServer();
     }

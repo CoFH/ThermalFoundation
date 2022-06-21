@@ -1,13 +1,10 @@
 package cofh.thermal.core.util.managers.device;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.RockGenMapping;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -87,9 +84,9 @@ public class RockGenManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_ROCK_GEN);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : mappings.entrySet()) {
-            addMapping((RockGenMapping) entry.getValue());
+        var mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_ROCK_GEN);
+        for (var entry : mappings.entrySet()) {
+            addMapping(entry.getValue());
         }
     }
     // endregion

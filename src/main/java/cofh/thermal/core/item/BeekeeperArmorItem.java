@@ -1,8 +1,8 @@
 package cofh.thermal.core.item;
 
+import cofh.core.client.renderer.entity.model.ArmorFullSuitModel;
+import cofh.core.content.item.ArmorItemCoFH;
 import cofh.core.event.ArmorEvents;
-import cofh.core.item.ArmorItemCoFH;
-import cofh.lib.client.renderer.entity.model.ArmorFullSuitModel;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.network.chat.Component;

@@ -1,14 +1,12 @@
 package cofh.thermal.core;
 
+import cofh.core.capability.CapabilityRedstoneFlux;
+import cofh.core.client.renderer.entity.TNTMinecartRendererCoFH;
+import cofh.core.config.ConfigManager;
+import cofh.core.config.world.OreConfig;
+import cofh.core.content.entity.AbstractGrenade;
+import cofh.core.content.entity.AbstractTNTMinecart;
 import cofh.core.init.CoreEnchantments;
-import cofh.lib.capability.CapabilityRedstoneFlux;
-import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
-import cofh.lib.client.renderer.entity.TNTRendererCoFH;
-import cofh.lib.config.ConfigManager;
-import cofh.lib.config.world.OreConfig;
-import cofh.lib.entity.AbstractGrenade;
-import cofh.lib.entity.AbstractTNTEntity;
-import cofh.lib.entity.AbstractTNTMinecart;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -68,7 +66,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Collections;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.init.TCoreReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
@@ -85,7 +83,7 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<Fluid> FLUIDS = DeferredRegisterCoFH.create(ForgeRegistries.FLUIDS, ID_THERMAL);
 
     public static final DeferredRegisterCoFH<MenuType<?>> CONTAINERS = DeferredRegisterCoFH.create(ForgeRegistries.CONTAINERS, ID_THERMAL);
-    public static final DeferredRegisterCoFH<EntityType<?>> ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.ENTITIES, ID_THERMAL).preventDataFixers(true);
+    public static final DeferredRegisterCoFH<EntityType<?>> ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.ENTITIES, ID_THERMAL);
     public static final DeferredRegisterCoFH<GlobalLootModifierSerializer<?>> LOOT_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_SERIALIZERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);

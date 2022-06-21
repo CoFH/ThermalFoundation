@@ -1,13 +1,13 @@
 package cofh.thermal.core.client.gui;
 
 import cofh.core.client.gui.CoreTextures;
+import cofh.core.client.gui.IGuiAccess;
 import cofh.core.client.gui.element.ElementConditionalLayered;
 import cofh.core.client.gui.element.ElementScaled;
 import cofh.core.client.gui.element.ElementScaledFluid;
 import cofh.core.client.gui.element.panel.ResourcePanel;
+import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.GuiHelper;
-import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.client.gui.IGuiAccess;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
@@ -15,9 +15,9 @@ import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 
 import static cofh.core.util.helpers.RenderHelper.getFluidTexture;
 import static cofh.core.util.helpers.RenderHelper.textureExists;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.lib.util.constants.Constants.TRUE;
-import static cofh.lib.util.control.IReconfigurable.SideConfig.*;
+import static cofh.lib.api.control.IReconfigurable.SideConfig.*;
+import static cofh.lib.util.Constants.TRUE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.client.ThermalTextures.*;
 import static net.minecraft.core.Direction.DOWN;
 import static net.minecraft.core.Direction.UP;
@@ -82,7 +82,7 @@ public class ThermalGuiHelper {
         String texture = ID_THERMAL + ":block/machines/machine_" + machine;
         String activeTexture = ID_THERMAL + ":block/machines/machine_" + machine + "_active";
         return (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(texture) ? texture : "thermal:block/machines/machine_side", () -> !tile.isActive)
                 .addSprite(textureExists(activeTexture) ? activeTexture : "thermal:block/machines/machine_side", () -> tile.isActive)
                 .setSize(16, 16);
@@ -119,7 +119,7 @@ public class ThermalGuiHelper {
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_top";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
         return (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(centerTexture) ? centerTexture : null, TRUE)
                 .addSprite(textureExists(specificTexture) ? specificTexture : "thermal:block/cells/cell_top", TRUE)
                 .addSprite(CELL_CONFIG_INPUT, () -> tile.reconfigControl().getSideConfig(UP) == SIDE_INPUT)
@@ -133,7 +133,7 @@ public class ThermalGuiHelper {
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_bottom";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
         return (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(centerTexture) ? centerTexture : null, TRUE)
                 .addSprite(textureExists(specificTexture) ? specificTexture : "thermal:block/cells/cell_bottom", TRUE)
                 .addSprite(CELL_CONFIG_INPUT, () -> tile.reconfigControl().getSideConfig(DOWN) == SIDE_INPUT)
@@ -147,7 +147,7 @@ public class ThermalGuiHelper {
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
         return (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(centerTexture) ? centerTexture : null, TRUE)
                 .addSprite(textureExists(specificTexture) ? specificTexture : "thermal:block/cells/cell_side", TRUE)
                 .addSprite(CELL_CONFIG_INPUT, () -> tile.reconfigControl().getSideConfig(BlockHelper.left(tile.getFacing())) == SIDE_INPUT)
@@ -161,7 +161,7 @@ public class ThermalGuiHelper {
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
         return (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(centerTexture) ? centerTexture : null, TRUE)
                 .addSprite(textureExists(specificTexture) ? specificTexture : "thermal:block/cells/cell_side", TRUE)
                 .addSprite(CELL_CONFIG_INPUT, () -> tile.reconfigControl().getSideConfig(BlockHelper.right(tile.getFacing())) == SIDE_INPUT)
@@ -177,7 +177,7 @@ public class ThermalGuiHelper {
         String levelTexture = ID_THERMAL + ":block/cells/" + cell + "_level_";
 
         ElementConditionalLayered ret = (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(centerTexture) ? centerTexture : null, TRUE)
                 .addSprite(textureExists(specificTexture) ? specificTexture : "thermal:block/cells/cell_side", TRUE)
                 .addSprite(CELL_CONFIG_INPUT, () -> tile.reconfigControl().getSideConfig(tile.getFacing()) == SIDE_INPUT)
@@ -202,7 +202,7 @@ public class ThermalGuiHelper {
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
         return (ElementConditionalLayered) new ElementConditionalLayered(gui)
-                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> RenderHelper.getFluidColor(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
+                .addSprite(() -> getFluidTexture(tile.getRenderFluid()), () -> FluidHelper.color(tile.getRenderFluid()), () -> !tile.getRenderFluid().isEmpty())
                 .addSprite(textureExists(centerTexture) ? centerTexture : null, TRUE)
                 .addSprite(textureExists(specificTexture) ? specificTexture : "thermal:block/cells/cell_side", TRUE)
                 .addSprite(CELL_CONFIG_INPUT, () -> tile.reconfigControl().getSideConfig(BlockHelper.opposite(tile.getFacing())) == SIDE_INPUT)

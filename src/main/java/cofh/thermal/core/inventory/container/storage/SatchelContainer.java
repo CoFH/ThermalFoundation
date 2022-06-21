@@ -1,14 +1,14 @@
 package cofh.thermal.core.inventory.container.storage;
 
+import cofh.core.content.inventory.container.ContainerCoFH;
 import cofh.core.network.packet.server.SecurityPacket;
-import cofh.lib.inventory.IInventoryContainerItem;
-import cofh.lib.inventory.SimpleItemInv;
-import cofh.lib.inventory.container.ContainerCoFH;
-import cofh.lib.inventory.container.slot.SlotCoFH;
-import cofh.lib.inventory.container.slot.SlotLocked;
-import cofh.lib.inventory.wrapper.InvWrapperCoFH;
+import cofh.lib.api.control.ISecurable;
+import cofh.lib.api.item.IInventoryContainerItem;
+import cofh.lib.content.inventory.SimpleItemInv;
+import cofh.lib.content.inventory.container.slot.SlotCoFH;
+import cofh.lib.content.inventory.container.slot.SlotLocked;
+import cofh.lib.content.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.util.Utils;
-import cofh.lib.util.control.ISecurable;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.item.SatchelItem;

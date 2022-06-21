@@ -1,11 +1,11 @@
 package cofh.thermal.core.block.entity.storage;
 
+import cofh.core.content.energy.EnergyHandlerRestrictionWrapper;
+import cofh.core.content.energy.EnergyStorageAdjustable;
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.lib.block.entity.ICoFHTickableTile;
-import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
-import cofh.lib.energy.EnergyStorageAdjustable;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
@@ -32,7 +32,7 @@ import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 
-public class EnergyCellTile extends CellTileBase implements ICoFHTickableTile.IServerTickable {
+public class EnergyCellTile extends CellTileBase implements ITickableTile.IServerTickable {
 
     public static final int BASE_CAPACITY = 1000000;
     public static final int BASE_RECV = 1000;

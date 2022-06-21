@@ -1,14 +1,14 @@
 package cofh.thermal.core.util;
 
-import cofh.core.item.*;
-import cofh.lib.block.IDetonatable;
-import cofh.lib.block.impl.TNTBlockCoFH;
-import cofh.lib.block.impl.crops.CropsBlockCoFH;
-import cofh.lib.block.impl.crops.CropsBlockPerennial;
-import cofh.lib.block.impl.crops.CropsBlockTall;
-import cofh.lib.entity.AbstractGrenade;
-import cofh.lib.entity.AbstractTNTEntity;
-import cofh.lib.entity.AbstractTNTMinecart;
+import cofh.core.content.entity.AbstractGrenade;
+import cofh.core.content.entity.AbstractTNTMinecart;
+import cofh.core.content.item.*;
+import cofh.lib.api.IDetonatable;
+import cofh.lib.content.block.CropBlockCoFH;
+import cofh.lib.content.block.CropBlockPerennial;
+import cofh.lib.content.block.CropBlockTall;
+import cofh.lib.content.block.TntBlockCoFH;
+import cofh.lib.content.entity.PrimedTntCoFH;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.explosive.Grenade;
 import cofh.thermal.core.entity.explosive.ThermalTNTEntity;
@@ -34,7 +34,8 @@ import java.util.function.BooleanSupplier;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.util.Constants.TRUE;
+import static cofh.lib.util.constants.ModIds.*;
 import static cofh.thermal.core.ThermalCore.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.*;
@@ -268,22 +269,22 @@ public class RegistrationHelper {
     // region CROPS
     public static void registerAnnual(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockCoFH(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropBlockCoFH(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerTallAnnual(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockTall(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropBlockTall(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerPerennial(String id) {
 
-        registerPerennial(id, CropsBlockPerennial.DEFAULT_POST_HARVEST_AGE);
+        registerPerennial(id, CropBlockPerennial.DEFAULT_POST_HARVEST_AGE);
     }
 
     public static void registerPerennial(String id, int postHarvestAge) {
 
-        BLOCKS.register(id, () -> new CropsBlockPerennial(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).postHarvestAge(postHarvestAge).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropBlockPerennial(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).postHarvestAge(postHarvestAge).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerCropAndSeed(String id) {
@@ -376,8 +377,8 @@ public class RegistrationHelper {
 
     public static void registerTNT(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
-        RegistryObject<EntityType<? extends AbstractTNTEntity>> tntEntity = ENTITIES.register(id, () -> EntityType.Builder.<ThermalTNTEntity>of((type, world) -> new ThermalTNTEntity(type, world, action), MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(id));
-        registerBlock(id, () -> new TNTBlockCoFH((world, x, y, z, igniter) -> new ThermalTNTEntity(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, flag);
+        RegistryObject<EntityType<? extends PrimedTntCoFH>> tntEntity = ENTITIES.register(id, () -> EntityType.Builder.<ThermalTNTEntity>of((type, world) -> new ThermalTNTEntity(type, world, action), MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(id));
+        registerBlock(id, () -> new TntBlockCoFH((world, x, y, z, igniter) -> new ThermalTNTEntity(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, flag);
         DetonateUtils.TNT.add(tntEntity);
     }
 

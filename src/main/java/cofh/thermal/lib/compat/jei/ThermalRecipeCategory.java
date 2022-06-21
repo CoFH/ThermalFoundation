@@ -19,7 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.BASE_CHANCE;
+import static cofh.lib.util.Constants.BASE_CHANCE;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 
 public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements IRecipeCategory<T> {

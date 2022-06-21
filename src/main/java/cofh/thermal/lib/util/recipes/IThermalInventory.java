@@ -1,7 +1,7 @@
 package cofh.thermal.lib.util.recipes;
 
-import cofh.lib.fluid.IFluidStackAccess;
-import cofh.lib.inventory.IItemStackAccess;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface IThermalInventory {
 
-    List<? extends IItemStackAccess> inputSlots();
+    List<? extends IItemStackHolder> inputSlots();
 
-    List<? extends IFluidStackAccess> inputTanks();
+    List<? extends IFluidStackHolder> inputTanks();
 
 }

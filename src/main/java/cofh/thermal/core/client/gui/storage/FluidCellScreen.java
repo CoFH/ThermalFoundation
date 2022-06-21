@@ -10,15 +10,14 @@ import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import java.util.Collections;
 
 import static cofh.core.util.helpers.GuiHelper.*;
-import static cofh.lib.util.constants.Constants.ID_COFH_CORE;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.Constants.ID_COFH_CORE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 import static cofh.lib.util.helpers.StringHelper.format;
 import static cofh.lib.util.helpers.StringHelper.localize;
@@ -133,7 +132,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new TextComponent(
+                        return Collections.singletonList(Component.literal(
                                 localize("info.cofh.decrease_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
@@ -157,7 +156,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new TextComponent(
+                        return Collections.singletonList(Component.literal(
                                 localize("info.cofh.increase_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
@@ -181,7 +180,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new TextComponent(
+                        return Collections.singletonList(Component.literal(
                                 localize("info.cofh.decrease_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));
@@ -205,7 +204,7 @@ public class FluidCellScreen extends CellScreenReconfigurable<FluidCellContainer
                         if (hasControlDown()) {
                             change /= 100;
                         }
-                        return Collections.singletonList(new TextComponent(
+                        return Collections.singletonList(Component.literal(
                                 localize("info.cofh.increase_by")
                                         + " " + format(change)
                                         + "/" + format(change / 10)));

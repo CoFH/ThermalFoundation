@@ -14,8 +14,8 @@ import java.util.function.IntSupplier;
 import java.util.function.Predicate;
 
 import static cofh.lib.item.ContainerType.FLUID;
-import static cofh.lib.util.constants.Constants.MAX_POTION_AMPLIFIER;
-import static cofh.lib.util.constants.Constants.MAX_POTION_DURATION;
+import static cofh.lib.util.Constants.MAX_POTION_AMPLIFIER;
+import static cofh.lib.util.Constants.MAX_POTION_DURATION;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
 import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;

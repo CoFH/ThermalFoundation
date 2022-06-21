@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.projectile;
 
-import cofh.lib.entity.ElectricArc;
+import cofh.core.content.entity.ElectricArc;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.entity.monster.Basalz;
@@ -19,7 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-import static cofh.lib.util.references.CoreReferences.SHOCKED;
+import static cofh.core.init.CoreMobEffects.SHOCKED;
 import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
@@ -59,7 +59,7 @@ public class BlitzProjectile extends ElementalProjectile {
             Entity entity = ((EntityHitResult) result).getEntity();
             if (entity.hurt(BlitzDamageSource.causeDamage(this, owner), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) entity;
-                living.addEffect(new MobEffectInstance(SHOCKED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+                living.addEffect(new MobEffectInstance(SHOCKED.get(), getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
         if (ThermalCoreConfig.mobBlitzLightning && Utils.isServerWorld(level)) {

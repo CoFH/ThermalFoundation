@@ -1,14 +1,12 @@
 package cofh.thermal.core.util.managers.device;
 
-import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.FisherBoost;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.apache.commons.lang3.tuple.Triple;
@@ -65,9 +63,9 @@ public class FisherManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_FISHER);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : boosts.entrySet()) {
-            addBoost((FisherBoost) entry.getValue());
+        var boosts = recipeManager.byType(TCoreRecipeTypes.BOOST_FISHER);
+        for (var entry : boosts.entrySet()) {
+            addBoost(entry.getValue());
         }
     }
     // endregion

@@ -1,7 +1,8 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.lib.block.IDetonatable;
-import cofh.lib.entity.AbstractGrenade;
+import cofh.core.content.entity.AbstractGrenade;
+import cofh.lib.api.IDetonatable;
+import cofh.lib.util.Utils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -19,21 +20,21 @@ public class Grenade extends AbstractGrenade implements IDetonatable {
 
         super(type, worldIn);
         this.detonateAction = detonateAction;
-        item = ITEMS.get(type.getRegistryName());
+        item = ITEMS.get(Utils.getRegistryName(type));
     }
 
     public Grenade(EntityType<? extends AbstractGrenade> type, Level worldIn, IDetonateAction detonateAction, double x, double y, double z) {
 
         super(type, x, y, z, worldIn);
         this.detonateAction = detonateAction;
-        item = ITEMS.get(type.getRegistryName());
+        item = ITEMS.get(Utils.getRegistryName(type));
     }
 
     public Grenade(EntityType<? extends AbstractGrenade> type, Level worldIn, IDetonateAction detonateAction, LivingEntity livingEntityIn) {
 
         super(type, livingEntityIn, worldIn);
         this.detonateAction = detonateAction;
-        item = ITEMS.get(type.getRegistryName());
+        item = ITEMS.get(Utils.getRegistryName(type));
     }
 
     @Override

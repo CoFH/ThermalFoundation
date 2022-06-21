@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.item.ItemCoFH;
+import cofh.core.content.item.ItemCoFH;
 import net.minecraft.world.item.ItemStack;
 
 public class SlotSealItem extends ItemCoFH {

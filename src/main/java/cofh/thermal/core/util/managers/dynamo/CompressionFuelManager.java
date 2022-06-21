@@ -1,16 +1,10 @@
 package cofh.thermal.core.util.managers.dynamo;
 
-import cofh.lib.inventory.FalseIInventory;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.SingleFluidFuelManager;
-import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
-
-import java.util.Map;
 
 public class CompressionFuelManager extends SingleFluidFuelManager {
 
@@ -38,9 +32,9 @@ public class CompressionFuelManager extends SingleFluidFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_COMPRESSION);
-        for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {
-            addFuel((ThermalFuel) entry.getValue());
+        var recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_COMPRESSION);
+        for (var entry : recipes.entrySet()) {
+            addFuel(entry.getValue());
         }
     }
     // endregion
