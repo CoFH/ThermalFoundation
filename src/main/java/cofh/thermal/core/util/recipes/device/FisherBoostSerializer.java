@@ -6,13 +6,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class FisherBoostSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<FisherBoost> {
+public class FisherBoostSerializer implements RecipeSerializer<FisherBoost> {
 
     @Override
     public FisherBoost fromJson(ResourceLocation recipeId, JsonObject json) {

@@ -1,6 +1,6 @@
 package cofh.thermal.lib.common;
 
-import cofh.lib.config.world.OreConfig;
+import cofh.core.config.world.OreConfig;
 import cofh.thermal.core.config.ThermalWorldConfig;
 import cofh.thermal.lib.world.DimensionPlacement;
 import it.unimi.dsi.fastutil.Pair;

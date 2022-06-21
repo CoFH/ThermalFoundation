@@ -1,9 +1,9 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.lib.block.entity.ITickableTile;
-import cofh.lib.energy.EnergyStorageCoFH;
+import cofh.core.content.energy.EnergyStorageCoFH;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -28,10 +28,11 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
+import static cofh.core.util.helpers.AugmentableHelper.*;
 import static cofh.lib.util.Constants.AUG_SCALE_MAX;
 import static cofh.lib.util.Constants.AUG_SCALE_MIN;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_ALL;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 

@@ -7,6 +7,8 @@ import cofh.core.config.world.OreConfig;
 import cofh.core.content.entity.AbstractGrenade;
 import cofh.core.content.entity.AbstractTNTMinecart;
 import cofh.core.init.CoreEnchantments;
+import cofh.lib.client.renderer.entity.TntRendererCoFH;
+import cofh.lib.content.entity.PrimedTntCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -42,6 +44,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -49,7 +52,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -59,6 +61,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.NewRegistryEvent;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -85,6 +88,7 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<MenuType<?>> CONTAINERS = DeferredRegisterCoFH.create(ForgeRegistries.CONTAINERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<EntityType<?>> ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.ENTITIES, ID_THERMAL);
     public static final DeferredRegisterCoFH<GlobalLootModifierSerializer<?>> LOOT_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, ID_THERMAL);
+    public static final DeferredRegisterCoFH<RecipeType<?>> RECIPE_TYPES = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_TYPES, ID_THERMAL);
     public static final DeferredRegisterCoFH<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_SERIALIZERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
     public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
@@ -96,6 +100,7 @@ public class ThermalCore {
 
         TCoreContainers.register();
         TCoreEntities.register();
+        TCoreRecipeTypes.register();
         TCoreSounds.register();
         TCoreTileEntities.register();
 
@@ -122,7 +127,7 @@ public class ThermalCore {
         modEventBus.addListener(this::capSetup);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
-        modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootData);
+        modEventBus.addListener(this::registerLootData);
         modEventBus.addListener(this::registrySetup);
 
         BLOCKS.register(modEventBus);
@@ -174,10 +179,11 @@ public class ThermalCore {
     }
 
     // region INITIALIZATION
-    private void registerLootData(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+    private void registerLootData(final RegisterEvent event) {
 
-        ThermalFlags.manager().setup();
-        TCoreRecipeTypes.register();
+        if (event.getRegistryKey() == ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS) {
+            ThermalFlags.manager().setup();
+        }
     }
 
     private void entityAttributeSetup(final EntityAttributeCreationEvent event) {
@@ -201,8 +207,8 @@ public class ThermalCore {
         for (RegistryObject<EntityType<? extends AbstractGrenade>> grenade : DetonateUtils.GRENADES) {
             event.registerEntityRenderer(grenade.get(), ThrownItemRenderer::new);
         }
-        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
-            event.registerEntityRenderer(tnt.get(), TNTRendererCoFH::new);
+        for (RegistryObject<EntityType<? extends PrimedTntCoFH>> tnt : DetonateUtils.TNT) {
+            event.registerEntityRenderer(tnt.get(), TntRendererCoFH::new);
         }
         for (RegistryObject<EntityType<? extends AbstractTNTMinecart>> cart : DetonateUtils.CARTS) {
             event.registerEntityRenderer(cart.get(), TNTMinecartRendererCoFH::new);

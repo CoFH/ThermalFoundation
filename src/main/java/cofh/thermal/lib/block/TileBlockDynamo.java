@@ -1,7 +1,7 @@
 package cofh.thermal.lib.block;
 
-import cofh.core.block.TileBlockActive6Way;
-import cofh.core.block.entity.TileCoFH;
+import cofh.core.content.block.TileBlockActive6Way;
+import cofh.core.content.block.entity.TileCoFH;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -23,7 +23,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.Constants.FACING_ALL;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_ALL;
 
 public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterloggedBlock {
 

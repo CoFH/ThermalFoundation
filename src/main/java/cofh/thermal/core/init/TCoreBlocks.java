@@ -1,10 +1,14 @@
 package cofh.thermal.core.init;
 
-import cofh.core.block.TileBlockActive;
-import cofh.core.block.TileBlockActive4Way;
-import cofh.core.block.TileBlockCoFH;
-import cofh.core.item.BlockItemCoFH;
-import cofh.lib.block.impl.*;
+import cofh.core.content.block.TileBlockActive;
+import cofh.core.content.block.TileBlockActive4Way;
+import cofh.core.content.block.TileBlockCoFH;
+import cofh.core.content.block.impl.HardenedGlassBlock;
+import cofh.core.content.item.BlockItemCoFH;
+import cofh.lib.content.block.GunpowderBlock;
+import cofh.lib.content.block.OreBlockCoFH;
+import cofh.lib.content.block.RubberBlock;
+import cofh.lib.content.block.TntBlockCoFH;
 import cofh.thermal.core.block.*;
 import cofh.thermal.core.block.device.TileBlockComposter;
 import cofh.thermal.core.block.entity.ChargeBenchTile;
@@ -36,7 +40,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.Constants.ACTIVE;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.helpers.BlockHelper.lightValue;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -81,20 +85,20 @@ public class TCoreBlocks {
         fire.setFlammable(BLOCKS.get(ID_TAR_BLOCK), 5, 5);
         fire.setFlammable(BLOCKS.get(ID_ROSIN_BLOCK), 5, 5);
 
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_SLIME_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_REDSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_GLOWSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_ENDER_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_SLIME_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_REDSTONE_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_GLOWSTONE_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_ENDER_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
 
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_PHYTO_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_PHYTO_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
 
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_EARTH_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_FIRE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_ICE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_LIGHTNING_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_EARTH_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_FIRE_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_ICE_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_LIGHTNING_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
 
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_NUKE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
-        DispenserBlock.registerBehavior(BLOCKS.get(ID_GRAVITY_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_NUKE_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BLOCKS.get(ID_GRAVITY_TNT), TntBlockCoFH.DISPENSER_BEHAVIOR);
     }
 
     // region HELPERS

@@ -7,11 +7,9 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.Constants.BASE_CHANCE;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 
 public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements IRecipeCategory<T> {
@@ -48,54 +45,10 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     public ThermalRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
 
         this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
 
         energyBackground = Drawables.getDrawables(guiHelper).getEnergyEmpty();
         energy = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getEnergyFill(), 400, IDrawableAnimated.StartDirection.TOP, true);
-    }
-
-    protected void addDefaultItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, int indexOffset) {
-
-        group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
-            if (!chances.isEmpty() && slotIndex >= indexOffset && slotIndex < indexOffset + chances.size()) {
-                float baseChance = chances.get(slotIndex - indexOffset);
-                float chance = Math.abs(baseChance);
-                if (chance < BASE_CHANCE) {
-                    tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
-                } else {
-                    chance -= (int) chance;
-                    if (chance > 0) {
-                        tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
-                    }
-                }
-                if (baseChance >= 0) {
-                    tooltip.add(getTextComponent("info.cofh.boostable").withStyle(ChatFormatting.GOLD));
-                }
-            }
-        });
-    }
-
-    protected void addCatalyzedItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, boolean catalyzable, int indexOffset) {
-
-        group.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
-            if (slotIndex == indexOffset - 1) {
-                tooltip.add(getTextComponent("info.cofh.optional_catalyst"));
-            } else if (!chances.isEmpty() && slotIndex >= indexOffset && slotIndex < indexOffset + chances.size()) {
-                float baseChance = chances.get(slotIndex - indexOffset);
-                float chance = Math.abs(baseChance);
-                if (chance < BASE_CHANCE) {
-                    tooltip.add(getTextComponent("info.cofh.chance").append(": " + (int) (100 * chance) + "%"));
-                } else {
-                    chance -= (int) chance;
-                    if (chance > 0) {
-                        tooltip.add(getTextComponent("info.cofh.chance_additional").append(": " + (int) (100 * chance) + "%"));
-                    }
-                }
-                if (catalyzable && baseChance >= 0) {
-                    tooltip.add(getTextComponent("info.cofh.boostable").withStyle(ChatFormatting.GOLD));
-                }
-            }
-        });
     }
 
     // region IRecipeCategory

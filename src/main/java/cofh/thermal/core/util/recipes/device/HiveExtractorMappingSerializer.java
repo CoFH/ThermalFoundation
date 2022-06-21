@@ -9,13 +9,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
+import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class HiveExtractorMappingSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<HiveExtractorMapping> {
+public class HiveExtractorMappingSerializer implements RecipeSerializer<HiveExtractorMapping> {
 
     @Override
     public HiveExtractorMapping fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -50,7 +50,7 @@ public class HiveExtractorMappingSerializer extends ForgeRegistryEntry<RecipeSer
     @Override
     public void toNetwork(FriendlyByteBuf buffer, HiveExtractorMapping recipe) {
 
-        buffer.writeResourceLocation(recipe.hive.getRegistryName());
+        buffer.writeResourceLocation(getRegistryName(recipe.hive));
         buffer.writeItem(recipe.item);
         buffer.writeFluidStack(recipe.fluid);
     }

@@ -9,13 +9,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
+import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class RockGenMappingSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<RockGenMapping> {
+public class RockGenMappingSerializer implements RecipeSerializer<RockGenMapping> {
 
     @Override
     public RockGenMapping fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -67,8 +67,8 @@ public class RockGenMappingSerializer extends ForgeRegistryEntry<RecipeSerialize
     public void toNetwork(FriendlyByteBuf buffer, RockGenMapping recipe) {
 
         buffer.writeInt(recipe.time);
-        buffer.writeResourceLocation(recipe.below.getRegistryName());
-        buffer.writeResourceLocation(recipe.adjacent.getRegistryName());
+        buffer.writeResourceLocation(getRegistryName(recipe.below));
+        buffer.writeResourceLocation(getRegistryName(recipe.adjacent));
         buffer.writeItem(recipe.result);
     }
 

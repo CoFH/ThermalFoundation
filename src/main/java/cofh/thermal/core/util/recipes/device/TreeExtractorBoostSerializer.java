@@ -6,13 +6,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class TreeExtractorBoostSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<TreeExtractorBoost> {
+public class TreeExtractorBoostSerializer implements RecipeSerializer<TreeExtractorBoost> {
 
     @Override
     public TreeExtractorBoost fromJson(ResourceLocation recipeId, JsonObject json) {

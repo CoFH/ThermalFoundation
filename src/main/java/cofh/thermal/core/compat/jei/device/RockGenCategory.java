@@ -15,9 +15,9 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,7 +36,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
 
     protected static final FluidStack LAVA_FLUID = new FluidStack(Fluids.LAVA, BUCKET_VOLUME);
 
-    protected final ResourceLocation uid;
+    protected final RecipeType<RockGenMapping> type;
     protected IDrawable background;
     protected IDrawable icon;
     protected Component name;
@@ -45,10 +45,10 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
     protected IDrawableStatic progressFluidBackground;
     protected IDrawableAnimated progressFluid;
 
-    public RockGenCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public RockGenCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RockGenMapping> type) {
 
-        this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
+        this.type = type;
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
 
         background = guiHelper.drawableBuilder(DeviceRockGenScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
@@ -62,15 +62,9 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
 
     // region IRecipeCategory
     @Override
-    public ResourceLocation getUid() {
+    public RecipeType<RockGenMapping> getRecipeType() {
 
-        return uid;
-    }
-
-    @Override
-    public Class<? extends RockGenMapping> getRecipeClass() {
-
-        return RockGenMapping.class;
+        return type;
     }
 
     @Override

@@ -1,15 +1,15 @@
 package cofh.thermal.lib.tileentity;
 
+import cofh.core.content.energy.EnergyStorageCoFH;
+import cofh.core.content.xp.XpStorage;
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.lib.block.entity.ITickableTile;
-import cofh.lib.energy.EnergyStorageCoFH;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.util.TimeTracker;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.MathHelper;
-import cofh.lib.xp.XpStorage;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.MachineProperties;
@@ -30,13 +30,13 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
+import static cofh.core.util.helpers.AugmentableHelper.*;
 import static cofh.core.util.helpers.FluidHelper.fluidsEqual;
-import static cofh.lib.util.Constants.ACTIVE;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.util.Constants.BASE_CHANCE;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.*;
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 

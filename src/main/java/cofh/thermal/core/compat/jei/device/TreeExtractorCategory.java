@@ -15,9 +15,9 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -30,7 +30,7 @@ import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_BLOCK
 
 public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMapping> {
 
-    protected final ResourceLocation uid;
+    protected final RecipeType<TreeExtractorMapping> type;
     protected IDrawable background;
     protected IDrawable icon;
     protected Component name;
@@ -40,10 +40,10 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     protected IDrawableStatic progressFluidBackground;
     protected IDrawableAnimated progressFluid;
 
-    public TreeExtractorCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public TreeExtractorCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<TreeExtractorMapping> type) {
 
-        this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
+        this.type = type;
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
 
         background = guiHelper.drawableBuilder(DeviceTreeExtractorScreen.TEXTURE, 86, 11, 80, 62)
                 .addPadding(0, 0, 16, 68)
@@ -58,15 +58,9 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
 
     // region IRecipeCategory
     @Override
-    public ResourceLocation getUid() {
+    public RecipeType<TreeExtractorMapping> getRecipeType() {
 
-        return uid;
-    }
-
-    @Override
-    public Class<? extends TreeExtractorMapping> getRecipeClass() {
-
-        return TreeExtractorMapping.class;
+        return type;
     }
 
     @Override

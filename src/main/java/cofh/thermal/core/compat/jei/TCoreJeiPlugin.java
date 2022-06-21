@@ -26,6 +26,7 @@ import net.minecraft.world.item.crafting.RecipeManager;
 
 import static cofh.lib.util.Constants.BASE_CHANCE;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.config.ThermalClientConfig.jeiBucketTanks;
 import static cofh.thermal.core.init.TCoreRecipeTypes.*;
@@ -57,8 +58,8 @@ public class TCoreJeiPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
 
-        registration.addRecipeCategories(new TreeExtractorCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), ID_MAPPING_TREE_EXTRACTOR));
-        registration.addRecipeCategories(new RockGenCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DEVICE_ROCK_GEN_BLOCK), ID_MAPPING_ROCK_GEN));
+        registration.addRecipeCategories(new TreeExtractorCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), TREE_EXTRACTOR));
+        registration.addRecipeCategories(new RockGenCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DEVICE_ROCK_GEN_BLOCK), ROCK_GEN));
     }
 
     @Override

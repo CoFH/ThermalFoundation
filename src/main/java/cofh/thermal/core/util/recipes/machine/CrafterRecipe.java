@@ -19,8 +19,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqual;
 import static cofh.thermal.lib.util.managers.AbstractManager.convert;
 
 public class CrafterRecipe extends BaseMachineRecipe {

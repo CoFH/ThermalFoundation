@@ -8,13 +8,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
+import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class TreeExtractorMappingSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<TreeExtractorMapping> {
+public class TreeExtractorMappingSerializer implements RecipeSerializer<TreeExtractorMapping> {
 
     @Override
     public TreeExtractorMapping fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -55,8 +55,8 @@ public class TreeExtractorMappingSerializer extends ForgeRegistryEntry<RecipeSer
     @Override
     public void toNetwork(FriendlyByteBuf buffer, TreeExtractorMapping recipe) {
 
-        buffer.writeResourceLocation(recipe.trunk.getRegistryName());
-        buffer.writeResourceLocation(recipe.leaves.getRegistryName());
+        buffer.writeResourceLocation(getRegistryName(recipe.trunk));
+        buffer.writeResourceLocation(getRegistryName(recipe.leaves));
         buffer.writeFluidStack(recipe.fluid);
     }
 
