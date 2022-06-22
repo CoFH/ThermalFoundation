@@ -15,6 +15,7 @@ import java.util.List;
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_PULVERIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_PULVERIZER;
 
 public class PulverizerRecipe extends ThermalRecipe {
 
@@ -34,7 +35,7 @@ public class PulverizerRecipe extends ThermalRecipe {
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_RECIPE_PULVERIZER);
+        return RECIPE_PULVERIZER.get();
     }
 
 }

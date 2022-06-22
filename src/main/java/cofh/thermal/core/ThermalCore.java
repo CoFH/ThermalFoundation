@@ -52,6 +52,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -67,6 +68,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Collections;
 import java.util.List;
 
+import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.init.TCoreContainers.*;
 import static cofh.thermal.core.init.TCoreEntities.*;
@@ -92,6 +94,8 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
     public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
 
+    public static final DeferredRegisterCoFH<FluidType> FLUID_TYPES = DeferredRegisterCoFH.create(ForgeRegistries.Keys.FLUID_TYPES, ID_COFH_CORE);
+
     static {
         TCoreBlocks.register();
         TCoreItems.register();
@@ -99,12 +103,12 @@ public class ThermalCore {
 
         TCoreContainers.register();
         TCoreEntities.register();
+        TCoreRecipeSerializers.register();
         TCoreRecipeTypes.register();
         TCoreSounds.register();
         TCoreTileEntities.register();
 
         TCoreRecipeManagers.register();
-        TCoreRecipeSerializers.register();
     }
 
     public ThermalCore() {
@@ -137,6 +141,7 @@ public class ThermalCore {
         ENTITIES.register(modEventBus);
         LOOT_SERIALIZERS.register(modEventBus);
         RECIPE_SERIALIZERS.register(modEventBus);
+        RECIPE_TYPES.register(modEventBus);
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
     }

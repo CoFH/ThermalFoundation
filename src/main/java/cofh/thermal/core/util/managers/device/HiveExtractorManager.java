@@ -8,12 +8,12 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.IdentityHashMap;
 
-import static cofh.core.init.CoreFluids.HONEY_FLUID;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.thermal.core.init.TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR;
 
@@ -49,7 +49,7 @@ public class HiveExtractorManager extends AbstractManager {
 
     public FluidStack getFluid(BlockState hive) {
 
-        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getRight() : new FluidStack(HONEY_FLUID.get(), HONEY_AMOUNT);
+        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getRight() : new FluidStack(Fluids.WATER, HONEY_AMOUNT);
     }
 
     public void addMapping(HiveExtractorMapping mapping) {

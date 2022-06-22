@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.HIVE_EXTRACTOR_SERIALIZER;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ID_MAPPING_HIVE_EXTRACTOR;
 import static cofh.thermal.core.init.TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR;
 
@@ -30,7 +31,7 @@ public class HiveExtractorMapping extends SerializableRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_MAPPING_HIVE_EXTRACTOR);
+        return HIVE_EXTRACTOR_SERIALIZER.get();
     }
 
     @Override

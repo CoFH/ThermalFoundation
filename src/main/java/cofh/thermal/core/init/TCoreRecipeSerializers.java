@@ -8,6 +8,7 @@ import cofh.thermal.core.util.recipes.machine.*;
 import cofh.thermal.lib.util.recipes.DynamoFuelSerializer;
 import cofh.thermal.lib.util.recipes.MachineCatalystSerializer;
 import cofh.thermal.lib.util.recipes.MachineRecipeSerializer;
+import net.minecraftforge.registries.RegistryObject;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 import static cofh.thermal.core.init.TCoreRecipeTypes.*;
@@ -20,7 +21,7 @@ public class TCoreRecipeSerializers {
 
     public static void register() {
 
-        RECIPE_SERIALIZERS.register(ID_MAPPING_HIVE_EXTRACTOR, HiveExtractorMappingSerializer::new);
+        // RECIPE_SERIALIZERS.register(ID_MAPPING_HIVE_EXTRACTOR, HiveExtractorMappingSerializer::new);
         RECIPE_SERIALIZERS.register(ID_BOOST_TREE_EXTRACTOR, TreeExtractorBoostSerializer::new);
         RECIPE_SERIALIZERS.register(ID_MAPPING_TREE_EXTRACTOR, TreeExtractorMappingSerializer::new);
         RECIPE_SERIALIZERS.register(ID_BOOST_FISHER, FisherBoostSerializer::new);
@@ -55,5 +56,7 @@ public class TCoreRecipeSerializers {
         RECIPE_SERIALIZERS.register(ID_FUEL_DISENCHANTMENT, () -> new DynamoFuelSerializer<>(DisenchantmentFuel::new, DisenchantmentFuelManager.instance().getDefaultEnergy(), DisenchantmentFuelManager.MIN_ENERGY, DisenchantmentFuelManager.MAX_ENERGY));
         RECIPE_SERIALIZERS.register(ID_FUEL_GOURMAND, () -> new DynamoFuelSerializer<>(GourmandFuel::new, GourmandFuelManager.instance().getDefaultEnergy(), GourmandFuelManager.MIN_ENERGY, GourmandFuelManager.MAX_ENERGY));
     }
+
+    public static final RegistryObject<HiveExtractorMappingSerializer> HIVE_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register(ID_MAPPING_HIVE_EXTRACTOR, HiveExtractorMappingSerializer::new);
 
 }
