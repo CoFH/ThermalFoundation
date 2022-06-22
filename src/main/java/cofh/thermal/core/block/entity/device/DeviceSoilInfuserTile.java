@@ -1,13 +1,12 @@
 package cofh.thermal.core.block.entity.device;
 
 import cofh.core.content.block.impl.SoilBlock;
-import cofh.core.content.energy.EnergyStorageCoFH;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.energy.EnergyStorageCoFH;
 import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.init.TCoreReferences;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -32,6 +31,7 @@ import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.core.util.helpers.AugmentableHelper.getAttributeModWithDefault;
 import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.NBTTags.*;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_SOIL_INFUSER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITickableTile.IServerTickable, IAreaEffectTile {
@@ -52,7 +52,7 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
 
     public DeviceSoilInfuserTile(BlockPos pos, BlockState state) {
 
-        super(TCoreReferences.DEVICE_SOIL_INFUSER_TILE, pos, state);
+        super(DEVICE_SOIL_INFUSER_TILE.get(), pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
 
         inventory.addSlot(chargeSlot, INTERNAL);

@@ -24,9 +24,10 @@ import java.util.List;
 
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;
 
 public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMapping> {
 
@@ -48,7 +49,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
         background = guiHelper.drawableBuilder(DeviceTreeExtractorScreen.TEXTURE, 86, 11, 80, 62)
                 .addPadding(0, 0, 16, 68)
                 .build();
-        name = getTextComponent(DEVICE_TREE_EXTRACTOR_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR).getDescriptionId());
 
         tankBackground = Drawables.getDrawables(guiHelper).getTank(Drawables.TANK_MEDIUM);
         tankOverlay = Drawables.getDrawables(guiHelper).getTankOverlay(Drawables.TANK_MEDIUM);

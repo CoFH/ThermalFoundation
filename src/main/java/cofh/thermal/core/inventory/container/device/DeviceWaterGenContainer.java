@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_WATER_GEN_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.DEVICE_WATER_GEN_CONTAINER;
 
 public class DeviceWaterGenContainer extends TileContainer {
 
@@ -17,7 +17,7 @@ public class DeviceWaterGenContainer extends TileContainer {
 
     public DeviceWaterGenContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DEVICE_WATER_GEN_CONTAINER, windowId, world, pos, inventory, player);
+        super(DEVICE_WATER_GEN_CONTAINER.get(), windowId, world, pos, inventory, player);
         this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

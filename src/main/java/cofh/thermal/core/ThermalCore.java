@@ -6,7 +6,6 @@ import cofh.core.config.ConfigManager;
 import cofh.core.config.world.OreConfig;
 import cofh.core.content.entity.AbstractGrenade;
 import cofh.core.content.entity.AbstractTNTMinecart;
-import cofh.core.init.CoreEnchantments;
 import cofh.lib.client.renderer.entity.TntRendererCoFH;
 import cofh.lib.content.entity.PrimedTntCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
@@ -30,7 +29,6 @@ import cofh.thermal.core.entity.monster.Basalz;
 import cofh.thermal.core.entity.monster.Blitz;
 import cofh.thermal.core.entity.monster.Blizz;
 import cofh.thermal.core.init.*;
-import cofh.thermal.lib.common.ThermalFeatures;
 import cofh.thermal.lib.common.ThermalFlags;
 import cofh.thermal.lib.common.ThermalProxy;
 import cofh.thermal.lib.common.ThermalProxyClient;
@@ -70,7 +68,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.core.init.TCoreReferences.*;
+import static cofh.thermal.core.init.TCoreContainers.*;
+import static cofh.thermal.core.init.TCoreEntities.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
@@ -140,10 +139,6 @@ public class ThermalCore {
         RECIPE_SERIALIZERS.register(modEventBus);
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
-
-        ThermalFeatures.register(modEventBus);
-
-        CoreEnchantments.registerHoldingEnchantment();
     }
 
     private void setFeatureFlags() {
@@ -188,9 +183,9 @@ public class ThermalCore {
 
     private void entityAttributeSetup(final EntityAttributeCreationEvent event) {
 
-        event.put(BASALZ_ENTITY, Basalz.registerAttributes().build());
-        event.put(BLITZ_ENTITY, Blitz.registerAttributes().build());
-        event.put(BLIZZ_ENTITY, Blizz.registerAttributes().build());
+        event.put(BASALZ.get(), Basalz.registerAttributes().build());
+        event.put(BLITZ.get(), Blitz.registerAttributes().build());
+        event.put(BLIZZ.get(), Blizz.registerAttributes().build());
     }
 
     private void entityLayerSetup(final EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -213,13 +208,13 @@ public class ThermalCore {
         for (RegistryObject<EntityType<? extends AbstractTNTMinecart>> cart : DetonateUtils.CARTS) {
             event.registerEntityRenderer(cart.get(), TNTMinecartRendererCoFH::new);
         }
-        event.registerEntityRenderer(BASALZ_ENTITY, BasalzRenderer::new);
-        event.registerEntityRenderer(BLITZ_ENTITY, BlitzRenderer::new);
-        event.registerEntityRenderer(BLIZZ_ENTITY, BlizzRenderer::new);
+        event.registerEntityRenderer(BASALZ.get(), BasalzRenderer::new);
+        event.registerEntityRenderer(BLITZ.get(), BlitzRenderer::new);
+        event.registerEntityRenderer(BLIZZ.get(), BlizzRenderer::new);
 
-        event.registerEntityRenderer(BASALZ_PROJECTILE_ENTITY, BasalzProjectileRenderer::new);
-        event.registerEntityRenderer(BLITZ_PROJECTILE_ENTITY, BlitzProjectileRenderer::new);
-        event.registerEntityRenderer(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
+        event.registerEntityRenderer(BASALZ_PROJECTILE.get(), BasalzProjectileRenderer::new);
+        event.registerEntityRenderer(BLITZ_PROJECTILE.get(), BlitzProjectileRenderer::new);
+        event.registerEntityRenderer(BLIZZ_PROJECTILE.get(), BlizzProjectileRenderer::new);
     }
 
     private void capSetup(RegisterCapabilitiesEvent event) {
@@ -245,34 +240,28 @@ public class ThermalCore {
         CONFIG_MANAGER.setupClient();
         CONFIG_MANAGER.setupServer();
         CONFIG_MANAGER.setupCommon();
-        ThermalFeatures.register();
     }
     // endregion
 
     // region HELPERS
     private void registerGuiFactories() {
 
-        MenuScreens.register(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
-        MenuScreens.register(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
-        MenuScreens.register(DEVICE_FISHER_CONTAINER, DeviceFisherScreen::new);
-        MenuScreens.register(DEVICE_COMPOSTER_CONTAINER, DeviceComposterScreen::new);
-        MenuScreens.register(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
+        MenuScreens.register(DEVICE_HIVE_EXTRACTOR_CONTAINER.get(), DeviceHiveExtractorScreen::new);
+        MenuScreens.register(DEVICE_TREE_EXTRACTOR_CONTAINER.get(), DeviceTreeExtractorScreen::new);
+        MenuScreens.register(DEVICE_FISHER_CONTAINER.get(), DeviceFisherScreen::new);
+        MenuScreens.register(DEVICE_COMPOSTER_CONTAINER.get(), DeviceComposterScreen::new);
+        MenuScreens.register(DEVICE_SOIL_INFUSER_CONTAINER.get(), DeviceSoilInfuserScreen::new);
+        MenuScreens.register(DEVICE_WATER_GEN_CONTAINER.get(), DeviceWaterGenScreen::new);
+        MenuScreens.register(DEVICE_ROCK_GEN_CONTAINER.get(), DeviceRockGenScreen::new);
+        MenuScreens.register(DEVICE_COLLECTOR_CONTAINER.get(), DeviceCollectorScreen::new);
+        MenuScreens.register(DEVICE_POTION_DIFFUSER_CONTAINER.get(), DevicePotionDiffuserScreen::new);
+        MenuScreens.register(DEVICE_NULLIFIER_CONTAINER.get(), DeviceNullifierScreen::new);
+        MenuScreens.register(TINKER_BENCH_CONTAINER.get(), TinkerBenchScreen::new);
+        MenuScreens.register(CHARGE_BENCH_CONTAINER.get(), ChargeBenchScreen::new);
+        MenuScreens.register(SATCHEL_CONTAINER.get(), SatchelScreen::new);
+        MenuScreens.register(ENERGY_CELL_CONTAINER.get(), EnergyCellScreen::new);
+        MenuScreens.register(FLUID_CELL_CONTAINER.get(), FluidCellScreen::new);
 
-        MenuScreens.register(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
-        MenuScreens.register(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
-        MenuScreens.register(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);
-        MenuScreens.register(DEVICE_POTION_DIFFUSER_CONTAINER, DevicePotionDiffuserScreen::new);
-        MenuScreens.register(DEVICE_NULLIFIER_CONTAINER, DeviceNullifierScreen::new);
-
-        // MenuScreens.register(CHUNK_LOADER_CONTAINER, ChunkLoaderScreen::new);
-
-        MenuScreens.register(TINKER_BENCH_CONTAINER, TinkerBenchScreen::new);
-        MenuScreens.register(CHARGE_BENCH_CONTAINER, ChargeBenchScreen::new);
-
-        MenuScreens.register(SATCHEL_CONTAINER, SatchelScreen::new);
-
-        MenuScreens.register(ENERGY_CELL_CONTAINER, EnergyCellScreen::new);
-        MenuScreens.register(FLUID_CELL_CONTAINER, FluidCellScreen::new);
         // MenuScreens.register(ITEM_CELL_CONTAINER, ItemCellScreen::new);
     }
 

@@ -1,7 +1,6 @@
 package cofh.thermal.core.util.managers.machine;
 
 import cofh.thermal.core.ThermalCore;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.FurnaceRecipe;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_FURNACE;
 
 public class FurnaceRecipeManager extends SingleItemRecipeManager {
 
@@ -80,9 +80,9 @@ public class FurnaceRecipeManager extends SingleItemRecipeManager {
                 addRecipe(recipe);
             }
         }
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_FURNACE);
+        var recipes = recipeManager.byType(RECIPE_FURNACE.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
     }
     // endregion

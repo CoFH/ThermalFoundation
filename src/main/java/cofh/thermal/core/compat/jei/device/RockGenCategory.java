@@ -29,7 +29,8 @@ import java.util.List;
 
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_ROCK_GEN;
 import static cofh.thermal.lib.compat.jei.Drawables.SLOT;
 
 public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
@@ -53,7 +54,7 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
         background = guiHelper.drawableBuilder(DeviceRockGenScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
                 .build();
-        name = getTextComponent(DEVICE_ROCK_GEN_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DEVICE_ROCK_GEN).getDescriptionId());
 
         slot = Drawables.getDrawables(guiHelper).getSlot(SLOT);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

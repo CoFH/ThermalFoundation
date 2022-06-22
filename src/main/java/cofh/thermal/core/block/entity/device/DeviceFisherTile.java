@@ -1,12 +1,12 @@
 package cofh.thermal.core.block.entity.device;
 
-import cofh.core.content.xp.XpStorage;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.InventoryHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.content.inventory.SimpleItemHandler;
+import cofh.lib.content.xp.XpStorage;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -18,6 +18,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -32,7 +33,6 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 
@@ -44,10 +44,9 @@ import java.util.function.Predicate;
 
 import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.api.StorageGroup.*;
-import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
@@ -89,7 +88,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IS
 
     public DeviceFisherTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_FISHER_TILE, pos, state);
+        super(DEVICE_FISHER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 15, item -> filter.valid(item));
@@ -247,10 +246,10 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IS
                 constant -= timeReductionWater;
             }
         }
-        if (Utils.hasBiomeType(level, worldPosition, BiomeDictionary.Type.OCEAN)) {
+        if (level.getBiome(worldPosition).is(BiomeTags.IS_OCEAN)) {
             constant /= 3;
         }
-        if (Utils.hasBiomeType(level, worldPosition, BiomeDictionary.Type.RIVER)) {
+        if (level.getBiome(worldPosition).is(BiomeTags.IS_RIVER)) {
             constant /= 2;
         }
         if (level.isRainingAt(worldPosition)) {

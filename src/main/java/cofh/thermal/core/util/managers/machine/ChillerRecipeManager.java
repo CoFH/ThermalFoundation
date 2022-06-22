@@ -4,7 +4,6 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.util.crafting.ComparableItemStack;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
@@ -21,6 +20,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.*;
 
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_CHILLER;
 import static java.util.Arrays.asList;
 
 public class ChillerRecipeManager extends AbstractManager implements IRecipeManager {
@@ -167,9 +167,9 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_CHILLER);
+        var recipes = recipeManager.byType(RECIPE_CHILLER.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
     }
     // endregion

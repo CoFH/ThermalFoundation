@@ -1,9 +1,6 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
-import cofh.thermal.lib.util.recipes.ThermalCatalyst;
-import cofh.thermal.lib.util.recipes.ThermalRecipe;
 import cofh.thermal.lib.util.recipes.internal.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -11,6 +8,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 import java.util.List;
+
+import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 
 public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
 
@@ -66,17 +65,17 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER);
+        var recipes = recipeManager.byType(RECIPE_PULVERIZER.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
-        var recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_PULVERIZER_RECYCLE);
+        var recycle = recipeManager.byType(RECIPE_PULVERIZER_RECYCLE.get());
         for (var entry : recycle.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
+            addRecipe(entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        var catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_PULVERIZER);
+        var catalysts = recipeManager.byType(CATALYST_PULVERIZER.get());
         for (var entry : catalysts.entrySet()) {
-            addCatalyst((ThermalCatalyst) entry.getValue());
+            addCatalyst(entry.getValue());
         }
     }
     // endregion

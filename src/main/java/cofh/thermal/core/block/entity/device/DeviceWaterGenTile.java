@@ -36,8 +36,8 @@ import static cofh.lib.api.StorageGroup.OUTPUT;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_WATER_GEN_TILE;
 import static cofh.thermal.core.init.TCoreSounds.SOUND_DEVICE_WATER_GEN;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_WATER_GEN_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
@@ -56,7 +56,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTile.
 
     public DeviceWaterGenTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_WATER_GEN_TILE, pos, state);
+        super(DEVICE_WATER_GEN_TILE.get(), pos, state);
 
         inventory.addSlot(fillSlot, INTERNAL);
 
@@ -154,7 +154,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTile.
     @Override
     protected Object getSound() {
 
-        return new ConditionalSoundInstance(SOUND_DEVICE_WATER_GEN, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_DEVICE_WATER_GEN.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region AUGMENTS

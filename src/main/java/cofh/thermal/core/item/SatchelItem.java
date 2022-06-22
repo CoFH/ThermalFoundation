@@ -10,6 +10,7 @@ import cofh.core.util.helpers.ChatHelper;
 import cofh.core.util.helpers.FilterHelper;
 import cofh.core.util.helpers.InventoryHelper;
 import cofh.lib.api.item.IColorableItem;
+import cofh.lib.api.item.ISecurableItem;
 import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.content.inventory.SimpleItemInv;
 import cofh.lib.util.Utils;
@@ -46,12 +47,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentString;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentString;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, DyeableLeatherItem, IFilterableItem, IMultiModeItem, MenuProvider {
+public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, DyeableLeatherItem, IFilterableItem, IMultiModeItem, ISecurableItem, MenuProvider {
 
     protected static final Set<Item> BANNED_ITEMS = new ObjectOpenHashSet<>();
 

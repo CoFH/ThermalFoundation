@@ -5,13 +5,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class MachineCatalystSerializer<T extends ThermalCatalyst> extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<T> {
+public class MachineCatalystSerializer<T extends ThermalCatalyst> implements RecipeSerializer<T> {
 
     protected final IFactory<T> factory;
 

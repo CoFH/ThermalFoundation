@@ -1,7 +1,6 @@
 package cofh.thermal.core.util.recipes.device;
 
 import cofh.lib.util.recipes.SerializableRecipe;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -10,6 +9,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ID_MAPPING_TREE_EXTRACTOR;
+import static cofh.thermal.core.init.TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR;
 
 public class TreeExtractorMapping extends SerializableRecipe {
 
@@ -35,7 +35,7 @@ public class TreeExtractorMapping extends SerializableRecipe {
     @Override
     public RecipeType<?> getType() {
 
-        return TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR;
+        return MAPPING_TREE_EXTRACTOR.get();
     }
 
     // region GETTERS

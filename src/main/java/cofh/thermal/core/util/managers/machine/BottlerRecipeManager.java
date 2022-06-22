@@ -6,7 +6,6 @@ import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.content.fluid.FluidIngredient;
 import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.ThermalCore;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipeNBT;
 import cofh.thermal.lib.util.managers.AbstractManager;
@@ -30,11 +29,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 import java.util.*;
 
+import static cofh.core.init.CoreFluids.POTION_FLUID;
 import static cofh.lib.util.Constants.BOTTLE_VOLUME;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Utils.getName;
+import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.lib.util.references.CoreReferences.FLUID_POTION;
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_BOTTLER;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -191,10 +192,10 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
                     try {
                         still = flowing.getSource();
                     } catch (Exception e) {
-                        ThermalCore.LOG.error("Fluid " + fluid.getRegistryName() + " had a critical error when attempting to query its still form!");
+                        ThermalCore.LOG.error("Fluid " + getRegistryName(fluid) + " had a critical error when attempting to query its still form!");
                     }
                     if (still == null) {
-                        ThermalCore.LOG.error("Fluid " + fluid.getRegistryName() + " returned a null value for its Still Fluid! This is an error. Report this to the mod author. Probable mod: " + fluid.getRegistryName().getNamespace());
+                        ThermalCore.LOG.error("Fluid " + getRegistryName(fluid) + " returned a null value for its Still Fluid! This is an error. Report this to the mod author. Probable mod: " + getRegistryName(fluid).getNamespace());
                         continue;
                     }
                     ItemStack bucket = new ItemStack(still.getBucket());
@@ -207,11 +208,11 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
         }
         if (defaultPotionRecipes) {
             ThermalCore.LOG.debug("Adding default Potion recipes to the Fluid Encapsulator...");
-            addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(FLUID_POTION, BOTTLE_VOLUME), new ItemStack(Items.POTION)));
+            addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(POTION_FLUID.get(), BOTTLE_VOLUME), new ItemStack(Items.POTION)));
         }
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BOTTLER);
+        var recipes = recipeManager.byType(RECIPE_BOTTLER.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
     }
     // endregion

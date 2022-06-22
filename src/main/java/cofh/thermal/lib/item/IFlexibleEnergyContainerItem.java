@@ -1,6 +1,6 @@
 package cofh.thermal.lib.item;
 
-import cofh.lib.energy.IEnergyContainerItem;
+import cofh.lib.api.item.IEnergyContainerItem;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.IEnergyStorage;

@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util;
 
-import cofh.lib.capability.CapabilityRedstoneFlux;
+import cofh.core.capability.CapabilityRedstoneFlux;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;

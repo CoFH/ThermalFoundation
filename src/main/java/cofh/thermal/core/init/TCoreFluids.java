@@ -1,5 +1,8 @@
 package cofh.thermal.core.init;
 
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.registries.RegistryObject;
+
 public class TCoreFluids {
 
     private TCoreFluids() {

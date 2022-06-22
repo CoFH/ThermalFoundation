@@ -53,12 +53,6 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
 
     // region IRecipeCategory
     @Override
-    public ResourceLocation getUid() {
-
-        return uid;
-    }
-
-    @Override
     public Component getTitle() {
 
         return name;

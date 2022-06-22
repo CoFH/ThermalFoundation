@@ -12,11 +12,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -39,7 +39,7 @@ import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.api.StorageGroup.OUTPUT;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_ROCK_GEN_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.IServerTickable {
@@ -62,7 +62,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.I
 
     public DeviceRockGenTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_ROCK_GEN_TILE, pos, state);
+        super(DEVICE_ROCK_GEN_TILE.get(), pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
 
@@ -132,7 +132,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.I
                 }
                 processMax = recipe.getTime();
                 genAmount = Math.max(1, result.getCount());
-                if (level.getBiome(worldPosition).value().getBiomeCategory() == Biome.BiomeCategory.NETHER) {
+                if (level.getBiome(worldPosition).is(BiomeTags.IS_NETHER)) {
                     processMax = Math.max(1, processMax / 2);
                 }
                 process = processMax;

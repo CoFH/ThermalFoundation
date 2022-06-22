@@ -1,8 +1,8 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.energy.EnergyStorageCoFH;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.item.IEnergyContainerItem;
+import cofh.lib.content.energy.EnergyStorageCoFH;
 import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

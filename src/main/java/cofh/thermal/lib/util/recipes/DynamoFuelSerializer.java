@@ -7,7 +7,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import java.util.List;
 
 import static cofh.lib.util.recipes.RecipeJsonUtils.*;
 
-public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<T> {
+public class DynamoFuelSerializer<T extends ThermalFuel> implements RecipeSerializer<T> {
 
     protected final int defaultEnergy;
     protected final int minEnergy;

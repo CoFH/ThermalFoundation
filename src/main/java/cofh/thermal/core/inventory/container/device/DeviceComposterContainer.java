@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_COMPOSTER_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.DEVICE_COMPOSTER_CONTAINER;
 
 public class DeviceComposterContainer extends TileContainer {
 
@@ -18,7 +18,7 @@ public class DeviceComposterContainer extends TileContainer {
 
     public DeviceComposterContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DEVICE_COMPOSTER_CONTAINER, windowId, world, pos, inventory, player);
+        super(DEVICE_COMPOSTER_CONTAINER.get(), windowId, world, pos, inventory, player);
         this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

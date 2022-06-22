@@ -4,7 +4,6 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.content.fluid.FluidStackHolder;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
@@ -20,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_REFINERY;
 
 public class RefineryRecipeManager extends AbstractManager implements IRecipeManager {
 
@@ -122,9 +123,9 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_REFINERY);
+        var recipes = recipeManager.byType(RECIPE_REFINERY.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
     }
     // endregion

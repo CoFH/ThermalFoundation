@@ -96,19 +96,19 @@ public class Blitz extends Monster {
     @Override
     protected SoundEvent getAmbientSound() {
 
-        return ThermalClientConfig.mobAmbientSounds ? SOUND_BLITZ_AMBIENT : null;
+        return ThermalClientConfig.mobAmbientSounds ? SOUND_BLITZ_AMBIENT.get() : null;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 
-        return SOUND_BLITZ_HURT;
+        return SOUND_BLITZ_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
 
-        return SOUND_BLITZ_DEATH;
+        return SOUND_BLITZ_DEATH.get();
     }
 
     @Override
@@ -237,7 +237,7 @@ public class Blitz extends Monster {
                     if (attackTime <= 0) {
                         attackTime = 20;
                         Level world = blitz.level;
-                        world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT, SoundSource.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                        world.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BLITZ_SHOOT.get(), SoundSource.HOSTILE, 1.0F, (blitz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         // imagine using what you learn in school
                         float gravity = 0.05F;
                         float horzSpeed = 0.8F;

@@ -14,37 +14,21 @@ public class TCoreDataGen {
     @SubscribeEvent
     public static void gatherData(final GatherDataEvent event) {
 
-        if (event.includeServer()) {
-            registerServerProviders(event);
-        }
-        if (event.includeClient()) {
-            registerClientProviders(event);
-        }
-    }
-
-    private static void registerServerProviders(GatherDataEvent event) {
-
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 
         TCoreTagsProvider.Block blockTags = new TCoreTagsProvider.Block(gen, exFileHelper);
 
-        gen.addProvider(blockTags);
-        gen.addProvider(new TCoreTagsProvider.Item(gen, blockTags, exFileHelper));
-        gen.addProvider(new TCoreTagsProvider.Fluid(gen, exFileHelper));
+        gen.addProvider(event.includeServer(), blockTags);
+        gen.addProvider(event.includeServer(), new TCoreTagsProvider.Item(gen, blockTags, exFileHelper));
+        gen.addProvider(event.includeServer(), new TCoreTagsProvider.Fluid(gen, exFileHelper));
 
-        // gen.addProvider(new TCoreAdvancementProvider(gen));
-        gen.addProvider(new TCoreLootTableProvider(gen));
-        gen.addProvider(new TCoreRecipeProvider(gen));
-    }
+        // gen.addProvider(event.includeServer(), new TCoreAdvancementProvider(gen));
+        gen.addProvider(event.includeServer(), new TCoreLootTableProvider(gen));
+        gen.addProvider(event.includeServer(), new TCoreRecipeProvider(gen));
 
-    private static void registerClientProviders(GatherDataEvent event) {
-
-        DataGenerator gen = event.getGenerator();
-        ExistingFileHelper exFileHelper = event.getExistingFileHelper();
-
-        gen.addProvider(new TCoreBlockStateProvider(gen, exFileHelper));
-        gen.addProvider(new TCoreItemModelProvider(gen, exFileHelper));
+        gen.addProvider(event.includeClient(), new TCoreBlockStateProvider(gen, exFileHelper));
+        gen.addProvider(event.includeClient(), new TCoreItemModelProvider(gen, exFileHelper));
     }
 
 }

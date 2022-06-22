@@ -1,10 +1,7 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.thermal.core.init.TCoreRecipeTypes;
-import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
-import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.internal.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -16,6 +13,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.thermal.core.init.TCoreRecipeTypes.CATALYST_INSOLATOR;
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_INSOLATOR;
 
 public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
 
@@ -78,13 +77,13 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_INSOLATOR);
+        var recipes = recipeManager.byType(RECIPE_INSOLATOR.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((InsolatorRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
-        var catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_INSOLATOR);
+        var catalysts = recipeManager.byType(CATALYST_INSOLATOR.get());
         for (var entry : catalysts.entrySet()) {
-            addCatalyst((ThermalCatalyst) entry.getValue());
+            addCatalyst(entry.getValue());
         }
     }
     // endregion

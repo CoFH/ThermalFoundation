@@ -1,7 +1,6 @@
 package cofh.thermal.core.util.recipes.device;
 
 import cofh.lib.util.recipes.SerializableRecipe;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -10,6 +9,7 @@ import net.minecraft.world.level.block.Block;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ID_MAPPING_ROCK_GEN;
+import static cofh.thermal.core.init.TCoreRecipeTypes.MAPPING_ROCK_GEN;
 
 public class RockGenMapping extends SerializableRecipe {
 
@@ -37,7 +37,7 @@ public class RockGenMapping extends SerializableRecipe {
     @Override
     public RecipeType<?> getType() {
 
-        return TCoreRecipeTypes.MAPPING_ROCK_GEN;
+        return MAPPING_ROCK_GEN.get();
     }
 
     // region GETTERS

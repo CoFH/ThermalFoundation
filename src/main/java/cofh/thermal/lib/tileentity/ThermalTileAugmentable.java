@@ -1,11 +1,7 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.content.block.entity.TileCoFH;
-import cofh.core.content.energy.EmptyEnergyStorage;
-import cofh.core.content.energy.EnergyStorageCoFH;
 import cofh.core.content.item.IAugmentableItem;
-import cofh.core.content.xp.EmptyXpStorage;
-import cofh.core.content.xp.XpStorage;
 import cofh.core.network.packet.client.TileControlPacket;
 import cofh.core.network.packet.client.TileRedstonePacket;
 import cofh.core.network.packet.client.TileStatePacket;
@@ -16,18 +12,21 @@ import cofh.core.util.filter.IFilter;
 import cofh.core.util.filter.IFilterableTile;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FilterHelper;
+import cofh.lib.content.energy.EmptyEnergyStorage;
+import cofh.lib.content.energy.EnergyStorageCoFH;
 import cofh.lib.content.fluid.FluidStorageCoFH;
 import cofh.lib.content.fluid.ManagedTankInv;
 import cofh.lib.content.fluid.SimpleTankInv;
 import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.content.inventory.ManagedItemInv;
 import cofh.lib.content.inventory.SimpleItemInv;
+import cofh.lib.content.xp.EmptyXpStorage;
+import cofh.lib.content.xp.XpStorage;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SoundHelper;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.init.TCoreSounds;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -79,6 +78,7 @@ import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
+import static cofh.thermal.core.init.TCoreSounds.SOUND_TINKER;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
 public abstract class ThermalTileAugmentable extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, MenuProvider, IFilterableTile {
@@ -282,7 +282,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
                 if (!player.getAbilities().instabuild) {
                     player.setItemInHand(hand, consumeItem(stack, 1));
                 }
-                player.level.playSound(null, player.blockPosition(), TCoreSounds.SOUND_TINKER, SoundSource.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
+                player.level.playSound(null, player.blockPosition(), SOUND_TINKER.get(), SoundSource.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
             } else {
                 player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundSource.PLAYERS, 0.1F, 0.25F);
             }

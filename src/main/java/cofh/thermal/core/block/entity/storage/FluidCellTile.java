@@ -5,8 +5,8 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.content.fluid.FluidHandlerRestrictionWrapper;
-import cofh.lib.content.fluid.FluidStorageAdjustable;
 import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageRestrictable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
@@ -35,7 +35,7 @@ import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
-import static cofh.thermal.core.init.TCoreReferences.FLUID_CELL_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.FLUID_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATOR;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
@@ -43,12 +43,12 @@ public class FluidCellTile extends CellTileBase implements ITickableTile.IServer
 
     public static final int BASE_CAPACITY = TANK_MEDIUM * 4;
 
-    protected FluidStorageCoFH fluidStorage = new FluidStorageAdjustable(BASE_CAPACITY, fluid -> filter.valid(fluid))
+    protected FluidStorageCoFH fluidStorage = new FluidStorageRestrictable(BASE_CAPACITY, fluid -> filter.valid(fluid))
             .setTransferLimits(() -> amountInput, () -> amountOutput);
 
     public FluidCellTile(BlockPos pos, BlockState state) {
 
-        super(FLUID_CELL_TILE, pos, state);
+        super(FLUID_CELL_TILE.get(), pos, state);
 
         amountInput = BUCKET_VOLUME;
         amountOutput = BUCKET_VOLUME;

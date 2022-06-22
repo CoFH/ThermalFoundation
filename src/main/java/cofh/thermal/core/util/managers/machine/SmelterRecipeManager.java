@@ -3,7 +3,6 @@ package cofh.thermal.core.util.managers.machine;
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.util.crafting.ComparableItemStack;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.CatalyzedRecipeManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
@@ -20,6 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nullable;
 import java.util.*;
 
+import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 import static java.util.Arrays.asList;
 
 public class SmelterRecipeManager extends AbstractManager implements IRecipeManager, CatalyzedRecipeManager {
@@ -216,17 +216,17 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER);
+        var recipes = recipeManager.byType(RECIPE_SMELTER.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.CATALYZED);
+            addRecipe(entry.getValue(), BaseMachineRecipe.RecipeType.CATALYZED);
         }
-        var recycle = recipeManager.byType(TCoreRecipeTypes.RECIPE_SMELTER_RECYCLE);
+        var recycle = recipeManager.byType(RECIPE_SMELTER_RECYCLE.get());
         for (var entry : recycle.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
+            addRecipe(entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        var catalysts = recipeManager.byType(TCoreRecipeTypes.CATALYST_SMELTER);
+        var catalysts = recipeManager.byType(CATALYST_SMELTER.get());
         for (var entry : catalysts.entrySet()) {
-            addCatalyst((ThermalCatalyst) entry.getValue());
+            addCatalyst(entry.getValue());
         }
     }
     // endregion

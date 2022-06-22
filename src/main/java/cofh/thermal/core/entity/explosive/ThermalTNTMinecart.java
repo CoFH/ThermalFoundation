@@ -41,6 +41,12 @@ public class ThermalTNTMinecart extends AbstractTNTMinecart {
     }
 
     @Override
+    protected Item getDropItem() {
+
+        return item;
+    }
+
+    @Override
     public ItemStack getPickResult() {
 
         return detonated ? new ItemStack(Items.MINECART) : new ItemStack(item);

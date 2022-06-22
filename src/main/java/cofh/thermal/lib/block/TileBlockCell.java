@@ -1,7 +1,6 @@
 package cofh.thermal.lib.block;
 
 import cofh.core.content.block.TileBlock4Way;
-import cofh.core.content.block.entity.TileCoFH;
 import cofh.lib.api.block.entity.ITileCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -12,7 +11,7 @@ import java.util.function.Supplier;
 
 public class TileBlockCell extends TileBlock4Way {
 
-    public TileBlockCell(Properties builder, Class<? extends TileCoFH> tileClass, Supplier<BlockEntityType<? extends TileCoFH>> blockEntityType) {
+    public TileBlockCell(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
 
         super(builder, tileClass, blockEntityType);
     }

@@ -1,12 +1,12 @@
 package cofh.thermal.core.block.entity;
 
-import cofh.core.content.energy.EnergyStorageCoFH;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.IFilter;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.AugmentableHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.energy.EnergyStorageCoFH;
 import cofh.lib.content.fluid.FluidStorageCoFH;
 import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
@@ -36,7 +36,7 @@ import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
-import static cofh.thermal.core.init.TCoreReferences.TINKER_BENCH_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.TINKER_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
@@ -68,7 +68,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     public TinkerBenchTile(BlockPos pos, BlockState state) {
 
-        super(TINKER_BENCH_TILE, pos, state);
+        super(TINKER_BENCH_TILE.get(), pos, state);
 
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 

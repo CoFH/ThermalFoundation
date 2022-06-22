@@ -1,10 +1,10 @@
 package cofh.thermal.core.block.entity.storage;
 
-import cofh.core.content.energy.EnergyHandlerRestrictionWrapper;
-import cofh.core.content.energy.EnergyStorageAdjustable;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.energy.EnergyHandlerRestrictionWrapper;
+import cofh.lib.content.energy.EnergyStorageRestrictable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
@@ -29,7 +29,7 @@ import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
-import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.ENERGY_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 
 public class EnergyCellTile extends CellTileBase implements ITickableTile.IServerTickable {
@@ -40,9 +40,9 @@ public class EnergyCellTile extends CellTileBase implements ITickableTile.IServe
 
     public EnergyCellTile(BlockPos pos, BlockState state) {
 
-        super(ENERGY_CELL_TILE, pos, state);
+        super(ENERGY_CELL_TILE.get(), pos, state);
 
-        energyStorage = new EnergyStorageAdjustable(BASE_CAPACITY, BASE_RECV, BASE_SEND).setTransferLimits(() -> amountInput, () -> amountOutput);
+        energyStorage = new EnergyStorageRestrictable(BASE_CAPACITY, BASE_RECV, BASE_SEND).setTransferLimits(() -> amountInput, () -> amountOutput);
 
         amountInput = energyStorage.getMaxReceive();
         amountOutput = energyStorage.getMaxExtract();

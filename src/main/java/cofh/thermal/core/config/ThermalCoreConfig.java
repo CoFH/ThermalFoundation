@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
@@ -90,23 +91,23 @@ public class ThermalCoreConfig implements IBaseConfig {
         try {
             shulkerBoxes = new String[]{
                     ID_THERMAL + ":" + ID_SATCHEL,
-                    Items.SHULKER_BOX.getRegistryName().toString(),
-                    Items.WHITE_SHULKER_BOX.getRegistryName().toString(),
-                    Items.ORANGE_SHULKER_BOX.getRegistryName().toString(),
-                    Items.MAGENTA_SHULKER_BOX.getRegistryName().toString(),
-                    Items.LIGHT_BLUE_SHULKER_BOX.getRegistryName().toString(),
-                    Items.YELLOW_SHULKER_BOX.getRegistryName().toString(),
-                    Items.LIME_SHULKER_BOX.getRegistryName().toString(),
-                    Items.PINK_SHULKER_BOX.getRegistryName().toString(),
-                    Items.GRAY_SHULKER_BOX.getRegistryName().toString(),
-                    Items.LIGHT_GRAY_SHULKER_BOX.getRegistryName().toString(),
-                    Items.CYAN_SHULKER_BOX.getRegistryName().toString(),
-                    Items.PURPLE_SHULKER_BOX.getRegistryName().toString(),
-                    Items.BLUE_SHULKER_BOX.getRegistryName().toString(),
-                    Items.BROWN_SHULKER_BOX.getRegistryName().toString(),
-                    Items.GREEN_SHULKER_BOX.getRegistryName().toString(),
-                    Items.RED_SHULKER_BOX.getRegistryName().toString(),
-                    Items.BLACK_SHULKER_BOX.getRegistryName().toString()
+                    getRegistryName(Items.SHULKER_BOX).toString(),
+                    getRegistryName(Items.WHITE_SHULKER_BOX).toString(),
+                    getRegistryName(Items.ORANGE_SHULKER_BOX).toString(),
+                    getRegistryName(Items.MAGENTA_SHULKER_BOX).toString(),
+                    getRegistryName(Items.LIGHT_BLUE_SHULKER_BOX).toString(),
+                    getRegistryName(Items.YELLOW_SHULKER_BOX).toString(),
+                    getRegistryName(Items.LIME_SHULKER_BOX).toString(),
+                    getRegistryName(Items.PINK_SHULKER_BOX).toString(),
+                    getRegistryName(Items.GRAY_SHULKER_BOX).toString(),
+                    getRegistryName(Items.LIGHT_GRAY_SHULKER_BOX).toString(),
+                    getRegistryName(Items.CYAN_SHULKER_BOX).toString(),
+                    getRegistryName(Items.PURPLE_SHULKER_BOX).toString(),
+                    getRegistryName(Items.BLUE_SHULKER_BOX).toString(),
+                    getRegistryName(Items.BROWN_SHULKER_BOX).toString(),
+                    getRegistryName(Items.GREEN_SHULKER_BOX).toString(),
+                    getRegistryName(Items.RED_SHULKER_BOX).toString(),
+                    getRegistryName(Items.BLACK_SHULKER_BOX).toString()
             };
         } catch (Throwable t) {
             ThermalCore.LOG.error("A Shulker Box was NULL. This is really bad.", t);

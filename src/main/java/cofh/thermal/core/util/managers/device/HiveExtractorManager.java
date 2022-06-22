@@ -1,6 +1,5 @@
 package cofh.thermal.core.util.managers.device;
 
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.HiveExtractorMapping;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import net.minecraft.world.item.ItemStack;
@@ -14,8 +13,9 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.IdentityHashMap;
 
+import static cofh.core.init.CoreFluids.HONEY_FLUID;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
-import static cofh.lib.util.references.CoreReferences.FLUID_HONEY;
+import static cofh.thermal.core.init.TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR;
 
 public class HiveExtractorManager extends AbstractManager {
 
@@ -49,7 +49,7 @@ public class HiveExtractorManager extends AbstractManager {
 
     public FluidStack getFluid(BlockState hive) {
 
-        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getRight() : new FluidStack(FLUID_HONEY, HONEY_AMOUNT);
+        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getRight() : new FluidStack(HONEY_FLUID.get(), HONEY_AMOUNT);
     }
 
     public void addMapping(HiveExtractorMapping mapping) {
@@ -66,7 +66,7 @@ public class HiveExtractorManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var mappings = recipeManager.byType(TCoreRecipeTypes.MAPPING_HIVE_EXTRACTOR);
+        var mappings = recipeManager.byType(MAPPING_HIVE_EXTRACTOR.get());
         for (var entry : mappings.entrySet()) {
             addMapping(entry.getValue());
         }

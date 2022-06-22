@@ -18,7 +18,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import static cofh.core.init.CoreMobEffects.SUNDERED;
-import static cofh.thermal.core.init.TCoreReferences.BASALZ_PROJECTILE_ENTITY;
+import static cofh.thermal.core.init.TCoreEntities.BASALZ_PROJECTILE;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 
 public class BasalzProjectile extends ElementalProjectile {
@@ -35,12 +35,12 @@ public class BasalzProjectile extends ElementalProjectile {
 
     public BasalzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BASALZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
+        super(BASALZ_PROJECTILE.get(), shooter, accelX, accelY, accelZ, world);
     }
 
     public BasalzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BASALZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
+        super(BASALZ_PROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
     }
 
     @Override

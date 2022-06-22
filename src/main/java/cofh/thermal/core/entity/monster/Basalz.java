@@ -104,19 +104,19 @@ public class Basalz extends Monster {
     @Override
     protected SoundEvent getAmbientSound() {
 
-        return ThermalClientConfig.mobAmbientSounds ? SOUND_BASALZ_AMBIENT : null;
+        return ThermalClientConfig.mobAmbientSounds ? SOUND_BASALZ_AMBIENT.get() : null;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 
-        return SOUND_BASALZ_HURT;
+        return SOUND_BASALZ_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
 
-        return SOUND_BASALZ_DEATH;
+        return SOUND_BASALZ_DEATH.get();
     }
 
     @Override
@@ -307,7 +307,7 @@ public class Basalz extends Monster {
                     basalz.getLookControl().setLookAt(target, 10.0F, 10.0F);
                     if (!basalz.isAngry()) {
                         basalz.setAngry(true);
-                        basalz.level.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT, SoundSource.HOSTILE, 2.5F, (basalz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
+                        basalz.level.playSound(null, pos.x + 0.5D, pos.y + 0.5D, pos.z + 0.5D, SOUND_BASALZ_SHOOT.get(), SoundSource.HOSTILE, 2.5F, (basalz.random.nextFloat() - 0.5F) * 0.2F + 1.0F);
                         navTime = 0;
                     }
                     if (distSqr < 2.25) {

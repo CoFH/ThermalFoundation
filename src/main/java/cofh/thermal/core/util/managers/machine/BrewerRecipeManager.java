@@ -1,13 +1,12 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.core.fluid.PotionFluid;
+import cofh.core.content.fluid.PotionFluid;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.content.fluid.FluidIngredient;
 import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.ThermalCore;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.IRecipeManager;
@@ -30,6 +29,7 @@ import java.util.*;
 
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
+import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_BREWER;
 import static java.util.Arrays.asList;
 
 public class BrewerRecipeManager extends AbstractManager implements IRecipeManager {
@@ -153,9 +153,9 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
                 addRecipe(recipe);
             }
         }
-        var recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BREWER);
+        var recipes = recipeManager.byType(RECIPE_BREWER.get());
         for (var entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe(entry.getValue());
         }
     }
     // endregion

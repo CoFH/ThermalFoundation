@@ -1,8 +1,8 @@
 package cofh.thermal.core.block.entity;
 
-import cofh.core.content.energy.EnergyStorageCoFH;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.energy.EnergyStorageCoFH;
 import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
@@ -23,7 +23,7 @@ import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
-import static cofh.thermal.core.init.TCoreReferences.CHARGE_BENCH_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.CHARGE_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class ChargeBenchTile extends ThermalTileAugmentable implements ITickableTile.IServerTickable {
@@ -38,7 +38,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
 
     public ChargeBenchTile(BlockPos pos, BlockState state) {
 
-        super(CHARGE_BENCH_TILE, pos, state);
+        super(CHARGE_BENCH_TILE.get(), pos, state);
 
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 

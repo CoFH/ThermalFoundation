@@ -1,7 +1,6 @@
 package cofh.thermal.core.util.managers.dynamo;
 
 import cofh.thermal.core.ThermalCore;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.dynamo.DisenchantmentFuel;
 import cofh.thermal.lib.util.managers.SingleItemFuelManager;
 import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
@@ -23,6 +22,7 @@ import java.util.Map;
 import static cofh.lib.util.Utils.getName;
 import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
+import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_DISENCHANTMENT;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
@@ -84,7 +84,7 @@ public class DisenchantmentFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_DISENCHANTMENT);
+        var recipes = recipeManager.byType(FUEL_DISENCHANTMENT.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

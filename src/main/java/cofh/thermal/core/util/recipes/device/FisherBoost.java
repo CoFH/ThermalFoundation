@@ -1,13 +1,13 @@
 package cofh.thermal.core.util.recipes.device;
 
 import cofh.lib.util.recipes.SerializableRecipe;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
+import static cofh.thermal.core.init.TCoreRecipeTypes.BOOST_FISHER;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ID_BOOST_FISHER;
 
 public class FisherBoost extends SerializableRecipe {
@@ -38,7 +38,7 @@ public class FisherBoost extends SerializableRecipe {
     @Override
     public RecipeType<?> getType() {
 
-        return TCoreRecipeTypes.BOOST_FISHER;
+        return BOOST_FISHER.get();
     }
 
     // region GETTERS

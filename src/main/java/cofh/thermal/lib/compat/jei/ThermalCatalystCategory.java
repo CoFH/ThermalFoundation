@@ -31,7 +31,7 @@ public abstract class ThermalCatalystCategory<T extends ThermalCatalyst> impleme
     public ThermalCatalystCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
 
         this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
 
         background = guiHelper.drawableBuilder(Drawables.JEI_TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
@@ -40,12 +40,6 @@ public abstract class ThermalCatalystCategory<T extends ThermalCatalyst> impleme
     }
 
     // region IRecipeCategory
-    @Override
-    public ResourceLocation getUid() {
-
-        return uid;
-    }
-
     @Override
     public Component getTitle() {
 

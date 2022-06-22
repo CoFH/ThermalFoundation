@@ -1,9 +1,6 @@
 package cofh.thermal.core.client.gui.storage;
 
-import cofh.core.client.gui.element.ElementBase;
-import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.ElementTexture;
-import cofh.core.network.packet.server.TileConfigPacket;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.block.entity.storage.EnergyCellTile;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
@@ -13,14 +10,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-import java.util.Collections;
-
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 import static cofh.lib.util.helpers.StringHelper.format;
-import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContainer> {
 
@@ -55,7 +48,7 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
 
         addElement(setClearable(createDefaultEnergyStorage(this, 80, 22, tile.getEnergyStorage()), tile, 0));
 
-        addButtons();
+        // addButtons();
     }
 
     @Override
@@ -71,155 +64,155 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
     }
 
     // region ELEMENTS
-    @Override
-    public boolean handleElementButtonClick(String buttonName, int mouseButton) {
-
-        int change = 1000;
-        float pitch = 0.7F;
-
-        if (hasShiftDown()) {
-            change *= 10;
-            pitch += 0.1F;
-        }
-        if (hasControlDown()) {
-            change /= 100;
-            pitch -= 0.2F;
-        }
-        if (mouseButton == 1) {
-            change /= 10;
-            pitch -= 0.1F;
-        }
-        int curInput = tile.amountInput;
-        int curOutput = tile.amountOutput;
-
-        switch (buttonName) {
-            case "DecInput":
-                tile.amountInput -= change;
-                pitch -= 0.1F;
-                break;
-            case "IncInput":
-                tile.amountInput += change;
-                pitch += 0.1F;
-                break;
-            case "DecOutput":
-                tile.amountOutput -= change;
-                pitch -= 0.1F;
-                break;
-            case "IncOutput":
-                tile.amountOutput += change;
-                pitch += 0.1F;
-                break;
-        }
-        playClickSound(pitch);
-        TileConfigPacket.sendToServer(tile);
-
-        tile.amountInput = curInput;
-        tile.amountOutput = curOutput;
-        return true;
-    }
-
-    protected void addButtons() {
-
-        ElementBase decInput = new ElementButton(this, 19, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
-
-                    if (element.enabled()) {
-                        int change = 1000;
-
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(Component.literal(
-                                localize("info.cofh.decrease_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("DecInput")
-                .setSize(14, 14)
-                .setTexture(TEX_DECREMENT, 42, 14)
-                .setEnabled(() -> tile.amountInput > 0);
-
-        ElementBase incInput = new ElementButton(this, 35, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
-
-                    if (element.enabled()) {
-                        int change = 1000;
-
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(Component.literal(
-                                localize("info.cofh.increase_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("IncInput")
-                .setSize(14, 14)
-                .setTexture(TEX_INCREMENT, 42, 14)
-                .setEnabled(() -> tile.amountInput < tile.getMaxInput());
-
-        ElementBase decOutput = new ElementButton(this, 127, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
-
-                    if (element.enabled()) {
-                        int change = 1000;
-
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(Component.literal(
-                                localize("info.cofh.decrease_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("DecOutput")
-                .setSize(14, 14)
-                .setTexture(TEX_DECREMENT, 42, 14)
-                .setEnabled(() -> tile.amountOutput > 0);
-
-        ElementBase incOutput = new ElementButton(this, 143, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
-
-                    if (element.enabled()) {
-                        int change = 1000;
-
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(Component.literal(
-                                localize("info.cofh.increase_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("IncOutput")
-                .setSize(14, 14)
-                .setTexture(TEX_INCREMENT, 42, 14)
-                .setEnabled(() -> tile.amountOutput < tile.getMaxOutput());
-
-        addElement(decInput);
-        addElement(incInput);
-        addElement(decOutput);
-        addElement(incOutput);
-    }
+    //    @Override
+    //    public boolean handleElementButtonClick(String buttonName, int mouseButton) {
+    //
+    //        int change = 1000;
+    //        float pitch = 0.7F;
+    //
+    //        if (hasShiftDown()) {
+    //            change *= 10;
+    //            pitch += 0.1F;
+    //        }
+    //        if (hasControlDown()) {
+    //            change /= 100;
+    //            pitch -= 0.2F;
+    //        }
+    //        if (mouseButton == 1) {
+    //            change /= 10;
+    //            pitch -= 0.1F;
+    //        }
+    //        int curInput = tile.amountInput;
+    //        int curOutput = tile.amountOutput;
+    //
+    //        switch (buttonName) {
+    //            case "DecInput":
+    //                tile.amountInput -= change;
+    //                pitch -= 0.1F;
+    //                break;
+    //            case "IncInput":
+    //                tile.amountInput += change;
+    //                pitch += 0.1F;
+    //                break;
+    //            case "DecOutput":
+    //                tile.amountOutput -= change;
+    //                pitch -= 0.1F;
+    //                break;
+    //            case "IncOutput":
+    //                tile.amountOutput += change;
+    //                pitch += 0.1F;
+    //                break;
+    //        }
+    //        playClickSound(pitch);
+    //        TileConfigPacket.sendToServer(tile);
+    //
+    //        tile.amountInput = curInput;
+    //        tile.amountOutput = curOutput;
+    //        return true;
+    //    }
+    //
+    //    protected void addButtons() {
+    //
+    //        ElementBase decInput = new ElementButton(this, 19, 56)
+    //                .setTooltipFactory((element, mouseX, mouseY) -> {
+    //
+    //                    if (element.enabled()) {
+    //                        int change = 1000;
+    //
+    //                        if (hasShiftDown()) {
+    //                            change *= 10;
+    //                        }
+    //                        if (hasControlDown()) {
+    //                            change /= 100;
+    //                        }
+    //                        return Collections.singletonList(Component.literal(
+    //                                localize("info.cofh.decrease_by")
+    //                                        + " " + format(change)
+    //                                        + "/" + format(change / 10)));
+    //                    }
+    //                    return Collections.emptyList();
+    //                })
+    //                .setName("DecInput")
+    //                .setSize(14, 14)
+    //                .setTexture(TEX_DECREMENT, 42, 14)
+    //                .setEnabled(() -> tile.amountInput > 0);
+    //
+    //        ElementBase incInput = new ElementButton(this, 35, 56)
+    //                .setTooltipFactory((element, mouseX, mouseY) -> {
+    //
+    //                    if (element.enabled()) {
+    //                        int change = 1000;
+    //
+    //                        if (hasShiftDown()) {
+    //                            change *= 10;
+    //                        }
+    //                        if (hasControlDown()) {
+    //                            change /= 100;
+    //                        }
+    //                        return Collections.singletonList(Component.literal(
+    //                                localize("info.cofh.increase_by")
+    //                                        + " " + format(change)
+    //                                        + "/" + format(change / 10)));
+    //                    }
+    //                    return Collections.emptyList();
+    //                })
+    //                .setName("IncInput")
+    //                .setSize(14, 14)
+    //                .setTexture(TEX_INCREMENT, 42, 14)
+    //                .setEnabled(() -> tile.amountInput < tile.getMaxInput());
+    //
+    //        ElementBase decOutput = new ElementButton(this, 127, 56)
+    //                .setTooltipFactory((element, mouseX, mouseY) -> {
+    //
+    //                    if (element.enabled()) {
+    //                        int change = 1000;
+    //
+    //                        if (hasShiftDown()) {
+    //                            change *= 10;
+    //                        }
+    //                        if (hasControlDown()) {
+    //                            change /= 100;
+    //                        }
+    //                        return Collections.singletonList(Component.literal(
+    //                                localize("info.cofh.decrease_by")
+    //                                        + " " + format(change)
+    //                                        + "/" + format(change / 10)));
+    //                    }
+    //                    return Collections.emptyList();
+    //                })
+    //                .setName("DecOutput")
+    //                .setSize(14, 14)
+    //                .setTexture(TEX_DECREMENT, 42, 14)
+    //                .setEnabled(() -> tile.amountOutput > 0);
+    //
+    //        ElementBase incOutput = new ElementButton(this, 143, 56)
+    //                .setTooltipFactory((element, mouseX, mouseY) -> {
+    //
+    //                    if (element.enabled()) {
+    //                        int change = 1000;
+    //
+    //                        if (hasShiftDown()) {
+    //                            change *= 10;
+    //                        }
+    //                        if (hasControlDown()) {
+    //                            change /= 100;
+    //                        }
+    //                        return Collections.singletonList(Component.literal(
+    //                                localize("info.cofh.increase_by")
+    //                                        + " " + format(change)
+    //                                        + "/" + format(change / 10)));
+    //                    }
+    //                    return Collections.emptyList();
+    //                })
+    //                .setName("IncOutput")
+    //                .setSize(14, 14)
+    //                .setTexture(TEX_INCREMENT, 42, 14)
+    //                .setEnabled(() -> tile.amountOutput < tile.getMaxOutput());
+    //
+    //        addElement(decInput);
+    //        addElement(incInput);
+    //        addElement(decOutput);
+    //        addElement(incOutput);
+    //    }
     // endregion
 }

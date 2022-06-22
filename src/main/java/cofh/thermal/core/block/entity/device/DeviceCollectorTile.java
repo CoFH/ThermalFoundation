@@ -1,10 +1,10 @@
 package cofh.thermal.core.block.entity.device;
 
-import cofh.core.content.xp.XpStorage;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.InventoryHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
+import cofh.lib.content.xp.XpStorage;
 import cofh.thermal.core.client.ThermalTextures;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceCollectorContainer;
@@ -36,7 +36,7 @@ import static cofh.core.client.renderer.model.ModelUtils.UNDERLAY;
 import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_COLLECTOR_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_COLLECTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
@@ -65,7 +65,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     public DeviceCollectorTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_COLLECTOR_TILE, pos, state);
+        super(DEVICE_COLLECTOR_TILE.get(), pos, state);
 
         inventory.addSlots(ACCESSIBLE, 15, item -> filter.valid(item));
 

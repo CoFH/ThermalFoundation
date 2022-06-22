@@ -1,7 +1,6 @@
 package cofh.thermal.core.util.recipes.machine;
 
 import cofh.lib.content.fluid.FluidIngredient;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -13,6 +12,8 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
+import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
+import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_SMELTER_RECYCLE;
 
 public class SmelterRecycleRecipe extends SmelterRecipe {
 
@@ -25,14 +26,14 @@ public class SmelterRecycleRecipe extends SmelterRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_RECIPE_SMELTER_RECYCLE);
+        return RECIPE_SERIALIZERS.get(ID_RECIPE_SMELTER_RECYCLE);
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return TCoreRecipeTypes.RECIPE_SMELTER_RECYCLE;
+        return RECIPE_TYPES.get(ID_RECIPE_SMELTER_RECYCLE);
     }
 
 }

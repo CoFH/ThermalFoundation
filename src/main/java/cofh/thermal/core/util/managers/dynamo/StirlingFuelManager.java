@@ -1,7 +1,6 @@
 package cofh.thermal.core.util.managers.dynamo;
 
 import cofh.thermal.core.ThermalCore;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.dynamo.StirlingFuel;
 import cofh.thermal.lib.util.managers.SingleItemFuelManager;
 import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
@@ -21,6 +20,7 @@ import static cofh.lib.util.Constants.RF_PER_FURNACE_UNIT;
 import static cofh.lib.util.Utils.getName;
 import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
+import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_STIRLING;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
@@ -78,7 +78,7 @@ public class StirlingFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(TCoreRecipeTypes.FUEL_STIRLING);
+        var recipes = recipeManager.byType(FUEL_STIRLING.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

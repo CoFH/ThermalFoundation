@@ -3,7 +3,6 @@ package cofh.thermal.core.item;
 import cofh.core.content.item.ItemCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.entity.projectile.BlitzProjectile;
-import cofh.thermal.core.init.TCoreSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
@@ -21,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 
 import static cofh.core.init.CoreMobEffects.LIGHTNING_RESISTANCE;
+import static cofh.thermal.core.init.TCoreSounds.SOUND_BLITZ_SHOOT;
 
 public class LightningChargeItem extends ItemCoFH {
 
@@ -59,7 +59,7 @@ public class LightningChargeItem extends ItemCoFH {
 
     private void playUseSound(Level worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT, SoundSource.BLOCKS, 1.0F, (worldIn.random.nextFloat() - worldIn.random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, SOUND_BLITZ_SHOOT.get(), SoundSource.BLOCKS, 1.0F, (worldIn.random.nextFloat() - worldIn.random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR

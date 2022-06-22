@@ -42,7 +42,7 @@ import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.lib.api.StorageGroup.OUTPUT;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_TREE_EXTRACTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
@@ -75,7 +75,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     public DeviceTreeExtractorTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_TREE_EXTRACTOR_TILE, pos, state);
+        super(DEVICE_TREE_EXTRACTOR_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
 

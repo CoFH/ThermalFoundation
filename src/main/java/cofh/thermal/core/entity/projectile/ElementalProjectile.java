@@ -92,12 +92,6 @@ public abstract class ElementalProjectile extends AbstractHurtingProjectile {
     }
 
     @Override
-    public float getBrightness() {
-
-        return 1.0F;
-    }
-
-    @Override
     public boolean hurt(DamageSource source, float amount) {
 
         return false;

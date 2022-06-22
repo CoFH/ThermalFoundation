@@ -46,7 +46,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     public ThermalFuelCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid, boolean drawEnergy) {
 
         this.uid = uid;
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, icon);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
 
         if (drawEnergy) {
             energyBackground = Drawables.getDrawables(guiHelper).getEnergyEmpty();
@@ -55,12 +55,6 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
 
     // region IRecipeCategory
-    @Override
-    public ResourceLocation getUid() {
-
-        return uid;
-    }
-
     @Override
     public Component getTitle() {
 
@@ -98,7 +92,7 @@ public abstract class ThermalFuelCategory<T extends ThermalFuel> implements IRec
     }
 
     @Override
-    public List<Component> getTooltipStrings(T recipe, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(T recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 
         List<Component> tooltip = new ArrayList<>();
 

@@ -20,7 +20,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import static cofh.core.init.CoreMobEffects.SHOCKED;
-import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
+import static cofh.thermal.core.init.TCoreEntities.BLITZ_PROJECTILE;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
 public class BlitzProjectile extends ElementalProjectile {
@@ -36,12 +36,12 @@ public class BlitzProjectile extends ElementalProjectile {
 
     public BlitzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BLITZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
+        super(BLITZ_PROJECTILE.get(), shooter, accelX, accelY, accelZ, world);
     }
 
     public BlitzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BLITZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
+        super(BLITZ_PROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
     }
 
     @Override
