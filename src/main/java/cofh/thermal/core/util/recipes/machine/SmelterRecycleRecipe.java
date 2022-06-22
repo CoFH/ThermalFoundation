@@ -11,9 +11,8 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_SMELTER_RECYCLE;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.SMELTER_RECYCLE_RECIPE_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.SMELTER_RECYCLE_RECIPE;
 
 public class SmelterRecycleRecipe extends SmelterRecipe {
 
@@ -26,14 +25,14 @@ public class SmelterRecycleRecipe extends SmelterRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_RECIPE_SMELTER_RECYCLE);
+        return SMELTER_RECYCLE_RECIPE_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_RECIPE_SMELTER_RECYCLE);
+        return SMELTER_RECYCLE_RECIPE.get();
     }
 
 }

@@ -12,7 +12,7 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Map;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.BOOST_FISHER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.FISHER_BOOST;
 
 public class FisherManager extends AbstractManager {
 
@@ -64,7 +64,7 @@ public class FisherManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var boosts = recipeManager.byType(BOOST_FISHER.get());
+        var boosts = recipeManager.byType(FISHER_BOOST.get());
         for (var entry : boosts.entrySet()) {
             addBoost(entry.getValue());
         }

@@ -65,15 +65,15 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(RECIPE_PULVERIZER.get());
+        var recipes = recipeManager.byType(PULVERIZER_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }
-        var recycle = recipeManager.byType(RECIPE_PULVERIZER_RECYCLE.get());
+        var recycle = recipeManager.byType(PULVERIZER_RECYCLE_RECIPE.get());
         for (var entry : recycle.entrySet()) {
             addRecipe(entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        var catalysts = recipeManager.byType(CATALYST_PULVERIZER.get());
+        var catalysts = recipeManager.byType(PULVERIZER_CATALYST.get());
         for (var entry : catalysts.entrySet()) {
             addCatalyst(entry.getValue());
         }

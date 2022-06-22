@@ -11,9 +11,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_FUEL_COMPRESSION;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.COMPRESSION_FUEL_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.COMPRESSION_FUEL;
 
 public class CompressionFuel extends ThermalFuel {
 
@@ -26,28 +25,14 @@ public class CompressionFuel extends ThermalFuel {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_FUEL_COMPRESSION);
+        return COMPRESSION_FUEL_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_FUEL_COMPRESSION);
+        return COMPRESSION_FUEL.get();
     }
-
-    //    @Nonnull
-    //    @Override
-    //    public String getGroup() {
-    //
-    //        return DYNAMO_COMPRESSION_BLOCK.getTranslationKey();
-    //    }
-    //
-    //    @Nonnull
-    //    @Override
-    //    public ItemStack getIcon() {
-    //
-    //        return new ItemStack(DYNAMO_COMPRESSION_BLOCK);
-    //    }
 
 }

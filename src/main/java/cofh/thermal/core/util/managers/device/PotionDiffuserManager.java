@@ -10,7 +10,7 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Map;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.BOOST_POTION_DIFFUSER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.POTION_DIFFUSER_BOOST;
 
 public class PotionDiffuserManager extends AbstractManager {
 
@@ -67,7 +67,7 @@ public class PotionDiffuserManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var boosts = recipeManager.byType(BOOST_POTION_DIFFUSER.get());
+        var boosts = recipeManager.byType(POTION_DIFFUSER_BOOST.get());
         for (var entry : boosts.entrySet()) {
             addBoost(entry.getValue());
         }

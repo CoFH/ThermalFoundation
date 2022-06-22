@@ -22,7 +22,7 @@ import java.util.Map;
 import static cofh.lib.util.Utils.getName;
 import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_DISENCHANTMENT;
+import static cofh.thermal.core.init.TCoreRecipeTypes.DISENCHANTMENT_FUEL;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
@@ -84,7 +84,7 @@ public class DisenchantmentFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(FUEL_DISENCHANTMENT.get());
+        var recipes = recipeManager.byType(DISENCHANTMENT_FUEL.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

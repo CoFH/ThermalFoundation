@@ -8,9 +8,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 import javax.annotation.Nonnull;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_CATALYST_SMELTER;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.SMELTER_CATALYST_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.SMELTER_CATALYST;
 
 public class SmelterCatalyst extends ThermalCatalyst {
 
@@ -23,14 +22,14 @@ public class SmelterCatalyst extends ThermalCatalyst {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_CATALYST_SMELTER);
+        return SMELTER_CATALYST_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_CATALYST_SMELTER);
+        return SMELTER_CATALYST.get();
     }
 
 }

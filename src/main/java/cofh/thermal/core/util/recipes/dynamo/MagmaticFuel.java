@@ -11,9 +11,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_FUEL_MAGMATIC;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.MAGMATIC_FUEL_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.MAGMATIC_FUEL;
 
 public class MagmaticFuel extends ThermalFuel {
 
@@ -26,28 +25,14 @@ public class MagmaticFuel extends ThermalFuel {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_FUEL_MAGMATIC);
+        return MAGMATIC_FUEL_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_FUEL_MAGMATIC);
+        return MAGMATIC_FUEL.get();
     }
-
-    //    @Nonnull
-    //    @Override
-    //    public String getGroup() {
-    //
-    //        return DYNAMO_MAGMATIC_BLOCK.getTranslationKey();
-    //    }
-    //
-    //    @Nonnull
-    //    @Override
-    //    public ItemStack getIcon() {
-    //
-    //        return new ItemStack(DYNAMO_MAGMATIC_BLOCK);
-    //    }
 
 }

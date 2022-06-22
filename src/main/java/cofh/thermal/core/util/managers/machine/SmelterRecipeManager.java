@@ -216,15 +216,15 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(RECIPE_SMELTER.get());
+        var recipes = recipeManager.byType(SMELTER_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue(), BaseMachineRecipe.RecipeType.CATALYZED);
         }
-        var recycle = recipeManager.byType(RECIPE_SMELTER_RECYCLE.get());
+        var recycle = recipeManager.byType(SMELTER_RECYCLE_RECIPE.get());
         for (var entry : recycle.entrySet()) {
             addRecipe(entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
-        var catalysts = recipeManager.byType(CATALYST_SMELTER.get());
+        var catalysts = recipeManager.byType(SMELTER_CATALYST.get());
         for (var entry : catalysts.entrySet()) {
             addCatalyst(entry.getValue());
         }

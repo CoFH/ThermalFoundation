@@ -20,7 +20,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.*;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_CHILLER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.CHILLER_RECIPE;
 import static java.util.Arrays.asList;
 
 public class ChillerRecipeManager extends AbstractManager implements IRecipeManager {
@@ -167,7 +167,7 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(RECIPE_CHILLER.get());
+        var recipes = recipeManager.byType(CHILLER_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }

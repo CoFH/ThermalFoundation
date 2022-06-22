@@ -5,7 +5,7 @@ import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_MAGMATIC;
+import static cofh.thermal.core.init.TCoreRecipeTypes.MAGMATIC_FUEL;
 
 public class MagmaticFuelManager extends SingleFluidFuelManager {
 
@@ -33,7 +33,7 @@ public class MagmaticFuelManager extends SingleFluidFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(FUEL_MAGMATIC.get());
+        var recipes = recipeManager.byType(MAGMATIC_FUEL.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

@@ -29,7 +29,7 @@ import java.util.*;
 
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_BREWER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.BREWER_RECIPE;
 import static java.util.Arrays.asList;
 
 public class BrewerRecipeManager extends AbstractManager implements IRecipeManager {
@@ -153,7 +153,7 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
                 addRecipe(recipe);
             }
         }
-        var recipes = recipeManager.byType(RECIPE_BREWER.get());
+        var recipes = recipeManager.byType(BREWER_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }

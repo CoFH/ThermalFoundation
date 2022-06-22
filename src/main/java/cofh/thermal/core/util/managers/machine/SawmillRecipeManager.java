@@ -3,7 +3,7 @@ package cofh.thermal.core.util.managers.machine;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_SAWMILL;
+import static cofh.thermal.core.init.TCoreRecipeTypes.SAWMILL_RECIPE;
 
 public class SawmillRecipeManager extends SingleItemRecipeManager {
 
@@ -25,7 +25,7 @@ public class SawmillRecipeManager extends SingleItemRecipeManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(RECIPE_SAWMILL.get());
+        var recipes = recipeManager.byType(SAWMILL_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }

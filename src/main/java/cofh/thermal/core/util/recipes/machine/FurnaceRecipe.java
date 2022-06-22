@@ -16,9 +16,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_FURNACE;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.FURNACE_RECIPE_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.FURNACE_RECIPE;
 
 public class FurnaceRecipe extends ThermalRecipe {
 
@@ -36,14 +35,14 @@ public class FurnaceRecipe extends ThermalRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_RECIPE_FURNACE);
+        return FURNACE_RECIPE_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_RECIPE_FURNACE);
+        return FURNACE_RECIPE.get();
     }
 
 }

@@ -20,78 +20,78 @@ public class TCoreRecipeTypes {
     }
 
     // region DEVICES
-    public static final String ID_MAPPING_TREE_EXTRACTOR = "tree_extractor";
-    public static final String ID_MAPPING_HIVE_EXTRACTOR = "hive_extractor";
-    public static final String ID_BOOST_TREE_EXTRACTOR = "tree_extractor_boost";
-    public static final String ID_BOOST_FISHER = "fisher_boost";
-    public static final String ID_MAPPING_ROCK_GEN = "rock_gen";
-    public static final String ID_BOOST_POTION_DIFFUSER = "potion_diffuser_boost";
+    public static final String ID_HIVE_EXTRACTOR_MAPPING = "hive_extractor";
+    public static final String ID_TREE_EXTRACTOR_MAPPING = "tree_extractor";
+    public static final String ID_TREE_EXTRACTOR_BOOST = "tree_extractor_boost";
+    public static final String ID_FISHER_BOOST = "fisher_boost";
+    public static final String ID_ROCK_GEN_MAPPING = "rock_gen";
+    public static final String ID_POTION_DIFFUSER_BOOST = "potion_diffuser_boost";
 
-    public static final RegistryObject<SerializableRecipeType<HiveExtractorMapping>> MAPPING_HIVE_EXTRACTOR = RECIPE_TYPES.register(ID_MAPPING_HIVE_EXTRACTOR, () -> new SerializableRecipeType<>(ID_THERMAL, ID_MAPPING_HIVE_EXTRACTOR));
-    public static final RegistryObject<SerializableRecipeType<TreeExtractorMapping>> MAPPING_TREE_EXTRACTOR = RECIPE_TYPES.register(ID_MAPPING_TREE_EXTRACTOR, () -> new SerializableRecipeType<>(ID_THERMAL, ID_MAPPING_TREE_EXTRACTOR));
-    public static final RegistryObject<SerializableRecipeType<TreeExtractorBoost>> BOOST_TREE_EXTRACTOR = RECIPE_TYPES.register(ID_BOOST_TREE_EXTRACTOR, () -> new SerializableRecipeType<>(ID_THERMAL, ID_BOOST_TREE_EXTRACTOR));
-    public static final RegistryObject<SerializableRecipeType<FisherBoost>> BOOST_FISHER = RECIPE_TYPES.register(ID_BOOST_FISHER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_BOOST_FISHER));
-    public static final RegistryObject<SerializableRecipeType<RockGenMapping>> MAPPING_ROCK_GEN = RECIPE_TYPES.register(ID_MAPPING_ROCK_GEN, () -> new SerializableRecipeType<>(ID_THERMAL, ID_MAPPING_ROCK_GEN));
-    public static final RegistryObject<SerializableRecipeType<PotionDiffuserBoost>> BOOST_POTION_DIFFUSER = RECIPE_TYPES.register(ID_BOOST_POTION_DIFFUSER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_BOOST_POTION_DIFFUSER));
+    public static final RegistryObject<SerializableRecipeType<HiveExtractorMapping>> HIVE_EXTRACTOR_MAPPING = RECIPE_TYPES.register(ID_HIVE_EXTRACTOR_MAPPING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_HIVE_EXTRACTOR_MAPPING));
+    public static final RegistryObject<SerializableRecipeType<TreeExtractorMapping>> TREE_EXTRACTOR_MAPPING = RECIPE_TYPES.register(ID_TREE_EXTRACTOR_MAPPING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_TREE_EXTRACTOR_MAPPING));
+    public static final RegistryObject<SerializableRecipeType<TreeExtractorBoost>> TREE_EXTRACTOR_BOOST = RECIPE_TYPES.register(ID_TREE_EXTRACTOR_BOOST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_TREE_EXTRACTOR_BOOST));
+    public static final RegistryObject<SerializableRecipeType<FisherBoost>> FISHER_BOOST = RECIPE_TYPES.register(ID_FISHER_BOOST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FISHER_BOOST));
+    public static final RegistryObject<SerializableRecipeType<RockGenMapping>> ROCK_GEN_MAPPING = RECIPE_TYPES.register(ID_ROCK_GEN_MAPPING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_ROCK_GEN_MAPPING));
+    public static final RegistryObject<SerializableRecipeType<PotionDiffuserBoost>> POTION_DIFFUSER_BOOST = RECIPE_TYPES.register(ID_POTION_DIFFUSER_BOOST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_POTION_DIFFUSER_BOOST));
     // endregion
 
     // region FUELS
-    public static final String ID_FUEL_STIRLING = "stirling_fuel";
-    public static final String ID_FUEL_COMPRESSION = "compression_fuel";
-    public static final String ID_FUEL_MAGMATIC = "magmatic_fuel";
-    public static final String ID_FUEL_NUMISMATIC = "numismatic_fuel";
-    public static final String ID_FUEL_LAPIDARY = "lapidary_fuel";
-    public static final String ID_FUEL_DISENCHANTMENT = "disenchantment_fuel";
-    public static final String ID_FUEL_GOURMAND = "gourmand_fuel";
+    public static final String ID_STIRLING_FUEL = "stirling_fuel";
+    public static final String ID_COMPRESSION_FUEL = "compression_fuel";
+    public static final String ID_MAGMATIC_FUEL = "magmatic_fuel";
+    public static final String ID_NUMISMATIC_FUEL = "numismatic_fuel";
+    public static final String ID_LAPIDARY_FUEL = "lapidary_fuel";
+    public static final String ID_DISENCHANTMENT_FUEL = "disenchantment_fuel";
+    public static final String ID_GOURMAND_FUEL = "gourmand_fuel";
 
-    public static final RegistryObject<SerializableRecipeType<StirlingFuel>> FUEL_STIRLING = RECIPE_TYPES.register(ID_FUEL_STIRLING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_STIRLING));
-    public static final RegistryObject<SerializableRecipeType<CompressionFuel>> FUEL_COMPRESSION = RECIPE_TYPES.register(ID_FUEL_COMPRESSION, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_COMPRESSION));
-    public static final RegistryObject<SerializableRecipeType<MagmaticFuel>> FUEL_MAGMATIC = RECIPE_TYPES.register(ID_FUEL_MAGMATIC, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_MAGMATIC));
-    public static final RegistryObject<SerializableRecipeType<NumismaticFuel>> FUEL_NUMISMATIC = RECIPE_TYPES.register(ID_FUEL_NUMISMATIC, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_NUMISMATIC));
-    public static final RegistryObject<SerializableRecipeType<LapidaryFuel>> FUEL_LAPIDARY = RECIPE_TYPES.register(ID_FUEL_LAPIDARY, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_LAPIDARY));
-    public static final RegistryObject<SerializableRecipeType<DisenchantmentFuel>> FUEL_DISENCHANTMENT = RECIPE_TYPES.register(ID_FUEL_DISENCHANTMENT, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_DISENCHANTMENT));
-    public static final RegistryObject<SerializableRecipeType<GourmandFuel>> FUEL_GOURMAND = RECIPE_TYPES.register(ID_FUEL_GOURMAND, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FUEL_GOURMAND));
+    public static final RegistryObject<SerializableRecipeType<StirlingFuel>> STIRLING_FUEL = RECIPE_TYPES.register(ID_STIRLING_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_STIRLING_FUEL));
+    public static final RegistryObject<SerializableRecipeType<CompressionFuel>> COMPRESSION_FUEL = RECIPE_TYPES.register(ID_COMPRESSION_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_COMPRESSION_FUEL));
+    public static final RegistryObject<SerializableRecipeType<MagmaticFuel>> MAGMATIC_FUEL = RECIPE_TYPES.register(ID_MAGMATIC_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_MAGMATIC_FUEL));
+    public static final RegistryObject<SerializableRecipeType<NumismaticFuel>> NUMISMATIC_FUEL = RECIPE_TYPES.register(ID_NUMISMATIC_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_NUMISMATIC_FUEL));
+    public static final RegistryObject<SerializableRecipeType<LapidaryFuel>> LAPIDARY_FUEL = RECIPE_TYPES.register(ID_LAPIDARY_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_LAPIDARY_FUEL));
+    public static final RegistryObject<SerializableRecipeType<DisenchantmentFuel>> DISENCHANTMENT_FUEL = RECIPE_TYPES.register(ID_DISENCHANTMENT_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_DISENCHANTMENT_FUEL));
+    public static final RegistryObject<SerializableRecipeType<GourmandFuel>> GOURMAND_FUEL = RECIPE_TYPES.register(ID_GOURMAND_FUEL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_GOURMAND_FUEL));
     // endregion
 
     // region RECIPES
-    public static final String ID_RECIPE_FURNACE = "furnace";
-    public static final String ID_RECIPE_SAWMILL = "sawmill";
-    public static final String ID_RECIPE_PULVERIZER = "pulverizer";
-    public static final String ID_RECIPE_PULVERIZER_RECYCLE = "pulverizer_recycle";
-    public static final String ID_RECIPE_SMELTER = "smelter";
-    public static final String ID_RECIPE_SMELTER_RECYCLE = "smelter_recycle";
-    public static final String ID_RECIPE_INSOLATOR = "insolator";
-    public static final String ID_RECIPE_CENTRIFUGE = "centrifuge";
-    public static final String ID_RECIPE_PRESS = "press";
-    public static final String ID_RECIPE_CRUCIBLE = "crucible";
-    public static final String ID_RECIPE_CHILLER = "chiller";
-    public static final String ID_RECIPE_REFINERY = "refinery";
-    public static final String ID_RECIPE_PYROLYZER = "pyrolyzer";
-    public static final String ID_RECIPE_BOTTLER = "bottler";
-    public static final String ID_RECIPE_BREWER = "brewer";
+    public static final String ID_FURNACE_RECIPE = "furnace";
+    public static final String ID_SAWMILL_RECIPE = "sawmill";
+    public static final String ID_PULVERIZER_RECIPE = "pulverizer";
+    public static final String ID_PULVERIZER_RECYCLE_RECIPE = "pulverizer_recycle";
+    public static final String ID_SMELTER_RECIPE = "smelter";
+    public static final String ID_SMELTER_RECYCLE_RECIPE = "smelter_recycle";
+    public static final String ID_INSOLATOR_RECIPE = "insolator";
+    public static final String ID_CENTRIFUGE_RECIPE = "centrifuge";
+    public static final String ID_PRESS_RECIPE = "press";
+    public static final String ID_CRUCIBLE_RECIPE = "crucible";
+    public static final String ID_CHILLER_RECIPE = "chiller";
+    public static final String ID_REFINERY_RECIPE = "refinery";
+    public static final String ID_PYROLYZER_RECIPE = "pyrolyzer";
+    public static final String ID_BOTTLER_RECIPE = "bottler";
+    public static final String ID_BREWER_RECIPE = "brewer";
 
-    public static final String ID_CATALYST_PULVERIZER = "pulverizer_catalyst";
-    public static final String ID_CATALYST_SMELTER = "smelter_catalyst";
-    public static final String ID_CATALYST_INSOLATOR = "insolator_catalyst";
+    public static final String ID_PULVERIZER_CATALYST = "pulverizer_catalyst";
+    public static final String ID_SMELTER_CATALYST = "smelter_catalyst";
+    public static final String ID_INSOLATOR_CATALYST = "insolator_catalyst";
 
-    public static final RegistryObject<SerializableRecipeType<FurnaceRecipe>> RECIPE_FURNACE = RECIPE_TYPES.register(ID_RECIPE_FURNACE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_FURNACE));
-    public static final RegistryObject<SerializableRecipeType<SawmillRecipe>> RECIPE_SAWMILL = RECIPE_TYPES.register(ID_RECIPE_SAWMILL, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_SAWMILL));
-    public static final RegistryObject<SerializableRecipeType<PulverizerRecipe>> RECIPE_PULVERIZER = RECIPE_TYPES.register(ID_RECIPE_PULVERIZER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_PULVERIZER));
-    public static final RegistryObject<SerializableRecipeType<PulverizerRecycleRecipe>> RECIPE_PULVERIZER_RECYCLE = RECIPE_TYPES.register(ID_RECIPE_PULVERIZER_RECYCLE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_PULVERIZER_RECYCLE));
-    public static final RegistryObject<SerializableRecipeType<SmelterRecipe>> RECIPE_SMELTER = RECIPE_TYPES.register(ID_RECIPE_SMELTER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_SMELTER));
-    public static final RegistryObject<SerializableRecipeType<SmelterRecycleRecipe>> RECIPE_SMELTER_RECYCLE = RECIPE_TYPES.register(ID_RECIPE_SMELTER_RECYCLE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_SMELTER_RECYCLE));
-    public static final RegistryObject<SerializableRecipeType<InsolatorRecipe>> RECIPE_INSOLATOR = RECIPE_TYPES.register(ID_RECIPE_INSOLATOR, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_INSOLATOR));
-    public static final RegistryObject<SerializableRecipeType<CentrifugeRecipe>> RECIPE_CENTRIFUGE = RECIPE_TYPES.register(ID_RECIPE_CENTRIFUGE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_CENTRIFUGE));
-    public static final RegistryObject<SerializableRecipeType<PressRecipe>> RECIPE_PRESS = RECIPE_TYPES.register(ID_RECIPE_PRESS, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_PRESS));
-    public static final RegistryObject<SerializableRecipeType<CrucibleRecipe>> RECIPE_CRUCIBLE = RECIPE_TYPES.register(ID_RECIPE_CRUCIBLE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_CRUCIBLE));
-    public static final RegistryObject<SerializableRecipeType<ChillerRecipe>> RECIPE_CHILLER = RECIPE_TYPES.register(ID_RECIPE_CHILLER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_CHILLER));
-    public static final RegistryObject<SerializableRecipeType<RefineryRecipe>> RECIPE_REFINERY = RECIPE_TYPES.register(ID_RECIPE_REFINERY, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_REFINERY));
-    public static final RegistryObject<SerializableRecipeType<PyrolyzerRecipe>> RECIPE_PYROLYZER = RECIPE_TYPES.register(ID_RECIPE_PYROLYZER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_PYROLYZER));
-    public static final RegistryObject<SerializableRecipeType<BottlerRecipe>> RECIPE_BOTTLER = RECIPE_TYPES.register(ID_RECIPE_BOTTLER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_BOTTLER));
-    public static final RegistryObject<SerializableRecipeType<BrewerRecipe>> RECIPE_BREWER = RECIPE_TYPES.register(ID_RECIPE_BREWER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_RECIPE_BREWER));
+    public static final RegistryObject<SerializableRecipeType<FurnaceRecipe>> FURNACE_RECIPE = RECIPE_TYPES.register(ID_FURNACE_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FURNACE_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<SawmillRecipe>> SAWMILL_RECIPE = RECIPE_TYPES.register(ID_SAWMILL_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_SAWMILL_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<PulverizerRecipe>> PULVERIZER_RECIPE = RECIPE_TYPES.register(ID_PULVERIZER_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_PULVERIZER_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<PulverizerRecycleRecipe>> PULVERIZER_RECYCLE_RECIPE = RECIPE_TYPES.register(ID_PULVERIZER_RECYCLE_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_PULVERIZER_RECYCLE_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<SmelterRecipe>> SMELTER_RECIPE = RECIPE_TYPES.register(ID_SMELTER_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_SMELTER_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<SmelterRecycleRecipe>> SMELTER_RECYCLE_RECIPE = RECIPE_TYPES.register(ID_SMELTER_RECYCLE_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_SMELTER_RECYCLE_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<InsolatorRecipe>> INSOLATOR_RECIPE = RECIPE_TYPES.register(ID_INSOLATOR_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_INSOLATOR_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<CentrifugeRecipe>> CENTRIFUGE_RECIPE = RECIPE_TYPES.register(ID_CENTRIFUGE_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_CENTRIFUGE_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<PressRecipe>> PRESS_RECIPE = RECIPE_TYPES.register(ID_PRESS_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_PRESS_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<CrucibleRecipe>> CRUCIBLE_RECIPE = RECIPE_TYPES.register(ID_CRUCIBLE_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_CRUCIBLE_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<ChillerRecipe>> CHILLER_RECIPE = RECIPE_TYPES.register(ID_CHILLER_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_CHILLER_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<RefineryRecipe>> REFINERY_RECIPE = RECIPE_TYPES.register(ID_REFINERY_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_REFINERY_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<PyrolyzerRecipe>> PYROLYZER_RECIPE = RECIPE_TYPES.register(ID_PYROLYZER_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_PYROLYZER_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<BottlerRecipe>> BOTTLER_RECIPE = RECIPE_TYPES.register(ID_BOTTLER_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_BOTTLER_RECIPE));
+    public static final RegistryObject<SerializableRecipeType<BrewerRecipe>> BREWER_RECIPE = RECIPE_TYPES.register(ID_BREWER_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_BREWER_RECIPE));
 
-    public static final RegistryObject<SerializableRecipeType<PulverizerCatalyst>> CATALYST_PULVERIZER = RECIPE_TYPES.register(ID_CATALYST_PULVERIZER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_CATALYST_PULVERIZER));
-    public static final RegistryObject<SerializableRecipeType<SmelterCatalyst>> CATALYST_SMELTER = RECIPE_TYPES.register(ID_CATALYST_SMELTER, () -> new SerializableRecipeType<>(ID_THERMAL, ID_CATALYST_SMELTER));
-    public static final RegistryObject<SerializableRecipeType<InsolatorCatalyst>> CATALYST_INSOLATOR = RECIPE_TYPES.register(ID_CATALYST_INSOLATOR, () -> new SerializableRecipeType<>(ID_THERMAL, ID_CATALYST_INSOLATOR));
+    public static final RegistryObject<SerializableRecipeType<PulverizerCatalyst>> PULVERIZER_CATALYST = RECIPE_TYPES.register(ID_PULVERIZER_CATALYST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_PULVERIZER_CATALYST));
+    public static final RegistryObject<SerializableRecipeType<SmelterCatalyst>> SMELTER_CATALYST = RECIPE_TYPES.register(ID_SMELTER_CATALYST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_SMELTER_CATALYST));
+    public static final RegistryObject<SerializableRecipeType<InsolatorCatalyst>> INSOLATOR_CATALYST = RECIPE_TYPES.register(ID_INSOLATOR_CATALYST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_INSOLATOR_CATALYST));
     // endregion
 }

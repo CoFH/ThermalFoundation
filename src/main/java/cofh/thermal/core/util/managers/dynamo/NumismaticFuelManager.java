@@ -5,7 +5,7 @@ import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_NUMISMATIC;
+import static cofh.thermal.core.init.TCoreRecipeTypes.NUMISMATIC_FUEL;
 
 public class NumismaticFuelManager extends SingleItemFuelManager {
 
@@ -33,7 +33,7 @@ public class NumismaticFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(FUEL_NUMISMATIC.get());
+        var recipes = recipeManager.byType(NUMISMATIC_FUEL.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

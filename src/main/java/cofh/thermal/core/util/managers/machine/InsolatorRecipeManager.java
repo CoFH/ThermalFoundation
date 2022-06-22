@@ -13,8 +13,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
-import static cofh.thermal.core.init.TCoreRecipeTypes.CATALYST_INSOLATOR;
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_INSOLATOR;
+import static cofh.thermal.core.init.TCoreRecipeTypes.INSOLATOR_CATALYST;
+import static cofh.thermal.core.init.TCoreRecipeTypes.INSOLATOR_RECIPE;
 
 public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
 
@@ -77,11 +77,11 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(RECIPE_INSOLATOR.get());
+        var recipes = recipeManager.byType(INSOLATOR_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }
-        var catalysts = recipeManager.byType(CATALYST_INSOLATOR.get());
+        var catalysts = recipeManager.byType(INSOLATOR_CATALYST.get());
         for (var entry : catalysts.entrySet()) {
             addCatalyst(entry.getValue());
         }

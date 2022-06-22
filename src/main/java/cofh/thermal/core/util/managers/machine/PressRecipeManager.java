@@ -18,7 +18,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.*;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_PRESS;
+import static cofh.thermal.core.init.TCoreRecipeTypes.PRESS_RECIPE;
 import static java.util.Arrays.asList;
 
 public class PressRecipeManager extends AbstractManager implements IRecipeManager {
@@ -164,7 +164,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         //                addRecipe(recipe);
         //            }
         //        }
-        var recipes = recipeManager.byType(RECIPE_PRESS.get());
+        var recipes = recipeManager.byType(PRESS_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }

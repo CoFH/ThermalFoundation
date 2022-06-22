@@ -5,7 +5,7 @@ import cofh.thermal.lib.util.recipes.internal.IDynamoFuel;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.fluids.FluidStack;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_COMPRESSION;
+import static cofh.thermal.core.init.TCoreRecipeTypes.COMPRESSION_FUEL;
 
 public class CompressionFuelManager extends SingleFluidFuelManager {
 
@@ -33,7 +33,7 @@ public class CompressionFuelManager extends SingleFluidFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(FUEL_COMPRESSION.get());
+        var recipes = recipeManager.byType(COMPRESSION_FUEL.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

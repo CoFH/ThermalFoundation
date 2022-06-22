@@ -12,9 +12,8 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_SAWMILL;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.SAWMILL_RECIPE_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.SAWMILL_RECIPE;
 
 public class SawmillRecipe extends ThermalRecipe {
 
@@ -27,14 +26,14 @@ public class SawmillRecipe extends ThermalRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_RECIPE_SAWMILL);
+        return SAWMILL_RECIPE_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_RECIPE_SAWMILL);
+        return SAWMILL_RECIPE.get();
     }
 
 }

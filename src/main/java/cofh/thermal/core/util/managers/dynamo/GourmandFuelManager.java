@@ -22,7 +22,7 @@ import java.util.List;
 import static cofh.lib.util.Utils.getName;
 import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.core.init.TCoreRecipeTypes.FUEL_GOURMAND;
+import static cofh.thermal.core.init.TCoreRecipeTypes.GOURMAND_FUEL;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
@@ -99,7 +99,7 @@ public class GourmandFuelManager extends SingleItemFuelManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(FUEL_GOURMAND.get());
+        var recipes = recipeManager.byType(GOURMAND_FUEL.get());
         for (var entry : recipes.entrySet()) {
             addFuel(entry.getValue());
         }

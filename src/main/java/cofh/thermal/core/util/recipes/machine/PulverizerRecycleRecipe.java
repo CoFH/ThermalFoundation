@@ -11,10 +11,8 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_PULVERIZER_RECYCLE;
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_PULVERIZER_RECYCLE;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.PULVERIZER_RECYCLE_RECIPE_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.PULVERIZER_RECYCLE_RECIPE;
 
 public class PulverizerRecycleRecipe extends PulverizerRecipe {
 
@@ -27,14 +25,14 @@ public class PulverizerRecycleRecipe extends PulverizerRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_RECIPE_PULVERIZER_RECYCLE);
+        return PULVERIZER_RECYCLE_RECIPE_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_PULVERIZER_RECYCLE.get();
+        return PULVERIZER_RECYCLE_RECIPE.get();
     }
 
 }

@@ -68,7 +68,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.Collections;
 import java.util.List;
 
-import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.init.TCoreContainers.*;
 import static cofh.thermal.core.init.TCoreEntities.*;
@@ -94,7 +93,7 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
     public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
 
-    public static final DeferredRegisterCoFH<FluidType> FLUID_TYPES = DeferredRegisterCoFH.create(ForgeRegistries.Keys.FLUID_TYPES, ID_COFH_CORE);
+    public static final DeferredRegisterCoFH<FluidType> FLUID_TYPES = DeferredRegisterCoFH.create(ForgeRegistries.Keys.FLUID_TYPES, ID_THERMAL);
 
     static {
         TCoreBlocks.register();
@@ -144,6 +143,8 @@ public class ThermalCore {
         RECIPE_TYPES.register(modEventBus);
         SOUND_EVENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
+
+        FLUID_TYPES.register(modEventBus);
     }
 
     private void setFeatureFlags() {
@@ -231,6 +232,7 @@ public class ThermalCore {
 
         event.enqueueWork(TCoreBlocks::setup);
         event.enqueueWork(TCoreItems::setup);
+        event.enqueueWork(TCoreFluids::setup);
         event.enqueueWork(TCoreEntities::setup);
     }
 

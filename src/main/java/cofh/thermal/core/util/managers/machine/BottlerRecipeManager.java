@@ -23,19 +23,19 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import java.util.*;
 
+import static cofh.core.init.CoreFluids.POTION_FLUID;
 import static cofh.lib.util.Constants.BOTTLE_VOLUME;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Utils.getName;
 import static cofh.lib.util.Utils.getRegistryName;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_BOTTLER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.BOTTLER_RECIPE;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -208,9 +208,9 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
         }
         if (defaultPotionRecipes) {
             ThermalCore.LOG.debug("Adding default Potion recipes to the Fluid Encapsulator...");
-            addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(Fluids.WATER, BOTTLE_VOLUME), new ItemStack(Items.POTION)));
+            addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(POTION_FLUID.get(), BOTTLE_VOLUME), new ItemStack(Items.POTION)));
         }
-        var recipes = recipeManager.byType(RECIPE_BOTTLER.get());
+        var recipes = recipeManager.byType(BOTTLER_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }

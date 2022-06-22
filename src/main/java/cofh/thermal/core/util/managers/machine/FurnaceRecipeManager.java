@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_FURNACE;
+import static cofh.thermal.core.init.TCoreRecipeTypes.FURNACE_RECIPE;
 
 public class FurnaceRecipeManager extends SingleItemRecipeManager {
 
@@ -80,7 +80,7 @@ public class FurnaceRecipeManager extends SingleItemRecipeManager {
                 addRecipe(recipe);
             }
         }
-        var recipes = recipeManager.byType(RECIPE_FURNACE.get());
+        var recipes = recipeManager.byType(FURNACE_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }

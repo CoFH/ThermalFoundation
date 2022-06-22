@@ -12,9 +12,8 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static cofh.thermal.core.ThermalCore.RECIPE_SERIALIZERS;
-import static cofh.thermal.core.ThermalCore.RECIPE_TYPES;
-import static cofh.thermal.core.init.TCoreRecipeTypes.ID_RECIPE_PRESS;
+import static cofh.thermal.core.init.TCoreRecipeSerializers.PRESS_RECIPE_SERIALIZER;
+import static cofh.thermal.core.init.TCoreRecipeTypes.PRESS_RECIPE;
 
 public class PressRecipe extends ThermalRecipe {
 
@@ -27,14 +26,14 @@ public class PressRecipe extends ThermalRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
 
-        return RECIPE_SERIALIZERS.get(ID_RECIPE_PRESS);
+        return PRESS_RECIPE_SERIALIZER.get();
     }
 
     @Nonnull
     @Override
     public RecipeType<?> getType() {
 
-        return RECIPE_TYPES.get(ID_RECIPE_PRESS);
+        return PRESS_RECIPE.get();
     }
 
 }

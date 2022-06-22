@@ -21,8 +21,8 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.BOOST_TREE_EXTRACTOR;
-import static cofh.thermal.core.init.TCoreRecipeTypes.MAPPING_TREE_EXTRACTOR;
+import static cofh.thermal.core.init.TCoreRecipeTypes.TREE_EXTRACTOR_BOOST;
+import static cofh.thermal.core.init.TCoreRecipeTypes.TREE_EXTRACTOR_MAPPING;
 
 public class TreeExtractorManager extends AbstractManager {
 
@@ -122,11 +122,11 @@ public class TreeExtractorManager extends AbstractManager {
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var mappings = recipeManager.byType(MAPPING_TREE_EXTRACTOR.get());
+        var mappings = recipeManager.byType(TREE_EXTRACTOR_MAPPING.get());
         for (var entry : mappings.entrySet()) {
             addMapping(entry.getValue());
         }
-        var boosts = recipeManager.byType(BOOST_TREE_EXTRACTOR.get());
+        var boosts = recipeManager.byType(TREE_EXTRACTOR_BOOST.get());
         for (var entry : boosts.entrySet()) {
             addBoost(entry.getValue());
         }

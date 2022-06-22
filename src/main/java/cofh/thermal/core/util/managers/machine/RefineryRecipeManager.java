@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static cofh.thermal.core.init.TCoreRecipeTypes.RECIPE_REFINERY;
+import static cofh.thermal.core.init.TCoreRecipeTypes.REFINERY_RECIPE;
 
 public class RefineryRecipeManager extends AbstractManager implements IRecipeManager {
 
@@ -123,7 +123,7 @@ public class RefineryRecipeManager extends AbstractManager implements IRecipeMan
     public void refresh(RecipeManager recipeManager) {
 
         clear();
-        var recipes = recipeManager.byType(RECIPE_REFINERY.get());
+        var recipes = recipeManager.byType(REFINERY_RECIPE.get());
         for (var entry : recipes.entrySet()) {
             addRecipe(entry.getValue());
         }
