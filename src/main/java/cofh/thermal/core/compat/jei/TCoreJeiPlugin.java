@@ -70,11 +70,11 @@ public class TCoreJeiPlugin implements IModPlugin {
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 
-        int progressY = 34;
+        int progressY = 35;
         int progressW = 24;
         int progressH = 16;
 
-        registration.addRecipeClickArea(DeviceTreeExtractorScreen.class, 80, 35, 16, progressH, TREE_EXTRACTOR);
+        registration.addRecipeClickArea(DeviceTreeExtractorScreen.class, 80, progressY, 16, progressH, TREE_EXTRACTOR);
         registration.addRecipeClickArea(DeviceRockGenScreen.class, 84, progressY, progressW, progressH, ROCK_GEN);
     }
 

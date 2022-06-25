@@ -39,7 +39,7 @@ public class DeviceRockGenScreen extends ThermalTileScreenBase<DeviceRockGenCont
 
         super.init();
 
-        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 84, 34, PROG_ARROW_FLUID_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 84, 35, PROG_ARROW_FLUID_RIGHT, tile));
 
         addElement(createSlot(this, 44, 46).setVisible(() -> myTile.getBelow() != Blocks.AIR));
 
