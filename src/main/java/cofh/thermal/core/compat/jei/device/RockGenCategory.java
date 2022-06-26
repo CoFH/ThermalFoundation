@@ -128,9 +128,9 @@ public class RockGenCategory implements IRecipeCategory<RockGenMapping> {
         if (recipe.getBelow() != Blocks.AIR) {
             slot.draw(matrixStack, 33, 33);
         }
-        RenderHelper.drawFluid(matrixStack, 74, 23, LAVA_FLUID, 24, 16);
-        progressFluidBackground.draw(matrixStack, 74, 23);
-        progressFluid.draw(matrixStack, 74, 23);
+        RenderHelper.drawFluid(matrixStack, 74, 24, LAVA_FLUID, 24, 16);
+        progressFluidBackground.draw(matrixStack, 74, 24);
+        progressFluid.draw(matrixStack, 74, 24);
     }
 
 }

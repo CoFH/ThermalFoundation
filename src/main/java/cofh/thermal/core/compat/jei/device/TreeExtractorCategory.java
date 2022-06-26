@@ -111,9 +111,9 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
 
         tankBackground.draw(matrixStack, 115, 10);
 
-        RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getFluid(), 24, 16);
-        progressFluidBackground.draw(matrixStack, 78, 23);
-        progressFluid.draw(matrixStack, 78, 23);
+        RenderHelper.drawFluid(matrixStack, 78, 24, recipe.getFluid(), 24, 16);
+        progressFluidBackground.draw(matrixStack, 78, 24);
+        progressFluid.draw(matrixStack, 78, 24);
     }
 
 }
