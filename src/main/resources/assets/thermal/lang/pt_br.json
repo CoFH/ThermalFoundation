@@ -106,7 +106,7 @@
 
   "fluid.thermal.biocrude": "Óleo Bio-cru",
   "fluid.thermal.creosote": "Óleo de Creosoto",
-  "fluid.thermal.crude_oil": "Óleo Cru",
+  "fluid.thermal.crude_oil": "Óleo Bruto",
   "fluid.thermal.ender": "Ender Ressonante",
   "fluid.thermal.glowstone": "Pedra Luminosa Energizada",
   "fluid.thermal.heavy_oil": "Óleo Pesado",
@@ -174,7 +174,7 @@
 
   "item.thermal.biocrude_bucket": "Balde de Óleo Bio-cru",
   "item.thermal.creosote_bucket": "Balde de Óleo de Creosoto",
-  "item.thermal.crude_oil_bucket": "Balde de Óleo Cru",
+  "item.thermal.crude_oil_bucket": "Balde de Óleo Bruto",
   "item.thermal.ender_bucket": "Balde de Ender Ressonante",
   "item.thermal.glowstone_bucket": "Balde de Pedra Luminosa Energizada",
   "item.thermal.heavy_oil_bucket": "Balde de Óleo Pesado",
