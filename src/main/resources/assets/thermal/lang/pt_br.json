@@ -262,7 +262,7 @@
   "item.thermal.nickel_gear": "Engrenagem de Níquel",
   "item.thermal.nickel_ingot": "Barra de Níquel",
   "item.thermal.nickel_nugget": "Pepita de Níquel",
-  "item.thermal.nickel_plate": "Placa de Nickel",
+  "item.thermal.nickel_plate": "Placa de Níquel",
 
   "item.thermal.silver_coin": "Moeda de Prata",
   "item.thermal.silver_dust": "Pó de Prata",
@@ -668,10 +668,10 @@
   "item.thermal.iron_gear": "Engrenagem de Ferro",
   "item.thermal.iron_plate": "Placa de Ferro",
 
-  "item.thermal.netherite_coin": "Moeda de Netherite",
-  "item.thermal.netherite_dust": "Pó de Netherite",
-  "item.thermal.netherite_gear": "Engrenagem de Netherite",
-  "item.thermal.netherite_plate": "Placa de Netherite",
+  "item.thermal.netherite_coin": "Moeda de Netherita",
+  "item.thermal.netherite_dust": "Pó de Netherita",
+  "item.thermal.netherite_gear": "Engrenagem de Netherita",
+  "item.thermal.netherite_plate": "Placa de Netherita",
 
   "item.thermal.quartz_coin": "Moeda de Quartzo",
   "item.thermal.quartz_dust": "Pó de Quartzo",
