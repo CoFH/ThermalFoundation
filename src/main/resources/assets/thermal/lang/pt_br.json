@@ -44,7 +44,7 @@
   "block.thermal.electrum_block": "Bloco de Electrum",
   "block.thermal.invar_block": "Bloco de Invar",
 
-  "block.thermal.enderium_block": "Bloco de Endério",
+  "block.thermal.enderium_block": "Bloco de Enderium",
   "block.thermal.lumium_block": "Bloco de Lumium",
   "block.thermal.signalum_block": "Bloco de Signalum",
 
@@ -318,11 +318,11 @@
   "item.thermal.invar_nugget": "Pepita de Invar",
   "item.thermal.invar_plate": "Placa de Invar",
 
-  "item.thermal.enderium_coin": "Moeda de Endério",
-  "item.thermal.enderium_dust": "Misturade Endério",
-  "item.thermal.enderium_gear": "Engrenagem de Endério",
-  "item.thermal.enderium_ingot": "Barra de Endério",
-  "item.thermal.enderium_nugget": "Pepita de Endério",
+  "item.thermal.enderium_coin": "Moeda de Enderium",
+  "item.thermal.enderium_dust": "Misturade Enderium",
+  "item.thermal.enderium_gear": "Engrenagem de Enderium",
+  "item.thermal.enderium_ingot": "Barra de Enderium",
+  "item.thermal.enderium_nugget": "Pepita de Enderium",
   "item.thermal.enderium_plate": "Placa de Enderium",
 
   "item.thermal.lumium_coin": "Moeda de Lumium",
