@@ -200,9 +200,9 @@ public class ThermalCoreConfig implements IBaseConfig {
         setFlag(FLAG_MOB_BLITZ, boolMobBlitz.get());
         setFlag(FLAG_MOB_BLIZZ, boolMobBlizz.get());
 
-        setFlag(FLAG_SIDE_CONFIG_AUGMENT, !boolReconfigSides.get());
-        setFlag(FLAG_RS_CONTROL_AUGMENT, !boolRSControl.get());
-        setFlag(FLAG_XP_STORAGE_AUGMENT, !boolXPStorage.get());
+        setFlag(FLAG_SIDE_CONFIG_AUGMENT, !defaultReconfigSides);
+        setFlag(FLAG_RS_CONTROL_AUGMENT, !defaultRSControl);
+        setFlag(FLAG_XP_STORAGE_AUGMENT, !defaultXPStorage);
 
         SatchelItem.setBannedItems(listSatchelBans.get());
     }

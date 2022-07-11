@@ -1031,6 +1031,7 @@
   "block.thermal.machine_chiller": "Blast Chiller",
   "block.thermal.machine_crafter": "Sequential Fabricator",
   "block.thermal.machine_crucible": "Magma Crucible",
+  "block.thermal.machine_crystallizer": "Crystallizer",
   "block.thermal.machine_furnace": "Redstone Furnace",
   "block.thermal.machine_insolator": "Phytogenic Insolator",
   "block.thermal.machine_press": "Multiservo Press",
@@ -1096,6 +1097,10 @@
   "info.thermal.machine_crucible.0": "Turns solid materials into fluids, at high heat.",
   "info.thermal.machine_crucible.1": "Very useful for creating advanced blocks.",
   "info.thermal.machine_crucible.2": "Keep away from small children and pets.",
+
+  "info.thermal.machine_crystallizer.0": "Grows and reforms crystalline structures.",
+  "info.thermal.machine_crystallizer.1": "Requires a fluid and at least one item.",
+  "info.thermal.machine_crystallizer.2": "Shine on, you crazy diamond.",
 
   "info.thermal.machine_furnace.0": "Smelts things using Redstone Flux.",
   "info.thermal.machine_furnace.1": "Uses very little energy to cook food.",

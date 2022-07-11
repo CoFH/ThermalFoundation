@@ -151,7 +151,7 @@ public class ThermalIDs {
     public static final String ID_MACHINE_PYROLYZER = "machine_pyrolyzer";
     public static final String ID_MACHINE_BOTTLER = "machine_bottler";
     public static final String ID_MACHINE_BREWER = "machine_brewer";
-    public static final String ID_MACHINE_ENCHANTER = "machine_enchanter";
+    public static final String ID_MACHINE_CRYSTALLIZER = "machine_crystallizer";
     public static final String ID_MACHINE_CRAFTER = "machine_crafter";
     // endregion
 

@@ -39,12 +39,11 @@ public class TCoreRecipeTypes {
         RECIPE_PYROLYZER.register();
         RECIPE_BOTTLER.register();
         RECIPE_BREWER.register();
-        // RECIPE_ENCHANTER.register();
+        RECIPE_CRYSTALLIZER.register();
 
         CATALYST_PULVERIZER.register();
         CATALYST_SMELTER.register();
         CATALYST_INSOLATOR.register();
-        // CATALYST_ENCHANTER.register();
 
         FUEL_STIRLING.register();
         FUEL_COMPRESSION.register();
@@ -87,12 +86,11 @@ public class TCoreRecipeTypes {
     public static final ResourceLocation ID_RECIPE_PYROLYZER = new ResourceLocation(ID_THERMAL, "pyrolyzer");
     public static final ResourceLocation ID_RECIPE_BOTTLER = new ResourceLocation(ID_THERMAL, "bottler");
     public static final ResourceLocation ID_RECIPE_BREWER = new ResourceLocation(ID_THERMAL, "brewer");
-    // public static final ResourceLocation ID_RECIPE_ENCHANTER = new ResourceLocation(ID_THERMAL, "enchanter");
+    public static final ResourceLocation ID_RECIPE_CRYSTALLIZER = new ResourceLocation(ID_THERMAL, "crystallizer");
 
     public static final ResourceLocation ID_CATALYST_PULVERIZER = new ResourceLocation(ID_THERMAL, "pulverizer_catalyst");
     public static final ResourceLocation ID_CATALYST_SMELTER = new ResourceLocation(ID_THERMAL, "smelter_catalyst");
     public static final ResourceLocation ID_CATALYST_INSOLATOR = new ResourceLocation(ID_THERMAL, "insolator_catalyst");
-    // public static final ResourceLocation ID_CATALYST_ENCHANTER = new ResourceLocation(ID_THERMAL, "enchanter_catalyst");
 
     public static final SerializableRecipeType<FurnaceRecipe> RECIPE_FURNACE = new SerializableRecipeType<>(ID_RECIPE_FURNACE);
     public static final SerializableRecipeType<SawmillRecipe> RECIPE_SAWMILL = new SerializableRecipeType<>(ID_RECIPE_SAWMILL);
@@ -109,12 +107,11 @@ public class TCoreRecipeTypes {
     public static final SerializableRecipeType<PyrolyzerRecipe> RECIPE_PYROLYZER = new SerializableRecipeType<>(ID_RECIPE_PYROLYZER);
     public static final SerializableRecipeType<BottlerRecipe> RECIPE_BOTTLER = new SerializableRecipeType<>(ID_RECIPE_BOTTLER);
     public static final SerializableRecipeType<BrewerRecipe> RECIPE_BREWER = new SerializableRecipeType<>(ID_RECIPE_BREWER);
-    // public static final SerializableRecipeType<EnchanterRecipe> RECIPE_ENCHANTER = new SerializableRecipeType<>(ID_RECIPE_ENCHANTER);
+    public static final SerializableRecipeType<CrystallizerRecipe> RECIPE_CRYSTALLIZER = new SerializableRecipeType<>(ID_RECIPE_CRYSTALLIZER);
 
     public static final SerializableRecipeType<PulverizerCatalyst> CATALYST_PULVERIZER = new SerializableRecipeType<>(ID_CATALYST_PULVERIZER);
     public static final SerializableRecipeType<SmelterCatalyst> CATALYST_SMELTER = new SerializableRecipeType<>(ID_CATALYST_SMELTER);
     public static final SerializableRecipeType<InsolatorCatalyst> CATALYST_INSOLATOR = new SerializableRecipeType<>(ID_CATALYST_INSOLATOR);
-    // public static final SerializableRecipeType<EnchanterCatalyst> CATALYST_ENCHANTER = new SerializableRecipeType<>(ID_CATALYST_ENCHANTER);
     // endregion
 
     // region FUELS

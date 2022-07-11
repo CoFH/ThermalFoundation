@@ -42,6 +42,7 @@ public class TCoreRecipeSerializers {
         RECIPE_SERIALIZERS.register(ID_RECIPE_PYROLYZER, () -> new MachineRecipeSerializer<>(PyrolyzerRecipe::new, PyrolyzerRecipeManager.instance().getDefaultEnergy()));
         RECIPE_SERIALIZERS.register(ID_RECIPE_BREWER, () -> new MachineRecipeSerializer<>(BrewerRecipe::new, BrewerRecipeManager.instance().getDefaultEnergy()));
         RECIPE_SERIALIZERS.register(ID_RECIPE_BOTTLER, () -> new MachineRecipeSerializer<>(BottlerRecipe::new, BottlerRecipeManager.instance().getDefaultEnergy()));
+        RECIPE_SERIALIZERS.register(ID_RECIPE_CRYSTALLIZER, () -> new MachineRecipeSerializer<>(CrystallizerRecipe::new, CrystallizerRecipeManager.instance().getDefaultEnergy()));
 
         RECIPE_SERIALIZERS.register(ID_CATALYST_PULVERIZER, () -> new MachineCatalystSerializer<>(PulverizerCatalyst::new));
         RECIPE_SERIALIZERS.register(ID_CATALYST_SMELTER, () -> new MachineCatalystSerializer<>(SmelterCatalyst::new));

@@ -626,7 +626,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .pattern("iri")
                 .pattern(" i ")
                 .unlockedBy("has_redstone_dust", has(Tags.Items.DUSTS_REDSTONE))
-                .save(withConditions(consumer).flag("rs_control_augment"), this.modid + ":" + folder + "/" + name(result));
+                .save(withConditions(consumer).flag(FLAG_RS_CONTROL_AUGMENT), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("side_config_augment");
         ShapedRecipeBuilder.shaped(result)
@@ -636,7 +636,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .pattern("iGi")
                 .pattern(" i ")
                 .unlockedBy("has_gold_ingot", has(Tags.Items.INGOTS_GOLD))
-                .save(withConditions(consumer).flag("side_config_augment"), this.modid + ":" + folder + "/" + name(result));
+                .save(withConditions(consumer).flag(FLAG_SIDE_CONFIG_AUGMENT), this.modid + ":" + folder + "/" + name(result));
 
         result = reg.get("xp_storage_augment");
         ShapedRecipeBuilder.shaped(result)
@@ -646,7 +646,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .pattern("iCi")
                 .pattern(" i ")
                 .unlockedBy("has_crystal", has(reg.get("xp_crystal")))
-                .save(withConditions(consumer).flag("xp_storage_augment"), this.modid + ":" + folder + "/" + name(result));
+                .save(withConditions(consumer).flag(FLAG_XP_STORAGE_AUGMENT), this.modid + ":" + folder + "/" + name(result));
     }
 
     private void generateBasicRecipes(Consumer<FinishedRecipe> consumer) {
