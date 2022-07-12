@@ -70,11 +70,11 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
         if (inputFluids.isEmpty() || energy <= 0) {
             return null;
         }
-        if (energy < MIN_ENERGY || energy > MAX_ENERGY) {
-            return null;
-        }
         FluidStack input = inputFluids.get(0);
         if (input.isEmpty()) {
+            return null;
+        }
+        if (energy < MIN_ENERGY || energy > MAX_ENERGY) {
             return null;
         }
         int amount = input.getAmount();

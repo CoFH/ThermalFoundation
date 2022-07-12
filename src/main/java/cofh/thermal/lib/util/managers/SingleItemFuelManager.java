@@ -65,11 +65,11 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
         if (inputItems.isEmpty() || energy <= 0) {
             return null;
         }
-        if (energy < MIN_ENERGY || energy > MAX_ENERGY) {
-            return null;
-        }
         ItemStack input = inputItems.get(0);
         if (input.isEmpty()) {
+            return null;
+        }
+        if (energy < MIN_ENERGY || energy > MAX_ENERGY) {
             return null;
         }
         energy = (int) (energy * getDefaultScale());

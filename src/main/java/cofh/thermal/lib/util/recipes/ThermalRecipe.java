@@ -2,6 +2,7 @@ package cofh.thermal.lib.util.recipes;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.recipes.SerializableRecipe;
+import cofh.thermal.core.ThermalCore;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -30,6 +31,9 @@ public abstract class ThermalRecipe extends SerializableRecipe {
 
         super(recipeId);
 
+        if ((inputItems == null || inputItems.isEmpty()) && (inputFluids == null || inputFluids.isEmpty()) || (outputItems == null || outputItems.isEmpty()) && (outputFluids == null || outputFluids.isEmpty())) {
+            ThermalCore.LOG.warn("Invalid Thermal Series recipe: " + recipeId + "\nRefer to the recipe's ResourceLocation to find the mod responsible and let them know!");
+        }
         this.energy = energy;
         this.xp = Math.max(0.0F, xp);
 

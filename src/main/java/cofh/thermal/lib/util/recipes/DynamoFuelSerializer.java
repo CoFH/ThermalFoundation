@@ -2,7 +2,9 @@ package cofh.thermal.lib.util.recipes;
 
 import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.ThermalCore;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -56,8 +58,13 @@ public class DynamoFuelSerializer<T extends ThermalFuel> extends ForgeRegistryEn
         if (json.has(ENERGY_MOD)) {
             energy *= json.get(ENERGY_MOD).getAsFloat();
         }
-        energy = MathHelper.clamp(energy, minEnergy, maxEnergy);
-
+        if (energy < minEnergy || energy > maxEnergy) {
+            energy = MathHelper.clamp(energy, minEnergy, maxEnergy);
+            ThermalCore.LOG.warn("Energy value for " + recipeId + " was out of allowable range and has been clamped between + " + minEnergy + " and " + maxEnergy + ".");
+        }
+        if (inputItems.isEmpty() && inputFluids.isEmpty()) {
+            throw new JsonSyntaxException("Invalid Thermal Series fuel: " + recipeId + "\nRefer to the fuel's ResourceLocation to find the mod responsible and let them know!");
+        }
         return factory.create(recipeId, energy, inputItems, inputFluids);
     }
 
