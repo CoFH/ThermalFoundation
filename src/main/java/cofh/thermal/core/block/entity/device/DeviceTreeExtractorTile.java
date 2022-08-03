@@ -146,7 +146,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ICoFHTick
         }
         Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(level.getBlockState(trunkPos));
         int leafCount = 0;
-        Iterable<BlockPos> area = BlockPos.betweenClosedStream(worldPosition.offset(-1, 0, -1), worldPosition.offset(1, Math.min(256 - worldPosition.getY(), 40), 1)).map(BlockPos::immutable).collect(Collectors.toList());
+        Iterable<BlockPos> area = BlockPos.betweenClosedStream(worldPosition.offset(-1, 0, -1), worldPosition.offset(1, Math.min(level.getMaxBuildHeight() - worldPosition.getY(), 40), 1)).map(BlockPos::immutable).collect(Collectors.toList());
         for (BlockPos scan : area) {
             if (leafSet.contains(level.getBlockState(scan))) {
                 leafPos[leafCount] = new BlockPos(scan);
