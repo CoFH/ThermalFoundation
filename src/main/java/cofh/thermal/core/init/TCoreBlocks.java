@@ -1,14 +1,13 @@
 package cofh.thermal.core.init;
 
-import cofh.core.content.block.TileBlockActive;
-import cofh.core.content.block.TileBlockActive4Way;
-import cofh.core.content.block.TileBlockCoFH;
-import cofh.core.content.block.impl.HardenedGlassBlock;
-import cofh.core.content.item.BlockItemCoFH;
-import cofh.lib.content.block.GunpowderBlock;
-import cofh.lib.content.block.OreBlockCoFH;
-import cofh.lib.content.block.RubberBlock;
-import cofh.lib.content.block.TntBlockCoFH;
+import cofh.core.block.TileBlockActive;
+import cofh.core.block.TileBlockActive4Way;
+import cofh.core.block.TileBlockCoFH;
+import cofh.core.item.BlockItemCoFH;
+import cofh.lib.block.GunpowderBlock;
+import cofh.lib.block.OreBlockCoFH;
+import cofh.lib.block.RubberBlock;
+import cofh.lib.block.TntBlockCoFH;
 import cofh.thermal.core.block.*;
 import cofh.thermal.core.block.device.TileBlockComposter;
 import cofh.thermal.core.block.entity.ChargeBenchTile;

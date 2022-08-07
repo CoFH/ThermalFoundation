@@ -4,7 +4,7 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.InventoryHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.xp.XpStorage;
+import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.client.ThermalTextures;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceCollectorContainer;
@@ -21,8 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
@@ -45,8 +44,8 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     protected static final int TIME_CONSTANT = 20;
 
-    protected static final IModelData MODEL_DATA = new ModelDataMap.Builder()
-            .withInitial(UNDERLAY, ThermalTextures.DEVICE_COLLECTOR_UNDERLAY_LOC)
+    protected static final ModelData MODEL_DATA = ModelData.builder()
+            .with(UNDERLAY, ThermalTextures.DEVICE_COLLECTOR_UNDERLAY_LOC)
             .build();
 
     protected static final Predicate<ItemEntity> VALID_ITEM_ENTITY = item -> {
@@ -102,7 +101,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
+    public ModelData getModelData() {
 
         return MODEL_DATA;
     }

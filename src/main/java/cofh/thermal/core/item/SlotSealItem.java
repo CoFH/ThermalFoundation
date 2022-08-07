@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.ItemCoFH;
 import net.minecraft.world.item.ItemStack;
 
 public class SlotSealItem extends ItemCoFH {
@@ -14,18 +14,6 @@ public class SlotSealItem extends ItemCoFH {
     public int hashCode() {
 
         return 0;
-    }
-
-    @Override
-    public ItemStack getContainerItem(ItemStack stack) {
-
-        return new ItemStack(this);
-    }
-
-    @Override
-    public boolean hasContainerItem(ItemStack stack) {
-
-        return true;
     }
 
 }

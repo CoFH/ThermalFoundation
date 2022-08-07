@@ -5,7 +5,8 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraftforge.client.model.data.IDynamicBakedModel;
+import net.minecraftforge.client.model.IDynamicBakedModel;
+
 
 import java.util.List;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.ItemCoFH;
 import cofh.lib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

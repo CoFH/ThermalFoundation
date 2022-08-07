@@ -1,11 +1,11 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.core.content.entity.AbstractGrenade;
-import cofh.core.content.entity.AbstractTNTMinecart;
-import cofh.core.content.entity.ElectricField;
+import cofh.core.entity.AbstractGrenade;
+import cofh.core.entity.AbstractTNTMinecart;
+import cofh.core.entity.ElectricField;
 import cofh.core.network.packet.client.PlayerMotionPacket;
 import cofh.core.util.AreaUtils;
-import cofh.lib.content.entity.PrimedTntCoFH;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.item.FertilizerItem;

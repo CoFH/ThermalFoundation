@@ -1,14 +1,14 @@
 package cofh.thermal.core.util;
 
-import cofh.core.content.entity.AbstractGrenade;
-import cofh.core.content.entity.AbstractTNTMinecart;
-import cofh.core.content.item.*;
+import cofh.core.entity.AbstractGrenade;
+import cofh.core.entity.AbstractTNTMinecart;
+import cofh.core.item.*;
 import cofh.lib.api.IDetonatable;
-import cofh.lib.content.block.CropBlockCoFH;
-import cofh.lib.content.block.CropBlockPerennial;
-import cofh.lib.content.block.CropBlockTall;
-import cofh.lib.content.block.TntBlockCoFH;
-import cofh.lib.content.entity.PrimedTntCoFH;
+import cofh.lib.block.CropBlockCoFH;
+import cofh.lib.block.CropBlockPerennial;
+import cofh.lib.block.CropBlockTall;
+import cofh.lib.block.TntBlockCoFH;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.explosive.Grenade;
 import cofh.thermal.core.entity.explosive.ThermalTNTEntity;

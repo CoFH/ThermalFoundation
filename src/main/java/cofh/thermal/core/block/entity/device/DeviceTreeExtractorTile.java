@@ -3,8 +3,8 @@ package cofh.thermal.core.block.entity.device;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -24,9 +24,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.client.model.ModelDataManager;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
+import net.minecraftforge.client.model.data.ModelDataManager;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
@@ -233,10 +232,10 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
+    public ModelData getModelData() {
 
-        return new ModelDataMap.Builder()
-                .withInitial(FLUID, renderFluid)
+        return ModelData.builder()
+                .with(FLUID, renderFluid)
                 .build();
     }
 
@@ -261,7 +260,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
         super.onDataPacket(net, pkt);
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // CONTROL
@@ -270,7 +269,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
         super.handleControlPacket(buffer);
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // GUI
@@ -314,7 +313,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
         process = buffer.readInt();
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
     // endregion
 

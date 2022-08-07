@@ -1,10 +1,10 @@
 package cofh.thermal.core.block.entity.device;
 
 import cofh.core.util.helpers.AugmentDataHelper;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.fluid.NullFluidStorage;
-import cofh.lib.content.inventory.ItemStorageCoFH;
-import cofh.lib.content.inventory.NullItemStorage;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.fluid.NullFluidStorage;
+import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.NullItemStorage;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;

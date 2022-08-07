@@ -6,7 +6,7 @@ import cofh.core.client.gui.element.ElementXpStorage;
 import cofh.core.client.gui.element.panel.AugmentPanel;
 import cofh.core.client.gui.element.panel.RSControlPanel;
 import cofh.core.client.gui.element.panel.SecurityPanel;
-import cofh.core.content.inventory.container.ContainerCoFH;
+import cofh.core.inventory.container.ContainerCoFH;
 import cofh.core.network.packet.server.FilterGuiOpenPacket;
 import cofh.core.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.SecurityHelper;

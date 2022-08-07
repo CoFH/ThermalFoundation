@@ -1,11 +1,11 @@
 package cofh.thermal.core.block.entity.device;
 
-import cofh.core.content.block.impl.SoilBlock;
+import cofh.core.block.SoilBlock;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.energy.EnergyStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.energy.EnergyStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
@@ -64,24 +64,24 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     @Override
     public void tickServer() {
 
-        boolean curActive = isActive;
-        if (isActive) {
-            if (energyStorage.getEnergyStored() >= processTick) {
-                process += processTick;
-                energyStorage.modify(-processTick);
-                if (process >= processMax) {
-                    process -= processMax;
-                    BlockPos.betweenClosedStream(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(radius, 1, radius))
-                            .forEach(this::chargeSoil);
-                }
-            } else {
-                isActive = false;
-            }
-        } else if (redstoneControl.getState() && energyStorage.getEnergyStored() >= processTick) {
-            isActive = true;
-        }
-        updateActiveState(curActive);
-        chargeEnergy();
+//        boolean curActive = isActive;
+//        if (isActive) {
+//            if (energyStorage.getEnergyStored() >= processTick) {
+//                process += processTick;
+//                energyStorage.modify(-processTick);
+//                if (process >= processMax) {
+//                    process -= processMax;
+//                    BlockPos.betweenClosedStream(worldPosition.offset(-radius, -1, -radius), worldPosition.offset(radius, 1, radius))
+//                            .forEach(this::chargeSoil);
+//                }
+//            } else {
+//                isActive = false;
+//            }
+//        } else if (redstoneControl.getState() && energyStorage.getEnergyStored() >= processTick) {
+//            isActive = true;
+//        }
+//        updateActiveState(curActive);
+//        chargeEnergy();
     }
 
     @Nullable
@@ -158,14 +158,6 @@ public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITi
     public int getRadius() {
 
         return radius;
-    }
-
-    protected void chargeSoil(BlockPos blockPos) {
-
-        BlockState state = level.getBlockState(blockPos);
-        if (state.getBlock() instanceof SoilBlock) {
-            SoilBlock.charge(state, level, blockPos);
-        }
     }
 
     protected void chargeEnergy() {

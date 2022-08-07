@@ -1,9 +1,9 @@
 package cofh.thermal.core.inventory.container.device;
 
-import cofh.core.content.inventory.container.TileContainer;
+import cofh.core.inventory.container.TileContainer;
 import cofh.core.network.packet.server.ContainerPacket;
-import cofh.lib.content.inventory.container.slot.SlotCoFH;
-import cofh.lib.content.inventory.wrapper.InvWrapperCoFH;
+import cofh.lib.inventory.container.slot.SlotCoFH;
+import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.core.block.entity.device.DeviceNullifierTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;

@@ -4,8 +4,8 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.client.sounds.ConditionalSoundInstance;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceWaterGenContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -18,8 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
@@ -137,10 +136,10 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTile.
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
+    public ModelData getModelData() {
 
-        return new ModelDataMap.Builder()
-                .withInitial(FLUID, renderFluid)
+        return ModelData.builder()
+                .with(FLUID, renderFluid)
                 .build();
     }
 

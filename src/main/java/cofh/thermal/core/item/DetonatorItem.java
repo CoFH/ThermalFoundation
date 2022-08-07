@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.IMultiModeItem;
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.IMultiModeItem;
+import cofh.core.item.ItemCoFH;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.api.ITNTFactory;

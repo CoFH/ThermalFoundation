@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
 import cofh.core.client.renderer.entity.model.ArmorFullSuitModel;
-import cofh.core.content.item.ArmorItemCoFH;
+import cofh.core.item.ArmorItemCoFH;
 import cofh.core.event.ArmorEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -62,13 +62,13 @@ public class HazmatArmorItem extends ArmorItemCoFH {
     }
 
     @Override
-    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
 
-        consumer.accept(new IItemRenderProperties() {
+        consumer.accept(new IClientItemExtensions() {
 
             @Override
             @Nonnull
-            public HumanoidModel<?> getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
+            public HumanoidModel<?> getHumanoidArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
 
                 return armorSlot == EquipmentSlot.LEGS || armorSlot == EquipmentSlot.FEET ? _default : ArmorFullSuitModel.INSTANCE.get();
             }

@@ -3,7 +3,7 @@ package cofh.thermal.core.item;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.item.IFluidContainerItem;
-import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.block.entity.storage.FluidCellTile;
 import cofh.thermal.lib.item.BlockItemAugmentable;

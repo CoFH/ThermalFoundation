@@ -1,6 +1,6 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.content.block.entity.TileCoFH;
+import cofh.core.block.entity.TileCoFH;
 import cofh.core.util.control.ISecurableTile;
 import cofh.core.util.control.SecurityControlModule;
 import net.minecraft.core.BlockPos;

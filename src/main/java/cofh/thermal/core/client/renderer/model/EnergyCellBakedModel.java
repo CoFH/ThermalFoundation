@@ -9,6 +9,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -21,8 +22,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.BakedModelWrapper;
-import net.minecraftforge.client.model.data.IDynamicBakedModel;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.IDynamicBakedModel;
+import net.minecraftforge.client.model.data.ModelData;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -62,9 +63,9 @@ public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implemen
 
     @Override
     @Nonnull
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData) {
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull ModelData extraData, RenderType renderType) {
 
-        LinkedList<BakedQuad> quads = new LinkedList<>(originalModel.getQuads(state, side, rand, extraData));
+        LinkedList<BakedQuad> quads = new LinkedList<>(originalModel.getQuads(state, side, rand, extraData, renderType));
         if (side == null || quads.isEmpty()) {
             return quads;
         }
@@ -72,9 +73,9 @@ public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implemen
         int sideIndex = side.get3DDataValue();
 
         // FACE
-        Direction face = extraData.getData(ModelUtils.FACING);
+        Direction face = extraData.get(ModelUtils.FACING);
         if (side == face) {
-            Integer level = extraData.getData(ModelUtils.LEVEL);
+            Integer level = extraData.get(ModelUtils.LEVEL);
             if (level == null) {
                 // This shouldn't happen, but playing it safe.
                 return quads;
@@ -88,7 +89,7 @@ public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implemen
         }
 
         // SIDES
-        byte[] sideConfigRaw = extraData.getData(ModelUtils.SIDES);
+        byte[] sideConfigRaw = extraData.get(ModelUtils.SIDES);
         if (sideConfigRaw == null) {
             // This shouldn't happen, but playing it safe.
             return quads;

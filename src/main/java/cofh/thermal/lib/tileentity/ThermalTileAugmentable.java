@@ -1,7 +1,7 @@
 package cofh.thermal.lib.tileentity;
 
-import cofh.core.content.block.entity.TileCoFH;
-import cofh.core.content.item.IAugmentableItem;
+import cofh.core.block.entity.TileCoFH;
+import cofh.core.item.IAugmentableItem;
 import cofh.core.network.packet.client.TileControlPacket;
 import cofh.core.network.packet.client.TileRedstonePacket;
 import cofh.core.network.packet.client.TileStatePacket;
@@ -12,16 +12,16 @@ import cofh.core.util.filter.IFilter;
 import cofh.core.util.filter.IFilterableTile;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FilterHelper;
-import cofh.lib.content.energy.EmptyEnergyStorage;
-import cofh.lib.content.energy.EnergyStorageCoFH;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.fluid.ManagedTankInv;
-import cofh.lib.content.fluid.SimpleTankInv;
-import cofh.lib.content.inventory.ItemStorageCoFH;
-import cofh.lib.content.inventory.ManagedItemInv;
-import cofh.lib.content.inventory.SimpleItemInv;
-import cofh.lib.content.xp.EmptyXpStorage;
-import cofh.lib.content.xp.XpStorage;
+import cofh.lib.energy.EmptyEnergyStorage;
+import cofh.lib.energy.EnergyStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.fluid.ManagedTankInv;
+import cofh.lib.fluid.SimpleTankInv;
+import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.ManagedItemInv;
+import cofh.lib.inventory.SimpleItemInv;
+import cofh.lib.xp.EmptyXpStorage;
+import cofh.lib.xp.XpStorage;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SoundHelper;
@@ -819,7 +819,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     public boolean openGui(ServerPlayer player, int guiId) {
 
         if (canOpenGui()) {
-            NetworkHooks.openGui(player, this, worldPosition);
+            NetworkHooks.openScreen(player, this, worldPosition);
             return true;
         }
         return false;
@@ -829,7 +829,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements ISecura
     public boolean openFilterGui(ServerPlayer player, int filterId) {
 
         if (FilterHelper.hasFilter(this, 0)) {
-            NetworkHooks.openGui(player, getFilter(filterId), worldPosition);
+            NetworkHooks.openScreen(player, getFilter(filterId), worldPosition);
             return true;
         }
         return false;

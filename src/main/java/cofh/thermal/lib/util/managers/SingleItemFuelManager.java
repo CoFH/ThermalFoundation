@@ -2,7 +2,7 @@ package cofh.thermal.lib.util.managers;
 
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
-import cofh.lib.content.inventory.ItemStackHolder;
+import cofh.lib.inventory.ItemStackHolder;
 import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalFuel;

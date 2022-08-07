@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.ItemCoFH;
 import cofh.core.util.AreaUtils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.entity.projectile.BlizzProjectile;

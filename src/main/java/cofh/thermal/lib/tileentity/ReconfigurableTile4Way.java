@@ -6,8 +6,8 @@ import cofh.core.util.control.ReconfigControlModule;
 import cofh.core.util.control.TransferControlModule;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.InventoryHelper;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,9 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.ModelDataManager;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -88,11 +86,11 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
+    public ModelData getModelData() {
 
-        return new ModelDataMap.Builder()
-                .withInitial(SIDES, reconfigControl().getRawSideConfig())
-                .withInitial(FLUID, renderFluid)
+        return ModelData.builder()
+                .with(SIDES, reconfigControl().getRawSideConfig())
+                .with(FLUID, renderFluid)
                 .build();
     }
 
@@ -239,7 +237,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
         super.onDataPacket(net, pkt);
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // CONTROL
@@ -262,7 +260,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
         reconfigControl.readFromBuffer(buffer);
         transferControl.readFromBuffer(buffer);
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // STATE
@@ -271,7 +269,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
 
         super.handleStatePacket(buffer);
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
     // endregion
 

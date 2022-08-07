@@ -5,8 +5,8 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -30,9 +30,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.client.model.ModelDataManager;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -136,10 +134,10 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
+    public ModelData getModelData() {
 
-        return new ModelDataMap.Builder()
-                .withInitial(FLUID, renderFluid)
+        return ModelData.builder()
+                .with(FLUID, renderFluid)
                 .build();
     }
 
@@ -164,7 +162,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
         super.onDataPacket(net, pkt);
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // CONTROL
@@ -172,8 +170,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
     public void handleControlPacket(FriendlyByteBuf buffer) {
 
         super.handleControlPacket(buffer);
-
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // GUI
@@ -221,7 +218,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
         process = buffer.readInt();
         instant = buffer.readBoolean();
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
     // endregion
 

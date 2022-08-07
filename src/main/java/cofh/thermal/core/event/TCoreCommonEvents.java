@@ -11,10 +11,13 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fluids.FluidType;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Mod;
 
 import static cofh.core.util.references.EnsorcIDs.ID_AIR_AFFINITY;
@@ -32,8 +35,8 @@ public class TCoreCommonEvents {
         if (event.isCanceled()) {
             return;
         }
-        Player player = event.getPlayer();
-        if (player.isEyeInFluid(FluidTags.WATER)) {
+        Player player = event.getEntity();
+        if (player.isEyeInFluidType(Fluids.WATER.getFluidType())) {
             boolean diveChest = player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof DivingArmorItem;
             if (!EnchantmentHelper.hasAquaAffinity(player) && diveChest) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
@@ -56,7 +59,7 @@ public class TCoreCommonEvents {
         if (event.isCanceled()) {
             return;
         }
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         if (player.containerMenu instanceof SatchelContainer || player.containerMenu instanceof IFilterOptions) {
             return;
         }

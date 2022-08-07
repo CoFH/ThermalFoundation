@@ -4,10 +4,10 @@ import cofh.core.capability.CapabilityRedstoneFlux;
 import cofh.core.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.core.config.ConfigManager;
 import cofh.core.config.world.OreConfig;
-import cofh.core.content.entity.AbstractGrenade;
-import cofh.core.content.entity.AbstractTNTMinecart;
+import cofh.core.entity.AbstractGrenade;
+import cofh.core.entity.AbstractTNTMinecart;
 import cofh.lib.client.renderer.entity.TntRendererCoFH;
-import cofh.lib.content.entity.PrimedTntCoFH;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -32,6 +32,7 @@ import cofh.thermal.core.init.*;
 import cofh.thermal.lib.common.ThermalFlags;
 import cofh.thermal.lib.common.ThermalProxy;
 import cofh.thermal.lib.common.ThermalProxyClient;
+import com.mojang.serialization.Codec;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -49,7 +50,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
@@ -58,10 +59,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.NewRegistryEvent;
-import net.minecraftforge.registries.RegisterEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -85,13 +83,13 @@ public class ThermalCore {
     public static final DeferredRegisterCoFH<Item> ITEMS = DeferredRegisterCoFH.create(ForgeRegistries.ITEMS, ID_THERMAL);
     public static final DeferredRegisterCoFH<Fluid> FLUIDS = DeferredRegisterCoFH.create(ForgeRegistries.FLUIDS, ID_THERMAL);
 
-    public static final DeferredRegisterCoFH<MenuType<?>> CONTAINERS = DeferredRegisterCoFH.create(ForgeRegistries.CONTAINERS, ID_THERMAL);
-    public static final DeferredRegisterCoFH<EntityType<?>> ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.ENTITIES, ID_THERMAL);
-    public static final DeferredRegisterCoFH<GlobalLootModifierSerializer<?>> LOOT_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, ID_THERMAL);
+    public static final DeferredRegisterCoFH<MenuType<?>> CONTAINERS = DeferredRegisterCoFH.create(ForgeRegistries.MENU_TYPES, ID_THERMAL);
+    public static final DeferredRegisterCoFH<EntityType<?>> ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.ENTITY_TYPES, ID_THERMAL);
+    public static final DeferredRegisterCoFH<Codec<? extends IGlobalLootModifier>> LOOT_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<RecipeType<?>> RECIPE_TYPES = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_TYPES, ID_THERMAL);
     public static final DeferredRegisterCoFH<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegisterCoFH.create(ForgeRegistries.RECIPE_SERIALIZERS, ID_THERMAL);
     public static final DeferredRegisterCoFH<SoundEvent> SOUND_EVENTS = DeferredRegisterCoFH.create(ForgeRegistries.SOUND_EVENTS, ID_THERMAL);
-    public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITIES, ID_THERMAL);
+    public static final DeferredRegisterCoFH<BlockEntityType<?>> TILE_ENTITIES = DeferredRegisterCoFH.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ID_THERMAL);
 
     public static final DeferredRegisterCoFH<FluidType> FLUID_TYPES = DeferredRegisterCoFH.create(ForgeRegistries.Keys.FLUID_TYPES, ID_THERMAL);
 
@@ -182,7 +180,7 @@ public class ThermalCore {
     // region INITIALIZATION
     private void registerLootData(final RegisterEvent event) {
 
-        if (event.getRegistryKey() == ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS) {
+        if (event.getRegistryKey() == ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS) {
             ThermalFlags.manager().setup();
         }
     }

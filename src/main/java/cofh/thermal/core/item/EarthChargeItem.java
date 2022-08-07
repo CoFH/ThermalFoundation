@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.ItemCoFH;
 import cofh.thermal.core.entity.projectile.BasalzProjectile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;

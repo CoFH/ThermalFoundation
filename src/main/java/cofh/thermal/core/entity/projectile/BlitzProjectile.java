@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.projectile;
 
-import cofh.core.content.entity.ElectricArc;
+import cofh.core.entity.ElectricArc;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.entity.monster.Basalz;

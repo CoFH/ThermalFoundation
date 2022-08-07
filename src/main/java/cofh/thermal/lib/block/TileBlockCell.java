@@ -1,6 +1,6 @@
 package cofh.thermal.lib.block;
 
-import cofh.core.content.block.TileBlock4Way;
+import cofh.core.block.TileBlock4Way;
 import cofh.lib.api.block.entity.ITileCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;

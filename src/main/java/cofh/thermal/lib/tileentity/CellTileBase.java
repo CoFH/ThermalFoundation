@@ -14,7 +14,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.ModelDataManager;
 
 import java.util.Map;
 
@@ -126,7 +125,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
         super.onDataPacket(net, pkt);
 
         level.getChunkSource().getLightEngine().checkBlock(worldPosition);
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // CONFIG
@@ -176,7 +175,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
         compareTracker = buffer.readInt();
         levelTracker = buffer.readInt();
 
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
 
     // GUI
@@ -225,7 +224,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
         if (prevLight != getLightValue()) {
             level.getChunkSource().getLightEngine().checkBlock(worldPosition);
         }
-        ModelDataManager.requestModelDataRefresh(this);
+        this.level.getModelDataManager().requestRefresh(this);
     }
     // endregion
 

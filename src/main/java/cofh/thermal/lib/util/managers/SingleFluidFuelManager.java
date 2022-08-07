@@ -3,7 +3,7 @@ package cofh.thermal.lib.util.managers;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
-import cofh.lib.content.fluid.FluidStackHolder;
+import cofh.lib.fluid.FluidStackHolder;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalFuel;
 import cofh.thermal.lib.util.recipes.internal.BaseDynamoFuel;

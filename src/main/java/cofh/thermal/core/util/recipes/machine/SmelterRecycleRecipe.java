@@ -1,6 +1,6 @@
 package cofh.thermal.core.util.recipes.machine;
 
-import cofh.lib.content.fluid.FluidIngredient;
+import cofh.lib.fluid.FluidIngredient;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;

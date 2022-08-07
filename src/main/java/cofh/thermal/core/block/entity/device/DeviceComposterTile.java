@@ -2,7 +2,7 @@ package cofh.thermal.core.block.entity.device;
 
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceComposterContainer;

@@ -1,7 +1,7 @@
 package cofh.thermal.lib.item;
 
-import cofh.core.content.item.IAugmentableItem;
-import cofh.core.content.item.InventoryContainerItem;
+import cofh.core.item.IAugmentableItem;
+import cofh.core.item.InventoryContainerItem;
 import cofh.core.util.helpers.AugmentDataHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -37,9 +37,9 @@ public class InventoryContainerItemAugmentable extends InventoryContainerItem im
     }
 
     @Override
-    public int getItemEnchantability(ItemStack stack) {
+    public int getEnchantmentValue(ItemStack stack) {
 
-        return Math.round(super.getItemEnchantability(stack) * getBaseMod(stack));
+        return Math.round(super.getEnchantmentValue(stack) * getBaseMod(stack));
     }
 
     protected float getBaseMod(ItemStack stack) {

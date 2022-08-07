@@ -3,7 +3,7 @@ package cofh.thermal.core.util.managers.machine;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.fluid.IFluidStackHolder;
 import cofh.lib.api.inventory.IItemStackHolder;
-import cofh.lib.content.fluid.FluidIngredient;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;

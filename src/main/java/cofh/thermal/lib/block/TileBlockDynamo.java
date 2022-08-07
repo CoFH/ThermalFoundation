@@ -1,6 +1,6 @@
 package cofh.thermal.lib.block;
 
-import cofh.core.content.block.TileBlockActive6Way;
+import cofh.core.block.TileBlockActive6Way;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;

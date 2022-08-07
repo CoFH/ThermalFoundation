@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util.recipes;
 
-import cofh.lib.content.fluid.FluidIngredient;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.lib.util.helpers.MathHelper;
 import com.google.gson.JsonObject;
 import net.minecraft.network.FriendlyByteBuf;

@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.lib.content.entity.PrimedTntCoFH;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.lib.util.Utils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

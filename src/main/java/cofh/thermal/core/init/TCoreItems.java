@@ -1,12 +1,12 @@
 package cofh.thermal.core.init;
 
-import cofh.core.content.item.EnergyContainerItem;
-import cofh.core.content.item.ItemCoFH;
-import cofh.core.content.item.SpawnEggItemCoFH;
+import cofh.core.item.EnergyContainerItem;
+import cofh.core.item.ItemCoFH;
+import cofh.core.item.SpawnEggItemCoFH;
 import cofh.core.util.filter.FilterRegistry;
 import cofh.core.util.helpers.AugmentDataHelper;
-import cofh.lib.content.block.TntBlockCoFH;
-import cofh.lib.content.item.ArmorMaterialCoFH;
+import cofh.lib.block.TntBlockCoFH;
+import cofh.lib.item.ArmorMaterialCoFH;
 import cofh.thermal.core.item.*;
 import cofh.thermal.lib.item.AugmentItem;
 import cofh.thermal.lib.util.ThermalEnergyHelper;

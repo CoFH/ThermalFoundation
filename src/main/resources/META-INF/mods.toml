@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[34,)"
+loaderVersion = "[41,)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -21,21 +21,21 @@ Contains all of the common components for the Thermal Series, such as materials 
 [[dependencies.thermal]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,)"
+versionRange = "[1.19,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.0,)"
+versionRange = "[41.1.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal]]
 modId = "cofh_core"
 mandatory = true
-versionRange = "[1.6.3,1.7]"
+versionRange = "[10.0, 11.0]"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -56,28 +56,28 @@ Contains the ores and world generation for the Thermal Series.
 [[dependencies.thermal_foundation]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,)"
+versionRange = "[1.19,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_foundation]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.0,)"
+versionRange = "[41.1.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_foundation]]
 modId = "cofh_core"
 mandatory = true
-versionRange = "[1.6,1.7]"
+versionRange = "[10.0, 11.0]"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_foundation]]
 modId = "thermal"
 mandatory = true
-versionRange = "[1.6,1.7]"
+versionRange = "[10.0, 11.0]"
 ordering = "AFTER"
 side = "BOTH"
 

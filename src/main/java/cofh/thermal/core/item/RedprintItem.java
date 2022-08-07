@@ -1,6 +1,6 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.ItemCoFH;
 import cofh.core.util.ProxyUtils;
 import cofh.lib.api.IConveyableData;
 import cofh.lib.api.control.ISecurable;

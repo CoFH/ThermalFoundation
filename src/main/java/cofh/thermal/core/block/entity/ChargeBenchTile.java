@@ -2,8 +2,8 @@ package cofh.thermal.core.block.entity;
 
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.energy.EnergyStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.energy.EnergyStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;

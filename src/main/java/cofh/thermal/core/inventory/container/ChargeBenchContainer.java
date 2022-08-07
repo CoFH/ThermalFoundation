@@ -1,8 +1,8 @@
 package cofh.thermal.core.inventory.container;
 
-import cofh.core.content.inventory.container.TileContainer;
-import cofh.lib.content.inventory.container.slot.SlotCoFH;
-import cofh.lib.content.inventory.wrapper.InvWrapperCoFH;
+import cofh.core.inventory.container.TileContainer;
+import cofh.lib.inventory.container.slot.SlotCoFH;
+import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.core.block.entity.ChargeBenchTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;

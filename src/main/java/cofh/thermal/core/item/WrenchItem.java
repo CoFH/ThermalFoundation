@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
-import cofh.core.content.item.IMultiModeItem;
-import cofh.core.content.item.ItemCoFH;
+import cofh.core.item.IMultiModeItem;
+import cofh.core.item.ItemCoFH;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.api.block.IDismantleable;
 import cofh.lib.api.block.IWrenchable;
@@ -123,18 +123,6 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
 
         return slot == EquipmentSlot.MAINHAND ? this.toolAttributes : ImmutableMultimap.of();
-    }
-
-    @Override
-    public ItemStack getContainerItem(ItemStack stack) {
-
-        return new ItemStack(this);
-    }
-
-    @Override
-    public boolean hasContainerItem(ItemStack stack) {
-
-        return true;
     }
 
     // region IMultiModeItem

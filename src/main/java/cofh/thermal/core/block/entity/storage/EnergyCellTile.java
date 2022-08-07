@@ -3,8 +3,8 @@ package cofh.thermal.core.block.entity.storage;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.energy.EnergyHandlerRestrictionWrapper;
-import cofh.lib.content.energy.EnergyStorageRestrictable;
+import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
+import cofh.lib.energy.EnergyStorageRestrictable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
@@ -18,11 +18,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.Predicate;
@@ -176,12 +174,12 @@ public class EnergyCellTile extends CellTileBase implements ITickableTile.IServe
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
+    public ModelData getModelData() {
 
-        return new ModelDataMap.Builder()
-                .withInitial(SIDES, reconfigControl().getRawSideConfig())
-                .withInitial(FACING, reconfigControl.getFacing())
-                .withInitial(LEVEL, levelTracker)
+        return ModelData.builder()
+                .with(SIDES, reconfigControl().getRawSideConfig())
+                .with(FACING, reconfigControl.getFacing())
+                .with(LEVEL, levelTracker)
                 .build();
     }
 
