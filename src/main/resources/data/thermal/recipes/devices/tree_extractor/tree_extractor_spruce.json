@@ -1,9 +1,24 @@
 {
   "type": "thermal:tree_extractor",
-  "trunk": "minecraft:spruce_log",
-  "leaves": "minecraft:spruce_leaves",
+  "trunk": {
+    "block": "minecraft:spruce_log",
+    "properties": {
+      "axis": "y"
+    }
+  },
+  "leaves": {
+    "block": "minecraft:spruce_leaves",
+    "properties": {
+      "persistent": "false"
+    }
+  },
+  "sapling": "minecraft:spruce_sapling",
+  "min_height": 5,
+  "max_height": 16,
+  "min_leaves": 8,
+  "max_leaves": 12,
   "result": {
     "fluid": "thermal:resin",
-    "amount": 50
+    "amount": 25
   }
 }

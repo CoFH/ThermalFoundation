@@ -1,9 +1,24 @@
 {
   "type": "thermal:tree_extractor",
-  "trunk": "minecraft:acacia_log",
-  "leaves": "minecraft:acacia_leaves",
+  "trunk": {
+    "block": "minecraft:acacia_log",
+    "properties": {
+      "axis": "y"
+    }
+  },
+  "leaves": {
+    "block": "minecraft:acacia_leaves",
+    "properties": {
+      "persistent": "false"
+    }
+  },
+  "sapling": "minecraft:acacia_sapling",
+  "min_height": 5,
+  "max_height": 10,
+  "min_leaves": 8,
+  "max_leaves": 16,
   "result": {
     "fluid": "thermal:resin",
-    "amount": 25
+    "amount": 15
   }
 }

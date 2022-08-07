@@ -2,7 +2,7 @@ package cofh.thermal.core.compat.jei.device;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
-import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
+import cofh.thermal.core.util.recipes.device.TreeExtractorRecipe;
 import cofh.thermal.lib.compat.jei.Drawables;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
@@ -21,6 +21,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
@@ -29,9 +30,9 @@ import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;
 
-public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMapping> {
+public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorRecipe> {
 
-    protected final RecipeType<TreeExtractorMapping> type;
+    protected final RecipeType<TreeExtractorRecipe> type;
     protected IDrawable background;
     protected IDrawable icon;
     protected Component name;
@@ -41,7 +42,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     protected IDrawableStatic progressFluidBackground;
     protected IDrawableAnimated progressFluid;
 
-    public TreeExtractorCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<TreeExtractorMapping> type) {
+    public TreeExtractorCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<TreeExtractorRecipe> type) {
 
         this.type = type;
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
@@ -59,7 +60,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
 
     // region IRecipeCategory
     @Override
-    public RecipeType<TreeExtractorMapping> getRecipeType() {
+    public RecipeType<TreeExtractorRecipe> getRecipeType() {
 
         return type;
     }
@@ -83,16 +84,17 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, TreeExtractorMapping recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, TreeExtractorRecipe recipe, IFocusGroup focuses) {
 
-        ItemStack trunk = new ItemStack(recipe.getTrunk());
-        ItemStack leaves = new ItemStack(recipe.getLeaves());
+        //TODO Hek
+        List<ItemStack> trunk = recipe.getTrunk().getBlockStates().stream().map(state -> new ItemStack(state.getBlock().asItem())).collect(Collectors.toList());
+        List<ItemStack> leaves = recipe.getLeaves().getBlockStates().stream().map(state -> new ItemStack(state.getBlock().asItem())).collect(Collectors.toList());
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 35, 41).addItemStack(trunk);
-        builder.addSlot(RecipeIngredientRole.INPUT, 35, 23).addItemStack(trunk);
-        builder.addSlot(RecipeIngredientRole.INPUT, 17, 14).addItemStack(leaves);
-        builder.addSlot(RecipeIngredientRole.INPUT, 35, 5).addItemStack(leaves);
-        builder.addSlot(RecipeIngredientRole.INPUT, 53, 14).addItemStack(leaves);
+        builder.addSlot(RecipeIngredientRole.INPUT, 35, 41).addItemStacks(trunk);
+        builder.addSlot(RecipeIngredientRole.INPUT, 35, 23).addItemStacks(trunk);
+        builder.addSlot(RecipeIngredientRole.INPUT, 17, 14).addItemStacks(leaves);
+        builder.addSlot(RecipeIngredientRole.INPUT, 35, 5).addItemStacks(leaves);
+        builder.addSlot(RecipeIngredientRole.INPUT, 53, 14).addItemStacks(leaves);
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 11)
                 .addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.getFluid()))
@@ -102,7 +104,7 @@ public class TreeExtractorCategory implements IRecipeCategory<TreeExtractorMappi
     }
 
     @Override
-    public void draw(TreeExtractorMapping recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(TreeExtractorRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
         tankBackground.draw(matrixStack, 115, 10);
 

@@ -6,7 +6,7 @@ import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.compat.jei.device.RockGenCategory;
 import cofh.thermal.core.compat.jei.device.TreeExtractorCategory;
 import cofh.thermal.core.util.recipes.device.RockGenMapping;
-import cofh.thermal.core.util.recipes.device.TreeExtractorMapping;
+import cofh.thermal.core.util.recipes.device.TreeExtractorRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.forge.ForgeTypes;
@@ -31,7 +31,7 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.config.ThermalClientConfig.jeiBucketTanks;
 import static cofh.thermal.core.init.TCoreRecipeTypes.ROCK_GEN_MAPPING;
-import static cofh.thermal.core.init.TCoreRecipeTypes.TREE_EXTRACTOR_MAPPING;
+import static cofh.thermal.core.init.TCoreRecipeTypes.TREE_EXTRACTOR_RECIPE;
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_ROCK_GEN;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;
@@ -48,7 +48,7 @@ public class TCoreJeiPlugin implements IModPlugin {
             return;
         }
         if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
-            registration.addRecipes(TREE_EXTRACTOR, recipeManager.getAllRecipesFor(TREE_EXTRACTOR_MAPPING.get()));
+            registration.addRecipes(TREE_EXTRACTOR, recipeManager.getAllRecipesFor(TREE_EXTRACTOR_RECIPE.get()));
         }
         if (getFlag(ID_DEVICE_ROCK_GEN).getAsBoolean()) {
             registration.addRecipes(ROCK_GEN, recipeManager.getAllRecipesFor(ROCK_GEN_MAPPING.get()));
@@ -161,7 +161,7 @@ public class TCoreJeiPlugin implements IModPlugin {
     // endregion
 
     // region RECIPE TYPES
-    public static final RecipeType<TreeExtractorMapping> TREE_EXTRACTOR = new RecipeType<>(TREE_EXTRACTOR_MAPPING.getId(), TreeExtractorMapping.class);
+    public static final RecipeType<TreeExtractorRecipe> TREE_EXTRACTOR = new RecipeType<>(TREE_EXTRACTOR_RECIPE.getId(), TreeExtractorRecipe.class);
     public static final RecipeType<RockGenMapping> ROCK_GEN = new RecipeType<>(ROCK_GEN_MAPPING.getId(), RockGenMapping.class);
     // endregion
 }

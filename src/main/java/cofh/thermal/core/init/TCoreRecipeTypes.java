@@ -21,14 +21,14 @@ public class TCoreRecipeTypes {
 
     // region DEVICES
     public static final String ID_HIVE_EXTRACTOR_MAPPING = "hive_extractor";
-    public static final String ID_TREE_EXTRACTOR_MAPPING = "tree_extractor";
+    public static final String ID_TREE_EXTRACTOR_RECIPE = "tree_extractor";
     public static final String ID_TREE_EXTRACTOR_BOOST = "tree_extractor_boost";
     public static final String ID_FISHER_BOOST = "fisher_boost";
     public static final String ID_ROCK_GEN_MAPPING = "rock_gen";
     public static final String ID_POTION_DIFFUSER_BOOST = "potion_diffuser_boost";
 
     public static final RegistryObject<SerializableRecipeType<HiveExtractorMapping>> HIVE_EXTRACTOR_MAPPING = RECIPE_TYPES.register(ID_HIVE_EXTRACTOR_MAPPING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_HIVE_EXTRACTOR_MAPPING));
-    public static final RegistryObject<SerializableRecipeType<TreeExtractorMapping>> TREE_EXTRACTOR_MAPPING = RECIPE_TYPES.register(ID_TREE_EXTRACTOR_MAPPING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_TREE_EXTRACTOR_MAPPING));
+    public static final RegistryObject<SerializableRecipeType<TreeExtractorRecipe>> TREE_EXTRACTOR_RECIPE = RECIPE_TYPES.register(ID_TREE_EXTRACTOR_RECIPE, () -> new SerializableRecipeType<>(ID_THERMAL, ID_TREE_EXTRACTOR_RECIPE));
     public static final RegistryObject<SerializableRecipeType<TreeExtractorBoost>> TREE_EXTRACTOR_BOOST = RECIPE_TYPES.register(ID_TREE_EXTRACTOR_BOOST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_TREE_EXTRACTOR_BOOST));
     public static final RegistryObject<SerializableRecipeType<FisherBoost>> FISHER_BOOST = RECIPE_TYPES.register(ID_FISHER_BOOST, () -> new SerializableRecipeType<>(ID_THERMAL, ID_FISHER_BOOST));
     public static final RegistryObject<SerializableRecipeType<RockGenMapping>> ROCK_GEN_MAPPING = RECIPE_TYPES.register(ID_ROCK_GEN_MAPPING, () -> new SerializableRecipeType<>(ID_THERMAL, ID_ROCK_GEN_MAPPING));

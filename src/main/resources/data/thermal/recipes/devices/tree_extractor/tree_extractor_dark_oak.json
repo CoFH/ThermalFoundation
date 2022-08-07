@@ -1,9 +1,24 @@
 {
   "type": "thermal:tree_extractor",
-  "trunk": "minecraft:dark_oak_log",
-  "leaves": "minecraft:dark_oak_leaves",
+  "trunk": {
+    "block": "minecraft:dark_oak_log",
+    "properties": {
+      "axis": "y"
+    }
+  },
+  "leaves": {
+    "block": "minecraft:dark_oak_leaves",
+    "properties": {
+      "persistent": "false"
+    }
+  },
+  "sapling": "minecraft:dark_oak_sapling",
+  "min_height": 6,
+  "max_height": 10,
+  "min_leaves": 8,
+  "max_leaves": 12,
   "result": {
     "fluid": "thermal:sap",
-    "amount": 25
+    "amount": 20
   }
 }

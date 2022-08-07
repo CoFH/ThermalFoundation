@@ -10,10 +10,11 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceTreeExtractorContainer;
 import cofh.thermal.core.util.managers.device.TreeExtractorManager;
+import cofh.thermal.core.util.recipes.device.TreeExtractorRecipe;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.Connection;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
@@ -31,8 +33,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -50,7 +51,11 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
 
-    protected static final int NUM_LEAVES = 3;
+    protected static final int LEAF_SEARCH_DIST = 4;
+    protected static final BlockPos[] TRUNK_SEARCH = {BlockPos.ZERO,
+            new BlockPos(1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, -1),
+            new BlockPos(1, 0, 0), new BlockPos(0, 0, 2), new BlockPos(-2, 0, 0), new BlockPos(0, 0, -2)};
+    protected static final Direction[] CARDINAL = {Direction.WEST, Direction.EAST, Direction.NORTH, Direction.SOUTH};
     protected static int timeConstant = 500;
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && TreeExtractorManager.instance().validBoost(item));
@@ -59,8 +64,9 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     protected boolean cached;
     protected boolean valid;
 
-    protected BlockPos trunkPos;
-    protected final BlockPos[] leafPos = new BlockPos[NUM_LEAVES];
+    protected BlockPos[] logs;
+    protected BlockPos[] leaves;
+    protected TreeExtractorRecipe recipe;
 
     protected int process = timeConstant / 2;
 
@@ -78,16 +84,13 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         super(DEVICE_TREE_EXTRACTOR_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
-
         tankInv.addTank(outputTank, OUTPUT);
 
         addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
 
-        trunkPos = new BlockPos(worldPosition);
-        for (int i = 0; i < NUM_LEAVES; ++i) {
-            leafPos[i] = new BlockPos(worldPosition);
-        }
+        logs = new BlockPos[]{worldPosition.immutable()};
+        leaves = new BlockPos[]{worldPosition.immutable()};
     }
 
     @Override
@@ -96,88 +99,29 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         if (level == null || !level.isAreaLoaded(worldPosition, 1) || Utils.isClientWorld(level)) {
             return;
         }
-        if (valid) {
-            if (isTrunkBase(trunkPos)) {
-                Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(level.getBlockState(trunkPos));
-                int leafCount = 0;
-                for (int i = 0; i < NUM_LEAVES; ++i) {
-                    if (leafSet.contains(level.getBlockState(leafPos[i]))) {
-                        ++leafCount;
-                    }
-                }
-                if (leafCount >= NUM_LEAVES) {
-                    Iterable<BlockPos> area = BlockPos.betweenClosed(trunkPos, trunkPos.offset(0, leafPos[0].getY() - trunkPos.getY(), 0));
-                    for (BlockPos scan : area) {
-                        Material material = level.getBlockState(scan).getMaterial();
-                        if (material == Material.GRASS || material == Material.DIRT || material == Material.STONE) {
-                            valid = false;
-                            cached = true;
-                            return;
-                        }
-                    }
-                    area = BlockPos.betweenClosed(worldPosition.offset(0, 1, 0), worldPosition.offset(0, leafPos[0].getY() - worldPosition.getY(), 0));
-                    for (BlockPos scan : area) {
-                        if (isTreeExtractor(level.getBlockState(scan))) {
-                            valid = false;
-                            cached = true;
-                            return;
-                        }
-                    }
-                    cached = true;
-                    renderFluid = TreeExtractorManager.instance().getFluid(level.getBlockState(trunkPos));
-                    return;
-                }
-            }
-            valid = false;
-        }
-        if (isTrunkBase(worldPosition.west())) {
-            trunkPos = worldPosition.west();
-        } else if (isTrunkBase(worldPosition.east())) {
-            trunkPos = worldPosition.east();
-        } else if (isTrunkBase(worldPosition.north())) {
-            trunkPos = worldPosition.north();
-        } else if (isTrunkBase(worldPosition.south())) {
-            trunkPos = worldPosition.south();
-        }
-        if (!isTrunkBase(trunkPos)) {
-            valid = false;
-            cached = true;
-            return;
-        }
-        Set<BlockState> leafSet = TreeExtractorManager.instance().getMatchingLeaves(level.getBlockState(trunkPos));
-        int leafCount = 0;
-        Iterable<BlockPos> area = BlockPos.betweenClosedStream(worldPosition.offset(-1, 0, -1), worldPosition.offset(1, Math.min(256 - worldPosition.getY(), 40), 1)).map(BlockPos::immutable).collect(Collectors.toList());
-        for (BlockPos scan : area) {
-            if (leafSet.contains(level.getBlockState(scan))) {
-                leafPos[leafCount] = new BlockPos(scan);
-                ++leafCount;
-                if (leafCount >= NUM_LEAVES) {
-                    break;
-                }
-            }
-        }
-        if (leafCount >= NUM_LEAVES) {
-            area = BlockPos.betweenClosed(trunkPos, trunkPos.offset(0, leafPos[0].getY() - trunkPos.getY(), 0));
-            for (BlockPos scan : area) {
-                Material material = level.getBlockState(scan).getMaterial();
-                if (material == Material.GRASS || material == Material.DIRT || material == Material.STONE) {
-                    valid = false;
-                    cached = true;
-                    return;
-                }
-            }
-            area = BlockPos.betweenClosed(worldPosition.offset(0, 1, 0), worldPosition.offset(0, leafPos[0].getY() - worldPosition.getY(), 0));
-            for (BlockPos scan : area) {
-                if (isTreeExtractor(level.getBlockState(scan))) {
-                    valid = false;
-                    cached = true;
-                    return;
-                }
-            }
-            valid = true;
-            renderFluid = TreeExtractorManager.instance().getFluid(level.getBlockState(trunkPos));
-        }
         cached = true;
+        if (valid && recipe != null) {
+            Predicate<BlockState> validLeaf = recipe.getLeaves();
+            Predicate<BlockState> validLog = recipe.getTrunk();
+            if (Arrays.stream(leaves).allMatch(pos -> validLeaf.test(level.getBlockState(pos))) && Arrays.stream(logs).allMatch(pos -> validLog.test(level.getBlockState(pos)))) {
+                return;
+            }
+        }
+        for (Direction dir : CARDINAL) {
+            TreeInfo info = detectTree(worldPosition.relative(dir));
+            if (info.recipe != null) {
+                valid = true;
+                renderFluid = info.recipe.getFluid();
+                leaves = info.leaves;
+                logs = info.logs;
+                recipe = info.recipe;
+                return;
+            }
+        }
+        valid = false;
+        logs = new BlockPos[]{worldPosition.immutable()};
+        leaves = new BlockPos[]{worldPosition.immutable()};
+        recipe = null;
     }
 
     @Override
@@ -201,15 +145,11 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         updateActiveState();
 
         --process;
-        if (process > 0) {
+        if (process > 0 || !isActive) {
             return;
         }
         updateValidity();
         process = getTimeConstant();
-
-        if (!isActive) {
-            return;
-        }
         Fluid curFluid = renderFluid.getFluid();
 
         if (valid) {
@@ -224,7 +164,8 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
                 boostCycles = 0;
                 boostMult = 1.0F;
             }
-            outputTank.fill(new FluidStack(renderFluid, (int) (renderFluid.getAmount() * baseMod * boostMult)), EXECUTE);
+            float sizeMult = MathHelper.sqrt((float) Math.min(logs.length, recipe.getMaxHeight()) * Math.min(leaves.length, recipe.getMaxLeaves()) / (recipe.getMinHeight() * recipe.getMinLeaves()));
+            outputTank.fill(new FluidStack(renderFluid, (int) (renderFluid.getAmount() * baseMod * boostMult * sizeMult)), EXECUTE);
         }
         if (curFluid != renderFluid.getFluid()) {
             TileStatePacket.sendToClient(this);
@@ -328,11 +269,6 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         boostMax = nbt.getInt(TAG_BOOST_MAX);
         boostMult = nbt.getFloat(TAG_BOOST_MULT);
         process = nbt.getInt(TAG_PROCESS);
-
-        for (int i = 0; i < NUM_LEAVES; ++i) {
-            leafPos[i] = NbtUtils.readBlockPos(nbt.getCompound("Leaf" + i));
-        }
-        trunkPos = NbtUtils.readBlockPos(nbt.getCompound("Trunk"));
     }
 
     @Override
@@ -344,11 +280,6 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         nbt.putInt(TAG_BOOST_MAX, boostMax);
         nbt.putFloat(TAG_BOOST_MULT, boostMult);
         nbt.putInt(TAG_PROCESS, process);
-
-        for (int i = 0; i < NUM_LEAVES; ++i) {
-            nbt.put("Leaf" + i, NbtUtils.writeBlockPos(leafPos[i]));
-        }
-        nbt.put("Trunk", NbtUtils.writeBlockPos(trunkPos));
     }
     // endregion
 
@@ -359,7 +290,8 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
             return timeConstant;
         }
         int constant = timeConstant / 2;
-        Iterable<BlockPos> area = BlockPos.betweenClosed(trunkPos.offset(-1, 0, -1), trunkPos.offset(1, 0, 1));
+        BlockPos base = logs[0];
+        Iterable<BlockPos> area = BlockPos.betweenClosed(base.offset(-1, 0, -1), base.offset(1, 0, 1));
         for (BlockPos scan : area) {
             if (isTreeExtractor(level.getBlockState(scan))) {
                 constant += timeConstant / 2;
@@ -368,21 +300,136 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         return MathHelper.clamp(constant, timeConstant, timeConstant * 2);
     }
 
-    protected boolean isTrunkBase(BlockPos checkPos) {
-
-        BlockState state = level.getBlockState(checkPos.below());
-        Material material = state.getMaterial();
-        if (material != Material.GRASS && material != Material.DIRT && material != Material.STONE) {
-            return false;
-        }
-        return TreeExtractorManager.instance().validTrunk(level.getBlockState(checkPos))
-                && TreeExtractorManager.instance().validTrunk(level.getBlockState(checkPos.above()))
-                && TreeExtractorManager.instance().validTrunk(level.getBlockState(checkPos.above(2)));
-    }
-
     protected boolean isTreeExtractor(BlockState state) {
 
         return state.getBlock() == this.getBlockState().getBlock();
+    }
+
+    protected TreeInfo detectTree(BlockPos basePos) {
+
+        BlockState base = level.getBlockState(basePos);
+        if (!TreeExtractorManager.instance().getValidLogs().contains(base)) {
+            return new TreeInfo();
+        }
+        // Find recipes matching trunk
+        Collection<TreeExtractorRecipe> recipes = new HashSet<>(TreeExtractorManager.instance().getRecipes());
+        recipes.removeIf(recipe -> !recipe.getTrunk().test(base));
+        if (recipes.isEmpty()) {
+            return new TreeInfo();
+        }
+
+        // Split recipes by growth direction
+        TreeInfo result = detectTreeDirection(recipes, basePos, Direction.UP);
+        return result.recipe == null ? detectTreeDirection(recipes, basePos, Direction.DOWN) : result;
+    }
+
+    protected TreeInfo detectTreeDirection(Collection<TreeExtractorRecipe> recipes, BlockPos base, Direction growth) {
+
+        recipes = recipes.stream().filter(recipe -> {
+            Block sapling = recipe.getSapling();
+            if (sapling != null) {
+                return sapling.defaultBlockState().canSurvive(level, base);
+            }
+            Material material = level.getBlockState(base.relative(growth, -1)).getMaterial();
+            return material == Material.GRASS || material == Material.DIRT || material == Material.STONE;
+        }).collect(Collectors.toList());
+        if (recipes.isEmpty()) {
+            return new TreeInfo();
+        }
+
+        // Traverse tree to find logs
+        // TODO: count leaves on the way?
+        int min = level.getMinBuildHeight();
+        int max = level.getMaxBuildHeight();
+        Collection<BlockPos> logs = new ArrayList<>();
+        logs.add(base.immutable());
+        BlockPos.MutableBlockPos log = base.mutable();
+        while (!recipes.isEmpty() && log.getY() < max && log.getY() > min) {
+            Collection<TreeExtractorRecipe> matching = recipes;
+            BlockPos.MutableBlockPos scan = log.mutable().move(growth);
+            for (BlockPos offset : TRUNK_SEARCH) {
+                scan.move(offset);
+                BlockState state = level.getBlockState(scan);
+                matching = recipes.stream().filter(recipe -> recipe.getTrunk().test(state)).collect(Collectors.toList());
+                if (!matching.isEmpty()) {
+                    logs.add(scan.immutable());
+                    log = scan;
+                    break;
+                }
+            }
+            if (matching.isEmpty()) {
+                break;
+            }
+            recipes = matching;
+        }
+        int height = logs.size();
+        recipes.removeIf(recipe -> recipe.getMinHeight() > height);
+        if (recipes.isEmpty()) {
+            return new TreeInfo();
+        }
+        BlockPos top = log.immutable();
+
+        // Find number of leaves around top log
+        Map<TreeExtractorRecipe, Collection<BlockPos>> leaves = new HashMap<>();
+        recipes.forEach(recipe -> leaves.put(recipe, new HashSet<>(recipe.getMaxLeaves())));
+        leaves.put(null, new HashSet<>(129));
+        leaves.get(null).add(top);
+        Queue<BlockPos> q = new ArrayDeque<>();
+        q.add(top);
+        while (!q.isEmpty()) {
+            BlockPos pos = q.poll();
+            for (Direction dir : Direction.values()) {
+                BlockPos adj = pos.relative(dir);
+                if (adj.distManhattan(top) <= LEAF_SEARCH_DIST && leaves.values().stream().noneMatch(l -> l.contains(adj))) {
+                    boolean add = false;
+                    BlockState state = level.getBlockState(adj);
+                    for (Map.Entry<TreeExtractorRecipe, Collection<BlockPos>> entry : leaves.entrySet()) {
+                        TreeExtractorRecipe recipe = entry.getKey();
+                        if (recipe == null) {
+                            continue;
+                        }
+                        if (recipe.getLeaves().test(state)) {
+                            Collection<BlockPos> blocks = entry.getValue();
+                            blocks.add(adj);
+                            add = true;
+                            if (blocks.size() >= recipe.getMaxLeaves()) {
+                                return new TreeInfo(recipe, logs.toArray(BlockPos[]::new), leaves.get(recipe).toArray(BlockPos[]::new));
+                            }
+                        } else if (recipe.getTrunk().test(state)) {
+                            leaves.get(null).add(adj);
+                            add = true;
+                        }
+                    }
+                    if (add) {
+                        q.add(adj);
+                    }
+                }
+            }
+        }
+        Iterator<TreeExtractorRecipe> iter = recipes.iterator();
+        TreeExtractorRecipe recipe = iter.next();
+        int numLeaves = leaves.get(recipe).size();
+        while (iter.hasNext()) {
+            TreeExtractorRecipe compare = iter.next();
+            int num = leaves.get(compare).size();
+            if (num > numLeaves) {
+                numLeaves = num;
+                recipe = compare;
+            }
+        }
+        if (recipe.getMinLeaves() > numLeaves) {
+            return new TreeInfo();
+        }
+        return new TreeInfo(recipe, logs.toArray(BlockPos[]::new), leaves.get(recipe).toArray(BlockPos[]::new));
+    }
+
+    public static record TreeInfo(TreeExtractorRecipe recipe, BlockPos[] logs, BlockPos[] leaves) {
+
+        public TreeInfo() {
+
+            this(null, null, null);
+        }
+
     }
     // endregion
 

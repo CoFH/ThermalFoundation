@@ -24,7 +24,7 @@ public class TCoreRecipeSerializers {
     }
 
     public static final RegistryObject<HiveExtractorMapping.Serializer> HIVE_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register(ID_HIVE_EXTRACTOR_MAPPING, HiveExtractorMapping.Serializer::new);
-    public static final RegistryObject<TreeExtractorMapping.Serializer> TREE_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register(ID_TREE_EXTRACTOR_MAPPING, TreeExtractorMapping.Serializer::new);
+    public static final RegistryObject<TreeExtractorRecipe.Serializer> TREE_EXTRACTOR_SERIALIZER = RECIPE_SERIALIZERS.register(ID_TREE_EXTRACTOR_RECIPE, TreeExtractorRecipe.Serializer::new);
     public static final RegistryObject<TreeExtractorBoost.Serializer> TREE_EXTRACTOR_BOOST_SERIALIZER = RECIPE_SERIALIZERS.register(ID_TREE_EXTRACTOR_BOOST, TreeExtractorBoost.Serializer::new);
     public static final RegistryObject<FisherBoost.Serializer> FISHER_BOOST_SERIALIZER = RECIPE_SERIALIZERS.register(ID_FISHER_BOOST, FisherBoost.Serializer::new);
     public static final RegistryObject<RockGenMapping.Serializer> ROCK_GEN_SERIALIZER = RECIPE_SERIALIZERS.register(ID_ROCK_GEN_MAPPING, RockGenMapping.Serializer::new);
