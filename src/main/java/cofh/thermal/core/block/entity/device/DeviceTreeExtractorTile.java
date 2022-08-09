@@ -3,8 +3,8 @@ package cofh.thermal.core.block.entity.device;
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.content.fluid.FluidStorageCoFH;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -109,7 +109,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         }
         for (Direction dir : CARDINAL) {
             TreeInfo info = detectTree(worldPosition.relative(dir));
-            if (info.recipe != null) {
+            if (info != null) {
                 valid = true;
                 renderFluid = info.recipe.getFluid();
                 leaves = info.leaves;
@@ -305,24 +305,26 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         return state.getBlock() == this.getBlockState().getBlock();
     }
 
+    @Nullable
     protected TreeInfo detectTree(BlockPos basePos) {
 
         BlockState base = level.getBlockState(basePos);
         if (!TreeExtractorManager.instance().getValidLogs().contains(base)) {
-            return new TreeInfo();
+            return null;
         }
         // Find recipes matching trunk
         Collection<TreeExtractorRecipe> recipes = new HashSet<>(TreeExtractorManager.instance().getRecipes());
         recipes.removeIf(recipe -> !recipe.getTrunk().test(base));
         if (recipes.isEmpty()) {
-            return new TreeInfo();
+            return null;
         }
 
         // Split recipes by growth direction
         TreeInfo result = detectTreeDirection(recipes, basePos, Direction.UP);
-        return result.recipe == null ? detectTreeDirection(recipes, basePos, Direction.DOWN) : result;
+        return result == null ? detectTreeDirection(recipes, basePos, Direction.DOWN) : result;
     }
 
+    @Nullable
     protected TreeInfo detectTreeDirection(Collection<TreeExtractorRecipe> recipes, BlockPos base, Direction growth) {
 
         recipes = recipes.stream().filter(recipe -> {
@@ -334,7 +336,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
             return material == Material.GRASS || material == Material.DIRT || material == Material.STONE;
         }).collect(Collectors.toList());
         if (recipes.isEmpty()) {
-            return new TreeInfo();
+            return null;
         }
 
         // Traverse tree to find logs
@@ -365,7 +367,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
         int height = logs.size();
         recipes.removeIf(recipe -> recipe.getMinHeight() > height);
         if (recipes.isEmpty()) {
-            return new TreeInfo();
+            return null;
         }
         BlockPos top = log.immutable();
 
@@ -418,17 +420,12 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
             }
         }
         if (recipe.getMinLeaves() > numLeaves) {
-            return new TreeInfo();
+            return null;
         }
         return new TreeInfo(recipe, logs.toArray(BlockPos[]::new), leaves.get(recipe).toArray(BlockPos[]::new));
     }
 
     public static record TreeInfo(TreeExtractorRecipe recipe, BlockPos[] logs, BlockPos[] leaves) {
-
-        public TreeInfo() {
-
-            this(null, null, null);
-        }
 
     }
     // endregion
