@@ -120,6 +120,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         generated(reg.getSup("drill_head"));
         generated(reg.getSup("saw_blade"));
+        generated(reg.getSup("grapple_hook"));
         generated(reg.getSup("laser_diode"));
     }
 

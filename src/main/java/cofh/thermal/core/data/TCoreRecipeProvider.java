@@ -993,6 +993,15 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
                 .save(withConditions(consumer).flag(FLAG_TOOL_COMPONENTS));
 
+        ShapedRecipeBuilder.shaped(reg.get("grapple_hook"))
+                .define('C', Tags.Items.INGOTS_COPPER)
+                .define('I', Tags.Items.INGOTS_IRON)
+                .pattern(" CC")
+                .pattern("CI ")
+                .pattern("C I")
+                .unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
+                .save(withConditions(consumer).flag(FLAG_TOOL_COMPONENTS));
+
         ShapedRecipeBuilder.shaped(reg.get(ID_MACHINE_FRAME))
                 .define('G', Tags.Items.GLASS)
                 .define('I', Tags.Items.INGOTS_IRON)
