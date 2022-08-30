@@ -197,7 +197,7 @@
   "item.thermal.earth_charge": "Земляной заряд",
   "item.thermal.ice_charge": "Ледяной заряд",
   "item.thermal.lightning_charge": "Молниеносный заряд",
-  "item.thermal.lock": "Сигналовый замок безопасности",
+  "item.thermal.lock": "Сигналовый замок",
   "item.thermal.lock.desc": "Используется для включения безопасности в блоке.",
   "item.thermal.phytogro": "Фито-Гро",
   "item.thermal.phytogro.desc": "Чрезвычайно сильнодействующее удобрение.",
