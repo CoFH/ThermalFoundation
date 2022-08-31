@@ -1031,6 +1031,7 @@
   "block.thermal.machine_chiller": "急速冷冻机",
   "block.thermal.machine_crafter": "序列装配台",
   "block.thermal.machine_crucible": "熔岩炉",
+  "block.thermal.machine_crystallizer": "结晶器",
   "block.thermal.machine_furnace": "通量熔炼炉",
   "block.thermal.machine_insolator": "有机灌注器",
   "block.thermal.machine_press": "多驱冲压机",
@@ -1096,6 +1097,10 @@
   "info.thermal.machine_crucible.0": "用高温将物品熔化/融化为流体。",
   "info.thermal.machine_crucible.1": "在获取更“高级”的方块时非常有用。",
   "info.thermal.machine_crucible.2": "注意：摆放在幼童与宠物无法触及处。",
+
+  "info.thermal.machine_crystallizer.0": "生长并重构晶体结构。",
+  "info.thermal.machine_crystallizer.1": "需要流体和至少一个物品。",
+  "info.thermal.machine_crystallizer.2": "闪耀吧，你这个疯狂钻石。",
 
   "info.thermal.machine_furnace.0": "电力驱动的熔炉。",
   "info.thermal.machine_furnace.1": "烹制食物时耗能更少。",
