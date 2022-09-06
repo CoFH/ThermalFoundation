@@ -99,11 +99,11 @@ public class RedprintItem extends ItemCoFH implements IPlacementItem {
                 } else {
                     player.level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 0.7F);
                 }
-            } else {
+            } else if (stack.hasTag()) {
                 conveyableTile.readConveyableData(player, stack.getTag());
                 player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.PLAYERS, 0.5F, 0.8F);
+                return true;
             }
-            return true;
         }
         return false;
     }
