@@ -14,7 +14,7 @@
 //
 //    public final ItemCellTile tile;
 //
-//    public ItemCellContainer(int windowId, Level level, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+//    public ItemCellContainer(int windowId, Level level, BlockPos pos, Inventory inventory, PlayerEntity player) {
 //
 //        super(ITEM_CELL_CONTAINER, windowId, world, pos, inventory, player);
 //        this.tile = (ItemCellTile) world.getBlockEntity(pos);

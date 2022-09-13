@@ -82,7 +82,7 @@ import static cofh.lib.util.helpers.ItemHelper.consumeItem;
 import static cofh.lib.util.references.CoreReferences.HOLDING;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
-public abstract class ThermalTileAugmentable extends TileCoFH implements ISecurableTile, IRedstoneControllableTile, MenuProvider, IFilterableTile {
+public abstract class ThermalTileAugmentable extends TileCoFH implements MenuProvider, ISecurableTile, IRedstoneControllableTile, IFilterableTile {
 
     protected static final int BASE_ENERGY = 50000;
     protected static final int BASE_PROCESS_TICK = 20;
