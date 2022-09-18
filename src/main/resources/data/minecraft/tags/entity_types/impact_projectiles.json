@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "thermal:basalz_projectile",
+    "thermal:blitz_projectile",
+    "thermal:blizz_projectile"
+  ]
+}
