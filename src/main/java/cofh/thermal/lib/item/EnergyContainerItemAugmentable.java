@@ -1,8 +1,8 @@
 package cofh.thermal.lib.item;
 
 import cofh.core.item.EnergyContainerItem;
-import cofh.lib.item.IAugmentableItem;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.core.item.IAugmentableItem;
+import cofh.core.util.helpers.AugmentDataHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.IntSupplier;
 
-import static cofh.lib.item.ContainerType.ENERGY;
+import static cofh.core.util.helpers.AugmentableHelper.getPropertyWithDefault;
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
+import static cofh.lib.api.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 
 public abstract class EnergyContainerItemAugmentable extends EnergyContainerItem implements IAugmentableItem {
 

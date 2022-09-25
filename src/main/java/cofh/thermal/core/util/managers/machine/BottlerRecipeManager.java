@@ -1,11 +1,12 @@
 package cofh.thermal.core.util.managers.machine;
 
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.fluid.FluidIngredient;
-import cofh.lib.fluid.IFluidStackAccess;
 import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.constants.ModIds;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
@@ -32,7 +33,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 import java.util.*;
 
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.util.Constants.BOTTLE_VOLUME;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.references.CoreReferences.FLUID_POTION;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -99,7 +101,7 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
     }
 
     // region RECIPES
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() && inputTanks.isEmpty() || inputSlots.get(0).isEmpty() && inputTanks.get(0).isEmpty()) {
             return null;
@@ -225,7 +227,7 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
 
     protected BottlerRecipeNBT convert(int energy, float experience, @Nonnull ItemStack inputItem, @Nonnull FluidStack inputFluid, @Nonnull ItemStack outputItem) {
 
-        convertedRecipes.add(new BottlerRecipe(new ResourceLocation(ID_THERMAL, "bottler_" + inputItem.getItem().getRegistryName().getPath()), energy, experience, singletonList(Ingredient.of(inputItem)), singletonList(FluidIngredient.of(inputFluid).setAmount(inputFluid.getAmount())), singletonList(outputItem), emptyList(), emptyList()));
+        convertedRecipes.add(new BottlerRecipe(new ResourceLocation(ModIds.ID_THERMAL, "bottler_" + inputItem.getItem().getRegistryName().getPath()), energy, experience, singletonList(Ingredient.of(inputItem)), singletonList(FluidIngredient.of(inputFluid).setAmount(inputFluid.getAmount())), singletonList(outputItem), emptyList(), emptyList()));
         return new BottlerRecipeNBT(energy, experience, inputItem, inputFluid, outputItem);
     }
     // endregion

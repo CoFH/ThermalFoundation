@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static cofh.lib.util.helpers.ItemHelper.itemsEqual;
+import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 
 public abstract class CatalyzedMachineRecipe extends BaseMachineRecipe {
 

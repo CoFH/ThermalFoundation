@@ -1,10 +1,10 @@
 package cofh.thermal.core.client.renderer.model;
 
 import cofh.core.client.renderer.model.ModelUtils;
+import cofh.lib.api.item.ICoFHItem;
+import cofh.lib.api.item.IEnergyContainerItem;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
-import cofh.lib.energy.IEnergyContainerItem;
-import cofh.lib.item.ICoFHItem;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.lib.util.helpers.MathHelper;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -28,7 +28,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 
-import static cofh.lib.item.ContainerType.ENERGY;
+import static cofh.lib.api.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 import static cofh.lib.util.constants.NBTTags.TAG_SIDES;
 import static cofh.thermal.core.client.ThermalTextures.*;

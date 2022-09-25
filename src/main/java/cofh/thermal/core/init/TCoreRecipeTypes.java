@@ -6,7 +6,7 @@ import cofh.thermal.core.util.recipes.dynamo.*;
 import cofh.thermal.core.util.recipes.machine.*;
 import net.minecraft.resources.ResourceLocation;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 public class TCoreRecipeTypes {
 

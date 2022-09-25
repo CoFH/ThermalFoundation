@@ -1,14 +1,15 @@
 package cofh.thermal.core.util;
 
 import cofh.core.item.*;
-import cofh.lib.block.IDetonatable;
-import cofh.lib.block.impl.TNTBlockCoFH;
-import cofh.lib.block.impl.crops.CropsBlockCoFH;
-import cofh.lib.block.impl.crops.CropsBlockPerennial;
-import cofh.lib.block.impl.crops.CropsBlockTall;
+import cofh.lib.api.IDetonatable;
+import cofh.lib.block.CropBlockCoFH;
+import cofh.lib.block.CropBlockPerennial;
+import cofh.lib.block.CropBlockTall;
+import cofh.lib.block.TntBlockCoFH;
 import cofh.lib.entity.AbstractGrenade;
 import cofh.lib.entity.AbstractTNTEntity;
 import cofh.lib.entity.AbstractTNTMinecart;
+import cofh.lib.util.constants.ModIds;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.explosive.Grenade;
 import cofh.thermal.core.entity.explosive.ThermalTNTEntity;
@@ -34,7 +35,7 @@ import java.util.function.BooleanSupplier;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.util.Constants.TRUE;
 import static cofh.thermal.core.ThermalCore.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.*;
@@ -49,32 +50,32 @@ public class RegistrationHelper {
     // region BLOCKS
     public static void registerBlock(String name, Supplier<Block> sup) {
 
-        registerBlock(name, sup, ID_THERMAL);
+        registerBlock(name, sup, ModIds.ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, BooleanSupplier showInGroups) {
 
-        registerBlock(name, sup, showInGroups, ID_THERMAL);
+        registerBlock(name, sup, showInGroups, ModIds.ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, CreativeModeTab group, BooleanSupplier showInGroups) {
 
-        registerBlock(name, sup, group, showInGroups, ID_THERMAL);
+        registerBlock(name, sup, group, showInGroups, ModIds.ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity) {
 
-        registerBlock(name, sup, rarity, ID_THERMAL);
+        registerBlock(name, sup, rarity, ModIds.ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, Rarity rarity, BooleanSupplier showInGroups) {
 
-        registerBlock(name, sup, rarity, showInGroups, ID_THERMAL);
+        registerBlock(name, sup, rarity, showInGroups, ModIds.ID_THERMAL);
     }
 
     public static void registerBlock(String name, Supplier<Block> sup, CreativeModeTab group, Rarity rarity, BooleanSupplier showInGroups) {
 
-        registerBlock(name, sup, group, rarity, showInGroups, ID_THERMAL);
+        registerBlock(name, sup, group, rarity, showInGroups, ModIds.ID_THERMAL);
     }
 
     // MOD ID
@@ -133,7 +134,7 @@ public class RegistrationHelper {
     // region AUGMENTABLE BLOCKS
     public static void registerAugmentableBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, BooleanSupplier showInGroups) {
 
-        registerAugmentableBlock(name, sup, numSlots, validAugment, showInGroups, ID_THERMAL);
+        registerAugmentableBlock(name, sup, numSlots, validAugment, showInGroups, ModIds.ID_THERMAL);
     }
 
     public static void registerAugmentableBlock(String name, Supplier<Block> sup, IntSupplier numSlots, BiPredicate<ItemStack, List<ItemStack>> validAugment, String modId) {
@@ -188,32 +189,32 @@ public class RegistrationHelper {
     // region METAL SETS
     public static void registerMetalSet(String prefix, CreativeModeTab group, Rarity rarity) {
 
-        registerMetalSet(prefix, group, rarity, TRUE, false, false, ID_THERMAL);
+        registerMetalSet(prefix, group, rarity, TRUE, false, false, ModIds.ID_THERMAL);
     }
 
     public static void registerMetalSet(String prefix, CreativeModeTab group, Rarity rarity, BooleanSupplier showInGroups) {
 
-        registerMetalSet(prefix, group, rarity, showInGroups, false, false, ID_THERMAL);
+        registerMetalSet(prefix, group, rarity, showInGroups, false, false, ModIds.ID_THERMAL);
     }
 
     public static void registerMetalSet(String prefix, CreativeModeTab group, BooleanSupplier showInGroups) {
 
-        registerMetalSet(prefix, group, Rarity.COMMON, showInGroups, false, false, ID_THERMAL);
+        registerMetalSet(prefix, group, Rarity.COMMON, showInGroups, false, false, ModIds.ID_THERMAL);
     }
 
     public static void registerAlloySet(String prefix, CreativeModeTab group, Rarity rarity) {
 
-        registerMetalSet(prefix, group, rarity, TRUE, false, true, ID_THERMAL);
+        registerMetalSet(prefix, group, rarity, TRUE, false, true, ModIds.ID_THERMAL);
     }
 
     public static void registerAlloySet(String prefix, CreativeModeTab group, BooleanSupplier showInGroups) {
 
-        registerMetalSet(prefix, group, Rarity.COMMON, showInGroups, false, true, ID_THERMAL);
+        registerMetalSet(prefix, group, Rarity.COMMON, showInGroups, false, true, ModIds.ID_THERMAL);
     }
 
     public static void registerVanillaMetalSet(String prefix, CreativeModeTab group) {
 
-        registerMetalSet(prefix, group, Rarity.COMMON, TRUE, true, false, ID_THERMAL);
+        registerMetalSet(prefix, group, Rarity.COMMON, TRUE, true, false, ModIds.ID_THERMAL);
     }
 
     public static void registerMetalSet(String prefix, CreativeModeTab group, Rarity rarity, BooleanSupplier showInGroups, boolean vanilla, boolean alloy, String modId) {
@@ -268,22 +269,22 @@ public class RegistrationHelper {
     // region CROPS
     public static void registerAnnual(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockCoFH(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropBlockCoFH(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerTallAnnual(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockTall(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropBlockTall(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerPerennial(String id) {
 
-        registerPerennial(id, CropsBlockPerennial.DEFAULT_POST_HARVEST_AGE);
+        registerPerennial(id, CropBlockPerennial.DEFAULT_POST_HARVEST_AGE);
     }
 
     public static void registerPerennial(String id, int postHarvestAge) {
 
-        BLOCKS.register(id, () -> new CropsBlockPerennial(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).postHarvestAge(postHarvestAge).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+        BLOCKS.register(id, () -> new CropBlockPerennial(of(Material.PLANT).noCollission().randomTicks().strength(0.0F, 0.0F).sound(SoundType.CROP)).postHarvestAge(postHarvestAge).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
     public static void registerCropAndSeed(String id) {
@@ -304,11 +305,11 @@ public class RegistrationHelper {
     public static void registerCropAndSeed(String id, CreativeModeTab group, FoodProperties food) {
 
         if (food != null) {
-            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().tab(group).food(food)).setModId(ID_THERMAL_CULTIVATION));
+            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().tab(group).food(food)).setModId(ModIds.ID_THERMAL_CULTIVATION));
         } else {
-            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().tab(group)).setModId(ID_THERMAL_CULTIVATION));
+            ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().tab(group)).setModId(ModIds.ID_THERMAL_CULTIVATION));
         }
-        ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().tab(group)).setModId(ID_THERMAL_CULTIVATION));
+        ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().tab(group)).setModId(ModIds.ID_THERMAL_CULTIVATION));
     }
 
     public static void registerSpores(String id) {
@@ -318,7 +319,7 @@ public class RegistrationHelper {
 
     public static void registerSpores(String id, CreativeModeTab group) {
 
-        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().tab(group)).setModId(ID_THERMAL_CULTIVATION));
+        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().tab(group)).setModId(ModIds.ID_THERMAL_CULTIVATION));
     }
 
     public static String deepslate(String id) {
@@ -377,14 +378,14 @@ public class RegistrationHelper {
     public static void registerTNT(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
         RegistryObject<EntityType<? extends AbstractTNTEntity>> tntEntity = ENTITIES.register(id, () -> EntityType.Builder.<ThermalTNTEntity>of((type, world) -> new ThermalTNTEntity(type, world, action), MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(id));
-        registerBlock(id, () -> new TNTBlockCoFH((world, x, y, z, igniter) -> new ThermalTNTEntity(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, flag);
+        registerBlock(id, () -> new TntBlockCoFH((world, x, y, z, igniter) -> new ThermalTNTEntity(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, flag);
         DetonateUtils.TNT.add(tntEntity);
     }
 
     public static void registerTNTMinecart(String id, String tntId, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
         RegistryObject<EntityType<? extends AbstractTNTMinecart>> entity = ENTITIES.register(id, () -> EntityType.Builder.<ThermalTNTMinecart>of((type, world) -> new ThermalTNTMinecart(type, world, action, BLOCKS.get(tntId)), MobCategory.MISC).sized(0.98F, 0.7F).build(id));
-        ITEMS.register(id, () -> new MinecartItemCoFH((world, x, y, z) -> new ThermalTNTMinecart(entity.get(), world, action, BLOCKS.get(tntId), x, y, z), new Item.Properties().tab(THERMAL_TOOLS)).setShowInGroups(flag).setModId(ID_THERMAL_LOCOMOTION));
+        ITEMS.register(id, () -> new MinecartItemCoFH((world, x, y, z) -> new ThermalTNTMinecart(entity.get(), world, action, BLOCKS.get(tntId), x, y, z), new Item.Properties().tab(THERMAL_TOOLS)).setShowInGroups(flag).setModId(ModIds.ID_THERMAL_LOCOMOTION));
         DetonateUtils.CARTS.add(entity);
     }
     // endregion

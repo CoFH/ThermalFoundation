@@ -1,13 +1,13 @@
 package cofh.thermal.core.block.entity.device;
 
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.block.entity.IAreaEffectTile;
-import cofh.lib.block.entity.ICoFHTickableTile;
+import cofh.lib.api.block.entity.IAreaEffectTile;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DevicePotionDiffuserContainer;
@@ -43,14 +43,14 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.ACCESSIBLE;
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.lib.api.StorageGroup.ACCESSIBLE;
+import static cofh.lib.util.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_POTION_DIFFUSER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DevicePotionDiffuserTile extends DeviceTileBase implements ICoFHTickableTile, IAreaEffectTile {
+public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickableTile, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER, TAG_AUGMENT_TYPE_POTION);
 

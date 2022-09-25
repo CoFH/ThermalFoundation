@@ -1,10 +1,10 @@
 package cofh.thermal.core.block.entity.device;
 
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.fluid.NullFluidStorage;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.NullItemStorage;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -20,9 +20,9 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.StorageGroup.INTERNAL;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
+import static cofh.lib.api.StorageGroup.INPUT;
+import static cofh.lib.api.StorageGroup.INTERNAL;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_FILTER;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_NULLIFIER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;

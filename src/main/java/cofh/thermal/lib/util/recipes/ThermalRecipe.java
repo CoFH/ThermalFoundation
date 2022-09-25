@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.BASE_CHANCE_LOCKED;
+import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
 
 public abstract class ThermalRecipe extends SerializableRecipe {
 

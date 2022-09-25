@@ -1,11 +1,11 @@
 package cofh.thermal.core.block.entity.device;
 
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.block.entity.ICoFHTickableTile;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceWaterGenContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
@@ -31,17 +31,17 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.INTERNAL;
-import static cofh.lib.util.StorageGroup.OUTPUT;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
+import static cofh.lib.api.StorageGroup.INTERNAL;
+import static cofh.lib.api.StorageGroup.OUTPUT;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_WATER_GEN_TILE;
 import static cofh.thermal.core.init.TCoreSounds.SOUND_DEVICE_WATER_GEN;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class DeviceWaterGenTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable {
+public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
 

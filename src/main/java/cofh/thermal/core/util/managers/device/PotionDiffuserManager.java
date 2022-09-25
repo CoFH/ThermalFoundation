@@ -1,7 +1,7 @@
 package cofh.thermal.core.util.managers.device;
 
 import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.device.PotionDiffuserBoost;
 import cofh.thermal.lib.util.managers.AbstractManager;

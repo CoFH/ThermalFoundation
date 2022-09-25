@@ -1,13 +1,13 @@
 package cofh.thermal.core.block.entity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.block.entity.ICoFHTickableTile;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.fluid.FluidHandlerRestrictionWrapper;
-import cofh.lib.fluid.FluidStorageAdjustable;
 import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.fluid.FluidStorageRestrictable;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
@@ -31,19 +31,19 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
-import static cofh.lib.util.StorageGroup.ACCESSIBLE;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.api.StorageGroup.ACCESSIBLE;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreReferences.FLUID_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATOR;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class FluidCellTile extends CellTileBase implements ICoFHTickableTile.IServerTickable {
+public class FluidCellTile extends CellTileBase implements ITickableTile.IServerTickable {
 
     public static final int BASE_CAPACITY = TANK_MEDIUM * 4;
 
-    protected FluidStorageCoFH fluidStorage = new FluidStorageAdjustable(BASE_CAPACITY, fluid -> filter.valid(fluid))
+    protected FluidStorageCoFH fluidStorage = new FluidStorageRestrictable(BASE_CAPACITY, fluid -> filter.valid(fluid))
             .setTransferLimits(() -> amountInput, () -> amountOutput);
 
     public FluidCellTile(BlockPos pos, BlockState state) {

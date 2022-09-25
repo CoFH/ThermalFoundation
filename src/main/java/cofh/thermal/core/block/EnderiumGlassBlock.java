@@ -1,6 +1,6 @@
 package cofh.thermal.core.block;
 
-import cofh.lib.block.impl.HardenedGlassBlock;
+import cofh.lib.block.HardenedGlassBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import static cofh.lib.util.constants.Constants.FULL_CUBE_COLLISION;
+import static cofh.lib.util.Constants.FULL_CUBE_COLLISION;
 import static cofh.lib.util.references.CoreReferences.ENDERFERENCE;
 
 public class EnderiumGlassBlock extends HardenedGlassBlock {

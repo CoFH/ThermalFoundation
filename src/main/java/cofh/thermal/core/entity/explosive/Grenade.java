@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.lib.block.IDetonatable;
+import cofh.lib.api.IDetonatable;
 import cofh.lib.entity.AbstractGrenade;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

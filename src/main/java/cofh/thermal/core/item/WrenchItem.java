@@ -1,10 +1,10 @@
 package cofh.thermal.core.item;
 
+import cofh.core.item.IMultiModeItem;
 import cofh.core.item.ItemCoFH;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.block.IDismantleable;
-import cofh.lib.block.IWrenchable;
-import cofh.lib.item.IMultiModeItem;
+import cofh.lib.api.block.IDismantleable;
+import cofh.lib.api.block.IWrenchable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import com.google.common.collect.ImmutableMultimap;

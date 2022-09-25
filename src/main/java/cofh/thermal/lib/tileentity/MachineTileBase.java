@@ -1,13 +1,13 @@
 package cofh.thermal.lib.tileentity;
 
 import cofh.core.network.packet.client.TileStatePacket;
-import cofh.lib.block.entity.ICoFHTickableTile;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.TimeTracker;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -30,17 +30,17 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
+import static cofh.core.util.helpers.AugmentableHelper.*;
 import static cofh.core.util.helpers.FluidHelper.fluidsEqual;
-import static cofh.lib.util.constants.Constants.ACTIVE;
-import static cofh.lib.util.constants.Constants.BASE_CHANCE;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
+import static cofh.lib.util.Constants.BASE_CHANCE;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.*;
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.MACHINE_VALIDATOR;
 
-public abstract class MachineTileBase extends ReconfigurableTile4Way implements ICoFHTickableTile.IServerTickable, IMachineInventory {
+public abstract class MachineTileBase extends ReconfigurableTile4Way implements ITickableTile.IServerTickable, IMachineInventory {
 
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 

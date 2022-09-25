@@ -18,7 +18,7 @@ import net.minecraftforge.client.model.ModelDataManager;
 
 import java.util.Map;
 
-import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.BlockHelper.*;
 

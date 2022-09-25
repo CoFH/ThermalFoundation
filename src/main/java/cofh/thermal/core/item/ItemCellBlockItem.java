@@ -11,9 +11,9 @@ import net.minecraft.world.level.block.Block;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.lib.item.ContainerType.ITEM;
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
+import static cofh.lib.api.ContainerType.ITEM;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 
 public class ItemCellBlockItem extends BlockItemAugmentable {
 

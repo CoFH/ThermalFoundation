@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.lib.util.constants.Constants.PATH_ELEMENTS;
+import static cofh.lib.util.Constants.PATH_ELEMENTS;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContainer> {
 

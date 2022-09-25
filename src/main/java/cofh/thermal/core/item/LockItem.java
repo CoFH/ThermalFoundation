@@ -2,9 +2,9 @@ package cofh.thermal.core.item;
 
 import cofh.core.item.ItemCoFH;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.item.IPlacementItem;
+import cofh.lib.api.control.ISecurable;
+import cofh.lib.api.item.IPlacementItem;
 import cofh.lib.util.Utils;
-import cofh.lib.util.control.ISecurable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;

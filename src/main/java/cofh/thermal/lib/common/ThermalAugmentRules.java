@@ -1,7 +1,7 @@
 package cofh.thermal.lib.common;
 
-import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.lib.util.helpers.ItemHelper;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.ItemHelper;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

@@ -1,9 +1,9 @@
 package cofh.thermal.core.item;
 
+import cofh.core.item.IMultiModeItem;
 import cofh.core.item.XpContainerItem;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.item.IMultiModeItem;
 import cofh.lib.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

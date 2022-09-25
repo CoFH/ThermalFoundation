@@ -1,13 +1,13 @@
 package cofh.thermal.core.client.gui;
 
 import cofh.core.client.gui.CoreTextures;
+import cofh.core.client.gui.IGuiAccess;
 import cofh.core.client.gui.element.ElementConditionalLayered;
 import cofh.core.client.gui.element.ElementScaled;
 import cofh.core.client.gui.element.ElementScaledFluid;
 import cofh.core.client.gui.element.panel.ResourcePanel;
 import cofh.core.util.helpers.GuiHelper;
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.client.gui.IGuiAccess;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
@@ -15,9 +15,9 @@ import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 
 import static cofh.core.util.helpers.RenderHelper.getFluidTexture;
 import static cofh.core.util.helpers.RenderHelper.textureExists;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.lib.util.constants.Constants.TRUE;
-import static cofh.lib.util.control.IReconfigurable.SideConfig.*;
+import static cofh.lib.api.control.IReconfigurable.SideConfig.*;
+import static cofh.lib.util.Constants.TRUE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.client.ThermalTextures.*;
 import static net.minecraft.core.Direction.DOWN;
 import static net.minecraft.core.Direction.UP;

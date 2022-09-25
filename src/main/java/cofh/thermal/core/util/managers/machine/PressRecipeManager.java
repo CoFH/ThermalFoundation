@@ -1,9 +1,9 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.lib.fluid.IFluidStackAccess;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
@@ -81,10 +81,10 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         validDies.clear();
     }
 
-    protected ArrayList<ComparableItemStack> getKeyFromSlots(List<? extends IItemStackAccess> inputSlots) {
+    protected ArrayList<ComparableItemStack> getKeyFromSlots(List<? extends IItemStackHolder> inputSlots) {
 
         ArrayList<ComparableItemStack> key = new ArrayList<>();
-        for (IItemStackAccess slot : inputSlots) {
+        for (IItemStackHolder slot : inputSlots) {
             if (!slot.isEmpty() && !(slot.getItemStack().getItem() instanceof SlotSealItem)) {
                 key.add(convert(slot.getItemStack()));
             }
@@ -103,7 +103,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         return key;
     }
 
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
             return null;

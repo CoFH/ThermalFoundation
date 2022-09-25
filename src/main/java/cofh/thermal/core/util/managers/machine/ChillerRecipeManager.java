@@ -1,10 +1,10 @@
 package cofh.thermal.core.util.managers.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.IFluidStackAccess;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.util.managers.AbstractManager;
@@ -87,7 +87,7 @@ public class ChillerRecipeManager extends AbstractManager implements IRecipeMana
     }
 
     // region RECIPES
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() && inputTanks.isEmpty() || inputSlots.get(0).isEmpty() && inputTanks.get(0).isEmpty()) {
             return null;

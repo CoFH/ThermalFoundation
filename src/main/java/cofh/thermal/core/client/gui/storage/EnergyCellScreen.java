@@ -17,8 +17,8 @@ import net.minecraft.world.entity.player.Inventory;
 import java.util.Collections;
 
 import static cofh.core.util.helpers.GuiHelper.*;
-import static cofh.lib.util.constants.Constants.ID_COFH_CORE;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 import static cofh.lib.util.helpers.StringHelper.format;
 import static cofh.lib.util.helpers.StringHelper.localize;

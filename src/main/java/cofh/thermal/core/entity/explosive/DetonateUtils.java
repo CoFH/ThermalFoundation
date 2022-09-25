@@ -1,8 +1,8 @@
 package cofh.thermal.core.entity.explosive;
 
 import cofh.core.network.packet.client.PlayerMotionPacket;
+import cofh.core.util.AreaUtils;
 import cofh.lib.entity.*;
-import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.references.CoreReferences;

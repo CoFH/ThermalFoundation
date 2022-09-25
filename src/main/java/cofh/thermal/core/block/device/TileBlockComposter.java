@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import java.util.function.Supplier;
 
-import static cofh.lib.util.constants.Constants.ACTIVE;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 
 public class TileBlockComposter extends TileBlockActive {
 

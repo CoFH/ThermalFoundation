@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import static cofh.lib.util.constants.Constants.FULL_CUBE_COLLISION;
+import static cofh.lib.util.Constants.FULL_CUBE_COLLISION;
 
 public class SignalumBlock extends Block {
 

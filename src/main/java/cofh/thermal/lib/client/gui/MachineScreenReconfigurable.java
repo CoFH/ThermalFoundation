@@ -1,7 +1,7 @@
 package cofh.thermal.lib.client.gui;
 
 import cofh.core.client.gui.element.panel.ConfigPanel;
-import cofh.lib.inventory.container.ContainerCoFH;
+import cofh.core.inventory.container.ContainerCoFH;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
 import net.minecraft.network.chat.Component;

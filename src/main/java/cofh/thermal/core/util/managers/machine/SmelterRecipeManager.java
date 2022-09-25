@@ -1,9 +1,9 @@
 package cofh.thermal.core.util.managers.machine;
 
-import cofh.lib.fluid.IFluidStackAccess;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.lib.util.managers.AbstractManager;
 import cofh.thermal.lib.util.managers.CatalyzedRecipeManager;
@@ -92,7 +92,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     }
 
     // region RECIPES
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty()) {
             return null;
@@ -161,7 +161,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
 
     // region CATALYSTS
     @Override
-    public IRecipeCatalyst getCatalyst(IItemStackAccess input) {
+    public IRecipeCatalyst getCatalyst(IItemStackHolder input) {
 
         return catalystMap.get(convert(input.getItemStack()));
     }

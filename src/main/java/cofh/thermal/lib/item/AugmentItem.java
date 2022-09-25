@@ -1,7 +1,7 @@
 package cofh.thermal.lib.item;
 
+import cofh.core.item.IAugmentItem;
 import cofh.core.item.ItemCoFH;
-import cofh.lib.item.IAugmentItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 

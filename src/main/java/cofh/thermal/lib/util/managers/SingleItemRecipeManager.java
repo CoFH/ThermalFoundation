@@ -1,9 +1,9 @@
 package cofh.thermal.lib.util.managers;
 
-import cofh.lib.fluid.IFluidStackAccess;
-import cofh.lib.inventory.IItemStackAccess;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.inventory.ItemStackHolder;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
@@ -69,7 +69,7 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
         return getRecipe(Collections.singletonList(new ItemStackHolder(input)), Collections.emptyList());
     }
 
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
             return null;
@@ -163,7 +163,7 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
 
         // region CATALYSTS
         @Override
-        public IRecipeCatalyst getCatalyst(IItemStackAccess input) {
+        public IRecipeCatalyst getCatalyst(IItemStackHolder input) {
 
             return catalystMap.get(convert(input.getItemStack()));
         }

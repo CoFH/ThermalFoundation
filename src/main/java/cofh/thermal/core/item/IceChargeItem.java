@@ -1,7 +1,7 @@
 package cofh.thermal.core.item;
 
 import cofh.core.item.ItemCoFH;
-import cofh.lib.util.AreaUtils;
+import cofh.core.util.AreaUtils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.entity.projectile.BlizzProjectile;
 import net.minecraft.core.BlockPos;

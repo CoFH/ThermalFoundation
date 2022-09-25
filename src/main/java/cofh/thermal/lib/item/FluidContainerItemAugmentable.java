@@ -1,8 +1,8 @@
 package cofh.thermal.lib.item;
 
 import cofh.core.item.FluidContainerItem;
-import cofh.lib.item.IAugmentableItem;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.core.item.IAugmentableItem;
+import cofh.core.util.helpers.AugmentDataHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
@@ -13,12 +13,12 @@ import java.util.function.BiPredicate;
 import java.util.function.IntSupplier;
 import java.util.function.Predicate;
 
-import static cofh.lib.item.ContainerType.FLUID;
-import static cofh.lib.util.constants.Constants.MAX_POTION_AMPLIFIER;
-import static cofh.lib.util.constants.Constants.MAX_POTION_DURATION;
+import static cofh.core.util.helpers.AugmentableHelper.getPropertyWithDefault;
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
+import static cofh.lib.api.ContainerType.FLUID;
+import static cofh.lib.util.Constants.MAX_POTION_AMPLIFIER;
+import static cofh.lib.util.Constants.MAX_POTION_DURATION;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
 public class FluidContainerItemAugmentable extends FluidContainerItem implements IAugmentableItem {

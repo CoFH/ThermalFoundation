@@ -1,12 +1,12 @@
 package cofh.thermal.core.block.entity.device;
 
-import cofh.lib.block.entity.IAreaEffectTile;
-import cofh.lib.block.entity.ICoFHTickableTile;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.InventoryHelper;
+import cofh.lib.api.block.entity.IAreaEffectTile;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemHandler;
 import cofh.lib.util.Utils;
-import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -42,14 +42,14 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.FACING_HORIZONTAL;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceFisherTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable, IAreaEffectTile {
+public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 

@@ -2,7 +2,7 @@ package cofh.thermal.core.client.renderer.model;
 
 import cofh.core.client.renderer.model.ModelUtils;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;

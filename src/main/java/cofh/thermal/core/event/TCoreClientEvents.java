@@ -1,9 +1,9 @@
 package cofh.thermal.core.event;
 
 import cofh.core.util.ProxyClient;
+import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.vfx.RenderTypes;
-import cofh.lib.block.entity.IAreaEffectTile;
-import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.thermal.core.item.WrenchItem;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.constants.NBTTags.TAG_TYPE;
 import static cofh.lib.util.helpers.StringHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.*;

@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.projectile;
 
-import cofh.lib.util.AreaUtils;
+import cofh.core.util.AreaUtils;
 import cofh.lib.util.Utils;
 import cofh.lib.util.references.CoreReferences;
 import net.minecraft.core.particles.ParticleOptions;

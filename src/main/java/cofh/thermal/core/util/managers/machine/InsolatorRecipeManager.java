@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
 
 public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
 

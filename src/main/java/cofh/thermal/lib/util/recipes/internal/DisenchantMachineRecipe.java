@@ -1,6 +1,6 @@
 package cofh.thermal.lib.util.recipes.internal;
 
-import cofh.lib.inventory.IItemStackAccess;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -42,7 +42,7 @@ public class DisenchantMachineRecipe extends BaseMachineRecipe {
     public float getXp(IMachineInventory inventory) {
 
         int encXP = 0;
-        for (IItemStackAccess holder : inventory.inputSlots()) {
+        for (IItemStackHolder holder : inventory.inputSlots()) {
             encXP += getEnchantmentXp(holder.getItemStack());
         }
         return encXP + experience * inventory.getMachineProperties().getXpMod();

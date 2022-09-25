@@ -1,9 +1,9 @@
 package cofh.thermal.core.block.entity.device;
 
-import cofh.lib.block.entity.IAreaEffectTile;
-import cofh.lib.block.entity.ICoFHTickableTile;
-import cofh.lib.util.helpers.AugmentDataHelper;
-import cofh.lib.util.helpers.InventoryHelper;
+import cofh.core.util.helpers.AugmentDataHelper;
+import cofh.core.util.helpers.InventoryHelper;
+import cofh.lib.api.block.entity.IAreaEffectTile;
+import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.client.ThermalTextures;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -33,13 +33,13 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.UNDERLAY;
-import static cofh.lib.util.StorageGroup.ACCESSIBLE;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_COLLECTOR_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceCollectorTile extends DeviceTileBase implements ICoFHTickableTile.IServerTickable, IAreaEffectTile {
+public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 

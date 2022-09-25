@@ -2,11 +2,11 @@ package cofh.thermal.core.util.managers.machine;
 
 import cofh.core.fluid.PotionFluid;
 import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.api.fluid.IFluidStackHolder;
+import cofh.lib.api.inventory.IItemStackHolder;
 import cofh.lib.fluid.FluidIngredient;
-import cofh.lib.fluid.IFluidStackAccess;
 import cofh.lib.inventory.FalseIInventory;
-import cofh.lib.inventory.IItemStackAccess;
-import cofh.lib.util.ComparableItemStack;
+import cofh.lib.util.crafting.ComparableItemStack;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.init.TCoreRecipeTypes;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
@@ -30,8 +30,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.*;
 
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static java.util.Arrays.asList;
 
 public class BrewerRecipeManager extends AbstractManager implements IRecipeManager {
@@ -90,7 +90,7 @@ public class BrewerRecipeManager extends AbstractManager implements IRecipeManag
     }
 
     // region RECIPES
-    protected IMachineRecipe getRecipe(List<? extends IItemStackAccess> inputSlots, List<? extends IFluidStackAccess> inputTanks) {
+    protected IMachineRecipe getRecipe(List<? extends IItemStackHolder> inputSlots, List<? extends IFluidStackHolder> inputTanks) {
 
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty() || inputTanks.isEmpty() || inputTanks.get(0).isEmpty()) {
             return null;

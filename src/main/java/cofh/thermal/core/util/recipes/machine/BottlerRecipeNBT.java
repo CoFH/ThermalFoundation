@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.BASE_CHANCE_LOCKED;
+import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
 
 public class BottlerRecipeNBT extends BaseMachineRecipe {
 

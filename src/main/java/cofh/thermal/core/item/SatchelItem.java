@@ -1,18 +1,18 @@
 package cofh.thermal.core.item;
 
+import cofh.core.item.IMultiModeItem;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.filter.EmptyFilter;
 import cofh.core.util.filter.FilterRegistry;
+import cofh.core.util.filter.IFilter;
+import cofh.core.util.filter.IFilterableItem;
 import cofh.core.util.helpers.ChatHelper;
+import cofh.core.util.helpers.FilterHelper;
+import cofh.core.util.helpers.InventoryHelper;
+import cofh.lib.api.item.IColorableItem;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.SimpleItemInv;
-import cofh.lib.item.IColorableItem;
-import cofh.lib.item.IMultiModeItem;
 import cofh.lib.util.Utils;
-import cofh.lib.util.filter.IFilter;
-import cofh.lib.util.filter.IFilterableItem;
-import cofh.lib.util.helpers.FilterHelper;
-import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -47,8 +47,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 
+import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentString;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentString;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 

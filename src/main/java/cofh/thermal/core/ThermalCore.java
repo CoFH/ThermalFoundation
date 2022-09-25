@@ -1,7 +1,7 @@
 package cofh.thermal.core;
 
+import cofh.core.capability.CapabilityRedstoneFlux;
 import cofh.core.init.CoreEnchantments;
-import cofh.lib.capability.CapabilityRedstoneFlux;
 import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
 import cofh.lib.config.ConfigManager;
@@ -68,7 +68,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Collections;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.init.TCoreReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;

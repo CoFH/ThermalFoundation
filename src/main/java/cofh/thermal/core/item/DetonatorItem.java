@@ -1,10 +1,10 @@
 package cofh.thermal.core.item;
 
+import cofh.core.item.IMultiModeItem;
 import cofh.core.item.ItemCoFH;
 import cofh.core.util.ProxyUtils;
 import cofh.core.util.helpers.ChatHelper;
-import cofh.lib.item.IMultiModeItem;
-import cofh.lib.util.ITNTFactory;
+import cofh.lib.api.ITNTFactory;
 import cofh.lib.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
