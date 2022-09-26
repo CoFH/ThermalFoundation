@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.monster;
 
-import cofh.lib.util.references.CoreReferences;
+import cofh.core.util.references.CoreReferences;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.entity.projectile.BlitzProjectile;
 import cofh.thermal.lib.common.ThermalFlags;

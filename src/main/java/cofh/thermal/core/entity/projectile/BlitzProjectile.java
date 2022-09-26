@@ -19,7 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-import static cofh.lib.util.references.CoreReferences.SHOCKED;
+import static cofh.core.util.references.CoreReferences.SHOCKED;
 import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 

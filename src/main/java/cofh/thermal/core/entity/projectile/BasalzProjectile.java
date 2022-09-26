@@ -17,7 +17,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import static cofh.lib.util.references.CoreReferences.SUNDERED;
+import static cofh.core.util.references.CoreReferences.SUNDERED;
 import static cofh.thermal.core.init.TCoreReferences.BASALZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BASALZ;
 

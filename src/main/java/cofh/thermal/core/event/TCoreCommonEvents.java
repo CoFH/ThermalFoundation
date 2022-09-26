@@ -17,9 +17,9 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static cofh.core.util.references.EnsorcReferences.AIR_AFFINITY;
 import static cofh.lib.util.Utils.getMaxEquippedEnchantmentLevel;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.lib.util.references.EnsorcReferences.AIR_AFFINITY;
 
 @Mod.EventBusSubscriber (modid = ID_THERMAL)
 public class TCoreCommonEvents {

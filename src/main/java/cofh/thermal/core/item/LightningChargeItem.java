@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 
 import java.util.Random;
 
-import static cofh.lib.util.references.CoreReferences.LIGHTNING_RESISTANCE;
+import static cofh.core.util.references.CoreReferences.LIGHTNING_RESISTANCE;
 
 public class LightningChargeItem extends ItemCoFH {
 

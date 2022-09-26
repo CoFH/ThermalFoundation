@@ -2,10 +2,10 @@ package cofh.thermal.core.entity.explosive;
 
 import cofh.core.network.packet.client.PlayerMotionPacket;
 import cofh.core.util.AreaUtils;
+import cofh.core.util.references.CoreReferences;
 import cofh.lib.entity.*;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
-import cofh.lib.util.references.CoreReferences;
 import cofh.thermal.core.item.FertilizerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
 
-import static cofh.lib.util.references.CoreReferences.SLIMED;
+import static cofh.core.util.references.CoreReferences.SLIMED;
 import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public class DetonateUtils {

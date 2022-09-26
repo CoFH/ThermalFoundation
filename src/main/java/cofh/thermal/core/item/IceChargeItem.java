@@ -26,7 +26,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 
 import java.util.Random;
 
-import static cofh.lib.util.references.CoreReferences.GLOSSED_MAGMA;
+import static cofh.core.util.references.CoreReferences.GLOSSED_MAGMA;
 import static cofh.thermal.core.config.ThermalCoreConfig.permanentLava;
 import static cofh.thermal.core.config.ThermalCoreConfig.permanentWater;
 import static net.minecraft.world.level.block.Blocks.*;

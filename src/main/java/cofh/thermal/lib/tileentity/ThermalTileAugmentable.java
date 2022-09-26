@@ -75,11 +75,11 @@ import static cofh.core.util.helpers.AugmentableHelper.*;
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.core.util.helpers.ItemHelper.consumeItem;
+import static cofh.core.util.references.CoreReferences.HOLDING;
 import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.lib.util.references.CoreReferences.HOLDING;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
 public abstract class ThermalTileAugmentable extends TileCoFH implements MenuProvider, ISecurableTile, IRedstoneControllableTile, IFilterableTile {

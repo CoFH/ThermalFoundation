@@ -1,8 +1,8 @@
 package cofh.thermal.core.entity.projectile;
 
 import cofh.core.util.AreaUtils;
+import cofh.core.util.references.CoreReferences;
 import cofh.lib.util.Utils;
-import cofh.lib.util.references.CoreReferences;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.damagesource.DamageSource;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-import static cofh.lib.util.references.CoreReferences.CHILLED;
+import static cofh.core.util.references.CoreReferences.CHILLED;
 import static cofh.thermal.core.init.TCoreReferences.BLIZZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 

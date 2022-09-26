@@ -34,8 +34,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static cofh.core.util.references.CoreReferences.WRENCHED;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.lib.util.references.CoreReferences.WRENCHED;
 
 public class WrenchItem extends ItemCoFH implements IMultiModeItem {
 

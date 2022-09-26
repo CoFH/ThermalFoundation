@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import static cofh.core.util.references.CoreReferences.ENDERFERENCE;
 import static cofh.lib.util.Constants.FULL_CUBE_COLLISION;
-import static cofh.lib.util.references.CoreReferences.ENDERFERENCE;
 
 public class EnderiumBlock extends Block {
 

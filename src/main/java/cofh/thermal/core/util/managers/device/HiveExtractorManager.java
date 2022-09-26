@@ -19,7 +19,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
-import static cofh.lib.util.references.CoreReferences.FLUID_HONEY;
+import static cofh.core.util.references.CoreReferences.FLUID_HONEY;
 
 public class HiveExtractorManager extends AbstractManager {
 
