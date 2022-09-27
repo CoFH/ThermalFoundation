@@ -1,9 +1,11 @@
 package cofh.thermal.core.entity.explosive;
 
+import cofh.core.entity.AbstractGrenade;
+import cofh.core.entity.AbstractTNTMinecart;
+import cofh.core.entity.ElectricField;
 import cofh.core.network.packet.client.PlayerMotionPacket;
 import cofh.core.util.AreaUtils;
-import cofh.core.util.references.CoreReferences;
-import cofh.lib.entity.*;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.item.FertilizerItem;
@@ -11,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,14 +31,15 @@ import javax.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
 
-import static cofh.core.util.references.CoreReferences.SLIMED;
+import static cofh.core.init.CoreMobEffects.SLIMED;
+import static cofh.core.init.CoreParticles.FROST;
 import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public class DetonateUtils {
 
     // region RENDERING REGISTRATION
     public static List<RegistryObject<EntityType<? extends AbstractGrenade>>> GRENADES = new LinkedList<>();
-    public static List<RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new LinkedList<>();
+    public static List<RegistryObject<EntityType<? extends PrimedTntCoFH>>> TNT = new LinkedList<>();
     public static List<RegistryObject<EntityType<? extends AbstractTNTMinecart>>> CARTS = new LinkedList<>();
     // endregion
 
@@ -72,7 +76,7 @@ public class DetonateUtils {
 
         AreaUtils.iceTransform.transformSphere(level, pos, radius, owner);
         AreaUtils.chillEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
-        makeAreaOfEffectCloud(level, CoreReferences.FROST_PARTICLE, pos, radius);
+        makeAreaOfEffectCloud(level, (SimpleParticleType) FROST.get(), pos, radius);
     }
 
     public static void earth(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
@@ -119,7 +123,7 @@ public class DetonateUtils {
         AABB area = new AABB(blockPos.offset(-radius, -radius, -radius), blockPos.offset(1 + radius, 1 + radius, 1 + radius));
 
         for (LivingEntity mob : level.getEntitiesOfClass(LivingEntity.class, area, EntitySelector.ENTITY_STILL_ALIVE)) {
-            mob.addEffect(new MobEffectInstance(SLIMED, duration, amplifier, false, true));
+            mob.addEffect(new MobEffectInstance(SLIMED.get(), duration, amplifier, false, true));
 
             double d5 = mob.getX() - explosive.getX();
             double d7 = mob.getY() - explosive.getY();
@@ -200,11 +204,11 @@ public class DetonateUtils {
         level.explode(explosive, explosive.getX(), explosive.getY(), explosive.getZ(), radius * 0.38F, true, explosionsBreakBlocks ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
     }
 
-    public static void gravity(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
-
-        level.addFreshEntity((new BlackHole(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
-        // TODO: particle
-    }
+    //    public static void gravity(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
+    //
+    //        level.addFreshEntity((new BlackHole(level, pos, radius)).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
+    //        // TODO: particle
+    //    }
     // endregion
 
 }

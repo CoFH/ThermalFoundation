@@ -1,6 +1,5 @@
 package cofh.thermal.core.entity.monster;
 
-import cofh.core.util.references.CoreReferences;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.entity.projectile.BasalzProjectile;
 import cofh.thermal.lib.common.ThermalFlags;
@@ -38,6 +37,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.EnumSet;
 import java.util.Random;
 
+import static cofh.core.init.CoreMobEffects.SUNDERED;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BASALZ;
@@ -167,7 +167,7 @@ public class Basalz extends Monster {
     @Override
     public boolean canBeAffected(MobEffectInstance effect) {
 
-        return super.canBeAffected(effect) && !effect.getEffect().equals(CoreReferences.SUNDERED);
+        return super.canBeAffected(effect) && !effect.getEffect().equals(SUNDERED.get());
     }
 
     @Override

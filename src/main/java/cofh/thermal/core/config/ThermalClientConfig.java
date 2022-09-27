@@ -1,6 +1,6 @@
 package cofh.thermal.core.config;
 
-import cofh.lib.config.IBaseConfig;
+import cofh.core.config.IBaseConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class ThermalClientConfig implements IBaseConfig {

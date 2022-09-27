@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import static cofh.core.util.references.CoreReferences.ENDERFERENCE;
+import static cofh.core.init.CoreMobEffects.ENDERFERENCE;
 import static cofh.lib.util.Constants.FULL_CUBE_COLLISION;
 
 public class EnderiumBlock extends Block {
@@ -33,7 +33,7 @@ public class EnderiumBlock extends Block {
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
 
         if (entityIn instanceof LivingEntity) {
-            ((LivingEntity) entityIn).addEffect(new MobEffectInstance(ENDERFERENCE, duration, 0, false, false));
+            ((LivingEntity) entityIn).addEffect(new MobEffectInstance(ENDERFERENCE.get(), duration, 0, false, false));
         }
     }
 

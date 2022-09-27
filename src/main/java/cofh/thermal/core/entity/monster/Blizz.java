@@ -1,10 +1,10 @@
 package cofh.thermal.core.entity.monster;
 
-import cofh.core.util.references.CoreReferences;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.entity.projectile.BlizzProjectile;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -34,6 +34,8 @@ import net.minecraft.world.phys.Vec3;
 import java.util.EnumSet;
 import java.util.Random;
 
+import static cofh.core.init.CoreMobEffects.CHILLED;
+import static cofh.core.init.CoreParticles.FROST;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BLIZZ;
@@ -119,7 +121,7 @@ public class Blizz extends Monster {
             //                this.world.playSound(this.getPosX() + 0.5D, this.getPosY() + 0.5D, this.getPosZ() + 0.5D, SOUND_BLIZZ_ROAM, this.getSoundCategory(), 0.5F + 0.25F * this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, true);
             //            }
             if (this.random.nextInt(2) == 0) {
-                this.level.addParticle(CoreReferences.FROST_PARTICLE, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+                this.level.addParticle((SimpleParticleType) FROST.get(), this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
         }
         super.aiStep();
@@ -145,7 +147,7 @@ public class Blizz extends Monster {
     @Override
     public boolean canBeAffected(MobEffectInstance effect) {
 
-        return super.canBeAffected(effect) && !effect.getEffect().equals(CoreReferences.CHILLED);
+        return super.canBeAffected(effect) && !effect.getEffect().equals(CHILLED.get());
     }
 
     @Override

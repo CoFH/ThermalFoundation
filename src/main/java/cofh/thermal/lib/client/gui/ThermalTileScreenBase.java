@@ -7,7 +7,7 @@ import cofh.core.client.gui.element.panel.AugmentPanel;
 import cofh.core.client.gui.element.panel.RSControlPanel;
 import cofh.core.client.gui.element.panel.SecurityPanel;
 import cofh.core.inventory.container.ContainerCoFH;
-import cofh.core.network.packet.server.FilterGuiOpenPacket;
+import cofh.core.network.packet.server.TileFilterGuiOpenPacket;
 import cofh.core.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
@@ -57,7 +57,7 @@ public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScr
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                FilterGuiOpenPacket.openFilterGui(tile, (byte) 0);
+                TileFilterGuiOpenPacket.openFilterGui(tile, (byte) 0);
                 return true;
             }
         }

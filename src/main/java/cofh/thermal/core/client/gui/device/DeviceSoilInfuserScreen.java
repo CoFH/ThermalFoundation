@@ -50,7 +50,7 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
     @Override
     protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
 
-        String radius = format(1 + 2 * tile.getRadius());
+        String radius = format(1 + 2L * tile.getRadius());
 
         getFontRenderer().draw(matrixStack, localize("info.cofh.area") + ": " + radius + " x " + radius, 70, 39, 0x404040);
 

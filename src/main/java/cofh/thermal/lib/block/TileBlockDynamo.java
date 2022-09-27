@@ -1,7 +1,6 @@
 package cofh.thermal.lib.block;
 
 import cofh.core.block.TileBlockActive6Way;
-import cofh.core.block.entity.TileCoFH;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -56,7 +55,7 @@ public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterl
             Shapes.or(BASE_SHAPE[5], COIL_SHAPE[5])
     };
 
-    public TileBlockDynamo(Properties builder, Class<? extends TileCoFH> tileClass, Supplier<BlockEntityType<? extends TileCoFH>> blockEntityType) {
+    public TileBlockDynamo(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
 
         super(builder, tileClass, blockEntityType);
     }

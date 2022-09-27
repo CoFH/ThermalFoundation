@@ -1,10 +1,10 @@
 package cofh.thermal.core.entity.projectile;
 
 import cofh.core.util.AreaUtils;
-import cofh.core.util.references.CoreReferences;
 import cofh.lib.util.Utils;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.damagesource.IndirectEntityDamageSource;
@@ -18,7 +18,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-import static cofh.core.util.references.CoreReferences.CHILLED;
+import static cofh.core.init.CoreMobEffects.CHILLED;
+import static cofh.core.init.CoreParticles.FROST;
 import static cofh.thermal.core.init.TCoreReferences.BLIZZ_PROJECTILE_ENTITY;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 
@@ -60,7 +61,7 @@ public class BlizzProjectile extends ElementalProjectile {
                 entity.clearFire();
             }
             if (entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity living) {
-                living.addEffect(new MobEffectInstance(CHILLED, getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+                living.addEffect(new MobEffectInstance(CHILLED.get(), getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
         if (Utils.isServerWorld(level)) {
@@ -79,7 +80,7 @@ public class BlizzProjectile extends ElementalProjectile {
 
         AreaEffectCloud cloud = new AreaEffectCloud(level, getX(), getY(), getZ());
         cloud.setRadius(1);
-        cloud.setParticle(CoreReferences.FROST_PARTICLE);
+        cloud.setParticle((SimpleParticleType) FROST.get());
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((effectRadius - cloud.getRadius()) / (float) cloud.getDuration());

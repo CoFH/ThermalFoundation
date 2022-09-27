@@ -26,7 +26,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 
 import java.util.Random;
 
-import static cofh.core.util.references.CoreReferences.GLOSSED_MAGMA;
+import static cofh.core.init.CoreBlocks.GLOSSED_MAGMA;
 import static cofh.thermal.core.config.ThermalCoreConfig.permanentLava;
 import static cofh.thermal.core.config.ThermalCoreConfig.permanentWater;
 import static net.minecraft.world.level.block.Blocks.*;
@@ -81,10 +81,10 @@ public class IceChargeItem extends ItemCoFH {
         // LAVA
         isFull = state.getBlock() == LAVA && state.getValue(LiquidBlock.LEVEL) == 0;
         if (state.getMaterial() == Material.LAVA && isFull && state.canSurvive(world, pos) && world.isUnobstructed(state, pos, CollisionContext.empty())) {
-            world.setBlockAndUpdate(pos, permanentLava ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.defaultBlockState());
+            world.setBlockAndUpdate(pos, permanentLava ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.get().defaultBlockState());
             used = true;
             if (!permanentLava) {
-                world.scheduleTick(pos, GLOSSED_MAGMA, MathHelper.nextInt(world.random, 60, 120));
+                world.scheduleTick(pos, GLOSSED_MAGMA.get(), MathHelper.nextInt(world.random, 60, 120));
             }
         }
         if (used) {

@@ -1,6 +1,6 @@
 package cofh.thermal.core.config;
 
-import cofh.lib.config.IBaseConfig;
+import cofh.core.config.IBaseConfig;
 import cofh.thermal.core.block.entity.device.DeviceComposterTile;
 import cofh.thermal.core.block.entity.device.DeviceFisherTile;
 import cofh.thermal.core.block.entity.device.DeviceTreeExtractorTile;

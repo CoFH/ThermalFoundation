@@ -1,11 +1,11 @@
 package cofh.thermal.core.entity.monster;
 
-import cofh.core.util.references.CoreReferences;
 import cofh.thermal.core.config.ThermalClientConfig;
 import cofh.thermal.core.entity.projectile.BlitzProjectile;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -35,6 +35,8 @@ import net.minecraft.world.phys.Vec3;
 import java.util.EnumSet;
 import java.util.Random;
 
+import static cofh.core.init.CoreMobEffects.SHOCKED;
+import static cofh.core.init.CoreParticles.SPARK;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreSounds.*;
 import static cofh.thermal.lib.common.ThermalFlags.FLAG_MOB_BLITZ;
@@ -120,7 +122,7 @@ public class Blitz extends Monster {
             //                this.world.playSound(this.getPosX() + 0.5D, this.getPosY() + 0.5D, this.getPosZ() + 0.5D, SOUND_BLITZ_ROAM, this.getSoundCategory(), 0.5F + 0.25F * this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, true);
             //            }
             if (this.random.nextInt(3) == 0) {
-                this.level.addParticle(isAngry() ? CoreReferences.SPARK_PARTICLE : ParticleTypes.CLOUD, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+                this.level.addParticle(isAngry() ? (SimpleParticleType) SPARK.get() : ParticleTypes.CLOUD, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
         }
         super.aiStep();
@@ -129,7 +131,7 @@ public class Blitz extends Monster {
     @Override
     public boolean canBeAffected(MobEffectInstance effect) {
 
-        return super.canBeAffected(effect) && !effect.getEffect().equals(CoreReferences.SHOCKED);
+        return super.canBeAffected(effect) && !effect.getEffect().equals(SHOCKED.get());
     }
 
     @Override

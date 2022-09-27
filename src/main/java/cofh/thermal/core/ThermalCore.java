@@ -1,14 +1,13 @@
 package cofh.thermal.core;
 
 import cofh.core.capability.CapabilityRedstoneFlux;
-import cofh.core.init.CoreEnchantments;
+import cofh.core.config.ConfigManager;
+import cofh.core.config.world.OreConfig;
+import cofh.core.entity.AbstractGrenade;
+import cofh.core.entity.AbstractTNTMinecart;
 import cofh.lib.client.renderer.entity.TNTMinecartRendererCoFH;
 import cofh.lib.client.renderer.entity.TNTRendererCoFH;
-import cofh.lib.config.ConfigManager;
-import cofh.lib.config.world.OreConfig;
-import cofh.lib.entity.AbstractGrenade;
-import cofh.lib.entity.AbstractTNTEntity;
-import cofh.lib.entity.AbstractTNTMinecart;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.thermal.core.client.gui.ChargeBenchScreen;
 import cofh.thermal.core.client.gui.TinkerBenchScreen;
@@ -139,8 +138,6 @@ public class ThermalCore {
         TILE_ENTITIES.register(modEventBus);
 
         ThermalFeatures.register(modEventBus);
-
-        CoreEnchantments.registerHoldingEnchantment();
     }
 
     private void setFeatureFlags() {
@@ -203,7 +200,7 @@ public class ThermalCore {
         for (RegistryObject<EntityType<? extends AbstractGrenade>> grenade : DetonateUtils.GRENADES) {
             event.registerEntityRenderer(grenade.get(), ThrownItemRenderer::new);
         }
-        for (RegistryObject<EntityType<? extends AbstractTNTEntity>> tnt : DetonateUtils.TNT) {
+        for (RegistryObject<EntityType<? extends PrimedTntCoFH>> tnt : DetonateUtils.TNT) {
             event.registerEntityRenderer(tnt.get(), TNTRendererCoFH::new);
         }
         for (RegistryObject<EntityType<? extends AbstractTNTMinecart>> cart : DetonateUtils.CARTS) {

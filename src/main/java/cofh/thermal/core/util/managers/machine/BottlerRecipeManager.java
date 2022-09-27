@@ -33,7 +33,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 import java.util.*;
 
-import static cofh.core.util.references.CoreReferences.FLUID_POTION;
+import static cofh.core.init.CoreFluids.POTION_FLUID;
 import static cofh.lib.util.Constants.BOTTLE_VOLUME;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static java.util.Arrays.asList;
@@ -208,7 +208,7 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
         }
         if (defaultPotionRecipes) {
             ThermalCore.LOG.debug("Adding default Potion recipes to the Fluid Encapsulator...");
-            addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(FLUID_POTION, BOTTLE_VOLUME), new ItemStack(Items.POTION)));
+            addRecipe(convert(energy, 0.0F, new ItemStack(Items.GLASS_BOTTLE), new FluidStack(POTION_FLUID.get(), BOTTLE_VOLUME), new ItemStack(Items.POTION)));
         }
         Map<ResourceLocation, Recipe<FalseIInventory>> recipes = recipeManager.byType(TCoreRecipeTypes.RECIPE_BOTTLER);
         for (Map.Entry<ResourceLocation, Recipe<FalseIInventory>> entry : recipes.entrySet()) {

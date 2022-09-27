@@ -3,7 +3,7 @@ package cofh.thermal.core.block.entity.device;
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.client.audio.ConditionalSound;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -154,7 +154,7 @@ public class DeviceWaterGenTile extends DeviceTileBase implements ITickableTile.
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_DEVICE_WATER_GEN, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_DEVICE_WATER_GEN, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region AUGMENTS

@@ -29,7 +29,7 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
 
         super(builder, xpCapacity);
 
-        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("stored"), (stack, world, living, seed) -> ((float) getStoredXp(stack)) / getCapacityXP(stack));
+        ProxyUtils.registerItemModelProperty(this, new ResourceLocation("stored"), (stack, world, living, seed) -> ((float) getStoredXp(stack)) / getCapacityXp(stack));
     }
 
     @Override

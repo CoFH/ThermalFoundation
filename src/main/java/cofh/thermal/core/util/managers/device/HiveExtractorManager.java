@@ -18,8 +18,8 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
+import static cofh.core.init.CoreFluids.HONEY_FLUID;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
-import static cofh.core.util.references.CoreReferences.FLUID_HONEY;
 
 public class HiveExtractorManager extends AbstractManager {
 
@@ -53,7 +53,7 @@ public class HiveExtractorManager extends AbstractManager {
 
     public FluidStack getFluid(BlockState hive) {
 
-        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getRight() : new FluidStack(FLUID_HONEY, HONEY_AMOUNT);
+        return specificHive(hive) ? hiveMap.get(hive.getBlock()).getRight() : new FluidStack(HONEY_FLUID.get(), HONEY_AMOUNT);
     }
 
     public void addMapping(HiveExtractorMapping mapping) {

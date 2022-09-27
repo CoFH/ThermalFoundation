@@ -80,7 +80,7 @@ public abstract class SingleFluidFuelManager extends AbstractManager implements 
         int amount = input.getAmount();
         if (amount != FLUID_FUEL_AMOUNT) {
             if (amount != BUCKET_VOLUME) {
-                long normEnergy = energy * BUCKET_VOLUME / amount;
+                long normEnergy = (long) energy * BUCKET_VOLUME / amount;
                 input.setAmount(FLUID_FUEL_AMOUNT);
                 energy = (int) normEnergy;
             }

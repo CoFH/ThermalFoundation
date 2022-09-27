@@ -34,7 +34,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.core.util.references.CoreReferences.WRENCHED;
+import static cofh.core.init.CoreMobEffects.WRENCHED;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 
 public class WrenchItem extends ItemCoFH implements IMultiModeItem {
@@ -93,7 +93,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
-        target.addEffect(new MobEffectInstance(WRENCHED, 60, 0, false, false));
+        target.addEffect(new MobEffectInstance(WRENCHED.get(), 60, 0, false, false));
         stack.hurtAndBreak(1, attacker, (entity) -> {
             entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });

@@ -1,6 +1,6 @@
 package cofh.thermal.core.config;
 
-import cofh.lib.config.IBaseConfig;
+import cofh.core.config.IBaseConfig;
 import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.item.SatchelItem;
 import cofh.thermal.lib.util.ThermalEnergyHelper;

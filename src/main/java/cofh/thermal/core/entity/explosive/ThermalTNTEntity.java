@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.lib.entity.AbstractTNTEntity;
+import cofh.lib.entity.PrimedTntCoFH;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -14,20 +14,20 @@ import java.util.Map;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 
-public class ThermalTNTEntity extends AbstractTNTEntity {
+public class ThermalTNTEntity extends PrimedTntCoFH {
 
-    public static Map<String, RegistryObject<EntityType<? extends AbstractTNTEntity>>> TNT = new HashMap<>();
+    public static Map<String, RegistryObject<EntityType<? extends PrimedTntCoFH>>> TNT = new HashMap<>();
     protected Block block;
     protected IDetonateAction detonateAction;
 
-    public ThermalTNTEntity(EntityType<? extends AbstractTNTEntity> type, Level worldIn, IDetonateAction detonateAction) {
+    public ThermalTNTEntity(EntityType<? extends PrimedTntCoFH> type, Level worldIn, IDetonateAction detonateAction) {
 
         super(type, worldIn);
         this.detonateAction = detonateAction;
         block = BLOCKS.get(type.getRegistryName());
     }
 
-    public ThermalTNTEntity(EntityType<? extends AbstractTNTEntity> type, Level worldIn, IDetonateAction detonateAction, double x, double y, double z, @Nullable LivingEntity igniter) {
+    public ThermalTNTEntity(EntityType<? extends PrimedTntCoFH> type, Level worldIn, IDetonateAction detonateAction, double x, double y, double z, @Nullable LivingEntity igniter) {
 
         super(type, worldIn, x, y, z, igniter);
         this.detonateAction = detonateAction;

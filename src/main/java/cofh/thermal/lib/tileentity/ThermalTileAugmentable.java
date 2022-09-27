@@ -71,11 +71,11 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static cofh.core.init.CoreEnchantments.HOLDING;
 import static cofh.core.util.helpers.AugmentableHelper.*;
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.core.util.helpers.ItemHelper.consumeItem;
-import static cofh.core.util.references.CoreReferences.HOLDING;
 import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
@@ -720,7 +720,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
 
     protected float getHoldingMod(Map<Enchantment, Integer> enchantmentMap) {
 
-        int holding = enchantmentMap.getOrDefault(HOLDING, 0);
+        int holding = enchantmentMap.getOrDefault(HOLDING.get(), 0);
         return 1 + holding / 2F;
     }
     // endregion

@@ -1,7 +1,7 @@
 package cofh.thermal.core.config;
 
-import cofh.lib.config.IBaseConfig;
-import cofh.lib.config.world.OreConfig;
+import cofh.core.config.IBaseConfig;
+import cofh.core.config.world.OreConfig;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraftforge.common.ForgeConfigSpec;
 

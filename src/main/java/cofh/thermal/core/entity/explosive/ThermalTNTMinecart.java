@@ -1,6 +1,6 @@
 package cofh.thermal.core.entity.explosive;
 
-import cofh.lib.entity.AbstractTNTMinecart;
+import cofh.core.entity.AbstractTNTMinecart;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

@@ -1,14 +1,14 @@
 package cofh.thermal.core.util;
 
+import cofh.core.entity.AbstractGrenade;
+import cofh.core.entity.AbstractTNTMinecart;
 import cofh.core.item.*;
 import cofh.lib.api.IDetonatable;
 import cofh.lib.block.CropBlockCoFH;
 import cofh.lib.block.CropBlockPerennial;
 import cofh.lib.block.CropBlockTall;
 import cofh.lib.block.TntBlockCoFH;
-import cofh.lib.entity.AbstractGrenade;
-import cofh.lib.entity.AbstractTNTEntity;
-import cofh.lib.entity.AbstractTNTMinecart;
+import cofh.lib.entity.PrimedTntCoFH;
 import cofh.lib.util.constants.ModIds;
 import cofh.thermal.core.entity.explosive.DetonateUtils;
 import cofh.thermal.core.entity.explosive.Grenade;
@@ -377,7 +377,7 @@ public class RegistrationHelper {
 
     public static void registerTNT(String id, IDetonatable.IDetonateAction action, BooleanSupplier flag) {
 
-        RegistryObject<EntityType<? extends AbstractTNTEntity>> tntEntity = ENTITIES.register(id, () -> EntityType.Builder.<ThermalTNTEntity>of((type, world) -> new ThermalTNTEntity(type, world, action), MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(id));
+        RegistryObject<EntityType<? extends PrimedTntCoFH>> tntEntity = ENTITIES.register(id, () -> EntityType.Builder.<ThermalTNTEntity>of((type, world) -> new ThermalTNTEntity(type, world, action), MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).build(id));
         registerBlock(id, () -> new TntBlockCoFH((world, x, y, z, igniter) -> new ThermalTNTEntity(tntEntity.get(), world, action, x, y, z, igniter), of(Material.EXPLOSIVE, MaterialColor.COLOR_YELLOW).strength(0.0F).sound(SoundType.GRASS)), THERMAL_TOOLS, flag);
         DetonateUtils.TNT.add(tntEntity);
     }

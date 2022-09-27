@@ -16,8 +16,10 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static cofh.core.util.references.EnsorcReferences.AIR_AFFINITY;
+import static cofh.core.util.references.EnsorcIDs.ID_AIR_AFFINITY;
+import static cofh.lib.util.Utils.getEnchantment;
 import static cofh.lib.util.Utils.getMaxEquippedEnchantmentLevel;
+import static cofh.lib.util.constants.ModIds.ID_ENSORCELLATION;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
 @Mod.EventBusSubscriber (modid = ID_THERMAL)
@@ -36,12 +38,12 @@ public class TCoreCommonEvents {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
             boolean diveLegs = player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof DivingArmorItem;
-            if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, AIR_AFFINITY) <= 0)) {
+            if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, getEnchantment(ID_ENSORCELLATION, ID_AIR_AFFINITY)) <= 0)) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
         } else if (player.isInWater()) {
             boolean diveLegs = player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof DivingArmorItem;
-            if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, AIR_AFFINITY) <= 0)) {
+            if (!player.isOnGround() && diveLegs && (getMaxEquippedEnchantmentLevel(player, getEnchantment(ID_ENSORCELLATION, ID_AIR_AFFINITY)) <= 0)) {
                 event.setNewSpeed(Math.max(event.getNewSpeed(), event.getOriginalSpeed() * 5.0F));
             }
         }
