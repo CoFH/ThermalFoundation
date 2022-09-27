@@ -700,7 +700,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
         }
 
         CompoundTag filterNBT = filter.write(new CompoundTag());
-        filter = FilterRegistry.getTileFilter(getAttributeModString(augmentNBT, TAG_FILTER_TYPE), this, filterNBT);
+        filter = FilterRegistry.getTileFilter(getAttributeModString(augmentNBT, TAG_FILTER_TYPE), filterNBT, this, (byte) 0);
     }
 
     protected boolean defaultReconfigState() {
@@ -829,8 +829,8 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
     @Override
     public boolean openFilterGui(ServerPlayer player, int filterId) {
 
-        if (FilterHelper.hasFilter(this, 0)) {
-            NetworkHooks.openGui(player, getFilter(filterId), worldPosition);
+        if (FilterHelper.hasFilter(this, filterId)) {
+            FilterHelper.openTileGui(player, getFilter(filterId), worldPosition, filterId);
             return true;
         }
         return false;

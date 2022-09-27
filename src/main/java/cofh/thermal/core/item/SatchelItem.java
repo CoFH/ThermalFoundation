@@ -143,7 +143,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
             }
             if (player.isSecondaryUseActive()) {
                 if (FilterHelper.hasFilter(stack)) {
-                    NetworkHooks.openGui((ServerPlayer) player, getFilter(stack));
+                    FilterHelper.openHeldGui((ServerPlayer) player, getFilter(stack));
                     return true;
                 }
                 return false;
