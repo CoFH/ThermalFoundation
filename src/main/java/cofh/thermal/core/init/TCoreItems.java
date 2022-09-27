@@ -352,11 +352,11 @@ public class TCoreItems {
                         .feature(TAG_FILTER_TYPE, FilterRegistry.ITEM_FILTER_TYPE)
                         .build()).setShowInGroups(getFlag(FLAG_FILTER_AUGMENTS)));
 
-        //        registerItem("fluid_filter_augment", () -> new AugmentItem(new Item.Properties().group(group),
-        //                AugmentDataHelper.builder()
-        //                        .type(TAG_AUGMENT_TYPE_FILTER)
-        //                        .feature(TAG_FILTER_TYPE, FilterRegistry.FLUID_FILTER_TYPE)
-        //                        .build()).setShowInGroups(getFlag(FLAG_FILTER_AUGMENTS)));
+        registerItem("fluid_filter_augment", () -> new AugmentItem(new Item.Properties().tab(group),
+                AugmentDataHelper.builder()
+                        .type(TAG_AUGMENT_TYPE_FILTER)
+                        .feature(TAG_FILTER_TYPE, FilterRegistry.FLUID_FILTER_TYPE)
+                        .build()).setShowInGroups(getFlag(FLAG_FILTER_AUGMENTS)));
         //
         //        registerItem("dual_filter_augment", () -> new AugmentItem(new Item.Properties().group(group),
         //                AugmentDataHelper.builder()

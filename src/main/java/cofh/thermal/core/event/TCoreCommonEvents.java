@@ -1,7 +1,7 @@
 package cofh.thermal.core.event;
 
 import cofh.core.compat.curios.CuriosProxy;
-import cofh.core.util.filter.IFilterOptions;
+import cofh.core.util.filter.IFilterContainer;
 import cofh.thermal.core.inventory.container.storage.SatchelContainer;
 import cofh.thermal.core.item.DivingArmorItem;
 import cofh.thermal.core.item.SatchelItem;
@@ -55,7 +55,7 @@ public class TCoreCommonEvents {
             return;
         }
         Player player = event.getPlayer();
-        if (player.containerMenu instanceof SatchelContainer || player.containerMenu instanceof IFilterOptions) {
+        if (player.containerMenu instanceof SatchelContainer || player.containerMenu instanceof IFilterContainer) {
             return;
         }
         Inventory inventory = player.getInventory();

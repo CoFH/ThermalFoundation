@@ -1,7 +1,7 @@
 package cofh.thermal.core.inventory.container.device;
 
 import cofh.core.inventory.container.TileContainer;
-import cofh.core.network.packet.server.ContainerPacket;
+import cofh.core.network.packet.server.ContainerConfigPacket;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.core.block.entity.device.DeviceNullifierTile;
@@ -35,7 +35,7 @@ public class DeviceNullifierContainer extends TileContainer {
 
     public void emptyBin() {
 
-        ContainerPacket.sendToServer(this);
+        ContainerConfigPacket.sendToServer(this);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class DeviceNullifierContainer extends TileContainer {
 
     // region NETWORK
     @Override
-    public void handleContainerPacket(FriendlyByteBuf buffer) {
+    public void handleConfigPacket(FriendlyByteBuf buffer) {
 
         tile.emptyBin();
     }

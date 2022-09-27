@@ -1,7 +1,7 @@
 package cofh.thermal.core.inventory.container;
 
 import cofh.core.inventory.container.TileContainer;
-import cofh.core.network.packet.server.ContainerPacket;
+import cofh.core.network.packet.server.ContainerConfigPacket;
 import cofh.core.util.helpers.AugmentableHelper;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
@@ -123,7 +123,7 @@ public class TinkerBenchContainer extends TileContainer {
 
     public void onModeChange() {
 
-        ContainerPacket.sendToServer(this);
+        ContainerConfigPacket.sendToServer(this);
     }
 
     public boolean isTinkerSlot(Slot slot) {
@@ -159,7 +159,7 @@ public class TinkerBenchContainer extends TileContainer {
 
     // region NETWORK
     @Override
-    public void handleContainerPacket(FriendlyByteBuf buffer) {
+    public void handleConfigPacket(FriendlyByteBuf buffer) {
 
         writeAugmentsToItem(tinkerSlot.getItem());
         tile.toggleTinkerSlotMode();
