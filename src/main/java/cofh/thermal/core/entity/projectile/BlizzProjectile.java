@@ -20,7 +20,7 @@ import net.minecraft.world.phys.HitResult;
 
 import static cofh.core.init.CoreMobEffects.CHILLED;
 import static cofh.core.init.CoreParticles.FROST;
-import static cofh.thermal.core.init.TCoreReferences.BLIZZ_PROJECTILE_ENTITY;
+import static cofh.thermal.core.init.TCoreEntities.BLIZZ_PROJECTILE;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLIZZ;
 
 public class BlizzProjectile extends ElementalProjectile {
@@ -38,12 +38,12 @@ public class BlizzProjectile extends ElementalProjectile {
 
     public BlizzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BLIZZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
+        super(BLIZZ_PROJECTILE.get(), shooter, accelX, accelY, accelZ, world);
     }
 
     public BlizzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BLIZZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
+        super(BLIZZ_PROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
     }
 
     @Override

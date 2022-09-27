@@ -31,7 +31,7 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.block.device.TileBlockComposter.LEVEL;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_COMPOSTER_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_COMPOSTER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraft.world.level.block.ComposterBlock.COMPOSTABLES;
 
@@ -64,7 +64,7 @@ public class DeviceComposterTile extends DeviceTileBase implements ITickableTile
 
     public DeviceComposterTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_COMPOSTER_TILE, pos, state);
+        super(DEVICE_COMPOSTER_TILE.get(), pos, state);
 
         inventory.addSlots(INPUT, 9, item -> filter.valid(item) && COMPOSTABLES.containsKey(item.getItem()));
         inventory.addSlot(outputSlot, OUTPUT);

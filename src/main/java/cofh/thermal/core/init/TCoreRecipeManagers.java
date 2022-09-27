@@ -31,8 +31,9 @@ public class TCoreRecipeManagers {
         registerManager(ChillerRecipeManager.instance());
         registerManager(RefineryRecipeManager.instance());
         registerManager(PyrolyzerRecipeManager.instance());
-        registerManager(BrewerRecipeManager.instance());
         registerManager(BottlerRecipeManager.instance());
+        registerManager(BrewerRecipeManager.instance());
+        registerManager(CrystallizerRecipeManager.instance());
         registerManager(CrafterRecipeManager.instance());
 
         registerManager(StirlingFuelManager.instance());

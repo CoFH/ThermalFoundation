@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_NULLIFIER_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.DEVICE_NULLIFIER_CONTAINER;
 
 public class DeviceNullifierContainer extends TileContainer {
 
@@ -19,7 +19,7 @@ public class DeviceNullifierContainer extends TileContainer {
 
     public DeviceNullifierContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DEVICE_NULLIFIER_CONTAINER, windowId, world, pos, inventory, player);
+        super(DEVICE_NULLIFIER_CONTAINER.get(), windowId, world, pos, inventory, player);
         this.tile = (DeviceNullifierTile) world.getBlockEntity(pos);
 
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());

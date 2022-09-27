@@ -27,7 +27,7 @@ import static cofh.lib.util.Constants.FALSE;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.init.TCoreReferences.*;
+import static cofh.thermal.core.init.TCoreEntities.*;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.flagUniqueAugment;
 import static cofh.thermal.lib.common.ThermalFlags.*;
@@ -91,6 +91,7 @@ public class TCoreItems {
         flagUniqueAugment(ITEMS.get("fluid_tank_augment"));
         flagUniqueAugment(ITEMS.get("fluid_tank_creative_augment"));
 
+        flagUniqueAugment(ITEMS.get("fluid_filter_augment"));
         flagUniqueAugment(ITEMS.get("item_filter_augment"));
 
         flagUniqueAugment(ITEMS.get("machine_efficiency_creative_augment"));
@@ -480,9 +481,9 @@ public class TCoreItems {
 
         CreativeModeTab group = THERMAL_ITEMS;
 
-        registerItem("basalz_spawn_egg", () -> new SpawnEggItemCoFH(() -> BASALZ_ENTITY, 0x363840, 0x080407, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BASALZ)));
-        registerItem("blizz_spawn_egg", () -> new SpawnEggItemCoFH(() -> BLIZZ_ENTITY, 0xD8DBE5, 0x91D9FC, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BLIZZ)));
-        registerItem("blitz_spawn_egg", () -> new SpawnEggItemCoFH(() -> BLITZ_ENTITY, 0xC9EEFF, 0xFFD97E, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BLITZ)));
+        registerItem("basalz_spawn_egg", () -> new SpawnEggItemCoFH(BASALZ::get, 0x363840, 0x080407, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BASALZ)));
+        registerItem("blizz_spawn_egg", () -> new SpawnEggItemCoFH(BLIZZ::get, 0xD8DBE5, 0x91D9FC, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BLIZZ)));
+        registerItem("blitz_spawn_egg", () -> new SpawnEggItemCoFH(BLITZ::get, 0xC9EEFF, 0xFFD97E, new Item.Properties().tab(group)).setShowInGroups(getFlag(FLAG_MOB_BLITZ)));
     }
     // endregion
 

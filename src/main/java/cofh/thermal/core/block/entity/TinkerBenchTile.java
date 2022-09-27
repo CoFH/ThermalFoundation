@@ -36,7 +36,7 @@ import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
-import static cofh.thermal.core.init.TCoreReferences.TINKER_BENCH_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.TINKER_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
@@ -68,7 +68,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     public TinkerBenchTile(BlockPos pos, BlockState state) {
 
-        super(TINKER_BENCH_TILE, pos, state);
+        super(TINKER_BENCH_TILE.get(), pos, state);
 
         energyStorage = new EnergyStorageCoFH(BASE_CAPACITY, BASE_XFER);
 

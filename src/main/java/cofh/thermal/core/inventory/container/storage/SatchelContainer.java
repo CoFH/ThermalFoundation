@@ -18,7 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
-import static cofh.thermal.core.init.TCoreReferences.SATCHEL_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.SATCHEL_CONTAINER;
 
 public class SatchelContainer extends ContainerCoFH implements ISecurable {
 
@@ -42,7 +42,7 @@ public class SatchelContainer extends ContainerCoFH implements ISecurable {
 
     public SatchelContainer(int windowId, Inventory inventory, Player player) {
 
-        super(SATCHEL_CONTAINER, windowId, inventory, player);
+        super(SATCHEL_CONTAINER.get(), windowId, inventory, player);
 
         allowSwap = false;
 

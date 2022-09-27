@@ -35,7 +35,7 @@ import java.util.List;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreReferences.*;
+import static cofh.thermal.core.init.TCoreEntities.*;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.core.util.RegistrationHelper.netherrack;
 
@@ -153,17 +153,17 @@ public class ThermalFeatures {
 
         if (isOverworldBiome(category)) {
             if (category == Biome.BiomeCategory.EXTREME_HILLS || category == Biome.BiomeCategory.MESA) {
-                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ_ENTITY, 10, 1, 3));
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ.get(), 10, 1, 3));
             }
             if (category == Biome.BiomeCategory.DESERT || category == Biome.BiomeCategory.MESA || category == Biome.BiomeCategory.SAVANNA) {
-                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLITZ_ENTITY, 10, 1, 3));
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLITZ.get(), 10, 1, 3));
             }
             if (climate.precipitation == Biome.Precipitation.SNOW & climate.temperature <= 0.3F) {
-                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLIZZ_ENTITY, 10, 1, 3));
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BLIZZ.get(), 10, 1, 3));
             }
         } else if (isNetherBiome(category)) {
             if (name != null && name.toString().equals("minecraft:basalt_deltas")) {
-                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ_ENTITY, 10, 1, 3));
+                builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(BASALZ.get(), 10, 1, 3));
             }
         }
     }

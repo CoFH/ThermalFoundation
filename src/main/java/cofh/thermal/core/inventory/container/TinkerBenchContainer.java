@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static cofh.lib.util.Constants.MAX_AUGMENTS;
-import static cofh.thermal.core.init.TCoreReferences.TINKER_BENCH_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.TINKER_BENCH_CONTAINER;
 
 public class TinkerBenchContainer extends TileContainer {
 
@@ -39,7 +39,7 @@ public class TinkerBenchContainer extends TileContainer {
 
     public TinkerBenchContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
-        super(TINKER_BENCH_CONTAINER, windowId, world, pos, inventory, player);
+        super(TINKER_BENCH_CONTAINER.get(), windowId, world, pos, inventory, player);
         this.tile = (TinkerBenchTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

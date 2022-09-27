@@ -61,7 +61,7 @@ public class LightningChargeItem extends ItemCoFH {
 
     private void playUseSound(Level worldIn, BlockPos pos) {
 
-        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT, SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        worldIn.playSound(null, pos, TCoreSounds.SOUND_BLITZ_SHOOT.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
     }
 
     // region DISPENSER BEHAVIOR

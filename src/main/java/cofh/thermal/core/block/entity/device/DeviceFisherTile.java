@@ -46,7 +46,7 @@ import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
@@ -88,7 +88,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IS
 
     public DeviceFisherTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_FISHER_TILE, pos, state);
+        super(DEVICE_FISHER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 15, item -> filter.valid(item));

@@ -283,7 +283,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
                 if (!player.getAbilities().instabuild) {
                     player.setItemInHand(hand, consumeItem(stack, 1));
                 }
-                player.level.playSound(null, player.blockPosition(), TCoreSounds.SOUND_TINKER, SoundSource.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
+                player.level.playSound(null, player.blockPosition(), TCoreSounds.SOUND_TINKER.get(), SoundSource.PLAYERS, 0.1F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.35F + 0.9F);
             } else {
                 player.level.playSound(null, player.blockPosition(), SoundEvents.UI_BUTTON_CLICK, SoundSource.PLAYERS, 0.1F, 0.25F);
             }

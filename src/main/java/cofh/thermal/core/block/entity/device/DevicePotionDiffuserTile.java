@@ -47,7 +47,7 @@ import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_POTION_DIFFUSER_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_POTION_DIFFUSER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickableTile, IAreaEffectTile {
@@ -77,7 +77,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
     public DevicePotionDiffuserTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_POTION_DIFFUSER_TILE, pos, state);
+        super(DEVICE_POTION_DIFFUSER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, ACCESSIBLE);
 

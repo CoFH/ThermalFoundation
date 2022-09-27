@@ -28,10 +28,9 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import static cofh.lib.util.Constants.BASE_CHANCE;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.config.ThermalClientConfig.jeiBucketTanks;
 import static cofh.thermal.core.init.TCoreRecipeTypes.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_BLOCK;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_TREE_EXTRACTOR_BLOCK;
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_ROCK_GEN;
 import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_TREE_EXTRACTOR;
@@ -58,15 +57,15 @@ public class TCoreJeiPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
 
-        registration.addRecipeCategories(new TreeExtractorCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), ID_MAPPING_TREE_EXTRACTOR));
-        registration.addRecipeCategories(new RockGenCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DEVICE_ROCK_GEN_BLOCK), ID_MAPPING_ROCK_GEN));
+        registration.addRecipeCategories(new TreeExtractorCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR)), ID_MAPPING_TREE_EXTRACTOR));
+        registration.addRecipeCategories(new RockGenCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_DEVICE_ROCK_GEN)), ID_MAPPING_ROCK_GEN));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 
-        registration.addRecipeCatalyst(new ItemStack(DEVICE_TREE_EXTRACTOR_BLOCK), TREE_EXTRACTOR);
-        registration.addRecipeCatalyst(new ItemStack(DEVICE_ROCK_GEN_BLOCK), ROCK_GEN);
+        registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_DEVICE_TREE_EXTRACTOR)), TREE_EXTRACTOR);
+        registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_DEVICE_ROCK_GEN)), ROCK_GEN);
     }
 
     @Override

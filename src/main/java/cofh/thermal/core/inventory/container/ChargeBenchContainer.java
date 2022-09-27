@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.core.init.TCoreReferences.CHARGE_BENCH_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.CHARGE_BENCH_CONTAINER;
 
 public class ChargeBenchContainer extends TileContainer {
 
@@ -17,7 +17,7 @@ public class ChargeBenchContainer extends TileContainer {
 
     public ChargeBenchContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
-        super(CHARGE_BENCH_CONTAINER, windowId, world, pos, inventory, player);
+        super(CHARGE_BENCH_CONTAINER.get(), windowId, world, pos, inventory, player);
         this.tile = (ChargeBenchTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

@@ -29,7 +29,7 @@ import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
 import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
-import static cofh.thermal.core.init.TCoreReferences.ENERGY_CELL_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.ENERGY_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 
 public class EnergyCellTile extends CellTileBase implements ITickableTile.IServerTickable {
@@ -40,7 +40,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTile.IServe
 
     public EnergyCellTile(BlockPos pos, BlockState state) {
 
-        super(ENERGY_CELL_TILE, pos, state);
+        super(ENERGY_CELL_TILE.get(), pos, state);
 
         energyStorage = new EnergyStorageRestrictable(BASE_CAPACITY, BASE_RECV, BASE_SEND).setTransferLimits(() -> amountInput, () -> amountOutput);
 

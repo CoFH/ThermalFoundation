@@ -20,7 +20,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import static cofh.core.init.CoreMobEffects.SHOCKED;
-import static cofh.thermal.core.init.TCoreReferences.BLITZ_PROJECTILE_ENTITY;
+import static cofh.thermal.core.init.TCoreEntities.BLITZ_PROJECTILE;
 import static cofh.thermal.lib.common.ThermalIDs.ID_BLITZ;
 
 public class BlitzProjectile extends ElementalProjectile {
@@ -36,12 +36,12 @@ public class BlitzProjectile extends ElementalProjectile {
 
     public BlitzProjectile(LivingEntity shooter, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BLITZ_PROJECTILE_ENTITY, shooter, accelX, accelY, accelZ, world);
+        super(BLITZ_PROJECTILE.get(), shooter, accelX, accelY, accelZ, world);
     }
 
     public BlitzProjectile(double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
 
-        super(BLITZ_PROJECTILE_ENTITY, x, y, z, accelX, accelY, accelZ, world);
+        super(BLITZ_PROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
     }
 
     @Override
@@ -57,7 +57,8 @@ public class BlitzProjectile extends ElementalProjectile {
         level.addFreshEntity((new ElectricArc(level, result.getLocation())).setCosmetic(true).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
         if (result.getType() == HitResult.Type.ENTITY) {
             Entity entity = ((EntityHitResult) result).getEntity();
-            if (entity.hurt(BlitzDamageSource.causeDamage(this, owner), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity living) {
+            if (entity.hurt(BlitzDamageSource.causeDamage(this, owner), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity) {
+                LivingEntity living = (LivingEntity) entity;
                 living.addEffect(new MobEffectInstance(SHOCKED.get(), getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }

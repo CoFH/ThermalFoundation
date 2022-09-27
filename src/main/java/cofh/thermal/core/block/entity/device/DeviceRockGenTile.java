@@ -39,7 +39,7 @@ import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.api.StorageGroup.OUTPUT;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_TILE;
+import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_ROCK_GEN_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.IServerTickable {
@@ -62,7 +62,7 @@ public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.I
 
     public DeviceRockGenTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_ROCK_GEN_TILE, pos, state);
+        super(DEVICE_ROCK_GEN_TILE.get(), pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
 

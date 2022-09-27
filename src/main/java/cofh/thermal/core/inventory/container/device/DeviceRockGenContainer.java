@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.core.init.TCoreReferences.DEVICE_ROCK_GEN_CONTAINER;
+import static cofh.thermal.core.init.TCoreContainers.DEVICE_ROCK_GEN_CONTAINER;
 
 public class DeviceRockGenContainer extends TileContainer {
 
@@ -17,7 +17,7 @@ public class DeviceRockGenContainer extends TileContainer {
 
     public DeviceRockGenContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DEVICE_ROCK_GEN_CONTAINER, windowId, world, pos, inventory, player);
+        super(DEVICE_ROCK_GEN_CONTAINER.get(), windowId, world, pos, inventory, player);
         this.tile = (ThermalTileAugmentable) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
