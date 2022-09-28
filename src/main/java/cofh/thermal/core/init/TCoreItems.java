@@ -196,8 +196,8 @@ public class TCoreItems {
         CreativeModeTab group = THERMAL_TOOLS;
 
         // TODO Wrench tool type.
-        registerItem(ID_WRENCH, () -> new WrenchItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_WRENCH)));
-        registerItem(ID_REDPRINT, () -> new RedprintItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_REDPRINT)));
+        registerItem(ID_WRENCH, () -> new WrenchItem(new Item.Properties().stacksTo(1).tab(group)));
+        registerItem(ID_REDPRINT, () -> new RedprintItem(new Item.Properties().stacksTo(1).tab(group)));
         registerItem(ID_RF_POTATO, () -> new EnergyContainerItem(new Item.Properties().stacksTo(1).tab(group), 100000, 40) {
 
             @Override
@@ -205,10 +205,10 @@ public class TCoreItems {
 
                 return ThermalEnergyHelper.getBaseEnergySystem();
             }
-        }.setShowInGroups(getFlag(ID_RF_POTATO)));
-        registerItem(ID_XP_CRYSTAL, () -> new XpCrystalItem(new Item.Properties().stacksTo(1).tab(group), 10000).setShowInGroups(getFlag(ID_XP_CRYSTAL)));
-        registerItem(ID_LOCK, () -> new LockItem(new Item.Properties().tab(group)).setShowInGroups(getFlag(ID_LOCK)));
-        registerItem(ID_SATCHEL, () -> new SatchelItem(new Item.Properties().stacksTo(1).tab(group), 9).setShowInGroups(getFlag(ID_SATCHEL)));
+        });
+        registerItem(ID_XP_CRYSTAL, () -> new XpCrystalItem(new Item.Properties().stacksTo(1).tab(group), 10000));
+        registerItem(ID_LOCK, () -> new LockItem(new Item.Properties().tab(group)));
+        registerItem(ID_SATCHEL, () -> new SatchelItem(new Item.Properties().stacksTo(1).tab(group), 9));
 
         registerItem("compost", () -> new FertilizerItem(new Item.Properties().tab(group), 2));
         registerItem("phytogro", () -> new FertilizerItem(new Item.Properties().tab(group)));
@@ -224,7 +224,7 @@ public class TCoreItems {
         registerItem("ice_charge", () -> new IceChargeItem(new Item.Properties().tab(group)));
         registerItem("lightning_charge", () -> new LightningChargeItem(new Item.Properties().tab(group)));
 
-        registerItem(ID_DETONATOR, () -> new DetonatorItem(new Item.Properties().stacksTo(1).tab(group)).setShowInGroups(getFlag(ID_DETONATOR)));
+        registerItem(ID_DETONATOR, () -> new DetonatorItem(new Item.Properties().stacksTo(1).tab(group)));
     }
 
     private static void registerArmor() {
