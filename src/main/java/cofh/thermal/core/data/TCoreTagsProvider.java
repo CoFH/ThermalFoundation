@@ -5,9 +5,11 @@ import cofh.lib.tags.ItemTagsCoFH;
 import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -866,6 +868,37 @@ public class TCoreTagsProvider {
 
             tag(ThermalTags.Fluids.CREOSOTE).add(FLUIDS.get(ID_FLUID_CREOSOTE));
             tag(ThermalTags.Fluids.CRUDE_OIL).add(FLUIDS.get(ID_FLUID_CRUDE_OIL));
+        }
+
+    }
+
+    public static class Entity extends EntityTypeTagsProvider {
+
+        public Entity(DataGenerator gen, ExistingFileHelper existingFileHelper) {
+
+            super(gen, ID_THERMAL, existingFileHelper);
+        }
+
+        @Override
+        public String getName() {
+
+            return "Thermal Core: Entity Type Tags";
+        }
+
+        @Override
+        protected void addTags() {
+
+            tag(EntityTypeTags.IMPACT_PROJECTILES).add(
+                    ENTITIES.get(ID_BASALZ_PROJECTILE),
+                    ENTITIES.get(ID_BLITZ_PROJECTILE),
+                    ENTITIES.get(ID_BLIZZ_PROJECTILE)
+            );
+            tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(
+                    ENTITIES.get(ID_BLIZZ)
+            );
+            tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(
+                    ENTITIES.get(ID_BLIZZ)
+            );
         }
 
     }
