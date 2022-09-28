@@ -101,8 +101,8 @@ public class TCoreBlocks {
     private static void registerVanilla() {
 
         registerBlockAndItem(ID_CHARCOAL_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_BLACK).strength(5.0F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()),
-                () -> new BlockItemCoFH(BLOCKS.get(ID_CHARCOAL_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(16000).setShowInGroups(getFlag(FLAG_VANILLA_BLOCKS)));
-        registerBlock(ID_GUNPOWDER_BLOCK, () -> new GunpowderBlock(of(Material.EXPLOSIVE, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.SAND)), getFlag(FLAG_VANILLA_BLOCKS));
+                () -> new BlockItemCoFH(BLOCKS.get(ID_CHARCOAL_BLOCK), new Item.Properties().tab(THERMAL_BLOCKS)).setBurnTime(16000));
+        registerBlock(ID_GUNPOWDER_BLOCK, () -> new GunpowderBlock(of(Material.EXPLOSIVE, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.SAND)));
         registerBlock(ID_SUGAR_CANE_BLOCK, () -> new RotatedPillarBlock(of(Material.GRASS, MaterialColor.PLANT).strength(1.0F).sound(SoundType.CROP)) {
 
             @Override
@@ -110,7 +110,7 @@ public class TCoreBlocks {
 
                 entityIn.causeFallDamage(fallDistance, 0.6F, DamageSource.FALL);
             }
-        }, getFlag(FLAG_VANILLA_BLOCKS));
+        });
         registerBlock(ID_BAMBOO_BLOCK, () -> new RotatedPillarBlock(of(Material.GRASS, MaterialColor.PLANT).strength(1.0F).sound(SoundType.BAMBOO)) {
 
             @Override
@@ -118,12 +118,12 @@ public class TCoreBlocks {
 
                 entityIn.causeFallDamage(fallDistance, 0.8F, DamageSource.FALL);
             }
-        }, getFlag(FLAG_VANILLA_BLOCKS));
+        });
 
-        registerBlock(ID_APPLE_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_RED).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_CARROT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_ORANGE).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_POTATO_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
-        registerBlock(ID_BEETROOT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS, getFlag(FLAG_VANILLA_BLOCKS));
+        registerBlock(ID_APPLE_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.COLOR_RED).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS);
+        registerBlock(ID_CARROT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_ORANGE).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS);
+        registerBlock(ID_POTATO_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS);
+        registerBlock(ID_BEETROOT_BLOCK, () -> new Block(of(Material.WOOD, MaterialColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.SCAFFOLDING)), THERMAL_FOODS);
     }
 
     private static void registerResources() {
@@ -247,22 +247,22 @@ public class TCoreBlocks {
         registerBlock(ID_LUMIUM_GLASS, () -> new LumiumGlassBlock(of(Material.GLASS, MaterialColor.COLOR_YELLOW).strength(5.0F, 1000.0F).sound(SoundType.GLASS).lightLevel(lightValue(15)).noOcclusion()), Rarity.UNCOMMON);
         registerBlock(ID_ENDERIUM_GLASS, () -> new EnderiumGlassBlock(of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(5.0F, 1000.0F).sound(SoundType.GLASS).lightLevel(lightValue(3)).noOcclusion()), Rarity.UNCOMMON);
 
-        registerBlock(ID_WHITE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.SNOW).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_ORANGE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_ORANGE).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_MAGENTA_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_LIGHT_BLUE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_YELLOW_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_LIME_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_LIGHT_GREEN).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_PINK_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_PINK).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_GRAY_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_GRAY).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_LIGHT_GRAY_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_LIGHT_GRAY).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_CYAN_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_CYAN).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_PURPLE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_PURPLE).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_BLUE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BLUE).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_BROWN_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BROWN).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_GREEN_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_GREEN).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_RED_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_RED).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
-        registerBlock(ID_BLACK_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BLACK).strength(2.0F, 6.0F).sound(SoundType.WOOL)), getFlag(FLAG_ROCKWOOL));
+        registerBlock(ID_WHITE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.SNOW).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_ORANGE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_ORANGE).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_MAGENTA_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_LIGHT_BLUE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_YELLOW_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_LIME_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_LIGHT_GREEN).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_PINK_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_PINK).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_GRAY_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_GRAY).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_LIGHT_GRAY_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_LIGHT_GRAY).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_CYAN_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_CYAN).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_PURPLE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_PURPLE).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_BLUE_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BLUE).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_BROWN_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BROWN).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_GREEN_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_GREEN).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_RED_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_RED).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
+        registerBlock(ID_BLACK_ROCKWOOL, () -> new Block(of(Material.STONE, MaterialColor.COLOR_BLACK).strength(2.0F, 6.0F).sound(SoundType.WOOL)));
 
         registerBlock(ID_POLISHED_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
         registerBlock(ID_CHISELED_SLAG, () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops()));

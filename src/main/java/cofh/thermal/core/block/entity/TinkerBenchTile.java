@@ -10,6 +10,7 @@ import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -35,7 +36,6 @@ import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.lib.api.StorageGroup.INTERNAL;
 import static cofh.lib.util.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreTileEntities.TINKER_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
@@ -78,7 +78,7 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
         tankInv.addTank(tank, INPUT);
 
-        addAugmentSlots(storageAugments);
+        addAugmentSlots(ThermalCoreConfig.storageAugments);
         initHandlers();
     }
 

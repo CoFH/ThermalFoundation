@@ -96,7 +96,7 @@ public class Blitz extends Monster {
     @Override
     protected SoundEvent getAmbientSound() {
 
-        return ThermalClientConfig.mobAmbientSounds ? SOUND_BLITZ_AMBIENT.get() : null;
+        return ThermalClientConfig.mobAmbientSounds.get() ? SOUND_BLITZ_AMBIENT.get() : null;
     }
 
     @Override

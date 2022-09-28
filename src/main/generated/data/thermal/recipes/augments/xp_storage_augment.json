@@ -15,11 +15,5 @@
   },
   "result": {
     "item": "thermal:xp_storage_augment"
-  },
-  "conditions": [
-    {
-      "flag": "xp_storage_augment",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

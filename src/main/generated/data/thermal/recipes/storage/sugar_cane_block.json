@@ -12,11 +12,5 @@
   },
   "result": {
     "item": "thermal:sugar_cane_block"
-  },
-  "conditions": [
-    {
-      "flag": "vanilla_blocks",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

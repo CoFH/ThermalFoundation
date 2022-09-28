@@ -10,11 +10,5 @@
   ],
   "result": {
     "item": "thermal:purple_rockwool"
-  },
-  "conditions": [
-    {
-      "flag": "rockwool",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

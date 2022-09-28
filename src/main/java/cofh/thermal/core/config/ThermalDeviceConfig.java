@@ -6,6 +6,8 @@ import cofh.thermal.core.block.entity.device.DeviceFisherTile;
 import cofh.thermal.core.block.entity.device.DeviceTreeExtractorTile;
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.function.Supplier;
+
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
@@ -73,11 +75,11 @@ public class ThermalDeviceConfig implements IBaseConfig {
     }
 
     // region CONFIG VARIABLES
-    private ForgeConfigSpec.IntValue deviceTreeExtractorTimeConstant;
-    private ForgeConfigSpec.IntValue deviceComposterTimeConstant;
-    private ForgeConfigSpec.BooleanValue deviceComposterParticles;
-    private ForgeConfigSpec.IntValue deviceFisherTimeConstant;
-    private ForgeConfigSpec.IntValue deviceFisherTimeReductionWater;
-    private ForgeConfigSpec.BooleanValue deviceFisherParticles;
+    private Supplier<Integer> deviceTreeExtractorTimeConstant;
+    private Supplier<Integer> deviceComposterTimeConstant;
+    private Supplier<Boolean> deviceComposterParticles;
+    private Supplier<Integer> deviceFisherTimeConstant;
+    private Supplier<Integer> deviceFisherTimeReductionWater;
+    private Supplier<Boolean> deviceFisherParticles;
     // endregion
 }

@@ -150,12 +150,12 @@ public class TCoreJeiPlugin implements IModPlugin {
 
     public static int tankSize(int size) {
 
-        return jeiBucketTanks ? BUCKET_VOLUME : size;
+        return jeiBucketTanks.get() ? BUCKET_VOLUME : size;
     }
 
     public static IDrawable tankOverlay(IDrawable overlay) {
 
-        return jeiBucketTanks ? null : overlay;
+        return jeiBucketTanks.get() ? null : overlay;
     }
     // endregion
 

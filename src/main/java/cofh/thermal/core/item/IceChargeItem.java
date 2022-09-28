@@ -72,18 +72,18 @@ public class IceChargeItem extends ItemCoFH {
         // WATER
         boolean isFull = state.getBlock() == WATER && state.getValue(LiquidBlock.LEVEL) == 0;
         if (state.getMaterial() == Material.WATER && isFull && state.canSurvive(world, pos) && world.isUnobstructed(state, pos, CollisionContext.empty())) {
-            world.setBlockAndUpdate(pos, permanentWater ? ICE.defaultBlockState() : FROSTED_ICE.defaultBlockState());
+            world.setBlockAndUpdate(pos, permanentWater.get() ? ICE.defaultBlockState() : FROSTED_ICE.defaultBlockState());
             used = true;
-            if (!permanentWater) {
+            if (!permanentWater.get()) {
                 world.scheduleTick(pos, FROSTED_ICE, MathHelper.nextInt(world.random, 60, 120));
             }
         }
         // LAVA
         isFull = state.getBlock() == LAVA && state.getValue(LiquidBlock.LEVEL) == 0;
         if (state.getMaterial() == Material.LAVA && isFull && state.canSurvive(world, pos) && world.isUnobstructed(state, pos, CollisionContext.empty())) {
-            world.setBlockAndUpdate(pos, permanentLava ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.get().defaultBlockState());
+            world.setBlockAndUpdate(pos, permanentLava.get() ? OBSIDIAN.defaultBlockState() : GLOSSED_MAGMA.get().defaultBlockState());
             used = true;
-            if (!permanentLava) {
+            if (!permanentLava.get()) {
                 world.scheduleTick(pos, GLOSSED_MAGMA.get(), MathHelper.nextInt(world.random, 60, 120));
             }
         }

@@ -15,11 +15,5 @@
   },
   "result": {
     "item": "thermal:lock"
-  },
-  "conditions": [
-    {
-      "flag": "lock",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

@@ -35,9 +35,6 @@ public class ThermalFlags {
     }
 
     // region SPECIFIC FEATURES
-    public static String FLAG_VANILLA_BLOCKS = "vanilla_blocks";
-    public static String FLAG_ROCKWOOL = "rockwool";
-
     public static String FLAG_BEEKEEPER_ARMOR = "beekeeper_armor";
     public static String FLAG_DIVING_ARMOR = "diving_armor";
     public static String FLAG_HAZMAT_ARMOR = "hazmat_armor";
@@ -77,9 +74,6 @@ public class ThermalFlags {
     public static String FLAG_RESOURCE_LEAD = "lead";
     public static String FLAG_RESOURCE_SILVER = "silver";
     public static String FLAG_RESOURCE_NICKEL = "nickel";
-
-    public static String FLAG_RESOURCE_ALUMINUM = "aluminum";
-    public static String FLAG_RESOURCE_URANIUM = "uranium";
 
     public static String FLAG_RESOURCE_RUBY = "ruby";
     public static String FLAG_RESOURCE_SAPPHIRE = "sapphire";

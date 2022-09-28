@@ -7,6 +7,7 @@ import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
 import cofh.lib.energy.EnergyStorageRestrictable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
@@ -28,7 +29,6 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
-import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreTileEntities.ENERGY_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 
@@ -49,7 +49,7 @@ public class EnergyCellTile extends CellTileBase implements ITickableTile.IServe
 
         transferControl.initControl(false, true);
 
-        addAugmentSlots(storageAugments);
+        addAugmentSlots(ThermalCoreConfig.storageAugments);
         initHandlers();
     }
 

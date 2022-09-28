@@ -9,11 +9,13 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.lib.common.ThermalFlags.*;
-import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.ID_SATCHEL;
 
 public class ThermalCoreConfig implements IBaseConfig {
 
@@ -26,65 +28,33 @@ public class ThermalCoreConfig implements IBaseConfig {
                 .comment("If TRUE, Redstone Flux will act as its own energy system and will NOT be interoperable with 'Forge Energy' - only enable this if you absolutely know what you are doing and want the Thermal Series to use a unique energy system.")
                 .define("Standalone Redstone Flux", false);
 
-        boolKeepEnergy = builder
+        keepEnergy = builder
                 .comment("If TRUE, most Thermal Blocks will retain Energy when dropped.\nThis setting does not control ALL blocks.")
-                .define("Blocks Retain Energy", true);
-        boolKeepItems = builder
+                .define("Blocks Retain Energy", keepEnergy);
+        keepItems = builder
                 .comment("If TRUE, most Thermal Blocks will retain Inventory Contents when dropped.\nThis setting does not control ALL blocks.")
-                .define("Blocks Retain Inventory", false);
-        boolKeepFluids = builder
+                .define("Blocks Retain Inventory", keepItems);
+        keepFluids = builder
                 .comment("If TRUE, most Thermal Blocks will retain Tank Contents when dropped.\nThis setting does not control ALL blocks.")
-                .define("Blocks Retain Tank Contents", false);
-        boolKeepAugments = builder
+                .define("Blocks Retain Tank Contents", keepFluids);
+        keepAugments = builder
                 .comment("If TRUE, Thermal Blocks will retain Augments when dropped.")
-                .define("Blocks Retain Augments", true);
-        boolKeepRSControl = builder
+                .define("Blocks Retain Augments", keepAugments);
+        keepRSControl = builder
                 .comment("If TRUE, Thermal Blocks will retain Redstone Control configuration when dropped.")
-                .define("Blocks Retain Redstone Control", true);
-        boolKeepSideConfig = builder
+                .define("Blocks Retain Redstone Control", keepRSControl);
+        keepSideConfig = builder
                 .comment("If TRUE, Thermal Blocks will retain Side configuration when dropped.")
-                .define("Blocks Retain Side Configuration", true);
-        boolKeepTransferControl = builder
+                .define("Blocks Retain Side Configuration", keepSideConfig);
+        keepTransferControl = builder
                 .comment("If TRUE, Thermal Blocks will retain Transfer Control configuration when dropped.")
-                .define("Blocks Retain Transfer Control", true);
+                .define("Blocks Retain Transfer Control", keepTransferControl);
 
         builder.pop();
 
-        builder.push("Features");
-
-        boolVanillaBlocks = builder
-                .comment("If TRUE, various 'Vanilla+' Blocks and Recipes are enabled.")
-                .define("Vanilla+", true);
-        boolRockwool = builder
-                .comment("If TRUE, Rockwool Blocks and Recipes are enabled.")
-                .define("Rockwool", true);
-
         builder.push("Tools");
 
-        boolWrench = builder
-                .comment("If TRUE, the Crescent Hammer is enabled.")
-                .define("Wrench", true);
-        boolRedprint = builder
-                .comment("If TRUE, the Redprint is enabled.")
-                .define("Redprint", true);
-        boolRFPotato = builder
-                .comment("If TRUE, the Capacitato is enabled.")
-                .define("RF Potato", true);
-        boolXPCrystal = builder
-                .comment("If TRUE, the Insightful Crystal is enabled.")
-                .define("XP Crystal", true);
-        boolLock = builder
-                .comment("If TRUE, the Signalum Security Lock is enabled.")
-                .define("Lock", true);
-        boolDetonator = builder
-                .comment("If TRUE, the Remote Detonator is enabled.")
-                .define("Detonator", true);
-
         builder.push("Satchel");
-
-        boolSatchel = builder
-                .comment("If TRUE, the Satchel is enabled.")
-                .define("Satchel", true);
 
         String[] shulkerBoxes = new String[0];
         try {
@@ -121,29 +91,29 @@ public class ThermalCoreConfig implements IBaseConfig {
 
         boolMobBasalz = builder
                 .comment("If TRUE, the Basalz Mob is enabled.")
-                .define("Basalz", true);
+                .define("Basalz", boolMobBasalz);
         boolMobBlitz = builder
                 .comment("If TRUE, the Blitz Mob is enabled.")
-                .define("Blitz", true);
+                .define("Blitz", boolMobBlitz);
         boolMobBlizz = builder
                 .comment("If TRUE, the Blizz Mob is enabled.")
-                .define("Blizz", true);
+                .define("Blizz", boolMobBlizz);
 
-        boolMobBlitzLightning = builder
+        mobBlitzLightning = builder
                 .comment("If TRUE, the Blitz can occasionally call down lightning bolts.")
                 .define("Blitz Lightning", mobBlitzLightning);
 
-        builder.pop(2);
+        builder.pop();
 
         builder.push("Augments");
 
-        boolReconfigSides = builder
+        defaultReconfigSides = builder
                 .comment("If TRUE, Side Reconfiguration is enabled by default on most augmentable blocks which support it.\nIf FALSE, an augment is required.\nThis setting does not control ALL blocks.")
                 .define("Default Side Reconfiguration", defaultReconfigSides);
-        boolRSControl = builder
+        defaultRSControl = builder
                 .comment("If TRUE, Redstone Control is enabled by default on most augmentable blocks which support it.\nIf FALSE, an augment is required.\nThis setting does not control ALL blocks.")
                 .define("Default Redstone Control", defaultRSControl);
-        boolXPStorage = builder
+        defaultXPStorage = builder
                 .comment("If TRUE, XP Storage is enabled by default on most augmentable blocks which support it.\nIf FALSE, an augment is required.\nThis setting does not control ALL blocks.")
                 .define("Default XP Storage", defaultXPStorage);
 
@@ -151,13 +121,13 @@ public class ThermalCoreConfig implements IBaseConfig {
 
         builder.push("Villagers");
 
-        boolVillagerTrades = builder
+        enableVillagerTrades = builder
                 .comment("If TRUE, trades will be added to various Villagers.")
-                .define("Enable Villager Trades", true);
+                .define("Enable Villager Trades", enableVillagerTrades);
 
-        boolWandererTrades = builder
+        enableWandererTrades = builder
                 .comment("If TRUE, trades will be added to the Wandering Trader.")
-                .define("Enable Wandering Trader Trades", true);
+                .define("Enable Wandering Trader Trades", enableWandererTrades);
 
         builder.pop();
     }
@@ -167,42 +137,13 @@ public class ThermalCoreConfig implements IBaseConfig {
 
         ThermalEnergyHelper.standaloneRedstoneFlux = boolStandaloneRedstoneFlux.get();
 
-        keepEnergy = boolKeepEnergy.get();
-        keepItems = boolKeepItems.get();
-        keepFluids = boolKeepFluids.get();
-
-        keepAugments = boolKeepAugments.get();
-        keepRSControl = boolKeepRSControl.get();
-        keepSideConfig = boolKeepSideConfig.get();
-        keepTransferControl = boolKeepTransferControl.get();
-
-        defaultReconfigSides = boolReconfigSides.get();
-        defaultRSControl = boolRSControl.get();
-        defaultXPStorage = boolXPStorage.get();
-
-        enableVillagerTrades = boolVillagerTrades.get();
-        enableWandererTrades = boolWandererTrades.get();
-
-        mobBlitzLightning = boolMobBlitzLightning.get();
-
-        setFlag(FLAG_VANILLA_BLOCKS, boolVanillaBlocks.get());
-        setFlag(FLAG_ROCKWOOL, boolRockwool.get());
-
-        setFlag(ID_WRENCH, boolWrench.get());
-        setFlag(ID_REDPRINT, boolRedprint.get());
-        setFlag(ID_RF_POTATO, boolRFPotato.get());
-        setFlag(ID_XP_CRYSTAL, boolXPCrystal.get());
-        setFlag(ID_LOCK, boolLock.get());
-        setFlag(ID_SATCHEL, boolSatchel.get());
-        setFlag(ID_DETONATOR, boolDetonator.get());
-
         setFlag(FLAG_MOB_BASALZ, boolMobBasalz.get());
         setFlag(FLAG_MOB_BLITZ, boolMobBlitz.get());
         setFlag(FLAG_MOB_BLIZZ, boolMobBlizz.get());
 
-        setFlag(FLAG_SIDE_CONFIG_AUGMENT, !defaultReconfigSides);
-        setFlag(FLAG_RS_CONTROL_AUGMENT, !defaultRSControl);
-        setFlag(FLAG_XP_STORAGE_AUGMENT, !defaultXPStorage);
+        setFlag(FLAG_SIDE_CONFIG_AUGMENT, !defaultReconfigSides.get());
+        setFlag(FLAG_RS_CONTROL_AUGMENT, !defaultRSControl.get());
+        setFlag(FLAG_XP_STORAGE_AUGMENT, !defaultXPStorage.get());
 
         SatchelItem.setBannedItems(listSatchelBans.get());
     }
@@ -212,68 +153,36 @@ public class ThermalCoreConfig implements IBaseConfig {
     public static int dynamoAugments = 4;
     public static int machineAugments = 4;
     public static int storageAugments = 3;
-
     public static int toolAugments = 4;
-
-    public static boolean keepEnergy;
-    public static boolean keepItems;
-    public static boolean keepFluids;
-
-    public static boolean keepAugments;
-    public static boolean keepRSControl;
-    public static boolean keepSideConfig;
-    public static boolean keepTransferControl;
-
-    public static boolean defaultReconfigSides = true;
-    public static boolean defaultRSControl = true;
-    public static boolean defaultXPStorage = false;
-
-    public static boolean permanentLava = true;
-    public static boolean permanentWater = true;
-
-    public static boolean enableVillagerTrades = true;
-    public static boolean enableWandererTrades = true;
-
-    public static boolean mobBlitzLightning = true;
     // endregion
 
     // region CONFIG VARIABLES
-    private ForgeConfigSpec.BooleanValue boolStandaloneRedstoneFlux;
+    public static Supplier<Boolean> keepEnergy = () -> true;
+    public static Supplier<Boolean> keepItems = () -> false;
+    public static Supplier<Boolean> keepFluids = () -> false;
+    public static Supplier<Boolean> keepAugments = () -> true;
+    public static Supplier<Boolean> keepRSControl = () -> true;
+    public static Supplier<Boolean> keepSideConfig = () -> true;
+    public static Supplier<Boolean> keepTransferControl = () -> true;
 
-    private ForgeConfigSpec.BooleanValue boolKeepEnergy;
-    private ForgeConfigSpec.BooleanValue boolKeepItems;
-    private ForgeConfigSpec.BooleanValue boolKeepFluids;
-    private ForgeConfigSpec.BooleanValue boolKeepAugments;
-    private ForgeConfigSpec.BooleanValue boolKeepRSControl;
-    private ForgeConfigSpec.BooleanValue boolKeepSideConfig;
-    private ForgeConfigSpec.BooleanValue boolKeepTransferControl;
+    public static Supplier<Boolean> defaultReconfigSides = () -> true;
+    public static Supplier<Boolean> defaultRSControl = () -> true;
+    public static Supplier<Boolean> defaultXPStorage = () -> false;
 
-    private ForgeConfigSpec.BooleanValue boolReconfigSides;
-    private ForgeConfigSpec.BooleanValue boolRSControl;
-    private ForgeConfigSpec.BooleanValue boolXPStorage;
+    public static Supplier<Boolean> permanentLava = () -> false;
+    public static Supplier<Boolean> permanentWater = () -> false;
 
-    private ForgeConfigSpec.BooleanValue boolPermanentLava;
-    private ForgeConfigSpec.BooleanValue boolPermanentWater;
+    public static Supplier<Boolean> enableVillagerTrades = () -> true;
+    public static Supplier<Boolean> enableWandererTrades = () -> true;
 
-    private ForgeConfigSpec.BooleanValue boolVillagerTrades;
-    private ForgeConfigSpec.BooleanValue boolWandererTrades;
+    public static Supplier<Boolean> mobBlitzLightning = () -> true;
 
-    private ForgeConfigSpec.BooleanValue boolVanillaBlocks;
-    private ForgeConfigSpec.BooleanValue boolRockwool;
-    private ForgeConfigSpec.BooleanValue boolWrench;
-    private ForgeConfigSpec.BooleanValue boolRedprint;
-    private ForgeConfigSpec.BooleanValue boolRFPotato;
-    private ForgeConfigSpec.BooleanValue boolXPCrystal;
-    private ForgeConfigSpec.BooleanValue boolLock;
-    private ForgeConfigSpec.BooleanValue boolSatchel;
-    private ForgeConfigSpec.BooleanValue boolDetonator;
+    private Supplier<Boolean> boolMobBasalz = () -> true;
+    private Supplier<Boolean> boolMobBlitz = () -> true;
+    private Supplier<Boolean> boolMobBlizz = () -> true;
 
-    private ForgeConfigSpec.BooleanValue boolMobBasalz;
-    private ForgeConfigSpec.BooleanValue boolMobBlitz;
-    private ForgeConfigSpec.BooleanValue boolMobBlizz;
+    private Supplier<Boolean> boolStandaloneRedstoneFlux;
 
-    private ForgeConfigSpec.BooleanValue boolMobBlitzLightning;
-
-    private ForgeConfigSpec.ConfigValue<List<String>> listSatchelBans;
+    private Supplier<List<String>> listSatchelBans = Collections::emptyList;
     // endregion
 }

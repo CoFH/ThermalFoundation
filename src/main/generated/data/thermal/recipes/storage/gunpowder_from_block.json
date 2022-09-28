@@ -8,11 +8,5 @@
   "result": {
     "item": "minecraft:gunpowder",
     "count": 9
-  },
-  "conditions": [
-    {
-      "flag": "vanilla_blocks",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

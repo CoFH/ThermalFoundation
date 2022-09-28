@@ -95,7 +95,7 @@ public class Blizz extends Monster {
     @Override
     protected SoundEvent getAmbientSound() {
 
-        return ThermalClientConfig.mobAmbientSounds ? SOUND_BLIZZ_AMBIENT.get() : null;
+        return ThermalClientConfig.mobAmbientSounds.get() ? SOUND_BLIZZ_AMBIENT.get() : null;
     }
 
     @Override

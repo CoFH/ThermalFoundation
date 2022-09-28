@@ -15,11 +15,5 @@
   },
   "result": {
     "item": "thermal:rs_control_augment"
-  },
-  "conditions": [
-    {
-      "flag": "rs_control_augment",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

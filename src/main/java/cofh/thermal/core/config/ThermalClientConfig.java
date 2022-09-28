@@ -3,6 +3,8 @@ package cofh.thermal.core.config;
 import cofh.core.config.IBaseConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.function.Supplier;
+
 public class ThermalClientConfig implements IBaseConfig {
 
     @Override
@@ -10,31 +12,21 @@ public class ThermalClientConfig implements IBaseConfig {
 
         builder.push("Sounds");
 
-        boolBlockAmbientSounds = builder
+        blockAmbientSounds = builder
                 .comment("If TRUE, some 'Thermal Series' Blocks will have ambient sounds.")
                 .define("Ambient Block Sounds", true);
 
-        boolMobAmbientSounds = builder
+        mobAmbientSounds = builder
                 .comment("If TRUE, some 'Thermal Series' Mobs will have ambient sounds.")
                 .define("Ambient Mob Sounds", true);
 
         builder.pop();
     }
 
-    @Override
-    public void refresh() {
-
-        blockAmbientSounds = boolBlockAmbientSounds.get();
-        mobAmbientSounds = boolMobAmbientSounds.get();
-    }
-
     // region VARIABLES
-    public static boolean jeiBucketTanks = true;
+    public static Supplier<Boolean> jeiBucketTanks = () -> true;
 
-    public static boolean blockAmbientSounds = true;
-    public static boolean mobAmbientSounds = true;
-
-    public ForgeConfigSpec.BooleanValue boolBlockAmbientSounds;
-    public ForgeConfigSpec.BooleanValue boolMobAmbientSounds;
+    public static Supplier<Boolean> blockAmbientSounds = () -> true;
+    public static Supplier<Boolean> mobAmbientSounds = () -> true;
     // endregion
 }

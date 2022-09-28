@@ -15,11 +15,5 @@
   },
   "result": {
     "item": "thermal:wrench"
-  },
-  "conditions": [
-    {
-      "flag": "wrench",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

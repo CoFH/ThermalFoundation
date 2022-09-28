@@ -104,7 +104,7 @@ public class Basalz extends Monster {
     @Override
     protected SoundEvent getAmbientSound() {
 
-        return ThermalClientConfig.mobAmbientSounds ? SOUND_BASALZ_AMBIENT.get() : null;
+        return ThermalClientConfig.mobAmbientSounds.get() ? SOUND_BASALZ_AMBIENT.get() : null;
     }
 
     @Override

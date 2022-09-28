@@ -15,11 +15,5 @@
   },
   "result": {
     "item": "thermal:side_config_augment"
-  },
-  "conditions": [
-    {
-      "flag": "side_config_augment",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

@@ -9,6 +9,7 @@ import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.fluid.FluidStorageRestrictable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
 import cofh.thermal.lib.tileentity.CellTileBase;
 import net.minecraft.core.BlockPos;
@@ -34,7 +35,6 @@ import static cofh.core.client.renderer.model.ModelUtils.*;
 import static cofh.lib.api.StorageGroup.ACCESSIBLE;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.core.config.ThermalCoreConfig.storageAugments;
 import static cofh.thermal.core.init.TCoreTileEntities.FLUID_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATOR;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
@@ -57,7 +57,7 @@ public class FluidCellTile extends CellTileBase implements ITickableTile.IServer
 
         transferControl.initControl(false, true);
 
-        addAugmentSlots(storageAugments);
+        addAugmentSlots(ThermalCoreConfig.storageAugments);
         initHandlers();
     }
 

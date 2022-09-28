@@ -16,11 +16,5 @@
   ],
   "result": {
     "item": "thermal:redprint"
-  },
-  "conditions": [
-    {
-      "flag": "redprint",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }

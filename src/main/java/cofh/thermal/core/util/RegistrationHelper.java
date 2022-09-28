@@ -58,6 +58,11 @@ public class RegistrationHelper {
         registerBlock(name, sup, showInGroups, ModIds.ID_THERMAL);
     }
 
+    public static void registerBlock(String name, Supplier<Block> sup, CreativeModeTab group) {
+
+        registerBlock(name, sup, group, TRUE, ModIds.ID_THERMAL);
+    }
+
     public static void registerBlock(String name, Supplier<Block> sup, CreativeModeTab group, BooleanSupplier showInGroups) {
 
         registerBlock(name, sup, group, showInGroups, ModIds.ID_THERMAL);

@@ -62,7 +62,7 @@ public class BlitzProjectile extends ElementalProjectile {
                 living.addEffect(new MobEffectInstance(SHOCKED.get(), getEffectDuration(entity), getEffectAmplifier(entity), false, false));
             }
         }
-        if (ThermalCoreConfig.mobBlitzLightning && Utils.isServerWorld(level)) {
+        if (ThermalCoreConfig.mobBlitzLightning.get() && Utils.isServerWorld(level)) {
             BlockPos pos = new BlockPos(result.getLocation());
             if (level.canSeeSky(pos) && random.nextFloat() < (level.isRainingAt(pos) ? (level.isThundering() ? 0.2F : 0.1F) : 0.04F)) {
                 Utils.spawnLightningBolt(level, pos);

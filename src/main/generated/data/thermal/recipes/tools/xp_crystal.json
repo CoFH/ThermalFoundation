@@ -18,11 +18,5 @@
   },
   "result": {
     "item": "thermal:xp_crystal"
-  },
-  "conditions": [
-    {
-      "flag": "xp_crystal",
-      "type": "thermal:flag"
-    }
-  ]
+  }
 }
