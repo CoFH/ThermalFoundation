@@ -2,17 +2,10 @@ package cofh.thermal.core.item;
 
 import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
 import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
-import static cofh.lib.api.ContainerType.ITEM;
 import static cofh.lib.util.constants.NBTTags.*;
 
 public class ItemCellBlockItem extends BlockItemAugmentable {
@@ -24,11 +17,11 @@ public class ItemCellBlockItem extends BlockItemAugmentable {
         setEnchantability(5);
     }
 
-    @Override
-    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-
-        boolean creative = isCreative(stack, ITEM);
-    }
+    //    @Override
+    //    protected void tooltipDelegate(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    //
+    //        boolean creative = isCreative(stack, ITEM);
+    //    }
 
     protected void setAttributesFromAugment(ItemStack container, CompoundTag augmentData) {
 

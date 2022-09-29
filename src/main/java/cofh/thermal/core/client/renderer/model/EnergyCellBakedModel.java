@@ -1,7 +1,6 @@
 package cofh.thermal.core.client.renderer.model;
 
 import cofh.core.client.renderer.model.ModelUtils;
-import cofh.lib.api.item.ICoFHItem;
 import cofh.lib.api.item.IEnergyContainerItem;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
 import cofh.lib.util.crafting.ComparableItemStack;
@@ -192,11 +191,13 @@ public class EnergyCellBakedModel extends BakedModelWrapper<BakedModel> implemen
     private int getLevel(ItemStack stack) {
 
         Item item = stack.getItem();
-        if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, ENERGY)) {
-            return 9;
-        }
-        if (item instanceof IEnergyContainerItem && ((IEnergyContainerItem) item).getEnergyStored(stack) > 0) {
-            return 1 + Math.min(((IEnergyContainerItem) item).getScaledEnergyStored(stack, 8), 7);
+        if (item instanceof IEnergyContainerItem energyContainer) {
+            if (energyContainer.isCreative(stack, ENERGY)) {
+                return 9;
+            }
+            if (energyContainer.getEnergyStored(stack) > 0) {
+                return 1 + Math.min(energyContainer.getScaledEnergyStored(stack, 8), 7);
+            }
         }
         return 0;
     }

@@ -3,7 +3,6 @@ package cofh.thermal.core.client.renderer.model;
 import cofh.core.client.renderer.model.ModelUtils;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.api.item.ICoFHItem;
 import cofh.lib.api.item.IFluidContainerItem;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
 import cofh.lib.util.crafting.ComparableItemStack;
@@ -240,14 +239,13 @@ public class FluidCellBakedModel extends UnderlayBakedModel implements IDynamicB
     private int getLevel(ItemStack stack) {
 
         Item item = stack.getItem();
-        if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, FLUID)) {
-            if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
-                return 9;
+        if (item instanceof IFluidContainerItem fluidContainer) {
+            if (fluidContainer.isCreative(stack, FLUID)) {
+                return fluidContainer.getFluidAmount(stack) > 0 ? 9 : 10;
             }
-            return 10;
-        }
-        if (item instanceof IFluidContainerItem && ((IFluidContainerItem) item).getFluidAmount(stack) > 0) {
-            return 1 + Math.min(((IFluidContainerItem) item).getScaledFluidStored(stack, 8), 7);
+            if (fluidContainer.getFluidAmount(stack) > 0) {
+                return 1 + Math.min(((IFluidContainerItem) item).getScaledFluidStored(stack, 8), 7);
+            }
         }
         return 0;
     }

@@ -1,7 +1,6 @@
 package cofh.thermal.core.client.renderer.model;
 
 import cofh.core.client.renderer.model.ModelUtils;
-import cofh.lib.api.item.ICoFHItem;
 import cofh.lib.api.item.IInventoryContainerItem;
 import cofh.lib.client.renderer.model.RetexturedBakedQuad;
 import cofh.lib.util.crafting.ComparableItemStack;
@@ -28,7 +27,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 
-import static cofh.lib.api.ContainerType.ITEM;
 import static cofh.lib.util.constants.NBTTags.TAG_BLOCK_ENTITY;
 import static cofh.lib.util.constants.NBTTags.TAG_SIDES;
 import static cofh.thermal.core.client.ThermalTextures.*;
@@ -192,9 +190,9 @@ public class ItemCellBakedModel extends BakedModelWrapper<BakedModel> implements
     private int getLevel(ItemStack stack) {
 
         Item item = stack.getItem();
-        if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, ITEM)) {
-            return 9;
-        }
+        //        if (item instanceof ICoFHItem && ((ICoFHItem) item).isCreative(stack, ITEM)) {
+        //            return 9;
+        //        }
         if (item instanceof IInventoryContainerItem && ((IInventoryContainerItem) item).getItemAmount(stack, 0) > 0) {
             return 1 + Math.min(((IInventoryContainerItem) item).getScaledItemsStored(stack, 0, 8), 7);
         }
