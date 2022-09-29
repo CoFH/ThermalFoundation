@@ -80,7 +80,6 @@ public class LightningChargeItem extends ItemCoFH {
             double d3 = random.nextGaussian() * 0.05D + (double) direction.getStepX();
             double d4 = random.nextGaussian() * 0.05D + (double) direction.getStepY();
             double d5 = random.nextGaussian() * 0.05D + (double) direction.getStepZ();
-            // TODO What? Why is this in a Util.make? - covers1624 - 1.18.2 port.
             world.addFreshEntity(new BlitzProjectile(d0, d1, d2, d3, d4, d5, world));
             stack.shrink(1);
             return stack;

@@ -173,6 +173,16 @@ public class FluidCellTile extends CellTileBase implements ITickableTile.IServer
         return new FluidCellContainer(i, level, worldPosition, inventory, player);
     }
 
+    // TODO: Does this need to exist?
+    @Override
+    public void setRemoved() {
+
+        super.setRemoved();
+
+        inputFluidCap.invalidate();
+        outputFluidCap.invalidate();
+    }
+
     @Nonnull
     @Override
     public IModelData getModelData() {

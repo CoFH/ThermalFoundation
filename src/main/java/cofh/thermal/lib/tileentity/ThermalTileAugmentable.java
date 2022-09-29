@@ -244,6 +244,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
                 List<ItemStack> items = getAugmentsAsList();
                 ((IAugmentableItem) stack.getItem()).updateAugmentState(stack, items);
             }
+            filter.write(nbt);
         }
         if (keepFluids()) {
             getTankInv().write(nbt);
