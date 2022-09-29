@@ -57,7 +57,7 @@ public class Basalz extends Monster {
 
     public static boolean canSpawn(EntityType<Basalz> entityType, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 
-        return ThermalFlags.getFlag(FLAG_MOB_BASALZ).getAsBoolean() && Monster.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
+        return ThermalFlags.getFlag(FLAG_MOB_BASALZ).get() && Monster.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
     }
 
     public Basalz(EntityType<? extends Basalz> type, Level world) {

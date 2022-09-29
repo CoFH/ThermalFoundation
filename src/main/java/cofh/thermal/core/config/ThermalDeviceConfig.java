@@ -18,7 +18,7 @@ public class ThermalDeviceConfig implements IBaseConfig {
 
         builder.push("Devices");
 
-        if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
+        if (getFlag(ID_DEVICE_TREE_EXTRACTOR).get()) {
             builder.push("TreeExtractor");
 
             deviceTreeExtractorTimeConstant = builder
@@ -27,7 +27,7 @@ public class ThermalDeviceConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DEVICE_COMPOSTER).getAsBoolean()) {
+        if (getFlag(ID_DEVICE_COMPOSTER).get()) {
             builder.push("Composter");
 
             deviceComposterTimeConstant = builder
@@ -39,7 +39,7 @@ public class ThermalDeviceConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DEVICE_FISHER).getAsBoolean()) {
+        if (getFlag(ID_DEVICE_FISHER).get()) {
             builder.push("Fisher");
 
             deviceFisherTimeConstant = builder

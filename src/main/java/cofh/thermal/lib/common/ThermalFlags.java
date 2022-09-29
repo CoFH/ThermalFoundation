@@ -2,7 +2,7 @@ package cofh.thermal.lib.common;
 
 import cofh.lib.util.flags.FlagManager;
 
-import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
@@ -24,12 +24,12 @@ public class ThermalFlags {
         FLAG_MANAGER.setFlag(flag, enable);
     }
 
-    public static void setFlag(String flag, BooleanSupplier condition) {
+    public static void setFlag(String flag, Supplier<Boolean> condition) {
 
         FLAG_MANAGER.setFlag(flag, condition);
     }
 
-    public static BooleanSupplier getFlag(String flag) {
+    public static Supplier<Boolean> getFlag(String flag) {
 
         return FLAG_MANAGER.getFlag(flag);
     }
@@ -99,8 +99,8 @@ public class ThermalFlags {
         setFlag(FLAG_RESOURCE_INVAR, getFlag(FLAG_RESOURCE_NICKEL));
         setFlag(FLAG_RESOURCE_CONSTANTAN, getFlag(FLAG_RESOURCE_NICKEL));
 
-        setFlag(FLAG_CREATIVE_STORAGE_AUGMENTS, () -> getFlag(FLAG_STORAGE_AUGMENTS).getAsBoolean() && getFlag(FLAG_CREATIVE_AUGMENTS).getAsBoolean());
-        setFlag(FLAG_CREATIVE_MACHINE_AUGMENTS, () -> getFlag(FLAG_MACHINE_AUGMENTS).getAsBoolean() && getFlag(FLAG_CREATIVE_AUGMENTS).getAsBoolean());
+        setFlag(FLAG_CREATIVE_STORAGE_AUGMENTS, () -> getFlag(FLAG_STORAGE_AUGMENTS).get() && getFlag(FLAG_CREATIVE_AUGMENTS).get());
+        setFlag(FLAG_CREATIVE_MACHINE_AUGMENTS, () -> getFlag(FLAG_MACHINE_AUGMENTS).get() && getFlag(FLAG_CREATIVE_AUGMENTS).get());
     }
 
 }

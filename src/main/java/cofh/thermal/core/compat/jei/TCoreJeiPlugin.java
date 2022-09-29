@@ -46,10 +46,10 @@ public class TCoreJeiPlugin implements IModPlugin {
             // TODO: Log an error.
             return;
         }
-        if (getFlag(ID_DEVICE_TREE_EXTRACTOR).getAsBoolean()) {
+        if (getFlag(ID_DEVICE_TREE_EXTRACTOR).get()) {
             registration.addRecipes(TREE_EXTRACTOR, recipeManager.getAllRecipesFor(MAPPING_TREE_EXTRACTOR));
         }
-        if (getFlag(ID_DEVICE_ROCK_GEN).getAsBoolean()) {
+        if (getFlag(ID_DEVICE_ROCK_GEN).get()) {
             registration.addRecipes(ROCK_GEN, recipeManager.getAllRecipesFor(MAPPING_ROCK_GEN));
         }
     }

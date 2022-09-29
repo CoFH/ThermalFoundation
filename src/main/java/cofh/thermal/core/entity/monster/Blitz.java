@@ -48,7 +48,7 @@ public class Blitz extends Monster {
 
     public static boolean canSpawn(EntityType<Blitz> entityType, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, Random rand) {
 
-        return ThermalFlags.getFlag(FLAG_MOB_BLITZ).getAsBoolean() && Monster.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
+        return ThermalFlags.getFlag(FLAG_MOB_BLITZ).get() && Monster.checkMonsterSpawnRules(entityType, world, reason, pos, rand);
     }
 
     public Blitz(EntityType<? extends Blitz> type, Level world) {
