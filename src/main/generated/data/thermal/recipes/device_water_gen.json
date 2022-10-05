@@ -13,7 +13,7 @@
       "tag": "forge:glass"
     },
     "I": {
-      "tag": "forge:ingots/copper"
+      "tag": "forge:ingots/bronze"
     },
     "P": {
       "item": "thermal:redstone_servo"

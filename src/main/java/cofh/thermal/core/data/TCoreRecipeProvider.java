@@ -432,7 +432,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         result = reg.get("fluid_filter_augment");
         ShapedRecipeBuilder.shaped(result)
-                .define('c', ItemTagsCoFH.NUGGETS_COPPER)
+                .define('c', ItemTagsCoFH.NUGGETS_BRONZE)
                 .define('S', ItemTagsCoFH.INGOTS_SIGNALUM)
                 .pattern(" c ")
                 .pattern("cSc")
@@ -519,7 +519,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get("potion_amplifier_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', ItemTagsCoFH.GEARS_SIGNALUM)
-                .define('I', Tags.Items.INGOTS_COPPER)
+                .define('I', ItemTagsCoFH.INGOTS_BRONZE)
                 .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("IXI")
@@ -530,7 +530,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         result = reg.get("potion_duration_augment");
         ShapedRecipeBuilder.shaped(result)
                 .define('G', ItemTagsCoFH.GEARS_LUMIUM)
-                .define('I', Tags.Items.INGOTS_COPPER)
+                .define('I', ItemTagsCoFH.INGOTS_BRONZE)
                 .define('X', ThermalTags.Items.HARDENED_GLASS)
                 .pattern(" G ")
                 .pattern("IXI")
@@ -1015,12 +1015,12 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get(ID_FLUID_CELL_FRAME))
                 .define('G', Tags.Items.GLASS)
-                .define('I', Tags.Items.INGOTS_COPPER)
-                .define('E', ItemTagsCoFH.GEARS_BRONZE)
+                .define('I', ItemTagsCoFH.INGOTS_BRONZE)
+                .define('E', ItemTagsCoFH.GEARS_IRON)
                 .pattern("IGI")
                 .pattern("GEG")
                 .pattern("IGI")
-                .unlockedBy("has_copper", has(Tags.Items.INGOTS_COPPER))
+                .unlockedBy("has_bronze", has(ItemTagsCoFH.INGOTS_BRONZE))
                 .save(withConditions(consumer).flag(ID_FLUID_CELL_FRAME));
 
         //        ShapedRecipeBuilder.shaped(reg.get(ID_ITEM_CELL_FRAME))
@@ -1433,7 +1433,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .define('G', Tags.Items.GLASS)
                 .define('I', ItemTags.PLANKS)
                 .define('P', redstoneServo)
-                .define('X', ItemTagsCoFH.GEARS_COPPER)
+                .define('X', ItemTagsCoFH.GEARS_BRONZE)
                 .pattern("IXI")
                 .pattern("GCG")
                 .pattern("IPI")
@@ -1479,7 +1479,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapedRecipeBuilder.shaped(reg.get(ID_DEVICE_WATER_GEN))
                 .define('C', Items.BUCKET)
                 .define('G', Tags.Items.GLASS)
-                .define('I', Tags.Items.INGOTS_COPPER)
+                .define('I', ItemTagsCoFH.INGOTS_BRONZE)
                 .define('P', redstoneServo)
                 .define('X', Tags.Items.INGOTS_IRON)
                 .pattern("IXI")

@@ -10,10 +10,10 @@
       "tag": "forge:glass"
     },
     "I": {
-      "tag": "forge:ingots/copper"
+      "tag": "forge:ingots/bronze"
     },
     "E": {
-      "tag": "forge:gears/bronze"
+      "tag": "forge:gears/iron"
     }
   },
   "result": {
