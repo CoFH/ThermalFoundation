@@ -1,7 +1,0 @@
-{
-  "name": "Fabricantes de modpack",
-  "description": "Fazendo um modpack ou mudando vários aspectos da suíte Thermal para se divertir? Esta seção explora todas as maneiras interessantes de ajustes e configurações de suporte térmico.",
-  "icon": "thermal:wrench",
-  "parent": "thermal:guides",
-  "sortnum": 4
-}

@@ -1,7 +1,0 @@
-{
-  "type": "thermal:numismatic_fuel",
-  "ingredient": {
-    "tag": "forge:coins/lumium"
-  },
-  "energy": 80000
-}

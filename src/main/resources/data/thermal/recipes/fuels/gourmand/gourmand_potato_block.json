@@ -1,7 +1,0 @@
-{
-  "type": "thermal:gourmand_fuel",
-  "ingredient": {
-    "item": "thermal:potato_block"
-  },
-  "energy": 16000
-}

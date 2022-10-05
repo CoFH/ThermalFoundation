@@ -1,7 +1,0 @@
-{
-  "parent": "thermal:block/device_fisher",
-  "textures": {
-    "up": "thermal:block/devices/device_fisher_top_active",
-    "north": "thermal:block/devices/device_fisher_active"
-  }
-}

@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "thermal:invar_nugget",
-    "count": 9
+    "count": 9,
+    "item": "thermal:invar_nugget"
   }
 }

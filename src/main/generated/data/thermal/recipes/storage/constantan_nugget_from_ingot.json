@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "thermal:constantan_nugget",
-    "count": 9
+    "count": 9,
+    "item": "thermal:constantan_nugget"
   }
 }

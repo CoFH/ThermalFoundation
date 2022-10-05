@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1.0,
   "ingredient": {
     "item": "thermal:nickel_ore"
   },
-  "result": "thermal:nickel_ingot",
-  "experience": 1.0,
-  "cookingtime": 200
+  "result": "thermal:nickel_ingot"
 }

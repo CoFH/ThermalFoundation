@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/silver"
+    },
+    "I": {
+      "item": "thermal:silver_nugget"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:silver_nugget"
-    },
-    "#": {
-      "tag": "forge:nuggets/silver"
-    }
-  },
   "result": {
     "item": "thermal:silver_ingot"
   }

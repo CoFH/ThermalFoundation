@@ -1,10 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "thermal:gunpowder_block",
-    "thermal:sawdust_block",
-    "thermal:tar_block",
-    "thermal:rosin_block",
     "thermal:oil_sand",
     "thermal:oil_red_sand"
   ]

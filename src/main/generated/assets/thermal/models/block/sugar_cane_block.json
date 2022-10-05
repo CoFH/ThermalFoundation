@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "thermal:block/sugar_cane_block_side",
-    "end": "thermal:block/sugar_cane_block_end"
-  }
-}

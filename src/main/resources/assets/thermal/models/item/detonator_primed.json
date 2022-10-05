@@ -1,6 +1,0 @@
-{
-  "parent": "thermal:item/detonator",
-  "textures": {
-    "layer0": "thermal:item/detonator_primed"
-  }
-}

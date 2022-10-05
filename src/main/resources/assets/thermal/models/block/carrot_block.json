@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "top": "thermal:block/carrot_block_top",
-    "bottom": "thermal:block/carrot_block_bottom",
-    "side": "thermal:block/carrot_block_side"
-  }
-}

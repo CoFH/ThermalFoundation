@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:ingots/electrum"
+    },
+    "I": {
+      "item": "thermal:electrum_ingot"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:electrum_ingot"
-    },
-    "#": {
-      "tag": "forge:ingots/electrum"
-    }
-  },
   "result": {
     "item": "thermal:electrum_block"
   }

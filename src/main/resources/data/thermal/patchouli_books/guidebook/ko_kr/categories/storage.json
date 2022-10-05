@@ -1,1 +1,0 @@
-{  "name": "저장공간",  "description": "기술적 임시 파이프로 채용할 수 있습니다.",  "icon": "thermal:energy_cell",  "parent": "thermal:storage_and_transport",  "flag": "mod:thermal_expansion",  "sortnum": 1}

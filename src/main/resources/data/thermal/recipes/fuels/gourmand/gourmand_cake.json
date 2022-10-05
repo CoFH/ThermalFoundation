@@ -1,7 +1,0 @@
-{
-  "type": "thermal:gourmand_fuel",
-  "ingredient": {
-    "item": "minecraft:cake"
-  },
-  "energy": 25600
-}

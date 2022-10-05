@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "thermal:block/ender_tnt_bottom",
-    "top": "thermal:block/ender_tnt_top",
-    "side": "thermal:block/ender_tnt_side"
-  }
-}

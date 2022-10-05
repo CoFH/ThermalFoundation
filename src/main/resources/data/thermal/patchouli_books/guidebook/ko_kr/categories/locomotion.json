@@ -1,1 +1,0 @@
-{  "name": "로코모션",  "description": "뚜우뚜우 전의 칙칙폭폭은 정확히 여덟 번입니다.",  "icon": "thermal:lumium_rail",  "parent": "thermal:storage_and_transport",  "flag": "mod:thermal_locomotion",  "sortnum": 4}

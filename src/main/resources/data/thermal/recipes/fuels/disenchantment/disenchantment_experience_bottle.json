@@ -1,7 +1,0 @@
-{
-  "type": "thermal:disenchantment_fuel",
-  "ingredient": {
-    "item": "minecraft:experience_bottle"
-  },
-  "energy": 32000
-}

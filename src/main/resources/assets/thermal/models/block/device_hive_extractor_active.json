@@ -1,6 +1,0 @@
-{
-  "parent": "thermal:block/device_hive_extractor",
-  "textures": {
-    "north": "thermal:block/devices/device_hive_extractor_active"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "thermal:block/device_composter",
-  "textures": {
-    "side": "thermal:block/devices/device_composter_side_active"
-  }
-}

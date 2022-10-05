@@ -1,1 +1,0 @@
-{  "name": "OneLemonyBoi",  "icon": "minecraft:poppy",  "category": "thermal:contributors",  "read_by_default": true,  "sortnum": 5,  "pages": [    {      "type": "patchouli:spotlight",      "title": "OneLemonyBoi",      "item": "minecraft:player_head{SkullOwner:'OneLemonyBoi'}",      "text": "발전기 항목, 그리고 몇몇 지원에 기여했습니다."    }  ]}

@@ -1,8 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "thermal:signalum_block",
-    "thermal:lumium_block",
     "thermal:apatite_ore",
     "thermal:cinnabar_ore",
     "thermal:tin_ore",

@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:ingots/lead"
+    },
+    "I": {
+      "item": "thermal:lead_ingot"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:lead_ingot"
-    },
-    "#": {
-      "tag": "forge:ingots/lead"
-    }
-  },
   "result": {
     "item": "thermal:lead_block"
   }

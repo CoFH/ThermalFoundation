@@ -1,7 +1,0 @@
-{
-  "type": "thermal:stirling_fuel",
-  "ingredient": {
-    "tag": "forge:coal_coke"
-  },
-  "energy": 40000
-}

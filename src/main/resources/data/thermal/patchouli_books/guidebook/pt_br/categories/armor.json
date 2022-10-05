@@ -1,1 +1,0 @@
-{  "name": "armaduras",  "flag": "|mod:thermal_innovation,mod:thermal_cultivation",  "description": "Talvez não seja o auge da moda, mas eles fazem o trabalho.",  "icon": "thermal:hazmat_boots",  "parent": "thermal:equipment",  "sortnum": 2}

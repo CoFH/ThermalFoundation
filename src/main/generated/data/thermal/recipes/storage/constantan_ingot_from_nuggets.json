@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/constantan"
+    },
+    "I": {
+      "item": "thermal:constantan_nugget"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:constantan_nugget"
-    },
-    "#": {
-      "tag": "forge:nuggets/constantan"
-    }
-  },
   "result": {
     "item": "thermal:constantan_ingot"
   }

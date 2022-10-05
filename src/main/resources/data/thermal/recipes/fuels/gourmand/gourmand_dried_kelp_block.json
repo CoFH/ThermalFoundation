@@ -1,7 +1,0 @@
-{
-  "type": "thermal:gourmand_fuel",
-  "ingredient": {
-    "item": "minecraft:dried_kelp_block"
-  },
-  "energy": 32000
-}

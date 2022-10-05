@@ -1,17 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "#forge:dusts/copper",
-    "#forge:dusts/gold",
-    "#forge:dusts/iron",
-    "#forge:dusts/netherite",
-    "#forge:dusts/diamond",
-    "#forge:dusts/emerald",
-    "#forge:dusts/lapis",
-    "#forge:dusts/quartz",
-    "#forge:dusts/enderium",
-    "#forge:dusts/lumium",
-    "#forge:dusts/signalum",
     "#forge:dusts/apatite",
     "#forge:dusts/cinnabar",
     "#forge:dusts/niter",

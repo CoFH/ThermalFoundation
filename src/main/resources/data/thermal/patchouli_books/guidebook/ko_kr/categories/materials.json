@@ -1,1 +1,0 @@
-{  "name": "재료",  "description": "써멀 시리즈에서 필수적인 자원들입니다.",  "icon": "thermal:invar_ingot",  "parent": "thermal:world",  "sortnum": 1}

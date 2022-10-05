@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/invar"
+    },
+    "I": {
+      "item": "thermal:invar_nugget"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:invar_nugget"
-    },
-    "#": {
-      "tag": "forge:nuggets/invar"
-    }
-  },
   "result": {
     "item": "thermal:invar_ingot"
   }

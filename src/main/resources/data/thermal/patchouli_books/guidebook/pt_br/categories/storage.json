@@ -1,1 +1,0 @@
-{  "name": "Armazenamento",  "description": "Pode ser tecnicamente spam como canos improvisados.",  "icon": "thermal:energy_cell",  "parent": "thermal:storage_and_transport",  "flag": "mod:thermal_expansion",  "sortnum": 1}

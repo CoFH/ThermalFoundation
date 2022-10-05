@@ -1,7 +1,0 @@
-{
-  "type": "thermal:lapidary_fuel",
-  "ingredient": {
-    "tag": "forge:gems/lapis"
-  },
-  "energy": 40000
-}

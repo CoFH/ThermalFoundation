@@ -1,6 +1,0 @@
-{
-  "parent": "thermal:item/slime_grenade",
-  "textures": {
-    "layer0": "thermal:item/slime_grenade_thrown"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "type": "thermal:lapidary_fuel",
-  "ingredient": {
-    "tag": "forge:gems/emerald"
-  },
-  "energy": 125000
-}

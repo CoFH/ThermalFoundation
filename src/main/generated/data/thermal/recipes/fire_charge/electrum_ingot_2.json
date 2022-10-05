@@ -22,7 +22,7 @@
     }
   ],
   "result": {
-    "item": "thermal:electrum_ingot",
-    "count": 2
+    "count": 2,
+    "item": "thermal:electrum_ingot"
   }
 }

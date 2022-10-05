@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "thermal:block/glowstone_tnt_bottom",
-    "top": "thermal:block/glowstone_tnt_top",
-    "side": "thermal:block/glowstone_tnt_side"
-  }
-}

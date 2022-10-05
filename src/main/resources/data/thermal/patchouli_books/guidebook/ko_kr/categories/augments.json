@@ -1,1 +1,0 @@
-{  "name": "부착물",  "description": "기계와 도구를 업그레이드 해보세요.",  "icon": "thermal:upgrade_augment_3",  "parent": "thermal:technology",  "sortnum": 4}

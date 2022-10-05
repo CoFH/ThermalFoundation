@@ -1,7 +1,0 @@
-{
-  "type": "thermal:gourmand_fuel",
-  "ingredient": {
-    "item": "thermal:apple_block"
-  },
-  "energy": 64000
-}

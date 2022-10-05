@@ -30,7 +30,7 @@
     }
   ],
   "result": {
-    "item": "thermal:invar_ingot",
-    "count": 3
+    "count": 3,
+    "item": "thermal:invar_ingot"
   }
 }

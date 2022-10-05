@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/tin"
+    },
+    "I": {
+      "item": "thermal:tin_nugget"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:tin_nugget"
-    },
-    "#": {
-      "tag": "forge:nuggets/tin"
-    }
-  },
   "result": {
     "item": "thermal:tin_ingot"
   }

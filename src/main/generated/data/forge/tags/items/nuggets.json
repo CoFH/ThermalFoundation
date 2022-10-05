@@ -1,11 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "#forge:nuggets/copper",
-    "#forge:nuggets/netherite",
-    "#forge:nuggets/enderium",
-    "#forge:nuggets/lumium",
-    "#forge:nuggets/signalum",
     "#forge:nuggets/lead",
     "#forge:nuggets/nickel",
     "#forge:nuggets/silver",

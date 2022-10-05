@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "top": "thermal:block/beetroot_block_top",
-    "bottom": "thermal:block/beetroot_block_bottom",
-    "side": "thermal:block/beetroot_block_side"
-  }
-}

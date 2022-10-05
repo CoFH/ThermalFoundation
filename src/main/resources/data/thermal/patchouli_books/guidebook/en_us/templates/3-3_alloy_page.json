@@ -1,1 +1,0 @@
-{  "include": [    {      "template": "thermal:3_alloy_page",      "as": "A"    },    {      "template": "thermal:3_alloy_page",      "as": "B",      "y": 80    }  ],  "components": [    {      "type": "patchouli:separator",      "x": -1,      "y": 70    }  ]}

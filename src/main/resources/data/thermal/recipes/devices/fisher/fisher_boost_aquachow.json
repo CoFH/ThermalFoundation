@@ -1,8 +1,0 @@
-{
-  "type": "thermal:fisher_boost",
-  "ingredient": {
-    "item": "thermal:aquachow"
-  },
-  "output_mod": 1.5,
-  "use_chance": 0.5
-}

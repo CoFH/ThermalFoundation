@@ -2,9 +2,9 @@ package cofh.thermal.foundation.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 
@@ -17,10 +17,9 @@ public class TFndDataGen {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 
-        //        TFndTagsProvider.Block blockTags = new TFndTagsProvider.Block(gen, exFileHelper);
-        //
-        //        gen.addProvider(event.includeServer(), blockTags);
-        //        gen.addProvider(event.includeServer(), new TFndTagsProvider.Item(gen, blockTags, exFileHelper));
+        TFndTagsProvider.Block blockTags = new TFndTagsProvider.Block(gen, exFileHelper);
+        gen.addProvider(event.includeServer(), blockTags);
+        gen.addProvider(event.includeServer(), new TFndTagsProvider.Item(gen, blockTags, exFileHelper));
 
         gen.addProvider(event.includeServer(), new TFndLootTableProvider(gen));
         gen.addProvider(event.includeServer(), new TFndRecipeProvider(gen));

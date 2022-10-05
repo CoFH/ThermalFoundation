@@ -1,6 +1,0 @@
-{
-  "parent": "thermal:item/ender_grenade",
-  "textures": {
-    "layer0": "thermal:item/ender_grenade_thrown"
-  }
-}

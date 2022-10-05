@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "thermal:constantan_dust",
-    "count": 2
+    "count": 2,
+    "item": "thermal:constantan_dust"
   }
 }

@@ -1,1 +1,0 @@
-{  "name": "장치",  "description": "이 파트에서는 각 장치의 기능을 자세히 설명합니다. 특별히 언급되어있지 않는 한 이 장치들은 RF를 요구하지 않습니다.",  "icon": "thermal:device_tree_extractor",  "parent": "thermal:technology",  "flag": "|mod:thermal_expansion,mod:thermal_cultivation,mod:thermal_dynamics,mod:thermal_innovation",  "sortnum": 2}

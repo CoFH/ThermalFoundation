@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/lead"
+    },
+    "I": {
+      "item": "thermal:lead_nugget"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:lead_nugget"
-    },
-    "#": {
-      "tag": "forge:nuggets/lead"
-    }
-  },
   "result": {
     "item": "thermal:lead_ingot"
   }

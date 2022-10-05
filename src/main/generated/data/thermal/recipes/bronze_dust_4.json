@@ -15,7 +15,7 @@
     }
   ],
   "result": {
-    "item": "thermal:bronze_dust",
-    "count": 4
+    "count": 4,
+    "item": "thermal:bronze_dust"
   }
 }

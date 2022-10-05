@@ -1,1 +1,0 @@
-{  "name": "Materiais",  "description": "Recursos que são essenciais para a Série Térmica.",  "icon": "thermal:invar_ingot",  "parent": "thermal:world",  "sortnum": 1}

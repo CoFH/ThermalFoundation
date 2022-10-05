@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "thermal:raw_nickel",
-    "count": 9
+    "count": 9,
+    "item": "thermal:raw_nickel"
   }
 }

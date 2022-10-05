@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:ingots/invar"
+    },
+    "I": {
+      "item": "thermal:invar_ingot"
+    }
+  },
   "pattern": [
     "###",
     "#I#",
     "###"
   ],
-  "key": {
-    "I": {
-      "item": "thermal:invar_ingot"
-    },
-    "#": {
-      "tag": "forge:ingots/invar"
-    }
-  },
   "result": {
     "item": "thermal:invar_block"
   }

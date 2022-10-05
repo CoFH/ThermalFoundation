@@ -1,7 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "thermal:enderium_block",
     "thermal:lead_ore",
     "thermal:silver_ore",
     "thermal:nickel_ore",

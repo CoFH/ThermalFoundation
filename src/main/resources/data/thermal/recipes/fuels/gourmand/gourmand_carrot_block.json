@@ -1,7 +1,0 @@
-{
-  "type": "thermal:gourmand_fuel",
-  "ingredient": {
-    "item": "thermal:carrot_block"
-  },
-  "energy": 48000
-}

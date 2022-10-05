@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "thermal:block/chunk_loader_bottom",
-    "top": "thermal:block/chunk_loader_top",
-    "side": "thermal:block/chunk_loader_side"
-  }
-}

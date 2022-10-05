@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "thermal:lead_nugget",
-    "count": 9
+    "count": 9,
+    "item": "thermal:lead_nugget"
   }
 }

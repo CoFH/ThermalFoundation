@@ -1,7 +1,0 @@
-{
-  "type": "thermal:numismatic_fuel",
-  "ingredient": {
-    "tag": "forge:coins/silver"
-  },
-  "energy": 48000
-}
