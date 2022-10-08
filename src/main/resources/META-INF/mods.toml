@@ -28,7 +28,7 @@ side = "BOTH"
 [[dependencies.thermal]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.0,)"
+versionRange = "[40.1.76,)"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -63,7 +63,7 @@ side = "BOTH"
 [[dependencies.thermal_foundation]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.0,)"
+versionRange = "[40.1.76,)"
 ordering = "AFTER"
 side = "BOTH"
 
