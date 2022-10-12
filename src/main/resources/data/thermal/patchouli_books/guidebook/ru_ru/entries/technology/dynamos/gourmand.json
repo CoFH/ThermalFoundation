@@ -1,0 +1,23 @@
+{
+  "name": "Кулинарный генератор",
+  "icon": "thermal:dynamo_gourmand",
+  "category": "thermal:dynamos",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Кулинарный генератор использует еду для производства RF-энергии."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:dynamo_gourmand",
+      "title": "Кулинарный генератор"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Вспомогательная реакционная камера$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Многоцикловые форсунки$(/l)"
+    }
+  ]
+}

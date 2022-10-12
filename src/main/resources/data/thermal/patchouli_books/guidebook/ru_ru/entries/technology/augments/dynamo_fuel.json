@@ -1,0 +1,16 @@
+{
+  "name": "Многоцикловые форсунки",
+  "icon": "thermal:dynamo_fuel_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/dynamo_fuel_augment",
+      "title": "Многоцикловые форсунки",
+      "text": "Улучшение многоцикловые форсунки повышает эффективность использования топлива на 10%."
+    }
+  ]
+}

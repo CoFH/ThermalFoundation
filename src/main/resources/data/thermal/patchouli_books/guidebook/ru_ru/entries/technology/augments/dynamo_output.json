@@ -1,0 +1,16 @@
+{
+  "name": "Вспомогательная реакционная камера",
+  "icon": "thermal:dynamo_output_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/dynamo_output_augment",
+      "title": "Вспомогательная реакционная камера",
+      "text": "Улучшение вспомогательная реакционная камера позволяет увеличить максимальный выход генератора в 2 раза, но при этом эффективность использования топлива уменьшиться на 10%."
+    }
+  ]
+}

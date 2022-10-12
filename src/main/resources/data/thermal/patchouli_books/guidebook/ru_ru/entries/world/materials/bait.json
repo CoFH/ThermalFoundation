@@ -1,0 +1,28 @@
+{
+  "name": "Приманка",
+  "icon": "thermal:aquachow",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Различные виды приманки могут быть использованы в $(l:thermal:technology/devices/fisher)рыболове$(/l) для увеличения или изменения улова."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:aquachow_4",
+      "text": "Приманка - это уникальная смесь ингредиентов, перед которой рыба не сможет устоять; она усиливает естественные способности рыболова."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:deep_aquachow_4",
+      "text": "Глубоководная приманка помогает ловить на большей глубине, повышая шансы на ловлю иглобрюха, ламинарии, призмарина, чернильных мешков, губок, а иногда даже трезубцев."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:junk_net",
+      "text": "Сеть для мусора позволяет рыболову ловить предметы, такие как нитки, кувшинки, кости, бутылочки с водой и кожу. Как гласит пословица: 'Мусор одного - сокровище другого'. Или что-то в этом роде."
+    }
+  ]
+}

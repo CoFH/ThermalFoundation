@@ -1,0 +1,18 @@
+{
+  "name": "Концентратор знаний",
+  "icon": "thermal:xp_storage_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/xp_storage_augment",
+      "title": "Концентратор знаний",
+      "text": "Улучшение концентратор знаний позволяет механизмам или устройствам получать опыт от создания предметов или из мира. Оно позволяет хранить до 2,5 тыс. единиц опыта. Ёмкость умножается на коэффициент масштабирования, предлагаемый $(l:thermal:technology/augments/integral_components)интегральными компонентами.$(/l)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "После установки в правом нижнем углу графического интерфейса блока появится маленький значок, напоминающий $(l:thermal:equipment/tools/xp_crystal)проницательный кристалл$(/l). Нажав на этот значок игрок получит хранящийся в механизме опыт."
+    }
+  ]
+}

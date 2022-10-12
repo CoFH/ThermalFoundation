@@ -1,0 +1,15 @@
+{
+  "name": "SpongeBlast",
+  "icon": "minecraft:lime_dye",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "SpongeBlast",
+      "item": "minecraft:player_head{SkullOwner:'SpongeBlast'}",
+      "text": "В руководстве создал категорию улучшений, чтобы все могли наконец знать, для чего их использовать. :D "
+    }
+  ]
+}

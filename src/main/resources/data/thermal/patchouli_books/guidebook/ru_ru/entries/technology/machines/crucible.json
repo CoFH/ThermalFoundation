@@ -1,0 +1,23 @@
+{
+  "name": "Магмовый тигель",
+  "icon": "thermal:machine_crucible",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Магмовый тигель - это механизм, который расплавляет предметы в жидкости."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_crucible",
+      "title": "Магмовый тигель"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/item_filter)Предметный фильтр$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Концентратор знаний$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Расширенная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Стабилизированная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)Многопоточная RF катушка$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Усилитель магнитной связи$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Потоковая эффективность$(/l)"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Зарядное устройство",
+  "icon": "thermal:charge_bench",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Зарядное устройство - это блок, который можно использовать для одновременной зарядки до 9 предметов за раз. Его основное преимущество перед $(l:thermal:technology/tinker_bench)верстаком мастеров$(/l) являются более высокая скорость зарядки и возможность автоматической вставки и извлечения предметов (например, с помощью воронки)."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:charge_bench",
+      "title": "Зарядное устройство",
+      "text": "$(o)Древние тексты свидетельствуют о существовании механизма с таким же названием, который когда-то мог наполнять Redstone Flux-ом предметы, а не только в инструменты. Это, однако, кажется противоречащим всякой логике.$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/item_filter)Предметный фильтр$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Расширенная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Стабилизированная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)Многопоточная RF катушка$(/l)"
+    }
+  ]
+}

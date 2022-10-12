@@ -1,0 +1,24 @@
+{
+  "name": "Слизневая взрывчатка",
+  "icon": "thermal:slime_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Слизневая взрывчатка отбрасывает всех мобов и игроков, задетых взрывом, и покрывает их слизью, временно давая им эффект Слизневое падение. Мобы и игроки с этим эффектом смогут отскакивать от поверхностей так, как если бы они приземлялись на блоки слизи. Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slime_tnt",
+      "B.recipe": "thermal:slime_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slime_tnt_minecart",
+      "title": "Вагонетка со слизневым динамитом"
+    }
+  ]
+}

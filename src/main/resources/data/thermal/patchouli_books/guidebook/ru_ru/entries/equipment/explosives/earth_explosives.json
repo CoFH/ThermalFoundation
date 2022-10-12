@@ -1,0 +1,24 @@
+{
+  "name": "Тектоническая взрывчатка",
+  "icon": "thermal:earth_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "При взрыве ломает блоки типа камня и земли в определённой области с последующим их дропом, а также накладывает на мобов и игроков эффект $(l:thermal:world/mobs/basalz)Разлука II$(/l). Полезна для добычи ресурсов. Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно.$(br2)$(o)Легенда гласит, что когда-то она была достаточно мощная, чтобы разрушать скальную породу.$()"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:earth_tnt",
+      "B.recipe": "thermal:earth_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:earth_tnt_minecart",
+      "title": "Вагонетка с тектоническим динамитом"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Радиальное улучшение",
+  "icon": "thermal:area_radius_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/area_radius_augment",
+      "title": "Радиальное улучшение",
+      "text": "Радиальное улучшение позволяет инструменту или механизму воздействовать на большую площадь вокруг него. Каждое улучшение увеличивает радиус на 1 блок во всех направлениях."
+    }
+  ]
+}

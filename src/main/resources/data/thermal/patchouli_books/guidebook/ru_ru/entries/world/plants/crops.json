@@ -1,0 +1,164 @@
+{
+  "name": "Культуры",
+  "icon": "thermal:barley",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Thermal Cultivation добавляет разнообразные культуры, семена которых можно приобрести у деревенских жителей. Эти культуры можно собрать, щёлкнув ПКМ пустой рукой. Грибные культуры могут быть посажены на $(l:thermal:world/plants/phytogro)фито-почву$(/l), мицелий, или подзол, но их рост невозможно ускорить костной мукой или фито-гро. Они всё ещё подвержены влиянию фито-почвы и $(l:thermal:equipment/tools/watering_can)лейки$(/l) ускоряя свой рост."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Ячмень",
+      "A.item1": "thermal:barley",
+      "A.item2": "thermal:barley_seeds",
+      "A.text": "Злаковое зерно, которое можно перемолоть в муку или использовать для приготовления пива или виски.",
+
+      "B.title": "Кукуруза",
+      "B.item1": "thermal:corn",
+      "B.item2": "thermal:corn_seeds",
+      "B.text": "Основное зерно, которое ценится за свою универсальность."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Лён",
+      "A.item1": "thermal:flax",
+      "A.item2": "thermal:flax_seeds",
+      "A.text": "Волокнистое растение, из которого можно легко создать нитки.",
+
+      "B.title": "Лук",
+      "B.item1": "thermal:onion",
+      "B.item2": "thermal:onion_seeds",
+      "B.text": "Луковичный овощ, который часто используется для придания вкуса пикантным блюдам. Доводит людей до слёз."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Редис",
+      "A.item1": "thermal:radish",
+      "A.item2": "thermal:radish_seeds",
+      "A.text": "Корнеплод с острым вкусом, обычно употребляемый в сыром виде или приготовленным на пару.",
+
+      "B.title": "Рис",
+      "B.item1": "thermal:rice",
+      "B.item2": "thermal:rice_seeds",
+      "B.text": "Наиболее широко потребляемое основное зерно в мире. Трудоёмкий сбор урожая."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Сади-корень",
+      "A.item1": "thermal:sadiroot",
+      "A.item2": "thermal:sadiroot_seeds",
+      "A.text": "Лекарственная пряность, известная своими очищающими свойствами. Обладает характерным ароматом.",
+
+      "B.title": "Шпинат",
+      "B.item1": "thermal:spinach",
+      "B.item2": "thermal:spinach_seeds",
+      "B.text": "Листья шпината. Дает морякам увеличение мышечной массы."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Болгарский перец",
+      "A.item1": "thermal:bell_pepper",
+      "A.item2": "thermal:bell_pepper_seeds",
+      "A.text": "Сорт перца без горькости. Обычно его нарезают и используют в блюдах.",
+
+      "B.title": "Баклажан",
+      "B.item1": "thermal:eggplant",
+      "B.item2": "thermal:eggplant_seeds",
+      "B.text": "Фиолетовый, губчатый $(l)фрукт$(), используемый во многих блюдах. Имеет тенденцию поглощать другие ароматы."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Зелёная фасоль",
+      "A.item1": "thermal:green_bean",
+      "A.item2": "thermal:green_bean_seeds",
+      "A.text": "Незрелые семенные коробочки бобовых можно употреблять отдельно, или использовать в различных блюдах.",
+
+      "B.title": "Арахис",
+      "B.item1": "thermal:peanut",
+      "B.item2": "thermal:peanut_seeds",
+      "B.text": "Семена арахисового растения. Часто обжаривают, консервируют в масле или перемалывают в арахисовое масло."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Клубника",
+      "A.item1": "thermal:strawberry",
+      "A.item2": "thermal:strawberry_seeds",
+      "A.text": "Сладкий красный фрукт, используемый в различных приправах и десертах.",
+
+      "B.title": "Помидор",
+      "B.item1": "thermal:tomato",
+      "B.item2": "thermal:tomato_seeds",
+      "B.text": "Пикантный красный $(l)фрукт$(), который нарезают ломтиками для блюд, или выжимают для соусов и супов."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Кофе",
+      "A.item1": "thermal:coffee",
+      "A.item2": "thermal:coffee_seeds",
+      "A.text": "Его обжаривают, перемалывают и заваривают, дабы он стал источником жизненной силы для разработчиков модов.",
+
+      "B.title": "Чай",
+      "B.item1": "thermal:tea",
+      "B.item2": "thermal:tea_seeds",
+      "B.text": "Листья чайного растения. Часто сбрасываются в океан во время чаепитий."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Хмель",
+      "A.item1": "thermal:hops",
+      "A.item2": "thermal:hops_seeds",
+      "A.text": "Семенные шишки цветущей лозы хмеля. Используется для ароматизации пива.",
+
+      "B.title": "Морозный арбуз",
+      "B.item1": "thermal:frost_melon_slice",
+      "B.item2": "thermal:frost_melon_seeds",
+      "B.text": "Голубой сорт арбузов. Те, кто его употребляют, обнаруживают, что даже самые горячие поверхности кажутся ледяными."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Канифольный зубогриб",
+      "A.item1": "minecraft:redstone",
+      "A.item2": "thermal:redstone_mushroom_spores",
+      "A.text": "Бледный гриб, который при созревании выделяет вязкую эмульсию, похожую на красный камень.",
+
+      "B.title": "Гриб с мерцающей шляпкой",
+      "B.item1": "minecraft:glowstone_dust",
+      "B.item2": "thermal:glowstone_mushroom_spores",
+      "B.text": "Светящийся гриб, на шляпке которого образуется тонкий слой мерцающего золотистого порошка."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Взрывогриб",
+      "A.item1": "minecraft:gunpowder",
+      "A.item2": "thermal:gunpowder_mushroom_spores",
+      "A.text": "Темпераментный гриб, на нижней стороне которого растет паутина из взрывчатого вещества.",
+
+      "B.title": "Слизнегриб",
+      "B.item1": "minecraft:slime_ball",
+      "B.item2": "thermal:slime_mushroom_spores",
+      "B.text": "Липкий гриб, выделяющий защитную слизь, которую можно сворачивать в шарики."
+    },
+    {
+      "type": "2_item_page",
+
+      "title": "Амарант",
+      "item1": "thermal:amaranth",
+      "item2": "thermal:amaranth_seeds",
+      "text": "Яркое зерно, наполненное питательными веществами и алхимическими свойствами."
+    }
+  ]
+}

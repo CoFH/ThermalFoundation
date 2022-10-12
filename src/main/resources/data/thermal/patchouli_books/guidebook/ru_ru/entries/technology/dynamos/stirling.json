@@ -1,0 +1,23 @@
+{
+  "name": "Стирлинг генератор",
+  "icon": "thermal:dynamo_stirling",
+  "category": "thermal:dynamos",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Стирлинг генератор использует горючие предметы для производства RF-энергии."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:dynamo_stirling",
+      "title": "Стирлинг генератор"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Вспомогательная реакционная камера$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Многоцикловые форсунки$(/l)"
+    }
+  ]
+}

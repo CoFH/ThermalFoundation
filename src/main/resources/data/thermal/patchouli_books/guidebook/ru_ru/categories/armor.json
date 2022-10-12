@@ -1,0 +1,8 @@
+{
+  "name": "Броня",
+  "flag": "|mod:thermal_innovation,mod:thermal_cultivation",
+  "description": "Возможно, не на пике моды, но она делает свою работу.",
+  "icon": "thermal:hazmat_boots",
+  "parent": "thermal:equipment",
+  "sortnum": 2
+}

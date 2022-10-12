@@ -1,0 +1,7 @@
+{
+  "name": "Улучшения",
+  "description": "Обновите свои технологии и инструменты.",
+  "icon": "thermal:upgrade_augment_3",
+  "parent": "thermal:technology",
+  "sortnum": 4
+}

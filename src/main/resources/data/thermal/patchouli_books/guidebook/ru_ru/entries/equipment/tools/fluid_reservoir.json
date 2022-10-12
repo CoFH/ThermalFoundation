@@ -1,0 +1,24 @@
+{
+  "name": "Резервуар",
+  "icon": "thermal:fluid_reservoir",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Вмещает умеренное количество жидкости и позволяет её распределять. Нажмите '$(k:cofh.mode_change_increment)' для смены режимов заполнение/ опустошение. Используйте крадясь для включения/ выключения автоматического заполнения большинства других удерживаемых жидкостных контейнеров. Резервуар можно заполнить и усовершенствовать на верстаке мастеров."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:fluid_reservoir",
+      "title": "Резервуар",
+      "text": "Резервуар может быть зачарован на $(l:thermal:world/holding)Удержание$(/l) для увеличения ёмкости."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)"
+    }
+  ]
+}

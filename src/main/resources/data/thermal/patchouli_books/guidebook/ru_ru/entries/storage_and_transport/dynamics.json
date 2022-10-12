@@ -1,0 +1,39 @@
+{
+  "name": "Где Dynamics?",
+  "icon": "thermal:iron_gear",
+  "read_by_default": true,
+  "category": "thermal:storage_and_transport",
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Разработка Dynamics в настоящее время приостановлена, так как другие функции Thermal-серии уточняются. Пожалуйста, наберитесь терпения! На следующих страницах будут представлены другие рекомендуемые моды на трубы."
+    },
+    {
+      "type": "patchouli:link",
+      "title": "XNet",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/xnet",
+      "link_text": "Curseforge",
+      "text": "Мощный мод, который может транспортировать предметы, жидкости, RF и многое другое по одному кабелю. Для каждой сети требуется контроллер, с помощью которого сеть может быть настроена для управления входами, выходами, фильтрацией, размером стека и т.д. Сложен в изучении."
+    },
+    {
+      "type": "patchouli:link",
+      "title": "Refined Pipes",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/refined-pipes",
+      "link_text": "Curseforge",
+      "text": "Чтобы получить опыт, больше напоминающий Dynamics 1.12, попробуйте Refined Pipes. Трубы и извлекающие устройства бывают разных уровней, которые влияют на скорость передачи. Для тех, кто уже знаком с Dynamics 1.12, этот мод должен заставить Вас чувствовать себя как дома."
+    },
+    {
+      "type": "patchouli:link",
+      "title": "Integrated Tunnels",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/integrated-tunnels",
+      "link_text": "Curseforge",
+      "text": "Мощный мод, который может оценивать различные свойства мобов, инвентаря и т.д. Tunnels - дополнение, которое позволяет также отправлять/ экспортировать предметы инвентаря. В сочетании эти два фактора обеспечивают исключительную полезность. Очень сложен в изучении."
+    },
+    {
+      "type": "text",
+      "title": "Моды с трубами",
+      "text": "Следующие моды имеют множество вариантов транспорта, но также добавляют множество другого замечательного контента. Если Вы ищете мод, который добавляет $(o)только$() трубы, обратитесь к предыдущим страницам.$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism)Mekanism$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/create)Create$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)Immersive Engineering$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/rats)Забавный мод на крыс$()"
+    }
+  ]
+}

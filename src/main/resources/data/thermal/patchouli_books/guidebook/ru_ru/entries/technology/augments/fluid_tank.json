@@ -1,0 +1,14 @@
+{
+  "name": "Расширенная конструкция резервуара",
+  "icon": "thermal:fluid_tank_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/fluid_tank_augment",
+      "title": "Расширенная конструкция резервуара",
+      "text": "Улучшение расширенная конструкция резервуара позволяет увеличить ёмкость бака в хранилищах, механизмах, устройствах, генераторах и инструментах в 4 раза."
+    }
+  ]
+}

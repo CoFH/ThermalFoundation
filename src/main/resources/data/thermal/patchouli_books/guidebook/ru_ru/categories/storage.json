@@ -1,0 +1,8 @@
+{
+  "name": "Хранилища",
+  "description": "Технически их можно спамить как импровизированные трубы.",
+  "icon": "thermal:energy_cell",
+  "parent": "thermal:storage_and_transport",
+  "flag": "mod:thermal_expansion",
+  "sortnum": 1
+}

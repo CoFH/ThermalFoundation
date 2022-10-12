@@ -1,0 +1,97 @@
+{
+  "name": "Древесные продукты",
+  "icon": "thermal:sawdust",
+  "read_by_default": true,
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+      "type": "thermal:1-1_item_page",
+
+      "A.title": "Сок",
+      "A.item": "thermal:sap_bucket",
+      "A.text": "Сладкая жидкость, которая когда-то несла воду и питательные вещества по всему $(l:thermal:technology/devices/tree_extractor)тёмному дубу$(/l).",
+
+      "B.title": "Смола",
+      "B.item": "thermal:resin_bucket",
+      "B.text": "Густая, липкая жидкость,$(l:thermal:technology/devices/tree_extractor)собираемая$(/l) с дуба, берёзы, сосны и акации."
+    },
+    {
+      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+      "type": "thermal:1_item_page",
+
+      "title": "Латекс",
+      "item": "thermal:latex_bucket",
+      "text": "Густая молочная эмульсия полимеров, $(l:thermal:technology/devices/tree_extractor)собираемая$(/l) с тропического дерева. Используется для создания резины."
+    },
+
+    {
+      "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",
+      "type": "thermal:double_crafting_page",
+
+      "title": "Резина",
+      "A.recipe": "thermal:rubber_from_dandelion",
+      "B.recipe": "thermal:rubber_from_vine"
+    },
+    {
+      "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",
+      "type": "2_item_page",
+
+      "title": "Резина",
+      "item1": "thermal:rubber",
+      "item2": "thermal:cured_rubber",
+      "text": "Эластичный, водонепроницаемый материал, полученный в результате коагуляции латекса. Её можно изготовить из лиан и одуванчиков. Чтобы повысить её упругость и эластичность, резину можно вулканизировать в печи."
+    },
+
+    {
+      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+      "type": "thermal:double_crafting_page",
+
+      "title": "Резина",
+      "A.recipe": "thermal:rubber_from_dandelion",
+      "B.recipe": "thermal:rubber_3"
+    },
+    {
+      "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
+      "type": "smelting",
+
+      "A.recipe": "thermal:smelting/cured_rubber_from_smelting",
+      "text": "Эластичный, водонепроницаемый материал, полученный в результате коагуляции латекса. Её можно сделать, просто переделав ведро латекса на верстаке, также её можно изготовить из лиан и одуванчиков. Чтобы повысить её упругость и эластичность, резину можно вулканизировать в печи или с серой в индукционной плавильне."
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "3_alloy_page",
+      "title": "Резина",
+      "recipe": "thermal:machines/smelter/smelter_cured_rubber",
+
+      "text": "Эластичный, водонепроницаемый материал, полученный в результате коагуляции латекса. Её можно сделать, просто переделав ведро латекса на верстаке, также её можно изготовить из лиан и одуванчиков. Чтобы повысить её упругость и эластичность, резину можно вулканизировать в печи или с серой в индукционной плавильне."
+    },
+
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "2-1_item_page",
+
+      "A.title": "Опилки",
+      "A.item1": "thermal:sawdust",
+      "A.item2": "thermal:sawdust_block",
+      "A.text": "Мелкая древесная щепа, получаемая путём $(l:thermal:technology/machines/pulverizer)измельчения$(/l) или $(l:thermal:technology/machines/sawmill)резки$(/l) дерева. Блок опилок используется как топливо.",
+
+      "B.title": "Сироп",
+      "B.item": "thermal:syrup_bucket",
+      "B.text": "Густая, вкусная жидкость, оправдывающая любые неудачи. Производится $(l:thermal:technology/machines/refinery)дистилляцией$(/l) сока."
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "2-1_item_page",
+
+      "A.title": "Канифоль",
+      "A.item1": "thermal:rosin",
+      "A.item2": "thermal:rosin_block",
+      "A.text": "Твёрдая, $(l:thermal:technology/machines/refinery)очищенная$(/l) форма смолы. Может использоваться в качестве топлива.",
+
+      "B.title": "Древесное масло",
+      "B.item": "thermal:tree_oil_bucket",
+      "B.text": "Производится как побочный продукт $(l:thermal:technology/machines/refinery)дистилляции$(/l) смолы. Может использоваться как топливо в $(l:thermal:technology/dynamos/compression)компрессионном генераторе$(/l)."
+    }
+  ]
+}

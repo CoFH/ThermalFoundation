@@ -1,0 +1,18 @@
+{
+  "name": "Заглушка",
+  "icon": "thermal:slot_seal",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Используется для блокировки слота и предотвращения попадания в него предметов. Полезно для продвинутой логистики."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slot_seal",
+      "title": "Заглушка"
+    }
+  ]
+}

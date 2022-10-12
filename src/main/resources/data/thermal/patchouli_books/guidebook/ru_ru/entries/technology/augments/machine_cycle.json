@@ -1,0 +1,16 @@
+{
+  "name": "Циклическая обработка",
+  "icon": "thermal:machine_cycle_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_cycle_augment",
+      "title": "Циклическая обработка",
+      "text": "Улучшение циклическая обработка позволяет отправлять одинаковые предметы с выхода механизма на его вход. Полезно для автоматизации."
+    }
+  ]
+}

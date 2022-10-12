@@ -1,0 +1,31 @@
+{
+  "name": "Костюм пчеловода",
+  "icon": "thermal:beekeeper_chestplate",
+  "category": "thermal:armor",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Костюм пчеловода защитит от любых укусов, ценой потери прочности. Примерами служат: кактусы, сладкие ягоды и, очевидно, укусы пчёл. Обратите внимание: чтобы быть $(o)полностью$() защищённым нужно быть в полном наборе костюма! Будьте осторожным: даже при полном наборе костюма, его прочность расходуется."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:beekeeper_fabric",
+      "text": "Ткань, используемая во всём костюме пчеловода."
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/beekeeper_helmet",
+      "B.recipe": "thermal:armor/beekeeper_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/beekeeper_leggings",
+      "B.recipe": "thermal:armor/beekeeper_boots"
+    }
+  ]
+}

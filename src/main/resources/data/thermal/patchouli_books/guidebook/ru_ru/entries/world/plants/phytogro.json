@@ -1,0 +1,41 @@
+{
+  "name": "Фито-Гро",
+  "icon": "thermal:phytogro",
+  "read_by_default": true,
+  "category": "thermal:plants",
+  "flag": "|mod:thermal_cultivation,mod:thermal_expansion",
+  "pages": [
+    {
+      "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_2",
+      "text": "Фито-гро - это удобрение, насыщенное всеми питательными веществами, необходимыми растениям. Его можно наносить непосредственно на растения или разбрасывать на некоторой площади, совмещая с $(l:thermal:equipment/explosives/phyto_explosives)динамитом$(/l)."
+    },
+    {
+      "flag": "&!mod:thermal_cultivation,mod:thermal_expansion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_2",
+      "text": "Фито-гро - это удобрение, насыщенное всеми питательными веществами, необходимыми растениям. Его можно наносить непосредственно на растения или использовать в механизмах в качестве $(l:thermal:world/materials/catalysts)катализаторов$(/l)."
+    },
+    {
+      "flag": "&mod:thermal_cultivation,mod:thermal_expansion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_2",
+      "text": "Фито-гро - это удобрение, насыщенное всеми питательными веществами, необходимыми растениям. Его можно наносить непосредственно на растения или разбрасывать на некоторой площади, совмещая с $(l:thermal:equipment/explosives/phyto_explosives)динамитом$(/l), или использовать в механизмах в качестве $(l:thermal:world/materials/catalysts)катализатора$(/l)."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_4",
+      "text": "$(o)Старейшены говорят об утраченной формуле фито-гро, которую можно было бы настаивать на соку и Redstone Flux-е, чтобы повысить урожайность намного выше естественной. К сожалению, попытки воссоздать её закончились неудачей.$()"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_8",
+      "B.recipe": "thermal:phytosoil"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Фито-почва - это земля, пропитанная фито-гро, которая удваивает скорость роста растений, выращенных на ней. Скорость может быть дополнительно увеличена в примерно 5 раз с помощью $(l:thermal:technology/devices/soil_infuser)удобрителя$(/l). Как и обычная почва, она должна быть обработана, чтобы на ней росли сельскохозяйственные культуры. В отличие от обычных грядок, обработанная фито-почва не может быть вытоптана и не нуждается в воде поблизости, чтобы оставаться увлажнённой."
+    }
+  ]
+}

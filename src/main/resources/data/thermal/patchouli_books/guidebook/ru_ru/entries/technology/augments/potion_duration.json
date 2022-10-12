@@ -1,0 +1,15 @@
+{
+  "name": "Алхимический расширитель",
+  "icon": "thermal:potion_duration_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/potion_duration_augment",
+      "title": "Алхимический расширитель",
+      "text": "Улучшение алхимический расширитель увеличивает время действия зелий в два раза, но не работает с зельями имеющими мгновенный, одноразовый эффект."
+    }
+  ]
+}

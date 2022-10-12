@@ -1,0 +1,31 @@
+{
+  "name": "Костюм химзащиты",
+  "icon": "thermal:hazmat_chestplate",
+  "category": "thermal:armor",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Костюм химзащиты защитит от опасностей окружающей среды, таких как горение, урон от падения и других недугов. Для полной защиты требуются все компоненты костюма. Прочность расходуется при предотвращении негативных эффектов и тушении."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:hazmat_fabric",
+      "text": "$(o)Оранжевое суфле$()"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/hazmat_helmet",
+      "B.recipe": "thermal:armor/hazmat_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/hazmat_leggings",
+      "B.recipe": "thermal:armor/hazmat_boots"
+    }
+  ]
+}

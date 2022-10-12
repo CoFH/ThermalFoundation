@@ -1,0 +1,15 @@
+{
+  "name": "OneLemonyBoi",
+  "icon": "minecraft:poppy",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "OneLemonyBoi",
+      "item": "minecraft:player_head{SkullOwner:'OneLemonyBoi'}",
+      "text": "В руководстве создал категорию генераторов и внёс некоторый вклад в поддержку модов."
+    }
+  ]
+}
