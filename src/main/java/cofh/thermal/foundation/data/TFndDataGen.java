@@ -1,6 +1,10 @@
 package cofh.thermal.foundation.data;
 
+import com.google.gson.JsonElement;
+import com.mojang.serialization.JsonOps;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.RegistryOps;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,6 +30,11 @@ public class TFndDataGen {
 
         gen.addProvider(event.includeClient(), new TFndBlockStateProvider(gen, exFileHelper));
         gen.addProvider(event.includeClient(), new TFndItemModelProvider(gen, exFileHelper));
+
+        RegistryOps<JsonElement> regOps = RegistryOps.create(JsonOps.INSTANCE, RegistryAccess.builtinCopy());
+
+        gen.addProvider(event.includeServer(), TFndFeatures.dataGenFeatures(gen, exFileHelper, regOps));
+        gen.addProvider(event.includeServer(), TFndBiomeModifiers.dataGenBiomeModifiers(gen, exFileHelper, regOps));
     }
 
 }

@@ -2,7 +2,7 @@ package cofh.thermal.foundation.init;
 
 import cofh.core.item.BlockItemCoFH;
 import cofh.lib.block.OreBlockCoFH;
-import cofh.thermal.core.init.TCoreBlocks;
+import cofh.thermal.core.util.RegistrationHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreBlocks.storageBlock;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
@@ -75,15 +74,15 @@ public class TFndBlocks {
         registerBlock(raw(ID_SILVER_BLOCK), () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GRAY).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
         registerBlock(raw(ID_NICKEL_BLOCK), () -> new Block(of(Material.STONE, MaterialColor.TERRACOTTA_YELLOW).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
 
-        registerBlock(ID_TIN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_TIN));
-        registerBlock(ID_LEAD_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_LEAD));
-        registerBlock(ID_SILVER_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_SILVER));
-        registerBlock(ID_NICKEL_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_NICKEL));
+        registerBlock(ID_TIN_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_TIN));
+        registerBlock(ID_LEAD_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_LEAD));
+        registerBlock(ID_SILVER_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_SILVER));
+        registerBlock(ID_NICKEL_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_NICKEL));
 
-        registerBlock(ID_BRONZE_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_BRONZE));
-        registerBlock(ID_ELECTRUM_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_ELECTRUM));
-        registerBlock(ID_INVAR_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_INVAR));
-        registerBlock(ID_CONSTANTAN_BLOCK, TCoreBlocks::storageBlock, getFlag(FLAG_RESOURCE_CONSTANTAN));
+        registerBlock(ID_BRONZE_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_BRONZE));
+        registerBlock(ID_ELECTRUM_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_ELECTRUM));
+        registerBlock(ID_INVAR_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_INVAR));
+        registerBlock(ID_CONSTANTAN_BLOCK, RegistrationHelper::storageBlock, getFlag(FLAG_RESOURCE_CONSTANTAN));
 
         registerBlock(ID_RUBY_BLOCK, () -> storageBlock(MaterialColor.COLOR_RED), getFlag(FLAG_RESOURCE_RUBY));
         registerBlock(ID_SAPPHIRE_BLOCK, () -> storageBlock(MaterialColor.COLOR_BLUE), getFlag(FLAG_RESOURCE_SAPPHIRE));
