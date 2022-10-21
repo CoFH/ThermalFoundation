@@ -1,0 +1,12 @@
+{
+  "parent": "thermal:block/device_base",
+  "textures": {
+    "particle": "thermal:block/devices/device_magnet_blocker_side",
+    "down": "thermal:block/devices/device_magnet_blocker_bottom",
+    "up": "thermal:block/devices/device_magnet_blocker_top",
+    "east": "thermal:block/devices/device_magnet_blocker_side",
+    "west": "thermal:block/devices/device_magnet_blocker_side",
+    "north": "thermal:block/devices/device_magnet_blocker",
+    "south": "thermal:block/devices/device_magnet_blocker_side"
+  }
+}

@@ -7,6 +7,7 @@ import net.minecraft.data.loot.BlockLoot;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_MAGNET_BLOCKER;
 
 public class TCoreLootTableProvider extends LootTableProviderCoFH {
 
@@ -94,6 +95,7 @@ public class TCoreLootTableProvider extends LootTableProviderCoFH {
         createSyncDropTable(regBlocks.get(ID_DEVICE_WATER_GEN));
         createSyncDropTable(regBlocks.get(ID_DEVICE_ROCK_GEN));
         createSyncDropTable(regBlocks.get(ID_DEVICE_COLLECTOR));
+        createSyncDropTable(regBlocks.get(ID_DEVICE_MAGNET_BLOCKER));
         createSyncDropTable(regBlocks.get(ID_DEVICE_NULLIFIER));
         createSyncDropTable(regBlocks.get(ID_DEVICE_POTION_DIFFUSER));
 

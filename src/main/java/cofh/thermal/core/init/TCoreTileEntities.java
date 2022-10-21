@@ -33,6 +33,7 @@ public class TCoreTileEntities {
     public static final RegistryObject<BlockEntityType<?>> DEVICE_WATER_GEN_TILE = TILE_ENTITIES.register(ID_DEVICE_WATER_GEN, () -> BlockEntityType.Builder.of(DeviceWaterGenTile::new, BLOCKS.get(ID_DEVICE_WATER_GEN)).build(null));
     public static final RegistryObject<BlockEntityType<?>> DEVICE_ROCK_GEN_TILE = TILE_ENTITIES.register(ID_DEVICE_ROCK_GEN, () -> BlockEntityType.Builder.of(DeviceRockGenTile::new, BLOCKS.get(ID_DEVICE_ROCK_GEN)).build(null));
     public static final RegistryObject<BlockEntityType<?>> DEVICE_COLLECTOR_TILE = TILE_ENTITIES.register(ID_DEVICE_COLLECTOR, () -> BlockEntityType.Builder.of(DeviceCollectorTile::new, BLOCKS.get(ID_DEVICE_COLLECTOR)).build(null));
+    public static final RegistryObject<BlockEntityType<?>> DEVICE_MAGNET_BLOCKER_TILE = TILE_ENTITIES.register(ID_DEVICE_MAGNET_BLOCKER, () -> BlockEntityType.Builder.of(DeviceMagnetBlockerTile::new, BLOCKS.get(ID_DEVICE_MAGNET_BLOCKER)).build(null));
     public static final RegistryObject<BlockEntityType<?>> DEVICE_NULLIFIER_TILE = TILE_ENTITIES.register(ID_DEVICE_NULLIFIER, () -> BlockEntityType.Builder.of(DeviceNullifierTile::new, BLOCKS.get(ID_DEVICE_NULLIFIER)).build(null));
     public static final RegistryObject<BlockEntityType<?>> DEVICE_POTION_DIFFUSER_TILE = TILE_ENTITIES.register(ID_DEVICE_POTION_DIFFUSER, () -> BlockEntityType.Builder.of(DevicePotionDiffuserTile::new, BLOCKS.get(ID_DEVICE_POTION_DIFFUSER)).build(null));
 

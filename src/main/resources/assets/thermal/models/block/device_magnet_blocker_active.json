@@ -1,0 +1,10 @@
+{
+  "parent": "thermal:block/device_magnet_blocker",
+  "textures": {
+    "up": "thermal:block/devices/device_magnet_blocker_top_active",
+    "east": "thermal:block/devices/device_magnet_blocker_side_active",
+    "west": "thermal:block/devices/device_magnet_blocker_side_active",
+    "north": "thermal:block/devices/device_magnet_blocker_active",
+    "south": "thermal:block/devices/device_magnet_blocker_side_active"
+  }
+}

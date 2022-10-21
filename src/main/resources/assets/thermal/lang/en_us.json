@@ -514,6 +514,7 @@
   "block.thermal.device_composter": "Batch Composter",
   "block.thermal.device_fisher": "Aquatic Entangler",
   "block.thermal.device_hive_extractor": "Hive Hopper",
+  "block.thermal.device_magnet_blocker": "Magnetic Inhibitor",
   "block.thermal.device_nullifier": "Nullifier",
   "block.thermal.device_potion_diffuser": "Decoctive Diffuser",
   "block.thermal.device_rock_gen": "Igneous Extruder",
