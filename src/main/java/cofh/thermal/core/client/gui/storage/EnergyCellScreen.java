@@ -31,12 +31,9 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
     public static final String TEX_INCREMENT = ID_COFH_CORE + ":textures/gui/elements/button_increment.png";
     public static final String TEX_DECREMENT = ID_COFH_CORE + ":textures/gui/elements/button_decrement.png";
 
-    protected EnergyCellTile tile;
-
     public EnergyCellScreen(EnergyCellContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.energy_cell"));
-        tile = container.tile;
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.energy_cell");
         name = "energy_cell";
@@ -90,26 +87,26 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
             change /= 10;
             pitch -= 0.1F;
         }
-        int curInput = tile.amountInput;
+        int curInput = menu.tile.amountInput;
         int curOutput = tile.amountOutput;
 
         switch (buttonName) {
-            case "DecInput":
+            case "DecInput" -> {
                 tile.amountInput -= change;
                 pitch -= 0.1F;
-                break;
-            case "IncInput":
+            }
+            case "IncInput" -> {
                 tile.amountInput += change;
                 pitch += 0.1F;
-                break;
-            case "DecOutput":
+            }
+            case "DecOutput" -> {
                 tile.amountOutput -= change;
                 pitch -= 0.1F;
-                break;
-            case "IncOutput":
+            }
+            case "IncOutput" -> {
                 tile.amountOutput += change;
                 pitch += 0.1F;
-                break;
+            }
         }
         playClickSound(pitch);
         TileConfigPacket.sendToServer(tile);

@@ -22,12 +22,9 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/soil_infuser.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    protected DeviceSoilInfuserTile tile;
-
     public DeviceSoilInfuserScreen(DeviceSoilInfuserContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_soil_infuser"));
-        tile = container.tile;
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_soil_infuser");
     }
@@ -50,7 +47,7 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
     @Override
     protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
 
-        String radius = format(1 + 2L * tile.getRadius());
+        String radius = format(1 + 2L * menu.tile.getRadius());
 
         getFontRenderer().draw(matrixStack, localize("info.cofh.area") + ": " + radius + " x " + radius, 70, 39, 0x404040);
 

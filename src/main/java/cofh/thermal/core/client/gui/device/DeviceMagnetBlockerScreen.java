@@ -3,12 +3,15 @@ package cofh.thermal.core.client.gui.device;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.device.DeviceMagnetBlockerContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.generatePanelInfo;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
+import static cofh.lib.util.helpers.StringHelper.format;
+import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class DeviceMagnetBlockerScreen extends ThermalTileScreenBase<DeviceMagnetBlockerContainer> {
 
@@ -20,6 +23,17 @@ public class DeviceMagnetBlockerScreen extends ThermalTileScreenBase<DeviceMagne
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_magnet_blocker"));
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_magnet_blocker");
+    }
+
+    @Override
+    protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
+
+        String radius = format(1 + 2L * menu.tile.getRadius());
+        // String radiusV = format(1 + menu.tile.getRadius());
+
+        getFontRenderer().draw(matrixStack, localize("info.cofh.area") + ": " + radius + " x " + radius, 70, 39, 0x404040);
+
+        super.renderLabels(matrixStack, mouseX, mouseY);
     }
 
 }

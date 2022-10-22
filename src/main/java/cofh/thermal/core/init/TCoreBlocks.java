@@ -41,7 +41,6 @@ import static cofh.lib.util.helpers.BlockHelper.lightValue;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreTileEntities.*;
-import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_MAGNET_BLOCKER_TILE;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.FLUID_STORAGE_VALIDATOR;

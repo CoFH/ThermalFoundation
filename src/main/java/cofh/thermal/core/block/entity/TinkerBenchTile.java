@@ -210,19 +210,19 @@ public class TinkerBenchTile extends ThermalTileAugmentable implements ITickable
 
     // region IFilterableTile
     @Override
-    public IFilter getFilter(int filterId) {
+    public IFilter getFilter() {
 
         return EmptyFilter.INSTANCE;
     }
 
     @Override
-    public boolean openGui(ServerPlayer player, int guiId) {
+    public boolean openGui(ServerPlayer player) {
 
         return false;
     }
 
     @Override
-    public boolean openFilterGui(ServerPlayer player, int filterId) {
+    public boolean openFilterGui(ServerPlayer player) {
 
         return false;
     }

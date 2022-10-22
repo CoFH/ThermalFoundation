@@ -12,6 +12,7 @@ import cofh.core.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.SecurityHelper;
 import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 
 import java.util.Collections;
@@ -51,20 +52,21 @@ public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScr
                 .setUV(24, 0)
                 .setSize(24, 21)
                 .setTexture(TAB_TOP, 48, 32)
-                .setVisible(() -> FilterHelper.hasFilter(tile, 0)));
+                .setVisible(() -> FilterHelper.hasFilter(tile)));
+
         addElement(new ElementTexture(this, 8, -17) {
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                TileFilterGuiOpenPacket.openFilterGui(tile, (byte) 0);
+                TileFilterGuiOpenPacket.openFilterGui(tile);
                 return true;
             }
         }
                 .setSize(16, 16)
                 .setTexture(NAV_FILTER, 16, 16)
-                .setTooltipFactory((element, mouseX, mouseY) -> Collections.singletonList(tile.getFilter(0).getDisplayName()))
-                .setVisible(() -> FilterHelper.hasFilter(tile, 0)));
+                .setTooltipFactory((element, mouseX, mouseY) -> tile.getFilter() instanceof MenuProvider menuProvider ? Collections.singletonList(menuProvider.getDisplayName()) : Collections.emptyList())
+                .setVisible(() -> FilterHelper.hasFilter(tile)));
 
         // TODO: Revisit ItemStack-based
         //        addElement(new ElementItemStack(this, 8, -17) {

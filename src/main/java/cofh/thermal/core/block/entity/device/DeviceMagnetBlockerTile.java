@@ -4,7 +4,6 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.init.TCoreTileEntities;
 import cofh.thermal.core.inventory.container.device.DeviceMagnetBlockerContainer;
 import cofh.thermal.lib.tileentity.DeviceTileBase;
 import net.minecraft.core.BlockPos;
@@ -52,8 +51,6 @@ public class DeviceMagnetBlockerTile extends DeviceTileBase implements ITickable
     public DeviceMagnetBlockerTile(BlockPos pos, BlockState state) {
 
         super(DEVICE_MAGNET_BLOCKER_TILE.get(), pos, state);
-
-        //inventory.addSlots(ACCESSIBLE, 15, item -> filter.valid(item));
 
         addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
