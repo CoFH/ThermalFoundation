@@ -22,6 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_ALL;
 
 public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterloggedBlock {
@@ -58,6 +59,7 @@ public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterl
     public TileBlockDynamo(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
 
         super(builder, tileClass, blockEntityType);
+        this.registerDefaultState(this.stateDefinition.any().setValue(ACTIVE, false).setValue(FACING_ALL, Direction.UP).setValue(WATERLOGGED, false));
     }
 
     @Override

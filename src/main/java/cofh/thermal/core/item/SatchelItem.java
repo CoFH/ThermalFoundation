@@ -144,7 +144,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
             }
             if (player.isSecondaryUseActive()) {
                 if (FilterHelper.hasFilter(stack) && getFilter(stack) instanceof MenuProvider filter) {
-                    FilterHelper.openHeldGui((ServerPlayer) player, filter);
+                    FilterHelper.openHeldScreen((ServerPlayer) player, filter);
                     return true;
                 }
                 return false;

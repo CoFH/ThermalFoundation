@@ -199,13 +199,14 @@ public class ThermalAugmentRules {
     }
 
     // region VALIDATORS
+    public static final BiPredicate<ItemStack, List<ItemStack>> ENERGY_STORAGE_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF);
+
     public static final BiPredicate<ItemStack, List<ItemStack>> DEVICE_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_MACHINE, TAG_AUGMENT_TYPE_DYNAMO);
     public static final BiPredicate<ItemStack, List<ItemStack>> DEVICE_NO_FLUID_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_MACHINE, TAG_AUGMENT_TYPE_DYNAMO, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_POTION);
+
     public static final BiPredicate<ItemStack, List<ItemStack>> DYNAMO_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_MACHINE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
     public static final BiPredicate<ItemStack, List<ItemStack>> DYNAMO_NO_FLUID_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_MACHINE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
-    public static final BiPredicate<ItemStack, List<ItemStack>> ENERGY_STORAGE_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF);
-    public static final BiPredicate<ItemStack, List<ItemStack>> FLUID_STORAGE_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID);
-    public static final BiPredicate<ItemStack, List<ItemStack>> ITEM_STORAGE_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
+
     public static final BiPredicate<ItemStack, List<ItemStack>> MACHINE_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_DYNAMO, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
     public static final BiPredicate<ItemStack, List<ItemStack>> MACHINE_NO_FLUID_VALIDATOR = createDenyValidator(TAG_AUGMENT_TYPE_DYNAMO, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_POTION);
     // endregion

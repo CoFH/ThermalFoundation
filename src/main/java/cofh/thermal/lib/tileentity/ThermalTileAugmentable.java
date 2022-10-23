@@ -831,7 +831,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
     public boolean openFilterGui(ServerPlayer player) {
 
         if (filter instanceof MenuProvider provider) {
-            FilterHelper.openTileGui(player, provider, worldPosition);
+            FilterHelper.openTileScreen(player, provider, worldPosition);
             return true;
         }
         return false;

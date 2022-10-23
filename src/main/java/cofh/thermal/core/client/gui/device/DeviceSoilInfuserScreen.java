@@ -3,7 +3,6 @@ package cofh.thermal.core.client.gui.device;
 import cofh.core.client.gui.element.ElementScaled;
 import cofh.core.util.helpers.GuiHelper;
 import cofh.lib.util.helpers.StringHelper;
-import cofh.thermal.core.block.entity.device.DeviceSoilInfuserTile;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
