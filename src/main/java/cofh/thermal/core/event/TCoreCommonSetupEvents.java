@@ -35,7 +35,7 @@ public class TCoreCommonSetupEvents {
         );
     }
 
-    // Recipes reload during TagsUpdatedEvent (and IdMapping on Server side)
+    // Recipes reload during TagsUpdatedEvent
     @SubscribeEvent
     public static void tagsUpdated(final TagsUpdatedEvent event) {
 
@@ -43,17 +43,12 @@ public class TCoreCommonSetupEvents {
         ThermalRecipeManagers.instance().refreshClient();
     }
 
-    @SubscribeEvent
-    public static void idRemap(RegistryEvent.IdMappingEvent event) {
-
-        ThermalRecipeManagers.instance().refreshServer();
-    }
-
-    // Capture RecipeManager when Recipes update on Client side.
+    // Capture RecipeManager and reload when Recipes update on Client side - this is stupid but necessary since Mojang sends this and TagsUpdate in different orders at different times.
     @SubscribeEvent
     public static void recipesUpdated(final RecipesUpdatedEvent event) {
 
         ThermalRecipeManagers.instance().setClientRecipeManager(event.getRecipeManager());
+        ThermalRecipeManagers.instance().refreshClient();
     }
     // endregion
 }
