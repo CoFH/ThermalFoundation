@@ -57,7 +57,7 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
             return null;
         }
-        return fuelMap.get(convert(inputSlots.get(0).getItemStack()));
+        return fuelMap.get(makeComparable(inputSlots.get(0).getItemStack()));
     }
 
     public IDynamoFuel addFuel(int energy, List<ItemStack> inputItems, List<FluidStack> inputFluids) {
@@ -75,7 +75,7 @@ public abstract class SingleItemFuelManager extends AbstractManager implements I
         energy = (int) (energy * getDefaultScale());
 
         BaseDynamoFuel fuel = new BaseDynamoFuel(energy, inputItems, inputFluids);
-        fuelMap.put(convert(input), fuel);
+        fuelMap.put(makeComparable(input), fuel);
         return fuel;
     }
 

@@ -66,12 +66,12 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
 
     public boolean validInput(ItemStack item) {
 
-        return validInputs.contains(convert(item));
+        return validInputs.contains(makeComparable(item));
     }
 
     public boolean validDie(ItemStack item) {
 
-        return validDies.contains(convert(item));
+        return validDies.contains(makeComparable(item));
     }
 
     protected void clear() {
@@ -86,7 +86,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         ArrayList<ComparableItemStack> key = new ArrayList<>();
         for (IItemStackHolder slot : inputSlots) {
             if (!slot.isEmpty() && !(slot.getItemStack().getItem() instanceof SlotSealItem)) {
-                key.add(convert(slot.getItemStack()));
+                key.add(makeComparable(slot.getItemStack()));
             }
         }
         return key;
@@ -97,7 +97,7 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         ArrayList<ComparableItemStack> key = new ArrayList<>();
         for (ItemStack stack : inputStacks) {
             if (!stack.isEmpty() && !(stack.getItem() instanceof SlotSealItem)) {
-                key.add(convert(stack));
+                key.add(makeComparable(stack));
             }
         }
         return key;
@@ -132,10 +132,10 @@ public class PressRecipeManager extends AbstractManager implements IRecipeManage
         energy = (int) (energy * getDefaultScale());
 
         SimpleMachineRecipe recipe = new SimpleMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
-        validInputs.add(convert(inputItems.get(0)));
+        validInputs.add(makeComparable(inputItems.get(0)));
 
         if (inputItems.size() > 1 && !inputItems.get(1).isEmpty()) {
-            validDies.add(convert(inputItems.get(1)));
+            validDies.add(makeComparable(inputItems.get(1)));
         }
         recipeMap.put(getKeyFromStacks(inputItems), recipe);
         return recipe;

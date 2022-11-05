@@ -81,7 +81,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
 
     public boolean validItem(ItemStack item) {
 
-        return validItems.contains(convert(item));
+        return validItems.contains(makeComparable(item));
     }
 
     protected void clear() {
@@ -100,7 +100,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
         List<ComparableItemStack> convertedItems = new ArrayList<>(maxInputItems);
         for (int i = 0; i < maxInputItems; ++i) {
             if (!inputSlots.get(i).isEmpty()) {
-                ComparableItemStack compStack = convert(inputSlots.get(i).getItemStack());
+                ComparableItemStack compStack = makeComparable(inputSlots.get(i).getItemStack());
                 convertedItems.add(compStack);
             }
         }
@@ -135,7 +135,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
         List<ComparableItemStack> convertedItems = new ArrayList<>(inputItems.size());
         for (ItemStack stack : inputItems) {
             if (!inputItems.isEmpty()) {
-                ComparableItemStack compStack = convert(stack);
+                ComparableItemStack compStack = makeComparable(stack);
                 validItems.add(compStack);
                 convertedItems.add(compStack);
             }
@@ -163,13 +163,13 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
     @Override
     public IRecipeCatalyst getCatalyst(IItemStackHolder input) {
 
-        return catalystMap.get(convert(input.getItemStack()));
+        return catalystMap.get(makeComparable(input.getItemStack()));
     }
 
     @Override
     public IRecipeCatalyst getCatalyst(ItemStack input) {
 
-        return catalystMap.get(convert(input));
+        return catalystMap.get(makeComparable(input));
     }
 
     public void addCatalyst(ThermalCatalyst catalyst) {
@@ -185,7 +185,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
             return null;
         }
         BaseMachineCatalyst catalyst = new BaseMachineCatalyst(primaryMod, secondaryMod, energyMod, minChance, useChance);
-        catalystMap.put(convert(input), catalyst);
+        catalystMap.put(makeComparable(input), catalyst);
         return catalyst;
     }
 
@@ -196,7 +196,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
 
     public IRecipeCatalyst removeCatalyst(ItemStack input) {
 
-        return catalystMap.remove(convert(input));
+        return catalystMap.remove(makeComparable(input));
     }
     // endregion
 

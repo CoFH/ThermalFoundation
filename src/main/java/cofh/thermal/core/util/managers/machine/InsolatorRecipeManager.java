@@ -69,10 +69,11 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
         IMachineRecipe recipe;
         if (type == BaseMachineRecipe.RecipeType.DISENCHANT) {
             recipe = new DisenchantMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+            recipeMap.put(makeComparable(input), recipe);
         } else {
             recipe = new InternalInsolatorRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+            recipeMap.put(makeNBTComparable(input), recipe);
         }
-        recipeMap.put(convert(input), recipe);
         return recipe;
     }
     // endregion

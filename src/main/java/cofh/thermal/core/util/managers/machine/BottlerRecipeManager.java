@@ -84,7 +84,7 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
 
     public boolean validItem(ItemStack item) {
 
-        return validItems.contains(convert(item));
+        return validItems.contains(makeComparable(item));
     }
 
     public boolean validFluid(FluidStack fluid) {
@@ -108,7 +108,7 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
         }
         if (inputTanks.isEmpty() || inputTanks.get(0).isEmpty()) {
             ItemStack inputItem = inputSlots.get(0).getItemStack();
-            return recipeMap.get(singletonList(convert(inputItem).hashCode()));
+            return recipeMap.get(singletonList(makeComparable(inputItem).hashCode()));
         }
         if (inputSlots.isEmpty() || inputSlots.get(0).isEmpty()) {
             FluidStack inputFluid = inputTanks.get(0).getFluidStack();
@@ -116,7 +116,7 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
         }
         ItemStack inputItem = inputSlots.get(0).getItemStack();
         FluidStack inputFluid = inputTanks.get(0).getFluidStack();
-        return recipeMap.get(asList(convert(inputItem).hashCode(), FluidHelper.fluidHashcodeNoTag(inputFluid)));
+        return recipeMap.get(asList(makeComparable(inputItem).hashCode(), FluidHelper.fluidHashcodeNoTag(inputFluid)));
     }
 
     protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids) {
@@ -137,12 +137,12 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
                 return null;
             }
         }
-        validItems.add(convert(inputItem));
+        validItems.add(makeComparable(inputItem));
         validFluids.add(inputFluid.getFluid());
         energy = (int) (energy * getDefaultScale());
 
         SimpleMachineRecipe recipe = new SimpleMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
-        recipeMap.put(asList(convert(inputItem).hashCode(), FluidHelper.fluidHashcodeNoTag(inputFluid)), recipe);
+        recipeMap.put(asList(makeComparable(inputItem).hashCode(), FluidHelper.fluidHashcodeNoTag(inputFluid)), recipe);
         return recipe;
     }
 
@@ -156,9 +156,9 @@ public class BottlerRecipeManager extends AbstractManager implements IRecipeMana
         if (inputFluid.isEmpty()) {
             return null;
         }
-        validItems.add(convert(inputItem));
+        validItems.add(makeComparable(inputItem));
         validFluids.add(inputFluid.getFluid());
-        recipeMap.put(asList(convert(inputItem).hashCode(), FluidHelper.fluidHashcodeNoTag(inputFluid)), recipe);
+        recipeMap.put(asList(makeComparable(inputItem).hashCode(), FluidHelper.fluidHashcodeNoTag(inputFluid)), recipe);
         return recipe;
     }
     // endregion

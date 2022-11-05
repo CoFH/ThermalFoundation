@@ -34,29 +34,29 @@ public class FisherManager extends AbstractManager {
     // region BOOSTS
     public boolean validBoost(ItemStack item) {
 
-        return boostMap.containsKey(convert(item));
+        return boostMap.containsKey(makeComparable(item));
     }
 
     public void addBoost(FisherBoost boost) {
 
         for (ItemStack ingredient : boost.getIngredient().getItems()) {
-            boostMap.put(convert(ingredient), Triple.of(boost.getLootTable(), boost.getOutputMod(), boost.getUseChance()));
+            boostMap.put(makeComparable(ingredient), Triple.of(boost.getLootTable(), boost.getOutputMod(), boost.getUseChance()));
         }
     }
 
     public ResourceLocation getBoostLootTable(ItemStack item) {
 
-        return validBoost(item) ? boostMap.get(convert(item)).getLeft() : BuiltInLootTables.FISHING_FISH;
+        return validBoost(item) ? boostMap.get(makeComparable(item)).getLeft() : BuiltInLootTables.FISHING_FISH;
     }
 
     public float getBoostOutputMod(ItemStack item) {
 
-        return validBoost(item) ? boostMap.get(convert(item)).getMiddle() : 1.0F;
+        return validBoost(item) ? boostMap.get(makeComparable(item)).getMiddle() : 1.0F;
     }
 
     public float getBoostUseChance(ItemStack item) {
 
-        return validBoost(item) ? boostMap.get(convert(item)).getRight() : 1.0F;
+        return validBoost(item) ? boostMap.get(makeComparable(item)).getRight() : 1.0F;
     }
     // endregion
 

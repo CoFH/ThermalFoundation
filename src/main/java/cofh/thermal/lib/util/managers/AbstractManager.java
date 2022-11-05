@@ -40,12 +40,12 @@ public abstract class AbstractManager implements IManager {
         return this;
     }
 
-    public static ComparableItemStack convert(ItemStack stack) {
+    public static ComparableItemStack makeComparable(ItemStack stack) {
 
         return new ComparableItemStack(stack);
     }
 
-    public static ComparableItemStack convertNBT(ItemStack stack) {
+    public static ComparableItemStack makeNBTComparable(ItemStack stack) {
 
         return new ComparableItemStackNBT(stack);
     }

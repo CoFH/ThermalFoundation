@@ -76,7 +76,7 @@ public class CrystallizerRecipeManager extends AbstractManager implements IRecip
 
     public boolean validItem(ItemStack item) {
 
-        return validItems.contains(convert(item));
+        return validItems.contains(makeNBTComparable(item));
     }
 
     public boolean validFluid(FluidStack fluid) {
@@ -100,7 +100,7 @@ public class CrystallizerRecipeManager extends AbstractManager implements IRecip
         List<ComparableItemStack> convertedItems = new ArrayList<>(maxInputItems);
         for (int i = 0; i < maxInputItems; ++i) {
             if (!inputSlots.get(i).isEmpty()) {
-                ComparableItemStack compStack = convert(inputSlots.get(i).getItemStack());
+                ComparableItemStack compStack = makeNBTComparable(inputSlots.get(i).getItemStack());
                 convertedItems.add(compStack);
             }
         }
@@ -129,7 +129,7 @@ public class CrystallizerRecipeManager extends AbstractManager implements IRecip
         List<ComparableItemStack> convertedItems = new ArrayList<>(inputItems.size());
         for (ItemStack stack : inputItems) {
             if (!inputItems.isEmpty()) {
-                ComparableItemStack compStack = convert(stack);
+                ComparableItemStack compStack = makeNBTComparable(stack);
                 validItems.add(compStack);
                 convertedItems.add(compStack);
             }

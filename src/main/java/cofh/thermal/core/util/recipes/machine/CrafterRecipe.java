@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
 
 import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.util.Constants.BASE_CHANCE_LOCKED;
-import static cofh.thermal.lib.util.managers.AbstractManager.convert;
+import static cofh.thermal.lib.util.managers.AbstractManager.makeComparable;
 
 public class CrafterRecipe extends BaseMachineRecipe {
 
@@ -40,7 +40,7 @@ public class CrafterRecipe extends BaseMachineRecipe {
 
         for (Ingredient ing : ingredients) {
             for (ItemStack stack : ing.getItems()) {
-                validItems.add(convert(stack));
+                validItems.add(makeComparable(stack));
                 FluidUtil.getFluidContained(stack).ifPresent(fluidStack -> {
                     if (!fluidStack.isEmpty()) {
                         validFluids.add(fluidStack.getFluid());
@@ -54,7 +54,7 @@ public class CrafterRecipe extends BaseMachineRecipe {
 
     public boolean validItem(ItemStack item) {
 
-        return validItems.contains(convert(item));
+        return validItems.contains(makeComparable(item));
     }
 
     public boolean validFluid(FluidStack fluid) {
