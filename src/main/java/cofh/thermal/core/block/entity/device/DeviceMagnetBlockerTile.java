@@ -24,7 +24,6 @@ import java.util.function.Predicate;
 
 import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_MAGNET_BLOCKER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
 public class DeviceMagnetBlockerTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
@@ -50,7 +49,7 @@ public class DeviceMagnetBlockerTile extends DeviceTileBase implements ITickable
 
     public DeviceMagnetBlockerTile(BlockPos pos, BlockState state) {
 
-        super(DEVICE_MAGNET_BLOCKER_TILE.get(), pos, state);
+        super(null /*DEVICE_MAGNET_BLOCKER_TILE.get()*/, pos, state);
 
         addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();

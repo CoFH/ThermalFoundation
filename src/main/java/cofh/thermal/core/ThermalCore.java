@@ -255,7 +255,7 @@ public class ThermalCore {
         MenuScreens.register(DEVICE_WATER_GEN_CONTAINER.get(), DeviceWaterGenScreen::new);
         MenuScreens.register(DEVICE_ROCK_GEN_CONTAINER.get(), DeviceRockGenScreen::new);
         MenuScreens.register(DEVICE_COLLECTOR_CONTAINER.get(), DeviceCollectorScreen::new);
-        MenuScreens.register(DEVICE_MAGNET_BLOCKER_CONTAINER.get(), DeviceMagnetBlockerScreen::new);
+        // MenuScreens.register(DEVICE_MAGNET_BLOCKER_CONTAINER.get(), DeviceMagnetBlockerScreen::new);
         MenuScreens.register(DEVICE_POTION_DIFFUSER_CONTAINER.get(), DevicePotionDiffuserScreen::new);
         MenuScreens.register(DEVICE_NULLIFIER_CONTAINER.get(), DeviceNullifierScreen::new);
         MenuScreens.register(TINKER_BENCH_CONTAINER.get(), TinkerBenchScreen::new);

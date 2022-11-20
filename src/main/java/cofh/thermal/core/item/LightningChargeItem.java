@@ -44,7 +44,6 @@ public class LightningChargeItem extends ItemCoFH {
         //            return ActionResultType.FAIL;
         //        }
         if (world.canSeeSky(pos)) {
-
             if (world instanceof ServerLevel) {
                 if (player != null) {
                     player.addEffect(new MobEffectInstance(LIGHTNING_RESISTANCE.get(), 20, 0, false, false, false));
