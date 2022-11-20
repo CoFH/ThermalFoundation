@@ -987,6 +987,7 @@
 
   "block.thermal.energy_duct": "能量导管",
   "block.thermal.fluid_duct": "流体导管",
+  "block.thermal.fluid_duct_glass": "流体导管（视窗）",
 
   "block.thermal.energy_distributor": "RF分发接口",
   "block.thermal.fluid_distributor": "流体分发接口",
