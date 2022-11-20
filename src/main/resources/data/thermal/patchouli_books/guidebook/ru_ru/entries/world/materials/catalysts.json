@@ -1,0 +1,16 @@
+{
+  "name": "Катализаторы",
+  "icon": "thermal:rich_slag",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Катализаторы - это необязательные предметы, используемые для повышения выхода определённых рецептов. Механизмы и их катализаторы перечислены на следующей странице с множителями."
+    },
+    {
+      "type": "thermal:catalyst_page"
+    }
+  ]
+}

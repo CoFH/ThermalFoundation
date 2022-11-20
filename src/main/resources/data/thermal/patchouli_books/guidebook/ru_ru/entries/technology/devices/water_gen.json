@@ -1,0 +1,23 @@
+{
+  "name": "Водный накопитель",
+  "icon": "thermal:device_water_gen",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Бесконечный источник воды. Для того, чтобы накопитель производил воду, должно быть не менее двух источников воды, примыкающих к сторонам устройства. Блоки выше или ниже устройства не будут учитываться."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_water_gen",
+      "title": "Водный накопитель"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)"
+    }
+  ]
+} 

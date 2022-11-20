@@ -1,0 +1,24 @@
+{
+  "name": "Алхимический колчан",
+  "icon": "thermal:potion_quiver",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Используется для хранения и наполнения стрел эффектами зелий. Щёлкните ПКМ с колчаном в руке, чтобы перенести стрелы из инвентаря в колчан. Нажмите '$(k:cofh.mode_change_increment)' для включения/выключения автоматического наполнения стрел, использующего 50мВ хранимого $(l:thermal:technology/potion_fluid)жидкого зелья$(/l) на стрелу. Колчан можно заполнить и усовершенствовать на верстаке мастеров."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_quiver",
+      "title": "Алхимический колчан",
+      "text": "Колчан может быть зачарован на $(l:thermal:world/holding)Удержание$(/l) для увеличения ёмкости."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)Алхимический усилитель$(/l)$(li)$(l:thermal:technology/augments/potion_duration)Алхимический расширитель$(/l)"
+    }
+  ]
+}

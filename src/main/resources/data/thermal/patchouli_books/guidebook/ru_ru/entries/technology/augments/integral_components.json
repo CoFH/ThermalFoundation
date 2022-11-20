@@ -1,0 +1,27 @@
+{
+  "name": "Интегральные компоненты",
+  "icon": "thermal:upgrade_augment_3",
+  "category": "thermal:augments",
+  "sortnum": -1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Интегральные компоненты улучшают общую статистику механизмов, устройств, генераторов и инструментов; они масштабируют буфер RF и передачу, буфер жидкости и передачу, а также скорость работы и генерации. Этот общий масштабный коэффициент суммируется с другими модификаторами улучшений, даже если они подчеркнуты. Интегральные компоненты не складываются."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Например $(l:thermal:technology/machines/furnace)редстоуновая печь$(/l) с резонирующими и укреплёнными интегральными компонентами и $(l:thermal:technology/augments/rf_coil_storage)стабилизированной RF катушкой$(/l) будет иметь 24-кратный энергобуфер, 8-кратную передачу энергии, и 4-кратное потребление RF/т.$(br2)Усиленные, укреплённые и резонирующие интегральные компоненты имеют масштабные коэффициенты 2x, 3x и 4x соответственно."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/upgrade_augment_1",
+      "B.recipe": "thermal:augments/upgrade_augment_2"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/upgrade_augment_3"
+    }
+
+  ]
+}

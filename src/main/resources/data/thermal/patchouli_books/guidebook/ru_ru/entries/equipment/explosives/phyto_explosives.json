@@ -1,0 +1,25 @@
+{
+  "name": "Фитовзрывчатка",
+  "icon": "thermal:phyto_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:explosives",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Фитовзрывчатка мгновенно накладывает эффект костной муки на все культуры и траву в области взрыва. Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phyto_tnt",
+      "B.recipe": "thermal:phyto_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_cultivation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phyto_tnt_minecart",
+      "title": "Вагонетка с ФНТ"
+    }
+  ]
+}

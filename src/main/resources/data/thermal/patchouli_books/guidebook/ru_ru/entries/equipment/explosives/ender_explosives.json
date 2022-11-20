@@ -1,0 +1,24 @@
+{
+  "name": "Деструктивная взрывчатка",
+  "icon": "thermal:ender_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Создаёт разлом Края на 10 секунд, который телепортирует большинство мобов и игроков в случайное место на расстояние до 128 блоков. Первоначальный взрыв наносит урон и останавливает телепортацию эндерменов и эндермитов на 15 секунд. Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно. Как и эндермены, эта взрывчатка теряет свою эффективность под водой!"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ender_tnt",
+      "B.recipe": "thermal:ender_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ender_tnt_minecart",
+      "title": "Вагонетка с деструктивным динамитом"
+    }
+  ]
+}

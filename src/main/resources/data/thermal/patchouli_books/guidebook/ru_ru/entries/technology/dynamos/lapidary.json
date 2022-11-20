@@ -1,0 +1,24 @@
+{
+  "name": "Липидарный генератор",
+  "icon": "thermal:dynamo_lapidary",
+  "category": "thermal:dynamos",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Липидарный генератор использует кристаллы и драгоценные камни для производства RF-энергии."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:dynamo_lapidary",
+      "title": "Липидарный генератор",
+      "text": "$(o)Может быть, это портал в страну помешанных на драгоценных камнях лунных людей.$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Вспомогательная реакционная камера$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Многоцикловые форсунки$(/l)"
+    }
+  ]
+}

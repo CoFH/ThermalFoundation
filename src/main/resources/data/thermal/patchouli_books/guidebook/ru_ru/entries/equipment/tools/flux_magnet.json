@@ -1,0 +1,24 @@
+{
+  "name": "Потоковый магнит",
+  "icon": "thermal:flux_magnet",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Потоковый магнит — это инструмент, использующий RF-энергию для притягивания близлежащих предметов в инвентарь игрока. Щелчок ПКМ магнитом притягивает близлежащие предметы. Нажмите '$(k:cofh.mode_change_increment)' для включения/отключения автоматического притягивания всех предметов. Магнит можно зарядить и усовершенствовать на верстаке мастеров."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:flux_magnet",
+      "title": "Потоковый магнит",
+      "text": "Может быть зачарован на $(l:thermal:world/holding)Удержание$(/l) для увеличения ёмкости энерго-буфера."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/item_filter)Предметный фильтр$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Расширенная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Стабилизированная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)Многопоточная RF катушка$(/l)$(li)$(l:thermal:technology/augments/area_radius)Радиальное улучшение$(/l)"
+    }
+  ]
+}

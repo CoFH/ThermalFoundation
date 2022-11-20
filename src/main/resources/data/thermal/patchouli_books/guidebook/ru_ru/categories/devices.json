@@ -1,0 +1,8 @@
+{
+  "name": "Устройства",
+  "description": "В этом разделе подробно описываются функции каждого устройства. Устройства не требуют энергии, если это не указано явно.",
+  "icon": "thermal:device_tree_extractor",
+  "parent": "thermal:technology",
+  "flag": "|mod:thermal_expansion,mod:thermal_cultivation,mod:thermal_dynamics,mod:thermal_innovation",
+  "sortnum": 2
+}

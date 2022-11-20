@@ -1,0 +1,74 @@
+{
+  "name": "Продукты",
+  "icon": "thermal:pbj_sandwich",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:carrot_cake",
+      "text": "Пирог, тщательно приготовленный из моркови, содержащий большое количество каротина. Накладывает ночное видение во время поедания."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:chocolate_cake",
+      "text": "Деликатесный, восхитительный десерт, заслуживающий благопристойного отношения. Более сытный, чем обычный пирог."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_cake",
+      "text": "Декоративное наслаждение! Позволяет ощутить действие зелья, использованного для его приготовления."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:spice_cake",
+      "text": "Насыщающая, восхитительная сладость, синтезированная из сади-корня. Снимает негативные эффекты при употреблении в пищу."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:stuffed_pumpkin",
+      "text": "Пухлая тыква, наполненная большим количеством продуктов. Невероятно сытная и её просто очень много."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:cheese_wheel",
+      "text": "Свернувшиеся сливки, созданные путем свёртывания казеина с химозином. Кто не любит сыр? Может быть разделён на кусочки."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:green_bean_pie",
+      "text": "Огромное количество разнообразных овощей. Классическое блюдо в форме пирога."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:pbj_sandwich_2",
+      "text": "Глютен сгруппирован по кусочкам липкой вкуснятины. Если и есть какие-то ароматы, которые лучше сочетаются, то они еще не обнаружены."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:stuffed_pepper",
+      "text": "Перец, посыпанный пармезаном, в сочетании с первоклассным мясом. Невероятно сытно и вкусно!"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:sushi_maki_8",
+      "text": "Соленые морепродукты, окруженные морскими водорослями и короткозернистым рисом, часто подаются с соевым соусом. Питательный и быстрый в употреблении. Не говори это Direwolf20."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:spring_salad",
+      "text": "Синтезированный с трофеями весеннего сезона, он обязательно добавит пружины в ваш шаг. Увеличивает высоту прыжка при употреблении."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:hearty_stew",
+      "text": "Укрепляющий организм бульон, сваренный из луковичных продуктов. Увеличивает максимальное количество здоровья при употреблении."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:xp_stew",
+      "text": "Бодрящий эликсир из баклажанов, шипучий с непомерными улучшениями опыта. Даёт опыт при употреблении."
+    }
+  ]
+}

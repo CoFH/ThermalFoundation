@@ -1,0 +1,7 @@
+{
+  "name": "Материалы",
+  "description": "Ресурсы, которые являются неотъемлемой частью Thermal Series.",
+  "icon": "thermal:invar_ingot",
+  "parent": "thermal:world",
+  "sortnum": 1
+}

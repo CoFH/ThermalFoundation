@@ -1,0 +1,15 @@
+{
+  "name": "Drullkus",
+  "icon": "minecraft:orange_dye",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Drullkus",
+      "item": "minecraft:player_head{SkullOwner:'Drullkus'}",
+      "text": "Столь необходимая поддержка Patchouli с точки зрения того, как всё работает. Помогает с текстурами Theraml-серии и многими другими модами. Любит говорить, насколько плоха его собственная работа."
+    }
+  ]
+}

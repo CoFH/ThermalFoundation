@@ -1,0 +1,28 @@
+{
+  "name": "Призмариновые рельсы",
+  "icon": "thermal:prismarine_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Призмариновые рельсы работают точно так же, как их стандартные аналоги, за исключением того, что они водонепроницаемы и могут быть помещены под воду. Однако при погружении в воду существо на обычной вагонетке будет спешено. Это можно предотвратить используя $(l:thermal:storage_and_transport/locomotion/underwater_minecart)подводные вагонетки$(/l). Призмариновые рельсы также излучают свет 8 уровня."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_rail",
+      "B.recipe": "thermal:prismarine_crossover_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_powered_rail",
+      "B.recipe": "thermal:prismarine_activator_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_detector_rail"
+    }
+  ]
+}

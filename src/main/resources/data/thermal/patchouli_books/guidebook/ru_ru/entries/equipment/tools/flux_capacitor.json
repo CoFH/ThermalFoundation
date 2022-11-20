@@ -1,0 +1,24 @@
+{
+  "name": "Потоковый конденсатор",
+  "icon": "thermal:flux_capacitor",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Хранит RF-энергию и заряжает предметы. Имеет 3 режима, позволяющих заряжать предметы в панели быстрого доступа и броню, только инвентарь, или сразу все предметы. Нажмите '$(k:cofh.mode_change_increment)' для смены режима, держа конденсатор в руке. Крадясь кликните ПКМ, держа конденсатор в руке, чтобы включить/выключить зарядку предметов."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:flux_capacitor",
+      "title": "Потоковый конденсатор",
+      "text": "Конденсатор можно использовать для снабжения энергией механизмов. Его можно зарядить и усовершенствовать на верстаке мастеров. Может быть зачарован на $(l:thermal:world/holding)Удержание$(/l) для увеличения ёмкости."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Расширенная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Стабилизированная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)Многопоточная RF катушка$(/l)"
+    }
+  ]
+}

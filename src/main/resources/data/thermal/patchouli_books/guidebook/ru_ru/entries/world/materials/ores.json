@@ -1,0 +1,75 @@
+{
+  "name": "Руды",
+  "icon": "thermal:lead_ore",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Отказ от ответственности",
+      "text": "Генерация руды настраивается, поэтому количество и Y-высота здесь не объясняются, так как они могут значительно отличаться в разных мирах."
+    },
+    {
+      "type": "thermal:2-2_item_page",
+
+      "A.title": "Селитра",
+      "A.item1": "thermal:niter_ore",
+      "A.item2": "thermal:niter",
+      "A.text": "Мягкий минерал, используемый в качестве источника азота и калия в удобрениях.",
+
+      "B.title": "Сера",
+      "B.item1": "thermal:sulfur_ore",
+      "B.item2": "thermal:sulfur",
+      "B.text": "Реактивный минерал, используемый для вулканизации резины и изготовления пороха."
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "thermal:2-2_item_page",
+
+      "A.title": "Киноварь",
+      "A.item1": "thermal:cinnabar_ore",
+      "A.item2": "thermal:cinnabar",
+      "A.text": "Алый минерал, используемый для повышения эффективности переработки руды.",
+
+      "B.title": "Битумный песок",
+      "B.item1": "thermal:oil_sand",
+      "B.item2": "thermal:bitumen",
+      "B.text": "Липкая, чёрная, высоковязкая жидкость, который пропитан песок. Появляется в пустынях и пустошах."
+    },
+    {
+      "type": "thermal:2-2_item_page",
+
+      "A.title": "Олово",
+      "A.item1": "thermal:tin_ore",
+      "A.item2": "thermal:tin_ingot",
+      "A.text": "Мягкий, лёгкий металл, который ценится за свою универсальность.",
+
+      "B.title": "Никель",
+      "B.item1": "thermal:nickel_ore",
+      "B.item2": "thermal:nickel_ingot",
+      "B.text": "Твёрдый металл, используемый в сплавах, менее подверженный воздействию тепла."
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "Свинец",
+      "A.item1": "thermal:lead_ore",
+      "A.item2": "thermal:lead_ingot",
+      "A.text": "Мягкий, плотный металл с экранирующими свойствами.",
+
+      "B.title": "Серебро",
+      "B.item1": "thermal:silver_ore",
+      "B.item2": "thermal:silver_ingot",
+      "B.text": "Токопроводящий металл, ценимый за свое сияние."
+    },
+    {
+      "flag": "mod:thermal_cultivation",
+      "type": "2_item_page",
+
+      "A.title": "Апатит",
+      "A.item1": "thermal:apatite_ore",
+      "A.item2": "thermal:apatite",
+      "A.text": "Обычный минерал, часто используемый в качестве красителя или источника фосфора в удобрениях."
+    }
+  ]
+}
