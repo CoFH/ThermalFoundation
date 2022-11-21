@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "tag": "forge:ingots/signalum"
+    },
+    "i": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "pattern": [
+    " i ",
+    "iSi",
+    "iii"
+  ],
+  "result": {
+    "item": "thermal:lock"
+  }
+}

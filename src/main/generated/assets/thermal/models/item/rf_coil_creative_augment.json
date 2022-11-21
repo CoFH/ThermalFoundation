@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermal:item/augments/rf_coil_creative_augment"
+  }
+}

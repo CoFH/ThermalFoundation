@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "basic_explosives"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "GPG",
+    "PIP",
+    "GPG"
+  ],
+  "result": {
+    "count": 4,
+    "item": "thermal:redstone_grenade"
+  }
+}

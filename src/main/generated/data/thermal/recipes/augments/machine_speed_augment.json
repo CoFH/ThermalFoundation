@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "machine_augments"
+    }
+  ],
+  "key": {
+    "E": {
+      "tag": "forge:plates/electrum"
+    },
+    "L": {
+      "tag": "forge:gears/lead"
+    },
+    "X": {
+      "item": "thermal:rf_coil"
+    }
+  },
+  "pattern": [
+    " L ",
+    "EXE",
+    " L "
+  ],
+  "result": {
+    "item": "thermal:machine_speed_augment"
+  }
+}

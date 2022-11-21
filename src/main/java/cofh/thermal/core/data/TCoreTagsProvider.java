@@ -174,7 +174,7 @@ public class TCoreTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_FLUID_CELL));
             // endregion
 
-            // addTFndTags();
+            addTFndTags();
         }
 
         @SuppressWarnings ("unchecked")
@@ -575,7 +575,272 @@ public class TCoreTagsProvider {
             tag(ItemTagsCoFH.LOCKS).add(ITEMS.get(ID_LOCK));
             tag(ItemTagsCoFH.SECURABLE).add(ITEMS.get(ID_SATCHEL));
 
-            // addTFndTags();
+            addTFndTags();
+        }
+
+        @SuppressWarnings ("unchecked")
+        protected void addTFndTags() {
+
+            copy(BlockTagsCoFH.ORES_APATITE, ItemTagsCoFH.ORES_APATITE);
+            copy(BlockTagsCoFH.ORES_CINNABAR, ItemTagsCoFH.ORES_CINNABAR);
+            copy(BlockTagsCoFH.ORES_NITER, ItemTagsCoFH.ORES_NITER);
+            copy(BlockTagsCoFH.ORES_SULFUR, ItemTagsCoFH.ORES_SULFUR);
+
+            copy(BlockTagsCoFH.ORES_LEAD, ItemTagsCoFH.ORES_LEAD);
+            copy(BlockTagsCoFH.ORES_NICKEL, ItemTagsCoFH.ORES_NICKEL);
+            copy(BlockTagsCoFH.ORES_SILVER, ItemTagsCoFH.ORES_SILVER);
+            copy(BlockTagsCoFH.ORES_TIN, ItemTagsCoFH.ORES_TIN);
+
+            copy(BlockTagsCoFH.ORES_RUBY, ItemTagsCoFH.ORES_RUBY);
+            copy(BlockTagsCoFH.ORES_SAPPHIRE, ItemTagsCoFH.ORES_SAPPHIRE);
+
+            tag(Tags.Items.ORES).addTags(
+                    ItemTagsCoFH.ORES_APATITE,
+                    ItemTagsCoFH.ORES_CINNABAR,
+                    ItemTagsCoFH.ORES_NITER,
+                    ItemTagsCoFH.ORES_SULFUR,
+
+                    ItemTagsCoFH.ORES_LEAD,
+                    ItemTagsCoFH.ORES_NICKEL,
+                    ItemTagsCoFH.ORES_SILVER,
+                    ItemTagsCoFH.ORES_TIN,
+
+                    ItemTagsCoFH.ORES_RUBY,
+                    ItemTagsCoFH.ORES_SAPPHIRE
+            );
+
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_APATITE, ItemTagsCoFH.STORAGE_BLOCKS_APATITE);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_CINNABAR, ItemTagsCoFH.STORAGE_BLOCKS_CINNABAR);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_NITER, ItemTagsCoFH.STORAGE_BLOCKS_NITER);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_SULFUR, ItemTagsCoFH.STORAGE_BLOCKS_SULFUR);
+
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD, ItemTagsCoFH.STORAGE_BLOCKS_RAW_LEAD);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL, ItemTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER, ItemTagsCoFH.STORAGE_BLOCKS_RAW_SILVER);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_TIN, ItemTagsCoFH.STORAGE_BLOCKS_RAW_TIN);
+
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_LEAD, ItemTagsCoFH.STORAGE_BLOCKS_LEAD);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_NICKEL, ItemTagsCoFH.STORAGE_BLOCKS_NICKEL);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_SILVER, ItemTagsCoFH.STORAGE_BLOCKS_SILVER);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_TIN, ItemTagsCoFH.STORAGE_BLOCKS_TIN);
+
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_BRONZE, ItemTagsCoFH.STORAGE_BLOCKS_BRONZE);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_CONSTANTAN, ItemTagsCoFH.STORAGE_BLOCKS_CONSTANTAN);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_ELECTRUM, ItemTagsCoFH.STORAGE_BLOCKS_ELECTRUM);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_INVAR, ItemTagsCoFH.STORAGE_BLOCKS_INVAR);
+
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_RUBY, ItemTagsCoFH.STORAGE_BLOCKS_RUBY);
+            copy(BlockTagsCoFH.STORAGE_BLOCKS_SAPPHIRE, ItemTagsCoFH.STORAGE_BLOCKS_SAPPHIRE);
+
+            tag(Tags.Items.STORAGE_BLOCKS).addTags(
+                    ItemTagsCoFH.STORAGE_BLOCKS_APATITE,
+                    ItemTagsCoFH.STORAGE_BLOCKS_CINNABAR,
+                    ItemTagsCoFH.STORAGE_BLOCKS_NITER,
+                    ItemTagsCoFH.STORAGE_BLOCKS_SULFUR,
+
+                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_LEAD,
+                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL,
+                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_SILVER,
+                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_TIN,
+
+                    ItemTagsCoFH.STORAGE_BLOCKS_LEAD,
+                    ItemTagsCoFH.STORAGE_BLOCKS_NICKEL,
+                    ItemTagsCoFH.STORAGE_BLOCKS_SILVER,
+                    ItemTagsCoFH.STORAGE_BLOCKS_TIN,
+
+                    ItemTagsCoFH.STORAGE_BLOCKS_BRONZE,
+                    ItemTagsCoFH.STORAGE_BLOCKS_CONSTANTAN,
+                    ItemTagsCoFH.STORAGE_BLOCKS_ELECTRUM,
+                    ItemTagsCoFH.STORAGE_BLOCKS_INVAR,
+
+                    ItemTagsCoFH.STORAGE_BLOCKS_RUBY,
+                    ItemTagsCoFH.STORAGE_BLOCKS_SAPPHIRE
+            );
+
+            tag(ItemTagsCoFH.COINS_LEAD).add(ITEMS.get("lead_coin"));
+            tag(ItemTagsCoFH.COINS_NICKEL).add(ITEMS.get("nickel_coin"));
+            tag(ItemTagsCoFH.COINS_SILVER).add(ITEMS.get("silver_coin"));
+            tag(ItemTagsCoFH.COINS_TIN).add(ITEMS.get("tin_coin"));
+
+            tag(ItemTagsCoFH.COINS_BRONZE).add(ITEMS.get("bronze_coin"));
+            tag(ItemTagsCoFH.COINS_CONSTANTAN).add(ITEMS.get("constantan_coin"));
+            tag(ItemTagsCoFH.COINS_ELECTRUM).add(ITEMS.get("electrum_coin"));
+            tag(ItemTagsCoFH.COINS_INVAR).add(ITEMS.get("invar_coin"));
+
+            tag(ItemTagsCoFH.COINS).addTags(
+                    ItemTagsCoFH.COINS_LEAD,
+                    ItemTagsCoFH.COINS_NICKEL,
+                    ItemTagsCoFH.COINS_SILVER,
+                    ItemTagsCoFH.COINS_TIN,
+
+                    ItemTagsCoFH.COINS_BRONZE,
+                    ItemTagsCoFH.COINS_CONSTANTAN,
+                    ItemTagsCoFH.COINS_ELECTRUM,
+                    ItemTagsCoFH.COINS_INVAR
+            );
+
+
+            tag(ItemTagsCoFH.DUSTS_APATITE).add(ITEMS.get("apatite_dust"));
+            tag(ItemTagsCoFH.DUSTS_CINNABAR).add(ITEMS.get("cinnabar_dust"));
+            tag(ItemTagsCoFH.DUSTS_NITER).add(ITEMS.get("niter_dust"));
+            tag(ItemTagsCoFH.DUSTS_SULFUR).add(ITEMS.get("sulfur_dust"));
+
+            tag(ItemTagsCoFH.DUSTS_LEAD).add(ITEMS.get("lead_dust"));
+            tag(ItemTagsCoFH.DUSTS_NICKEL).add(ITEMS.get("nickel_dust"));
+            tag(ItemTagsCoFH.DUSTS_SILVER).add(ITEMS.get("silver_dust"));
+            tag(ItemTagsCoFH.DUSTS_TIN).add(ITEMS.get("tin_dust"));
+
+            tag(ItemTagsCoFH.DUSTS_BRONZE).add(ITEMS.get("bronze_dust"));
+            tag(ItemTagsCoFH.DUSTS_CONSTANTAN).add(ITEMS.get("constantan_dust"));
+            tag(ItemTagsCoFH.DUSTS_ELECTRUM).add(ITEMS.get("electrum_dust"));
+            tag(ItemTagsCoFH.DUSTS_INVAR).add(ITEMS.get("invar_dust"));
+
+            tag(ItemTagsCoFH.DUSTS_RUBY).add(ITEMS.get("ruby_dust"));
+            tag(ItemTagsCoFH.DUSTS_SAPPHIRE).add(ITEMS.get("sapphire_dust"));
+
+            tag(DUSTS).addTags(
+                    ItemTagsCoFH.DUSTS_APATITE,
+                    ItemTagsCoFH.DUSTS_CINNABAR,
+                    ItemTagsCoFH.DUSTS_NITER,
+                    ItemTagsCoFH.DUSTS_SULFUR,
+
+                    ItemTagsCoFH.DUSTS_LEAD,
+                    ItemTagsCoFH.DUSTS_NICKEL,
+                    ItemTagsCoFH.DUSTS_SILVER,
+                    ItemTagsCoFH.DUSTS_TIN,
+
+                    ItemTagsCoFH.DUSTS_BRONZE,
+                    ItemTagsCoFH.DUSTS_CONSTANTAN,
+                    ItemTagsCoFH.DUSTS_ELECTRUM,
+                    ItemTagsCoFH.DUSTS_INVAR,
+
+                    ItemTagsCoFH.DUSTS_RUBY,
+                    ItemTagsCoFH.DUSTS_SAPPHIRE
+            );
+
+            tag(ItemTagsCoFH.GEARS_LEAD).add(ITEMS.get("lead_gear"));
+            tag(ItemTagsCoFH.GEARS_NICKEL).add(ITEMS.get("nickel_gear"));
+            tag(ItemTagsCoFH.GEARS_SILVER).add(ITEMS.get("silver_gear"));
+            tag(ItemTagsCoFH.GEARS_TIN).add(ITEMS.get("tin_gear"));
+
+            tag(ItemTagsCoFH.GEARS_BRONZE).add(ITEMS.get("bronze_gear"));
+            tag(ItemTagsCoFH.GEARS_CONSTANTAN).add(ITEMS.get("constantan_gear"));
+            tag(ItemTagsCoFH.GEARS_ELECTRUM).add(ITEMS.get("electrum_gear"));
+            tag(ItemTagsCoFH.GEARS_INVAR).add(ITEMS.get("invar_gear"));
+
+            tag(ItemTagsCoFH.GEARS_RUBY).add(ITEMS.get("ruby_gear"));
+            tag(ItemTagsCoFH.GEARS_SAPPHIRE).add(ITEMS.get("sapphire_gear"));
+
+            tag(ItemTagsCoFH.GEARS).addTags(
+                    ItemTagsCoFH.GEARS_LEAD,
+                    ItemTagsCoFH.GEARS_NICKEL,
+                    ItemTagsCoFH.GEARS_SILVER,
+                    ItemTagsCoFH.GEARS_TIN,
+
+                    ItemTagsCoFH.GEARS_BRONZE,
+                    ItemTagsCoFH.GEARS_CONSTANTAN,
+                    ItemTagsCoFH.GEARS_ELECTRUM,
+                    ItemTagsCoFH.GEARS_INVAR,
+
+                    ItemTagsCoFH.GEARS_RUBY,
+                    ItemTagsCoFH.GEARS_SAPPHIRE
+            );
+
+            tag(ItemTagsCoFH.GEMS_APATITE).add(ITEMS.get("apatite"));
+            tag(ItemTagsCoFH.GEMS_CINNABAR).add(ITEMS.get("cinnabar"));
+            tag(ItemTagsCoFH.GEMS_NITER).add(ITEMS.get("niter"));
+            tag(ItemTagsCoFH.GEMS_SULFUR).add(ITEMS.get("sulfur"));
+
+            tag(ItemTagsCoFH.GEMS_RUBY).add(ITEMS.get("ruby"));
+            tag(ItemTagsCoFH.GEMS_SAPPHIRE).add(ITEMS.get("sapphire"));
+
+            tag(GEMS).addTags(
+                    ItemTagsCoFH.GEMS_APATITE,
+                    ItemTagsCoFH.GEMS_CINNABAR,
+                    ItemTagsCoFH.GEMS_NITER,
+                    ItemTagsCoFH.GEMS_SULFUR,
+
+                    ItemTagsCoFH.GEMS_RUBY,
+                    ItemTagsCoFH.GEMS_SAPPHIRE
+            );
+
+            tag(ItemTagsCoFH.INGOTS_LEAD).add(ITEMS.get("lead_ingot"));
+            tag(ItemTagsCoFH.INGOTS_NICKEL).add(ITEMS.get("nickel_ingot"));
+            tag(ItemTagsCoFH.INGOTS_SILVER).add(ITEMS.get("silver_ingot"));
+            tag(ItemTagsCoFH.INGOTS_TIN).add(ITEMS.get("tin_ingot"));
+
+            tag(ItemTagsCoFH.INGOTS_BRONZE).add(ITEMS.get("bronze_ingot"));
+            tag(ItemTagsCoFH.INGOTS_CONSTANTAN).add(ITEMS.get("constantan_ingot"));
+            tag(ItemTagsCoFH.INGOTS_ELECTRUM).add(ITEMS.get("electrum_ingot"));
+            tag(ItemTagsCoFH.INGOTS_INVAR).add(ITEMS.get("invar_ingot"));
+
+            tag(INGOTS).addTags(
+                    ItemTagsCoFH.INGOTS_LEAD,
+                    ItemTagsCoFH.INGOTS_NICKEL,
+                    ItemTagsCoFH.INGOTS_SILVER,
+                    ItemTagsCoFH.INGOTS_TIN,
+
+                    ItemTagsCoFH.INGOTS_BRONZE,
+                    ItemTagsCoFH.INGOTS_CONSTANTAN,
+                    ItemTagsCoFH.INGOTS_ELECTRUM,
+                    ItemTagsCoFH.INGOTS_INVAR
+            );
+
+            tag(ItemTagsCoFH.NUGGETS_LEAD).add(ITEMS.get("lead_nugget"));
+            tag(ItemTagsCoFH.NUGGETS_NICKEL).add(ITEMS.get("nickel_nugget"));
+            tag(ItemTagsCoFH.NUGGETS_SILVER).add(ITEMS.get("silver_nugget"));
+            tag(ItemTagsCoFH.NUGGETS_TIN).add(ITEMS.get("tin_nugget"));
+
+            tag(ItemTagsCoFH.NUGGETS_BRONZE).add(ITEMS.get("bronze_nugget"));
+            tag(ItemTagsCoFH.NUGGETS_CONSTANTAN).add(ITEMS.get("constantan_nugget"));
+            tag(ItemTagsCoFH.NUGGETS_ELECTRUM).add(ITEMS.get("electrum_nugget"));
+            tag(ItemTagsCoFH.NUGGETS_INVAR).add(ITEMS.get("invar_nugget"));
+
+            tag(NUGGETS).addTags(
+                    ItemTagsCoFH.NUGGETS_LEAD,
+                    ItemTagsCoFH.NUGGETS_NICKEL,
+                    ItemTagsCoFH.NUGGETS_SILVER,
+                    ItemTagsCoFH.NUGGETS_TIN,
+
+                    ItemTagsCoFH.NUGGETS_BRONZE,
+                    ItemTagsCoFH.NUGGETS_CONSTANTAN,
+                    ItemTagsCoFH.NUGGETS_ELECTRUM,
+                    ItemTagsCoFH.NUGGETS_INVAR
+            );
+
+            tag(ItemTagsCoFH.PLATES_LEAD).add(ITEMS.get("lead_plate"));
+            tag(ItemTagsCoFH.PLATES_NICKEL).add(ITEMS.get("nickel_plate"));
+            tag(ItemTagsCoFH.PLATES_SILVER).add(ITEMS.get("silver_plate"));
+            tag(ItemTagsCoFH.PLATES_TIN).add(ITEMS.get("tin_plate"));
+
+            tag(ItemTagsCoFH.PLATES_BRONZE).add(ITEMS.get("bronze_plate"));
+            tag(ItemTagsCoFH.PLATES_CONSTANTAN).add(ITEMS.get("constantan_plate"));
+            tag(ItemTagsCoFH.PLATES_ELECTRUM).add(ITEMS.get("electrum_plate"));
+            tag(ItemTagsCoFH.PLATES_INVAR).add(ITEMS.get("invar_plate"));
+
+            tag(ItemTagsCoFH.PLATES).addTags(
+                    ItemTagsCoFH.PLATES_LEAD,
+                    ItemTagsCoFH.PLATES_NICKEL,
+                    ItemTagsCoFH.PLATES_SILVER,
+                    ItemTagsCoFH.PLATES_TIN,
+
+                    ItemTagsCoFH.PLATES_BRONZE,
+                    ItemTagsCoFH.PLATES_CONSTANTAN,
+                    ItemTagsCoFH.PLATES_ELECTRUM,
+                    ItemTagsCoFH.PLATES_INVAR
+            );
+
+            tag(ItemTagsCoFH.RAW_MATERIALS_LEAD).add(ITEMS.get("raw_lead"));
+            tag(ItemTagsCoFH.RAW_MATERIALS_NICKEL).add(ITEMS.get("raw_nickel"));
+            tag(ItemTagsCoFH.RAW_MATERIALS_SILVER).add(ITEMS.get("raw_silver"));
+            tag(ItemTagsCoFH.RAW_MATERIALS_TIN).add(ITEMS.get("raw_tin"));
+
+            tag(RAW_MATERIALS).addTags(
+                    ItemTagsCoFH.RAW_MATERIALS_LEAD,
+                    ItemTagsCoFH.RAW_MATERIALS_NICKEL,
+                    ItemTagsCoFH.RAW_MATERIALS_SILVER,
+                    ItemTagsCoFH.RAW_MATERIALS_TIN
+            );
         }
 
     }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "beekeeper_armor"
+    }
+  ],
+  "key": {
+    "X": {
+      "item": "thermal:beekeeper_fabric"
+    }
+  },
+  "pattern": [
+    "X X",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "thermal:beekeeper_chestplate"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "diving_armor"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:glass_panes"
+    },
+    "I": {
+      "tag": "forge:ingots/gold"
+    },
+    "X": {
+      "item": "thermal:diving_fabric"
+    }
+  },
+  "pattern": [
+    "XIX",
+    "IGI"
+  ],
+  "result": {
+    "item": "thermal:diving_helmet"
+  }
+}

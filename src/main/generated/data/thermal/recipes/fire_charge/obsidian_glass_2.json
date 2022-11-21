@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:obsidian"
+    },
+    [
+      {
+        "tag": "forge:dusts/quartz"
+      },
+      {
+        "tag": "forge:gems/quartz"
+      }
+    ],
+    {
+      "tag": "forge:sand"
+    },
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "thermal:obsidian_glass"
+  }
+}

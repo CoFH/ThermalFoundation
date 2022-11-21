@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gears/iron"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    "I I",
+    " G ",
+    " I "
+  ],
+  "result": {
+    "item": "thermal:wrench"
+  }
+}

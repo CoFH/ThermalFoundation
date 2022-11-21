@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/tin"
+    },
+    {
+      "tag": "forge:dusts/tin"
+    },
+    {
+      "tag": "forge:dusts/tin"
+    },
+    {
+      "tag": "forge:dusts/silver"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "thermal:lumium_dust"
+  }
+}

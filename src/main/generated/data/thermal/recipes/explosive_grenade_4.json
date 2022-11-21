@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "tag": "forge:sand"
+    }
+  },
+  "pattern": [
+    "GPG",
+    "PIP",
+    "GPG"
+  ],
+  "result": {
+    "count": 4,
+    "item": "thermal:explosive_grenade"
+  }
+}

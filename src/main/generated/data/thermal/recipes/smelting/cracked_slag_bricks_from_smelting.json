@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "thermal:slag_bricks"
+  },
+  "result": "thermal:cracked_slag_bricks"
+}

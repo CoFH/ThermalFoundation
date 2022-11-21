@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "charge_bench"
+    }
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:storage_blocks/redstone"
+    },
+    "I": {
+      "tag": "forge:ingots/electrum"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "tag": "forge:ingots/lead"
+    }
+  },
+  "pattern": [
+    "III",
+    "PCP",
+    "XPX"
+  ],
+  "result": {
+    "item": "thermal:charge_bench"
+  }
+}

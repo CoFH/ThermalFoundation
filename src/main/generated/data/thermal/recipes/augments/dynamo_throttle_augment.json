@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "dynamo_augments"
+    }
+  ],
+  "key": {
+    "E": {
+      "tag": "forge:ingots/electrum"
+    },
+    "l": {
+      "tag": "forge:nuggets/lead"
+    }
+  },
+  "pattern": [
+    " l ",
+    "lEl",
+    " l "
+  ],
+  "result": {
+    "item": "thermal:dynamo_throttle_augment"
+  }
+}

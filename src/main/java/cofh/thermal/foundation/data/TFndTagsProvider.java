@@ -29,7 +29,7 @@ public class TFndTagsProvider {
         @Override
         public String getName() {
 
-            return "Thermal Core: Block Tags";
+            return "Thermal Foundation: Block Tags";
         }
 
         @SuppressWarnings ("unchecked")

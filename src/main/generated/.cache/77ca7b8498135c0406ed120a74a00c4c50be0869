@@ -1,0 +1,4 @@
+// 1.19.2	2022-11-20T22:42:39.2622391	Thermal Core: Entity Type Tags
+232f573afed1c61ca51f2dfb347dbb013da158ad data/minecraft/tags/entity_types/freeze_immune_entity_types.json
+5f09187230c8871ca8c73f54edad94ad32d1de68 data/minecraft/tags/entity_types/impact_projectiles.json
+232f573afed1c61ca51f2dfb347dbb013da158ad data/minecraft/tags/entity_types/powder_snow_walkable_mobs.json

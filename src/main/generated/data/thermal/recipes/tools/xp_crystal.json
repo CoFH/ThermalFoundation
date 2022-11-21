@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:experience_bottle"
+    },
+    "E": {
+      "tag": "forge:gems/emerald"
+    },
+    "L": {
+      "tag": "forge:gems/lapis"
+    }
+  },
+  "pattern": [
+    " L ",
+    "EBE",
+    " L "
+  ],
+  "result": {
+    "item": "thermal:xp_crystal"
+  }
+}

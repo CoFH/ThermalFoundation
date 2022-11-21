@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "thermal:block/lumium_block"
+    }
+  }
+}

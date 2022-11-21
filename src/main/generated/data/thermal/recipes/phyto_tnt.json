@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "phytogro_explosives"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "P": {
+      "item": "thermal:phytogro"
+    }
+  },
+  "pattern": [
+    "GPG",
+    "PGP",
+    "GPG"
+  ],
+  "result": {
+    "item": "thermal:phyto_tnt"
+  }
+}

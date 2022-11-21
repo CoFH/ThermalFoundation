@@ -1,0 +1,15 @@
+{
+  "values": [
+    "thermal:bamboo_block",
+    "thermal:apple_block",
+    "thermal:carrot_block",
+    "thermal:potato_block",
+    "thermal:beetroot_block",
+    "thermal:device_hive_extractor",
+    "thermal:device_tree_extractor",
+    "thermal:device_fisher",
+    "thermal:device_composter",
+    "thermal:device_soil_infuser",
+    "thermal:tinker_bench"
+  ]
+}

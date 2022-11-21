@@ -21,9 +21,9 @@ public class TFndDataGen {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 
-        TFndTagsProvider.Block blockTags = new TFndTagsProvider.Block(gen, exFileHelper);
-        gen.addProvider(event.includeServer(), blockTags);
-        gen.addProvider(event.includeServer(), new TFndTagsProvider.Item(gen, blockTags, exFileHelper));
+        //        TFndTagsProvider.Block blockTags = new TFndTagsProvider.Block(gen, exFileHelper);
+        //        gen.addProvider(event.includeServer(), blockTags);
+        //        gen.addProvider(event.includeServer(), new TFndTagsProvider.Item(gen, blockTags, exFileHelper));
 
         gen.addProvider(event.includeServer(), new TFndLootTableProvider(gen));
         gen.addProvider(event.includeServer(), new TFndRecipeProvider(gen));

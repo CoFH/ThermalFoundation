@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "upgrade_augments"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "forge:ingots/invar"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    },
+    "X": {
+      "tag": "forge:gears/gold"
+    }
+  },
+  "pattern": [
+    "IGI",
+    "RXR",
+    "IGI"
+  ],
+  "result": {
+    "item": "thermal:upgrade_augment_1"
+  }
+}

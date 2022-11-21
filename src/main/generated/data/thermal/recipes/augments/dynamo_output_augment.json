@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "dynamo_augments"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gears/silver"
+    },
+    "S": {
+      "tag": "forge:plates/signalum"
+    },
+    "X": {
+      "tag": "thermal:glass/hardened"
+    }
+  },
+  "pattern": [
+    " G ",
+    "SXS",
+    " G "
+  ],
+  "result": {
+    "item": "thermal:dynamo_output_augment"
+  }
+}

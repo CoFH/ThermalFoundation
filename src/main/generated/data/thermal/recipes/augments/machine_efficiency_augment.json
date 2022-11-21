@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "machine_augments"
+    }
+  ],
+  "key": {
+    "L": {
+      "tag": "forge:plates/lumium"
+    },
+    "N": {
+      "tag": "forge:gears/nickel"
+    },
+    "X": {
+      "item": "thermal:rf_coil"
+    }
+  },
+  "pattern": [
+    " N ",
+    "LXL",
+    " N "
+  ],
+  "result": {
+    "item": "thermal:machine_efficiency_augment"
+  }
+}

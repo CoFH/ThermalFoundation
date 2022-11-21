@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "hazmat_armor"
+    }
+  ],
+  "key": {
+    "H": {
+      "item": "thermal:cured_rubber"
+    },
+    "S": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SHS",
+    " S "
+  ],
+  "result": {
+    "item": "thermal:hazmat_fabric"
+  }
+}

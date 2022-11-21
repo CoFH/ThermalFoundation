@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "thermal:block/rich_slag_block"
+    }
+  }
+}

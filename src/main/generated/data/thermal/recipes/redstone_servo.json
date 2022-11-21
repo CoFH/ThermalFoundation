@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    " R ",
+    " I ",
+    " R "
+  ],
+  "result": {
+    "item": "thermal:redstone_servo"
+  }
+}

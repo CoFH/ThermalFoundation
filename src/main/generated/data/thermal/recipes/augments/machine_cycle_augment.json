@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "machine_augments"
+    }
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:plates/constantan"
+    },
+    "G": {
+      "tag": "forge:gears/signalum"
+    },
+    "S": {
+      "tag": "forge:plates/silver"
+    },
+    "X": {
+      "item": "thermal:redstone_servo"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "CXC",
+    "SGS"
+  ],
+  "result": {
+    "item": "thermal:machine_cycle_augment"
+  }
+}

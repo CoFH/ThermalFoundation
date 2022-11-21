@@ -1,4 +1,4 @@
-// 1.19.2	2022-10-04T15:04:56.8880577	Thermal Core: Block Tags
+// 1.19.2	2022-11-20T22:42:39.2662391	Thermal Core: Block Tags
 1167ec6861a4ed5516542f0e17adc8d466ff5dbe data/forge/tags/blocks/ores.json
 4961c3cd4c49d52832fe0ac6622307ab41522aae data/forge/tags/blocks/ores/apatite.json
 df8a6fb911f0c1d96ee4937be43fc2724c664449 data/forge/tags/blocks/ores/cinnabar.json
@@ -10,14 +10,21 @@ b0e8094b8a9206b44141663cb6b07deab5181c8a data/forge/tags/blocks/ores/ruby.json
 ff8e221333e640dee84a91787e782b4d1a2d19f5 data/forge/tags/blocks/ores/silver.json
 07853df320c09a3f08cedba6e1ab11e2871af272 data/forge/tags/blocks/ores/sulfur.json
 170dfb9eb1166a7fd2518a98b8cf64ed1018ae25 data/forge/tags/blocks/ores/tin.json
-4ce5cebcec94b92e9657dd8e7ab680e2912a3618 data/forge/tags/blocks/storage_blocks.json
+86b247e3b20ce1852599b5f2bc86f76f0f4c1974 data/forge/tags/blocks/storage_blocks.json
 7f6d75eadfcabc29d640ac65b35558cfee5aec9d data/forge/tags/blocks/storage_blocks/apatite.json
+a60b12e83d58cabd467e5270db16f7349b98e375 data/forge/tags/blocks/storage_blocks/bamboo.json
+292995d08e4532d7b714c24afd4279bce59c0fb8 data/forge/tags/blocks/storage_blocks/bitumen.json
 9d65026dade0e964c11c964f2ec99fb27f4df443 data/forge/tags/blocks/storage_blocks/bronze.json
+977ee3e243c334bccd0f220dd459f96c5fe649ab data/forge/tags/blocks/storage_blocks/charcoal.json
 ecfd907a89915f3d0f0dd8efd056fdbbd4240671 data/forge/tags/blocks/storage_blocks/cinnabar.json
+231324d92ea272526bcb92b5cfd95e088e851e45 data/forge/tags/blocks/storage_blocks/coal_coke.json
 781b4bf3ac7e714aea29b6a498f3eadb66d4d6c9 data/forge/tags/blocks/storage_blocks/constantan.json
 03fe0d45c92d95bb1840210e799b66a247978486 data/forge/tags/blocks/storage_blocks/electrum.json
+2ac199f62e89e61c49550f4a6264fd7c94935e01 data/forge/tags/blocks/storage_blocks/enderium.json
+fe300874a692e80b1c0899a30d3412e0e5f5d15f data/forge/tags/blocks/storage_blocks/gunpowder.json
 b8df30c8a2af4d56604d07ecdc9064116cac6abe data/forge/tags/blocks/storage_blocks/invar.json
 c9d60fc73ff294b41ff90ed0c13b1e5a8f079156 data/forge/tags/blocks/storage_blocks/lead.json
+c20dc0e0c15861707d4f401cf72b108a8812c72b data/forge/tags/blocks/storage_blocks/lumium.json
 8619f555d8b156a474464c1d104735a7086f1c55 data/forge/tags/blocks/storage_blocks/nickel.json
 bf64037c2347e5a543456de6340e29dada70f923 data/forge/tags/blocks/storage_blocks/niter.json
 65d09fa910baed1293e54774949f2681ede99615 data/forge/tags/blocks/storage_blocks/raw_lead.json
@@ -26,11 +33,20 @@ bf64037c2347e5a543456de6340e29dada70f923 data/forge/tags/blocks/storage_blocks/n
 49ed1da1ce0415a9c01660dbbff66f416debcf12 data/forge/tags/blocks/storage_blocks/raw_tin.json
 aa6c57da8cb3f6b93cf12a331eb8190000333a14 data/forge/tags/blocks/storage_blocks/ruby.json
 7af91e540bbbb4833cee338c70f00a0ecfa99377 data/forge/tags/blocks/storage_blocks/sapphire.json
+2c643fb953d974d29d7d23061e1e1ae2b1ae974e data/forge/tags/blocks/storage_blocks/signalum.json
 290b91848f02ffad688f36326abaa194444ee270 data/forge/tags/blocks/storage_blocks/silver.json
+1a4c10c390bcc12c94dad73f4eb6f79ae5309109 data/forge/tags/blocks/storage_blocks/slag.json
+1ae40627ad109aa0d80aa9eaa128a1574598d465 data/forge/tags/blocks/storage_blocks/sugar_cane.json
 82326995e10edd3b9f2798dbc56bb44e653e77bc data/forge/tags/blocks/storage_blocks/sulfur.json
+43e02ff5b6421f593f0d57f0b7ccd5ad90b545db data/forge/tags/blocks/storage_blocks/tar.json
 84ba38174cb8807e6de5f0057d76c0c67d3260ec data/forge/tags/blocks/storage_blocks/tin.json
-c5ed82d882191a20c3a9ceea1a7fa7171f056364 data/minecraft/tags/blocks/beacon_base_blocks.json
-09db2ca033c858ed4ac756591f06d117065cf6f2 data/minecraft/tags/blocks/mineable/pickaxe.json
-1fe70309afbe488a558ddd9c499355200b177768 data/minecraft/tags/blocks/mineable/shovel.json
-1d8c95ffb4ad7dbd73bd4776977f52aeea926750 data/minecraft/tags/blocks/needs_iron_tool.json
-0cfe5ae71343bcd8f35d2ed449267d0549d22be4 data/minecraft/tags/blocks/needs_stone_tool.json
+a8099595ece675a04a673d5d0793582c6aa682d8 data/minecraft/tags/blocks/beacon_base_blocks.json
+ef1a00269dee42ea83e78ee9d1d8a28b080b27f5 data/minecraft/tags/blocks/impermeable.json
+21d2c81473944075adc85c7053b0caf96fba7eb2 data/minecraft/tags/blocks/mineable/axe.json
+1ae40627ad109aa0d80aa9eaa128a1574598d465 data/minecraft/tags/blocks/mineable/hoe.json
+3f3f4d12e8b6eadca18e84ac7335579fb8dbfd52 data/minecraft/tags/blocks/mineable/pickaxe.json
+e963795b08099e28856cf258aa30b14439d68d5d data/minecraft/tags/blocks/mineable/shovel.json
+d7110ff50f609edd1b2b3f3863a4cea6c058e523 data/minecraft/tags/blocks/needs_iron_tool.json
+af722701905ed82e2c14ab8589e4ba303b6e7a5a data/minecraft/tags/blocks/needs_stone_tool.json
+ef1a00269dee42ea83e78ee9d1d8a28b080b27f5 data/thermal/tags/blocks/glass/hardened.json
+1bcb1f6cbc64ba7941a1e247009ae4560c17ef55 data/thermal/tags/blocks/rockwool.json

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "basic_explosives"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "P": {
+      "tag": "forge:dusts/glowstone"
+    }
+  },
+  "pattern": [
+    "GPG",
+    "PGP",
+    "GPG"
+  ],
+  "result": {
+    "item": "thermal:glowstone_tnt"
+  }
+}

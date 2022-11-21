@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thermal:signalum_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "thermal:signalum_ingot"
+  }
+}

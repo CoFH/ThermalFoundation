@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "device_soil_infuser"
+    }
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:phytogro"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "minecraft:planks"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "tag": "forge:gears/lumium"
+    }
+  },
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IPI"
+  ],
+  "result": {
+    "item": "thermal:device_soil_infuser"
+  }
+}

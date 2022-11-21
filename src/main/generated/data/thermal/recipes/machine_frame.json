@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "machine_frame"
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "T": {
+      "tag": "forge:gears/tin"
+    }
+  },
+  "pattern": [
+    "IGI",
+    "GTG",
+    "IGI"
+  ],
+  "result": {
+    "item": "thermal:machine_frame"
+  }
+}

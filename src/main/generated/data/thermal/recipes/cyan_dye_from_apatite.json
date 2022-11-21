@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gems/apatite"
+    }
+  ],
+  "result": {
+    "item": "minecraft:cyan_dye"
+  }
+}

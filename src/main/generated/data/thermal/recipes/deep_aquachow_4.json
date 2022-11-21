@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "device_fisher"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "tag": "forge:nuggets/lead"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "thermal:deep_aquachow"
+  }
+}

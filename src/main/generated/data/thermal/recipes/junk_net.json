@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "device_fisher"
+    }
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:string"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "n": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "pattern": [
+    "n#n",
+    "#S#",
+    "n#n"
+  ],
+  "result": {
+    "item": "thermal:junk_net"
+  }
+}

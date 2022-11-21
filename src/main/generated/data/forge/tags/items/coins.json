@@ -1,5 +1,12 @@
 {
   "values": [
+    "#forge:coins/copper",
+    "#forge:coins/gold",
+    "#forge:coins/iron",
+    "#forge:coins/netherite",
+    "#forge:coins/enderium",
+    "#forge:coins/lumium",
+    "#forge:coins/signalum",
     "#forge:coins/lead",
     "#forge:coins/nickel",
     "#forge:coins/silver",

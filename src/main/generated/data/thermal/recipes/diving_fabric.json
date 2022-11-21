@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "diving_armor"
+    }
+  ],
+  "key": {
+    "H": {
+      "tag": "forge:gems/prismarine"
+    },
+    "S": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SHS",
+    " S "
+  ],
+  "result": {
+    "item": "thermal:diving_fabric"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "thermal:iron_dust"
+  },
+  "result": "minecraft:iron_ingot"
+}

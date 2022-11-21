@@ -59,6 +59,9 @@ repositories {
     maven { // Patchouli
         url 'https://maven.blamejared.com/'
     }
+    maven { // Curios
+        url 'https://maven.theillusivec4.top/'
+    }
 }
 
 minecraft {
@@ -73,7 +76,7 @@ minecraft {
             args '--all', '--output', file('src/main/generated/'),
                     '--mod', archivesBaseName,
                     '--existing', sourceSets.main.resources.srcDirs[0],
-                    '--existing-mod', 'thermal'
+                    // '--existing-mod', 'thermal'
 
             mods {
                 ThermalFoundation {
@@ -88,7 +91,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
-    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}")
+    // implementation fg.deobf("com.teamcofh:thermal_foundation:${mc_version}-${thermal_core_version}")
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
@@ -97,8 +100,11 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-common:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
-    // compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-    // runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 }
 
 signing {

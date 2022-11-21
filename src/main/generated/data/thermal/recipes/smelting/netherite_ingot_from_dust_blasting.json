@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "thermal:netherite_dust"
+  },
+  "result": "minecraft:netherite_ingot"
+}

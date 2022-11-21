@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "thermal:flag",
+      "flag": "machine_augments"
+    }
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cactus"
+    },
+    "i": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "pattern": [
+    " i ",
+    "iCi",
+    " i "
+  ],
+  "result": {
+    "item": "thermal:machine_null_augment"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "i": {
+      "tag": "forge:nuggets/iron"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    " i ",
+    "iri",
+    " i "
+  ],
+  "result": {
+    "item": "thermal:rs_control_augment"
+  }
+}

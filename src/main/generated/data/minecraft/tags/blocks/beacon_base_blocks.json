@@ -1,5 +1,8 @@
 {
   "values": [
+    "thermal:signalum_block",
+    "thermal:lumium_block",
+    "thermal:enderium_block",
     "thermal:lead_block",
     "thermal:nickel_block",
     "thermal:silver_block",
