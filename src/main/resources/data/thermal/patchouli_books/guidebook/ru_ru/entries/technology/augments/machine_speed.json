@@ -1,0 +1,16 @@
+{
+  "name": "Усилитель магнитной связи",
+  "icon": "thermal:machine_speed_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_speed_augment",
+      "title": "Усилитель магнитной связи",
+      "text": "Улучшение усилитель магнитной связи позволяет в 2 раза увеличить скорость обработки, но количество требуемой на операцию энергии увеличивается на 10%."
+    }
+  ]
+}

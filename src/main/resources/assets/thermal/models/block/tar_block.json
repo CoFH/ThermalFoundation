@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "thermal:block/tar_block_side",
+    "end": "thermal:block/tar_block_end"
+  }
+}

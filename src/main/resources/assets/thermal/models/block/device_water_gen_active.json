@@ -1,0 +1,10 @@
+{
+  "parent": "thermal:block/device_water_gen",
+  "textures": {
+    "up": "thermal:block/devices/device_water_gen_top_active",
+    "east": "thermal:block/devices/device_water_gen_side_active",
+    "west": "thermal:block/devices/device_water_gen_side_active",
+    "north": "thermal:block/devices/device_water_gen_active",
+    "south": "thermal:block/devices/device_water_gen_side_active"
+  }
+}

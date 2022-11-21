@@ -1,0 +1,14 @@
+{
+  "name": "Стабилизированная RF катушка",
+  "icon": "thermal:rf_coil_storage_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/rf_coil_storage_augment",
+      "title": "Стабилизированная RF катушка",
+      "text": "Улучшение стабилизированная RF катушка увеличивает энергобуфер в 6 раз и передачу энергии в 2 раза."
+    }
+  ]
+}

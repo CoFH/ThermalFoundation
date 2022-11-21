@@ -1,0 +1,1 @@
+{  "name": "Dispositivos",  "description": "Esta seção detalha a função de cada dispositivo. Os dispositivos não requerem RF, a menos que explicitamente declarado.",  "icon": "thermal:device_tree_extractor",  "parent": "thermal:technology",  "flag": "|mod:thermal_expansion,mod:thermal_cultivation,mod:thermal_dynamics,mod:thermal_innovation",  "sortnum": 2}

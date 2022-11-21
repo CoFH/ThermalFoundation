@@ -1,0 +1,9 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "minecraft:birch_log",
+  "leaves": "minecraft:birch_leaves",
+  "result": {
+    "fluid": "thermal:resin",
+    "amount": 25
+  }
+}

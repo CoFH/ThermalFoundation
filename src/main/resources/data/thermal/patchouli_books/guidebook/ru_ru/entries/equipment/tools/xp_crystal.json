@@ -1,0 +1,17 @@
+{
+  "name": "Проницательный кристалл",
+  "icon": "thermal:xp_crystal",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Портативный накопитель опыта! Проницательный кристалл может вмещать 10 000 единиц опыта, что эквивалентно примерно 63 уровням. Может быть зачарован на $(l:thermal:world/holding)Удержание$(/l) для увеличения ёмкости."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/xp_crystal",
+      "title": "Проницательный кристалл"
+    }
+  ]
+} 

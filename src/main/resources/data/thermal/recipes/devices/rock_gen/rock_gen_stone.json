@@ -1,0 +1,8 @@
+{
+  "type": "thermal:rock_gen",
+  "adjacent": "minecraft:water",
+  "below": "minecraft:magma_block",
+  "result": {
+    "item": "minecraft:stone"
+  }
+}

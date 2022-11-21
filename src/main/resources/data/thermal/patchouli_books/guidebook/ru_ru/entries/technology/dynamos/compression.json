@@ -1,0 +1,23 @@
+{
+  "name": "Компрессионный генератор",
+  "icon": "thermal:dynamo_compression",
+  "category": "thermal:dynamos",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Компрессионный генератор использует горючее жидкое топливо, такое как древесное масло, для производства RF-энергии."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:dynamo_compression",
+      "title": "Компрессионный генератор"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Вспомогательная реакционная камера$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Многоцикловые форсунки$(/l)"
+    }
+  ]
+}

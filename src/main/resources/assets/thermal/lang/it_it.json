@@ -1,0 +1,843 @@
+{
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Core",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.apatite_ore": "Apatite grezza",
+  "block.thermal.cinnabar_ore": "Cinabro grezzo",
+  "block.thermal.niter_ore": "Niter grezzo",
+  "block.thermal.sulfur_ore": "Zolfo grezzo",
+
+  "block.thermal.copper_ore": "Rame grezzo",
+  "block.thermal.lead_ore": "Piombo grezzo",
+  "block.thermal.nickel_ore": "Nichel grezzo",
+  "block.thermal.silver_ore": "Argento grezzo",
+  "block.thermal.tin_ore": "Stagno grezzo",
+
+  "block.thermal.ruby_ore": "Rubino grezzo",
+  "block.thermal.sapphire_ore": "Zaffiro grezzo",
+
+  "block.thermal.oil_sand": "Sabbia bituminosa",
+  "block.thermal.oil_red_sand": "Sabbia rossa bituminosa",
+
+  "block.thermal.apatite_block": "Blocco di apatite",
+  "block.thermal.cinnabar_block": "Blocco di cinabro",
+  "block.thermal.niter_block": "Blocco di niter",
+  "block.thermal.sulfur_block": "Blocco di zolfo",
+
+  "block.thermal.copper_block": "Blocco di rame",
+  "block.thermal.lead_block": "Blocco di piombo",
+  "block.thermal.nickel_block": "Blocco di nichel",
+  "block.thermal.silver_block": "Blocco d'argento",
+  "block.thermal.tin_block": "Blocco di stagno",
+
+  "block.thermal.ruby_block": "Blocco di rubino",
+  "block.thermal.sapphire_block": "Blocco di zaffiro",
+
+  "block.thermal.bronze_block": "Blocco di bronzo",
+  "block.thermal.constantan_block": "Blocco di constantana",
+  "block.thermal.electrum_block": "Block of elettro",
+  "block.thermal.invar_block": "Blocco di invar",
+
+  "block.thermal.enderium_block": "Blocco d'omeghio",
+  "block.thermal.lumium_block": "Blocco di lumio",
+  "block.thermal.signalum_block": "Blocco di signalo",
+
+  "block.thermal.machine_frame": "Telaio per macchinari",
+
+  "block.thermal.enderium_glass": "Vetro d'omeghio",
+  "block.thermal.lumium_glass": "Ventro di lumio",
+  "block.thermal.obsidian_glass": "Ventro indurito",
+  "block.thermal.signalum_glass": "Vetro di signalo",
+
+  "block.thermal.white_rockwool": "Lana di roccia bianca",
+  "block.thermal.orange_rockwool": "Lana di roccia arancione",
+  "block.thermal.magenta_rockwool": "Lana di roccia magenta",
+  "block.thermal.light_blue_rockwool": "Lana di roccia blu chiaro",
+  "block.thermal.yellow_rockwool": "Lana di roccia gialla",
+  "block.thermal.lime_rockwool": "Lana di roccia lime",
+  "block.thermal.pink_rockwool": "Lana di roccia rosa",
+  "block.thermal.gray_rockwool": "Lana di roccia grigia",
+  "block.thermal.light_gray_rockwool": "Lana di roccia grigio chiaro",
+  "block.thermal.cyan_rockwool": "Lana di roccia ciano",
+  "block.thermal.purple_rockwool": "Lana di roccia viola",
+  "block.thermal.blue_rockwool": "Lana di roccia blu",
+  "block.thermal.brown_rockwool": "Lana di roccia marrone",
+  "block.thermal.green_rockwool": "Lana di roccia verde",
+  "block.thermal.red_rockwool": "Lana di roccia rossa",
+  "block.thermal.black_rockwool": "Lana di roccia nera",
+
+  "block.thermal.bitumen_block": "Blocco di bitume",
+  "block.thermal.coal_coke_block": "Blocco di coke",
+  "block.thermal.cured_rubber_block": "Blocco di gomma curata",
+  "block.thermal.rich_slag_block": "Blocco di scorie ricche",
+  "block.thermal.rosin_block": "Blocco di colofonia",
+  "block.thermal.rubber_block": "Blocco di gomma",
+  "block.thermal.sawdust_block": "Blocca di segatura",
+  "block.thermal.slag_block": "Blocco di scorie",
+  "block.thermal.tar_block": "Blocco di catrame",
+
+  "death.attack.basalz": "%1$s ha avuto il loro mondo scosso!",
+  "death.attack.blitz": "%1$s è stato tragicamente illuminato!",
+  "death.attack.blizz": "%1$s ha incontrato un destino frigido!",
+
+  "entity.thermal.basalz": "Basalz",
+  "entity.thermal.blitz": "Blitz",
+  "entity.thermal.blizz": "Blizz",
+
+  "entity.thermal.basalz_projectile": "Frammento tettonico",
+  "entity.thermal.blitz_projectile": "Palla di fulmine",
+  "entity.thermal.blizz_projectile": "Freccia glaciale",
+
+  "fluid.thermal.biocrude": "Olio bio-crudo",
+  "fluid.thermal.biofuel": "Biocarburante",
+  "fluid.thermal.creosote": "Olio creosoto",
+  "fluid.thermal.crude_oil": "Olio crudo",
+  "fluid.thermal.heavy_oil": "Olio pesante",
+  "fluid.thermal.latex": "Lattice",
+  "fluid.thermal.light_oil": "Olio leggero",
+  "fluid.thermal.refined_fuel": "Carburante raffinato",
+  "fluid.thermal.resin": "Resina",
+  "fluid.thermal.sap": "Linfa",
+  "fluid.thermal.seed_oil": "Olio di semi",
+  "fluid.thermal.syrup": "Sciroppo",
+  "fluid.thermal.tree_oil": "Olio d'albero",
+
+  "info.thermal.catalysts": "Catalisti",
+  "info.thermal.energy_mod": "Modificatore di energia",
+  "info.thermal.primary_mod": "Modificatore primario",
+  "info.thermal.secondary_mod": "Modificatore ausiliario",
+  "info.thermal.use_chance": "Possibilità di uso",
+
+  "info.thermal.detonator.mode.0": "Modalità: primeggia",
+  "info.thermal.detonator.mode.1": "Modalità: detona",
+  "info.thermal.detonator.primed": "Primeggiato:",
+  "info.thermal.detonator.use.0": "Usa su un blocco di TNT per primeggiarlo per esplosione.",
+  "info.thermal.detonator.use.1": "Usa per detonare TNT primeggiata.",
+  "info.thermal.detonator.use.sneak": "Usa mentre accovacciato per annullare.",
+
+  "info.thermal.redprint.contents": "Contenuti:",
+  "info.thermal.redprint.unknown": "Data sconosciuta",
+  "info.thermal.redprint.data.RSControl": "Controlla di redstone",
+  "info.thermal.redprint.data.Sides": "Configurazione ai lati",
+  "info.thermal.redprint.data.Xfer": "Controllo di trasferimento",
+  "info.thermal.redprint.use": "Usa su un blocco per copiare le impostazioni.",
+  "info.thermal.redprint.use.contents": "Usa su un blocco per applicare le impostazioni.",
+  "info.thermal.redprint.use.sneak": "Usa mentre accovacciato per annullare.",
+
+  "info.thermal.xp_crystal.mode.0": "Auto-collezionamento disabilitato",
+  "info.thermal.xp_crystal.mode.1": "Auto-collezionamento abilitato",
+  "info.thermal.xp_crystal.use": "Usa per trasferire esperienza nel cristallo.",
+  "info.thermal.xp_crystal.use.sneak": "Utilizzare mentre accovacciato per recuperare l'esperienza depositata.",
+
+  "item.thermal.redstone_servo": "Servo di redstone",
+  "item.thermal.rf_coil": "Bobina di flusso di redstone",
+
+  "item.thermal.biocrude_bucket": "Secchio di olio bio-crudo",
+  "item.thermal.biofuel_bucket": "Secchio di biocarburante",
+  "item.thermal.creosote_bucket": "Secchio di olio creosoto",
+  "item.thermal.crude_oil_bucket": "Secchio di olio crudo",
+  "item.thermal.heavy_oil_bucket": "Secchio di olio pesante",
+  "item.thermal.latex_bucket": "Secchio di lattice",
+  "item.thermal.light_oil_bucket": "Secchio di olio leggero",
+  "item.thermal.refined_fuel_bucket": "Secchio di carburante raffinato",
+  "item.thermal.resin_bucket": "Secchio di resina",
+  "item.thermal.sap_bucket": "Secchio di linfa",
+  "item.thermal.seed_oil_bucket": "Secchio di olio di semi",
+  "item.thermal.syrup_bucket": "Secchio di sciroppo",
+  "item.thermal.tree_oil_bucket": "Secchio di olio d'albero",
+
+  "item.thermal.redstone_bucket": "Secchio di redstone destabilizzata",
+  "item.thermal.glowstone_bucket": "Secchio di luminite energizzata",
+  "item.thermal.ender_bucket": "Secchio di ender resonante",
+
+  "itemGroup.thermal.blocks": "Serie termale: blocchi",
+  "itemGroup.thermal.foods": "Serie termale: colture e cibi",
+  "itemGroup.thermal.items": "Serie termale: oggetti",
+  "itemGroup.thermal.resources": "Serie termale: risorse",
+  "itemGroup.thermal.tools": "Serie termale: strumenti",
+
+  "item.thermal.apatite": "Apatite",
+  "item.thermal.apatite_dust": "Polvere di apatite",
+  "item.thermal.cinnabar": "Cinabro",
+  "item.thermal.cinnabar_dust": "Polvere di cinabro",
+  "item.thermal.niter": "Niter",
+  "item.thermal.niter_dust": "Polvere di niter",
+  "item.thermal.sulfur": "Zolfo",
+  "item.thermal.sulfur_dust": "Polvere di zolfo",
+
+  "item.thermal.bitumen": "Bitume",
+  "item.thermal.coal_coke": "Coke",
+  "item.thermal.cured_rubber": "Gomma curata",
+  "item.thermal.rich_slag": "Scorie ricche",
+  "item.thermal.rosin": "Colofonia",
+  "item.thermal.rubber": "Gomma",
+  "item.thermal.slag": "Scorie",
+  "item.thermal.sawdust": "Segatura",
+  "item.thermal.tar": "Catrame",
+
+  "item.thermal.basalz_powder": "Polvere di basalz",
+  "item.thermal.basalz_rod": "Frammento di basalz",
+  "item.thermal.basalz_spawn_egg": "Uovo generatore di basalz",
+  "item.thermal.blitz_powder": "Polvere di blitz",
+  "item.thermal.blitz_rod": "Mote di blitz",
+  "item.thermal.blitz_spawn_egg": "Uovo generatore di blitz",
+  "item.thermal.blizz_powder": "Polvere blizz",
+  "item.thermal.blizz_rod": "Cubo blizz",
+  "item.thermal.blizz_spawn_egg": "Uovo generatore di blizz",
+
+  "item.thermal.detonator": "Detonatore remoto",
+  "item.thermal.earth_charge": "Carica di terra",
+  "item.thermal.ice_charge": "Carica di ghiaccio",
+  "item.thermal.lightning_charge": "Carica di fulmine",
+  "item.thermal.lock": "Lucchetto di sicurezza di signalo",
+  "item.thermal.lock.desc": "Usato per abilitare la sicurezza su un blocco.",
+  "item.thermal.phytogro": "Phyto-Gro",
+  "item.thermal.phytogro.desc": "Fertilizzante estremamente potente.",
+  "item.thermal.redprint": "Redprint",
+  "item.thermal.redprint.desc": "Copia e trasferisce le impostazione tra i blocchi.",
+  "item.thermal.wrench": "Martello a mezzaluna",
+  "item.thermal.wrench.desc": "Ruota molti blocchi. Anche conosciuto come una chiave inglese.",
+  "item.thermal.xp_crystal": "Cristallo intuitivo",
+  "item.thermal.xp_crystal.desc": "Deposita esperienza.",
+
+  "item.thermal.copper_coin": "Moneta di rame",
+  "item.thermal.copper_dust": "Polvere di rame",
+  "item.thermal.copper_gear": "Ingranaggio di rame",
+  "item.thermal.copper_ingot": "Lingotto di rame",
+  "item.thermal.copper_nugget": "Pepita di rame",
+  "item.thermal.copper_plate": "Piatto di rame",
+
+  "item.thermal.lead_coin": "Moneta di piombo",
+  "item.thermal.lead_dust": "Polvere di piombo",
+  "item.thermal.lead_gear": "Ingranaggio di piombo",
+  "item.thermal.lead_ingot": "Lingotto di piombo",
+  "item.thermal.lead_nugget": "Pepita di piombo",
+  "item.thermal.lead_plate": "Piatto di piombo",
+
+  "item.thermal.nickel_coin": "Moneta di nichel",
+  "item.thermal.nickel_dust": "Polvere di nichel",
+  "item.thermal.nickel_gear": "Ingranaggio di nichel",
+  "item.thermal.nickel_ingot": "Lingotto di nichel",
+  "item.thermal.nickel_nugget": "Pepita di nichel",
+  "item.thermal.nickel_plate": "Piatto di nichel",
+
+  "item.thermal.silver_coin": "Moneta d'argento",
+  "item.thermal.silver_dust": "Polvere d'argento",
+  "item.thermal.silver_gear": "Ingranaggio d'argento",
+  "item.thermal.silver_ingot": "Lingotto d'argento",
+  "item.thermal.silver_nugget": "Pepita d'argento",
+  "item.thermal.silver_plate": "Piatto d'argento",
+
+  "item.thermal.tin_coin": "Moneta di stagno",
+  "item.thermal.tin_dust": "Polvere di stagno",
+  "item.thermal.tin_gear": "Ingranaggio di stagno",
+  "item.thermal.tin_ingot": "Lingotto di stagno",
+  "item.thermal.tin_nugget": "Pepita di stagno",
+  "item.thermal.tin_plate": "Piatto di stagno",
+
+  "item.thermal.ruby": "Rubino",
+  "item.thermal.ruby_dust": "Polvere di rubino",
+  "item.thermal.ruby_gear": "Ingranaggio di rubino",
+  "item.thermal.ruby_nugget": "Pepita di rubino",
+  "item.thermal.ruby_plate": "Piatto di rubino",
+
+  "item.thermal.sapphire": "Zaffiro",
+  "item.thermal.sapphire_dust": "Polvere di zaffiro",
+  "item.thermal.sapphire_gear": "Ingranaggio di zaffiro",
+  "item.thermal.sapphire_nugget": "Pepita di zaffiro",
+  "item.thermal.sapphire_plate": "Piatto di zaffiro",
+
+  "item.thermal.bronze_coin": "Moneta di bronzo",
+  "item.thermal.bronze_dust": "Miscela di bronzo",
+  "item.thermal.bronze_gear": "Ingranaggio di bronzo",
+  "item.thermal.bronze_ingot": "Lingotto di bronzo",
+  "item.thermal.bronze_nugget": "Pepita di bronzo",
+  "item.thermal.bronze_plate": "Piatto di bronzo",
+
+  "item.thermal.constantan_coin": "Moneta di constantana",
+  "item.thermal.constantan_dust": "Miscela di constantana",
+  "item.thermal.constantan_gear": "Ingranaggio di constantana",
+  "item.thermal.constantan_ingot": "Lingotto di constantana",
+  "item.thermal.constantan_nugget": "Pepita di constantana",
+  "item.thermal.constantan_plate": "Piatto di constantana",
+
+  "item.thermal.electrum_coin": "Moneta di elettro",
+  "item.thermal.electrum_dust": "Miscela di elettro",
+  "item.thermal.electrum_gear": "Ingranaggio di elettro",
+  "item.thermal.electrum_ingot": "Lingotto di elettro",
+  "item.thermal.electrum_nugget": "Pepita di elettro",
+  "item.thermal.electrum_plate": "Piatto di elettro",
+
+  "item.thermal.invar_coin": "Monetta di invar",
+  "item.thermal.invar_dust": "Miscela di invar",
+  "item.thermal.invar_gear": "Ingranaggio di invar",
+  "item.thermal.invar_ingot": "Lingotto di invar",
+  "item.thermal.invar_nugget": "Pepita di invar",
+  "item.thermal.invar_plate": "Piatto di invar",
+
+  "item.thermal.enderium_coin": "Moneta d'omeghio",
+  "item.thermal.enderium_dust": "Miscela d'omeghio",
+  "item.thermal.enderium_gear": "Ingranaggio d'omeghio",
+  "item.thermal.enderium_ingot": "Lingotto d'omeghio",
+  "item.thermal.enderium_nugget": "Pepita d'omeghio",
+  "item.thermal.enderium_plate": "Piatto d'omeghio",
+
+  "item.thermal.lumium_coin": "Moneta di lumio",
+  "item.thermal.lumium_dust": "Miscela di lumio",
+  "item.thermal.lumium_gear": "Ingranaggio di lumio",
+  "item.thermal.lumium_ingot": "Lingotto di lumio",
+  "item.thermal.lumium_nugget": "Pepita di lumio",
+  "item.thermal.lumium_plate": "Piatto di lumio",
+
+  "item.thermal.signalum_coin": "Moneta di signalo",
+  "item.thermal.signalum_dust": "Miscela di signalo",
+  "item.thermal.signalum_gear": "Ingranaggio di signalo",
+  "item.thermal.signalum_ingot": "Lingotto di signalo",
+  "item.thermal.signalum_nugget": "Pepita di signalo",
+  "item.thermal.signalum_plate": "Piatto di signalo",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Core - Augments",
+  "_comment": "========================================================================================================",
+
+  "info.thermal.augment.attr.Depth": "Profondità massima",
+  "info.thermal.augment.attr.Radius": "Raggio massimo",
+  "info.thermal.augment.attr.Reach": "Raggiunta massima",
+
+  "info.thermal.augment.attr.BaseMod": "Fattore di scala",
+
+  "info.thermal.augment.attr.DynamoPower": "Output massimo",
+  "info.thermal.augment.attr.DynamoEnergy": "Energia del carburante",
+
+  "info.thermal.augment.attr.FluidMax": "Capacità del serbatoio",
+
+  "info.thermal.augment.attr.MachineCat": "Uso dei catalisti",
+  "info.thermal.augment.attr.MachineEnergy": "Energia di processo",
+  "info.thermal.augment.attr.MachinePri": "Prodotto primario",
+  "info.thermal.augment.attr.MachinePower": "Energia massima",
+  "info.thermal.augment.attr.MachineSec": "Prodotto secondario",
+  "info.thermal.augment.attr.MachineXp": "Modificatore XP",
+
+  "info.thermal.augment.attr.PotionAmp": "Livello dell'effetto",
+  "info.thermal.augment.attr.PotionDur": "Durata dell'effetto",
+
+  "info.thermal.augment.attr.RFMax": "Capacità RF",
+  "info.thermal.augment.attr.RFXfer": "Transferimento RF",
+
+  "info.thermal.augment.type.Area": "Effetto area",
+  "info.thermal.augment.type.Dynamo": "Dinamo",
+  "info.thermal.augment.type.Fluid": "Fluido",
+  "info.thermal.augment.type.Machine": "Macchinario",
+  "info.thermal.augment.type.Potion": "Pozione",
+  "info.thermal.augment.type.RF": "Flusso di redstone",
+  "info.thermal.augment.type.Upgrade": "Potenziamento",
+
+  "info.thermal.augment.maximized": "Non impila; valore più alto utilizzato.",
+
+  "item.thermal.area_depth_augment": "Miglioramento assiale",
+  "item.thermal.area_radius_augment": "Miglioramento radiale",
+
+  "item.thermal.dynamo_ender_coil_augment": "Sintonizzatore di frequenza ender",
+  "item.thermal.dynamo_force_coil_augment": "Vettore di proiezione del fascio",
+  "item.thermal.dynamo_steam_coil_augment": "Conversione caldaia a vapore",
+
+  "item.thermal.dynamo_fuel_augment": "Iniettori multi-ciclo",
+  "item.thermal.dynamo_output_augment": "Camera di reazione ausiliaria",
+
+  "item.thermal.fluid_tank_augment": "Costruzione di serbatoio espanso",
+
+  "item.thermal.fluid_tank_creative_augment": "Costruzione di serbatoio creativo",
+  "item.thermal.fluid_tank_creative_augment.desc": "Fluidi funzionalmente illimitati.",
+
+  "item.thermal.machine_catalyst_augment": "Camera di reclamazione catalitica",
+  "item.thermal.machine_cycle_augment": "Elaborazione ciclica",
+  "item.thermal.machine_cycle_augment.desc": "I prodotti potrebbero essere trasferiti all'input alla fine del processo.",
+  "item.thermal.machine_output_augment": "Setaccio di processo ausiliario",
+  "item.thermal.machine_speed_augment": "Amplificatore di collegamento del flusso",
+
+  "item.thermal.potion_amplifier_augment": "Amplificatore alchemico",
+  "item.thermal.potion_duration_augment": "Estensore alchemico",
+
+  "item.thermal.rf_coil_augment": "Bobina RF espansa",
+
+  "item.thermal.rf_coil_creative_augment": "Bobina RF creativa",
+  "item.thermal.rf_coil_creative_augment.desc": "RF funzionalmente illimitato.",
+
+  "item.thermal.rf_coil_storage_augment": "Bobina RF stabilizzata",
+  "item.thermal.rf_coil_xfer_augment": "Bobina RF alto-flux",
+
+  "item.thermal.rs_control_augment": "Meccanismo di risposta in redstone",
+  "item.thermal.rs_control_augment.desc": "Permette il controllo via segnali di redstone.",
+
+  "item.thermal.side_config_augment": "Riconfigurazione modulare",
+  "item.thermal.side_config_augment.desc": "Permette di riconfigurare i lati per input e output.",
+
+  "item.thermal.upgrade_augment_1": "Componenti integrali induriti",
+  "item.thermal.upgrade_augment_1.desc": "Migliora gli attributi di base e amplifica gli aumenti.",
+  "item.thermal.upgrade_augment_2": "Componenti integrali reinforzati",
+  "item.thermal.upgrade_augment_2.desc": "Migliora gli attributi di base e amplifica gli aumenti.",
+  "item.thermal.upgrade_augment_3": "Componenti integrali resonanti",
+  "item.thermal.upgrade_augment_3.desc": "Migliora gli attributi di base e amplifica gli aumenti.",
+
+  "item.thermal.upgrade_augment_4": "Componenti integrali resonanti+",
+  "item.thermal.upgrade_augment_4.desc": "Migliora gli attributi di base e amplifica gli aumenti.",
+
+  "item.thermal.xp_storage_augment": "Concentratore di conoscenza",
+  "item.thermal.xp_storage_augment.desc": "Permette di immagazzinare e recuperare XP.",
+
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Core - External",
+  "_comment": "These 'live' in Thermal Core but are non-default and registered from multiple possible modules.",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.device_collector": "Aspirapolveratore",
+  "block.thermal.device_hive_extractor": "Tramoggia dell'alveare",
+  "block.thermal.device_potion_diffuser": "Diffusore decoctivo",
+  "block.thermal.device_rock_gen": "Estrusore igneo",
+  "block.thermal.device_tree_extractor": "Estrattore arboreo",
+  "block.thermal.device_water_gen": "Accumulatore acqueo",
+
+  "block.thermal.energy_cell": "Cella energetica",
+  "block.thermal.energy_cell_frame": "Telaio per celle energetiche",
+
+  "block.thermal.fluid_cell": "Cella fluidica",
+  "block.thermal.fluid_cell_frame": "Telaio per celle fluidiche",
+
+  "block.thermal.tinker_bench": "Banco di lavoro del tinker",
+
+  "info.thermal.device_collector.0": "Raccoglie cose nella zona vicina.",
+  "info.thermal.device_collector.1": "La configurazione del filtro verrà applicata a questo comportamento.",
+  "info.thermal.device_collector.2": "Mantieni quei pavimenti puliti!",
+
+  "info.thermal.device_hive_extractor.0": "Estrae attentamente prodotti dagli alveari.",
+  "info.thermal.device_hive_extractor.1": "Buono per le api e per gli apicoltori!",
+  "info.thermal.device_hive_extractor.2": "Buzz buzz.",
+
+  "info.thermal.device_potion_diffuser.0": "Diffonde pozioni nella zona vicina.",
+  "info.thermal.device_potion_diffuser.1": "Usa reagenti per aumentare l'efficacia.",
+  "info.thermal.device_potion_diffuser.2": "Respira profondamente.",
+
+  "info.thermal.device_rock_gen.0": "Genera vari tipi di pietra.",
+  "info.thermal.device_rock_gen.1": "Richiede una fonte di lava adiacente e del raffredamento.",
+  "info.thermal.device_rock_gen.2": "Are you ready to rock?",
+
+  "info.thermal.device_tree_extractor.0": "Estrae fluidi da alberi adiacenti.",
+  "info.thermal.device_tree_extractor.1": "Usa il fertilizzante per velocizzare la produzione.",
+  "info.thermal.device_tree_extractor.2": "Lascia l'ascia.",
+
+  "info.thermal.device_water_gen.0": "Fornisce abbondanti quantità d'acqua.",
+  "info.thermal.device_water_gen.1": "Richiede delle sorgenti d'acqua adiacenti per funzionare.",
+  "info.thermal.device_water_gen.2": "Non soffocare.",
+
+  "info.thermal.energy_cell.0": "Deposita e trasferisce il flusso di redstone.",
+  "info.thermal.energy_cell.1": "Mantieni §e§oShift§r e/o §e§oCtrl§r per cambiare valori.",
+
+  "info.thermal.fluid_cell.0": "Stores and transfers Fluids.",
+  "info.thermal.fluid_cell.1": "Mantieni §e§oShift§r e/o §e§oCtrl§r per cambiare valori.",
+
+  "info.thermal.tinker_bench.0": "Tavolo multiuso per aumentare, ricaricare e riempire.",
+  "info.thermal.tinker_bench.1": "I depositi possono essere riempiti utilizzando i rispettivi slot.",
+  "info.thermal.tinker_bench.2": "Armeggia!",
+
+  "info.thermal.tinker_bench_mode_augment": "Modalità: aumenta",
+  "info.thermal.tinker_bench_mode_charge": "Modalitò: ricarica/riempi",
+
+  "item.thermal.beekeeper_fabric": "Tessuto tessuto",
+  "item.thermal.beekeeper_helmet": "Cappuccio da apicoltore",
+  "item.thermal.beekeeper_chestplate": "Giacca da apicoltore",
+  "item.thermal.beekeeper_leggings": "Pantaloni da apicoltore",
+  "item.thermal.beekeeper_boots": "Stivali da apicoltore",
+
+  "item.thermal.diving_fabric": "Tessuto marino",
+  "item.thermal.diving_helmet": "Casco subacqueo",
+  "item.thermal.diving_chestplate": "Muta subacquea",
+  "item.thermal.diving_leggings": "Leggings subacquei",
+  "item.thermal.diving_boots": "Pinne subacque",
+
+  "item.thermal.hazmat_fabric": "Tessuto protettivo",
+  "item.thermal.hazmat_helmet": "Casco hazmat",
+  "item.thermal.hazmat_chestplate": "Tuta hazmat",
+  "item.thermal.hazmat_leggings": "Pantaloni hazmat",
+  "item.thermal.hazmat_boots": "Stivali hazmat",
+
+  "item.thermal.drill_head": "Testa di perforazione",
+  "item.thermal.laser_diode": "Diodo laser",
+  "item.thermal.saw_blade": "Lama da sega",
+
+  "item.thermal.rf_potato": "Capacitato",
+  "item.thermal.rf_potato.desc": "Deposita il flusso di redstone.",
+
+  "item.thermal.phyto_grenade": "Phyto-gronata",
+  "item.thermal.phyto_grenade.desc": "Phyto-gro lanciabile con area aumentata.",
+
+  "item.thermal.explosive_grenade": "Granata",
+  "item.thermal.explosive_grenade.desc": "Una forma di TNT più piccola e lanciabile.",
+  "item.thermal.earth_grenade": "Granata tettonica",
+  "item.thermal.earth_grenade.desc": "Rompe rocce e terra. Molto efficace per minare.",
+  "item.thermal.fire_grenade": "Granata inferno",
+  "item.thermal.fire_grenade.desc": "Accende un'area ad impatto",
+  "item.thermal.ice_grenade": "Granata glaciale",
+  "item.thermal.ice_grenade.desc": "Congela un'area ad impatto.",
+  "item.thermal.lightning_grenade": "Granata fulminante",
+  "item.thermal.lightning_grenade.desc": "Scuote un'area ad impatto. Potrebbe portare il tuono.",
+
+  "item.thermal.nuke_grenade": "Granata nucleare",
+  "item.thermal.nuke_grenade.desc": "Non per uso a raggio vicino.",
+
+  "block.thermal.phyto_tnt": "PNT",
+  "block.thermal.phyto_tnt.desc": "Diffonde phyto-gro in una larga area. Non lanciabile.",
+
+  "block.thermal.earth_tnt": "Esplosivo tettonico",
+  "block.thermal.earth_tnt.desc": "Rompe roccia e terra. Molto efficace per scavare.",
+  "block.thermal.fire_tnt": "Esplosivo inferno",
+  "block.thermal.fire_tnt.desc": "Accende una larga area.",
+  "block.thermal.ice_tnt": "Esplosivo glaciale",
+  "block.thermal.ice_tnt.desc": "Congela una larga area.",
+  "block.thermal.lightning_tnt": "Esplosivo fulminante",
+  "block.thermal.lightning_tnt.desc": "Scuote una larga area. Porterà un tuona molto probabilmente.",
+
+  "block.thermal.nuke_tnt": "Esplosivo nucleare",
+  "block.thermal.nuke_tnt.desc": "Non stare vicino a questo.",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Core - Vanilla",
+  "_comment": "These deal with 'Vanilla' focused additions.",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.bamboo_block": "Blocco di bamboo",
+  "block.thermal.charcoal_block": "Blocco di carbonella",
+  "block.thermal.gunpowder_block": "Blocco di polvere da sparo",
+  "block.thermal.sugar_cane_block": "Blocco di canna da zucchero",
+
+  "block.thermal.apple_block": "Cassa di mele",
+  "block.thermal.beetroot_block": "Cassa di barbabietole",
+  "block.thermal.carrot_block": "Cassa di carote",
+  "block.thermal.potato_block": "Cassa di patate",
+
+  "item.thermal.diamond_coin": "Moneta di diamante",
+  "item.thermal.diamond_dust": "Polvere di diamante",
+  "item.thermal.diamond_gear": "Ingranaggio di diamante",
+  "item.thermal.diamond_nugget": "Pepita di diamante",
+  "item.thermal.diamond_plate": "Piatto di diamante",
+
+  "item.thermal.emerald_coin": "Moneta di smeraldo",
+  "item.thermal.emerald_dust": "Polvere di smeraldo",
+  "item.thermal.emerald_gear": "Ingranaggio di smeraldo",
+  "item.thermal.emerald_nugget": "Pepita di smeraldo",
+  "item.thermal.emerald_plate": "Piatto di smeraldo",
+
+  "item.thermal.ender_pearl_dust": "Polvere di perla di ender",
+
+  "item.thermal.gold_coin": "Moneta d'oro",
+  "item.thermal.gold_dust": "Polvere d'oro",
+  "item.thermal.gold_gear": "Ingranaggio d'oro",
+  "item.thermal.gold_plate": "Piatto d'oro",
+
+  "item.thermal.lapis_coin": "Moneta di lapis",
+  "item.thermal.lapis_dust": "Polvere di lapis",
+  "item.thermal.lapis_gear": "Ingranaggio di lapis",
+  "item.thermal.lapis_nugget": "Pepita di lapis",
+  "item.thermal.lapis_plate": "Piatto di lapis",
+
+  "item.thermal.iron_coin": "Moneta di ferro",
+  "item.thermal.iron_dust": "Polvere di ferro",
+  "item.thermal.iron_gear": "Ingranaggio di ferro",
+  "item.thermal.iron_plate": "Piatto di ferro",
+
+  "item.thermal.quartz_coin": "Moneta di quarzo",
+  "item.thermal.quartz_dust": "Polvere di quarzo",
+  "item.thermal.quartz_gear": "Ingranaggio di quarzo",
+  "item.thermal.quartz_nugget": "Pepita di quarzo",
+  "item.thermal.quartz_plate": "Piatto di quarzo",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Atomics",
+  "_comment": "========================================================================================================",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Cultivation",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.device_soil_infuser": "Infonditore di phyto-suolo",
+
+  "block.thermal.frost_melon": "Melone gelato",
+  "block.thermal.phytosoil": "Phyto-suolo",
+  "block.thermal.phytosoil_tilled": "Phyto-suolo lavorato",
+
+  "block.thermal.chocolate_cake": "Torta al cioccolato",
+  "block.thermal.spice_cake": "Torta condita",
+
+  "block.thermal.barley_block": "Balla di orzo",
+  "block.thermal.bell_pepper_block": "Cassa di peperoni",
+  "block.thermal.coffee_block": "Sacco di caffè",
+  "block.thermal.corn_block": "Cassa di mais",
+  "block.thermal.eggplant_block": "Cassa di melanzane",
+  "block.thermal.green_bean_block": "Cassa di fagioli verdi",
+  "block.thermal.hops_block": "Cassa di luppoli",
+  "block.thermal.onion_block": "Cassa di cipolle",
+  "block.thermal.peanut_block": "Sacco di arachidi",
+  "block.thermal.radish_block": "Cassa di ravanelli",
+  "block.thermal.rice_block": "Sacco di riso",
+  "block.thermal.sadiroot_block": "Cassa di sadiradici",
+  "block.thermal.spinach_block": "Cassa di spinaci",
+  "block.thermal.strawberry_block": "Cassa di fragole",
+  "block.thermal.tea_block": "Sacco di tè",
+  "block.thermal.tomato_block": "Cassa di pomodori",
+
+  "info.thermal.device_soil_infuser.0": "Infonde phyto-suolo vicino con flusso di redstone.",
+  "info.thermal.device_soil_infuser.1": "Influisce su uno strato sopra e sotto.",
+  "info.thermal.device_soil_infuser.2": "Sicuro per i raccolti, davvero!",
+
+  "item.thermal.barley": "Orzo",
+  "item.thermal.barley_seeds": "Semi di orzo",
+  "item.thermal.bell_pepper": "Peperone",
+  "item.thermal.bell_pepper_seeds": "Semi di peperone",
+  "item.thermal.coffee": "Ciliegia di caffè",
+  "item.thermal.coffee_seeds": "Chicchi di caffè",
+  "item.thermal.corn": "Mais",
+  "item.thermal.corn_seeds": "Semi di mais",
+  "item.thermal.dough": "Dough",
+  "item.thermal.eggplant": "Melanzana",
+  "item.thermal.eggplant_seeds": "Semi di melanzana",
+  "item.thermal.flour": "Farina",
+  "item.thermal.frost_melon_seeds": "Semi di melone gelato",
+  "item.thermal.frost_melon_slice": "Fetta di melone gelato",
+  "item.thermal.green_bean": "Fagiolo verde",
+  "item.thermal.green_bean_seeds": "Semi di fagiolo verde",
+  "item.thermal.hops": "Luppoli",
+  "item.thermal.hops_seeds": "Semi di luppoli",
+  "item.thermal.onion": "Cipolla",
+  "item.thermal.onion_seeds": "Semi di cipolla",
+  "item.thermal.peanut": "Arachide",
+  "item.thermal.peanut_seeds": "Semi d'arachide",
+  "item.thermal.radish": "Ravanello",
+  "item.thermal.radish_seeds": "Semi di ravanelli",
+  "item.thermal.rice": "Riso",
+  "item.thermal.rice_seeds": "Semi di riso",
+  "item.thermal.sadiroot": "Sadiradice",
+  "item.thermal.sadiroot_seeds": "Semi di sadiradice",
+  "item.thermal.spinach": "Spinaci",
+  "item.thermal.spinach_seeds": "Semi di spinaci",
+  "item.thermal.strawberry": "Fragola",
+  "item.thermal.strawberry_seeds": "Semi di fragola",
+  "item.thermal.tea": "Foglia di tè",
+  "item.thermal.tea_seeds": "Semi di tè",
+  "item.thermal.tomato": "Pomodoro",
+  "item.thermal.tomato_seeds": "Semi di pomodoro",
+  "item.thermal.xp_stew": "Stufato perspicace",
+
+  "item.thermal.watering_can": "Innaffiatoio",
+  "item.thermal.watering_can.desc": "Migliora la crescita delle piante utilizzando l'acqua.",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Dynamics",
+  "_comment": "========================================================================================================",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Essentials",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.basic_pulverizer": "Mulino a martello",
+  "block.thermal.basic_sawmill": "Segheria semplice",
+
+  "info.thermal.basic_pulverizer.0": "Schiaccia le cose in altre cose rotte.",
+  "info.thermal.basic_pulverizer.1": "Utile per trattare i minerali o per convertire gli oggetti.",
+  "info.thermal.basic_pulverizer.2": "Alimentato a vapore - richiede carburante e acqua.",
+
+  "info.thermal.basic_sawmill.0": "Taglia tronchi in assi e riprocessa oggetti di legno.",
+  "info.thermal.basic_sawmill.1": "Molto utile per ottenere il massimo da un albero.",
+  "info.thermal.basic_sawmill.2": "Alimentato a vapore - richiede carburante e acqua.",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Expansion",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.device_fluid_buffer": "Allocatore fluidico",
+  "block.thermal.device_item_buffer": "Allocatore oggettico",
+
+  "block.thermal.dynamo_compression": "Dinamo a compressione",
+  "block.thermal.dynamo_lapidary": "Dinamo lapidario",
+  "block.thermal.dynamo_magmatic": "Dinamo magmatico",
+  "block.thermal.dynamo_numismatic": "Dinamo numismatico",
+  "block.thermal.dynamo_stirling": "Dinamo stirling",
+
+  "block.thermal.machine_bottler": "Encapsulatore di fluidi",
+  "block.thermal.machine_brewer": "Imbutitore alchemico",
+  "block.thermal.machine_centrifuge": "Separatore centrifugale",
+  "block.thermal.machine_chiller": "Abbattitore di temperatura",
+  "block.thermal.machine_crafter": "Fabbricatore sequenziale",
+  "block.thermal.machine_crucible": "Crogiolo magmatico",
+  "block.thermal.machine_furnace": "Fornace a redstone",
+  "block.thermal.machine_insolator": "Insolatore phytogenico",
+  "block.thermal.machine_press": "Pressa multiservo",
+  "block.thermal.machine_pulverizer": "Polverizzatore",
+  "block.thermal.machine_pyrolyzer": "Pirolizzatore",
+  "block.thermal.machine_refinery": "Distilleria frazionante",
+  "block.thermal.machine_sawmill": "Segheria",
+  "block.thermal.machine_smelter": "Fonderia a induzione",
+
+  "info.thermal.device_fluid_buffer.0": "Deposita e trasferisce fluidi. Può estrarre automaticamente.",
+  "info.thermal.device_fluid_buffer.1": "E' come una tramoggia, per i fluidi!",
+  "info.thermal.device_fluid_buffer.2": "Mantieni premuto §e§oShift§r e/o §e§oCtrl§r per cambiare i valori.",
+
+  "info.thermal.device_item_buffer.0": "Deposita e trasferisce oggetti. Può estrarre automaticamente.",
+  "info.thermal.device_item_buffer.1": "Meglio di una tramoggio, davvero!",
+  "info.thermal.device_item_buffer.2": "Mantieni §e§oShift§r e/o §e§oCtrl§r per cambiare i valori.",
+
+  "info.thermal.dynamo.throttle": "Acceleratori di velocità di uscita basati sul feedback locale.",
+
+  "info.thermal.dynamo_compression.0": "Genera flusso di redstone usando fluidi combustibili.",
+
+  "info.thermal.dynamo_lapidary.0": "Genera flusso di redstone utilizzando gemme!",
+  "info.thermal.dynamo_lapidary.1": "Probabilmente un portale a una dimensione alternata con goblin ossessionati dallo scintillio.",
+  "info.thermal.dynamo_lapidary.2": "Le gemme sono davvero solo belle rocce comunque.",
+
+  "info.thermal.dynamo_magmatic.0": "Genera flusso di redstone utilizzando fluidi estremamente caldi.",
+  "info.thermal.dynamo_magmatic.1": "I fluidi dissipano nel nulla come risulto di questo processo.",
+
+  "info.thermal.dynamo_numismatic.0": "Genera flusso di redstone utilizzando arbitraggio economico.",
+  "info.thermal.dynamo_numismatic.1": "Potrebbe essere un portale a una dimensione alternata di pura avarizia.",
+  "info.thermal.dynamo_numismatic.2": "Non pensarci troppo, inserisci monete.",
+
+  "info.thermal.dynamo_stirling.0": "Genera flusso di redstone utilizzando carburanti solidi.",
+  "info.thermal.dynamo_stirling.1": "La maggiorparte delle cose che funzionano in una fornace funzionanano anche qui.",
+
+  "info.thermal.machine_bottler.0": "Riempie i contenitori con fluidi.",
+  "info.thermal.machine_bottler.1": "Questo è richiesto per bere certe bevande.",
+  "info.thermal.machine_bottler.2": "Rinfrescante!",
+
+  "info.thermal.machine_brewer.0": "Fermenta pozioni e imbeve fluidi.",
+  "info.thermal.machine_brewer.1": "Potresti volerne alcuni in una riga.",
+  "info.thermal.machine_brewer.2": "Bottiglie non incluse.",
+
+  "info.thermal.machine_centrifuge.0": "Separa gli oggetti nei loro componenti.",
+  "info.thermal.machine_centrifuge.1": "Alcuni oggetti verrano processati in componenti fluidi.",
+  "info.thermal.machine_centrifuge.2": "Gira per vincere!",
+
+  "info.thermal.machine_chiller.0": "Congela rapidamente oggetti e fluidi.",
+  "info.thermal.machine_chiller.1": "Può usare uno stampo di formatura con i fluidi per determinare l'output.",
+  "info.thermal.machine_chiller.2": "Brrr!",
+
+  "info.thermal.machine_crafter.0": "Inserisce oggetti in una griglia per impostare una ricetta di lavorazione.",
+  "info.thermal.machine_crafter.1": "Premi semplicemente il bottone di conferma e cammina via!",
+  "info.thermal.machine_crafter.2": "Non tutte le ricette sono valide.",
+
+  "info.thermal.machine_crucible.0": "Trasforma i materiali solidi in fluidi, ad alto calore.",
+  "info.thermal.machine_crucible.1": "Molto utile per creare blocchi avanzati.",
+  "info.thermal.machine_crucible.2": "Tenere fuori portata da bambini piccoli e animali domestici.",
+
+  "info.thermal.machine_furnace.0": "Fonde le cose utilizzando il flusso di redstone.",
+  "info.thermal.machine_furnace.1": "Usa molto poca energia per cuocere cibi.",
+  "info.thermal.machine_furnace.2": "Om nom nom.",
+
+  "info.thermal.machine_insolator.0": "Infonde nutrienti e luce nelle piante utilizzando il flusso di redstone.",
+  "info.thermal.machine_insolator.1": "Non esattamente agricoltura 'biologica'.",
+  "info.thermal.machine_insolator.2": "Gloriosamente incandescente!",
+
+  "info.thermal.machine_press.0": "Comprime e deforma gli oggetti.",
+  "info.thermal.machine_press.1": "Può usare uno stampo di fabbricazione per determinare l'output.",
+  "info.thermal.machine_press.2": "Versatile e soddisfacente!",
+
+  "info.thermal.machine_pulverizer.0": "Schiaccia le cose in altre cose rotte.",
+  "info.thermal.machine_pulverizer.1": "Utile per trattare i minerali o per convertire gli oggetti.",
+  "info.thermal.machine_pulverizer.2": "Questo è tipicalmente non riversibile.",
+
+  "info.thermal.machine_pyrolyzer.0": "Decompone solidi via alte temperature.",
+  "info.thermal.machine_pyrolyzer.1": "Molto utile nella purificazione di carburanti.",
+  "info.thermal.machine_pyrolyzer.2": "Non toccare.",
+
+  "info.thermal.machine_refinery.0": "Raffina vari fluidi in altri prodotti.",
+  "info.thermal.machine_refinery.1": "Alcuni fluidi lascerannò dietro un componente solido.",
+  "info.thermal.machine_refinery.2": "I prodotti potrebbero o non potrebbero essere potabili.",
+
+  "info.thermal.machine_sawmill.0": "Taglia tronchi in assi e riprocessa oggetti di legno.",
+  "info.thermal.machine_sawmill.1": "Molto utile per ottenere il massimo da un albero.",
+  "info.thermal.machine_sawmill.2": "Attento alle tue mani.",
+
+  "item.thermal.chiller_ball_cast": "Forma di palla",
+
+  "item.thermal.press_coin_die": "Stampo numismatico",
+  "item.thermal.press_gear_die": "Stampo per gli ingranaggi",
+  "item.thermal.press_packing_2x2_die": "Stampo d'imballaggio (2x2)",
+  "item.thermal.press_packing_3x3_die": "Stampo d'imballaggio (3x3)",
+  "item.thermal.press_unpacking_die": "Stampo di disimballaggio",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Horizon",
+  "_comment": "========================================================================================================",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Innovation",
+  "_comment": "========================================================================================================",
+
+  "info.thermal.capacitor.mode.0": "Modalità: equipaggiamento",
+  "info.thermal.capacitor.mode.1": "Modalità: inventario",
+  "info.thermal.capacitor.mode.2": "Modalità: tutti gli oggetti",
+
+  "info.thermal.magnet.mode.0": "Auto-attrazione disabilitata",
+  "info.thermal.magnet.mode.1": "Auto-attrazione abilitata",
+  "info.thermal.magnet.use": "Usa per attirare gli oggetti nel luogo di destinazione.",
+  "info.thermal.magnet.use.sneak": "Usa mentre accovacciato per configurare.",
+
+  "info.thermal.infuser.mode.0": "Auto-infondi disabilitato",
+  "info.thermal.infuser.mode.1": "Auto-infondi abilitato",
+  "info.thermal.infuser.use": "Usa su un mob per infonderlo.",
+  "info.thermal.infuser.use.sneak": "Usa mentre accovacciato per infondere te stesso.",
+
+  "info.thermal.quiver.mode.0": "Imbutitura disabilitata",
+  "info.thermal.quiver.mode.1": "Imbutitura abilitata",
+  "info.thermal.quiver.use": "Usa per mettere frecce nella faretra.",
+  "info.thermal.quiver.use.sneak": "Use mentre accovacciato per rimuovere frecce.",
+
+  "item.thermal.flux_capacitor": "Condensatore di flusso",
+  "item.thermal.flux_capacitor.desc": "Contiene flusso di redstone. Può ricaricare l'equipaggiamento.",
+
+  "item.thermal.flux_drill": "Fluxbore",
+  "item.thermal.flux_drill.desc": "Scava i blocchi usando il flusso di redstone.",
+
+  "item.thermal.flux_magnet": "Fluxo-Magnet",
+  "item.thermal.flux_magnet.desc": "Attrae gli oggetti utilizzando il flusso di redstone.",
+
+  "item.thermal.flux_pump": "FluiVac",
+  "item.thermal.flux_pump.desc": "Transferisce i fluidi utilizzando il flusso di redstone.",
+
+  "item.thermal.flux_saw": "Fluxsaw",
+  "item.thermal.flux_saw.desc": "Taglia blocchi utilizzando il flusso di redstone.",
+
+  "item.thermal.potion_infuser": "Infusore di pozioni",
+  "item.thermal.potion_infuser.desc": "Deposita e infonde pozioni.",
+
+  "item.thermal.potion_quiver": "Faretra alchemica",
+  "item.thermal.potion_quiver.desc": "Imbeve frecce con pozioni.",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Locomotion",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.crossover_rail": "Binario incrocio",
+
+  "block.thermal.lumium_activator_rail": "Binario attivatore di lumio",
+  "block.thermal.lumium_crossover_rail": "Binario incrocio di lumio",
+  "block.thermal.lumium_detector_rail": "Binario rilevatore di lumio",
+  "block.thermal.lumium_powered_rail": "Binario alimentato di lumio",
+  "block.thermal.lumium_rail": "Binario di lumio",
+
+  "block.thermal.prismarine_activator_rail": "Binario attivatore di prismarino",
+  "block.thermal.prismarine_crossover_rail": "Binario incrocio di prismarino",
+  "block.thermal.prismarine_detector_rail": "Binario rilevatore di prismarino",
+  "block.thermal.prismarine_powered_rail": "Binario alimentato di prismarino",
+  "block.thermal.prismarine_rail": "Binario di prismarino",
+
+  "item.thermal.underwater_minecart": "Carrello da miniera subacqueo",
+
+  "item.thermal.phyto_tnt_minecart": "Carrello da miniera con PNT",
+
+  "item.thermal.earth_tnt_minecart": "Carrello da miniera con esplosivo tettonico",
+  "item.thermal.fire_tnt_minecart": "Carrello da miniera con esplosivo inferno",
+  "item.thermal.ice_tnt_minecart": "Carrello da miniera con esplosivo glaciale",
+  "item.thermal.lightning_tnt_minecart": "Carrello da miniera con esplosivo fulminante",
+
+  "item.thermal.nuke_tnt_minecart": "Carrello da miniera con esplosivo nucleare"
+}

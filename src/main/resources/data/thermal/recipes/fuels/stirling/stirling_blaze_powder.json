@@ -1,0 +1,7 @@
+{
+  "type": "thermal:stirling_fuel",
+  "ingredient": {
+    "item": "minecraft:blaze_powder"
+  },
+  "energy": 12000
+}

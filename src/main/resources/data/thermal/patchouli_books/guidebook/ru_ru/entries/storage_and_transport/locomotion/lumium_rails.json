@@ -1,0 +1,28 @@
+{
+  "name": "Люмиевые рельсы",
+  "icon": "thermal:lumium_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Люмиевые рельсы работают точно так же, как их стандартные аналоги, за исключением того, что они излучают свет 15 уровня."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_rail",
+      "B.recipe": "thermal:lumium_crossover_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_powered_rail",
+      "B.recipe": "thermal:lumium_activator_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_detector_rail"
+    }
+  ]
+}

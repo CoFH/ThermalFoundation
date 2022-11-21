@@ -1,0 +1,24 @@
+{
+  "name": "Краснокаменная взрывчатка",
+  "icon": "thermal:redstone_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Краснокаменная взрывчатка при взрыве создаёт облако из частиц красной пыли, которое активирует любые механизмы и устройства, связанные с красным камнем. Оно будет сохранятся в течении 10 секунд. Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_tnt",
+      "B.recipe": "thermal:redstone_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_tnt_minecart",
+      "title": "Вагонетка с краснокаменным динамитом"
+    }
+  ]
+}

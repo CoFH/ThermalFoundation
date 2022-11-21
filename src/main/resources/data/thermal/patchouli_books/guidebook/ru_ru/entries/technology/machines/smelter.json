@@ -1,0 +1,24 @@
+{
+  "name": "Индукционная плавильня",
+  "icon": "thermal:machine_smelter",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Индукционная плавильня",
+      "text": "Индукционная плавильня - это механизм который сплавляет несколько предметов вместе для получения сплавов. Он также выплавляет руду в слитки и драгоценности, на это влияют $(l:thermal:world/materials/catalysts)катализаторы$(/l). Переплавка руд даёт шанс получить обогащённый шлак, который можно использовать как катализатор для создания $(l:thermal:world/plants/phytogro)фито-гро$(/l). При плавке гравия образуются кремень и шлак."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_smelter",
+      "title": "Индукционная плавильня"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/item_filter)Предметный фильтр$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Концентратор знаний$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Расширенная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Стабилизированная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)Многопоточная RF катушка$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Усилитель магнитной связи$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Потоковая эффективность$(/l)$(li)$(l:thermal:technology/augments/machine_output)Вспомогательное сито$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)Каталитическая мелиоративная камера$(/l)"
+    }
+  ]
+}

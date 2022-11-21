@@ -1,0 +1,17 @@
+{
+  "name": "Сигналовый замок",
+  "icon": "thermal:lock",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Используется для включения панели безопасности на ваших различных механизмах, генераторах и предметах. Сделайте свои вещи своими!"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/lock",
+      "title": "Сигналовый замок"
+    }
+  ]
+}

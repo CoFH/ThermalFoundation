@@ -1,0 +1,23 @@
+{
+  "name": "Воронка пасечника",
+  "icon": "thermal:device_hive_extractor",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Извлекает соты и жидкий мёд при размещении под ульем."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_hive_extractor",
+      "title": "Воронка пасечника"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/item_filter)Предметный фильтр$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)"
+    }
+  ]
+}

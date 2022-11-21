@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "thermal:block/charge_bench_bottom",
+    "top": "thermal:block/charge_bench_top",
+    "side": "thermal:block/charge_bench"
+  }
+}

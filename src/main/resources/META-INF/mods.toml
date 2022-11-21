@@ -4,6 +4,42 @@ issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
 [[mods]]
+modId = "thermal"
+version = "${file.jarVersion}"
+displayName = "Thermal Series"
+updateJSONURL = "https://raw.github.com/cofh/version/master/thermal/update.json"
+displayURL = "https://teamcofh.com/"
+logoFile = "thermal_series.png"
+itemIcon = "thermal:tinker_bench"
+credits = "Team CoFH"
+authors = "King Lemming"
+description = '''
+Parent mod for all Thermal modules.
+
+Contains all of the common components for the Thermal Series, such as materials and basic tools.
+'''
+[[dependencies.thermal]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal]]
+modId = "forge"
+mandatory = true
+versionRange = "[43.1.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.thermal]]
+modId = "cofh_core"
+mandatory = true
+versionRange = "[10.0, 10.1]"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mods]]
 modId = "thermal_foundation"
 version = "${file.jarVersion}"
 displayName = "Thermal Foundation"

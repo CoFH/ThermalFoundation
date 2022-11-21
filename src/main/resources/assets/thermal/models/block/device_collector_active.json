@@ -1,0 +1,10 @@
+{
+  "parent": "thermal:block/device_collector",
+  "textures": {
+    "up": "thermal:block/devices/device_collector_top_active",
+    "east": "thermal:block/devices/device_collector_side_active",
+    "west": "thermal:block/devices/device_collector_side_active",
+    "north": "thermal:block/devices/device_collector_active",
+    "south": "thermal:block/devices/device_collector_side_active"
+  }
+}

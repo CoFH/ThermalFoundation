@@ -1,0 +1,24 @@
+{
+  "name": "Молниеносная взрывчатка",
+  "icon": "thermal:lightning_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Молниеносная взрывчатка при взрыве вызывает молнию в небольшой области и накладывает на мобов и игроков неподалёку эффект $(l:thermal:world/mobs/blitz)Шок II$(/l). Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lightning_tnt",
+      "B.recipe": "thermal:lightning_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lightning_tnt_minecart",
+      "title": "Вагонетка с молниеносным динамитом"
+    }
+  ]
+}

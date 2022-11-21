@@ -1,0 +1,15 @@
+{
+  "name": "Потоковая эффективность",
+  "icon": "thermal:machine_efficiency_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_efficiency_augment",
+      "title": "Потоковая эффективность",
+      "text": "Улучшение потоковая эффективность позволяет уменьшить количество энергии, требуемое на операцию на 10%, при этом максимальное потребление энергии механизмом снижается на 10%."
+    }
+  ]
+}

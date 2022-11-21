@@ -1,0 +1,23 @@
+{
+  "name": "Измельчитель",
+  "icon": "thermal:machine_pulverizer",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Измельчитель - это механизм который дробит различные предметы и руды. Для улучшения или увеличения выхода можно использовать улучшения и $(l:thermal:world/materials/catalysts)катализаторы$(/l)."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_pulverizer",
+      "title": "Измельчитель"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/item_filter)Предметный фильтр$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Концентратор знаний$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Расширенная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Стабилизированная RF катушка$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)Многопоточная RF катушка$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Усилитель магнитной связи$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Потоковая эффективность$(/l)$(li)$(l:thermal:technology/augments/machine_output)Вспомогательное сито$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)Каталитическая мелиоративная камера$(/l)"
+    }
+  ]
+}

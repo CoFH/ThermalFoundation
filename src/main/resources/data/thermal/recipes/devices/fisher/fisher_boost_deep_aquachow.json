@@ -1,0 +1,9 @@
+{
+  "type": "thermal:fisher_boost",
+  "ingredient": {
+    "item": "thermal:deep_aquachow"
+  },
+  "loot_table": "thermal:gameplay/fishing/deep",
+  "output_mod": 1.75,
+  "use_chance": 0.4
+}

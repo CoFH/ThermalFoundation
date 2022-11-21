@@ -1,0 +1,17 @@
+{
+  "name": "통찰력의 수정",
+  "icon": "thermal:xp_crystal",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "휴대형 경험치 저장소입니다! 통찰력의 수정은 약 63레벨에 해당하는 10,000 경험치를 보유할 수 있습니다. $(l:thermal:world/holding)보유$(/l) 마법 부여로 이 용량을 증가시킬수 있습니다."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/xp_crystal",
+      "title": "통찰력의 수정"
+    }
+  ]
+} 

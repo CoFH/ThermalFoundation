@@ -1,0 +1,17 @@
+{
+  "name": "Молниеносный заряд",
+  "icon": "thermal:lightning_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Молниеносные заряды можно использовать для вызова одной молнии. Выстрелив зарядом из раздатчика, он будет лететь линейно, и при попадании в моба или игрока нанесёт немого урона и наложит на него эффект $(l:thermal:world/mobs/blitz)Шок$(/l)."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lightning_charge_3",
+      "title": "Молниеносный заряд"
+    }
+  ]
+}

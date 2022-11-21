@@ -1,0 +1,1 @@
+{  "name": "식물",  "description": "농작물과 나무는 다양하고 유용한 식품과 재료를 생산합니다.",  "icon": "thermal:rosin",  "parent": "thermal:world",  "sortnum": 2}

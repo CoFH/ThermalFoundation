@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/device_nullifier",
+  "textures": {
+    "north": "thermal:block/devices/device_nullifier_active"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "thermal:tree_extractor",
+  "trunk": "minecraft:dark_oak_log",
+  "leaves": "minecraft:dark_oak_leaves",
+  "result": {
+    "fluid": "thermal:sap",
+    "amount": 25
+  }
+}

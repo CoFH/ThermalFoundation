@@ -1,0 +1,7 @@
+{
+  "name": "Элементальные заряды",
+  "description": "Овладейте всеми четырьмя элементами.",
+  "icon": "thermal:lightning_charge",
+  "parent": "thermal:equipment",
+  "sortnum": 3
+}

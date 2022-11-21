@@ -1,0 +1,16 @@
+{
+  "name": "Вспомогательное сито",
+  "icon": "thermal:machine_output_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_output_augment",
+      "title": "Вспомогательное сито",
+      "text": "Улучшение вспомогательное сито позволяет увеличить шанс вторичного выхода на 15%, но при этом максимальное потребление энергии механизмом повышается на 25%."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Лейка",
+  "icon": "thermal:watering_can",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Используется для полива сельскохозяйственных культур и ускорения их роста. Лейку можно наполнить и усовершенствовать на верстаке мастеров. После установки радиальных улучшений нажмите '$(k:cofh.mode_change_increment)' для смены радиуса полива. Лейка может быть зачарованна на $(l:thermal:world/holding)Удержание$(/l) для увеличения ёмкости."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:watering_can",
+      "title": "Лейка"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)$(li)$(l:thermal:technology/augments/area_radius)Радиальное улучшение$(/l)"
+    }
+  ]
+}

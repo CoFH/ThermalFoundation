@@ -1,0 +1,15 @@
+{
+  "name": "Алхимический усилитель",
+  "icon": "thermal:potion_amplifier_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/potion_amplifier_augment",
+      "title": "Алхимический усилитель",
+      "text": "Улучшение алхимический усилитель увеличивает силу действия зелий на 1 уровень, при этом длительность действия уменьшается на 25%. Сложение 4 улучшений приводит к тому, что зелья не имеют длительности, что делает многие из них бесполезными."
+    }
+  ]
+}

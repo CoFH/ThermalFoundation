@@ -1,0 +1,7 @@
+{
+  "type": "thermal:gourmand_fuel",
+  "ingredient": {
+    "item": "thermal:beetroot_block"
+  },
+  "energy": 16000
+}

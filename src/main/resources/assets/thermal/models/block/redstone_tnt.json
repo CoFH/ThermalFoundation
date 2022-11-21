@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "thermal:block/redstone_tnt_bottom",
+    "top": "thermal:block/redstone_tnt_top",
+    "side": "thermal:block/redstone_tnt_side"
+  }
+}

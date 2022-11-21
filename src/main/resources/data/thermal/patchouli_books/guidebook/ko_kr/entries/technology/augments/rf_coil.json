@@ -1,0 +1,1 @@
+{  "name": "확장 RF 코일",  "icon": "thermal:rf_coil_augment",  "category": "thermal:augments",  "read_by_default": true,  "pages": [    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:augments/rf_coil_augment",      "title": "확장 RF 코일",      "text": "확장 RF 코일 부착물은 RF의 저장 및 전송을 4배로 확장합니다."    }  ]}

@@ -1,0 +1,24 @@
+{
+  "name": "Ледяная взрывчатка",
+  "icon": "thermal:ice_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Ледяная взрывчатка замораживает блоки в определённой области и накладывает на мобов и игроков, оказавшихся в её радиусе, эффект $(l:thermal:world/mobs/blizz)Переохлаждение II$(/l). Блоки динамита и гранаты имеют радиусы 9 и 5 блоков соответственно."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ice_tnt",
+      "B.recipe": "thermal:ice_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ice_tnt_minecart",
+      "title": "Вагонетка с ледяным динамитом"
+    }
+  ]
+}

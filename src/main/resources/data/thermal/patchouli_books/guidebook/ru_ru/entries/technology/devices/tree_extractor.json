@@ -1,0 +1,24 @@
+{
+  "name": "Древесный выжиматель",
+  "icon": "thermal:device_tree_extractor",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Выжимает жидкость из соседнего дерева. При желании можно использовать удобрения для повышения производительности. Костная мука ускоряет в 1.5 раза, расходуется в течении 8 циклов, а $(l:thermal:world/plants/phytogro)фито-гро$(/l) ускоряет в 2 раза, расходуется в течении 16 циклов."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_tree_extractor",
+      "title": "Древесный выжиматель",
+	  "text": "Разные деревья производят разные жидкости; используйте JEI, чтобы увидеть доступные рецепты."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Улучшения",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)Интегральные компоненты$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Расширенная конструкция резервуара$(/l)"
+    }
+  ]
+}

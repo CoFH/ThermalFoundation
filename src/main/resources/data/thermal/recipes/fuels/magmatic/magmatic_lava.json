@@ -1,0 +1,8 @@
+{
+  "type": "thermal:magmatic_fuel",
+  "ingredient": {
+    "fluid": "minecraft:lava",
+    "amount": 1000
+  },
+  "energy": 100000
+}

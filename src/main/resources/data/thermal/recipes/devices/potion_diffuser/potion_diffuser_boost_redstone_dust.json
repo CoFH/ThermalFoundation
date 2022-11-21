@@ -1,0 +1,7 @@
+{
+  "type": "thermal:potion_diffuser_boost",
+  "ingredient": {
+    "tag": "forge:dusts/redstone"
+  },
+  "duration_mod": 1.0
+}

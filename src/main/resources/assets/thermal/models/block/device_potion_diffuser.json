@@ -1,0 +1,12 @@
+{
+  "parent": "thermal:block/device_base",
+  "textures": {
+    "particle": "thermal:block/devices/device_potion_diffuser_side",
+    "down": "thermal:block/devices/device_potion_diffuser_bottom",
+    "up": "thermal:block/devices/device_potion_diffuser_top",
+    "east": "thermal:block/devices/device_potion_diffuser_side",
+    "west": "thermal:block/devices/device_potion_diffuser_side",
+    "north": "thermal:block/devices/device_potion_diffuser",
+    "south": "thermal:block/devices/device_potion_diffuser_side"
+  }
+}

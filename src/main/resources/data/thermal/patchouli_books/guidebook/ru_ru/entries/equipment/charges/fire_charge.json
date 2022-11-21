@@ -1,0 +1,17 @@
+{
+  "name": "Огненный заряд",
+  "icon": "minecraft:fire_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Огненные заряды являются предметами оригинальной игры, но Thermal добавляет для них новое применение. Они могут быть использованы в сетке крафта с другими ресурсами для создания определенных сплавов и блоков."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "minecraft:fire_charge",
+      "title": "Огненный заряд"
+    }
+  ]
+}

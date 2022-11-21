@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "thermal:block/potato_block"
+      },
+      {
+        "model": "thermal:block/potato_block",
+        "y": 90
+      },
+      {
+        "model": "thermal:block/potato_block",
+        "y": 180
+      },
+      {
+        "model": "thermal:block/potato_block",
+        "y": 270
+      }
+    ]
+  }
+}
