@@ -15,6 +15,7 @@ plugins {
     id 'net.covers1624.signing' version '1.1.4'
 }
 apply plugin: 'net.minecraftforge.gradle'
+jarJar.enable()
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -88,7 +89,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
-    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}")
+    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}") {
+        jarJar.ranged(it, "[${mc_version}-${thermal_core_maven_min},${mc_version}-${thermal_core_maven_max}]")
+    }
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
@@ -186,3 +189,24 @@ publishing {
         }
     }
 }
+
+jarJar {
+    fromRuntimeConfiguration()
+    dependencies {
+        include(dependency("com.teamcofh:thermal_core"))
+    }
+}
+
+reobf {
+    jarJar {}
+}
+
+afterEvaluate {
+    tasks.jar.finalizedBy tasks.reobfJar
+    tasks.jarJar.finalizedBy tasks.reobfJarJar
+    tasks.reobfJarJar.enabled = true
+}
+
+tasks.jarJar.archiveClassifier.set("");
+tasks.jar.archiveClassifier.set("slim");
+tasks.build.dependsOn tasks.jarJar
