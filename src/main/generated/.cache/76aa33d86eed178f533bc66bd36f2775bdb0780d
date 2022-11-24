@@ -1,16 +1,10 @@
-// 1.19.2	2022-10-04T15:04:56.8830585	Thermal Foundation: Item Models
-3b8ca51c9e23723b85924709562e955e7ca8fa97 assets/thermal/models/item/apatite.json
-ed24caa4b88648538fcb78ec1708be67f122650a assets/thermal/models/item/apatite_block.json
-1cdc20af2ead0a4022365ab8995844ddc4a58bee assets/thermal/models/item/apatite_dust.json
+// 1.19.2	2022-11-24T10:36:03.2825675	Thermal Foundation: Item Models
 d74331736740ac9b2e1613b40f6b22b4bc622b5c assets/thermal/models/item/apatite_ore.json
 a5e9668af78182bf9e3ad5dd8ecd917864272d22 assets/thermal/models/item/bronze_block.json
 646c8475ed5423a8445919a6216d40e501d40903 assets/thermal/models/item/bronze_dust.json
 97e7a4f803cc6e4b78c15b2e9eca54c161e1b7d3 assets/thermal/models/item/bronze_gear.json
 17b9405ddb7df5dba38184412f030a57acfe15d4 assets/thermal/models/item/bronze_ingot.json
 1d0a038aebaee63498cfdac3d4beffc8e533de20 assets/thermal/models/item/bronze_nugget.json
-2743bb55e850e9f2d0888dee8035615818406894 assets/thermal/models/item/cinnabar.json
-4f2019b18e4688b293497eb02215a04866a22721 assets/thermal/models/item/cinnabar_block.json
-75a3d4c199a73fc41629ecd37f96cb8ec3a50225 assets/thermal/models/item/cinnabar_dust.json
 ee5d75f0ad8bbca6502b708863811c39dca34d8d assets/thermal/models/item/cinnabar_ore.json
 48546ddc53c36fbe5438986260224accf0745651 assets/thermal/models/item/constantan_block.json
 cd83b020dbbd129ec219f323535221cd934df689 assets/thermal/models/item/constantan_dust.json
@@ -49,9 +43,6 @@ c5617e2dce271a9a63f8d90b989f3c98d0f6f7b2 assets/thermal/models/item/nickel_block
 aabe04f59568a64e49b9440c484c9e4a78f47cae assets/thermal/models/item/nickel_ingot.json
 7f2afcfe39b698fe1ea137dd58cc3944e91d8984 assets/thermal/models/item/nickel_nugget.json
 6201f30d295359ce8bdbf08a8d97593a9fadd1f3 assets/thermal/models/item/nickel_ore.json
-915805c398359c21685d0f30b5b9c5520fce4f1c assets/thermal/models/item/niter.json
-a2c65dc481a83f4d281d93ec4e13235f92665879 assets/thermal/models/item/niter_block.json
-bd4b1986d99c12d6789e7ddeef2cc91b5f599e4c assets/thermal/models/item/niter_dust.json
 39d023911e9d5c35a16524bd17e3b517ae8479d4 assets/thermal/models/item/niter_ore.json
 1e296bd64a079ad2de555999fb069ad4419c918e assets/thermal/models/item/oil_red_sand.json
 e01cf011b4d9945ee9617e361409c6f22a40ff78 assets/thermal/models/item/oil_sand.json
@@ -79,9 +70,6 @@ f2ed5e83f87aa07b9e5f0e6ce33c9c6b9e3fc275 assets/thermal/models/item/silver_block
 bfe745954fbeb141249ff117facef408c90bdc1b assets/thermal/models/item/silver_ingot.json
 3f980851dc0aed07367e534152e7560b2169adcf assets/thermal/models/item/silver_nugget.json
 fbbfa95eef9e7cfe65cfc15fc220ef18296d1c72 assets/thermal/models/item/silver_ore.json
-7a98f6c7874c8769dfe4a9b333213a4a73cc7616 assets/thermal/models/item/sulfur.json
-aeaae59e591a33d3d5d5fe3d7e9e5fdf700b5e69 assets/thermal/models/item/sulfur_block.json
-0cdb8a60334b872c4fdc3fe43db5f8e068a6db19 assets/thermal/models/item/sulfur_dust.json
 0d9389b3bf00c78224a4880b3338e5e38cc766bc assets/thermal/models/item/sulfur_ore.json
 eb25186181b412d25f4509da2f952450b0045822 assets/thermal/models/item/tin_block.json
 f5ef39726e951e2c711ec32d8a6674e50ab65fbc assets/thermal/models/item/tin_dust.json

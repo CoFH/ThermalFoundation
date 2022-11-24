@@ -79,11 +79,6 @@ public class TFndLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(ID_OIL_RED_SAND));
         createSimpleDropTable(regBlocks.get(ID_OIL_SAND));
 
-        createSimpleDropTable(regBlocks.get(ID_APATITE_BLOCK));
-        createSimpleDropTable(regBlocks.get(ID_CINNABAR_BLOCK));
-        createSimpleDropTable(regBlocks.get(ID_NITER_BLOCK));
-        createSimpleDropTable(regBlocks.get(ID_SULFUR_BLOCK));
-
         createSimpleDropTable(regBlocks.get(raw(ID_LEAD_BLOCK)));
         createSimpleDropTable(regBlocks.get(raw(ID_NICKEL_BLOCK)));
         createSimpleDropTable(regBlocks.get(raw(ID_SILVER_BLOCK)));

@@ -1,9 +1,5 @@
 {
   "values": [
-    "#forge:storage_blocks/apatite",
-    "#forge:storage_blocks/cinnabar",
-    "#forge:storage_blocks/niter",
-    "#forge:storage_blocks/sulfur",
     "#forge:storage_blocks/raw_lead",
     "#forge:storage_blocks/raw_nickel",
     "#forge:storage_blocks/raw_silver",

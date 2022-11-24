@@ -146,11 +146,6 @@ public class TFndTagsProvider {
             // endregion
 
             // region STORAGE
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_APATITE_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CINNABAR_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NITER_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SULFUR_BLOCK));
-
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
@@ -189,11 +184,6 @@ public class TFndTagsProvider {
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_RUBY_BLOCK));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
 
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_APATITE).add(BLOCKS.get(ID_APATITE_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_CINNABAR).add(BLOCKS.get(ID_CINNABAR_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_NITER).add(BLOCKS.get(ID_NITER_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_SULFUR).add(BLOCKS.get(ID_SULFUR_BLOCK));
-
             tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
             tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
             tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
@@ -214,11 +204,6 @@ public class TFndTagsProvider {
 
 
             tag(Tags.Blocks.STORAGE_BLOCKS).addTags(
-                    BlockTagsCoFH.STORAGE_BLOCKS_APATITE,
-                    BlockTagsCoFH.STORAGE_BLOCKS_CINNABAR,
-                    BlockTagsCoFH.STORAGE_BLOCKS_NITER,
-                    BlockTagsCoFH.STORAGE_BLOCKS_SULFUR,
-
                     BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD,
                     BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL,
                     BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER,
@@ -287,11 +272,6 @@ public class TFndTagsProvider {
                     ItemTagsCoFH.ORES_SAPPHIRE
             );
 
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_APATITE, ItemTagsCoFH.STORAGE_BLOCKS_APATITE);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_CINNABAR, ItemTagsCoFH.STORAGE_BLOCKS_CINNABAR);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_NITER, ItemTagsCoFH.STORAGE_BLOCKS_NITER);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_SULFUR, ItemTagsCoFH.STORAGE_BLOCKS_SULFUR);
-
             copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD, ItemTagsCoFH.STORAGE_BLOCKS_RAW_LEAD);
             copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL, ItemTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL);
             copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER, ItemTagsCoFH.STORAGE_BLOCKS_RAW_SILVER);
@@ -311,11 +291,6 @@ public class TFndTagsProvider {
             copy(BlockTagsCoFH.STORAGE_BLOCKS_SAPPHIRE, ItemTagsCoFH.STORAGE_BLOCKS_SAPPHIRE);
 
             tag(Tags.Items.STORAGE_BLOCKS).addTags(
-                    ItemTagsCoFH.STORAGE_BLOCKS_APATITE,
-                    ItemTagsCoFH.STORAGE_BLOCKS_CINNABAR,
-                    ItemTagsCoFH.STORAGE_BLOCKS_NITER,
-                    ItemTagsCoFH.STORAGE_BLOCKS_SULFUR,
-
                     ItemTagsCoFH.STORAGE_BLOCKS_RAW_LEAD,
                     ItemTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL,
                     ItemTagsCoFH.STORAGE_BLOCKS_RAW_SILVER,
@@ -357,12 +332,6 @@ public class TFndTagsProvider {
                     ItemTagsCoFH.COINS_INVAR
             );
 
-
-            tag(ItemTagsCoFH.DUSTS_APATITE).add(ITEMS.get("apatite_dust"));
-            tag(ItemTagsCoFH.DUSTS_CINNABAR).add(ITEMS.get("cinnabar_dust"));
-            tag(ItemTagsCoFH.DUSTS_NITER).add(ITEMS.get("niter_dust"));
-            tag(ItemTagsCoFH.DUSTS_SULFUR).add(ITEMS.get("sulfur_dust"));
-
             tag(ItemTagsCoFH.DUSTS_LEAD).add(ITEMS.get("lead_dust"));
             tag(ItemTagsCoFH.DUSTS_NICKEL).add(ITEMS.get("nickel_dust"));
             tag(ItemTagsCoFH.DUSTS_SILVER).add(ITEMS.get("silver_dust"));
@@ -377,11 +346,6 @@ public class TFndTagsProvider {
             tag(ItemTagsCoFH.DUSTS_SAPPHIRE).add(ITEMS.get("sapphire_dust"));
 
             tag(DUSTS).addTags(
-                    ItemTagsCoFH.DUSTS_APATITE,
-                    ItemTagsCoFH.DUSTS_CINNABAR,
-                    ItemTagsCoFH.DUSTS_NITER,
-                    ItemTagsCoFH.DUSTS_SULFUR,
-
                     ItemTagsCoFH.DUSTS_LEAD,
                     ItemTagsCoFH.DUSTS_NICKEL,
                     ItemTagsCoFH.DUSTS_SILVER,
@@ -424,20 +388,10 @@ public class TFndTagsProvider {
                     ItemTagsCoFH.GEARS_SAPPHIRE
             );
 
-            tag(ItemTagsCoFH.GEMS_APATITE).add(ITEMS.get("apatite"));
-            tag(ItemTagsCoFH.GEMS_CINNABAR).add(ITEMS.get("cinnabar"));
-            tag(ItemTagsCoFH.GEMS_NITER).add(ITEMS.get("niter"));
-            tag(ItemTagsCoFH.GEMS_SULFUR).add(ITEMS.get("sulfur"));
-
             tag(ItemTagsCoFH.GEMS_RUBY).add(ITEMS.get("ruby"));
             tag(ItemTagsCoFH.GEMS_SAPPHIRE).add(ITEMS.get("sapphire"));
 
             tag(GEMS).addTags(
-                    ItemTagsCoFH.GEMS_APATITE,
-                    ItemTagsCoFH.GEMS_CINNABAR,
-                    ItemTagsCoFH.GEMS_NITER,
-                    ItemTagsCoFH.GEMS_SULFUR,
-
                     ItemTagsCoFH.GEMS_RUBY,
                     ItemTagsCoFH.GEMS_SAPPHIRE
             );

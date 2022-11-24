@@ -1,8 +1,6 @@
-// 1.19.2	2022-10-04T15:04:56.8860592	Thermal Foundation: Loot Tables
-753e2cd6abd610ad584b4df4c9c813aa758c9633 data/thermal/loot_tables/blocks/apatite_block.json
+// 1.19.2	2022-11-24T10:36:03.2805717	Thermal Foundation: Loot Tables
 a2e1b0eeac0cc8e6955dc0b36fba40b644846cbd data/thermal/loot_tables/blocks/apatite_ore.json
 4ae04b000e8b741f9d78737c48491af327930e11 data/thermal/loot_tables/blocks/bronze_block.json
-9b609bfd8fe976c9bf1bd3ccb98ef4f649160d7f data/thermal/loot_tables/blocks/cinnabar_block.json
 201331523c318a1192d814bc95814c73abb3513a data/thermal/loot_tables/blocks/cinnabar_ore.json
 11462192a39e02d18456fa4318ea00ef15c42483 data/thermal/loot_tables/blocks/constantan_block.json
 0ae5d7ac0e1cf945ac5ec71a8efd5f943932fb28 data/thermal/loot_tables/blocks/deepslate_apatite_ore.json
@@ -21,7 +19,6 @@ b60ccc820453a97be7d1fda2b8f85072d54def16 data/thermal/loot_tables/blocks/invar_b
 6a81d26a20cd54b64f2dc83a5c1da05815f5ea47 data/thermal/loot_tables/blocks/lead_ore.json
 42362563f87a6bcc4db445f7b0b854b5f3f484d8 data/thermal/loot_tables/blocks/nickel_block.json
 828985d6ba5780e436bad8d5a11facaec77852f0 data/thermal/loot_tables/blocks/nickel_ore.json
-6059397cb555c08689cd8fba65ad40e294a99fe1 data/thermal/loot_tables/blocks/niter_block.json
 d99f78ea071457f49903abb9ed9c1f0bcb3d6d46 data/thermal/loot_tables/blocks/niter_ore.json
 9f82cdd12a4376be6c00aa931fa000d9469c72f3 data/thermal/loot_tables/blocks/oil_red_sand.json
 97504904d9f3474818a49f9ba5e2c9464c918b31 data/thermal/loot_tables/blocks/oil_sand.json
@@ -35,7 +32,6 @@ af0fdcd88f12ea171112c70e12dc46abe9f874ed data/thermal/loot_tables/blocks/ruby_or
 a5356a8cbc0fcbabb1101aef7b2eec23176319e9 data/thermal/loot_tables/blocks/sapphire_ore.json
 d23449e841d7061b652c1d7a139c980d456dd162 data/thermal/loot_tables/blocks/silver_block.json
 81cca7eeb34585f818a3696baf9381b414c43aab data/thermal/loot_tables/blocks/silver_ore.json
-623d4bd4891f8de9b073c04028af68900475d0d3 data/thermal/loot_tables/blocks/sulfur_block.json
 e16e3894a7b1425ec68264a79e276e6b4d114818 data/thermal/loot_tables/blocks/sulfur_ore.json
 d5fe072402670ba8db70d629989f50e0a4100932 data/thermal/loot_tables/blocks/tin_block.json
 e09ec56cdd7bfb0ab25b1a4bd034ff563172b1d7 data/thermal/loot_tables/blocks/tin_ore.json

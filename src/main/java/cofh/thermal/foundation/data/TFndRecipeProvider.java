@@ -141,38 +141,5 @@ public class TFndRecipeProvider extends RecipeProviderCoFH {
                 .unlockedBy("has_nickel_ingot", has(ItemTagsCoFH.INGOTS_NICKEL))
                 .save(consumer, ID_THERMAL + ":fire_charge/invar_ingot_3");
     }
-
-    //    private void generateChargeRecipes(Consumer<FinishedRecipe> consumer) {
-    //
-    //        var reg = ITEMS;
-    //
-    //        Item earthCharge = reg.get("earth_charge");
-    //
-    //        // region EARTH CHARGE CONVERSIONS
-    //        ShapelessRecipeBuilder.shapeless(reg.get("apatite_dust"))
-    //                .requires(ItemTagsCoFH.GEMS_APATITE)
-    //                .requires(earthCharge)
-    //                .unlockedBy("has_apatite", has(ItemTagsCoFH.GEMS_APATITE))
-    //                .save(consumer, ID_THERMAL + ":earth_charge/apatite_dust_from_apatite");
-    //
-    //        ShapelessRecipeBuilder.shapeless(reg.get("cinnabar_dust"))
-    //                .requires(ItemTagsCoFH.GEMS_CINNABAR)
-    //                .requires(earthCharge)
-    //                .unlockedBy("has_cinnabar", has(ItemTagsCoFH.GEMS_CINNABAR))
-    //                .save(consumer, ID_THERMAL + ":earth_charge/cinnabar_dust_from_cinnabar");
-    //
-    //        ShapelessRecipeBuilder.shapeless(reg.get("niter_dust"))
-    //                .requires(ItemTagsCoFH.GEMS_NITER)
-    //                .requires(earthCharge)
-    //                .unlockedBy("has_niter", has(ItemTagsCoFH.GEMS_NITER))
-    //                .save(consumer, ID_THERMAL + ":earth_charge/niter_dust_from_niter");
-    //
-    //        ShapelessRecipeBuilder.shapeless(reg.get("sulfur_dust"))
-    //                .requires(ItemTagsCoFH.GEMS_SULFUR)
-    //                .requires(earthCharge)
-    //                .unlockedBy("has_sulfur", has(ItemTagsCoFH.GEMS_SULFUR))
-    //                .save(consumer, ID_THERMAL + ":earth_charge/sulfur_dust_from_sulfur");
-    //        // endregion
-    //    }
     // endregion
 }

@@ -40,16 +40,6 @@ public class TFndItemModelProvider extends ItemModelProviderCoFH {
     // region ITEM HELPERS
     private void registerResources(DeferredRegisterCoFH<Item> reg) {
 
-        generated(reg.getSup("apatite_dust"));
-        generated(reg.getSup("cinnabar_dust"));
-        generated(reg.getSup("niter_dust"));
-        generated(reg.getSup("sulfur_dust"));
-
-        generated(reg.getSup("apatite"));
-        generated(reg.getSup("cinnabar"));
-        generated(reg.getSup("niter"));
-        generated(reg.getSup("sulfur"));
-
         metalSet(reg, "lead");
         metalSet(reg, "nickel");
         metalSet(reg, "silver");
@@ -107,11 +97,6 @@ public class TFndItemModelProvider extends ItemModelProviderCoFH {
     }
 
     private void registerStorageBlocks(DeferredRegisterCoFH<Block> reg) {
-
-        blockItem(reg.getSup(ID_APATITE_BLOCK));
-        blockItem(reg.getSup(ID_CINNABAR_BLOCK));
-        blockItem(reg.getSup(ID_NITER_BLOCK));
-        blockItem(reg.getSup(ID_SULFUR_BLOCK));
 
         blockItem(reg.getSup(raw(ID_LEAD_BLOCK)));
         blockItem(reg.getSup(raw(ID_NICKEL_BLOCK)));

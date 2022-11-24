@@ -66,11 +66,6 @@ public class TFndBlockStateProvider extends BlockStateProviderCoFH {
 
     private void registerStorage(DeferredRegisterCoFH<Block> reg) {
 
-        simpleBlock(reg.getSup(ID_APATITE_BLOCK));
-        simpleBlock(reg.getSup(ID_CINNABAR_BLOCK));
-        simpleBlock(reg.getSup(ID_NITER_BLOCK));
-        simpleBlock(reg.getSup(ID_SULFUR_BLOCK));
-
         simpleBlock(reg.getSup(raw(ID_LEAD_BLOCK)));
         simpleBlock(reg.getSup(raw(ID_NICKEL_BLOCK)));
         simpleBlock(reg.getSup(raw(ID_SILVER_BLOCK)));
