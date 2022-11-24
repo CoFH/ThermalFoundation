@@ -155,8 +155,9 @@ publishing {
             groupId project.group
             artifactId project.archivesBaseName
             version project.version
-            artifact jar
-            artifact srcJar
+
+            from components.java
+            jarJar.component(it)
 
             pom {
                 name = archivesBaseName
@@ -207,6 +208,4 @@ afterEvaluate {
     tasks.reobfJarJar.enabled = true
 }
 
-tasks.jarJar.archiveClassifier.set("");
-tasks.jar.archiveClassifier.set("slim");
 tasks.build.dependsOn tasks.jarJar
