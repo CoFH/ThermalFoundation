@@ -9,9 +9,9 @@
   "advancements.thermal.wrench.description": "製作一把新月錘。",
 
   "block.thermal.apatite_ore": "磷灰石礦",
-  "block.thermal.cinnabar_ore": "朱砂礦",
+  "block.thermal.cinnabar_ore": "硃砂礦",
   "block.thermal.niter_ore": "硝石礦",
-  "block.thermal.sulfur_ore": "硫礦",
+  "block.thermal.sulfur_ore": "硫磺礦",
 
   "block.thermal.lead_ore": "鉛礦",
   "block.thermal.nickel_ore": "鎳礦",
@@ -22,9 +22,9 @@
   "block.thermal.sapphire_ore": "藍寶石礦",
 
   "block.thermal.deepslate_apatite_ore": "深板岩磷灰石礦",
-  "block.thermal.deepslate_cinnabar_ore": "深板岩朱砂礦",
+  "block.thermal.deepslate_cinnabar_ore": "深板岩硃砂礦",
   "block.thermal.deepslate_niter_ore": "深板岩硝石礦",
-  "block.thermal.deepslate_sulfur_ore": "深板岩硫礦",
+  "block.thermal.deepslate_sulfur_ore": "深板岩硫磺礦",
 
   "block.thermal.deepslate_lead_ore": "深板岩鉛礦",
   "block.thermal.deepslate_nickel_ore": "深板岩鎳礦",
@@ -37,41 +37,41 @@
   "block.thermal.oil_sand": "瀝青沙",
   "block.thermal.oil_red_sand": "瀝青紅沙",
 
-  "block.thermal.apatite_block": "磷灰石塊",
-  "block.thermal.cinnabar_block": "朱砂塊",
-  "block.thermal.niter_block": "硝石塊",
-  "block.thermal.sulfur_block": "硫塊",
+  "block.thermal.apatite_block": "磷灰石方塊",
+  "block.thermal.cinnabar_block": "硃砂方塊",
+  "block.thermal.niter_block": "硝石方塊",
+  "block.thermal.sulfur_block": "硫磺方塊",
 
-  "block.thermal.lead_block": "鉛塊",
-  "block.thermal.nickel_block": "鎳塊",
-  "block.thermal.silver_block": "銀塊",
-  "block.thermal.tin_block": "錫塊",
+  "block.thermal.lead_block": "鉛方塊",
+  "block.thermal.nickel_block": "鎳方塊",
+  "block.thermal.silver_block": "銀方塊",
+  "block.thermal.tin_block": "錫方塊",
 
-  "block.thermal.ruby_block": "紅寶石塊",
-  "block.thermal.sapphire_block": "藍寶石塊",
+  "block.thermal.ruby_block": "紅寶石方塊",
+  "block.thermal.sapphire_block": "藍寶石方塊",
 
-  "block.thermal.bronze_block": "青銅塊",
-  "block.thermal.constantan_block": "康銅塊",
-  "block.thermal.electrum_block": "琥珀金塊",
-  "block.thermal.invar_block": "殷鋼塊",
+  "block.thermal.bronze_block": "青銅方塊",
+  "block.thermal.constantan_block": "康銅方塊",
+  "block.thermal.electrum_block": "琥珀金方塊",
+  "block.thermal.invar_block": "不變鋼方塊",
 
-  "block.thermal.steel_block": "鋼塊",
-  "block.thermal.rose_gold_block": "玫瑰金塊",
+  "block.thermal.steel_block": "鋼方塊",
+  "block.thermal.rose_gold_block": "玫瑰金方塊",
 
-  "block.thermal.enderium_block": "終界塊",
-  "block.thermal.lumium_block": "流明塊",
-  "block.thermal.signalum_block": "信素塊",
+  "block.thermal.enderium_block": "終界合金方塊",
+  "block.thermal.lumium_block": "流明方塊",
+  "block.thermal.signalum_block": "信素方塊",
 
   "block.thermal.machine_frame": "機器框架",
   "block.thermal.strongbox": "保險箱",
 
-  "block.thermal.enderium_glass": "終界玻璃",
+  "block.thermal.enderium_glass": "終界合金玻璃",
   "block.thermal.lumium_glass": "流明玻璃",
   "block.thermal.obsidian_glass": "硬化玻璃",
   "block.thermal.signalum_glass": "信素玻璃",
 
   "block.thermal.white_rockwool": "白色石棉",
-  "block.thermal.orange_rockwool": "橘色石棉",
+  "block.thermal.orange_rockwool": "橙色石棉",
   "block.thermal.magenta_rockwool": "洋紅色石棉",
   "block.thermal.light_blue_rockwool": "淺藍色石棉",
   "block.thermal.yellow_rockwool": "黃色石棉",
@@ -87,32 +87,32 @@
   "block.thermal.red_rockwool": "紅色石棉",
   "block.thermal.black_rockwool": "黑色石棉",
 
-  "block.thermal.chiseled_rich_slag": "鑿製富爐渣塊",
-  "block.thermal.chiseled_slag": "鑿製爐渣塊",
+  "block.thermal.chiseled_rich_slag": "浮雕富爐渣塊",
+  "block.thermal.chiseled_slag": "浮雕爐渣塊",
   "block.thermal.cracked_rich_slag_bricks": "裂紋富爐渣塊",
   "block.thermal.cracked_slag_bricks": "裂紋爐渣塊",
-  "block.thermal.polished_rich_slag": "燒製富爐渣塊",
-  "block.thermal.polished_slag": "燒製爐渣塊",
+  "block.thermal.polished_rich_slag": "拋光富爐渣塊",
+  "block.thermal.polished_slag": "拋光爐渣塊",
   "block.thermal.rich_slag_bricks": "富爐渣磚",
   "block.thermal.slag_bricks": "爐渣磚",
 
-  "block.thermal.bitumen_block": "瀝青塊",
-  "block.thermal.coal_coke_block": "焦炭塊",
-  "block.thermal.cured_rubber_block": "硫化橡膠塊",
-  "block.thermal.rich_slag_block": "富爐渣塊",
-  "block.thermal.rosin_block": "松香塊",
-  "block.thermal.rubber_block": "橡膠塊",
-  "block.thermal.sawdust_block": "壓實鋸屑塊",
-  "block.thermal.slag_block": "爐渣塊",
-  "block.thermal.tar_block": "焦油塊",
+  "block.thermal.bitumen_block": "瀝青方塊",
+  "block.thermal.coal_coke_block": "焦炭方塊",
+  "block.thermal.cured_rubber_block": "硫化橡膠方塊",
+  "block.thermal.rich_slag_block": "富爐渣方塊",
+  "block.thermal.rosin_block": "松香方塊",
+  "block.thermal.rubber_block": "橡膠方塊",
+  "block.thermal.sawdust_block": "壓實鋸屑方塊",
+  "block.thermal.slag_block": "爐渣方塊",
+  "block.thermal.tar_block": "焦油方塊",
 
-  "death.attack.basalz": "%1$s的世界天翻地覆！",
-  "death.attack.blitz": "%1$s得到了悲慘的教訓！",
-  "death.attack.blizz": "%1$s邂逅了冷酷的命運！",
+  "death.attack.basalz": "%1$s 的世界天翻地覆！",
+  "death.attack.blitz": "%1$s 得到了悲慘的教訓！",
+  "death.attack.blizz": "%1$s 邂逅了冷酷的命運！",
 
-  "entity.thermal.basalz": "岩石人",
-  "entity.thermal.blitz": "狂風人",
-  "entity.thermal.blizz": "暴雪人",
+  "entity.thermal.basalz": "岩石使者",
+  "entity.thermal.blitz": "狂風使者",
+  "entity.thermal.blizz": "暴雪使者",
 
   "entity.thermal.basalz_projectile": "地岩裂片",
   "entity.thermal.blitz_projectile": "鳴雷彈珠",
@@ -144,12 +144,12 @@
   "info.thermal.detonator.mode.0": "當前模式：綁定",
   "info.thermal.detonator.mode.1": "當前模式：引爆",
   "info.thermal.detonator.primed": "綁定至：",
-  "info.thermal.detonator.use.0": "使用以將其綁定至TNT，以準備引爆。",
+  "info.thermal.detonator.use.0": "使用以將其綁定至 TNT，以準備引爆。",
   "info.thermal.detonator.use.1": "使用以引爆綁定的炸藥。",
   "info.thermal.detonator.use.sneak": "潛行並使用以清空綁定。",
 
-  "info.thermal.lock.use": "對可兼容方塊使用來為其上鎖。",
-  "info.thermal.lock.use.sneak": "潛行並使用來為副手上的物品上鎖。",
+  "info.thermal.lock.use": "對可相容方塊使用為其上鎖。",
+  "info.thermal.lock.use.sneak": "潛行並使用為副手上的物品上鎖。",
 
   "info.thermal.redprint.contents": "複製內容：",
   "info.thermal.redprint.unknown": "未知資訊",
@@ -200,18 +200,18 @@
   "item.thermal.resin_bucket": "樹脂桶",
   "item.thermal.sap_bucket": "樹汁桶",
   "item.thermal.seed_oil_bucket": "種子油桶",
-  "item.thermal.syrup_bottle": "瓶裝糖漿",
+  "item.thermal.syrup_bottle": "糖漿瓶",
   "item.thermal.syrup_bucket": "糖漿桶",
   "item.thermal.tree_oil_bucket": "樹油桶",
 
   "item.thermal.apatite": "磷灰石",
   "item.thermal.apatite_dust": "磷灰石粉",
-  "item.thermal.cinnabar": "朱砂",
-  "item.thermal.cinnabar_dust": "朱砂粉",
+  "item.thermal.cinnabar": "硃砂",
+  "item.thermal.cinnabar_dust": "硃砂粉",
   "item.thermal.niter": "硝石",
   "item.thermal.niter_dust": "硝石粉",
   "item.thermal.sulfur": "硫磺",
-  "item.thermal.sulfur_dust": "硫粉",
+  "item.thermal.sulfur_dust": "硫磺粉",
 
   "item.thermal.bitumen": "瀝青",
   "item.thermal.coal_coke": "焦炭",
@@ -225,13 +225,13 @@
 
   "item.thermal.basalz_powder": "岩石粉",
   "item.thermal.basalz_rod": "岩石裂骸",
-  "item.thermal.basalz_spawn_egg": "岩石人刷怪蛋",
+  "item.thermal.basalz_spawn_egg": "岩石使者 生怪蛋",
   "item.thermal.blitz_powder": "狂風粉",
   "item.thermal.blitz_rod": "狂風沙塵",
-  "item.thermal.blitz_spawn_egg": "狂風人刷怪蛋",
+  "item.thermal.blitz_spawn_egg": "狂風使者 生怪蛋",
   "item.thermal.blizz_powder": "暴雪粉",
   "item.thermal.blizz_rod": "暴雪立方",
-  "item.thermal.blizz_spawn_egg": "暴雪人刷怪蛋",
+  "item.thermal.blizz_spawn_egg": "暴雪使者 生怪蛋",
 
   "item.thermal.compost": "堆肥",
   "item.thermal.detonator": "遙控起爆器",
@@ -258,10 +258,10 @@
   "item.thermal.junk_net": "垃圾打撈網",
   "item.thermal.junk_net.desc": "用於在§e§o水產捕撈器§r§6中打撈垃圾。不會被消耗。",
 
-  "item.thermal.raw_lead": "粗鉛",
-  "item.thermal.raw_nickel": "粗鎳",
-  "item.thermal.raw_silver": "粗銀",
-  "item.thermal.raw_tin": "粗錫",
+  "item.thermal.raw_lead": "鉛原礦",
+  "item.thermal.raw_nickel": "鎳原礦",
+  "item.thermal.raw_silver": "銀原礦",
+  "item.thermal.raw_tin": "錫原礦",
 
   "item.thermal.lead_coin": "鉛幣",
   "item.thermal.lead_dust": "鉛粉",
@@ -324,12 +324,12 @@
   "item.thermal.electrum_nugget": "琥珀金粒",
   "item.thermal.electrum_plate": "琥珀金板",
 
-  "item.thermal.invar_coin": "殷鋼幣",
-  "item.thermal.invar_dust": "殷鋼粉",
-  "item.thermal.invar_gear": "殷鋼齒輪",
-  "item.thermal.invar_ingot": "殷鋼錠",
-  "item.thermal.invar_nugget": "殷鋼粒",
-  "item.thermal.invar_plate": "殷鋼板",
+  "item.thermal.invar_coin": "不變鋼幣",
+  "item.thermal.invar_dust": "不變鋼粉",
+  "item.thermal.invar_gear": "不變鋼齒輪",
+  "item.thermal.invar_ingot": "不變鋼錠",
+  "item.thermal.invar_nugget": "不變鋼粒",
+  "item.thermal.invar_plate": "不變鋼板",
 
   "item.thermal.rose_gold_coin": "玫瑰金幣",
   "item.thermal.rose_gold_dust": "玫瑰金粉",
@@ -345,12 +345,12 @@
   "item.thermal.steel_nugget": "鋼粒",
   "item.thermal.steel_plate": "鋼板",
 
-  "item.thermal.enderium_coin": "終界幣",
-  "item.thermal.enderium_dust": "終界粉",
-  "item.thermal.enderium_gear": "終界齒輪",
-  "item.thermal.enderium_ingot": "終界錠",
-  "item.thermal.enderium_nugget": "終界粒",
-  "item.thermal.enderium_plate": "終界板",
+  "item.thermal.enderium_coin": "終界合金幣",
+  "item.thermal.enderium_dust": "終界合金粉",
+  "item.thermal.enderium_gear": "終界合金齒輪",
+  "item.thermal.enderium_ingot": "終界合金錠",
+  "item.thermal.enderium_nugget": "終界合金粒",
+  "item.thermal.enderium_plate": "終界合金板",
 
   "item.thermal.lumium_coin": "流明幣",
   "item.thermal.lumium_dust": "流明粉",
@@ -368,20 +368,20 @@
 
   "subtitles.thermal.block.device_water_gen": "蓄水器冒泡",
 
-  "subtitles.thermal.entity.basalz.ambient": "岩石人呼吸",
-  "subtitles.thermal.entity.basalz.death": "岩石人死亡",
-  "subtitles.thermal.entity.basalz.hurt": "岩石人受傷",
-  "subtitles.thermal.entity.basalz.shoot": "岩石人射擊",
+  "subtitles.thermal.entity.basalz.ambient": "岩石使者呼吸",
+  "subtitles.thermal.entity.basalz.death": "岩石使者死亡",
+  "subtitles.thermal.entity.basalz.hurt": "岩石使者受傷",
+  "subtitles.thermal.entity.basalz.shoot": "岩石使者射擊",
 
-  "subtitles.thermal.entity.blitz.ambient": "狂風人呼吸",
-  "subtitles.thermal.entity.blitz.death": "狂風人死亡",
-  "subtitles.thermal.entity.blitz.hurt": "狂風人受傷",
-  "subtitles.thermal.entity.blitz.shoot": "狂風人射擊",
+  "subtitles.thermal.entity.blitz.ambient": "狂風使者呼吸",
+  "subtitles.thermal.entity.blitz.death": "狂風使者死亡",
+  "subtitles.thermal.entity.blitz.hurt": "狂風使者受傷",
+  "subtitles.thermal.entity.blitz.shoot": "狂風使者射擊",
 
-  "subtitles.thermal.entity.blizz.ambient": "暴雪人呼吸",
-  "subtitles.thermal.entity.blizz.death": "暴雪人死亡",
-  "subtitles.thermal.entity.blizz.hurt": "暴雪人受傷",
-  "subtitles.thermal.entity.blizz.shoot": "暴雪人射擊",
+  "subtitles.thermal.entity.blizz.ambient": "暴雪使者呼吸",
+  "subtitles.thermal.entity.blizz.death": "暴雪使者死亡",
+  "subtitles.thermal.entity.blizz.hurt": "暴雪使者受傷",
+  "subtitles.thermal.entity.blizz.shoot": "暴雪使者射擊",
 
   "subtitles.thermal.item.magnet": "磁鐵吸引",
 
@@ -417,8 +417,8 @@
   "info.thermal.augment.attr.PotionAmp": "效果等級",
   "info.thermal.augment.attr.PotionDur": "效果時長",
 
-  "info.thermal.augment.attr.RFMax": "RF容量",
-  "info.thermal.augment.attr.RFXfer": "RF傳輸",
+  "info.thermal.augment.attr.RFMax": "RF 容量",
+  "info.thermal.augment.attr.RFXfer": "RF 傳輸",
 
   "info.thermal.augment.type.Area": "範圍效果",
   "info.thermal.augment.type.Dynamo": "能源爐",
@@ -443,11 +443,11 @@
   "item.thermal.dynamo_output_augment": "輔助反應室",
   "item.thermal.dynamo_output_augment.desc": "以效率降低為代價提升發電功率。",
   "item.thermal.dynamo_throttle_augment": "激發場限制器",
-  "item.thermal.dynamo_throttle_augment.desc": "防止線圈飽和後的RF損失。",
+  "item.thermal.dynamo_throttle_augment.desc": "防止線圈飽和後的 RF 損失。",
 
   "item.thermal.fluid_tank_augment": "擴容儲罐構造",
 
-  "item.thermal.fluid_tank_creative_augment": "創造儲罐建構",
+  "item.thermal.fluid_tank_creative_augment": "創造儲罐構造",
   "item.thermal.fluid_tank_creative_augment.desc": "功能性無上限的儲罐。",
 
   "item.thermal.dual_filter_augment": "雙重篩選器",
@@ -463,7 +463,7 @@
   "item.thermal.machine_cycle_augment": "循環處理升級",
   "item.thermal.machine_cycle_augment.desc": "裝配產物可循環至輸入槽以進行下一步合成。",
   "item.thermal.machine_efficiency_augment": "通量效率升級",
-  "item.thermal.machine_efficiency_augment.desc": "以處理速度降低為代價提升RF效率。",
+  "item.thermal.machine_efficiency_augment.desc": "以處理速度降低為代價提升 RF 效率。",
   "item.thermal.machine_efficiency_creative_augment": "創造通量提效",
   "item.thermal.machine_efficiency_creative_augment.desc": "不消耗能量，處理速度極快。",
   "item.thermal.machine_null_augment": "輔助仙人掌",
@@ -471,7 +471,7 @@
   "item.thermal.machine_output_augment": "輔助處理篩",
   "item.thermal.machine_output_augment.desc": "增加副產物的產生",
   "item.thermal.machine_speed_augment": "通量鏈接放大器",
-  "item.thermal.machine_speed_augment.desc": "以RF效率降低為代價提升處理速度。",
+  "item.thermal.machine_speed_augment.desc": "以 RF 效率降低為代價提升處理速度。",
 
   "item.thermal.potion_amplifier_augment": "煉金放大器",
   "item.thermal.potion_amplifier_augment.desc": "增強藥水的效果等級。",
@@ -481,7 +481,7 @@
   "item.thermal.rf_coil_augment": "擴展通量線圈",
 
   "item.thermal.rf_coil_creative_augment": "創造通量線圈",
-  "item.thermal.rf_coil_creative_augment.desc": "功能性無限的RF能量",
+  "item.thermal.rf_coil_creative_augment.desc": "功能性無限的 RF 能量",
 
   "item.thermal.rf_coil_storage_augment": "穩態通量線圈",
   "item.thermal.rf_coil_xfer_augment": "強導通量線圈",
@@ -489,7 +489,7 @@
   "item.thermal.rs_control_augment": "紅石反應機制",
   "item.thermal.rs_control_augment.desc": "允許紅石訊號控制。",
 
-  "item.thermal.side_config_augment": "模塊設置重構",
+  "item.thermal.side_config_augment": "模組設置重構",
   "item.thermal.side_config_augment.desc": "允許重新設置每面的輸入/輸出設定",
 
   "item.thermal.upgrade_augment_1": "硬化整合組件",
@@ -632,17 +632,17 @@
   "item.thermal.beekeeper_leggings": "養蜂人長褲",
   "item.thermal.beekeeper_boots": "養蜂人靴子",
 
-  "item.thermal.diving_fabric": "海晶面料",
+  "item.thermal.diving_fabric": "海磷面料",
   "item.thermal.diving_helmet": "潛水頭盔",
   "item.thermal.diving_chestplate": "潛水胸甲",
   "item.thermal.diving_leggings": "潛水護腿",
   "item.thermal.diving_boots": "潛水腳蹼",
 
   "item.thermal.hazmat_fabric": "毒害隔離織物",
-  "item.thermal.hazmat_helmet": "防護盔",
-  "item.thermal.hazmat_chestplate": "防護服",
-  "item.thermal.hazmat_leggings": "防護褲",
-  "item.thermal.hazmat_boots": "防護靴",
+  "item.thermal.hazmat_helmet": "防護頭盔",
+  "item.thermal.hazmat_chestplate": "防護胸甲",
+  "item.thermal.hazmat_leggings": "防護護腿",
+  "item.thermal.hazmat_boots": "防護靴子",
 
   "item.thermal.drill_head": "鑽頭",
   "item.thermal.laser_diode": "雷射二極管",
@@ -652,7 +652,7 @@
   "item.thermal.rf_potato.desc": "儲存紅石通量。",
 
   "item.thermal.explosive_grenade": "手榴彈",
-  "item.thermal.explosive_grenade.desc": "可投擲的小型TNT。",
+  "item.thermal.explosive_grenade.desc": "可投擲的小型 TNT。",
   "item.thermal.earth_grenade": "地岩碎裂彈",
   "item.thermal.earth_grenade.desc": "破壞方塊並保留掉落物，非常有效的採礦途徑。",
   "item.thermal.ender_grenade": "終界侵擾彈",
@@ -680,8 +680,8 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.bamboo_block": "竹捆",
-  "block.thermal.charcoal_block": "木炭塊",
-  "block.thermal.gunpowder_block": "壓實火藥塊",
+  "block.thermal.charcoal_block": "木炭方塊",
+  "block.thermal.gunpowder_block": "火藥方塊",
   "block.thermal.sugar_cane_block": "甘蔗捆",
 
   "block.thermal.apple_block": "箱裝蘋果",
@@ -689,10 +689,10 @@
   "block.thermal.carrot_block": "箱裝胡蘿蔔",
   "block.thermal.potato_block": "箱裝馬鈴薯",
 
-  "block.thermal.raw_lead_block": "粗鉛塊",
-  "block.thermal.raw_nickel_block": "粗鎳塊",
-  "block.thermal.raw_silver_block": "粗銀塊",
-  "block.thermal.raw_tin_block": "粗錫塊",
+  "block.thermal.raw_lead_block": "鉛原礦方塊",
+  "block.thermal.raw_nickel_block": "鎳原礦方塊",
+  "block.thermal.raw_silver_block": "銀原礦方塊",
+  "block.thermal.raw_tin_block": "錫原礦方塊",
 
   "item.thermal.copper_coin": "銅幣",
   "item.thermal.copper_dust": "銅粉",
@@ -746,7 +746,7 @@
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
 
-  "block.thermal.earth_tnt.keyword": "岩石人 地 tnt",
+  "block.thermal.earth_tnt.keyword": "岩石使者 地 tnt",
   "block.thermal.ender_tnt.keyword": "tnt",
   "block.thermal.fire_tnt.keyword": "烈焰 火 tnt",
   "block.thermal.glowstone_tnt.keyword": "tnt",
@@ -764,7 +764,7 @@
   "block.thermal.charge_bench.keyword": "能量 充電器 rf",
   "block.thermal.tinker_bench.keyword": "組件 充電器 灌注 裝填 注水 升級",
 
-  "block.thermal.chunk_loader.keyword": "區塊 區塊加載器 加載器",
+  "block.thermal.chunk_loader.keyword": "區塊 區塊載入器 載入器",
 
   "block.thermal.device_collector.keyword": "收集器 磁鐵",
   "block.thermal.device_fisher.keyword": "自動釣魚機 魚餌 釣魚",
@@ -824,7 +824,7 @@
   "item.thermal.diving_helmet.keyword": "盔甲 水下",
   "item.thermal.diving_chestplate.keyword": "盔甲 胸甲 水下",
   "item.thermal.diving_leggings.keyword": "盔甲 水下",
-  "item.thermal.diving_boots.keyword": "盔甲 靴 水下",
+  "item.thermal.diving_boots.keyword": "盔甲 靴子 水下",
 
   "item.thermal.hazmat_helmet.keyword": "盔甲 輻射",
   "item.thermal.hazmat_chestplate.keyword": "盔甲 胸甲 輻射",
@@ -890,8 +890,8 @@
   "block.thermal.tomato": "番茄",
   "block.thermal.tomato_block": "箱裝番茄",
 
-  "death.attack.sadiroot": "%1$s被薩蒂根莖的刺葉扎死了",
-  "death.attack.sadiroot.player": "%1$s在試圖逃離%2$s時被薩蒂根莖的刺葉扎死了",
+  "death.attack.sadiroot": "%1$s 被薩蒂根莖的刺葉扎死了",
+  "death.attack.sadiroot.player": "%1$s 在試圖逃離 %2$s 時被薩蒂根莖的刺葉扎死了",
 
   "item.thermal.amaranth": "莧菜",
   "item.thermal.amaranth_seeds": "莧菜種子",
@@ -932,8 +932,8 @@
   "item.thermal.tomato": "番茄",
   "item.thermal.tomato_seeds": "番茄種子",
 
-  "item.thermal.dough": "面團",
-  "item.thermal.flour": "面粉",
+  "item.thermal.dough": "麵團",
+  "item.thermal.flour": "麵粉",
 
   "item.thermal.jar": "玻璃罐",
   "item.thermal.jelly": "罐裝果醬",
@@ -987,18 +987,18 @@
   "block.thermal.energy_duct": "能量導管",
   "block.thermal.fluid_duct": "流體導管",
 
-  "block.thermal.energy_distributor": "RF分發接口",
-  "block.thermal.fluid_distributor": "流體分發接口",
+  "block.thermal.energy_distributor": "RF 分發界面",
+  "block.thermal.fluid_distributor": "流體分發界面",
 
   "block.thermal.item_buffer": "邏輯物品緩存器",
 
   "info.thermal.item_buffer.0": "限制物品的傳送速率和數量。",
   "info.thermal.item_buffer.1": "使用左側網格來設置所需物品及其數量",
-  "info.thermal.item_buffer.2": "鎖存模式下，只有所有物品均滿足要求才會輸出。",
+  "info.thermal.item_buffer.2": "閂鎖模式下，只有所有物品均滿足要求才會輸出。",
   "info.thermal.item_buffer.3": "非常適合用來維持特定物品比例。",
 
   "info.thermal.item_buffer.mode.0": "I/O：正常",
-  "info.thermal.item_buffer.mode.1": "I/O：鎖存",
+  "info.thermal.item_buffer.mode.1": "I/O：閂鎖",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
@@ -1143,8 +1143,8 @@
   "item.thermal.press_packing_3x3_die": "打包模具（3x3）",
   "item.thermal.press_unpacking_die": "解包模具",
 
-  "item.thermal.slot_seal": "槽楔",
-  "item.thermal.slot_seal.desc": "防止所在槽位被使用。適用於有多個輸入槽的機器。",
+  "item.thermal.slot_seal": "欄位卡榫",
+  "item.thermal.slot_seal.desc": "防止所在欄位被使用。適用於有多個輸入槽的機器。",
 
   "subtitles.thermal.block.machine_bottler": "流體灌裝機裝填",
   "subtitles.thermal.block.machine_crucible": "熱力能源爐嗡嗡",
@@ -1257,17 +1257,17 @@
 
   "block.thermal.crossover_rail": "渡線鐵軌",
 
-  "block.thermal.lumium_activator_rail": "流明激活鐵軌",
+  "block.thermal.lumium_activator_rail": "流明觸發鐵軌",
   "block.thermal.lumium_crossover_rail": "流明渡線鐵軌",
   "block.thermal.lumium_detector_rail": "流明探測鐵軌",
   "block.thermal.lumium_powered_rail": "流明充能鐵軌",
   "block.thermal.lumium_rail": "流明鐵軌",
 
-  "block.thermal.prismarine_activator_rail": "海晶激活鐵軌",
-  "block.thermal.prismarine_crossover_rail": "海晶渡線鐵軌",
-  "block.thermal.prismarine_detector_rail": "海晶探測鐵軌",
-  "block.thermal.prismarine_powered_rail": "海晶充能鐵軌",
-  "block.thermal.prismarine_rail": "海晶鐵軌",
+  "block.thermal.prismarine_activator_rail": "海磷觸發鐵軌",
+  "block.thermal.prismarine_crossover_rail": "海磷渡線鐵軌",
+  "block.thermal.prismarine_detector_rail": "海磷探測鐵軌",
+  "block.thermal.prismarine_powered_rail": "海磷充能鐵軌",
+  "block.thermal.prismarine_rail": "海磷鐵軌",
 
   "entity.thermal.earth_tnt_minecart": "地岩碎裂炸藥礦車",
   "entity.thermal.ender_tnt_minecart": "終界侵擾炸藥礦車",
@@ -1276,7 +1276,7 @@
   "entity.thermal.ice_tnt_minecart": "冰川結凍炸藥礦車",
   "entity.thermal.lightning_tnt_minecart": "震天雷擊炸藥礦車",
   "entity.thermal.nuke_tnt_minecart": "核彈礦車",
-  "entity.thermal.phyto_tnt_minecart": "PNT礦車",
+  "entity.thermal.phyto_tnt_minecart": "PNT 礦車",
   "entity.thermal.redstone_tnt_minecart": "紅石發信炸藥礦車",
   "entity.thermal.slime_tnt_minecart": "彈力黏著炸藥礦車",
 
@@ -1291,7 +1291,7 @@
   "item.thermal.ice_tnt_minecart": "冰川結凍炸藥礦車",
   "item.thermal.lightning_tnt_minecart": "震天雷擊炸藥礦車",
   "item.thermal.nuke_tnt_minecart": "核彈礦車",
-  "item.thermal.phyto_tnt_minecart": "PNT礦車",
+  "item.thermal.phyto_tnt_minecart": "PNT 礦車",
   "item.thermal.redstone_tnt_minecart": "紅石發信炸藥礦車",
   "item.thermal.slime_tnt_minecart": "彈力黏著炸藥礦車",
 
@@ -1309,12 +1309,12 @@
   "block.thermal.prismarine_powered_rail.keyword": "水下",
   "block.thermal.prismarine_rail.keyword": "水下",
 
-  "item.thermal.earth_tnt_minecart.keyword": "岩石人 地 tnt",
+  "item.thermal.earth_tnt_minecart.keyword": "岩石使者 地 tnt",
   "item.thermal.ender_tnt_minecart.keyword": "tnt",
-  "item.thermal.fire_tnt_minecart.keyword": "烈焰 火 tnt",
+  "item.thermal.fire_tnt_minecart.keyword": "烈焰使者 火 tnt",
   "item.thermal.glowstone_tnt_minecart.keyword": "tnt",
-  "item.thermal.ice_tnt_minecart.keyword": "暴雪人 冰 tnt",
-  "item.thermal.lightning_tnt_minecart.keyword": "狂風人 電 tnt",
+  "item.thermal.ice_tnt_minecart.keyword": "暴雪使者 冰 tnt",
+  "item.thermal.lightning_tnt_minecart.keyword": "狂風使者 電 tnt",
   "item.thermal.nuke_tnt_minecart.keyword": "tnt",
   "item.thermal.phyto_tnt_minecart.keyword": "肥料 tnt",
   "item.thermal.redstone_tnt_minecart.keyword": "tnt",
