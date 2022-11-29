@@ -102,7 +102,7 @@
   "block.thermal.rich_slag_block": "富爐渣方塊",
   "block.thermal.rosin_block": "松香方塊",
   "block.thermal.rubber_block": "橡膠方塊",
-  "block.thermal.sawdust_block": "壓實鋸屑方塊",
+  "block.thermal.sawdust_block": "鋸屑方塊",
   "block.thermal.slag_block": "爐渣方塊",
   "block.thermal.tar_block": "焦油方塊",
 
@@ -148,7 +148,7 @@
   "info.thermal.detonator.use.1": "使用以引爆綁定的炸藥。",
   "info.thermal.detonator.use.sneak": "潛行並使用以清空綁定。",
 
-  "info.thermal.lock.use": "對可相容方塊使用為其上鎖。",
+  "info.thermal.lock.use": "對相容方塊使用為其上鎖。",
   "info.thermal.lock.use.sneak": "潛行並使用為副手上的物品上鎖。",
 
   "info.thermal.redprint.contents": "複製內容：",
@@ -161,12 +161,12 @@
   "info.thermal.redprint.use.sneak": "潛行並使用以清除所複製的設置。",
 
   "info.thermal.satchel.0": "儲存和收集掉落物。可安裝安全鎖。",
-  "info.thermal.satchel.1": "如果安裝了一個物品篩選器, 潛行並使用以打開物品篩選界面。",
+  "info.thermal.satchel.1": "如果安裝了一個物品篩選器, 潛行並使用以打開物品篩選介面。",
   "info.thermal.satchel.2": "物品篩選升級僅適用於自動儲存至背包。",
   "info.thermal.satchel.mode.0": "自動儲存：關閉",
   "info.thermal.satchel.mode.1": "自動儲存：開啟",
   "info.thermal.satchel.use": "使用以打開背包。",
-  "info.thermal.satchel.use.sneak": "潛行並使用以打開物品篩選界面。",
+  "info.thermal.satchel.use.sneak": "潛行並使用以打開物品篩選介面。",
 
   "info.thermal.wrench.mode.0": "工程師視界已啟用",
   "info.thermal.wrench.mode.1": "工程師視界已停用",
@@ -234,7 +234,7 @@
   "item.thermal.blizz_spawn_egg": "暴雪使者 生怪蛋",
 
   "item.thermal.compost": "堆肥",
-  "item.thermal.detonator": "遙控起爆器",
+  "item.thermal.detonator": "遙控引爆器",
   "item.thermal.earth_charge": "裂岩彈",
   "item.thermal.ice_charge": "瀑冰彈",
   "item.thermal.lightning_charge": "鳴雷彈",
@@ -470,7 +470,7 @@
   "item.thermal.machine_null_augment.desc": "銷毀多餘的副產物。",
   "item.thermal.machine_output_augment": "輔助處理篩",
   "item.thermal.machine_output_augment.desc": "增加副產物的產生",
-  "item.thermal.machine_speed_augment": "通量鏈接放大器",
+  "item.thermal.machine_speed_augment": "通量連接放大器",
   "item.thermal.machine_speed_augment.desc": "以 RF 效率降低為代價提升處理速度。",
 
   "item.thermal.potion_amplifier_augment": "煉金放大器",
@@ -545,12 +545,12 @@
   "block.thermal.ice_tnt": "冰川結凍炸藥",
   "block.thermal.ice_tnt.desc": "凍結一大片區域。",
   "block.thermal.lightning_tnt": "震天雷擊炸藥",
-  "block.thermal.lightning_tnt.desc": "震擊一大片區域，起效時有很大機率伴有雷電。",
+  "block.thermal.lightning_tnt.desc": "震擊一大片區域，很高機率伴有雷電。",
   "block.thermal.nuke_tnt": "核能炸彈",
   "block.thermal.nuke_tnt.desc": "千萬，千萬別站得太近。",
   "block.thermal.phyto_tnt": "PNT",
   "block.thermal.phyto_tnt.desc": "大範圍噴灑植育一號，非投擲物。",
-  "block.thermal.redstone_tnt": "紅石發信炸藥",
+  "block.thermal.redstone_tnt": "紅石訊號炸藥",
   "block.thermal.redstone_tnt.desc": "在一大片範圍內發出紅石訊號。",
   "block.thermal.slime_tnt": "彈力黏著炸藥",
   "block.thermal.slime_tnt.desc": "黏著在一大片範圍內的目標上。擊退性強。",
@@ -573,7 +573,7 @@
 
   "info.thermal.device_nullifier.0": "銷毀任何被放入的東西",
   "info.thermal.device_nullifier.1": "自動輸入的物品與流體將被立即銷毀。",
-  "info.thermal.device_nullifier.2": "手動輸入的物品必須通過點擊按鈕進行銷毀。",
+  "info.thermal.device_nullifier.2": "手動輸入的物品必須透過點擊按鈕進行銷毀。",
   "info.thermal.device_nullifier.3": "可使用篩選器來限制輸入種類。",
 
   "info.thermal.device_nullifier_empty_bin": "銷毀物品",
@@ -587,7 +587,7 @@
   "info.thermal.device_rock_gen.2": "下方的方塊同樣可能影響產物。",
 
   "info.thermal.device_soil_infuser.0": "為附近的通量植育土注能。",
-  "info.thermal.device_soil_infuser.1": "對上方及下方一層的植育土均可起效。",
+  "info.thermal.device_soil_infuser.1": "對上方及下方一層的植育土均可生效。",
   "info.thermal.device_soil_infuser.2": "無毒無害，品質保證！",
 
   "info.thermal.device_tree_extractor.0": "從相鄰的樹中提取樹汁。",
@@ -626,19 +626,19 @@
   "info.thermal.hazmat_helmet": "增加供氧量。",
   "info.thermal.hazmat_boots": "減少摔落傷害。",
 
-  "item.thermal.beekeeper_fabric": "梭織布",
+  "item.thermal.beekeeper_fabric": "梭織布料",
   "item.thermal.beekeeper_helmet": "養蜂人面罩",
   "item.thermal.beekeeper_chestplate": "養蜂人大褂",
   "item.thermal.beekeeper_leggings": "養蜂人長褲",
   "item.thermal.beekeeper_boots": "養蜂人靴子",
 
-  "item.thermal.diving_fabric": "海磷面料",
+  "item.thermal.diving_fabric": "防水布料",
   "item.thermal.diving_helmet": "潛水頭盔",
   "item.thermal.diving_chestplate": "潛水胸甲",
   "item.thermal.diving_leggings": "潛水護腿",
   "item.thermal.diving_boots": "潛水腳蹼",
 
-  "item.thermal.hazmat_fabric": "毒害隔離織物",
+  "item.thermal.hazmat_fabric": "防毒布料",
   "item.thermal.hazmat_helmet": "防護頭盔",
   "item.thermal.hazmat_chestplate": "防護胸甲",
   "item.thermal.hazmat_leggings": "防護護腿",
@@ -669,7 +669,7 @@
   "item.thermal.nuke_grenade.desc": "記得扔遠點。",
   "item.thermal.phyto_grenade": "植育一號催熟爆彈",
   "item.thermal.phyto_grenade.desc": "可投擲的植育一號，作用範圍更廣。",
-  "item.thermal.redstone_grenade": "紅石發信彈",
+  "item.thermal.redstone_grenade": "紅石訊號彈",
   "item.thermal.redstone_grenade.desc": "發生碰撞時在一定範圍內發出紅石訊號。",
   "item.thermal.slime_grenade": "彈力黏著彈",
   "item.thermal.slime_grenade.desc": "發生碰撞時黏著在一定範圍內的目標上。擊退性強。",
@@ -748,10 +748,10 @@
 
   "block.thermal.earth_tnt.keyword": "岩石使者 地 tnt",
   "block.thermal.ender_tnt.keyword": "tnt",
-  "block.thermal.fire_tnt.keyword": "烈焰 火 tnt",
+  "block.thermal.fire_tnt.keyword": "烈焰使者 火 tnt",
   "block.thermal.glowstone_tnt.keyword": "tnt",
-  "block.thermal.ice_tnt.keyword": "暴雪人 冰 tnt",
-  "block.thermal.lightning_tnt.keyword": "狂風人 雷 tnt",
+  "block.thermal.ice_tnt.keyword": "暴雪使者 冰 tnt",
+  "block.thermal.lightning_tnt.keyword": "狂風使者 雷 tnt",
   "block.thermal.nuke_tnt.keyword": "tnt",
   "block.thermal.phyto_tnt.keyword": "肥料 tnt",
   "block.thermal.redstone_tnt.keyword": "tnt",
@@ -856,7 +856,7 @@
   "block.thermal.amaranth": "莧菜",
   "block.thermal.amaranth_block": "莧菜捆",
   "block.thermal.barley": "大麥",
-  "block.thermal.barley_block": "大麥垛",
+  "block.thermal.barley_block": "大麥捆",
   "block.thermal.bell_pepper": "甜椒",
   "block.thermal.bell_pepper_block": "箱裝甜椒",
   "block.thermal.coffee": "咖啡",
@@ -866,7 +866,7 @@
   "block.thermal.eggplant": "茄子",
   "block.thermal.eggplant_block": "箱裝茄子",
   "block.thermal.flax": "亞麻",
-  "block.thermal.flax_block": "亞麻垛",
+  "block.thermal.flax_block": "亞麻捆",
   "block.thermal.green_bean": "四季豆",
   "block.thermal.green_bean_block": "箱裝四季豆",
   "block.thermal.hops": "啤酒花",
@@ -875,8 +875,8 @@
   "block.thermal.onion_block": "箱裝洋蔥",
   "block.thermal.peanut": "花生",
   "block.thermal.peanut_block": "袋裝花生",
-  "block.thermal.radish": "小蘿蔔",
-  "block.thermal.radish_block": "箱裝小蘿蔔",
+  "block.thermal.radish": "櫻桃蘿蔔",
+  "block.thermal.radish_block": "箱裝櫻桃蘿蔔",
   "block.thermal.rice": "白米",
   "block.thermal.rice_block": "袋裝白米",
   "block.thermal.sadiroot": "薩蒂根莖",
@@ -969,8 +969,8 @@
   "block.thermal.phytosoil.keyword": "作物 農場 蘑菇",
   "block.thermal.phytosoil_tilled.keyword": "作物 農場",
 
-  "item.thermal.glowstone_mushroom.keyword": "螢石",
-  "item.thermal.glowstone_mushroom_spores.keyword": "螢石",
+  "item.thermal.glowstone_mushroom.keyword": "螢光石",
+  "item.thermal.glowstone_mushroom_spores.keyword": "螢光石",
   "item.thermal.gunpowder_mushroom.keyword": "火藥",
   "item.thermal.gunpowder_mushroom_spores.keyword": "火藥",
   "item.thermal.redstone_mushroom.keyword": "紅石",
@@ -987,8 +987,8 @@
   "block.thermal.energy_duct": "能量導管",
   "block.thermal.fluid_duct": "流體導管",
 
-  "block.thermal.energy_distributor": "RF 分發界面",
-  "block.thermal.fluid_distributor": "流體分發界面",
+  "block.thermal.energy_distributor": "RF 分配介面",
+  "block.thermal.fluid_distributor": "流體分配介面",
 
   "block.thermal.item_buffer": "邏輯物品緩存器",
 
@@ -1081,7 +1081,7 @@
   "info.thermal.machine_brewer.1": "你可能會想要擺上一整排。",
   "info.thermal.machine_brewer.2": "不需要玻璃瓶。",
 
-  "info.thermal.machine_centrifuge.0": "通過高速旋轉離心技術將物品分離成其構成材料。",
+  "info.thermal.machine_centrifuge.0": "透過高速旋轉離心技術將物品分離成其構成材料。",
   "info.thermal.machine_centrifuge.1": "一些物品能離心出流體形式的材料。",
   "info.thermal.machine_centrifuge.2": "轉圈圈，贏大獎！",
 
@@ -1133,9 +1133,9 @@
   "info.thermal.machine_smelter.1": "適用於處理礦，用於製造進階方塊。",
   "info.thermal.machine_smelter.2": "食物是無法用這個烹飪的。",
 
-  "item.thermal.chiller_ball_cast": "球形鑄模",
-  "item.thermal.chiller_ingot_cast": "錠鑄模",
-  "item.thermal.chiller_rod_cast": "桿鑄模",
+  "item.thermal.chiller_ball_cast": "球狀鑄模",
+  "item.thermal.chiller_ingot_cast": "錠狀鑄模",
+  "item.thermal.chiller_rod_cast": "桿狀鑄模",
 
   "item.thermal.press_coin_die": "通貨衝壓模具",
   "item.thermal.press_gear_die": "齒輪衝壓模具",
@@ -1259,14 +1259,14 @@
 
   "block.thermal.lumium_activator_rail": "流明觸發鐵軌",
   "block.thermal.lumium_crossover_rail": "流明渡線鐵軌",
-  "block.thermal.lumium_detector_rail": "流明探測鐵軌",
-  "block.thermal.lumium_powered_rail": "流明充能鐵軌",
+  "block.thermal.lumium_detector_rail": "流明感測鐵軌",
+  "block.thermal.lumium_powered_rail": "流明動力鐵軌",
   "block.thermal.lumium_rail": "流明鐵軌",
 
   "block.thermal.prismarine_activator_rail": "海磷觸發鐵軌",
   "block.thermal.prismarine_crossover_rail": "海磷渡線鐵軌",
-  "block.thermal.prismarine_detector_rail": "海磷探測鐵軌",
-  "block.thermal.prismarine_powered_rail": "海磷充能鐵軌",
+  "block.thermal.prismarine_detector_rail": "海磷感測鐵軌",
+  "block.thermal.prismarine_powered_rail": "海磷動力鐵軌",
   "block.thermal.prismarine_rail": "海磷鐵軌",
 
   "entity.thermal.earth_tnt_minecart": "地岩碎裂炸藥礦車",
@@ -1277,7 +1277,7 @@
   "entity.thermal.lightning_tnt_minecart": "震天雷擊炸藥礦車",
   "entity.thermal.nuke_tnt_minecart": "核彈礦車",
   "entity.thermal.phyto_tnt_minecart": "PNT 礦車",
-  "entity.thermal.redstone_tnt_minecart": "紅石發信炸藥礦車",
+  "entity.thermal.redstone_tnt_minecart": "紅石訊號炸藥礦車",
   "entity.thermal.slime_tnt_minecart": "彈力黏著炸藥礦車",
 
   "entity.thermal.energy_minecart": "通量儲存礦車",
@@ -1292,7 +1292,7 @@
   "item.thermal.lightning_tnt_minecart": "震天雷擊炸藥礦車",
   "item.thermal.nuke_tnt_minecart": "核彈礦車",
   "item.thermal.phyto_tnt_minecart": "PNT 礦車",
-  "item.thermal.redstone_tnt_minecart": "紅石發信炸藥礦車",
+  "item.thermal.redstone_tnt_minecart": "紅石訊號炸藥礦車",
   "item.thermal.slime_tnt_minecart": "彈力黏著炸藥礦車",
 
   "item.thermal.energy_minecart": "通量儲存礦車",
