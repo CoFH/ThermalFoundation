@@ -55,6 +55,9 @@
   "block.thermal.electrum_block": "エレクトラムブロック",
   "block.thermal.invar_block": "インバーブロック",
 
+  "block.thermal.steel_block": "鋼鉄ブロック",
+  "block.thermal.rose_gold_block": "ローズゴールドブロック",
+
   "block.thermal.enderium_block": "エンダリウムブロック",
   "block.thermal.lumium_block": "ルミウムブロック",
   "block.thermal.signalum_block": "シグナルムブロック",
@@ -230,6 +233,7 @@
   "item.thermal.blizz_rod": "ブリーズキューブ",
   "item.thermal.blizz_spawn_egg": "ブリーズのスポーンエッグ",
 
+  "item.thermal.compost": "堆肥",
   "item.thermal.detonator": "遠隔起爆装置",
   "item.thermal.earth_charge": "アースチャージ",
   "item.thermal.ice_charge": "アイスチャージ",
@@ -326,6 +330,20 @@
   "item.thermal.invar_ingot": "インバーインゴット",
   "item.thermal.invar_nugget": "インバー塊",
   "item.thermal.invar_plate": "インバーのプレート",
+
+  "item.thermal.rose_gold_coin": "ローズゴールドのコイン",
+  "item.thermal.rose_gold_dust": "ローズゴールドの粉",
+  "item.thermal.rose_gold_gear": "ローズゴールドの歯車",
+  "item.thermal.rose_gold_ingot": "ローズゴールドインゴット",
+  "item.thermal.rose_gold_nugget": "ローズゴールド塊",
+  "item.thermal.rose_gold_plate": "ローズゴールドのプレート",
+
+  "item.thermal.steel_coin": "鋼鉄のコイン",
+  "item.thermal.steel_dust": "鋼鉄の粉",
+  "item.thermal.steel_gear": "鋼鉄の歯車",
+  "item.thermal.steel_ingot": "鋼鉄インゴット",
+  "item.thermal.steel_nugget": "鋼鉄塊",
+  "item.thermal.steel_plate": "鋼鉄のプレート",
 
   "item.thermal.enderium_coin": "エンダリウムのコイン",
   "item.thermal.enderium_dust": "エンダリウムの粉",
@@ -424,6 +442,8 @@
   "item.thermal.dynamo_fuel_augment.desc": "燃料効率を上昇させます。",
   "item.thermal.dynamo_output_augment": "補助反応室",
   "item.thermal.dynamo_output_augment.desc": "生成率を上昇させますが、燃料効率は下がります。",
+  "item.thermal.dynamo_throttle_augment": "励磁場リミッタ",
+  "item.thermal.dynamo_throttle_augment.desc": "コイル容量が飽和した後のRFのロスを防止します。",
 
   "item.thermal.fluid_tank_augment": "拡張タンク機構",
 
@@ -491,8 +511,10 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.device_collector": "アイテム吸引器",
+  "block.thermal.device_composter": "回分式コンポスター",
   "block.thermal.device_fisher": "水資源投網機",
   "block.thermal.device_hive_extractor": "巣箱ホッパー",
+  "block.thermal.device_magnet_blocker": "磁気妨害装置",
   "block.thermal.device_nullifier": "消滅機",
   "block.thermal.device_potion_diffuser": "浸出散布機",
   "block.thermal.device_rock_gen": "火成岩生成機",
@@ -534,6 +556,10 @@
   "block.thermal.redstone_tnt.desc": "レッドストーン信号を発する大きなエリアを作ります。",
   "block.thermal.slime_tnt": "スライム爆弾",
   "block.thermal.slime_tnt.desc": "広い範囲内のターゲットをベタベタにします。高いノックバックを与えます。",
+
+  "info.thermal.device_composter.0": "有機質のゴミからコンポストを生成します。",
+  "info.thermal.device_composter.1": "アイテムには様々な効果があります。",
+  "info.thermal.device_composter.2": "自然に返そう。",
 
   "info.thermal.device_collector.0": "周辺のエリアからアイテムを拾います。",
   "info.thermal.device_collector.1": "この動作にはフィルター設定を適用できます。",
@@ -593,6 +619,14 @@
 
   "info.thermal.tinker_bench_mode_augment": "モード: オーグメント",
   "info.thermal.tinker_bench_mode_charge": "モード: 充填・充電",
+
+  "info.thermal.beekeeper_armor": "虫刺されから身を守ります。",
+
+  "info.thermal.diving_helmet": "空気供給量を大幅に増やします、",
+
+  "info.thermal.hazmat_armor": "様々な危険から身を守ります。",
+  "info.thermal.hazmat_helmet": "空気供給量を増やします。",
+  "info.thermal.hazmat_boots": "落下ダメージを軽減します。",
 
   "item.thermal.beekeeper_fabric": "織布",
   "item.thermal.beekeeper_helmet": "養蜂家のフード",
@@ -954,6 +988,7 @@
 
   "block.thermal.energy_duct": "フラックスダクト",
   "block.thermal.fluid_duct": "流体ダクト",
+  "block.thermal.fluid_duct_glass": "流体ダクト(窓付き)",
 
   "block.thermal.energy_distributor": "RF配給インターフェイス",
   "block.thermal.fluid_distributor": "流体配給インターフェイス",
@@ -998,6 +1033,7 @@
   "block.thermal.machine_chiller": "急速冷凍機",
   "block.thermal.machine_crafter": "連続作製機",
   "block.thermal.machine_crucible": "溶岩るつぼ",
+  "block.thermal.machine_crystallizer": "結晶化機",
   "block.thermal.machine_furnace": "レッドストーンかまど",
   "block.thermal.machine_insolator": "植物日照機",
   "block.thermal.machine_press": "マルチサーボプレス機",
@@ -1063,6 +1099,10 @@
   "info.thermal.machine_crucible.0": "高熱により固体を液体に変換します。",
   "info.thermal.machine_crucible.1": "上位のブロックの作成に有用です。",
   "info.thermal.machine_crucible.2": "小さい子供やペットから離してご使用下さい。",
+
+  "info.thermal.machine_crystallizer.0": "結晶構造を成長・改質します。",
+  "info.thermal.machine_crystallizer.1": "流体と少なくとも1つのアイテムが必要です。",
+  "info.thermal.machine_crystallizer.2": "Shine on, you crazy diamond.",
 
   "info.thermal.machine_furnace.0": "RFでアイテムを製錬します。",
   "info.thermal.machine_furnace.1": "食べ物の調理はとても少ないRFで済みます。",
