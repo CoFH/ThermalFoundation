@@ -1003,6 +1003,10 @@
   "info.thermal.item_buffer.mode.0": "I/O: Normal",
   "info.thermal.item_buffer.mode.1": "I/O: Latch",
 
+  "item.thermal.energy_limiter_attachment": "RF Limiter",
+  "item.thermal.fluid_filter_attachment": "Fluid Filter",
+  "item.thermal.fluid_servo_attachment": "Fluid Servo",
+
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",

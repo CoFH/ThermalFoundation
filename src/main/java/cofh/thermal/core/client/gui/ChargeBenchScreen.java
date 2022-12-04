@@ -1,6 +1,5 @@
 package cofh.thermal.core.client.gui;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import net.minecraft.network.chat.Component;
@@ -17,7 +16,7 @@ public class ChargeBenchScreen extends ThermalTileScreenBase<ChargeBenchContaine
 
     public ChargeBenchScreen(ChargeBenchContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.charge_bench"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.charge_bench");
     }

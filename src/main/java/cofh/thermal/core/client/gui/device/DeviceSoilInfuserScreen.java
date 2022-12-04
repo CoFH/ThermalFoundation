@@ -2,7 +2,6 @@ package cofh.thermal.core.client.gui.device;
 
 import cofh.core.client.gui.element.ElementScaled;
 import cofh.core.util.helpers.GuiHelper;
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
@@ -23,7 +22,7 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
 
     public DeviceSoilInfuserScreen(DeviceSoilInfuserContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_soil_infuser"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_soil_infuser");
     }

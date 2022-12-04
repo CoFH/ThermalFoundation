@@ -1,6 +1,5 @@
 package cofh.thermal.core.client.gui.device;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.device.DeviceMagnetBlockerContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -20,7 +19,7 @@ public class DeviceMagnetBlockerScreen extends ThermalTileScreenBase<DeviceMagne
 
     public DeviceMagnetBlockerScreen(DeviceMagnetBlockerContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_magnet_blocker"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_magnet_blocker");
     }

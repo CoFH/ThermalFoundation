@@ -36,7 +36,7 @@
 //
 //    public ItemCellScreen(ItemCellContainer container, Inventory inv, Component titleIn) {
 //
-//        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.item_cell"));
+//        super(container, inv, container.tile, titleIn);
 //        tile = container.tile;
 //        texture = TEXTURE;
 //        info = generatePanelInfo("info.thermal.item_cell");

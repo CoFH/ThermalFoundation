@@ -1,6 +1,5 @@
 package cofh.thermal.core.client.gui.device;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceComposterContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
@@ -19,7 +18,7 @@ public class DeviceComposterScreen extends ThermalTileScreenBase<DeviceComposter
 
     public DeviceComposterScreen(DeviceComposterContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_composter"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_composter");
     }
