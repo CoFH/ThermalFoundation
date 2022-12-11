@@ -1,0 +1,7 @@
+{
+  "type": "thermal:numismatic_fuel",
+  "ingredient": {
+    "tag": "forge:coins/lead"
+  },
+  "energy": 48000
+}
