@@ -1,1 +1,31 @@
-{  "name": "Beekeeper's Suit",  "icon": "thermal:beekeeper_chestplate",  "category": "thermal:armor",  "read_by_default": true,  "flag": "mod:thermal_cultivation",  "pages": [    {      "type": "patchouli:text",      "text": "The Beekeeper Suit will protect you from any sort of stings you may encounter at the cost of durability. Such examples are cactus, berry bushes, and obviously bee stings. Do note that in order to be $(o)fully$() protected you must have the full suit on! $(o)Bee$() careful, since durability is still used even with a full suit."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:beekeeper_fabric",      "text": "Fabric used for all beekeeper equipment."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:armor/beekeeper_helmet",      "B.recipe": "thermal:armor/beekeeper_chestplate"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:armor/beekeeper_leggings",      "B.recipe": "thermal:armor/beekeeper_boots"    }  ]}
+{
+  "name": "養蜂着",
+  "icon": "thermal:beekeeper_chestplate",
+  "category": "thermal:armor",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "養蜂着はあらゆる種類の刺し傷から耐久値を犠牲にあなたの身を守ります。例えば、サボテン、ベリーの茂み、そして明らかに蜂による刺傷です。ただし、$(o)完全$()防護のためには、養蜂着一式を全て着用する必要があります。$(o)注意!$()一式を着用していても耐久値は減少します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:beekeeper_fabric",
+      "text": "Fabric used for all beekeeper equipment."
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/beekeeper_helmet",
+      "B.recipe": "thermal:armor/beekeeper_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/beekeeper_leggings",
+      "B.recipe": "thermal:armor/beekeeper_boots"
+    }
+  ]
+}
