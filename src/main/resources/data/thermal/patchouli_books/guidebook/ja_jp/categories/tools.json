@@ -1,1 +1,7 @@
-{  "name": "Tools",  "description": "Steps to augment your tools:$(li)Put augmentable item or block in the workbench$(li)Set workbench to augment mode$(li)Put augments in the item slot$(li)Set workbench to recharge/refill mode$(li)Remove item from workbench$(li)Profit",  "icon": "thermal:wrench",  "parent": "thermal:equipment",  "sortnum": 1}
+{
+  "name": "道具",
+  "description": "道具の強化手順: $(li)強化可能なアイテムやブロックを鍛冶職人の作業台に置く$(li)鍛冶職人の作業台を強化モードに切り替える$(li)アイテムスロットに強化アイテムを置く$(li)鍛冶職人の作業台を充電充填モードに切り替える$(li)アイテム/ブロックを鍛冶職人の作業台から取り出す$(li)利する",
+  "icon": "thermal:wrench",
+  "parent": "thermal:equipment",
+  "sortnum": 1
+}

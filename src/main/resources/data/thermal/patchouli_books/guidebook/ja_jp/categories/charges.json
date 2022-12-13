@@ -1,1 +1,7 @@
-{  "name": "Elemental Charges",  "description": "Master all four elements.",  "icon": "thermal:lightning_charge",  "parent": "thermal:equipment",  "sortnum": 3}
+{
+  "name": "エレメンタル・チャージ",
+  "description": "四代元素を習得せよ。",
+  "icon": "thermal:lightning_charge",
+  "parent": "thermal:equipment",
+  "sortnum": 3
+}

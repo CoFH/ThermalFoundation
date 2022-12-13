@@ -1,1 +1,7 @@
-{  "name": "Mobs",  "description": "Water. Earth. Fire. Lightning. Long ago, the four elementals lived together in nonexistence. Then, everything changed when the Nether got added. Only King Lemming, master of all CoFH mods, could add the other elementals.",  "icon": "thermal:blizz_rod",  "parent": "thermal:world",  "sortnum": 3}
+{
+  "name": "モブ",
+  "description": "水・地・火・雷。四大元素は共存していました。しかし、ネザーが追加されたときに全ては変わってしまいました。他の元素を追加できるのは、CoFHの全Modのマスター、King Lemming氏だけです。",
+  "icon": "thermal:blizz_rod",
+  "parent": "thermal:world",
+  "sortnum": 3
+}

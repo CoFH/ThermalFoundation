@@ -1,1 +1,6 @@
-{  "name": "Equipment",  "description": "Gear for all your adventures.",  "icon": "thermal:detonator",  "sortnum": 4}
+{
+  "name": "装備",
+  "description": "あらゆる冒険に役立つ物。",
+  "icon": "thermal:detonator",
+  "sortnum": 4
+}

@@ -1,1 +1,7 @@
-{  "name": "Materials",  "description": "Resources that are integral to the Thermal Series.",  "icon": "thermal:invar_ingot",  "parent": "thermal:world",  "sortnum": 1}
+{
+  "name": "素材",
+  "description": "サーマルシリーズに必要不可欠な素材。",
+  "icon": "thermal:invar_ingot",
+  "parent": "thermal:world",
+  "sortnum": 1
+}

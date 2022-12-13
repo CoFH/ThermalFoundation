@@ -1,1 +1,6 @@
-{  "name": "Guides and FAQ",  "description": "Lost? You've come to the right place.",  "icon": "thermal:redprint",  "sortnum": 6}
+{
+  "name": "指南とよくある質問",
+  "description": "迷った?ここで合っていますよ。",
+  "icon": "thermal:redprint",
+  "sortnum": 6
+}
