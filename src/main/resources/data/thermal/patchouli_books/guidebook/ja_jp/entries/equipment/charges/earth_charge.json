@@ -1,1 +1,18 @@
-{  "name": "Earth Charge",  "icon": "thermal:earth_charge",  "category": "thermal:charges",  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "Earth charges are used to instantly mine earthy Blocks, such as dirt, grass, stone, ect. It can also be used in crafting to turn some things into dust and break some storage blocks down, such as a quartz block into four quartz. Firing one from a dispenser will fire a linear projectile that will apply the $(l:thermal:world/mobs/basalz)Sundered$(/l) effect on mobs hit and provide a strong knockback."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:earth_charge_3",      "title": "Earth Charge",      "text": "$(o)Legend has it that these were once powerful enough to break bedrock.$()"    }  ]}
+{
+  "name": "アースチャージ",
+  "icon": "thermal:earth_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "アースチャージは土、草、石といった大地のブロックを瞬時に採掘するために使用されます。また、クラフトにてクォーツブロックを4つのネザークォーツにするなど固められたブロックを解体するために使用できます。ディスペンサーを用いて、$(l:thermal:world/mobs/basalz)割れ鎧$(/l)のステータス効果をモブに付与する強力なノックバックを与える線形放射物を発射できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:earth_charge_3",
+      "title": "Earth Charge",
+      "text": "$(o)伝説によれば、かつては岩盤をも砕くほどの威力を有していたという$()"
+    }
+  ]
+}

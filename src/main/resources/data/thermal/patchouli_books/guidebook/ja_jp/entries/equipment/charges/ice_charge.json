@@ -1,1 +1,17 @@
-{  "name": "Ice Charge",  "icon": "thermal:ice_charge",  "category": "thermal:charges",  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "Ice charges can be used to place snow on blocks, convert water to ice, and change lava to obsidian. The latter two can also be done using buckets in a crafting bench. Firing from dispenser will fire a linear projectile that applies the $(l:thermal:world/mobs/blizz)Chilled$(/l) effect to mobs and freezes a small area."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:ice_charge_3",      "title": "Ice Charge"    }  ]}
+{
+  "name": "アイスチャージ",
+  "icon": "thermal:ice_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "アイスチャージは、ブロックに雪を積もらせる、水を氷に変える、溶岩を黒曜石に変えることができます。後者2つはクラフトグリッドにてバケツを使って変えることもできます。ディスペンサーを用いて、モブに$(l:thermal:world/mobs/blizz)寒気$(/l)のステータス効果を与え、かつ狭い範囲を凍らせる線形放射物を発射できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ice_charge_3",
+      "title": "Ice Charge"
+    }
+  ]
+}

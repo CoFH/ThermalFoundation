@@ -1,1 +1,17 @@
-{  "name": "Lightning Charge",  "icon": "thermal:lightning_charge",  "category": "thermal:charges",  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "Lightning charges can be used to summon a single bolt of lightning. Firing from a dispenser will fire a linear projectile that applies the $(l:thermal:world/mobs/blitz)Shocked$(/l) effect to mobs."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:lightning_charge_3",      "title": "Lightning Charge"    }  ]}
+{
+  "name": "ライトニングチャージ",
+  "icon": "thermal:lightning_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ライトニングチャージは使用すると稲妻を一回召喚できます。ディスペンサーを用いて、$(l:thermal:world/mobs/blitz)被雷$(/l)のステータス効果を与える線形放射物を発射できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lightning_charge_3",
+      "title": "Lightning Charge"
+    }
+  ]
+}
