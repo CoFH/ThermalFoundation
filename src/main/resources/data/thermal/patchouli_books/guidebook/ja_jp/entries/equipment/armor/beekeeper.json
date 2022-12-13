@@ -13,7 +13,7 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:beekeeper_fabric",
-      "text": "Fabric used for all beekeeper equipment."
+      "text": "養蜂着一式に使われる布素材です。"
 
     },
     {
