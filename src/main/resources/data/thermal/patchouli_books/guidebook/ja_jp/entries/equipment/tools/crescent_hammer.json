@@ -1,1 +1,17 @@
-{  "name": "Crescent Hammer",  "icon": "thermal:wrench",  "category": "thermal:tools",  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "A run-of-the-mill wrench. Can be used to pick up machines with shift right click, rotate machines with right click. You can even put some sense into your pesky friends who keep trolling you!"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:tools/wrench",      "title": "Crescent Hammer"    }  ]}
+{
+  "name": "クレセントハンマー",
+  "icon": "thermal:wrench",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "一般的なレンチです。Shift+右クリックで機械をアイテム化したり、右クリックで機械を回転させることが出来ます。荒らし回っている人を懲らしめるのにも使えます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/wrench",
+      "title": "クレセントハンマー"
+    }
+  ]
+}

@@ -1,1 +1,24 @@
-{  "name": "Flux Capacitor",  "icon": "thermal:flux_capacitor",  "category": "thermal:tools",  "read_by_default": true,  "flag": "mod:thermal_innovation",  "pages": [    {      "type": "patchouli:text",      "text": "Stores RF and charges items in your inventory. It has 3 modes, allowing you to charge just your hotbar and armor, just your inventory, or everything, togglable using the change mode keybind. In order to toggle item charging on and off, shift right click while holding the capacitor. It can also be used to put energy in machines. It can be charged and augmented in the Tinker's Workbench."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:flux_capacitor",      "title": "Flux Capacitor",      "text": "Press '$(k:cofh.mode_change_increment)' to change modes. It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve RF capacity."    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)"    }  ]}
+{
+  "name": "RF蓄電池",
+  "icon": "thermal:flux_capacitor",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "RFを保持し、インベントリ内のアイテムへ充電します。充電モードには、ホットバーと装備スロットのみ、インベントリのみ、全スロットの3モードがあります。チェンジモードキーを押して切り替えられます。アイテムへの充電のオンオフを切り替えるには、RF蓄電池を持って右クリックします。また、機械にRFを受け渡すこともできます。鍛冶職人の作業台にて充電とオーグメントの適用が可能です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:flux_capacitor",
+      "title": "Flux Capacitor",
+      "text": "'$(k:cofh.mode_change_increment)'キーを押すとモードを変更できます。$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すとRF容量が拡張されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)"
+    }
+  ]
+}

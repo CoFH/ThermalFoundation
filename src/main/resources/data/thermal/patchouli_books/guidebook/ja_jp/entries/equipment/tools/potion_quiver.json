@@ -1,1 +1,24 @@
-{  "name": "Alchemical Quiver",  "icon": "thermal:potion_quiver",  "category": "thermal:tools",  "read_by_default": true,  "flag": "mod:thermal_innovation",  "pages": [    {      "type": "patchouli:text",      "text": "Used to store and imbue arrows with potion effects. Right click with the quiver in your hand to transfer arrows from your inventory into the quiver. Press '$(k:cofh.mode_change_increment)' to toggle imbuement, which takes 50mb of the stored $(l:thermal:technology/potion_fluid)potion fluid$(/l) per arrow. The quiver can be filled and augmented in the Tinker's Workbench."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:potion_quiver",      "title": "Alchemical Quiver",      "text": "It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve fluid capacity."    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)Alchemical Amplifier$(/l)$(li)$(l:thermal:technology/augments/potion_duration)Alchemical Extender$(/l)"    }  ]}
+{
+  "name": "錬金矢筒",
+  "icon": "thermal:potion_quiver",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "矢を入れておき、ポーション効果を付与することが出来ます。矢筒を手に持って右クリックすると、矢をインベントリから矢筒に入れることができます。'$(k:cofh.mode_change_increment)'を押すと自動浸潤モードを切り替えられ、矢を1本当たり50mbの$(l:thermal:technology/potion_fluid)ポーション(流体)$(/l)を消費するようになります。鍛冶職人の作業台にて充填とオーグメントの適用が可能です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_quiver",
+      "title": "錬金矢筒",
+      "text": "$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すと流体容量が拡張されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)錬金的増幅回路$(/l)$(li)$(l:thermal:technology/augments/potion_duration)錬金的増量剤$(/l)"
+    }
+  ]
+}

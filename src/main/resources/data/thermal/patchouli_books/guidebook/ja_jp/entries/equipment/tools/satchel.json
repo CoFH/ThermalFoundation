@@ -1,1 +1,23 @@
-{  "name": "Satchel",  "icon": "thermal:satchel",  "category": "thermal:tools",  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "The Satchel is a bag that can hold things. It's pretty straightforward. Press '$(k:cofh.mode_change_increment)' to toggle auto-collect mode, where items are automatically stored on pickup, depending on Filter restrictions. It can be augmented in the Tinker's Workbench."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:tools/satchel",      "title": "Satchel",      "text": "It can be dyed in a Crafting Table with any normal dyes, and/or secured with a Signalum Security Lock."    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)"    }  ]}
+{
+  "name": "サッチェル",
+  "icon": "thermal:satchel",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "サッチェルはアイテムを入れられるバッグです。とてもわかりやすいですね。'$(k:cofh.mode_change_increment)'を押すと自動収集モードを切り替えられ、フィルター設定に則ってアイテムを拾ったときに自動でサッチェルの中にアイテムが収納されます。鍛冶職人の作業台でオーグメントの適用が可能です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/satchel",
+      "title": "サッチェル",
+      "text": "クラフティングテーブルで、染料を使って染色したり、シグナルム安全錠でセキュリティを設定できます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)"
+    }
+  ]
+}

@@ -1,1 +1,24 @@
-{  "name": "Potion Infuser",  "icon": "thermal:potion_infuser",  "category": "thermal:tools",  "read_by_default": true,  "flag": "mod:thermal_innovation",  "pages": [    {      "type": "patchouli:text",      "text": "Used to infuse yourself, mobs, or other players with potion effects. Press '$(k:cofh.mode_change_increment)' to toggle automatic infusion, which regularly infuses you with small doses. It can be filled with $(l:thermal:technology/potion_fluid)potion fluid$(/l) and augmented in the Tinker's Workbench."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:potion_infuser",      "title": "Potion Infuser",      "text": "It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve fluid capacity."    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)Alchemical Amplifier$(/l)$(li)$(l:thermal:technology/augments/potion_duration)Alchemical Extender$(/l)"    }  ]}
+{
+  "name": "ポーション注射器",
+  "icon": "thermal:potion_infuser",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "自分やモブ、他のプレイヤーにポーション効果を与えるのに使用します。'$(k:cofh.mode_change_increment)'を押すと自動注射モードを切り替えられ、定期的にポーションを点滴してくれます。鍛冶職人の作業台にて$(l:thermal:technology/potion_fluid)ポーション(流体)$(/l)の充填とオーグメントの適用が可能です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_infuser",
+      "title": "ポーション注射器",
+      "text": "$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すと流体容量が拡張されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)錬金的増幅回路$(/l)$(li)$(l:thermal:technology/augments/potion_duration)錬金的増量剤$(/l)"
+    }
+  ]
+}
