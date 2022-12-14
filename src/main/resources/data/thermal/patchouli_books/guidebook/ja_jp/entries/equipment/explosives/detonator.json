@@ -1,1 +1,17 @@
-{  "name": "Detonator",  "icon": "thermal:detonator",  "read_by_default": true,  "category": "thermal:explosives",  "pages": [    {      "type": "patchouli:text",      "text": "The detonator is used to prime, and then detonate up to 16 explosive blocks at once! First place all your explosives, then right click each one with the detonator. The light will turn yellow to indicate that at least 1 explosive has been primed. The mode can then be changed to detonate, at which point the light will turn green and another right click will detonate all primed explosives."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:tools/detonator",      "text": "Press '$(k:cofh.mode_change_increment)' to change modes."    }  ]}
+{
+  "name": "遠隔起爆装置",
+  "icon": "thermal:detonator",
+  "read_by_default": true,
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "遠隔起爆装置は最大16個の爆発するブロックを一斉に起爆するために使用されます。はじめに爆発物を全て置き、次に遠隔起爆装置でそれぞれを右クリックします。ライトは少なくとも1つの爆発物の起爆登録が完了したときに黄色に変わります。その後、起爆モードに切り替えるとライトは緑に変わり、このときに右クリックすると登録された全ての爆発物を爆発させることができます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/detonator",
+      "text": "'$(k:cofh.mode_change_increment)'を押してモードを変更"
+    }
+  ]
+}

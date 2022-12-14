@@ -1,1 +1,24 @@
-{  "name": "Redstone Explosives",  "icon": "thermal:redstone_tnt",  "read_by_default": true,  "flag": "mod:thermal_innovation",  "category": "thermal:explosives",  "pages": [    {      "type": "patchouli:text",      "text": "Redstone Explosives will produce a redstone flux excitation field upon explosion, activating any redstone components and devices within its area of effect. This field will persist for 10s. Explosive blocks and grenades create fields with radii of 9 and 5 blocks, respectively."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:redstone_tnt",      "B.recipe": "thermal:redstone_grenade_4"    },    {      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:redstone_tnt_minecart",      "title": "Redstone Explosive Minecart"    }  ]}
+{
+  "name": "レッドストーン爆弾",
+  "icon": "thermal:redstone_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "レッドストーン爆弾は爆発時にレッドストーン磁束励起場を展開し、効果範囲内のあらゆるレッドストーン感応ブロック・デバイスを活性化します。この励起場は10秒間展開し続けます。ブロック及びグレネードの爆発半径は9ブロック、5ブロックです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_tnt",
+      "B.recipe": "thermal:redstone_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_tnt_minecart",
+      "title": "レッドストーン爆弾付きトロッコ"
+    }
+  ]
+}

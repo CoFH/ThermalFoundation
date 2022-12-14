@@ -1,1 +1,24 @@
-{  "name": "Disruption Explosives",  "icon": "thermal:ender_tnt",  "read_by_default": true,  "flag": "mod:thermal_innovation",  "category": "thermal:explosives",  "pages": [    {      "type": "patchouli:text",      "text": "Disruption Explosives create an ender disruption lasting 10s that teleports most mobs/players inside it to a random location up to 128 blocks away. The initial explosion damages and stops endermen & endermites from teleporting for 15s. Explosive blocks and grenades explode with radii of 9 and 5 blocks, respectively. Like endermen, these explosives lose their efficacy under water!"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:ender_tnt",      "B.recipe": "thermal:ender_grenade_4"    },    {      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:ender_tnt_minecart",      "title": "Disruption Explosive Minecart"    }  ]}
+{
+  "name": "混乱爆弾",
+  "icon": "thermal:ender_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "混乱爆弾は10秒間エンダー混乱を発生し、範囲内のほとんどのモブやプレイヤーを最大128ブロック離れた場所へランダムにテレポートさせます。爆発によって15秒間エンダーマン及びエンダーマイトにダメージを与え、テレポートを不可能にします。ブロック及びグレネードの爆発半径はそれぞれ9ブロック、5ブロックです。エンダーマンと同様にこの爆弾は水中では効果がありません。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ender_tnt",
+      "B.recipe": "thermal:ender_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ender_tnt_minecart",
+      "title": "混乱爆弾付きトロッコ"
+    }
+  ]
+}

@@ -1,1 +1,24 @@
-{  "name": "Tectonic Explosives",  "icon": "thermal:earth_tnt",  "read_by_default": true,  "flag": "mod:thermal_innovation",  "category": "thermal:explosives",  "pages": [    {      "type": "patchouli:text",      "text": "Tectonic Explosives will break and drop stone- and dirt- type blocks in an area and grant mobs caught in its radius the $(l:thermal:world/mobs/basalz)Sundered II$(/l) effect. Useful for mining. Explosive blocks and grenades have radii of 9 and 5 blocks, respectively.$(br2)$(o)Legend has it that these were once powerful enough to break bedrock.$()"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:earth_tnt",      "B.recipe": "thermal:earth_grenade_4"    },    {      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:earth_tnt_minecart",      "title": "Tectonic Explosive Minecart"    }  ]}
+{
+  "name": "地動爆弾",
+  "icon": "thermal:earth_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "地動爆弾は範囲内の石や土を破壊してドロップさせ、範囲内のモブに$(l:thermal:world/mobs/basalz)割れ鎧II$(/l)のステータス効果を与えます。採掘に有用です。ブロック及びグレネードの爆発半径はそれぞれ9ブロック、5ブロックです。$(br2)$(o)伝説によればこれらはかつては岩盤をも砕くほどに強力だったそうです。$()"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:earth_tnt",
+      "B.recipe": "thermal:earth_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:earth_tnt_minecart",
+      "title": "地動爆弾付きトロッコ"
+    }
+  ]
+}
