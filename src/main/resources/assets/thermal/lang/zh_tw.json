@@ -1143,7 +1143,7 @@
   "item.thermal.press_packing_3x3_die": "打包模具（3x3）",
   "item.thermal.press_unpacking_die": "解包模具",
 
-  "item.thermal.slot_seal": "欄位卡榫",
+  "item.thermal.slot_seal": "欄位擋板",
   "item.thermal.slot_seal.desc": "防止所在欄位被使用。適用於有多個輸入槽的機器。",
 
   "subtitles.thermal.block.machine_bottler": "流體灌裝機裝填",
