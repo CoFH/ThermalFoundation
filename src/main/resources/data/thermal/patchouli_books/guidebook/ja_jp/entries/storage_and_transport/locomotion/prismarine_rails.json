@@ -1,1 +1,28 @@
-{  "name": "Prismarine Rails",  "icon": "thermal:prismarine_rail",  "read_by_default": true,  "flag": "mod:thermal_locomotion",  "category": "thermal:locomotion",  "pages": [    {      "type": "patchouli:text",      "text": "Prismarine rails work exactly like their standard counterparts, except they are waterloggable and can be placed under water. However, an entity in a normal minecart will still get kicked out if they are entirely submerged in water. This can be prevented through the use of $(l:thermal:storage_and_transport/locomotion/underwaterminecart)underwater minecarts$(/l). Prismarine rails also emit a light level of 8."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:prismarine_rail",      "B.recipe": "thermal:prismarine_crossover_rail"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:prismarine_powered_rail",      "B.recipe": "thermal:prismarine_activator_rail"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:prismarine_detector_rail"    }  ]}
+{
+  "name": "プリズマリンレール",
+  "icon": "thermal:prismarine_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "プリズマリンレールは通常のレールと同じ機能も有していますが、水中にも設置することができます。とはいえ、普通のトロッコでは、乗っているエンティティは水中へと進んだ場合に追い出されてしまいます。$(l:thermal:storage_and_transport/locomotion/underwaterminecart)潜水トロッコ$(/l)では水中でも問題なく運行できます。また、プリズマリンレールは強さ8で発光します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_rail",
+      "B.recipe": "thermal:prismarine_crossover_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_powered_rail",
+      "B.recipe": "thermal:prismarine_activator_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_detector_rail"
+    }
+  ]
+}
