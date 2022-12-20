@@ -986,6 +986,8 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+  "attachment.thermal.energy_limiter": "红石通量限制器",
+
   "block.thermal.energy_duct": "能量导管",
   "block.thermal.fluid_duct": "流体导管",
   "block.thermal.fluid_duct_glass": "流体导管（视窗）",
@@ -995,6 +997,14 @@
 
   "block.thermal.item_buffer": "逻辑物品缓存器",
 
+  "info.thermal.energy_limiter_attachment.0": "限制流经它的能量传输速率。",
+  "info.thermal.energy_limiter_attachment.1": "可为每个方向配置不同上限。",
+  "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r键和/或§e§oCtrl§r键来精确调整数值。",
+
+  "info.thermal.fluid_filter_attachment.0": "将存有流体的物品放入栏位，以此把对应的流体添加到过滤器列表中。",
+  "info.thermal.fluid_filter_attachment.1": "可使用额外选项来精确调整行为。",
+  "info.thermal.fluid_filter_attachment.2": "红石控制可用于暂时关闭过滤……",
+
   "info.thermal.item_buffer.0": "限制物品的传送速率和数量。",
   "info.thermal.item_buffer.1": "使用左侧网格来设置所需物品及其数量",
   "info.thermal.item_buffer.2": "锁存模式下，只有所有物品均满足要求才会输出。",
@@ -1002,6 +1012,10 @@
 
   "info.thermal.item_buffer.mode.0": "I/O：正常",
   "info.thermal.item_buffer.mode.1": "I/O：锁存",
+
+  "item.thermal.energy_limiter_attachment": "红石通量限制器",
+  "item.thermal.filter_attachment": "过滤器",
+  "item.thermal.servo_attachment": "伺服器",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
@@ -1020,10 +1034,10 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.dynamo_compression": "压缩能源炉",
-  "block.thermal.dynamo_disenchantment": "附魔能源炉",
-  "block.thermal.dynamo_gourmand": "食物能源炉",
+  "block.thermal.dynamo_disenchantment": "祛魔能源炉",
+  "block.thermal.dynamo_gourmand": "饕餮能源炉",
   "block.thermal.dynamo_lapidary": "珠宝能源炉",
-  "block.thermal.dynamo_magmatic": "热力能源炉",
+  "block.thermal.dynamo_magmatic": "熔岩能源炉",
   "block.thermal.dynamo_numismatic": "通货能源炉",
   "block.thermal.dynamo_stirling": "斯特林能源炉",
 
@@ -1034,7 +1048,7 @@
   "block.thermal.machine_crafter": "序列装配台",
   "block.thermal.machine_crucible": "熔岩炉",
   "block.thermal.machine_crystallizer": "结晶器",
-  "block.thermal.machine_furnace": "通量熔炼炉",
+  "block.thermal.machine_furnace": "红石熔炼炉",
   "block.thermal.machine_insolator": "有机灌注器",
   "block.thermal.machine_press": "多驱冲压机",
   "block.thermal.machine_pulverizer": "磨粉机",
@@ -1071,14 +1085,14 @@
 
   "info.thermal.dynamo_numismatic.0": "利用钞能力产出红石通量。",
   "info.thermal.dynamo_numismatic.1": "线圈的另一头可能是某个人均大资本家的异世界维度。",
-  "info.thermal.dynamo_numismatic.2": "愣着干啥，快投币啊！",
+  "info.thermal.dynamo_numismatic.2": "别想太多，投币就行了。",
 
   "info.thermal.dynamo_stirling.0": "燃烧固体燃料，产出红石通量。",
   "info.thermal.dynamo_stirling.1": "大部分在熔炉里能烧的东西，在这儿也能行。",
 
   "info.thermal.machine_bottler.0": "将流体灌入容器中。",
   "info.thermal.machine_bottler.1": "如果你想来点好喝的，那必须备一台这种机器。",
-  "info.thermal.machine_bottler.2": "神清气爽！",
+  "info.thermal.machine_bottler.2": "满上！",
 
   "info.thermal.machine_brewer.0": "酿造药水，灌注流体。",
   "info.thermal.machine_brewer.1": "你可能会需要摆上那么一整排，毕竟药水酿造都属于流程工艺。",
