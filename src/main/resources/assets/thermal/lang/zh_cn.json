@@ -986,7 +986,7 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
-  "attachment.thermal.energy_limiter": "红石通量限制器",
+  "attachment.thermal.energy_limiter": "红石通量限流器",
 
   "block.thermal.energy_duct": "能量导管",
   "block.thermal.fluid_duct": "流体导管",
@@ -1013,7 +1013,7 @@
   "info.thermal.item_buffer.mode.0": "I/O：正常",
   "info.thermal.item_buffer.mode.1": "I/O：锁存",
 
-  "item.thermal.energy_limiter_attachment": "红石通量限制器",
+  "item.thermal.energy_limiter_attachment": "红石通量限流器",
   "item.thermal.filter_attachment": "过滤器",
   "item.thermal.servo_attachment": "伺服器",
 
