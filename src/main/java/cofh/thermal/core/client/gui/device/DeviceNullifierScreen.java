@@ -2,7 +2,6 @@ package cofh.thermal.core.client.gui.device;
 
 import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.SimpleTooltip;
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import net.minecraft.network.chat.Component;
@@ -23,7 +22,7 @@ public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifier
 
     public DeviceNullifierScreen(DeviceNullifierContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_nullifier"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_nullifier");
     }

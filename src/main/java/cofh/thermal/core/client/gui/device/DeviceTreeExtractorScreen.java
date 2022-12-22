@@ -1,6 +1,5 @@
 package cofh.thermal.core.client.gui.device;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceTreeExtractorContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
@@ -18,7 +17,7 @@ public class DeviceTreeExtractorScreen extends ThermalTileScreenBase<DeviceTreeE
 
     public DeviceTreeExtractorScreen(DeviceTreeExtractorContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_tree_extractor"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_tree_extractor");
     }

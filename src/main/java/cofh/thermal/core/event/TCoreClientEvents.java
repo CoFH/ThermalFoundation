@@ -24,7 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderLevelLastEvent;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -97,8 +97,11 @@ public class TCoreClientEvents {
     }
 
     @SubscribeEvent
-    public static void handleRenderWorldLast(RenderLevelLastEvent event) {
+    public static void handleRenderLevelStageEvent(RenderLevelStageEvent event) {
 
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
+            return;
+        }
         LocalPlayer player = Minecraft.getInstance().player;
 
         if (player != null) {
@@ -108,6 +111,19 @@ public class TCoreClientEvents {
             }
         }
     }
+
+    //    @SubscribeEvent
+    //    public static void handleRenderWorldLast(RenderLevelLastEvent event) {
+    //
+    //        LocalPlayer player = Minecraft.getInstance().player;
+    //
+    //        if (player != null) {
+    //            Item heldItem = player.getMainHandItem().getItem();
+    //            if (heldItem instanceof WrenchItem && ((WrenchItem) heldItem).getMode(player.getMainHandItem()) > 0) {
+    //                renderOperationalAreas(player, event.getPoseStack());
+    //            }
+    //        }
+    //    }
 
     // region HELPERS
     private static boolean playerWithinDistance(BlockPos pos, Player player, double distanceSq) {

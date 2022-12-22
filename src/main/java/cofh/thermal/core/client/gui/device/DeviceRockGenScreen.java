@@ -1,7 +1,6 @@
 package cofh.thermal.core.client.gui.device;
 
 import cofh.core.client.gui.element.ElementBlock;
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.block.entity.device.DeviceRockGenTile;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DeviceRockGenContainer;
@@ -28,7 +27,7 @@ public class DeviceRockGenScreen extends ThermalTileScreenBase<DeviceRockGenCont
 
     public DeviceRockGenScreen(DeviceRockGenContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_rock_gen"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_rock_gen");
         myTile = (DeviceRockGenTile) container.tile;

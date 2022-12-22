@@ -123,6 +123,7 @@ public class ThermalIDs {
     public static final String ID_DEVICE_WATER_GEN = "device_water_gen";
     public static final String ID_DEVICE_ROCK_GEN = "device_rock_gen";
     public static final String ID_DEVICE_COLLECTOR = "device_collector";
+    public static final String ID_DEVICE_XP_CONDENSER = "device_xp_condenser";
     public static final String ID_DEVICE_MAGNET_BLOCKER = "device_magnet_blocker";
     public static final String ID_DEVICE_NULLIFIER = "device_nullifier";
     public static final String ID_DEVICE_POTION_DIFFUSER = "device_potion_diffuser";

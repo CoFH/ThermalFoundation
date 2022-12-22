@@ -4,7 +4,6 @@ import cofh.core.client.gui.element.ElementBase;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.ElementTexture;
 import cofh.core.network.packet.server.TileConfigPacket;
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -32,7 +31,7 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
 
     public EnergyCellScreen(EnergyCellContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.energy_cell"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.energy_cell");
         name = "energy_cell";
@@ -86,7 +85,7 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
             change /= 10;
             pitch -= 0.1F;
         }
-        int curInput = menu.tile.amountInput;
+        int curInput = tile.amountInput;
         int curOutput = tile.amountOutput;
 
         switch (buttonName) {

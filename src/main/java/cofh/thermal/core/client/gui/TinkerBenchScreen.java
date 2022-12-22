@@ -3,7 +3,6 @@ package cofh.thermal.core.client.gui;
 import cofh.core.client.gui.element.ElementAugmentSlots;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.SimpleTooltip;
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.inventory.container.TinkerBenchContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import net.minecraft.network.chat.Component;
@@ -25,7 +24,7 @@ public class TinkerBenchScreen extends ThermalTileScreenBase<TinkerBenchContaine
 
     public TinkerBenchScreen(TinkerBenchContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.tinker_bench"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.tinker_bench");
     }

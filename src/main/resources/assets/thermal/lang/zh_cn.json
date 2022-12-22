@@ -514,6 +514,7 @@
   "block.thermal.device_composter": "批量堆肥器",
   "block.thermal.device_fisher": "水产捕捞器",
   "block.thermal.device_hive_extractor": "蜂箱漏斗",
+  "block.thermal.device_magnet_blocker": "磁力抑制器",
   "block.thermal.device_nullifier": "销毁器",
   "block.thermal.device_potion_diffuser": "药水雾化器",
   "block.thermal.device_rock_gen": "造石机",

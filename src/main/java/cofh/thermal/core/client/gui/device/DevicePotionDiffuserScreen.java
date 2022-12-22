@@ -1,6 +1,5 @@
 package cofh.thermal.core.client.gui.device;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.core.inventory.container.device.DevicePotionDiffuserContainer;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
@@ -18,7 +17,7 @@ public class DevicePotionDiffuserScreen extends ThermalTileScreenBase<DevicePoti
 
     public DevicePotionDiffuserScreen(DevicePotionDiffuserContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.device_potion_diffuser"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.device_potion_diffuser");
     }
