@@ -996,7 +996,7 @@
   "block.thermal.item_buffer": "邏輯物品緩衝器",
 
   "info.thermal.energy_limiter_attachment.0": "限制流經它的能量傳輸速率。",
-  "info.thermal.energy_limiter_attachment.1": "可為每個方向配置不同上限。",
+  "info.thermal.energy_limiter_attachment.1": "可為每個方向設置不同上限。",
   "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
 
   "info.thermal.fluid_filter_attachment.0": "將存有流體的物品放入欄位，以此把對應的流體新增到篩選器列表中。",
