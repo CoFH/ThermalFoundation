@@ -759,7 +759,7 @@
 
   "block.thermal.energy_cell.keyword": "能量 rf 儲存",
   "block.thermal.fluid_cell.keyword": "流體 儲存 容器 儲罐 缸",
-  "block.thermal.item_cell.keyword": "緩存 物品 儲存",
+  "block.thermal.item_cell.keyword": "快取 物品 儲存",
 
   "block.thermal.charge_bench.keyword": "能量 充電器 rf",
   "block.thermal.tinker_bench.keyword": "組件 充電器 灌注 裝填 注水 升級",
@@ -993,7 +993,7 @@
   "block.thermal.energy_distributor": "RF 分配介面",
   "block.thermal.fluid_distributor": "流體分配介面",
 
-  "block.thermal.item_buffer": "邏輯物品緩存器",
+  "block.thermal.item_buffer": "邏輯物品緩衝器",
 
   "info.thermal.energy_limiter_attachment.0": "限制流經它的能量傳輸速率。",
   "info.thermal.energy_limiter_attachment.1": "可為每個方向配置不同上限。",
