@@ -1,1 +1,18 @@
-{  "name": "Slot Seal",  "icon": "thermal:slot_seal",  "category": "thermal:technology",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "patchouli:text",      "text": "Used to lock a slot and prevent items from entering it. Helpful for advanced machine logistics."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:slot_seal",      "title": "Slot Seal"    }  ]}
+{
+  "name": "スロット封",
+  "icon": "thermal:slot_seal",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "スロットをロックし、アイテムが入ることを防ぎます。高度なマシン同士の物流網構築に役立つでしょう。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slot_seal",
+      "title": "スロット封"
+    }
+  ]
+}
