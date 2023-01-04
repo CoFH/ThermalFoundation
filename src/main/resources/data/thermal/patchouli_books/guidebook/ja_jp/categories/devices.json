@@ -1,6 +1,6 @@
 {
-  "name": "デバイス",
-  "description": "各デバイスの機能詳細を説明します。デバイスは、明示されない限りRFを必要とします。",
+  "name": "装置",
+  "description": "各装置の機能詳細を説明します。装置は、明示されない限りRFを必要とします。",
   "icon": "thermal:device_tree_extractor",
   "parent": "thermal:technology",
   "flag": "|mod:thermal_expansion,mod:thermal_cultivation,mod:thermal_dynamics,mod:thermal_innovation",

@@ -8,7 +8,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/item_filter_augment",
       "title": "アイテムフィルター",
-      "text": "アイテムフィルターはマシン、デバイスやそれらの一部がアイテム搬入を制限できるようにします。フィルターは機械やアイテムを右クリックするか、機械のGUIタブからアクセスできる別のGUIで設定できます。"
+      "text": "アイテムフィルターはマシン、装置やそれらの一部がアイテム搬入を制限できるようにします。フィルターは機械やアイテムを右クリックするか、機械のGUIタブからアクセスできる別のGUIで設定できます。"
     },
     {
       "type": "patchouli:text",

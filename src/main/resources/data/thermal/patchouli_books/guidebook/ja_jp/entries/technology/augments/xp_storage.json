@@ -8,7 +8,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/xp_storage_augment",
       "title": "知識濃縮装置",
-      "text": "知識濃縮装置オーグメントはマシンやデバイス、その他のものから経験値を集められるようにします。最大で2.5kに$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)の強化率を乗算した量の経験値を保存できます。"
+      "text": "知識濃縮装置オーグメントはマシンや装置、その他のものから経験値を集められるようにします。最大で2.5kに$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)の強化率を乗算した量の経験値を保存できます。"
     },
     {
       "type": "patchouli:text",
