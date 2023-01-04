@@ -1,1 +1,22 @@
-{  "name": "Introduction - Augments",  "icon": "thermal:iron_gear",  "category": "thermal:augments",  "sortnum": -2,  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "All machines, devices, dynamos, and tools can be upgraded using $(l)augments$(). Augments provide various benefits, ranging from enhanced storage to increased ease of automation. Augments may be applied either in the tinker bench or in the augment panel in the GUI of machines, devices, and dynamos."    },    {      "type": "patchouli:text",      "text": "When hovering over an augment in your inventory, the item tooltip will display the augment's modifiers. Modifiers in normal font can be stacked, additively for those starting with '+' and multiplicatively for those ending in 'x'. Underlined multipliers cannot be stacked; instead, only the highest multiplier of all the augments is used."    },    {      "type": "patchouli:text",      "text": "Augments have a specific augment type associated with them, which can also be seen in the item tooltip. The type restricts what blocks you can put augments into and sometimes how many. Machine type augments cannot be inserted into dynamos, for example. Many augments cannot be stacked, such as those with a silver background."    }  ]}
+{
+  "name": "オーグメントとは",
+  "icon": "thermal:iron_gear",
+  "category": "thermal:augments",
+  "sortnum": -2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "全てのマシン、デバイス、ダイナモ、道具は$(l)オーグメント$()を使用して強化できます。オーグメントはストレージの拡張から自動化の能率向上まで様々な効果をもたらします。オーグメントの適用は鍛冶職人の作業台か、マシン・デバイス・ダイナモのGUIにあるオーグメントパネルから行えます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "インベントリにあるオーグメントにカーソルをあわせると、アイテム説明にオーグメントのモディファイアが表示されます。通常表示のモディファイアは重複でき、「+」で始まるものは加算、「x」で始まるものは乗算となります。下線付きのモディファイアは重複が不可能で、適用されるモディファイアのうち最も数値の高いものだけが有効になります。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "オーグメントは特定の機械装置にのみ適用可能なオーグメントタイプがあります。これらは説明から確認できます。このオーグメントタイプはどの機械に、どれだけ適用可能かを制限します。例えばマシンタイプのオーグメントはダイナモに適用できません。銀色のオーグメントのようにおおくのオーグメントはスタック出来ません。"
+    }
+
+  ]
+}
