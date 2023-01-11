@@ -8,7 +8,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/fluid_tank_augment",
       "title": "拡張タンク機構",
-      "text": "拡張タンク機構はマシンや装置、ダイナモや道具の流体タンクの容量を4倍に拡張します。"
+      "text": "拡張タンク機構は機械装置やダイナモ、道具の流体タンクの容量を4倍に拡張します。"
     }
   ]
 }

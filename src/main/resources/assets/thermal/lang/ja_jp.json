@@ -177,7 +177,7 @@
   "info.thermal.xp_crystal.use.sneak": "スニーク中に使用すると、溜め込んだ経験値を取得できます。",
 
   "itemGroup.thermal.blocks": "Thermal Series: ブロック",
-  "itemGroup.thermal.devices": "Thermal Series: 機械",
+  "itemGroup.thermal.devices": "Thermal Series: 機械装置",
   "itemGroup.thermal.foods": "Thermal Series: 作物と食料",
   "itemGroup.thermal.items": "Thermal Series: アイテム",
   "itemGroup.thermal.resources": "Thermal Series: 素材",
@@ -399,7 +399,7 @@
   "info.thermal.augment.attr.Radius": "最大半径",
   "info.thermal.augment.attr.Reach": "最大範囲",
 
-  "info.thermal.augment.attr.BaseMod": "拡縮係数",
+  "info.thermal.augment.attr.BaseMod": "強化係数",
 
   "info.thermal.augment.attr.DynamoEnergy": "燃料効率",
   "info.thermal.augment.attr.DynamoPower": "最大出力",
@@ -424,7 +424,7 @@
   "info.thermal.augment.type.Dynamo": "ダイナモ",
   "info.thermal.augment.type.Fluid": "流体",
   "info.thermal.augment.type.Filter": "フィルター",
-  "info.thermal.augment.type.Machine": "マシン",
+  "info.thermal.augment.type.Machine": "機械",
   "info.thermal.augment.type.Potion": "ポーション",
   "info.thermal.augment.type.RF": "レッドストーンフラックス",
   "info.thermal.augment.type.Upgrade": "アップグレード",

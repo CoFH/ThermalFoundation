@@ -10,7 +10,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/machine_cycle_augment",
       "title": "周期的処理",
-      "text": "周期的処理オーグメントは生産物がそのまま同じマシンの材料として扱える場合、自動で材料として再投入します。自動化に有用です。"
+      "text": "周期的処理オーグメントは生産物がそのまま同じ機械の材料として扱える場合、自動で材料として再投入します。自動化に有用です。"
     }
   ]
 }

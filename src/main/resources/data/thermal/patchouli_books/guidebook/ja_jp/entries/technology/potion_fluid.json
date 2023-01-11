@@ -13,7 +13,7 @@
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "ポーション液はバニラのMinecraftのポーションの流体版です。ポーション液を扱えるマシン・装置・ストレージにMinecraftのポーション瓶を使用すると、ブロックへポーション液が移され、空き瓶が返されます。$(l:thermal:technology/machines/brewer)錬金術的醸造機$(/l)でポーションを醸造することにより直接入手できます。"
+      "text": "ポーション液はバニラのMinecraftのポーションの流体版です。ポーション液を扱える機械・装置・ストレージにMinecraftのポーション瓶を使用すると、ブロックへポーション液が移され、空き瓶が返されます。$(l:thermal:technology/machines/brewer)錬金術的醸造機$(/l)でポーションを醸造することにより直接入手できます。"
     },
     {
       "type": "patchouli:text",
