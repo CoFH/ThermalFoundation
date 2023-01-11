@@ -1,1 +1,18 @@
-{  "name": "Introduction - Devices",  "icon": "thermal:iron_gear",  "category": "thermal:devices",  "flag": "|mod:thermal_expansion,mod:thermal_cultivation",  "sortnum": -2,  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "Devices perform various functions on blocks around them, some of which may take RF. In order to improve or modify various aspects of their functionality, devices accept $(l:thermal:technology/augments/introduction)augments$(/l)."    },    {      "type": "patchouli:text",      "text": "The other entries in this chapter will provide detailed explanations on the function of each block. Brief descriptions are available in a collapsible panel in the GUI of each block. Another panel offers RF information on the block when applicable, such as current and max RF usage. There are also augment and redstone control panels for organizing augments and response to redstone signals respectively."    }  ]}
+{
+  "name": "装置とは",
+  "icon": "thermal:iron_gear",
+  "category": "thermal:devices",
+  "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+  "sortnum": -2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "装置とは、周囲のブロックと様々に相互作用する機能を有するものです。いくつかの装置は稼働にRFを必要とします。$(l:thermal:technology/augments/introduction)オーグメント$(/l)を適用することによって、機能の一部を切り替えたり強化することができます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "この章の別の項目でそれぞれの装置の詳細な説明がご覧いただけます。簡単な説明は装置のGUI上にある折り畳みパネルにて参照できます。別のパネルでは現在のRF使用量や最大RF使用量を確認できます。また、オーグメントパネルとレッドストーン制御パネルがあり、それぞれオーグメントやレッドストーン信号入力に対する制御方法を設定できます。"
+    }
+  ]
+}

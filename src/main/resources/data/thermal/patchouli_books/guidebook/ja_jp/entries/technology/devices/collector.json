@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Vacuumulator is a device that can pick up items in its area of effect. It can pick up EXP orbs when a $(l:thermal:technology/augments/xp_storage)knowledge concentrator augment$(/l) is installed. At base, the vacuumulator collects in a 9x9x9 area centered on it, which can be augmented up to 15x15x15 using $(l:thermal:technology/augments/area_radius)radial enhancement augments$(/l)."
+      "text": "アイテム吸引器は効果範囲内のアイテムを収拾できるアイテムです。また、$(l:thermal:technology/augments/xp_storage)知識濃縮装置オーグメント$(/l)を適用することで経験値オーブも同様に回収できるようになります。基本的な収拾範囲はアイテム吸引器を中心とした9x9x9の範囲ですが、$(l:thermal:technology/augments/area_radius)範囲拡張オーグメント$(/l)を適用することによって最大15x15x15の範囲まで拡大できます。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:device_collector",
-      "title": "Vacuumulator",
-      "text": "When controlled by redstone, the vacuumulator will immediately pick items up the moment it is turned on. This way, it will always reliably activate when pulsed."
+      "title": "アイテム吸引器",
+      "text": "レッドストーン制御方法には、レッドストーン信号がONになった瞬間にアイテムを収拾する設定があります。レッドストーン信号のパルスを送って確実に起動するようできます。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/area_radius)Radial Enhancement$(/l)"
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)"
     }
   ]
 } 

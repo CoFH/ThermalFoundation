@@ -1,1 +1,23 @@
-{  "name": "Aqueous Accumulator",  "icon": "thermal:device_water_gen",  "category": "thermal:devices",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "patchouli:text",      "text": "The Aqueous Accumulator is a device that will generate infinite water for your needs. In order for it to produce water there must be at least two source blocks adjacent to the sides of the device. Source blocks above or below the device will not count."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:device_water_gen",      "title": "Aqueous Accumulator"    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)"    }  ]} 
+{
+  "name": "水生成機",
+  "icon": "thermal:device_water_gen",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "水生成機はほしいときにいくらでも水を無限に生成してくれる装置です。水の生成には、水源ブロックが最低2面隣接している必要があります。装置の上下面は水源ブロックがあったとしても隣接扱いになりません。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_water_gen",
+      "title": "水生成機"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)"
+    }
+  ]
+} 
