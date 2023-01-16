@@ -16,7 +16,7 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
+      "title": "対応オーグメント",
       "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)補助反応室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)複循環燃料噴射装置$(/l)"
     }
   ]
