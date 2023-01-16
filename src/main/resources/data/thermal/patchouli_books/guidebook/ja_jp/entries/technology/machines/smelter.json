@@ -1,5 +1,5 @@
 {
-  "name": "Induction Smelter",
+  "name": "誘導加熱炉",
   "icon": "thermal:machine_smelter",
   "category": "thermal:machines",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "title": "Induction Smelter",
-      "text": "The Induction Smelter is a machine that smelts multiple items together, producing alloys. It can also smelt ores into ingots and gems, which is affected by $(l:thermal:world/materials/catalysts)catalysts$(/l). Smelting ores has a chance to produce rich slag as a secondary output, which can be used as a catalyst or to make $(l:thermal:world/plants/phytogro)phyto-gro$(/l). Smelting gravel yields flint and slag."
+      "title": "誘導加熱炉",
+      "text": "誘導加熱炉は複数のアイテムを共に精錬して合金を作り出す機械です。また、鉱石を精錬して鉱石や宝石を生産できますが、$(l:thermal:world/materials/catalysts)触媒$(/l)の影響を受けます。鉱石の精錬においては、副産物として上質な鉱滓が出てくる可能性があり、これには触媒や$(l:thermal:world/plants/phytogro)フィトグロー$(/l)の材料としての用途があります。また、砂利を精錬すると火打ち石と鉱滓が出来ます。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:machine_smelter",
-      "title": "Induction Smelter"
+      "title": "誘導加熱炉"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)$(li)$(l:thermal:technology/augments/machine_output)Auxiliary Process Sieve$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)Catalytic Reclamation Chamber$(/l)"
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)$(li)$(l:thermal:technology/augments/machine_speed)フラックス結合増幅器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)フラックス効率$(/l)$(li)$(l:thermal:technology/augments/machine_output)補助処理フィルター$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)触媒再生室$(/l)"
     }
   ]
 }

@@ -1,1 +1,23 @@
-{  "name": "Pulverizer",  "icon": "thermal:machine_pulverizer",  "category": "thermal:machines",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "patchouli:text",      "text": "The Pulverizer is a machine that crushes items and ores. Improves ore yields, which can be further increased using augments and $(l:thermal:world/materials/catalysts)catalysts$(/l)."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:machine_pulverizer",      "title": "Pulverizer"    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)$(li)$(l:thermal:technology/augments/machine_output)Auxiliary Process Sieve$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)Catalytic Reclamation Chamber$(/l)"    }  ]}
+{
+  "name": "粉砕機",
+  "icon": "thermal:machine_pulverizer",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "粉砕機ではアイテムや鉱石を粉砕する機械です。鉱石処理時の歩留まりが高く、またオーグメントの適用や$(l:thermal:world/materials/catalysts)触媒$(/l)の投入によってさらに向上できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_pulverizer",
+      "title": "粉砕機"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)$(li)$(l:thermal:technology/augments/machine_speed)フラックス結合増幅器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)フラックス効率$(/l)$(li)$(l:thermal:technology/augments/machine_output)補助処理フィルター$(/l)$(li)$(l:thermal:technology/augments/machine_catalyst)触媒再生室$(/l)"
+    }
+  ]
+}

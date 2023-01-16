@@ -1,1 +1,34 @@
-{  "name": "Multiservo Press",  "icon": "thermal:machine_press",  "category": "thermal:machines",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "patchouli:text",      "text": "The Multiservo Press is a machine that can accept a variety of dies in order to shape metals into different forms and (un)pack blocks and items."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:machine_press",      "B.recipe": "thermal:press_unpacking_die",      "title": "Multiservo Press"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:press_packing_2x2_die",      "B.recipe": "thermal:press_packing_3x3_die"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:press_gear_die",      "B.recipe": "thermal:press_coin_die"    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)"    }  ]}
+{
+  "name": "マルチサーボプレス機",
+  "icon": "thermal:machine_press",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "マルチサーボプレス機は様々な金型を使い金属を別の形状に変形する、ブロックやアイテムの形に固めたり分解できる機械です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_press",
+      "B.recipe": "thermal:press_unpacking_die",
+      "title": "マルチサーボプレス機"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:press_packing_2x2_die",
+      "B.recipe": "thermal:press_packing_3x3_die"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:press_gear_die",
+      "B.recipe": "thermal:press_coin_die"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)$(li)$(l:thermal:technology/augments/machine_speed)フラックス結合増幅器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)フラックス効率$(/l)"
+    }
+  ]
+}

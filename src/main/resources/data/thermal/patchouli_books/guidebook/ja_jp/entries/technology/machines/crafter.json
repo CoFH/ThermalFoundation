@@ -1,1 +1,24 @@
-{  "name": "Sequential Fabricator",  "icon": "thermal:machine_crafter",  "category": "thermal:machines",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "patchouli:text",      "text": "The Sequential Fabricator is a machine that automatically crafts items. Once the recipe in the crafting grid is set, it will take items and liquids from its internal inventory and craft them. Recipes that take a bucket of a particular fluid and leave an empty bucket behind can be crafted using liquid from the internal tank instead."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:machine_crafter",      "title": "Sequential Fabricator",      "text": "Note that this machine currently has no ability to protect from overfilling with one particular ingredient! A batching device is coming with Thermal Dynamics, so stay tuned!"    },    {      "type": "patchouli:text",      "title": "Augment Compatibility",      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)"    }  ]}
+{
+  "name": "連続作製機",
+  "icon": "thermal:machine_crafter",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "連続作製機はアイテムを自動でクラフトする機械です。一度レシピをグリッドにセットすれば、内部インベントリにある流体やアイテムを使ってアイテムをクラフトします。バケツに入れられた液体を消費して空のバケツを返すレシピの場合、内部タンクにある液体を代わりに使用します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_crafter",
+      "title": "連続作製機",
+      "text": "この機械は現在、内部インベントリがレシピの或る素材によって専有されてしまうことを防ぐ機能はなんら有していないことにご留意ください。アイテムの仕切り出しができる装置がThermal Dynamicsにて登場予定です。お楽しみに!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)$(li)$(l:thermal:technology/augments/machine_speed)フラックス結合増幅器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)フラックス効率$(/l)"
+    }
+  ]
+}

@@ -1,1 +1,36 @@
-{  "name": "Introduction - Machines",  "icon": "thermal:iron_gear",  "category": "thermal:machines",  "sortnum": -2,  "read_by_default": true,  "flag": "mod:thermal_expansion",  "pages": [    {      "type": "patchouli:text",      "text": "Machines use power, in the form of Redstone Flux (RF), to process items and/or fluids. The other entries in this chapter will provide detailed explanations on the function of each one. Brief descriptions are available in a collapsible panel in the GUI of each block. Unupgraded machines use up to 20 RF/t."    },    {      "type": "patchouli:text",      "text": "In order to improve or modify various aspects of their functionality, machines accept $(l:thermal:technology/augments/introduction)augments$(/l) in the 'Augment' panel. The 'Redstone Control' and 'Configuration' panels set the redstone behavior and side configuration of the machine. By default, machines will work regardless of redstone signal and come with a blank side configuration when first placed, meaning no sides will accept items or fluids."    },    {      "type": "patchouli:text",      "text": "In the 'Configuration' panel, each side of the block is represented by a square that will cycle through configurations when clicked. Blue and orange represent input and output, respectively. The arrow buttons configure automatic transfer to/from adjacent inventories. Black means that the side will accept in/outputs, but will not automatically transfer. Side configurations are saved when the block is picked up."    },    {      "type": "patchouli:text",      "text": "The 'Energy' panel offers RF information on the block, such as current RF usage. Every machine has a maximum rate it can use RF, and every recipe a certain RF cost associated with it. These two values, which may be affected by $(l:thermal:technology/augments/introduction)augments$(/l), can be divided to determine the speed a given recipe will be processed. In order to speed up a machine's operation, either the max RF usage can be increased using certain $(l:thermal:technology/augments/machine_speed)augments$(/l) or the RF needed for a recipe can be decreased using $(l:thermal:world/materials/catalysts)catalysts$(/l)."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:machine_frame",      "text": "These pages contain recipes for common components in machines and devices."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:redstone_servo",      "B.recipe": "thermal:rf_coil"    }  ]}
+{
+  "name": "機械とは",
+  "icon": "thermal:iron_gear",
+  "category": "thermal:machines",
+  "sortnum": -2,
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "機械とは、レッドストーンフラックス(RF)という形の動力を使用してアイテムや流体を処理するものです。この章の別の項目にてそれぞれの機械の機能詳細をご確認いただけます。簡単な説明は装置のGUI上にある折り畳みパネルにて参照できます。アップグレードをしない限りは、機械の最大消費電力は20RF/tです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:thermal:technology/augments/introduction)オーグメント$(/l)を'オーグメント'パネルから適用することにより、機能の様々な点を強化・変更できます。'レッドストーン制御'パネルと'設定'パネルでは、それぞれレッドストーン信号入力による動作設定と機械の各面の設定が行なえます。デフォルト設定では機械はレッドストーン信号にかかわらず動作し、アイテムや流体の搬入出を受け付けない未設定の面設定になっています。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "'設定'パネルではブロック各面が四角で表示されます。クリックすると搬入出設定が切り替わります。青色と橙色はそれぞれ搬入・搬出を表します。矢印ボタンは隣接するインベントリとの自動搬入出を設定します。黒色は搬入出は受け付けるが自動では行わないことを表します。面設定は回収されても保存されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "'エネルギー'パネルでは現在のRF使用量などのブロックのRF情報を表示します。全ての機械にはRFの最大使用率があり、各レシピにはそれに関連する一定のRFコストが設定されています。この2つの値は$(l:thermal:technology/augments/introduction)オーグメント$(/l)によって変わることもありますが、レシピの処理速度の決定のために分割できます。機械の処理速度向上のために特定の$(l:thermal:technology/augments/machine_speed)オーグメント$(/l)を適用して最大RF消費量を増加させるか、$(l:thermal:world/materials/catalysts)触媒$(/l)を投入して掛かるRFを軽減させることもできます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_frame",
+      "text": "このページでは、機械装置に使われる汎用部品のレシピを紹介します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_servo",
+      "B.recipe": "thermal:rf_coil"
+    }
+  ]
+}
