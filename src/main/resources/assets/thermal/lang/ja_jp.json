@@ -406,11 +406,11 @@
 
   "info.thermal.augment.attr.FluidMax": "タンク容量",
 
-  "info.thermal.augment.attr.MachineCat": "触媒消費量",
+  "info.thermal.augment.attr.MachineCat": "触媒消費確率",
   "info.thermal.augment.attr.MachineEnergy": "エネルギー消費",
-  "info.thermal.augment.attr.MachinePri": "主生産物",
+  "info.thermal.augment.attr.MachinePri": "主産物量倍率",
   "info.thermal.augment.attr.MachinePower": "基礎充電量",
-  "info.thermal.augment.attr.MachineSec": "副次生産物",
+  "info.thermal.augment.attr.MachineSec": "副産物量倍率",
   "info.thermal.augment.attr.MachineSpeed": "最大充電量",
   "info.thermal.augment.attr.MachineXp": "経験値モディファイアー",
 
