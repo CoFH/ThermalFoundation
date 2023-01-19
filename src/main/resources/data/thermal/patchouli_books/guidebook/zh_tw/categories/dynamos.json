@@ -1,5 +1,5 @@
 {
-  "name": "發電機",
+  "name": "能源爐",
   "description": "沒有能量的機器能有什麼用？",
   "icon": "thermal:dynamo_magmatic",
   "parent": "thermal:technology",
