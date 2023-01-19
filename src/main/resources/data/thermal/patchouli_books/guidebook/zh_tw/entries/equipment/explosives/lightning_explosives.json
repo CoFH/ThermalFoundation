@@ -1,5 +1,5 @@
 {
-  "name": "Fulminating Explosives",
+  "name": "震天雷擊炸藥",
   "icon": "thermal:lightning_tnt",
   "read_by_default": true,
   "flag": "mod:thermal_innovation",
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Fulminating explosives summon lightning in an area and grant mobs caught in its radius the $(l:thermal:world/mobs/blitz)Shocked II$(/l) effect. Explosive blocks and grenades have radii of 9 and 5 blocks, respectively."
+      "text": "震天雷擊炸藥會在一個區域召喚閃電，並給予其範圍內的生物$(l:thermal:world/mobs/blitz)震盪 II $(/l) 效果。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -18,7 +18,7 @@
       "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:lightning_tnt_minecart",
-      "title": "Fulminating Explosive Minecart"
+      "title": "震天雷擊炸藥礦車"
     }
   ]
 }

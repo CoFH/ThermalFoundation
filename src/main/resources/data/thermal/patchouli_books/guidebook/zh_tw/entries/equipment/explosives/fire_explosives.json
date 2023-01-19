@@ -1,5 +1,5 @@
 {
-  "name": "Inferno Explosives",
+  "name": "獄火燒夷炸藥",
   "icon": "thermal:fire_tnt",
   "read_by_default": true,
   "flag": "mod:thermal_innovation",
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Inferno explosives light an area on fire and light mobs caught in its radius on fire. Explosive blocks and grenades have radii of 9 and 5 blocks, respectively."
+      "text": "獄火燒夷炸藥會點燃一片區域，並點燃其半徑範圍內的生物。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -18,7 +18,7 @@
       "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:fire_tnt_minecart",
-      "title": "Inferno Explosive Minecart"
+      "title": "獄火燒夷炸藥礦車"
     }
   ]
 }

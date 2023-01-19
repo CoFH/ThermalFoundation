@@ -1,5 +1,5 @@
 {
-  "name": "Phyto Explosives",
+  "name": "植育催熟炸藥",
   "icon": "thermal:phyto_tnt",
   "read_by_default": true,
   "flag": "mod:thermal_cultivation",
@@ -8,7 +8,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Phyto explosives will instantly apply a bonemeal effect to all crops and grass in an area. Explosive blocks and grenades have radii of 9 and 5 blocks, respectively."
+      "text": "植育催熟炸藥會立即對區域內的所有農作物和草產生骨粉效果。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -19,7 +19,7 @@
       "flag": "&mod:thermal_cultivation,mod:thermal_locomotion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phyto_tnt_minecart",
-      "title": "PNT Explosive Minecart"
+      "title": "植育催熟炸藥礦車"
     }
   ]
 }

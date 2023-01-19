@@ -1,12 +1,12 @@
 {
-  "name": "Grenade",
+  "name": "手榴彈",
   "icon": "thermal:explosive_grenade",
   "read_by_default": true,
   "category": "thermal:explosives",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The grenade is a smaller, throwable version of TNT with a radius of 5 blocks!"
+      "text": "手榴彈是一種較小的、可投擲版本的 TNT，爆炸半徑為 5 個方塊！"
     },
     {
       "type": "thermal:double_crafting_page",

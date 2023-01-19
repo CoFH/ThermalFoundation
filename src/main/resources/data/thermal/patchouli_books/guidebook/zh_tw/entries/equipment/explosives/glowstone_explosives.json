@@ -1,5 +1,5 @@
 {
-  "name": "Radiant Explosives",
+  "name": "聖光輻照炸藥",
   "icon": "thermal:glowstone_tnt",
   "read_by_default": true,
   "flag": "mod:thermal_innovation",
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Radiant Explosives scatter fine glowstone particles in the air when exploded, creating a cloud lasting 10s that illuminates the area around it. The initial explosion will damage undead mobs and set them ablaze. Explosive blocks and grenades explode with radii of 9 and 5 blocks, respectively.$(br2)$(o)These are essentially glitter bombs.$()"
+      "text": "聖光輻照炸藥在爆炸時會在空氣中散佈細小的螢光石顆粒，形成持續 10 秒的雲，照亮周圍區域。最初的爆炸會傷害不死生物並點燃它們。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。$(br2)$(o)這些本質上是閃光彈。$()"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -18,7 +18,7 @@
       "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:glowstone_tnt_minecart",
-      "title": "Radiant Explosive Minecart"
+      "title": "聖光輻照炸藥礦車"
     }
   ]
 }

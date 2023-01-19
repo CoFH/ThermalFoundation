@@ -1,5 +1,5 @@
 {
-  "name": "Tectonic Explosives",
+  "name": "地岩碎裂炸藥",
   "icon": "thermal:earth_tnt",
   "read_by_default": true,
   "flag": "mod:thermal_innovation",
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Tectonic Explosives will break and drop stone- and dirt- type blocks in an area and grant mobs caught in its radius the $(l:thermal:world/mobs/basalz)Sundered II$(/l) effect. Useful for mining. Explosive blocks and grenades have radii of 9 and 5 blocks, respectively.$(br2)$(o)Legend has it that these were once powerful enough to break bedrock.$()"
+      "text": "地岩碎裂炸藥會破壞並掉落一個區域中的石頭和泥土類型的方塊，並給予其半徑範圍內的生物$(l:thermal:world/mobs/basalz)割裂 II $(/l)效果。對挖礦很有用。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。$(br2)$(o)傳說這些曾經強大到足以打破基岩。$()"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -18,7 +18,7 @@
       "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:earth_tnt_minecart",
-      "title": "Tectonic Explosive Minecart"
+      "title": "地岩碎裂炸藥礦車"
     }
   ]
 }
