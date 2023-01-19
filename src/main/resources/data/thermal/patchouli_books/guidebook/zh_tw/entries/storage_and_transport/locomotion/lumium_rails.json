@@ -1,1 +1,28 @@
-{  "name": "Lumium Rails",  "icon": "thermal:lumium_rail",  "read_by_default": true,  "flag": "mod:thermal_locomotion",  "category": "thermal:locomotion",  "pages": [    {      "type": "patchouli:text",      "text": "Lumium rails work exactly like their standard counterparts, except they emit a light level of 15."    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:lumium_rail",      "B.recipe": "thermal:lumium_crossover_rail"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:lumium_powered_rail",      "B.recipe": "thermal:lumium_activator_rail"    },    {      "type": "thermal:double_crafting_page",      "A.recipe": "thermal:lumium_detector_rail"    }  ]}
+{
+  "name": "Lumium Rails",
+  "icon": "thermal:lumium_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Lumium rails work exactly like their standard counterparts, except they emit a light level of 15."
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_rail",
+      "B.recipe": "thermal:lumium_crossover_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_powered_rail",
+      "B.recipe": "thermal:lumium_activator_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_detector_rail"
+    }
+  ]
+}
