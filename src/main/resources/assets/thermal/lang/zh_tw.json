@@ -667,7 +667,7 @@
   "item.thermal.lightning_grenade.desc": "發生碰撞時造成範圍性震擊並有機率伴隨雷電。",
   "item.thermal.nuke_grenade": "核能手榴彈",
   "item.thermal.nuke_grenade.desc": "記得扔遠點。",
-  "item.thermal.phyto_grenade": "植育催熟爆彈",
+  "item.thermal.phyto_grenade": "植育催熟彈",
   "item.thermal.phyto_grenade.desc": "可投擲的植育一號，作用範圍更廣。",
   "item.thermal.redstone_grenade": "紅石訊號彈",
   "item.thermal.redstone_grenade.desc": "發生碰撞時在一定範圍內發出紅石訊號。",
@@ -988,7 +988,7 @@
 
   "block.thermal.energy_duct": "能量導管",
   "block.thermal.fluid_duct": "流體導管",
-  "block.thermal.fluid_duct_glass": "流體導管（窺視窗）",
+  "block.thermal.fluid_duct_glass": "流體導管（窗口）",
 
   "block.thermal.energy_distributor": "RF 分配介面",
   "block.thermal.fluid_distributor": "流體分配介面",
