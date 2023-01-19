@@ -1,17 +1,17 @@
 {
-  "name": "Ice Charge",
+  "name": "瀑冰彈",
   "icon": "thermal:ice_charge",
   "category": "thermal:charges",
   "read_by_default": true,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Ice charges can be used to place snow on blocks, convert water to ice, and change lava to obsidian. The latter two can also be done using buckets in a crafting bench. Firing from dispenser will fire a linear projectile that applies the $(l:thermal:world/mobs/blizz)Chilled$(/l) effect to mobs and freezes a small area."
+      "text": "瀑冰彈可用於在方塊上放置雪、將水轉化成冰以及將熔岩轉化為黑曜石。後兩者也可以在工作台上使用鐵桶來完成。從發射器發射會發射一個線性彈射物，該彈射物將對擊中的生物套用$(l:thermal:world/mobs/blizz)凍僵$(/l)效果並凍結一小塊區域。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:ice_charge_3",
-      "title": "Ice Charge"
+      "title": "瀑冰彈"
     }
   ]
 }

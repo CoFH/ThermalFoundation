@@ -1,17 +1,17 @@
 {
-  "name": "Fire Charge",
+  "name": "火焰彈",
   "icon": "minecraft:fire_charge",
   "category": "thermal:charges",
   "read_by_default": true,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Fire charges are native to vanilla Minecraft, but the Thermal Suite adds a new use for them. They can be used in a crafting table with other resources to form certain alloys and blocks."
+      "text": "火焰彈原產於原版 Minecraft，但熱力套件為它們增加了新用途。它們可以與其他資源一起用於工作台，以形成某些合金和方塊。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "minecraft:fire_charge",
-      "title": "Fire Charge"
+      "title": "火焰彈"
     }
   ]
 }
