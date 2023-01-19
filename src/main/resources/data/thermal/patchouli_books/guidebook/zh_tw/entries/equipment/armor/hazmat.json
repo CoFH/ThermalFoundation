@@ -1,5 +1,5 @@
 {
-  "name": "Hazmat Suit",
+  "name": "防護套裝",
   "icon": "thermal:hazmat_chestplate",
   "category": "thermal:armor",
   "read_by_default": true,
@@ -8,12 +8,12 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Hazmat Suit will protect you from environmental hazards such as burning, fall damage, and status ailments. The entire suit is needed for full protection! Durability is consumed when preventing status effects and fire."
+      "text": "防護套裝將保護你免受環境危害，例如燃燒、摔落傷害和狀態異常。 需要整套防護套裝才能提供全面保護！防止狀態效果和火焰時會消耗耐久度。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:hazmat_fabric",
-      "text": "$(o)Orange sus$()"
+      "text": "$(o)橘色可疑$()"
 
     },
     {
