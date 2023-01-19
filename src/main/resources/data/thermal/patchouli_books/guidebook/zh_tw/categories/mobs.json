@@ -1,1 +1,7 @@
-{  "name": "生物",  "description": "水、土、火、電。很久以前，四種元素無法共同存在。然而，當新增地獄之後，一切都改變了。只有 King Lemming，所有 CoFH 模組的大師，才能新增其他元素。",  "icon": "thermal:blizz_rod",  "parent": "thermal:world",  "sortnum": 3}
+{
+  "name": "生物",
+  "description": "水、土、火、電。很久以前，四種元素無法共同存在。然而，當新增地獄之後，一切都改變了。只有 King Lemming，所有 CoFH 模組的大師，才能新增其他元素。",
+  "icon": "thermal:blizz_rod",
+  "parent": "thermal:world",
+  "sortnum": 3
+}

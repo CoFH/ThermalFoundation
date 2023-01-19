@@ -1,1 +1,8 @@
-{  "name": "設備",  "description": "本節詳細介紹每個設備的功能。除非明確說明，否則這些設備不需要 RF。",  "icon": "thermal:device_tree_extractor",  "parent": "thermal:technology",  "flag": "|mod:thermal_expansion,mod:thermal_cultivation,mod:thermal_dynamics,mod:thermal_innovation",  "sortnum": 2}
+{
+  "name": "設備",
+  "description": "本節詳細介紹每個設備的功能。除非明確說明，否則這些設備不需要 RF。",
+  "icon": "thermal:device_tree_extractor",
+  "parent": "thermal:technology",
+  "flag": "|mod:thermal_expansion,mod:thermal_cultivation,mod:thermal_dynamics,mod:thermal_innovation",
+  "sortnum": 2
+}

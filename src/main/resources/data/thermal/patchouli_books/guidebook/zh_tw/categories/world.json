@@ -1,1 +1,6 @@
-{  "name": "世界",  "description": "熱力為你周圍的世界新增的一切，從金屬到生物。",  "icon": "thermal:nickel_ore",  "sortnum": 3}
+{
+  "name": "世界",
+  "description": "熱力為你周圍的世界新增的一切，從金屬到生物。",
+  "icon": "thermal:nickel_ore",
+  "sortnum": 3
+}

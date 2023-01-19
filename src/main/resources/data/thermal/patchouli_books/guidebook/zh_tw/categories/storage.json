@@ -1,1 +1,8 @@
-{  "name": "儲存空間",  "description": "技術上可以作為臨時管道發送垃圾。",  "icon": "thermal:energy_cell",  "parent": "thermal:storage_and_transport",  "flag": "mod:thermal_expansion",  "sortnum": 1}
+{
+  "name": "儲存空間",
+  "description": "技術上可以作為臨時管道發送垃圾。",
+  "icon": "thermal:energy_cell",
+  "parent": "thermal:storage_and_transport",
+  "flag": "mod:thermal_expansion",
+  "sortnum": 1
+}

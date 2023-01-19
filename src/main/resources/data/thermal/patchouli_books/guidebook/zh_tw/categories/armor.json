@@ -1,1 +1,8 @@
-{  "name": "盔甲",  "flag": "|mod:thermal_innovation,mod:thermal_cultivation",  "description": "也許不是時尚的標竿，但他們完成了工作。",  "icon": "thermal:hazmat_boots",  "parent": "thermal:equipment",  "sortnum": 2}
+{
+  "name": "盔甲",
+  "flag": "|mod:thermal_innovation,mod:thermal_cultivation",
+  "description": "也許不是時尚的標竿，但他們完成了工作。",
+  "icon": "thermal:hazmat_boots",
+  "parent": "thermal:equipment",
+  "sortnum": 2
+}

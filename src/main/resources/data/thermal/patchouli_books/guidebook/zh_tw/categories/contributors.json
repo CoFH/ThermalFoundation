@@ -1,1 +1,7 @@
-{  "name": "參與者",  "description": "由這些親愛的人們帶給你！感謝所有提供幫助的人們及 Discord 中所有提供建議和回饋的人。最由衷的感謝 King，感謝他容忍我們，讓我們著手這個項目，並在這麼多年來為我們帶來了這些所有的模組，並且從未要求任何回報。",  "icon": "minecraft:poppy",  "parent": "thermal:links",  "sortnum": 20}
+{
+  "name": "參與者",
+  "description": "由這些親愛的人們帶給你！感謝所有提供幫助的人們及 Discord 中所有提供建議和回饋的人。最由衷的感謝 King，感謝他容忍我們，讓我們著手這個項目，並在這麼多年來為我們帶來了這些所有的模組，並且從未要求任何回報。",
+  "icon": "minecraft:poppy",
+  "parent": "thermal:links",
+  "sortnum": 20
+}
