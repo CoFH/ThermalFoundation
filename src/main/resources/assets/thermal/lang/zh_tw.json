@@ -759,7 +759,7 @@
 
   "block.thermal.energy_cell.keyword": "能量 rf 儲存",
   "block.thermal.fluid_cell.keyword": "流體 儲存 容器 儲罐 缸",
-  "block.thermal.item_cell.keyword": "緩存 物品 儲存",
+  "block.thermal.item_cell.keyword": "快取 物品 儲存",
 
   "block.thermal.charge_bench.keyword": "能量 充電器 rf",
   "block.thermal.tinker_bench.keyword": "組件 充電器 灌注 裝填 注水 升級",
@@ -984,13 +984,24 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+"attachment.thermal.energy_limiter": "紅石通量限流器",
+
   "block.thermal.energy_duct": "能量導管",
   "block.thermal.fluid_duct": "流體導管",
+  "block.thermal.fluid_duct_glass": "流體導管（窺視窗）",
 
   "block.thermal.energy_distributor": "RF 分配介面",
   "block.thermal.fluid_distributor": "流體分配介面",
 
-  "block.thermal.item_buffer": "邏輯物品緩存器",
+  "block.thermal.item_buffer": "邏輯物品緩衝器",
+
+  "info.thermal.energy_limiter_attachment.0": "限制流經它的能量傳輸速率。",
+  "info.thermal.energy_limiter_attachment.1": "可為每個方向設置不同上限。",
+  "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+
+  "info.thermal.fluid_filter_attachment.0": "將存有流體的物品放入欄位，以此把對應的流體新增到篩選器列表中。",
+  "info.thermal.fluid_filter_attachment.1": "可用額外選項以精確調整行為。",
+  "info.thermal.fluid_filter_attachment.2": "紅石控制可用於暫時關閉篩選...",
 
   "info.thermal.item_buffer.0": "限制物品的傳送速率和數量。",
   "info.thermal.item_buffer.1": "使用左側網格來設置所需物品及其數量",
@@ -999,6 +1010,10 @@
 
   "info.thermal.item_buffer.mode.0": "I/O：正常",
   "info.thermal.item_buffer.mode.1": "I/O：閂鎖",
+
+  "item.thermal.energy_limiter_attachment": "紅石通量限流器",
+  "item.thermal.filter_attachment": "篩選器",
+  "item.thermal.servo_attachment": "伺服器",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
@@ -1017,8 +1032,8 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.dynamo_compression": "壓縮能源爐",
-  "block.thermal.dynamo_disenchantment": "附魔能源爐",
-  "block.thermal.dynamo_gourmand": "食物能源爐",
+  "block.thermal.dynamo_disenchantment": "祛魔能源爐",
+  "block.thermal.dynamo_gourmand": "饕餮能源爐",
   "block.thermal.dynamo_lapidary": "珠寶能源爐",
   "block.thermal.dynamo_magmatic": "熱力能源爐",
   "block.thermal.dynamo_numismatic": "通貨能源爐",
@@ -1031,7 +1046,7 @@
   "block.thermal.machine_crafter": "序列裝配台",
   "block.thermal.machine_crucible": "熔岩爐",
   "block.thermal.machine_crystallizer": "結晶器",
-  "block.thermal.machine_furnace": "通量熔煉爐",
+  "block.thermal.machine_furnace": "紅石熔煉爐",
   "block.thermal.machine_insolator": "有機灌注器",
   "block.thermal.machine_press": "多驅衝壓機",
   "block.thermal.machine_pulverizer": "磨粉機",
@@ -1075,7 +1090,7 @@
 
   "info.thermal.machine_bottler.0": "將流體灌入容器中。",
   "info.thermal.machine_bottler.1": "如果你想喝點飲料，那必備一台這種機器。",
-  "info.thermal.machine_bottler.2": "神清氣爽！",
+  "info.thermal.machine_bottler.2": "乾杯！",
 
   "info.thermal.machine_brewer.0": "釀造藥水，灌注流體。",
   "info.thermal.machine_brewer.1": "你可能會想要擺上一整排。",
