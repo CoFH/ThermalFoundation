@@ -1,1 +1,1 @@
-{  "name": "Plants",  "description": "Crops and trees produce a variety of useful foods and materials.",  "icon": "thermal:rosin",  "parent": "thermal:world",  "sortnum": 2}
+{  "name": "植物",  "description": "農作物和樹木生產各種有用的食物和材料。",  "icon": "thermal:rosin",  "parent": "thermal:world",  "sortnum": 2}

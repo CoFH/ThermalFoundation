@@ -1,1 +1,1 @@
-{  "name": "Augments",  "description": "Upgrade your tech and tools.",  "icon": "thermal:upgrade_augment_3",  "parent": "thermal:technology",  "sortnum": 4}
+{  "name": "強化",  "description": "升級你的科技和工具。",  "icon": "thermal:upgrade_augment_3",  "parent": "thermal:technology",  "sortnum": 4}
