@@ -12,25 +12,25 @@
     },
     {
       "type": "patchouli:link",
-      "url": "https://github.com/CoFH/ThermalExpansion/blob/main/src/main/resources/data/thermal/recipes/machine/smelter/smelter_gold_ore.json",
+      "url": "https://github.com/CoFH/ThermalExpansion/blob/1.18.2/src/main/resources/data/thermal/recipes/machine/smelter/smelter_gold_ore.json",
       "link_text": "Рецепты механизмов",
       "text": "Ссылка на пример машинного рецепта. Первый выход всегда является первичным, в то время как остальные всегда являются вторичными. 'count' - это интегральная величина, на которую не влияют катализаторы. 'chance' - это значение с плавающей точкой, на которое по умолчанию влияют катализаторы (его можно изменить, установив параметр 'locked' в значение true)."
     },
     {
       "type": "patchouli:link",
-      "url": "https://github.com/CoFH/ThermalExpansion/blob/main/src/main/resources/data/thermal/recipes/machine/pulverizer/pulverizer_catalyst_basalz_powder.json",
+      "url": "https://github.com/CoFH/ThermalExpansion/blob/1.18.2/src/main/resources/data/thermal/recipes/machine/pulverizer/pulverizer_catalyst_basalz_powder.json",
       "link_text": "Катализаторы",
       "text": "Ниже приведена ссылка на пример Json для добавления катализатора в механизм. Здесь определена машина, изделие и все 4 множителя катализатора. Для получения дополнительной информации о катализаторах читайте $(l:thermal:world/materials/catalysts)это$(/l)."
     },
     {
       "type": "patchouli:link",
-      "url": "https://github.com/CoFH/ThermalFoundation/blob/main/src/main/resources/data/thermal/recipes/devices/tree_extractor/tree_extractor_boost_phytogro.json",
+      "url": "https://github.com/CoFH/ThermalFoundation/blob/1.18.2/src/main/resources/data/thermal/recipes/devices/tree_extractor/tree_extractor_boost_phytogro.json",
       "link_text": "Ускорение выжимателя",
       "text": "Ниже приведена ссылка на пример Json для повышения производительности древесного выжимателя используя фито-гро. Это довольно просто, здесь особо нечего сказать."
     },
     {
       "type": "patchouli:link",
-      "url": "https://github.com/CoFH/ThermalFoundation/blob/main/src/main/resources/data/thermal/recipes/fuels/compression/compression_refined_fuel.json",
+      "url": "https://github.com/CoFH/ThermalFoundation/blob/1.18.2/src/main/resources/data/thermal/recipes/fuels/compression/compression_refined_fuel.json",
       "link_text": "Рецепты генераторов",
       "text": "Ниже приведена ссылка на пример Json для сжигания очищенного топлива в динамо-машине. Важным ограничением, которое следует иметь в виду, является то, что энергетическая ценность должна составлять не менее 10000 RF!"
     }
