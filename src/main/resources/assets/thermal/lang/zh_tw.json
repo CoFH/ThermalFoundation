@@ -475,7 +475,7 @@
 
   "item.thermal.potion_amplifier_augment": "煉金放大器",
   "item.thermal.potion_amplifier_augment.desc": "增強藥水的效果等級。",
-  "item.thermal.potion_duration_augment": "煉金延長器",
+  "item.thermal.potion_duration_augment": "煉金延時器",
   "item.thermal.potion_duration_augment.desc": "增強藥水的效果時長。",
 
   "item.thermal.rf_coil_augment": "擴展通量線圈",
