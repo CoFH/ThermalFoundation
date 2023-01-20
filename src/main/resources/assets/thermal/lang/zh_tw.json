@@ -535,7 +535,7 @@
   "block.thermal.chunk_loader": "連續錨",
 
   "block.thermal.earth_tnt": "地岩碎裂炸藥",
-  "block.thermal.earth_tnt.desc": "破壞方塊並保留掉落物，非常有效的採礦途徑。",
+  "block.thermal.earth_tnt.desc": "破壞方塊並保留掉落物，非常有效的挖礦途徑。",
   "block.thermal.ender_tnt": "終界侵擾炸藥",
   "block.thermal.ender_tnt.desc": "在大範圍內造成侵擾效果，使其中的物體被傳送開。",
   "block.thermal.fire_tnt": "獄火燒夷炸藥",
@@ -654,7 +654,7 @@
   "item.thermal.explosive_grenade": "手榴彈",
   "item.thermal.explosive_grenade.desc": "可投擲的小型 TNT。",
   "item.thermal.earth_grenade": "地岩碎裂彈",
-  "item.thermal.earth_grenade.desc": "破壞方塊並保留掉落物，非常有效的採礦途徑。",
+  "item.thermal.earth_grenade.desc": "破壞方塊並保留掉落物，非常有效的挖礦途徑。",
   "item.thermal.ender_grenade": "終界侵擾彈",
   "item.thermal.ender_grenade.desc": "在一定範圍內造成侵擾效果，使其中的物體被傳送開。",
   "item.thermal.fire_grenade": "獄火燒夷彈",
@@ -1238,7 +1238,7 @@
   "item.thermal.flux_capacitor.desc": "儲存紅石通量並為其它物品充能。",
 
   "item.thermal.flux_drill": "通量電鑽",
-  "item.thermal.flux_drill.desc": "紅石通量驅動的採掘工具。",
+  "item.thermal.flux_drill.desc": "紅石通量驅動的挖掘工具。",
 
   "item.thermal.flux_magnet": "通量磁鐵",
   "item.thermal.flux_magnet.desc": "紅石通量驅動的物品磁吸工具。",
