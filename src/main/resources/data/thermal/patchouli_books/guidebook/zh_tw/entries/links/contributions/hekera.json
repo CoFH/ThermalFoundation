@@ -9,7 +9,7 @@
       "type": "patchouli:spotlight",
       "title": "Hekera",
       "item": "minecraft:player_head{SkullOwner:'Hekera'}",
-      "text": "Co-author, rewrote the book a lot. Made the book much fancier with an improved layout, and suffered through many errors. Loves to make fun of Shiny."
+      "text": "合著者，重寫了這本書很多。通過改進版面配置使這本書更加精美，並經歷了許多錯誤。喜歡取笑 Shiny。"
     },
     {
       "type": "patchouli:text",
@@ -17,7 +17,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "5 more minutes, please..."
+      "text": "再 5 分鐘，拜託..."
     }
   ]
 }
