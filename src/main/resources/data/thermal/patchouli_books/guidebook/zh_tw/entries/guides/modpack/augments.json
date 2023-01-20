@@ -1,40 +1,40 @@
 {
-  "name": "自定義增強",
+  "name": "自定義增強元件",
   "icon": "minecraft:potato",
   "category": "thermal:modpack",
   "read_by_default": true,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The augment system was created with modularity, customizability, and flexbility in mind. Augments are NBT-based, meaning you can assign any modifiers and values you want by modifying item NBT. In other words, there's nothing special about the augments that Thermal provides - literally any item can be an augment, assuming it has the relevant NBT data. Even a potato."
+      "text": "增強系統的建立考量了模組化、可訂製性和靈活性。增強是基於 NBT 的，這意味著你可以藉由修改物品 NBT 來分配你想要的任何修飾詞和值。換句話說，熱力提供的增強元件沒有什麼特別之處——實際上任何物品都可以是增強元件，前提是它具有相關的 NBT 資料。甚至一個馬鈴薯。"
     },
     {
       "type": "patchouli:text",
-      "text": "Augments have a type and modifiers. The type determines what blocks the augment can be inserted into, and can also affect stackability. Read the $(l:thermal:technology/augments/introduction)intro on augments$(/l) for more information. If a type is not specified, no restrictions are placed on the augment."
+      "text": "增強分為類型和修飾詞。類型決定了增強元件可以插入到哪些方塊中，也可以影響可堆疊性。請詳閱 $(l:thermal:technology/augments/introduction)增強元件介紹$(/l)以取得更多資訊。如果未指定類型，則不會對增強元件施加任何限制。"
     },
     {
       "type": "patchouli:text",
-      "text": "Modifiers are assigned to an item through attribute-value pairs, the attribute being the modifier and the value being the modifier amount. All values are floats, even if the modifier suggests it should be integral (e.g. potion strength). More on this later."
+      "text": "修飾符通過屬性值配對分配給一個物品，屬性是修飾詞，值是修飾詞的數值。所有的值都是浮點數，即使修飾詞建議它應該是整數（例如藥水強度）。 稍後會詳細介紹。"
     },
     {
       "type": "patchouli:link",
-      "url": "https://github.com/CoFH/CoFHCore/blob/main/src/main/java/cofh/lib/util/constants/NBTTags.java#L102",
+      "url": "https://github.com/CoFH/CoFHCore/blob/1.18.2/src/main/java/cofh/lib/util/constants/NBTTags.java#L102",
       "link_text": "Github 連結",
-      "text": "The general form of the NBT is as follows: $(br2){AugmentData:$(br){Type:'[augment type]',$(br)[modifier 1]:[float value]f, $(br)[modifier 2]:[float value]f, $(br)[...]}}$(br2)A full list of available augment types and modifiers can be found in King Lemming's Github; link below. "
+      "text": "NBT的一般形式如下： $(br2){AugmentData:$(br){Type:'[augment type]',$(br)[modifier 1]:[float value]f, $(br)[modifier 2]:[float value]f, $(br)[...]}}$(br2)可以在 CoFH 的 Github 中找到可用增強類型和修飾詞的完整列表；連結如下。"
     },
     {
       "type": "patchouli:text",
-      "text": "So, for example, the command to make a machine augment that makes the energy of all recipes 0 (a creative machine augment, essentially) is as follows (click to execute command): $(br)$(c:/summon minecraft:item ~ ~ ~ {Item:{id:'minecraft:sea_pickle',Count:1b,tag:{AugmentData:{Type:'Machine',MachineEnergy:0.0f}}}})/give $(playername) minecraft:sea_pickle{AugmentData:{Type:'Machine',MachineEnergy:0.0f}} 1$(/c)$(br2)If there are multiple modifier-value pairs with the same modifier, the one that comes last takes precedence."
+      "text": "因此，例如，使所有配方的能量為 0 的機器增強的命令（本質上是創造模式的機器增強）如下（點擊以執行命令）：$(br)$(c:/summon minecraft:item ~ ~ ~ {Item:{id:'minecraft:sea_pickle',Count:1b,tag:{AugmentData:{Type:'Machine',MachineEnergy:0.0f}}}})/give $(playername) minecraft:sea_pickle{AugmentData:{Type:'Machine',MachineEnergy:0.0f}} 1$(/c)$(br2)如果有多個修飾詞-值配對具有相同的修飾詞，則最後一個優先採用。"
     },
     {
       "type": "patchouli:text",
-      "title": "A Note on Stacking",
-      "text": "Certain modifiers are unstackable - that is to say, if multiple augments on the same tool/block have the same modifier, the highest value will take precedence. These modifiers have their values underlined. Stackability is a trait inherent to the modifier type; for example, RFMax will always be unstackable and AERad will always be stackable, regardless of the values."
+      "title": "關於堆疊的註解",
+      "text": "某些修飾詞是不可堆疊的——也就是說，如果同一工具/方塊上的多個增強具有相同的修飾詞，則最高值將會優先採用。這些修飾詞的值帶有底線。可堆疊性是修飾詞類型固有的特性；例如，無論值如何，紅石通量容量始終不可堆疊，而範圍拓展永遠可以堆疊。"
     },
     {
       "type": "patchouli:text",
-      "title": "A Note on Floats",
-      "text": "As mentioned earlier, all values are input as floats. This causes some interesting interactions with modifiers that seem to be integral. In these situations, the augment will display the value as the input float rounded to the nearest integer. However, the actual behavior of the tool/block might differ, depending on the modifier/value."
+      "title": "關於浮點數的註解",
+      "text": "如前所述，所有值都以浮點數形式輸入。這會導致與似乎不可或缺的修飾詞進行一些有趣的互動。在這些情況下，增強會將輸入的浮點數顯示為四捨五入到最接近整數的值。但是，工具/方塊的實際行為可能會有所不同，具體取決於修飾詞/值。"
     }
   ]
 }
