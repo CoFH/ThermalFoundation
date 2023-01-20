@@ -1,5 +1,5 @@
 {
-  "name": "Familiar, Answered Queries",
+  "name": "常見的、已回答的問題",
   "icon": "minecraft:redstone",
   "category": "thermal:guides",
   "sortnum": -3,
@@ -7,29 +7,29 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Q: Where is Dynamics/pipes?$(br)A: Read $(l:thermal:storage_and_transport/dynamics)this$(/l).$(br2)Q: Where are upgrade kits?$(br)A: Read $(l:thermal:technology/augments/integral_components)this$(/l).$(br2)Q: How can I increase the speed of my machines? $(br)A: Read $(l:thermal:technology/augments/integral_components)this$(/l) and $(l:thermal:technology/augments/machine_speed)this$(/l).$(br2)Q: Do these augments stack?$(br)A: Read $(l:thermal:technology/augments/introduction)this$(/l)."
+      "text": "Q: 動力/管道在哪裡？$(br)A: 請詳閱$(l:thermal:storage_and_transport/dynamics)此處$(/l)。$(br2)Q: 升級套件在哪裡？$(br)A: 請詳閱$(l:thermal:technology/augments/integral_components)此處$(/l)。$(br2)Q: 我該如何提升我的機器的速度？$(br)A: 請詳閱$(l:thermal:technology/augments/integral_components)此處$(/l)和$(l:thermal:technology/augments/machine_speed)此處$(/l)。$(br2)Q: 這些增強可以疊加嗎？$(br)A: 請詳閱$(l:thermal:technology/augments/introduction)此處$(/l)。"
     },
     {
       "type": "patchouli:text",
-      "text": "Q: How can I change fluxbore/saw mode? $(br)A: You need to install $(l:thermal:technology/augments/area_radius)radius augments$(/l) in order to adjust the mining radius.$(br2)Q: How do I charge/augment my tools?$(br)A: Read $(l:thermal:technology/tinker_bench)this$(/l).$(br2)Q: Why is my dynamo slowly losing RF?$(br)A: The RF buffer in dynamos is only meant to determine how much to throttle the dynamo. Read $(l:thermal:technology/dynamos/introduction)this$(/l) for more information."
+      "text": "Q: 我該如何更改通量電鑽/電鋸的模式？$(br)A: 你需要安裝$(l:thermal:technology/augments/area_radius)徑向範圍拓展$(/l)來調整挖掘半徑。$(br2)Q: 我該如何充能/增強我的工具？$(br)A: 請詳閱$(l:thermal:technology/tinker_bench)此處$(/l)。$(br2)Q: 為什麼我的能源爐會緩慢失去紅石通量？$(br)A: 能源爐中的紅石通量緩衝區僅用於確定對能源爐進行多少節流。請詳閱$(l:thermal:technology/dynamos/introduction)此處$(/l)以取得更多資訊。"
     },
     {
       "type": "patchouli:link",
       "url": "https://www.curseforge.com/minecraft/mc-mods/tools-complement",
-      "link_text": "Tool's Complement",
-      "text": "Q: Can x mod get support (recipes, etc)?$(br)A: You can request compatibility in our $(l:thermal:links/discord)discord server$(/l)$(br2)Q: Where are the basic tools/weapons/armor from Thermal, like the diamond excavator and electrum bow?$(br)A: They've been moved to separate mod:"
+      "link_text": "工具的補充",
+      "text": "Q: X 模組可以獲得支援（配方等）嗎？$(br)A: 你可以在我們的$(l:thermal:links/discord)Discord 伺服器$(/l)中請求相容性。$(br2)Q: 熱力的基本工具/武器/盔甲在哪裡，例如鑽石開掘鏟和琥珀金弓？$(br)A: 它們已被轉移到單獨的模組："
     },
     {
       "type": "patchouli:text",
-      "text": "Q: What happened to platinum, steel, mana-infused, etc?$(br)A: For various reasons, these were considered unnecessary to include in Thermal Foundation. If some come back, it will be in a separate compatibility mod.$(br2)Q: Why can't I place fluids?$(br)A: Forge fluid API is in shambles currently."
+      "text": "Q: 鉑、鋼、蘊魔秘銀等發生了什麼？$(br)A: 由於各種原因，這些被認為沒有必要包含在熱力基本中。如果有些回歸，它將在一個單獨的相容性模組中。$(br2)Q: 為什麼我不能放置流體？$(br)A: Forge 的流體 API 目前處於混亂狀態。"
     },
     {
       "type": "patchouli:text",
-      "text": "Q: How can I modify oregen? $(br)A: The config has options to en/disable oregen, but adjustments to details such as spawn height have not yet been implemented.$(br2)Q: How do I change configs?$(br)A: Configs are now created on a per-save basis; find them in the serverconfigs folder in the save file. You can also set default configs by copying the files from the serverconfigs folder into the defaultconfigs folder and editing them."
+      "text": "Q: 如何修改礦物生成？$(br)A: 該設置有啟用/停用礦物生成的選項，但尚未實現對生成高度等細節的調整。$(br2)Q: 我如何更改設置？$(br)A: 設置現在是在每次保存的基礎上建立；在儲存檔案中的 serverconfigs 資料夾中找到它們。你還可以通過將檔案從 serverconfigs 資料夾複製到 defaultconfigs 資料夾並進行編輯來設置預設設定。"
     },
     {
       "type": "patchouli:text",
-      "text": "Q: Where and how can I report a bug? $(br)A: You can ask in our $(l:thermal:links/discord)discord server$(/l). Before reporting, ensure that your mods are up to date and you do not have Optifine installed.$(br2)Q: How can I change recipes?$(br)A: Thermal mods are all data-driven, so you can use datapacks to modify recipes, as shown $(l:thermal:guides/modpack/recipes)here$(/l). Alternatively, the Thermal mods have CraftTweaker support."
+      "text": "Q: 我該在哪裡以及如何回報錯誤？$(br)A: 你可以在我們的$(l:thermal:links/discord)Discord 伺服器$(/l)中詢問。在回報之前，請確保你的模組是最新的並且你沒有安裝 Optifine。$(br2)Q: 我該如何改變配方？$(br)A: 熱力模組都是資料驅動的，因此您可以使用資料包修改配方，如$(l:thermal:guides/modpack/recipes)此處$(/l)所示。或者，熱力模組具有 CraftTweaker 支持。"
     }
   ]
 }

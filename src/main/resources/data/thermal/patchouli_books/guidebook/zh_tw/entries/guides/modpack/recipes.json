@@ -1,5 +1,5 @@
 {
-  "name": "Custom Recipes",
+  "name": "自定義配方",
   "icon": "minecraft:crafting_table",
   "category": "thermal:modpack",
   "read_by_default": true,
@@ -8,30 +8,30 @@
       "type": "patchouli:link",
       "url": "https://minecraft.fandom.com/wiki/Data_pack",
       "link_text": "Minecraft Wiki",
-      "text": "All machines, devices, dynamos, etc use JSONs to determine their recipes and catalysts, meaning you can use datapacks to create and modify recipes. Alternatively, Thermal has CraftTweaker support, if you're more comfortable with that. Below is a link to the Minecraft Wiki to get you started on datapacks."
+      "text": "所有機器、裝置、發電機等都使用 JSON 來決定它們的配方和催化劑，這意味著你可以使用資料包來建立和修改配方。或者，熱力具有 CraftTweaker 支持，如果你對此更滿意的話。下方是 Minecraft Wiki 的連結，可以幫助你開始使用資料包。"
     },
     {
       "type": "patchouli:link",
       "url": "https://github.com/CoFH/ThermalExpansion/blob/main/src/main/resources/data/thermal/recipes/machine/smelter/smelter_gold_ore.json",
-      "link_text": "Machine Recipe",
+      "link_text": "機器配方",
       "text": "Below is a link to an example of a machine recipe. The first output is always the primary output, while the rest are always secondary outputs. 'count' is an integral value, unaffected by catalysts. 'chance' is a float value, affected by catalysts by default (can be changed by setting 'locked' to true)."
     },
     {
       "type": "patchouli:link",
       "url": "https://github.com/CoFH/ThermalExpansion/blob/main/src/main/resources/data/thermal/recipes/machine/pulverizer/pulverizer_catalyst_basalz_powder.json",
-      "link_text": "Catalyst",
+      "link_text": "催化劑",
       "text": "Below is a link to an example of a Json for adding a catalyst to a machine. The machine, item, and all 4 catalyst multipliers are defined here. For more information on catalysts, read $(l:thermal:world/materials/catalysts)this$(/l)."
     },
     {
       "type": "patchouli:link",
       "url": "https://github.com/CoFH/ThermalFoundation/blob/main/src/main/resources/data/thermal/recipes/devices/tree_extractor/tree_extractor_boost_phytogro.json",
-      "link_text": "Extractor Boost",
-      "text": "Below is a link to an example of a Json for boosting arboreal extractor output using phyto-gro. It's pretty simple, not much to say here."
+      "link_text": "提取器Boost",
+      "text": "下方是一個 JSON 範例的連結，用於使用植育一號提高樹汁提取器的輸出。很簡單，這裡就不多說了。"
     },
     {
       "type": "patchouli:link",
       "url": "https://github.com/CoFH/ThermalFoundation/blob/main/src/main/resources/data/thermal/recipes/fuels/compression/compression_refined_fuel.json",
-      "link_text": "Dynamo Recipe",
+      "link_text": "能源爐配方",
       "text": "Below is a link to an example of a Json for burning refined fuel in a dynamo. An important limitation to keep in mind is that the energy value must be at least 10k RF!"
     }
   ]
