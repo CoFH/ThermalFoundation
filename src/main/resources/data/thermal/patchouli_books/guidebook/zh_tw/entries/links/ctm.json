@@ -9,14 +9,14 @@
       "type": "patchouli:link",
       "url": "https://www.curseforge.com/minecraft/mc-mods/ctm",
       "link_text": "CTM",
-      "text": "Did you know some of the textures like the Enderium glass will connect and look all pretty with CTM installed? You did? Good for you. You didn't? What are you waiting for?!"
+      "text": "你是否知道安裝了 CTM 後，終界合金玻璃等一些材質會連接起來並且看起來很漂亮？你裝了嗎？做得好。你沒有？你在等什麼？！"
 
 
     },
     {
       "type": "patchouli:spotlight",
       "item": "thermal:enderium_ingot",
-      "text": "Fun Fact! Enderium gets its name from its Spacetime-warping Ender properties!"
+      "text": "有趣的事實！終界合金因其扭曲時空的終界特性而得名！"
     }
   ]
 
