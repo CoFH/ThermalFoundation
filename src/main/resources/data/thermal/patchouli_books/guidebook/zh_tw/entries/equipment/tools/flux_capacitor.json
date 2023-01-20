@@ -1,5 +1,5 @@
 {
-  "name": "Flux Capacitor",
+  "name": "通量電容",
   "icon": "thermal:flux_capacitor",
   "category": "thermal:tools",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Stores RF and charges items in your inventory. It has 3 modes, allowing you to charge just your hotbar and armor, just your inventory, or everything, togglable using the change mode keybind. In order to toggle item charging on and off, shift right click while holding the capacitor. It can also be used to put energy in machines. It can be charged and augmented in the Tinker's Workbench."
+      "text": "在你的物品欄中儲存紅石通量和充能物品。它有 3 種模式，允許你只為快捷欄和盔甲、物品欄或所有東西充能，可使用更改模式按鍵綁定進行切換。要打開和關閉物品充能，請在手持電容器的同時 shift + 右鍵點擊。它也可以用來為機器提供能量。它可以在匠魂的工作台中充能和增強。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:flux_capacitor",
-      "title": "Flux Capacitor",
-      "text": "Press '$(k:cofh.mode_change_increment)' to change modes. It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve RF capacity."
+      "title": "通量電容",
+      "text": "按 \"$(k:cofh.mode_change_increment)\" 切換模式。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)"
     }
   ]
 }

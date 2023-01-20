@@ -1,5 +1,5 @@
 {
-  "name": "Reservoir",
+  "name": "貯液器",
   "icon": "thermal:fluid_reservoir",
   "category": "thermal:tools",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Holds a moderate quantity of fluid and allows for it to be dispensed. Press '$(k:cofh.mode_change_increment)' to toggle Empty/Fill mode. Use while sneaking to activate or deactivate automatic replenishment of most other held (or worn) fluid containers. It can be filled with fluid and augmented in the Tinker's Workbench."
+      "text": "容納適量的液體並允許分配。按 \"$(k:cofh.mode_change_increment)\" 切換清空/填充模式。潛行時使用以啟用或停用大多數其他手持（或穿戴）液體容器的自動補充。它可以在匠魂的工作台中填充和增強。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:fluid_reservoir",
-      "title": "Reservoir",
-      "text": "It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve fluid capacity."
+      "title": "貯液器",
+      "text": "它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高流體容量。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
     }
   ]
 }

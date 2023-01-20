@@ -1,5 +1,5 @@
 {
-  "name": "Alchemical Quiver",
+  "name": "藥水箭袋",
   "icon": "thermal:potion_quiver",
   "category": "thermal:tools",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Used to store and imbue arrows with potion effects. Right click with the quiver in your hand to transfer arrows from your inventory into the quiver. Press '$(k:cofh.mode_change_increment)' to toggle imbuement, which takes 50mb of the stored $(l:thermal:technology/potion_fluid)potion fluid$(/l) per arrow. The quiver can be filled and augmented in the Tinker's Workbench."
+      "text": "用於儲存和灌注具有藥水效果的箭。右鍵點擊你手中的箭袋，將箭矢從你的物品欄轉移到箭袋中。按 \"$(k:cofh.mode_change_increment)\" 切換灌注，每個箭矢需要 50mb 儲存的 $(l:thermal:technology/potion_fluid)藥水流體$(/l)。可以在匠魂的工作台中填充和增強箭袋。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:potion_quiver",
-      "title": "Alchemical Quiver",
-      "text": "It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve fluid capacity."
+      "title": "藥水箭袋",
+      "text": "它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高流體容量。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)Alchemical Amplifier$(/l)$(li)$(l:thermal:technology/augments/potion_duration)Alchemical Extender$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)煉金放大器$(/l)$(li)$(l:thermal:technology/augments/potion_duration)煉金延時器$(/l)"
     }
   ]
 }

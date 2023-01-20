@@ -1,17 +1,17 @@
 {
-  "name": "Crescent Hammer",
+  "name": "新月錘",
   "icon": "thermal:wrench",
   "category": "thermal:tools",
   "read_by_default": true,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "A run-of-the-mill wrench. Can be used to pick up machines with shift right click, rotate machines with right click. You can even put some sense into your pesky friends who keep trolling you!"
+      "text": "普普通通的扳手。可用於通過 shift + 右鍵點擊拾取機器，通過右鍵點擊旋轉機器。你甚至可以讓一直在騷擾你的討厭朋友們保持理智！"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:tools/wrench",
-      "title": "Crescent Hammer"
+      "title": "新月錘"
     }
   ]
 }

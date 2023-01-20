@@ -1,5 +1,5 @@
 {
-  "name": "Fluxsaw",
+  "name": "通量電鋸",
   "icon": "thermal:flux_saw",
   "category": "thermal:tools",
   "read_by_default": true,
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Uses RF to mine wood-type blocks with ease. Right click strips wood logs as usual. It can be charged and augmented in the Tinker's Workbench. After installing radius augments, press '$(k:cofh.mode_change_increment)' to change between mining radii. It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve RF capacity."
+      "text": "使用紅石通量輕鬆挖掘木頭類型的方塊。右鍵點擊像往常一樣將原木剝皮。它可以在匠魂的工作台中充能和增強。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 可在砍伐半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -16,8 +16,8 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/area_radius)Radial Enhancement$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍拓展$(/l)"
     }
   ]
 }

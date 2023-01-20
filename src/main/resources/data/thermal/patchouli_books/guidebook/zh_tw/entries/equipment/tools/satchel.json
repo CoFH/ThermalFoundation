@@ -1,23 +1,23 @@
 {
-  "name": "Satchel",
+  "name": "背包",
   "icon": "thermal:satchel",
   "category": "thermal:tools",
   "read_by_default": true,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Satchel is a bag that can hold things. It's pretty straightforward. Press '$(k:cofh.mode_change_increment)' to toggle auto-collect mode, where items are automatically stored on pickup, depending on Filter restrictions. It can be augmented in the Tinker's Workbench."
+      "text": "背包是可以裝東西的包包。這很簡單明瞭。按 \"$(k:cofh.mode_change_increment)\" 切換自動收集模式，根據篩選器限制，物品會在拾取時自動儲存。它可以在匠魂的工作台中增強。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:tools/satchel",
-      "title": "Satchel",
-      "text": "It can be dyed in a Crafting Table with any normal dyes, and/or secured with a Signalum Security Lock."
+      "title": "背包",
+      "text": "它可以在工作台中用任何普通染料染色，和/或用信素安全鎖鎖定。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)"
     }
   ]
 }

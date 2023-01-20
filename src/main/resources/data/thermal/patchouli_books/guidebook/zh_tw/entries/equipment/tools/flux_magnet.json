@@ -1,5 +1,5 @@
 {
-  "name": "FluxoMagnet",
+  "name": "通量磁鐵",
   "icon": "thermal:flux_magnet",
   "category": "thermal:tools",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The FluxoMagnet is a tool that uses RF in order to pull nearby items into the player's inventory. Right clicking with it in hand will suck nearby items in. Press '$(k:cofh.mode_change_increment)' to toggle auto-attract mode, where items are nearby items are automatically pulled in. It can be charged and augmented in the Tinker's Workbench."
+      "text": "通量磁鐵是一種使用紅石通量將附近的物品拉入玩家物品欄的工具。 拿著它右鍵點擊會吸取附近的物品。按 \"$(k:cofh.mode_change_increment)\" 切換自動吸引模式，附近的物品會被自動拉入。它可以在匠魂的工作台中充能和增強。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:flux_magnet",
-      "title": "FluxoMagnet",
-      "text": "It can be enchanted with $(l:thermal:world/holding)Holding$(/l) to improve RF capacity."
+      "title": "通量磁鐵",
+      "text": "它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/area_radius)Radial Enhancement$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍拓展$(/l)"
     }
   ]
 }

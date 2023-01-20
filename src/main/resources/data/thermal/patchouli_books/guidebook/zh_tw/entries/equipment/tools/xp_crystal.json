@@ -1,6 +1,6 @@
 {
 
-  "name": "Insightful Crystal",
+  "name": "洞察水晶",
 
   "icon": "thermal:xp_crystal",
 
@@ -14,7 +14,7 @@
 
       "type": "patchouli:text",
 
-      "text": "Portable XP Storage! The Insightful Crystal can hold 10K exp, equivalent to about 63 levels. This can be increased by enchanting it with $(l:thermal:world/holding)Holding$(/l)."
+      "text": "可攜式 XP 儲存空間！洞察水晶可以容納 10K 經驗值，相當於大約 63 級。這可以通過附魔$(l:thermal:world/holding)擴容$(/l)來增加。"
 
     },
 
@@ -24,7 +24,7 @@
 
       "A.recipe": "thermal:tools/xp_crystal",
 
-      "title": "Insightful Crystal"
+      "title": "洞察水晶"
 
     }
 
