@@ -457,7 +457,7 @@
   "item.thermal.item_filter_augment": "物品篩選器",
   "item.thermal.item_filter_augment.desc": "允許對物品進行篩選限制。",
 
-  "item.thermal.machine_catalyst_augment": "觸媒回收室",
+  "item.thermal.machine_catalyst_augment": "催化回收室",
   "item.thermal.machine_catalyst_creative_augment": "創造回收室",
   "item.thermal.machine_catalyst_creative_augment.desc": "不消耗催化劑。",
   "item.thermal.machine_cycle_augment": "循環處理升級",
