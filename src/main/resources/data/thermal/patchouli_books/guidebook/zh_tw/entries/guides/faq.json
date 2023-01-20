@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Q: 動力/管道在哪裡？$(br)A: 請詳閱$(l:thermal:storage_and_transport/dynamics)此處$(/l)。$(br2)Q: 升級套件在哪裡？$(br)A: 請詳閱$(l:thermal:technology/augments/integral_components)此處$(/l)。$(br2)Q: 我該如何提升我的機器的速度？$(br)A: 請詳閱$(l:thermal:technology/augments/integral_components)此處$(/l)和$(l:thermal:technology/augments/machine_speed)此處$(/l)。$(br2)Q: 這些增強可以疊加嗎？$(br)A: 請詳閱$(l:thermal:technology/augments/introduction)此處$(/l)。"
+      "text": "Q: 動力/管道在哪裡？$(br)A: 請詳閱$(l:thermal:storage_and_transport/dynamics)此處$(/l)。$(br2)Q: 升級套件在哪裡？$(br)A: 請詳閱$(l:thermal:technology/augments/integral_components)此處$(/l)。$(br2)Q: 我該如何提升我的機器的速度？$(br)A: 請詳閱$(l:thermal:technology/augments/integral_components)此處$(/l)和$(l:thermal:technology/augments/machine_speed)此處$(/l)。$(br2)Q: 這些增強元件可以疊加嗎？$(br)A: 請詳閱$(l:thermal:technology/augments/introduction)此處$(/l)。"
     },
     {
       "type": "patchouli:text",
@@ -25,7 +25,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Q: 如何修改礦物生成？$(br)A: 該設置有啟用/停用礦物生成的選項，但尚未實現對生成高度等細節的調整。$(br2)Q: 我如何更改設置？$(br)A: 設置現在是在每次保存的基礎上建立；在儲存檔案中的 serverconfigs 資料夾中找到它們。你還可以通過將檔案從 serverconfigs 資料夾複製到 defaultconfigs 資料夾並進行編輯來設置預設設定。"
+      "text": "Q: 如何修改礦物生成？$(br)A: 該設置有啟用/停用礦物生成的選項，但尚未實現對生成高度等細節的調整。$(br2)Q: 我如何更改設置？$(br)A: 設置現在是在每次保存的基礎上建立；在儲存檔案中的 serverconfigs 資料夾中找到它們。你還可以藉由將檔案從 serverconfigs 資料夾複製到 defaultconfigs 資料夾並進行編輯來設置預設設定。"
     },
     {
       "type": "patchouli:text",
