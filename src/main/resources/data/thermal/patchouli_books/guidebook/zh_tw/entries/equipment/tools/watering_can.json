@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "用於澆灌作物以加速其生長。它可以在匠魂的工作台中填充和擴充。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 在澆水半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高水容量。"
+      "text": "用於澆灌作物以加速其生長。它可以在工匠工作台中填充和擴充。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 在澆水半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高水容量。"
     },
     {
       "type": "thermal:double_crafting_page",

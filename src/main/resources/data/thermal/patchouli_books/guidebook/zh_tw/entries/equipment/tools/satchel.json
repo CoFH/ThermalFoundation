@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "背包是可以裝東西的包包。這很簡單明瞭。按 \"$(k:cofh.mode_change_increment)\" 切換自動收集模式，根據篩選器限制，物品會在拾取時自動儲存。它可以在匠魂的工作台中增強。"
+      "text": "背包是可以裝東西的包包。這很簡單明瞭。按 \"$(k:cofh.mode_change_increment)\" 切換自動收集模式，根據篩選器限制，物品會在拾取時自動儲存。它可以在工匠工作台中增強。"
     },
     {
       "type": "thermal:double_crafting_page",

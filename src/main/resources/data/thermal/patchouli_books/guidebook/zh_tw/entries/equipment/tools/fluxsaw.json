@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "使用紅石通量輕鬆挖掘木頭類型的方塊。右鍵點擊像往常一樣將原木剝皮。它可以在匠魂的工作台中充能和增強。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 可在砍伐半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
+      "text": "使用紅石通量輕鬆挖掘木頭類型的方塊。右鍵點擊像往常一樣將原木剝皮。它可以在工匠工作台中充能和增強。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 可在砍伐半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
     },
     {
       "type": "thermal:double_crafting_page",

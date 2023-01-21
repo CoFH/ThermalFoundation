@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "使用紅石通量有效地挖掘石頭和泥土類型的方塊。它可以在匠魂的工作台中充能和增強。挖掘黑曜石需要強化或更高的整合組件。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 可在挖掘半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
+      "text": "使用紅石通量有效地挖掘石頭和泥土類型的方塊。它可以在工匠工作台中充能和增強。挖掘黑曜石需要強化或更高的整合組件。安裝徑向範圍拓展後，按 \"$(k:cofh.mode_change_increment)\" 可在挖掘半徑之間切換。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
     },
     {
       "type": "thermal:double_crafting_page",
