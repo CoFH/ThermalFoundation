@@ -1,1 +1,32 @@
-{  "name": "Basalz",  "icon": "thermal:basalz_rod",  "category": "thermal:mobs",  "read_by_default": true,  "pages": [    {      "type": "thermal:3_item_page",      "title": "Basalz",      "item1": "thermal:basalz_rod",      "item2": "thermal:basalz_powder",      "item3": "thermal:basalz_spawn_egg",      "text": "The Basalz is a mob that spawns in barren or mountainous biomes. It has 10 hearts and deals 4.0 hearts of damage at close range. It creates projectiles which deal 3.0 hearts of damage and apply the Sundered effect. It has a chance to drop Basalz Shards, which can be crafted or pulverized into Basalz Powder."    },    {      "type": "patchouli:entity",      "entity": "thermal:basalz",      "title": "Basalz",      "text": "Sundered: Decreases the efficacy of armor by 25% per level."    },    {      "type": "patchouli:text",      "title": "Behavior",      "text": "The basalz is a bold elemental that specializes in close combat. It spawns 8 orbiting projectiles that hit anything unfortunate enough to get within 4 blocks. Each hit consumes one projectile. Once all projectiles are consumed, the basalz retreats and takes 5 seconds to recharge 8 more projectiles."    },    {      "type": "patchouli:text",      "title": "Strategy",      "text": "The easiest way to deal with the basalz is with a ranged weapon. In melee situations, even armored players may have difficulty tanking all 8 projectiles because they apply Sundered. It is best to use a shield to absorb the impact of all 8 projectiles, then attack the basalz while it's vulnerable. Alternatively, leading the basalz to other mobs will let them take the damage."    }  ]}
+{
+  "name": "バザルツ",
+  "icon": "thermal:basalz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "バザルツ",
+      "item1": "thermal:basalz_rod",
+      "item2": "thermal:basalz_powder",
+      "item3": "thermal:basalz_spawn_egg",
+      "text": "バザルツは不毛なバイオームや山岳バイオームにスポーンするモブです。ハート10個分の体力とハート4つ分の攻撃力があります。また、ハート3つ分のダメージと割れ鎧の効果を与える弾を射出します。バザルツを倒すとバザルツシャードをドロップすることがあり、これを単体でクラフトか粉砕機でバザルツパウダーにすることができます。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:basalz",
+      "title": "バザルツ",
+      "text": "割れ鎧: レベル毎に防具の効果を25%減少させる。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "挙動",
+      "text": "バザルツは近接戦闘に特化した果敢なエレメンタルです。8つの軌道を描く弾を射出し、4ブロック以内にいる相手に当てようとしてきます。1回の攻撃で1つの弾を消費します。全ての弾を消費するとバザルツは後退し、5秒かけて8つの弾をリチャージします。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対策",
+      "text": "バザルツへの簡単な対処法は遠距離攻撃です。近接戦闘においてはたとえ防具を着込んでいたとしても割れ鎧の効果があるため全ての弾を食らうのはおすすめできません。盾で弾の攻撃を受け止め、バザルツがリチャージしている隙に攻撃するといいでしょう。もしくは、バザルツの攻撃を他のモブに誘導するのも手です。"
+    }
+  ]
+}

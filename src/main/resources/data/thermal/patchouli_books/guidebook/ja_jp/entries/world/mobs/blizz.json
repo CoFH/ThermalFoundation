@@ -1,1 +1,32 @@
-{  "name": "Blizz",  "icon": "thermal:blizz_rod",  "category": "thermal:mobs",  "read_by_default": true,  "pages": [    {      "type": "thermal:3_item_page",      "title": "Blizz",      "item1": "thermal:blizz_rod",      "item2": "thermal:blizz_powder",      "item3": "thermal:blizz_spawn_egg",      "text": "The Blizz is a mob that spawns in cold biomes. It has 10 hearts and deals 3.5 hearts of damage at close range. It shoots projectiles which deal 2.5 hearts of damage and apply the Chilled effect. It has a chance to drop Blizz Cubes, which can be crafted or pulverized into Blizz Powder."    },    {      "type": "patchouli:entity",      "entity": "thermal:blizz",      "title": "Blizz",      "text": "Chilled: Decreases movement speed by 30% and attack speed by 0.4 seconds per level."    },    {      "type": "patchouli:text",      "title": "Behavior",      "text": "The blizz is a standoffish elemental that rains projectiles upon its foes. It will fly above its target and spawn falling projectiles in an area around it. If close enough, it will hover in circles above its target."    },    {      "type": "patchouli:text",      "title": "Strategy",      "text": "The easiest way to deal with the blizz is with a ranged weapon. In a melee fight, it is best to directly face the blizz and tank the damage in order to get within melee range."    }  ]}
+{
+  "name": "ブリーズ",
+  "icon": "thermal:blizz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "ブリーズ",
+      "item1": "thermal:blizz_rod",
+      "item2": "thermal:blizz_powder",
+      "item3": "thermal:blizz_spawn_egg",
+      "text": "ブリーズは寒冷なバイオームにスポーンするモブです。ハート10個分の体力とハート3.5個分の攻撃力があります。ハート2.5個分のダメージと寒気の効果を与える弾を射出します。ブリーズを倒すとブリーズキューブをドロップすることがあり、これを単体でクラフトするか粉砕機でブリーズパウダーにすることができます。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:blizz",
+      "title": "ブリーズ",
+      "text": "寒気: レベル毎に移動速度を30%減少、攻撃感覚を0.4秒増加させます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "挙動",
+      "text": "ブリーズは相手に弾幕を張る冷淡なエレメンタルです。相手の上空を飛行し、その周囲に弾を撒き降らします。接近すると、相手の上空で円を描くように浮遊します。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対処",
+      "text": "ブリーズへの簡単な対処法は遠距離攻撃です。近接戦闘ではブリーズと向き合い、ブリーズからの近接攻撃を防ぐ事が重要です。"
+    }
+  ]
+}
