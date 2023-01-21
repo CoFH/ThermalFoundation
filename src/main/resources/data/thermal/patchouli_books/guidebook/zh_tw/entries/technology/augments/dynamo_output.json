@@ -1,5 +1,5 @@
 {
-  "name": "Auxiliary Reaction Chamber",
+  "name": "輔助反應室",
   "icon": "thermal:dynamo_output_augment",
   "category": "thermal:augments",
 
@@ -9,8 +9,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/dynamo_output_augment",
-      "title": "Aux. Reaction Chamber",
-      "text": "The Auxiliary Reaction Chamber augment increases maximum generation of a dynamo by 100% but scales the efficiency by 0.9."
+      "title": "輔助反應室",
+      "text": "輔助反應室將能源爐的最大產能增加 100%，但將效率降低 0.9 倍。"
     }
   ]
 }

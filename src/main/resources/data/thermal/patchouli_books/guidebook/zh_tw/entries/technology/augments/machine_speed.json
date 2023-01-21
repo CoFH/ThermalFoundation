@@ -1,5 +1,5 @@
 {
-  "name": "Flux Linkage Amplifier",
+  "name": "通量鏈結放大器",
   "icon": "thermal:machine_speed_augment",
   "category": "thermal:augments",
 
@@ -9,8 +9,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/machine_speed_augment",
-      "title": "Flux Linkage Amplifier",
-      "text": "The Flux Linkage Amplifier augment increases maximum RF usage rate by 100% but also scales the RF per operation by 1.1."
+      "title": "通量鏈結放大器",
+      "text": "通量鏈結放大器增強元件提升了 100% 最大紅石通量使用率，但也將每次操作使用的紅石通量提升 1.1 倍。"
     }
   ]
 }

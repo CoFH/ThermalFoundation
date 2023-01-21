@@ -1,5 +1,5 @@
 {
-  "name": "Multi-Cycle Injectors",
+  "name": "多環泵注器",
   "icon": "thermal:dynamo_fuel_augment",
   "category": "thermal:augments",
 
@@ -9,8 +9,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/dynamo_fuel_augment",
-      "title": "Multi-Cycle Injectors",
-      "text": "The Multi-Cycle Injectors augment scales the fuel efficiency of a dynamo by 1.1."
+      "title": "多環泵注器",
+      "text": "多環泵注器將發電機的燃油效率提升 1.1 倍。"
     }
   ]
 }

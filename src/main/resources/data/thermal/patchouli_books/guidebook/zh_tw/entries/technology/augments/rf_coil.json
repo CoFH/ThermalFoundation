@@ -1,5 +1,5 @@
 {
-  "name": "Expanded RF Coil",
+  "name": "擴展通量線圈",
   "icon": "thermal:rf_coil_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -7,8 +7,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/rf_coil_augment",
-      "title": "Expanded RF Coil",
-      "text": "The Expanded RF Coil augment scales RF storage and transfer by 4."
+      "title": "擴展通量線圈",
+      "text": "擴展通量線圈將紅石通量儲存和傳輸提升 4 倍。"
     }
   ]
 }

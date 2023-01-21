@@ -1,5 +1,5 @@
 {
-  "name": "Flux Efficiency",
+  "name": "通量效率升級",
   "icon": "thermal:machine_efficiency_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -8,8 +8,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/machine_efficiency_augment",
-      "title": "Flux Efficiency",
-      "text": "The Flux Efficiency augment reduces the RF required per operation, scaling it by 0.9, but also decreases the maximum RF usage rate of the machine by 10%."
+      "title": "通量效率升級",
+      "text": "通量效率升級增強元件每次操作使用的紅石通量降低 0.9 倍，但也將機器的最大紅石通量使用率降低 10%。"
     }
   ]
 }

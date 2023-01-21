@@ -1,5 +1,5 @@
 {
-  "name": "Alchemical Amplifier",
+  "name": "煉金放大器",
   "icon": "thermal:potion_amplifier_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -8,8 +8,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/potion_amplifier_augment",
-      "title": "Alchemical Amplifier",
-      "text": "The Alchemical Amplifier augment increases the effect of the stored potion by 1 level but decreases its duration by 25%. Stacking 4 results in potions with no duration, rendering many useless."
+      "title": "煉金放大器",
+      "text": "煉金放大器增加了儲存藥水的效果 1 級，但減少了 25% 的持續時間。 堆疊到 4 個會導致產生沒有持續時間的藥水，使許多藥水變得無用。"
     }
   ]
 }

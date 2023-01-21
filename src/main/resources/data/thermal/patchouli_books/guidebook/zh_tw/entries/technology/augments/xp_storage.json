@@ -1,5 +1,5 @@
 {
-  "name": "Knowledge Concentrator",
+  "name": "知識濃縮器",
   "icon": "thermal:xp_storage_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -7,12 +7,12 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/xp_storage_augment",
-      "title": "Knowledge Concentrator",
-      "text": "The Knowledge Concentrator augment allows a machine or device to collect experience from recipes or the world. It starts with a max storage of 2.5k XP, which is multiplied by the scale factor offered by $(l:thermal:technology/augments/integral_components)Integral Components$(/l)."
+      "title": "知識濃縮器",
+      "text": "知識濃縮器增強元件允許機器或裝置從配方或世界中收集經驗。它以 2.5k 經驗值的最大儲存量開始，乘以$(l:thermal:technology/augments/integral_components)整合組件$(/l)提供的縮放比例。"
     },
     {
       "type": "patchouli:text",
-      "text": "Once installed, a small icon resembling an $(l:thermal:equipment/tools/xp_crystal)Insightful Crystal$(/l) will appear in the lower right corner of the block's GUI. The XP stored in the machine can be retrieved by the player by clicking on this icon."
+      "text": "安裝後，一個類似於 $(l:thermal:equipment/tools/xp_crystal)洞察水晶$(/l)的小圖示將出現在方塊 GUI 的右下角。玩家可以通過點擊此圖示來擷取儲存在機器中的經驗值。"
     }
   ]
 }

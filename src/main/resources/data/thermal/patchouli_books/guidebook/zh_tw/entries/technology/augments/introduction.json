@@ -1,5 +1,5 @@
 {
-  "name": "Introduction - 增強元件",
+  "name": "介紹 - 增強元件",
   "icon": "thermal:iron_gear",
   "category": "thermal:augments",
   "sortnum": -2,
@@ -7,15 +7,15 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "All machines, devices, dynamos, and tools can be upgraded using $(l)augments$(). Augments provide various benefits, ranging from enhanced storage to increased ease of automation. Augments may be applied either in the tinker bench or in the augment panel in the GUI of machines, devices, and dynamos."
+      "text": "所有機器、裝置、能源爐和工具都可以使用$(l)增強元件$()進行升級。增強元件提供各種好處，從增強儲存到增加自動化的便利性。可以在工匠工作台或機器、裝置和能源爐 GUI 中的增強面板中套用增強。"
     },
     {
       "type": "patchouli:text",
-      "text": "When hovering over an augment in your inventory, the item tooltip will display the augment's modifiers. Modifiers in normal font can be stacked, additively for those starting with '+' and multiplicatively for those ending in 'x'. Underlined multipliers cannot be stacked; instead, only the highest multiplier of all the augments is used."
+      "text": "將滑鼠游標停留在物品欄中的增強元件上時，物品提示將顯示增強元件的修飾詞。普通字體的修飾詞可以疊加，以 \"+\" 開頭的修飾詞可以疊加，以 \"x\" 結尾的修飾詞可以疊加。帶下劃線的乘數值不能疊加；相對的，只使用所有增強的最高乘數值。"
     },
     {
       "type": "patchouli:text",
-      "text": "Augments have a specific augment type associated with them, which can also be seen in the item tooltip. The type restricts what blocks you can put augments into and sometimes how many. Machine type augments cannot be inserted into dynamos, for example. Many augments cannot be stacked, such as those with a silver background."
+      "text": "增強元件有一個與之關聯的特定增強類型，也可以在物品提示中看到。該類型限制可以將增強元件放入的方塊，有時限制放入方塊的數量。例如，機器類型的增強元件不能放入能源爐中。許多增強元件無法堆疊，例如具有銀色背景的增強元件。"
     }
 
   ]

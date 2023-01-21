@@ -1,5 +1,5 @@
 {
-  "name": "Radial Enhancement",
+  "name": "徑向範圍拓展",
   "icon": "thermal:area_radius_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -7,8 +7,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/area_radius_augment",
-      "title": "Radial Enhancement",
-      "text": "The Radial Enhancement Augment allows your tool or machine to affect a greater area around it. Each augment will increase the maximum area by 1 block in every direction."
+      "title": "徑向範圍拓展",
+      "text": "徑向範圍拓展允許你的工具或機器影響其周圍更大的區域。每次擴充都會在每個方向將最大區域增加 1 個方塊。"
     }
   ]
 }

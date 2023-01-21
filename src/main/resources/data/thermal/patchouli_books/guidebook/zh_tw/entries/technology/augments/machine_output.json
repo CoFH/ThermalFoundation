@@ -1,5 +1,5 @@
 {
-  "name": "Auxiliary Process Sieve",
+  "name": "輔助處理篩",
   "icon": "thermal:machine_output_augment",
   "category": "thermal:augments",
 
@@ -9,8 +9,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/machine_output_augment",
-      "title": "Auxiliary Process Sieve",
-      "text": "The Auxiliary Process Sieve augment increases chances of secondary output by 15% but scales the energy per operation by 1.25."
+      "title": "輔助處理篩",
+      "text": "輔助處理篩提升了二次輸出的機率 15%，但也將每次操作使用的能量提升 1.25 倍。"
     }
   ]
 }

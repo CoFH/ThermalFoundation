@@ -1,5 +1,5 @@
 {
-  "name": "High-Flux RF Coil",
+  "name": "強導通量線圈",
   "icon": "thermal:rf_coil_xfer_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -7,8 +7,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/rf_coil_xfer_augment",
-      "title": "High-Flux RF Coil",
-      "text": "The High-Flux RF Coil augment scales the RF storage by 2 and the RF transfer by 6."
+      "title": "強導通量線圈",
+      "text": "強導通量線圈將紅石通量儲存提升 2 倍，將紅石通量傳輸提升 6 倍。"
     }
   ]
 }

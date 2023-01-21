@@ -1,5 +1,5 @@
 {
-  "name": "Alchemical Extender",
+  "name": "煉金延時器",
   "icon": "thermal:potion_duration_augment",
   "category": "thermal:augments",
   "read_by_default": true,
@@ -8,8 +8,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/potion_duration_augment",
-      "title": "Alchemical Extender",
-      "text": "The Alchemical Extender augment increases duration of potions by 100%. Has no effect on potions that have instant, one-time effects (instant potions)."
+      "title": "煉金延時器",
+      "text": "煉金延時器增加藥水的持續時間 100%。對具有即時、一次性效果的藥水（即時藥水）沒有影響。"
     }
   ]
 }

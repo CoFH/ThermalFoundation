@@ -1,5 +1,5 @@
 {
-  "name": "Cyclical Processing",
+  "name": "循環處理升級",
   "icon": "thermal:machine_cycle_augment",
   "category": "thermal:augments",
 
@@ -9,8 +9,8 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/machine_cycle_augment",
-      "title": "Cyclical Processing",
-      "text": "The Cyclical Processing augment allows a machine's valid outputs to be fed back into its input slot(s). Useful for automation."
+      "title": "循環處理升級",
+      "text": "循環處理升級增強元件允許機器的有效輸出被回饋到它的輸入欄中。對自動化很有用。"
     }
   ]
 }
