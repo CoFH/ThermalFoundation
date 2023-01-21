@@ -1,1 +1,75 @@
-{  "name": "Ores",  "icon": "thermal:lead_ore",  "read_by_default": true,  "category": "thermal:materials",  "pages": [    {      "type": "patchouli:text",      "title": "Disclaimer",      "text": "Ore generation is configurable, so amounts and Y-levels are not explained here as they can vary considerably between worlds."    },    {      "type": "thermal:2-2_item_page",      "A.title": "Niter",      "A.item1": "thermal:niter_ore",      "A.item2": "thermal:niter",      "A.text": "A soft mineral used as a source of nitrogen and potassium in fertilizer.",      "B.title": "Sulfur",      "B.item1": "thermal:sulfur_ore",      "B.item2": "thermal:sulfur",      "B.text": "A reactive mineral used to cure rubber and make gunpowder."    },    {      "flag": "mod:thermal_expansion",      "type": "thermal:2-2_item_page",      "A.title": "Cinnabar",      "A.item1": "thermal:cinnabar_ore",      "A.item2": "thermal:cinnabar",      "A.text": "A scarlet mineral used to enhance ore yields.",      "B.title": "Bituminous Sand",      "B.item1": "thermal:oil_sand",      "B.item2": "thermal:bitumen",      "B.text": "A sticky, black, highly viscous liquid suspended in sand. Appears in deserts & badlands."    },    {      "type": "thermal:2-2_item_page",      "A.title": "Tin",      "A.item1": "thermal:tin_ore",      "A.item2": "thermal:tin_ingot",      "A.text": "A soft, lightweight metal valued for its versatility.",      "B.title": "Nickel",      "B.item1": "thermal:nickel_ore",      "B.item2": "thermal:nickel_ingot",      "B.text": "A hard metal used in alloys less affected by heat."    },    {      "type": "2-2_item_page",      "A.title": "Lead",      "A.item1": "thermal:lead_ore",      "A.item2": "thermal:lead_ingot",      "A.text": "A soft, dense metal with shielding properties.",      "B.title": "Silver",      "B.item1": "thermal:silver_ore",      "B.item2": "thermal:silver_ingot",      "B.text": "A conductive metal prized for its radiance."    },    {      "flag": "mod:thermal_cultivation",      "type": "2_item_page",      "A.title": "Apatite",      "A.item1": "thermal:apatite_ore",      "A.item2": "thermal:apatite",      "A.text": "A common mineral often used as dye or a source of phosphorous in fertilizer."    }  ]}
+{
+  "name": "鉱石",
+  "icon": "thermal:lead_ore",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "免責事項",
+      "text": "鉱石の生成方法は変更可能であり、生成量や生成高度はワールドによって異なることがあります。そのため、ここでは説明しません。"
+    },
+    {
+      "type": "thermal:2-2_item_page",
+
+      "A.title": "硝石",
+      "A.item1": "thermal:niter_ore",
+      "A.item2": "thermal:niter",
+      "A.text": "肥料の窒素・カリウム源となる軟らかい鉱物です。",
+
+      "B.title": "硫黄",
+      "B.item1": "thermal:sulfur_ore",
+      "B.item2": "thermal:sulfur",
+      "B.text": "反応性の高い鉱物で、ゴムの硬化に使用したり、火薬の原料となります。"
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "thermal:2-2_item_page",
+
+      "A.title": "辰砂",
+      "A.item1": "thermal:cinnabar_ore",
+      "A.item2": "thermal:cinnabar",
+      "A.text": "緋色の鉱物で、鉱石処理の歩留まりを増やすことができます。",
+
+      "B.title": "瀝青質の砂",
+      "B.item1": "thermal:oil_sand",
+      "B.item2": "thermal:bitumen",
+      "B.text": "砂中に散在する、黒く粘ついた高粘度の液体です。砂漠や荒れ地で見つかります。"
+    },
+    {
+      "type": "thermal:2-2_item_page",
+
+      "A.title": "錫",
+      "A.item1": "thermal:tin_ore",
+      "A.item2": "thermal:tin_ingot",
+      "A.text": "軟らかく軽い汎用性のある金属です。",
+
+      "B.title": "ニッケル",
+      "B.item1": "thermal:nickel_ore",
+      "B.item2": "thermal:nickel_ingot",
+      "B.text": "硬い金属で、熱による影響を受けづらい合金に使われます。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "鉛",
+      "A.item1": "thermal:lead_ore",
+      "A.item2": "thermal:lead_ingot",
+      "A.text": "軟らかい高密度な金属で、高い遮蔽性能があります。",
+
+      "B.title": "銀",
+      "B.item1": "thermal:silver_ore",
+      "B.item2": "thermal:silver_ingot",
+      "B.text": "高導電性の金属で、その輝きにより珍重されます。"
+    },
+    {
+      "flag": "mod:thermal_cultivation",
+      "type": "2_item_page",
+
+      "A.title": "燐灰石",
+      "A.item1": "thermal:apatite_ore",
+      "A.item2": "thermal:apatite",
+      "A.text": "普遍的な鉱物で、染料や肥料のリン酸源としてよく使われます。"
+    }
+  ]
+}

@@ -1,1 +1,16 @@
-{  "name": "Catalysts",  "icon": "thermal:rich_slag",  "read_by_default": true,  "flag": "mod:thermal_expansion",  "category": "thermal:materials",  "pages": [    {      "type": "patchouli:text",      "text": "Catalysts are optional items consumed to improve the yield of certain recipes. Machines and their catalysts are listed on the next page with multipliers. The main outputs of a recipe are scaled by Primary. Secondary outputs are scaled by Secondary. The energy per operation is scaled by Energy. Finally, the odds a catalyst is consumed in an operation is indicated by the Usage chance."    },    {      "type": "thermal:catalyst_page"    }  ]}
+{
+  "name": "触媒",
+  "icon": "thermal:rich_slag",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "触媒とはいくつかのレシピにて歩留まりを向上させることができる、追加のアイテムです。機械と対応する触媒は次のページにて向上倍率とともに一覧が記載されています。主産物量倍率、副産物量倍率、エネルギー消費、触媒消費確率はそれぞれレシピの主産物量、副産物量、処理ごとのエネルギー消費量、処理ごとの触媒の消費に対する倍率・確率を表します。"
+    },
+    {
+      "type": "thermal:catalyst_page"
+    }
+  ]
+}

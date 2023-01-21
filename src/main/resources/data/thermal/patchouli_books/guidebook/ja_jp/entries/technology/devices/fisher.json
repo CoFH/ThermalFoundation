@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "水資源投網機は、水中に設置して受動的に魚を捕獲する装置です。魚を捕獲する頻度は基本的に数分に1回ですが、バイオームや天候、そしてオーグメントの構成によって変動します。$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l) と$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)で捕獲頻度を上昇できます。また、$(l:thermal:world/materials/bait)餌$(/l)を使用して捕獲頻度をより上昇させたり、捕獲できるものを変更できます。"
+      "text": "水資源投網機は、水中に設置して受動的に魚を捕獲する装置です。魚を捕獲する頻度は基本的に数分に1回ですが、バイオームや天候、そしてオーグメントの構成によって変動します。$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l) と$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)で捕獲頻度を上昇できます。また、$(l:thermal:world/materials/bait)ベイト$(/l)を使用して捕獲頻度をより上昇させたり、捕獲できるものを変更できます。"
     },
     {
       "type": "thermal:double_crafting_page",

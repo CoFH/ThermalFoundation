@@ -1,18 +1,18 @@
 {
-  "name": "Gears, Coins, Dusts, etc.",
+  "name": "歯車、コイン、粉、その他",
   "icon": "thermal:enderium_coin",
   "read_by_default": true,
   "category": "thermal:materials",
   "pages": [
     {
       "type": "thermal:5_item_page",
-      "title": "Gears, Coins, Dusts, etc.",
+      "title": "歯車、コイン、粉、その他",
       "item1": "thermal:copper_gear,thermal:tin_gear,thermal:lead_gear,thermal:silver_gear,thermal:nickel_gear,thermal:bronze_gear,thermal:invar_gear,thermal:electrum_gear,thermal:constantan_gear,thermal:signalum_gear,thermal:lumium_gear,thermal:enderium_gear,thermal:iron_gear,thermal:gold_gear,thermal:lapis_gear,thermal:diamond_gear,thermal:emerald_gear",
       "item2": "thermal:copper_plate,thermal:tin_plate,thermal:lead_plate,thermal:silver_plate,thermal:nickel_plate,thermal:bronze_plate,thermal:invar_plate,thermal:electrum_plate,thermal:constantan_plate,thermal:signalum_plate,thermal:lumium_plate,thermal:enderium_plate,thermal:iron_plate,thermal:gold_plate",
       "item3": "thermal:copper_coin,thermal:tin_coin,thermal:lead_coin,thermal:silver_coin,thermal:nickel_coin,thermal:bronze_coin,thermal:invar_coin,thermal:electrum_coin,thermal:constantan_coin,thermal:signalum_coin,thermal:lumium_coin,thermal:enderium_coin,thermal:iron_coin,thermal:gold_coin",
       "item4": "thermal:copper_dust,thermal:tin_dust,thermal:lead_dust,thermal:silver_dust,thermal:nickel_dust,thermal:bronze_dust,thermal:invar_dust,thermal:electrum_dust,thermal:constantan_dust,thermal:signalum_dust,thermal:lumium_dust,thermal:enderium_dust,thermal:iron_dust,thermal:gold_dust,thermal:lapis_dust,thermal:diamond_dust,thermal:emerald_dust",
       "item5": "thermal:copper_nugget,thermal:tin_nugget,thermal:lead_nugget,thermal:silver_nugget,thermal:nickel_nugget,thermal:bronze_nugget,thermal:invar_nugget,thermal:electrum_nugget,thermal:constantan_nugget,thermal:signalum_nugget,thermal:lumium_nugget,thermal:enderium_nugget",
-      "text": "Thermal adds multiple forms of metals and gems which are used in various recipes. Most basic are the metal nuggets, which work identically to vanilla iron and gold nuggets."
+      "text": "Thermalは様々なレシピに使用するための、多様な形状の金属や宝石を追加します。代表的なのは金属塊で、バニラの鉄塊や金塊と同様の機能があります。"
     },
     {
       "flag": "!mod:thermal_expansion",
@@ -22,7 +22,7 @@
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Dusts typically come from the $(l:thermal:technology/machines/pulverizer)pulverizer$(/l) and can be used in recipes (typically alloys) or smelted (metal dusts only). Plates and coins are made exclusively in the $(l:thermal:technology/machines/press)multiservo press$(/l) and are used in various recipes. Gears can be crafted using an iron nugget surrounded by 4 ingots/gems of a particular material. Metal gears can also be created in the press for 4 ingots."
+      "text": "粉は、$(l:thermal:technology/machines/pulverizer)粉砕機$(/l)$で作成でき、普通の合金のレシピや、金属の粉のみを受け付ける精錬での材料となります。プレートとコインは$(l:thermal:technology/machines/press)マルチサーボプレス機$(/l)でのみ作成でき、様々なレシピで使用されます。歯車は指定のインゴットか宝石4つで鉄インゴットを囲むレシピでクラフトできるほか、4つのインゴットをマルチサーボプレス機で加工することでも作成できます。"
     }
   ]
 }
