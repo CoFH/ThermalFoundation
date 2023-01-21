@@ -1,5 +1,5 @@
 {
-  "name": "Crossover Rail",
+  "name": "渡線鐵軌",
   "icon": "thermal:crossover_rail",
   "read_by_default": true,
   "flag": "mod:thermal_locomotion",
@@ -8,7 +8,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The crossover rail allows two perpendicular lines of rails to intersect without interfering with each other. A minecart passing a crossover rail will continue in the same direction it came from."
+      "text": "渡線鐵軌允許兩條垂直的軌道相交而不會互相干擾。通過渡線鐵軌的礦車將繼續沿其來自的相同方向行駛。"
     },
     {
       "type": "thermal:double_crafting_page",
