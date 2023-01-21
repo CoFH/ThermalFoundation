@@ -470,7 +470,7 @@
   "item.thermal.machine_null_augment.desc": "銷毀多餘的副產物。",
   "item.thermal.machine_output_augment": "輔助處理篩",
   "item.thermal.machine_output_augment.desc": "增加副產物的產生",
-  "item.thermal.machine_speed_augment": "通量連接放大器",
+  "item.thermal.machine_speed_augment": "通量鏈結放大器",
   "item.thermal.machine_speed_augment.desc": "以紅石通量效率降低為代價提升處理速度。",
 
   "item.thermal.potion_amplifier_augment": "煉金放大器",
