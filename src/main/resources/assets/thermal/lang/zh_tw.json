@@ -461,7 +461,7 @@
   "item.thermal.machine_catalyst_creative_augment": "創造回收室",
   "item.thermal.machine_catalyst_creative_augment.desc": "不消耗催化劑。",
   "item.thermal.machine_cycle_augment": "循環處理升級",
-  "item.thermal.machine_cycle_augment.desc": "裝配產物可循環至輸入槽以進行下一步合成。",
+  "item.thermal.machine_cycle_augment.desc": "裝配產物可循環至輸入欄以進行下一步合成。",
   "item.thermal.machine_efficiency_augment": "通量效率升級",
   "item.thermal.machine_efficiency_augment.desc": "以處理速度降低為代價提升紅石通量效率。",
   "item.thermal.machine_efficiency_creative_augment": "創造通量提效",
@@ -612,7 +612,7 @@
   "info.thermal.charge_bench.2": "感受轟鳴。",
 
   "info.thermal.tinker_bench.0": "集工具增強、裝置充能及流體灌裝於一體的多功能工作站。",
-  "info.thermal.tinker_bench.1": "物品槽中僅可放入適用於工匠工作台的物品。",
+  "info.thermal.tinker_bench.1": "物品欄中僅可放入適用於工匠工作台的物品。",
   "info.thermal.tinker_bench.2": "修補模式啟動！",
 
   "info.thermal.tinker_bench_mode_augment": "模式：增強",
@@ -1159,7 +1159,7 @@
   "item.thermal.press_unpacking_die": "解包模具",
 
   "item.thermal.slot_seal": "欄位擋板",
-  "item.thermal.slot_seal.desc": "防止所在欄位被使用。適用於有多個輸入槽的機器。",
+  "item.thermal.slot_seal.desc": "防止所在欄位被使用。適用於有多個輸入欄的機器。",
 
   "subtitles.thermal.block.machine_bottler": "流體灌裝機裝填",
   "subtitles.thermal.block.machine_crucible": "熱力能源爐嗡嗡",
