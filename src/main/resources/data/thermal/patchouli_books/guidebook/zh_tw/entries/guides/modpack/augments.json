@@ -20,7 +20,7 @@
       "type": "patchouli:link",
       "url": "https://github.com/CoFH/CoFHCore/blob/1.18.2/src/main/java/cofh/lib/util/constants/NBTTags.java#L102",
       "link_text": "Github 連結",
-      "text": "NBT的一般形式如下： $(br2){AugmentData:$(br){Type:'[augment type]',$(br)[modifier 1]:[float value]f, $(br)[modifier 2]:[float value]f, $(br)[...]}}$(br2)可以在 CoFH 的 Github 中找到可用增強類型和修飾詞的完整列表；連結如下。"
+      "text": "NBT的一般形式如下： $(br2){AugmentData:$(br){Type:'[augment type]',$(br)[modifier 1]:[float value]f, $(br)[modifier 2]:[float value]f, $(br)[...]}}$(br2)可以在 CoFH 的 Github 中找到可用增強類型和修飾詞的完整清單；連結如下。"
     },
     {
       "type": "patchouli:text",
