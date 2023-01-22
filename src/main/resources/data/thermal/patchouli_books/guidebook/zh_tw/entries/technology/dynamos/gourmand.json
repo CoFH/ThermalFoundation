@@ -1,5 +1,5 @@
 {
-  "name": "Gourmand Dynamo",
+  "name": "饕餮能源爐",
   "icon": "thermal:dynamo_gourmand",
   "category": "thermal:dynamos",
   "read_by_default": true,
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Gourmand Dynamo uses food to produce RF."
+      "text": "饕餮能源爐使用食物產生紅石通量。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -16,8 +16,8 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Auxiliary Reaction Chamber$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Multi-cycle Injectors$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)輔助反應室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)多週期泵注器$(/l)"
     }
   ]
 }

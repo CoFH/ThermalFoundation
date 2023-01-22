@@ -1,5 +1,5 @@
 {
-  "name": "Lapidary Dynamo",
+  "name": "珠寶能源爐",
   "icon": "thermal:dynamo_lapidary",
   "category": "thermal:dynamos",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Lapidary Dynamo uses crystals and gems to produce RF."
+      "text": "珠寶能源爐使用水晶和寶石產生紅石通量。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:dynamo_lapidary",
-      "title": "Lapidary Dynamo",
+      "title": "珠寶能源爐",
       "text": "$(o)Might be a portal to a land of gem-obsessed moon people.$()"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Auxiliary Reaction Chamber$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Multi-cycle Injectors$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)輔助反應室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)多週期泵注器$(/l)"
     }
   ]
 }

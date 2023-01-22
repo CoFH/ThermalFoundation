@@ -1,5 +1,5 @@
 {
-  "name": "Stirling Dynamo",
+  "name": "史特林能源爐",
   "icon": "thermal:dynamo_stirling",
   "category": "thermal:dynamos",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Stirling Dynamo uses burnable items to produce RF."
+      "text": "史特林能源爐使用可燃物品產生紅石通量。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:dynamo_stirling",
-      "title": "Stirling Dynamo"
+      "title": "史特林能源爐"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Auxiliary Reaction Chamber$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Multi-cycle Injectors$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)輔助反應室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)多週期泵注器$(/l)"
     }
   ]
 }

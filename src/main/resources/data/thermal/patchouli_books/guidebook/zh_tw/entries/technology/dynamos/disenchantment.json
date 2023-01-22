@@ -1,5 +1,5 @@
 {
-  "name": "Disenchantment Dynamo",
+  "name": "祛魔能源爐",
   "icon": "thermal:dynamo_disenchantment",
   "category": "thermal:dynamos",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Disenchantment Dynamo uses enchanted items such as books to produce RF."
+      "text": "祛魔能源爐使用書本等附魔物品產生紅石通量。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:dynamo_disenchantment",
-      "title": "Disenchantment Dynamo"
+      "title": "祛魔能源爐"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Auxiliary Reaction Chamber$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Multi-cycle Injectors$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)輔助反應室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)多週期泵注器$(/l)"
     }
   ]
 }

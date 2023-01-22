@@ -1,5 +1,5 @@
 {
-  "name": "Numismatic Dynamo",
+  "name": "通貨能源爐",
   "icon": "thermal:dynamo_numismatic",
   "category": "thermal:dynamos",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Numismatic Dynamo uses $(l:thermal:technology/machines/press)coins$(/l) to produce RF."
+      "text": "通貨能源爐使用$(l:thermal:technology/machines/press)硬幣$(/l)產生紅石通量。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:dynamo_numismatic",
-      "title": "Numismatic Dynamo"
+      "title": "通貨能源爐"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)Auxiliary Reaction Chamber$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)Multi-cycle Injectors$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)輔助反應室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)多週期泵注器$(/l)"
     }
   ]
 }
