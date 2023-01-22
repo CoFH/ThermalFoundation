@@ -438,7 +438,7 @@
   "item.thermal.dynamo_force_coil_augment": "光束投射陣列",
   "item.thermal.dynamo_steam_coil_augment": "蒸汽鍋爐轉換",
 
-  "item.thermal.dynamo_fuel_augment": "多環泵注器",
+  "item.thermal.dynamo_fuel_augment": "多循環泵注器",
   "item.thermal.dynamo_fuel_augment.desc": "提升燃料效率。",
   "item.thermal.dynamo_output_augment": "輔助反應室",
   "item.thermal.dynamo_output_augment.desc": "以效率降低為代價提升發電功率。",
