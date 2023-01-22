@@ -1055,11 +1055,11 @@
   "block.thermal.machine_sawmill": "鋸木機",
   "block.thermal.machine_smelter": "感應爐",
 
-  "info.thermal.device_fluid_buffer.0": "貯存與轉移流體。能夠自動輸出。",
+  "info.thermal.device_fluid_buffer.0": "儲存與轉移流體。能夠自動輸出。",
   "info.thermal.device_fluid_buffer.1": "流體漏斗！",
   "info.thermal.device_fluid_buffer.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
 
-  "info.thermal.device_item_buffer.0": "貯存與轉移物品。能夠自動輸出。",
+  "info.thermal.device_item_buffer.0": "儲存與轉移物品。能夠自動輸出。",
   "info.thermal.device_item_buffer.1": "比漏斗好！不騙你！",
   "info.thermal.device_item_buffer.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
 
@@ -1250,7 +1250,7 @@
   "item.thermal.flux_saw.desc": "紅石通量驅動的砍伐工具。",
 
   "item.thermal.potion_infuser": "藥水注射器",
-  "item.thermal.potion_infuser.desc": "貯存並注射藥水。",
+  "item.thermal.potion_infuser.desc": "儲存並注射藥水。",
 
   "item.thermal.potion_quiver": "藥水箭袋",
   "item.thermal.potion_quiver.desc": "用藥水灌注箭矢。",
