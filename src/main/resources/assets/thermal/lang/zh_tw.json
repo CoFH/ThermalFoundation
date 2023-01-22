@@ -1046,7 +1046,7 @@
   "block.thermal.machine_crafter": "序列裝配機",
   "block.thermal.machine_crucible": "熔岩爐",
   "block.thermal.machine_crystallizer": "結晶器",
-  "block.thermal.machine_furnace": "紅石熔煉爐",
+  "block.thermal.machine_furnace": "通量熔煉爐",
   "block.thermal.machine_insolator": "有機灌注器",
   "block.thermal.machine_press": "多驅衝壓機",
   "block.thermal.machine_pulverizer": "磨粉機",
