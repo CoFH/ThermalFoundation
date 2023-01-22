@@ -843,8 +843,8 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.frost_melon": "霜凍西瓜",
-  "block.thermal.phytosoil": "通量植育土",
-  "block.thermal.phytosoil_tilled": "通量植育耕地",
+  "block.thermal.phytosoil": "植育土",
+  "block.thermal.phytosoil_tilled": "植育耕地",
 
   "block.thermal.carrot_cake": "胡蘿蔔蛋糕",
   "block.thermal.cheese_wheel": "輪狀起司",
