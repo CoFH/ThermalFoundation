@@ -1,5 +1,5 @@
 {
-  "name": "Arboreal Extractor",
+  "name": "樹汁提取器",
   "icon": "thermal:device_tree_extractor",
   "category": "thermal:devices",
   "read_by_default": true,
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Arboreal Extractor is a device that extracts fluid from an adjacent tree. Can optionally take fertilizer to boost production rate. Bonemeal boosts output by 1.5x for 8 cycles, while $(l:thermal:world/plants/phytogro)phyto-gro$(/l) boosts by 2.0x for 16 cycles. Different trees produce different fluids; use JEI to see the available recipes."
+      "text": "樹汁提取器是一種從相鄰樹木中提取液體的裝置。可選擇性施肥以提高產量。骨粉在 8 個週期內將產量提升 1.5 倍，而$(l:thermal:world/plants/phytogro)植育一號$(/l)則在 16 個週期內提升 2.0 倍。不同的樹產生不同的液體；使用 JEI 查看可用的配方。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -16,8 +16,8 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
     }
   ]
 }

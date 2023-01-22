@@ -1,5 +1,5 @@
 {
-  "name": "Introduction - Devices",
+  "name": "介紹 - 裝置",
   "icon": "thermal:iron_gear",
   "category": "thermal:devices",
   "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
@@ -8,11 +8,11 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Devices perform various functions on blocks around them, some of which may take RF. In order to improve or modify various aspects of their functionality, devices accept $(l:thermal:technology/augments/introduction)augments$(/l)."
+      "text": "裝置在它們周圍的方塊上執行各種功能，其中一些可能需要紅石通量。 為了改進或修改其功能的各個方面，裝置接受$(l:thermal:technology/augments/introduction)增強$(/l)。"
     },
     {
       "type": "patchouli:text",
-      "text": "The other entries in this chapter will provide detailed explanations on the function of each block. Brief descriptions are available in a collapsible panel in the GUI of each block. Another panel offers RF information on the block when applicable, such as current and max RF usage. There are also augment and redstone control panels for organizing augments and response to redstone signals respectively."
+      "text": "本章的其他條目將對每個方塊的功能進行詳細說明。每個方塊的 GUI 中的可折疊面板中提供了簡短說明。另一個面板在適用時提供有關方塊的紅石通量資訊，例如目前和最大紅石通量使用率。還有增強和紅石控制面板，用於分別組織增強和對紅石信號的響應。"
     }
   ]
 }

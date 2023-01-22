@@ -1,5 +1,5 @@
 {
-  "name": "Phyto-Soil Infuser",
+  "name": "植育土注能機",
   "icon": "thermal:device_soil_infuser",
   "category": "thermal:devices",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Phyto-Soil Infuser is a device that uses RF in order to speed up the growth of crops on nearby $(l:thermal:world/plants/phytogro)phyto-soil$(/l). In its base form, it infuses a 3x3x3 area around it, which can be upgraded using $(l:thermal:technology/augments/area_radius)radial enhancement augments$(/l) to up to 7x3x7. $(l:thermal:technology/augments/integral_components)Integral components$(/l) increase the growth boost effect."
+      "text": "植育土注能機是一種使用紅石通量加速附近$(l:thermal:world/plants/phytogro)植育土$(/l)上農作物生長的設備。在它的基本型態中，它在周圍注入了一個 3x3x3 的區域，可以使用$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)增強元件擴大到 7x3x7。$(l:thermal:technology/augments/integral_components)整合組件$(/l)增加生長促進效果。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:device_soil_infuser",
-      "title": "Phyto-Soil Infuser"
+      "title": "植育土注能機"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/area_radius)Radial Enhancement$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)"
     }
   ]
 }

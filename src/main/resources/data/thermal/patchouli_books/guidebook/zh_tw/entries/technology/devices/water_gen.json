@@ -1,5 +1,5 @@
 {
-  "name": "Aqueous Accumulator",
+  "name": "蓄水器",
   "icon": "thermal:device_water_gen",
   "category": "thermal:devices",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Aqueous Accumulator is a device that will generate infinite water for your needs. In order for it to produce water there must be at least two source blocks adjacent to the sides of the device. Source blocks above or below the device will not count."
+      "text": "蓄水器是一種根據你的需要生成無限水的設備。為了讓它產生水，必須至少有兩個與設備側面相鄰的水源方塊。設備上方或下方的水源方塊將不計算在內。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:device_water_gen",
-      "title": "Aqueous Accumulator"
+      "title": "蓄水器"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
     }
   ]
 } 

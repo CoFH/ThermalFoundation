@@ -1,5 +1,5 @@
 {
-  "name": "Igneous Extruder",
+  "name": "岩石擠製機",
   "icon": "thermal:device_rock_gen",
   "category": "thermal:devices",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Igneous Extruder is a device that will generate infinite stone when surrounded with the appropriate blocks and fluids. It requires an adjacent lava source block and an adjacent coolant block; it can optionally take a block underneath. Refer to JEI for all the available recipes."
+      "text": "岩石擠製機是一種在被適當的方塊和流體包圍時會產生無限石頭的裝置。它需要一個相鄰的岩漿源方塊和一個相鄰的冷卻劑方塊；它可以選擇在下面放置一個方塊。有關所有可用的配方，請參閱 JEI。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:device_rock_gen",
-      "title": "Igneous Extruder",
-      "text": "At first, it will produce 1 block per second, but this can be augmented up to 4/sec using $(l:thermal:technology/augments/integral_components)integral components$(/l). If the recipe is changed, any blocks in the output slot will be voided to make room for the blocks from the new recipe."
+      "title": "岩石擠製機",
+      "text": "最初，它將每秒產生 1 個方塊，但可以使用 $(l:thermal:technology/augments/integral_components)整合組件$(/l)將其增加到每秒 4 個。如果更改了配方，則輸出欄中的任何方塊都將作廢，以便為新配方中的方塊騰出空間。"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)"
     }
   ]
 } 

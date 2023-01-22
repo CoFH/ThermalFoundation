@@ -1,5 +1,5 @@
 {
-  "name": "Hive Hopper",
+  "name": "蜂箱漏斗",
   "icon": "thermal:device_hive_extractor",
   "category": "thermal:devices",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Hive Hopper is a device that can extract honeycombs and liquid honey when placed under a beehive."
+      "text": "蜂箱漏斗是一種放置在蜂箱下時可以提取蜂巢和液體蜂蜜的裝置。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:device_hive_extractor",
-      "title": "Hive Hopper"
+      "title": "蜂箱漏斗"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
     }
   ]
 }
