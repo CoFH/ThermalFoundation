@@ -1053,7 +1053,7 @@
   "block.thermal.machine_pyrolyzer": "熱力裂解爐",
   "block.thermal.machine_refinery": "流體精煉機",
   "block.thermal.machine_sawmill": "鋸木機",
-  "block.thermal.machine_smelter": "感應爐",
+  "block.thermal.machine_smelter": "感應精煉爐",
 
   "info.thermal.device_fluid_buffer.0": "儲存與轉移流體。能夠自動輸出。",
   "info.thermal.device_fluid_buffer.1": "流體漏斗！",
