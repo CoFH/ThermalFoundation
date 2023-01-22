@@ -560,7 +560,7 @@
   "info.thermal.device_composter.2": "自然的歸自然。",
 
   "info.thermal.device_collector.0": "拾取周圍一定區域內的掉落物。",
-  "info.thermal.device_collector.1": "篩選設置可作用於拾取行為。",
+  "info.thermal.device_collector.1": "篩選設置可影響拾取行為。",
   "info.thermal.device_collector.2": "保持地面清潔！",
 
   "info.thermal.device_fisher.0": "捕撈各種水生物。搭配水產飼料使用更可增加產物數量並調節產物種類。",
@@ -668,7 +668,7 @@
   "item.thermal.nuke_grenade": "核能手榴彈",
   "item.thermal.nuke_grenade.desc": "記得扔遠點。",
   "item.thermal.phyto_grenade": "植育催熟彈",
-  "item.thermal.phyto_grenade.desc": "可投擲的植育一號，作用範圍更廣。",
+  "item.thermal.phyto_grenade.desc": "可投擲的植育一號，影響範圍更廣。",
   "item.thermal.redstone_grenade": "紅石訊號彈",
   "item.thermal.redstone_grenade.desc": "發生碰撞時在一定範圍內發出紅石訊號。",
   "item.thermal.slime_grenade": "彈力黏著彈",
