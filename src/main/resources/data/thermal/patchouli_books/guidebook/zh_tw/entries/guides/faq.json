@@ -11,7 +11,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Q: 我該如何更改通量電鑽/電鋸的模式？$(br)A: 你需要安裝$(l:thermal:technology/augments/area_radius)徑向範圍拓展$(/l)來調整挖掘半徑。$(br2)Q: 我該如何充能/增強我的工具？$(br)A: 請詳閱$(l:thermal:technology/tinker_bench)此處$(/l)。$(br2)Q: 為什麼我的能源爐會緩慢失去紅石通量？$(br)A: 能源爐中的紅石通量緩衝區僅用於確定對能源爐進行多少節流。請詳閱$(l:thermal:technology/dynamos/introduction)此處$(/l)以取得更多資訊。"
+      "text": "Q: 我該如何更改通量電鑽/電鋸的模式？$(br)A: 你需要安裝$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)來調整挖掘半徑。$(br2)Q: 我該如何充能/增強我的工具？$(br)A: 請詳閱$(l:thermal:technology/tinker_bench)此處$(/l)。$(br2)Q: 為什麼我的能源爐會緩慢失去紅石通量？$(br)A: 能源爐中的紅石通量緩衝區僅用於確定對能源爐進行多少節流。請詳閱$(l:thermal:technology/dynamos/introduction)此處$(/l)以取得更多資訊。"
     },
     {
       "type": "patchouli:link",

@@ -431,8 +431,8 @@
 
   "info.thermal.augment.maximized": "不可堆疊；已達最大值。",
 
-  "item.thermal.area_depth_augment": "軸向範圍拓展",
-  "item.thermal.area_radius_augment": "徑向範圍拓展",
+  "item.thermal.area_depth_augment": "軸向範圍擴展",
+  "item.thermal.area_radius_augment": "徑向範圍擴展",
 
   "item.thermal.dynamo_ender_coil_augment": "終界頻率調諧器",
   "item.thermal.dynamo_force_coil_augment": "光束投射陣列",
