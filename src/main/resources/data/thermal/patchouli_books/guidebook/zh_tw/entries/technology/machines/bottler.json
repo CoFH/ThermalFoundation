@@ -1,5 +1,5 @@
 {
-  "name": "Fluid Encapsulator",
+  "name": "流體灌裝機",
   "icon": "thermal:machine_bottler",
   "category": "thermal:machines",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Fluid Encapsulator is a machine that fills items that hold fluids, such as buckets and bottles. Can be used to automatically fill bottles with $(l:thermal:technology/potion_fluid)potion fluid$(/l) from the $(l:thermal:technology/machines/brewer)Alchemical Imbuer$(/l)."
+      "text": "流體灌裝機是一種灌裝盛裝液體的物品（例如水桶和瓶子）的機器。可用於自動使用來自$(l:thermal:technology/machines/brewer)藥水釀造機$(/l)的$(l:thermal:technology/potion_fluid)藥水流體$(/l)填充瓶子。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:machine_bottler",
-      "title": "Fluid Encapsulator"
+      "title": "流體灌裝機"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/machine_speed)通量鏈結放大器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)通量效率升級$(/l)"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Alchemical Imbuer",
+  "name": "藥水釀造機",
   "icon": "thermal:machine_brewer",
   "category": "thermal:machines",
   "read_by_default": true,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Alchemical Imbuer is a machine that brews potions. Creates $(l:thermal:technology/potion_fluid)potion fluid$(/l) as opposed to brewing directly in a bottle. One ingredient is enough to brew one potion bucket, which can fill 4 bottles."
+      "text": "藥水釀造機是一種釀造藥水的機器。製造$(l:thermal:technology/potion_fluid)藥水流體$(/l)而不是直接在瓶子裡釀造。一種材料足以釀造一個藥水桶，其可以裝滿 4 瓶。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:machine_brewer",
-      "title": "Alchemical Imbuer"
+      "title": "藥水釀造機"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/xp_storage)Knowledge Concentrator$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)$(li)$(l:thermal:technology/augments/machine_speed)Flux Linkage Amplifier$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)Flux Efficiency$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/machine_speed)通量鏈結放大器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)通量效率升級$(/l)"
     }
   ]
 }
