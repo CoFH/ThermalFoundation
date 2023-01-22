@@ -509,7 +509,7 @@
   "_comment": "These 'live' in Thermal Core but are non-default and registered from multiple possible modules.",
   "_comment": "========================================================================================================",
 
-  "block.thermal.device_collector": "真空箱子",
+  "block.thermal.device_collector": "真空吸取箱",
   "block.thermal.device_composter": "批量堆肥器",
   "block.thermal.device_fisher": "水產捕撈器",
   "block.thermal.device_hive_extractor": "蜂箱漏斗",
