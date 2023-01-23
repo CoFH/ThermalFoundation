@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Pulverizer is a machine that crushes items and ores. Improves ore yields, which can be further increased using augments and $(l:thermal:world/materials/catalysts)catalysts$(/l)."
+      "text": "磨粉機是一種粉碎物品和礦石的機器。欲提高礦石產量，可以使用增強元件和$(l:thermal:world/materials/catalysts)催化劑$(/l)進一步提升。"
     },
     {
       "type": "thermal:double_crafting_page",

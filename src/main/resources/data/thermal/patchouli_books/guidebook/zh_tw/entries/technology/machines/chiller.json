@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Blast Chiller is a machine that cools down and crystallizes liquids such as water and molten metals into their solid forms. Accepts various casts to alter the shape of the end product."
+      "text": "急速冷凍機是一種將水和熔融金屬等液體冷卻並結晶成固體型態的機器。允許各種鑄模以更改最終產物的形狀。"
     },
     {
       "type": "thermal:double_crafting_page",

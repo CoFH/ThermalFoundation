@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Sawmill is a machine that cuts logs into planks more efficiently than crafting. It produces $(l:thermal:world/plants/treeproducts)Sawdust$(/l) as a byproduct."
+      "text": "鋸木機是一種比手動更有效地將原木切割成木板的機器。它產生$(l:thermal:world/plants/treeproducts)鋸屑$(/l)作為副產物。"
     },
     {
       "type": "thermal:double_crafting_page",

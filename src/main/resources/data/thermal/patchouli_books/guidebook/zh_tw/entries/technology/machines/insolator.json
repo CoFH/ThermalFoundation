@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Phytogenic Insolator is a machine that uses RF, water, and $(l:thermal:world/materials/catalysts)optionally fertilizer$(/l) in order to grow crops, flowers, and trees."
+      "text": "有機灌注器是一種使用紅石通量、水和$(l:thermal:world/materials/catalysts)肥料$(/l)種植農作物、花朵和樹木的機器。"
     },
     {
       "type": "thermal:double_crafting_page",

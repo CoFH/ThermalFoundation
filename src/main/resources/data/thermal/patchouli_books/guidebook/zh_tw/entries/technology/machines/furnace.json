@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Redstone Furnace is a machine that smelts your items like a traditional furnace."
+      "text": "通量熔煉爐是一種像傳統熔爐一樣熔煉物品的機器。"
     },
     {
       "type": "thermal:double_crafting_page",

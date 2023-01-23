@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "藥水釀造機是一種釀造藥水的機器。製造$(l:thermal:technology/potion_fluid)藥水流體$(/l)而不是直接在瓶子裡釀造。一種材料足以釀造一個藥水桶，其可以裝滿 4 瓶。"
+      "text": "藥水釀造機是一種釀造藥水的機器。製造$(l:thermal:technology/potion_fluid)藥水溶液$(/l)而不是直接在瓶子裡釀造。一種材料足以釀造一個藥水桶，其可以裝滿 4 瓶。"
     },
     {
       "type": "thermal:double_crafting_page",

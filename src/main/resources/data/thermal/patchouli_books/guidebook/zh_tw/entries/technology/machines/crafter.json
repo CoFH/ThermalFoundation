@@ -7,13 +7,13 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Sequential Fabricator is a machine that automatically crafts items. Once the recipe in the crafting grid is set, it will take items and liquids from its internal inventory and craft them. Recipes that take a bucket of a particular fluid and leave an empty bucket behind can be crafted using liquid from the internal tank instead."
+      "text": "序列裝配機是一種自動合成物品的機器。一旦設定了製作格線中的配方，它將從其內部物品欄中取出物品和液體並製作它們。使用一桶特定液體並留下空桶的配方可以改用內部儲罐中的液體製作。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:machine_crafter",
       "title": "序列裝配機",
-      "text": "Note that this machine currently has no ability to protect from overfilling with one particular ingredient! A batching device is coming with Thermal Dynamics, so stay tuned!"
+      "text": "請注意，這台機器目前無法防止一種特定成分過度填充！熱動力學附帶批次處理裝置，敬請期待！"
     },
     {
       "type": "patchouli:text",

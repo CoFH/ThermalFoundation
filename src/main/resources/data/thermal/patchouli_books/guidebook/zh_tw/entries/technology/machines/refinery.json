@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Fractionating Still is a machine refines fluids such as Resin and Sap."
+      "text": "流體精煉機是一種提煉樹脂和樹汁等流體的機器。"
     },
     {
       "type": "thermal:double_crafting_page",

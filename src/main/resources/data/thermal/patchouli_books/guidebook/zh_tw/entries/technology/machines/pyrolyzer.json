@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Pyrolyzer is a machine that decomposes substances in a low-oxygen environment using heat. Typically used to convert organic matter and coal into cleaner, longer-lasting fuels."
+      "text": "熱力裂解爐是一種利用熱量在低氧環境中分解物質的機器。通常用於將有機物和煤炭轉化為更清淨、更持久的燃料。"
     },
     {
       "type": "thermal:double_crafting_page",

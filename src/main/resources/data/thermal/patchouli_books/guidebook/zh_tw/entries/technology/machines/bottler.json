@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "流體灌裝機是一種灌裝盛裝液體的物品（例如水桶和瓶子）的機器。可用於自動使用來自$(l:thermal:technology/machines/brewer)藥水釀造機$(/l)的$(l:thermal:technology/potion_fluid)藥水流體$(/l)填充瓶子。"
+      "text": "流體灌裝機是一種灌裝盛裝液體的物品（例如水桶和瓶子）的機器。可用於自動使用來自$(l:thermal:technology/machines/brewer)藥水釀造機$(/l)的$(l:thermal:technology/potion_fluid)藥水溶液$(/l)填充瓶子。"
     },
     {
       "type": "thermal:double_crafting_page",

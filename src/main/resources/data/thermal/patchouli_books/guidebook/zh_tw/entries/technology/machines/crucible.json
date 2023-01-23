@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Magma Crucible is a machine that melts items into fluids."
+      "text": "熔岩爐是一種將物品熔化成流體的機器。"
     },
     {
       "type": "thermal:double_crafting_page",
