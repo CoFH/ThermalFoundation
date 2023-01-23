@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "用於儲存和灌注具有藥水效果的箭。右鍵點擊你手中的箭袋，將箭矢從你的物品欄轉移到箭袋中。按 \"$(k:cofh.mode_change_increment)\" 切換灌注，每個箭矢需要 50mb 儲存的 $(l:thermal:technology/potion_fluid)藥水流體$(/l)。可以在工匠工作台中填充和增強箭袋。"
+      "text": "用於儲存和灌注具有藥水效果的箭。右鍵點擊你手中的箭袋，將箭矢從你的物品欄轉移到箭袋中。按 \"$(k:cofh.mode_change_increment)\" 切換灌注，每個箭矢需要 50mb 儲存的 $(l:thermal:technology/potion_fluid)藥水溶液$(/l)。可以在工匠工作台中填充和增強箭袋。"
     },
     {
       "type": "thermal:double_crafting_page",

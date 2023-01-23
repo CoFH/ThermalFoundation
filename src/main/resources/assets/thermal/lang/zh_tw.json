@@ -241,13 +241,13 @@
   "item.thermal.lock": "信素安全鎖",
   "item.thermal.lock.desc": "用於將熱力機器鎖定為私有狀態。",
   "item.thermal.phytogro": "植育一號",
-  "item.thermal.phytogro.desc": "超強力化肥。",
+  "item.thermal.phytogro.desc": "超強力肥料。",
   "item.thermal.redprint": "紅圖",
   "item.thermal.redprint.desc": "複製特定方塊的設置並套用於同種方塊。",
   "item.thermal.satchel": "背包",
   "item.thermal.satchel.desc": "儲存物品，可以安裝物品篩選器",
   "item.thermal.wrench": "新月錘",
-  "item.thermal.wrench.desc": "設置、旋轉或拆除特定方塊。其實就是個扳手。",
+  "item.thermal.wrench.desc": "設定、旋轉或拆除特定方塊。其實就是個扳手。",
   "item.thermal.xp_crystal": "洞察水晶",
   "item.thermal.xp_crystal.desc": "儲存經驗。",
 
@@ -490,7 +490,7 @@
   "item.thermal.rs_control_augment.desc": "允許紅石訊號控制。",
 
   "item.thermal.side_config_augment": "模組設置重構",
-  "item.thermal.side_config_augment.desc": "允許重新設置每面的輸入/輸出設定",
+  "item.thermal.side_config_augment.desc": "允許重新設定每面的輸入/輸出設定",
 
   "item.thermal.upgrade_augment_1": "硬化整合組件",
   "item.thermal.upgrade_augment_1.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
@@ -996,7 +996,7 @@
   "block.thermal.item_buffer": "邏輯物品緩衝器",
 
   "info.thermal.energy_limiter_attachment.0": "限制流經它的能量傳輸速率。",
-  "info.thermal.energy_limiter_attachment.1": "可為每個方向設置不同上限。",
+  "info.thermal.energy_limiter_attachment.1": "可為每個方向設定不同上限。",
   "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
 
   "info.thermal.fluid_filter_attachment.0": "將存有流體的物品放入欄位，以此把對應的流體新增到篩選器清單中。",
@@ -1004,7 +1004,7 @@
   "info.thermal.fluid_filter_attachment.2": "紅石控制可用於暫時關閉篩選...",
 
   "info.thermal.item_buffer.0": "限制物品的傳送速率和數量。",
-  "info.thermal.item_buffer.1": "使用左側網格來設置所需物品及其數量",
+  "info.thermal.item_buffer.1": "使用左側網格來設定所需物品及其數量",
   "info.thermal.item_buffer.2": "閂鎖模式下，只有所有物品均滿足要求才會輸出。",
   "info.thermal.item_buffer.3": "非常適合用來維持特定物品比例。",
 
@@ -1216,7 +1216,7 @@
   "info.thermal.magnet.mode.0": "自動磁吸已停用",
   "info.thermal.magnet.mode.1": "自動磁吸已啟用",
   "info.thermal.magnet.use": "使用以吸引目標物品。",
-  "info.thermal.magnet.use.sneak": "潛行並使用以進行設置。",
+  "info.thermal.magnet.use.sneak": "潛行並使用以進行設定。",
 
   "info.thermal.infuser.mode.0": "自動注射已停用",
   "info.thermal.infuser.mode.1": "自動注射已啟用",

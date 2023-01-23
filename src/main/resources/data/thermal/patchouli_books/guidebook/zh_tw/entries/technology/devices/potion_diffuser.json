@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "藥水霧化器是一種會定期消耗$(l:thermal:technology/potion_fluid)藥水流體$(/l)以將藥水效果散播給附近生物的裝置。與普通藥水相比，以這種方式獲得的效果持續時間縮短 1/4。當沒有生物在其影響範圍內時，它會自動停止運作。基本上，霧化器在以它為中心的 9x9x9 區域散播藥水效果，可以使用$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)增強元件擴大到 15x15x15。"
+      "text": "藥水霧化器是一種會定期消耗$(l:thermal:technology/potion_fluid)藥水溶液$(/l)以將藥水效果散播給附近生物的裝置。與普通藥水相比，以這種方式獲得的效果持續時間縮短 1/4。當沒有生物在其影響範圍內時，它會自動停止運作。基本上，霧化器在以它為中心的 9x9x9 區域散播藥水效果，可以使用$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)增強元件擴大到 15x15x15。"
     },
     {
       "type": "thermal:double_crafting_page",

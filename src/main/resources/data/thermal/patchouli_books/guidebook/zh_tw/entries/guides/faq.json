@@ -25,7 +25,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Q: 如何修改礦物生成？$(br)A: 該設置有啟用/停用礦物生成的選項，但尚未實現對生成高度等細節的調整。$(br2)Q: 我如何更改設置？$(br)A: 設置現在是在每次保存的基礎上建立；在儲存檔案中的 serverconfigs 資料夾中找到它們。你還可以藉由將檔案從 serverconfigs 資料夾複製到 defaultconfigs 資料夾並進行編輯來設置預設設定。"
+      "text": "Q: 如何修改礦物生成？$(br)A: 該設置有啟用/停用礦物生成的選項，但尚未實現對生成高度等細節的調整。$(br2)Q: 我如何更改設置？$(br)A: 設置現在是在每次保存的基礎上建立；在儲存檔案中的 serverconfigs 資料夾中找到它們。你還可以藉由將檔案從 serverconfigs 資料夾複製到 defaultconfigs 資料夾並進行編輯來設定預設設置。"
     },
     {
       "type": "patchouli:text",
