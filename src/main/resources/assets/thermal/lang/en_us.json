@@ -1013,9 +1013,9 @@
   "info.thermal.item_buffer.mode.0": "I/O: Normal",
   "info.thermal.item_buffer.mode.1": "I/O: Latch",
 
-  "item.thermal.energy_limiter_attachment": "Redstone Flux Limiter",
-  "item.thermal.filter_attachment": "Filter",
-  "item.thermal.servo_attachment": "Servo",
+  "item.thermal.energy_limiter_attachment": "Attachment: Redstone Flux Limiter",
+  "item.thermal.filter_attachment": "Attachment: Filter",
+  "item.thermal.servo_attachment": "Attachment: Servo",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",

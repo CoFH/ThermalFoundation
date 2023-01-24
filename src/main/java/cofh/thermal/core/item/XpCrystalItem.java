@@ -53,6 +53,14 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
         entityIn.getPersistentData().putLong(TAG_XP_TIMER, entityIn.level.getGameTime());
     }
 
+    // region IXpContainerItem
+    @Override
+    public boolean canStoreXp(ItemStack stack) {
+
+        return getMode(stack) <= 0;
+    }
+    // endregion
+
     // region IMultiModeItem
     @Override
     public void onModeChange(Player player, ItemStack stack) {
