@@ -1,5 +1,5 @@
 {
-  "name": "Tinker's Workbench",
+  "name": "工匠工作台",
   "icon": "thermal:tinker_bench",
   "category": "thermal:technology",
   "sortnum": -1,
@@ -7,17 +7,17 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Tinker's Workbench is a block that can charge, fill, and apply augments to tools and blocks. It has two modes, charge/refill and augment, which you can toggle between using the button below the item slot in the GUI. Augments are only fully installed when you toggle modes or take the tool/block out."
+      "text": "工匠工作台是一個可以為工具和方塊充電、填充和套用增強的方塊。它有兩種模式，充能/灌裝和增強，你可以使用 GUI 中物品欄下方的按鈕在這兩種模式之間切換。僅當你切換模式或取出工具/方塊時，增強元件才會完全安裝。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:tinker_bench",
-      "title": "Tinker's Workbench"
+      "title": "工匠工作台"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)Expanded Tank Construction$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
     }
   ]
 }

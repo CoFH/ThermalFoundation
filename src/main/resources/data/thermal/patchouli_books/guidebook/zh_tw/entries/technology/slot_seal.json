@@ -1,5 +1,5 @@
 {
-  "name": "Slot Seal",
+  "name": "欄位擋板",
   "icon": "thermal:slot_seal",
   "category": "thermal:technology",
   "read_by_default": true,
@@ -7,12 +7,12 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Used to lock a slot and prevent items from entering it. Helpful for advanced machine logistics."
+      "text": "用於鎖定欄位並防止物品進入。有助於進階的機器物流。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:slot_seal",
-      "title": "Slot Seal"
+      "title": "欄位擋板"
     }
   ]
 }

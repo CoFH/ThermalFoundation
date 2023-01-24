@@ -1,17 +1,17 @@
 {
-  "name": "Signalum Security Lock",
+  "name": "信素安全鎖",
   "icon": "thermal:lock",
   "category": "thermal:technology",
   "read_by_default": true,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Used to enable the security panel on your various machines, dynamos, and items. Make your stuff yours!"
+      "text": "用於啟用各種機器、能源爐和物品上的安全面板。讓你的東西變成你的！"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:tools/lock",
-      "title": "Signalum Security Lock"
+      "title": "信素安全鎖"
     }
   ]
 }

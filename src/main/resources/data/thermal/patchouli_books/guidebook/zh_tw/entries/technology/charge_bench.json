@@ -1,5 +1,5 @@
 {
-  "name": "Energetic Infuser",
+  "name": "能量灌注機",
   "icon": "thermal:charge_bench",
   "category": "thermal:technology",
   "read_by_default": true,
@@ -7,18 +7,18 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Energetic Infuser is a block that can be used to charge up to 9 items at once. Its main benefits over the $(l:thermal:technology/tinker_bench)Tinker's Bench$(/l) are faster charging speeds and that items can be automatically inserted and extracted (e.g. with a hopper)."
+      "text": "能量灌注機是一個可用於一次充能最多 9 個物品的方塊。與$(l:thermal:technology/tinker_bench)工匠工作台$(/l)相比，它的主要優點是充電速度更快，並且可以自動插入和取出物品（例如藉由漏斗）。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:charge_bench",
-      "title": "Energetic Infuser",
-      "text": "$(o)Ancient texts record the existence of a machine by the same name that was once able to infuse Redstone Flux directly into items, not just tools. This, however, seems to defy all logic.$()"
+      "title": "能量灌注機",
+      "text": "$(o)古代文獻記載了一台同名機器的存在，它曾經能夠將紅石通量直接注入物品中，而不僅僅是工具。 然而，這似乎違背了所有邏輯。$()"
     },
     {
       "type": "patchouli:text",
-      "title": "Augment Compatibility",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)Integral Components$(/l)$(li)$(l:thermal:technology/augments/item_filter)Item Filter$(/l)$(li)$(l:thermal:technology/augments/rf_coil)Expanded RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)Stabilized RF Coil$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)High-Flux RF Coil$(/l)"
+      "title": "增強相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)"
     }
   ]
 }

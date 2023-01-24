@@ -1,5 +1,5 @@
 {
-  "name": "Potion Fluid",
+  "name": "藥水溶液",
   "icon": "minecraft:potion",
   "category": "thermal:technology",
   "flag": "|mod:thermal_expansion,mod:thermal_innovation",
@@ -8,16 +8,16 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Potion fluid is the fluid form of conventional Minecraft potions. Using a Minecraft potion bottle on a machine, device, or storage block that accepts potion fluids will fill the block with potion fluid and return an empty bottle."
+      "text": "藥水溶液是傳統 Minecraft 藥水的流體型態。在接受藥水的機器、裝置或儲存方塊上使用 Minecraft 藥水瓶會使用藥水填充方塊並返還一個空瓶。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Potion fluid is the fluid form of conventional Minecraft potions. It can be obtained directly by brewing potions in the $(l:thermal:technology/machines/brewer)Alchemical Imbuer$(/l). Using a Minecraft potion bottle on a machine, device, or storage block that accepts potion fluids will fill the block with potion fluid and return an empty bottle."
+      "text": "藥水溶液是傳統 Minecraft 藥水的流體型態。它可以藉由在$(l:thermal:technology/machines/brewer)藥水釀造機$(/l)中釀造藥水直接獲得。在接受藥水的機器、裝置或儲存方塊上使用 Minecraft 藥水瓶會使用藥水填充方塊並返還一個空瓶。"
     },
     {
       "type": "patchouli:text",
-      "text": "Conversely, using an empty bottle on a block containing fluid potion will fill the bottle. 250mb of potion fluid is equivalent to one Minecraft potion bottle."
+      "text": "相對的，在裝有流體藥水的方塊上使用空瓶會填滿瓶子。250mb 的藥水溶液相當於一瓶 Minecraft 藥水。"
     }
   ]
 }
