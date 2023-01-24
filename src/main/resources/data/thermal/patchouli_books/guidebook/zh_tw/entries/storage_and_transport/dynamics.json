@@ -33,7 +33,7 @@
     {
       "type": "patchouli:text",
       "title": "Content Mods with Pipes",
-      "text": "以下模組具有多種傳輸選項，但還新增了許多你可能感興趣的其他精彩內容。如果您正在尋找 $(o)只有$() 新增物品/流體/能量傳輸選項的模組，請參考之前的頁面。$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism)Mekanism$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/create)Create$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)Immersive Engineering$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/rats)funny rat mod$()"
+      "text": "以下模組具有多種傳輸選項，但還新增了許多你可能感興趣的其他精彩內容。如果你正在尋找 $(o)只有$() 新增物品/流體/能量傳輸選項的模組，請參考之前的頁面。$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism)Mekanism$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/create)Create$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)Immersive Engineering$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/rats)funny rat mod$()"
     }
   ]
 }

@@ -29,7 +29,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Q: 我該在哪裡以及如何回報錯誤？$(br)A: 你可以在我們的$(l:thermal:links/discord)Discord 伺服器$(/l)中詢問。在回報之前，請確保你的模組是最新的並且你沒有安裝 Optifine。$(br2)Q: 我該如何改變配方？$(br)A: 熱力模組都是資料驅動的，因此您可以使用資料包修改配方，如$(l:thermal:guides/modpack/recipes)此處$(/l)所示。或者，熱力模組具有 CraftTweaker 支持。"
+      "text": "Q: 我該在哪裡以及如何回報錯誤？$(br)A: 你可以在我們的$(l:thermal:links/discord)Discord 伺服器$(/l)中詢問。在回報之前，請確保你的模組是最新的並且你沒有安裝 Optifine。$(br2)Q: 我該如何改變配方？$(br)A: 熱力模組都是資料驅動的，因此你可以使用資料包修改配方，如$(l:thermal:guides/modpack/recipes)此處$(/l)所示。或者，熱力模組具有 CraftTweaker 支持。"
     }
   ]
 }
