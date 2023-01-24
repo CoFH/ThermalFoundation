@@ -111,7 +111,7 @@
   "death.attack.blizz": "%1$s 邂逅了冷酷的命運！",
 
   "entity.thermal.basalz": "岩石使者",
-  "entity.thermal.blitz": "狂風使者",
+  "entity.thermal.blitz": "雷霆使者",
   "entity.thermal.blizz": "暴雪使者",
 
   "entity.thermal.basalz_projectile": "地岩裂片",
@@ -226,9 +226,9 @@
   "item.thermal.basalz_powder": "岩石粉",
   "item.thermal.basalz_rod": "岩石裂骸",
   "item.thermal.basalz_spawn_egg": "岩石使者 生怪蛋",
-  "item.thermal.blitz_powder": "狂風粉",
-  "item.thermal.blitz_rod": "狂風沙塵",
-  "item.thermal.blitz_spawn_egg": "狂風使者 生怪蛋",
+  "item.thermal.blitz_powder": "雷霆粉",
+  "item.thermal.blitz_rod": "雷霆沙塵",
+  "item.thermal.blitz_spawn_egg": "雷霆使者 生怪蛋",
   "item.thermal.blizz_powder": "暴雪粉",
   "item.thermal.blizz_rod": "暴雪立方",
   "item.thermal.blizz_spawn_egg": "暴雪使者 生怪蛋",
@@ -373,10 +373,10 @@
   "subtitles.thermal.entity.basalz.hurt": "岩石使者受傷",
   "subtitles.thermal.entity.basalz.shoot": "岩石使者射擊",
 
-  "subtitles.thermal.entity.blitz.ambient": "狂風使者呼吸",
-  "subtitles.thermal.entity.blitz.death": "狂風使者死亡",
-  "subtitles.thermal.entity.blitz.hurt": "狂風使者受傷",
-  "subtitles.thermal.entity.blitz.shoot": "狂風使者射擊",
+  "subtitles.thermal.entity.blitz.ambient": "雷霆使者呼吸",
+  "subtitles.thermal.entity.blitz.death": "雷霆使者死亡",
+  "subtitles.thermal.entity.blitz.hurt": "雷霆使者受傷",
+  "subtitles.thermal.entity.blitz.shoot": "雷霆使者射擊",
 
   "subtitles.thermal.entity.blizz.ambient": "暴雪使者呼吸",
   "subtitles.thermal.entity.blizz.death": "暴雪使者死亡",
