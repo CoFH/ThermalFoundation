@@ -5,10 +5,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_0_item#->iname",
-        "Primary: #A_0_p#x",
-        "Secondary: #A_0_s#x",
-        "Energy: #A_0_e#x",
-        "Usage: #A_0_u#%"
+        "基本：#A_0_p#x",
+        "次級：#A_0_s#x",
+        "能量：#A_0_e#x",
+        "使用：#A_0_u#%"
       ],
       "guard": "#A_0_enable",
       "width": 16,
@@ -34,10 +34,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_1_item#->iname",
-        "Primary: #A_1_p#x",
-        "Secondary: #A_1_s#x",
-        "Energy: #A_1_e#x",
-        "Usage: #A_1_u#%"
+        "基本：#A_1_p#x",
+        "次級：#A_1_s#x",
+        "能量：#A_1_e#x",
+        "使用：#A_1_u#%"
       ],
       "guard": "#A_1_enable",
       "width": 16,
@@ -63,10 +63,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_2_item#->iname",
-        "Primary: #A_2_p#x",
-        "Secondary: #A_2_s#x",
-        "Energy: #A_2_e#x",
-        "Usage: #A_2_u#%"
+        "基本：#A_2_p#x",
+        "次級：#A_2_s#x",
+        "能量：#A_2_e#x",
+        "使用：#A_2_u#%"
       ],
       "guard": "#A_2_enable",
       "width": 16,
@@ -92,10 +92,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_3_item#->iname",
-        "Primary: #A_3_p#x",
-        "Secondary: #A_3_s#x",
-        "Energy: #A_3_e#x",
-        "Usage: #A_3_u#%"
+        "基本：#A_3_p#x",
+        "次級：#A_3_s#x",
+        "能量：#A_3_e#x",
+        "使用：#A_3_u#%"
       ],
       "guard": "#A_3_enable",
       "width": 16,
@@ -121,10 +121,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_4_item#->iname",
-        "Primary: #A_4_p#x",
-        "Secondary: #A_4_s#x",
-        "Energy: #A_4_e#x",
-        "Usage: #A_4_u#%"
+        "基本：#A_4_p#x",
+        "次級：#A_4_s#x",
+        "能量：#A_4_e#x",
+        "使用：#A_4_u#%"
       ],
       "guard": "#A_4_enable",
       "width": 16,
@@ -150,10 +150,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_5_item#->iname",
-        "Primary: #A_5_p#x",
-        "Secondary: #A_5_s#x",
-        "Energy: #A_5_e#x",
-        "Usage: #A_5_u#%"
+        "基本：#A_5_p#x",
+        "次級：#A_5_s#x",
+        "能量：#A_5_e#x",
+        "使用：#A_5_u#%"
       ],
       "guard": "#A_5_enable",
       "width": 16,
@@ -183,7 +183,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "and$(br)more!",
+      "text": "還有$(br)更多！",
       "group": "jei",
       "guard": "#A_enablejei",
       "x": 95,
@@ -192,7 +192,7 @@
     {
       "type": "patchouli:tooltip",
       "tooltip": [
-        "See JEI for more details!"
+        "詳情請見 JEI！"
       ],
       "group": "jei",
       "guard": "#A_enablejei",
@@ -205,10 +205,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#B_0_item#->iname",
-        "Primary: #B_0_p#x",
-        "Secondary: #B_0_s#x",
-        "Energy: #B_0_e#x",
-        "Usage: #B_0_u#%"
+        "基本：#B_0_p#x",
+        "次級：#B_0_s#x",
+        "能量：#B_0_e#x",
+        "使用：#B_0_u#%"
       ],
       "guard": "#B_0_enable",
       "width": 16,
@@ -234,10 +234,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#B_1_item#->iname",
-        "Primary: #B_1_p#x",
-        "Secondary: #B_1_s#x",
-        "Energy: #B_1_e#x",
-        "Usage: #B_1_u#%"
+        "基本：#B_1_p#x",
+        "次級：#B_1_s#x",
+        "能量：#B_1_e#x",
+        "使用：#B_1_u#%"
       ],
       "guard": "#B_1_enable",
       "width": 16,
@@ -263,10 +263,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#B_2_item#->iname",
-        "Primary: #B_2_p#x",
-        "Secondary: #B_2_s#x",
-        "Energy: #B_2_e#x",
-        "Usage: #B_2_u#%"
+        "基本：#B_2_p#x",
+        "次級：#B_2_s#x",
+        "能量：#B_2_e#x",
+        "使用：#B_2_u#%"
       ],
       "guard": "#B_2_enable",
       "width": 16,
@@ -292,10 +292,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#B_3_item#->iname",
-        "Primary: #B_3_p#x",
-        "Secondary: #B_3_s#x",
-        "Energy: #B_3_e#x",
-        "Usage: #B_3_u#%"
+        "基本：#B_3_p#x",
+        "次級：#B_3_s#x",
+        "能量：#B_3_e#x",
+        "使用：#B_3_u#%"
       ],
       "guard": "#B_3_enable",
       "width": 16,
@@ -321,10 +321,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#B_4_item#->iname",
-        "Primary: #B_4_p#x",
-        "Secondary: #B_4_s#x",
-        "Energy: #B_4_e#x",
-        "Usage: #B_4_u#%"
+        "基本：#B_4_p#x",
+        "次級：#B_4_s#x",
+        "能量：#B_4_e#x",
+        "使用：#B_4_u#%"
       ],
       "guard": "#B_4_enable",
       "width": 16,
@@ -350,10 +350,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#B_5_item#->iname",
-        "Primary: #B_5_p#x",
-        "Secondary: #B_5_s#x",
-        "Energy: #B_5_e#x",
-        "Usage: #B_5_u#%"
+        "基本：#B_5_p#x",
+        "次級：#B_5_s#x",
+        "能量：#B_5_e#x",
+        "使用：#B_5_u#%"
       ],
       "guard": "#B_5_enable",
       "width": 16,
@@ -383,7 +383,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "and$(br)more!",
+      "text": "還有$(br)更多！",
       "group": "jei",
       "guard": "#B_enablejei",
       "x": 95,
@@ -392,7 +392,7 @@
     {
       "type": "patchouli:tooltip",
       "tooltip": [
-        "See JEI for more details!"
+        "詳情請見 JEI！"
       ],
       "group": "jei",
       "guard": "#B_enablejei",
@@ -405,10 +405,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#C_0_item#->iname",
-        "Primary: #C_0_p#x",
-        "Secondary: #C_0_s#x",
-        "Energy: #C_0_e#x",
-        "Usage: #C_0_u#%"
+        "基本：#C_0_p#x",
+        "次級：#C_0_s#x",
+        "能量：#C_0_e#x",
+        "使用：#C_0_u#%"
       ],
       "guard": "#C_0_enable",
       "width": 16,
@@ -434,10 +434,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#C_1_item#->iname",
-        "Primary: #C_1_p#x",
-        "Secondary: #C_1_s#x",
-        "Energy: #C_1_e#x",
-        "Usage: #C_1_u#%"
+        "基本：#C_1_p#x",
+        "次級：#C_1_s#x",
+        "能量：#C_1_e#x",
+        "使用：#C_1_u#%"
       ],
       "guard": "#C_1_enable",
       "width": 16,
@@ -463,10 +463,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#C_2_item#->iname",
-        "Primary: #C_2_p#x",
-        "Secondary: #C_2_s#x",
-        "Energy: #C_2_e#x",
-        "Usage: #C_2_u#%"
+        "基本：#C_2_p#x",
+        "次級：#C_2_s#x",
+        "能量：#C_2_e#x",
+        "使用：#C_2_u#%"
       ],
       "guard": "#C_2_enable",
       "width": 16,
@@ -492,10 +492,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#C_3_item#->iname",
-        "Primary: #C_3_p#x",
-        "Secondary: #C_3_s#x",
-        "Energy: #C_3_e#x",
-        "Usage: #C_3_u#%"
+        "基本：#C_3_p#x",
+        "次級：#C_3_s#x",
+        "能量：#C_3_e#x",
+        "使用：#C_3_u#%"
       ],
       "guard": "#C_3_enable",
       "width": 16,
@@ -521,10 +521,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#C_4_item#->iname",
-        "Primary: #C_4_p#x",
-        "Secondary: #C_4_s#x",
-        "Energy: #C_4_e#x",
-        "Usage: #C_4_u#%"
+        "基本：#C_4_p#x",
+        "次級：#C_4_s#x",
+        "能量：#C_4_e#x",
+        "使用：#C_4_u#%"
       ],
       "guard": "#C_4_enable",
       "width": 16,
@@ -550,10 +550,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#C_5_item#->iname",
-        "Primary: #C_5_p#x",
-        "Secondary: #C_5_s#x",
-        "Energy: #C_5_e#x",
-        "Usage: #C_5_u#%"
+        "基本：#C_5_p#x",
+        "次級：#C_5_s#x",
+        "能量：#C_5_e#x",
+        "使用：#C_5_u#%"
       ],
       "guard": "#C_5_enable",
       "width": 16,
@@ -583,7 +583,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "and$(br)more!",
+      "text": "還有$(br)更多！",
       "group": "jei",
       "guard": "#C_enablejei",
       "x": 95,
@@ -592,7 +592,7 @@
     {
       "type": "patchouli:tooltip",
       "tooltip": [
-        "See JEI for more details!"
+        "詳情請見 JEI！"
       ],
       "group": "jei",
       "guard": "#C_enablejei",
@@ -605,10 +605,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#D_0_item#->iname",
-        "Primary: #D_0_p#x",
-        "Secondary: #D_0_s#x",
-        "Energy: #D_0_e#x",
-        "Usage: #D_0_u#%"
+        "基本：#D_0_p#x",
+        "次級：#D_0_s#x",
+        "能量：#D_0_e#x",
+        "使用：#D_0_u#%"
       ],
       "guard": "#D_0_enable",
       "width": 16,
@@ -634,10 +634,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#D_1_item#->iname",
-        "Primary: #D_1_p#x",
-        "Secondary: #D_1_s#x",
-        "Energy: #D_1_e#x",
-        "Usage: #D_1_u#%"
+        "基本：#D_1_p#x",
+        "次級：#D_1_s#x",
+        "能量：#D_1_e#x",
+        "使用：#D_1_u#%"
       ],
       "guard": "#D_1_enable",
       "width": 16,
@@ -663,10 +663,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#D_2_item#->iname",
-        "Primary: #D_2_p#x",
-        "Secondary: #D_2_s#x",
-        "Energy: #D_2_e#x",
-        "Usage: #D_2_u#%"
+        "基本：#D_2_p#x",
+        "次級：#D_2_s#x",
+        "能量：#D_2_e#x",
+        "使用：#D_2_u#%"
       ],
       "guard": "#D_2_enable",
       "width": 16,
@@ -692,10 +692,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#D_3_item#->iname",
-        "Primary: #D_3_p#x",
-        "Secondary: #D_3_s#x",
-        "Energy: #D_3_e#x",
-        "Usage: #D_3_u#%"
+        "基本：#D_3_p#x",
+        "次級：#D_3_s#x",
+        "能量：#D_3_e#x",
+        "使用：#D_3_u#%"
       ],
       "guard": "#D_3_enable",
       "width": 16,
@@ -721,10 +721,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#D_4_item#->iname",
-        "Primary: #D_4_p#x",
-        "Secondary: #D_4_s#x",
-        "Energy: #D_4_e#x",
-        "Usage: #D_4_u#%"
+        "基本：#D_4_p#x",
+        "次級：#D_4_s#x",
+        "能量：#D_4_e#x",
+        "使用：#D_4_u#%"
       ],
       "guard": "#D_4_enable",
       "width": 16,
@@ -750,10 +750,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#D_5_item#->iname",
-        "Primary: #D_5_p#x",
-        "Secondary: #D_5_s#x",
-        "Energy: #D_5_e#x",
-        "Usage: #D_5_u#%"
+        "基本：#D_5_p#x",
+        "次級：#D_5_s#x",
+        "能量：#D_5_e#x",
+        "使用：#D_5_u#%"
       ],
       "guard": "#D_5_enable",
       "width": 16,
@@ -783,7 +783,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "and$(br)more!",
+      "text": "還有$(br)更多！",
       "group": "jei",
       "guard": "#D_enablejei",
       "x": 95,
@@ -792,7 +792,7 @@
     {
       "type": "patchouli:tooltip",
       "tooltip": [
-        "See JEI for more details!"
+        "詳情請見 JEI！"
       ],
       "group": "jei",
       "guard": "#D_enablejei",
@@ -805,10 +805,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#E_0_item#->iname",
-        "Primary: #E_0_p#x",
-        "Secondary: #E_0_s#x",
-        "Energy: #E_0_e#x",
-        "Usage: #E_0_u#%"
+        "基本：#E_0_p#x",
+        "次級：#E_0_s#x",
+        "能量：#E_0_e#x",
+        "使用：#E_0_u#%"
       ],
       "guard": "#E_0_enable",
       "width": 16,
@@ -834,10 +834,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#E_1_item#->iname",
-        "Primary: #E_1_p#x",
-        "Secondary: #E_1_s#x",
-        "Energy: #E_1_e#x",
-        "Usage: #E_1_u#%"
+        "基本：#E_1_p#x",
+        "次級：#E_1_s#x",
+        "能量：#E_1_e#x",
+        "使用：#E_1_u#%"
       ],
       "guard": "#E_1_enable",
       "width": 16,
@@ -863,10 +863,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#E_2_item#->iname",
-        "Primary: #E_2_p#x",
-        "Secondary: #E_2_s#x",
-        "Energy: #E_2_e#x",
-        "Usage: #E_2_u#%"
+        "基本：#E_2_p#x",
+        "次級：#E_2_s#x",
+        "能量：#E_2_e#x",
+        "使用：#E_2_u#%"
       ],
       "guard": "#E_2_enable",
       "width": 16,
@@ -892,10 +892,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#E_3_item#->iname",
-        "Primary: #E_3_p#x",
-        "Secondary: #E_3_s#x",
-        "Energy: #E_3_e#x",
-        "Usage: #E_3_u#%"
+        "基本：#E_3_p#x",
+        "次級：#E_3_s#x",
+        "能量：#E_3_e#x",
+        "使用：#E_3_u#%"
       ],
       "guard": "#E_3_enable",
       "width": 16,
@@ -921,10 +921,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#E_4_item#->iname",
-        "Primary: #E_4_p#x",
-        "Secondary: #E_4_s#x",
-        "Energy: #E_4_e#x",
-        "Usage: #E_4_u#%"
+        "基本：#E_4_p#x",
+        "次級：#E_4_s#x",
+        "能量：#E_4_e#x",
+        "使用：#E_4_u#%"
       ],
       "guard": "#E_4_enable",
       "width": 16,
@@ -950,10 +950,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#E_5_item#->iname",
-        "Primary: #E_5_p#x",
-        "Secondary: #E_5_s#x",
-        "Energy: #E_5_e#x",
-        "Usage: #E_5_u#%"
+        "基本：#E_5_p#x",
+        "次級：#E_5_s#x",
+        "能量：#E_5_e#x",
+        "使用：#E_5_u#%"
       ],
       "guard": "#E_5_enable",
       "width": 16,
@@ -983,7 +983,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "and$(br)more!",
+      "text": "還有$(br)更多！",
       "group": "jei",
       "guard": "#E_enablejei",
       "x": 95,
@@ -992,7 +992,7 @@
     {
       "type": "patchouli:tooltip",
       "tooltip": [
-        "See JEI for more details!"
+        "詳情請見 JEI！"
       ],
       "group": "jei",
       "guard": "#E_enablejei",
