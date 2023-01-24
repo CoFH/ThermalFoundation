@@ -1,5 +1,5 @@
 {
-  "name": "Catalysts",
+  "name": "催化劑",
   "icon": "thermal:rich_slag",
   "read_by_default": true,
   "flag": "mod:thermal_expansion",
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Catalysts are optional items consumed to improve the yield of certain recipes. Machines and their catalysts are listed on the next page with multipliers. The main outputs of a recipe are scaled by Primary. Secondary outputs are scaled by Secondary. The energy per operation is scaled by Energy. Finally, the odds a catalyst is consumed in an operation is indicated by the Usage chance."
+      "text": "催化劑是選擇性物品，可以消耗以提升某些配方的產量。機器及其催化劑乘數列在下一頁中。配方的主要輸出由\"基本\"調整規模。副輸出由\"次級\"調整規模。每次操作的能量由\"能量\"調整規模。最後，催化劑在操作中被消耗的機率由\"使用\"機率表示。"
     },
     {
       "type": "thermal:catalyst_page"

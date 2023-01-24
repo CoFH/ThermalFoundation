@@ -1,12 +1,12 @@
 {
-  "name": "Holding",
+  "name": "擴容",
   "icon": "minecraft:enchanted_book",
   "read_by_default": true,
   "category": "thermal:world",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "CoFH Core adds Holding, a new enchantment that can be applied to blocks and items that can store various things (such as RF or Fluid). For every level, it increases capacity by 50%, up to +200% at Holding IV. This stacks with other things that modify storage capacity, such as $(l:thermal:technology/augments/introduction)augments$(/l). For example, if a machine has $(l:thermal:technology/augments/integral_components)resonant integral components$(/l) and holding IV, it will store 12x the RF."
+      "text": "CoFH 核心新增了擴容，這是一種新的附魔，可以套用於儲存各種東西（例如紅石通量或流體）的方塊和物品。對於每個等級，它都會增加 50% 的容量，在擴容 IV 時最高可增加達 200%。這可與其他修改儲存容量的東西疊加在一起，例如$(l:thermal:technology/augments/introduction)增強元件$(/l)。例如，如果一台機器具有 $(l:thermal:technology/augments/integral_components)諧振整合組件$(/l)且有擴容 IV，它將儲存 12 倍的紅石通量。"
     }
   ]
 }

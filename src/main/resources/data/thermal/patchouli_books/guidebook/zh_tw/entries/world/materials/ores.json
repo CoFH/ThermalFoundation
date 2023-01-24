@@ -1,75 +1,75 @@
 {
-  "name": "Ores",
+  "name": "礦物",
   "icon": "thermal:lead_ore",
   "read_by_default": true,
   "category": "thermal:materials",
   "pages": [
     {
       "type": "patchouli:text",
-      "title": "Disclaimer",
-      "text": "Ore generation is configurable, so amounts and Y-levels are not explained here as they can vary considerably between worlds."
+      "title": "免責聲明",
+      "text": "礦石生成是可設定的，因此這裡不解釋數量和 Y 水平，因為它們在世界之間可能有很大差異。"
     },
     {
       "type": "thermal:2-2_item_page",
 
-      "A.title": "Niter",
+      "A.title": "硝石",
       "A.item1": "thermal:niter_ore",
       "A.item2": "thermal:niter",
-      "A.text": "A soft mineral used as a source of nitrogen and potassium in fertilizer.",
+      "A.text": "一種軟礦物，當作肥料中氮和鉀的來源。",
 
-      "B.title": "Sulfur",
+      "B.title": "硝石",
       "B.item1": "thermal:sulfur_ore",
       "B.item2": "thermal:sulfur",
-      "B.text": "A reactive mineral used to cure rubber and make gunpowder."
+      "B.text": "一種反應性礦物，用於固化橡膠和製造火藥。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "thermal:2-2_item_page",
 
-      "A.title": "Cinnabar",
+      "A.title": "硃砂",
       "A.item1": "thermal:cinnabar_ore",
       "A.item2": "thermal:cinnabar",
-      "A.text": "A scarlet mineral used to enhance ore yields.",
+      "A.text": "一種用於提高礦物產量的猩紅色礦物。",
 
-      "B.title": "Bituminous Sand",
+      "B.title": "瀝青沙",
       "B.item1": "thermal:oil_sand",
       "B.item2": "thermal:bitumen",
-      "B.text": "A sticky, black, highly viscous liquid suspended in sand. Appears in deserts & badlands."
+      "B.text": "懸浮在沙子中的黏稠黑色高黏性液體。出現在沙漠和惡地。"
     },
     {
       "type": "thermal:2-2_item_page",
 
-      "A.title": "Tin",
+      "A.title": "錫",
       "A.item1": "thermal:tin_ore",
       "A.item2": "thermal:tin_ingot",
-      "A.text": "A soft, lightweight metal valued for its versatility.",
+      "A.text": "一種柔軟、輕盈的金屬，因其多功能性而受到重視。",
 
-      "B.title": "Nickel",
+      "B.title": "鎳",
       "B.item1": "thermal:nickel_ore",
       "B.item2": "thermal:nickel_ingot",
-      "B.text": "A hard metal used in alloys less affected by heat."
+      "B.text": "一種用於合金中的硬金屬，受熱的影響較小。"
     },
     {
       "type": "2-2_item_page",
 
-      "A.title": "Lead",
+      "A.title": "鉛",
       "A.item1": "thermal:lead_ore",
       "A.item2": "thermal:lead_ingot",
-      "A.text": "A soft, dense metal with shielding properties.",
+      "A.text": "一種柔軟、緻密的金屬，具有遮蔽特性。",
 
-      "B.title": "Silver",
+      "B.title": "銀",
       "B.item1": "thermal:silver_ore",
       "B.item2": "thermal:silver_ingot",
-      "B.text": "A conductive metal prized for its radiance."
+      "B.text": "一種導電金屬，因其光芒四射而備受推崇。"
     },
     {
       "flag": "mod:thermal_cultivation",
       "type": "2_item_page",
 
-      "A.title": "Apatite",
+      "A.title": "磷灰石",
       "A.item1": "thermal:apatite_ore",
       "A.item2": "thermal:apatite",
-      "A.text": "A common mineral often used as dye or a source of phosphorous in fertilizer."
+      "A.text": "一種常見的礦物質，通常當作染料或肥料中磷的來源。"
     }
   ]
 }

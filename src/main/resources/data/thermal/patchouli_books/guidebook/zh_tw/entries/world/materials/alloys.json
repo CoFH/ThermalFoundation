@@ -1,5 +1,5 @@
 {
-  "name": "Alloys",
+  "name": "合金",
   "icon": "thermal:bronze_ingot",
   "read_by_default": true,
   "category": "thermal:materials",
@@ -8,58 +8,58 @@
       "flag": "mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:fire_charge/bronze_ingot_4",
-      "text": "Thermal adds a variety of different alloys. They can be directly alloyed in an induction smelter. Alternatively, they can be crafted by combining their constituents with a fire charge as shown above."
+      "text": "熱力新增各種不同的合金。它們可以在感應精煉爐中直接合金化。或者，它們可以通過將其成分與如上所示的火焰彈組合來合成。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "thermal:3-3_alloy_page",
 
-      "A.title": "Bronze",
+      "A.title": "青銅",
       "A.recipe": "thermal:machines/smelter/smelter_alloy_bronze",
-      "A.text": "The dawn of a new age.",
+      "A.text": "新時代的曙光。",
 
-      "B.title": "Invar",
+      "B.title": "不變鋼",
       "B.recipe": "thermal:machines/smelter/smelter_alloy_invar",
-      "B.text": "Minimally expands when heated."
+      "B.text": "受熱時膨脹最小。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "thermal:3-3_alloy_page",
 
-      "A.title": "Electrum",
+      "A.title": "琥珀金",
       "A.recipe": "thermal:machines/smelter/smelter_alloy_electrum",
-      "A.text": "The best of both worlds.",
+      "A.text": "兩全其美。",
 
-      "B.title": "Constantan",
+      "B.title": "康銅",
       "B.recipe": "thermal:machines/smelter/smelter_alloy_constantan",
-      "B.text": "Minimal resistivity change when heated."
+      "B.text": "加熱時電阻係數變化最小。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "thermal:3-3_alloy_page",
 
-      "A.title": "Lumium",
+      "A.title": "流明",
       "A.recipe": "thermal:machines/smelter/smelter_alloy_lumium",
-      "A.text": "A brick of solid sunshine.",
+      "A.text": "一塊堅固的陽光磚。",
 
-      "B.title": "Signalum",
+      "B.title": "信素",
       "B.recipe": "thermal:machines/smelter/smelter_alloy_signalum",
-      "B.text": "Conducts better than silver."
+      "B.text": "導電率比銀好。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "3_alloy_page",
 
-      "title": "Enderium",
+      "title": "終界合金",
       "recipe": "thermal:machines/smelter/smelter_alloy_enderium",
-      "text": "Resonates at any frequency."
+      "text": "以任何頻率共振。"
     },
 
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "title": "Alloys",
-      "text": "Thermal adds a variety of different alloys. They can be crafted by combining their constituents with a fire charge."
+      "title": "合金",
+      "text": "熱力新增各種不同的合金。它們可以通過將其成分與火焰彈組合來合成。"
     },
     {
       "flag": "!mod:thermal_expansion",

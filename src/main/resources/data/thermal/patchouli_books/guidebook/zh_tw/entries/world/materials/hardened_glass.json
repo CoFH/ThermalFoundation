@@ -7,7 +7,7 @@
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Hardened glass is blast-resistant glass used in various recipes. It can be lined with various metals to give it different properties. Like with $(l:thermal:world/materials/alloys)alloys$(/l), hardened glass and its variants can be crafted with their constituents and a fire charge in a crafting bench, or directly in an induction smelter."
+      "text": "硬化玻璃是用於各種配方的防爆玻璃。它可以內襯各種金屬以賦予其不同的特性。與$(l:thermal:world/materials/alloys)合金$(/l)一樣，硬化玻璃及其變體可以使用其成分和火焰彈在工作台或直接在感應精煉爐中製作。"
     },
     {
       "flag": "mod:thermal_expansion",
@@ -17,12 +17,12 @@
       "A.in2": "minecraft:obsidian",
       "A.in3": "minecraft:sand",
       "A.out": "thermal:obsidian_glass#2",
-      "A.text": "Basic witherproofing.",
+      "A.text": "基本抗凋零。",
 
       "B.in1": "thermal:obsidian_glass#2",
       "B.in2": "thermal:signalum_ingot",
       "B.out": "thermal:signalum_glass#2",
-      "B.text": "Powers adjacent redstone."
+      "B.text": "為相鄰的紅石供能。"
     },
     {
       "flag": "mod:thermal_expansion",
@@ -31,18 +31,18 @@
       "A.in1": "thermal:obsidian_glass#2",
       "A.in2": "thermal:lumium_ingot",
       "A.out": "thermal:lumium_glass#2",
-      "A.text": "Radiates an intense light.",
+      "A.text": "散發出強烈的光芒。",
 
       "B.in1": "thermal:obsidian_glass#2",
       "B.in2": "thermal:enderium_ingot",
       "B.out": "thermal:enderium_glass#2",
-      "B.text": "Lets you flex on others."
+      "B.text": "讓你向他人炫耀。"
     },
 
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Hardened glass is blast-resistant glass used in various recipes. It can be lined with various metals to give it different properties. Signalum glass emits a strong redstone signal. Lumium glass emits a strong light. Enderium glass allows you to flex on other players."
+      "text": "硬化玻璃是用於各種配方的防爆玻璃。它可以內襯各種金屬以賦予其不同的特性。硬化玻璃是用於各種配方的防爆玻璃。它可以襯有各種金屬以賦予其不同的特性。信素玻璃會發出強烈的紅石信號。流明玻璃玻璃發出強光。終界合金玻璃玻璃讓你可以向其他玩家炫耀。"
     },
     {
       "flag": "!mod:thermal_expansion",

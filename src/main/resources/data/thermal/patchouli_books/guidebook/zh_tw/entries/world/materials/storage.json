@@ -1,5 +1,5 @@
 {
-  "name": "Material Storage",
+  "name": "貯存塊",
   "icon": "thermal:invar_block",
   "read_by_default": true,
   "category": "thermal:materials",
@@ -7,17 +7,17 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Thermal adds storage blocks for all of its $(l:thermal:world/ores)ores$(/l) and $(l:thermal:materials/alloys)alloys$(/l), as well as gunpowder, slag, rich slag, and charcoal. With storage blocks from other mods, Thermal follows a convention where the center item in the crafting recipe determines which mod's storage block to craft. For example, surrounding a Thermal copper ingot with 8 Immersive Engineering copper ingots will craft a Thermal copper block."
+      "text": "熱力為其所有的$(l:thermal:world/ores)礦物$(/l)和$(l:thermal:materials/alloys)合金$(/l)以及火藥、爐渣、富爐渣和木炭新增了貯存塊。對於其他模組的貯存塊，熱力遵循一個慣例，即製作配方中的中心項目決定要製作哪個模組的貯存塊。例如，用 8 個沉浸工程的銅錠圍繞 1 個熱力的銅錠將製作一個熱力的銅塊。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Thermal adds storage blocks for all of its $(l:thermal:world/ores)ores$(/l) and $(l:thermal:materials/alloys)alloys$(/l), as well as gunpowder, slag, rich slag, and charcoal. These can be automatically packed/unpacked with the $(l:thermal:technology/machines/press)multiservo press$(/l)."
+      "text": "熱力為其所有的$(l:thermal:world/ores)礦物$(/l)和$(l:thermal:materials/alloys)合金$(/l)以及火藥、爐渣、富爐渣和木炭新增了貯存塊。這些可以使用$(l:thermal:technology/machines/press)多驅衝壓機$(/l)自動壓縮/解壓縮。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "With storage blocks from other mods, Thermal follows a convention where the center item in the crafting recipe determines which mod's storage block to craft. For example, surrounding a Thermal copper ingot with 8 Immersive Engineering copper ingots will craft a Thermal copper block."
+      "text": "對於其他模組的貯存塊，熱力遵循一個慣例，即製作配方中的中心項目決定要製作哪個模組的貯存塊。例如，用 8 個沉浸工程的銅錠圍繞 1 個熱力的銅錠將製作一個熱力的銅塊。"
     },
     {
       "type": "thermal:double_crafting_page",

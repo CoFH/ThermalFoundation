@@ -1,147 +1,74 @@
 {
-
   "name": "Foods",
-
   "icon": "thermal:pbj_sandwich",
-
   "read_by_default": true,
-
   "flag": "mod:thermal_cultivation",
-
   "category": "thermal:plants",
-
   "pages": [
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:carrot_cake",
-
       "text": "A cake carefully crafted with carrots, containing a copious quantity of carotene. Provides night vision when eaten."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:chocolate_cake",
-
       "text": "A delightful, delectable dessert deserving decorous devotion. More satisfying than normal cake."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:potion_cake",
-
       "text": "A decoctive delight! Imbues the consumer with the effects of the potion used to bake it."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:spice_cake",
-
       "text": "A satiating, scrumptious sweet synthesized from sadiroot spice. Cleanses negative status effects when eaten."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:stuffed_pumpkin",
-
       "text": "A plump pumpkin packed with plentiful produce. Incredibly filling and there's just so much of it."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:cheese_wheel",
-
       "text": "Coagulated cream created by curdling its casein with chymosin. Who doesn't love cheese? Can be split into wedges."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:green_bean_pie",
-
       "text": "A vast volume of varied vegetables. A classic harvest-time staple, in pie form."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:pbj_sandwich_2",
-
       "text": "Gluten grouped by gobs of gooey goodness. If there are any flavors which make a better pairing, they have not yet been discovered."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:stuffed_pepper",
-
       "text": "A pepper packed with parmesan paired with prime meat. Incredibly filling and tasty!"
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:sushi_maki_8",
-
       "text": "Salted seafood surrounded with seaweed and short-grain rice, often served with soy sauce. Nutritious and quick to eat. Don't tell Direwolf20."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:spring_salad",
-
       "text": "Synthesized with the spoils of the spring season, sure to put a spring in your step. Boosts jump height when consumed."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:hearty_stew",
-
       "text": "A body-boosting broth brewed with bulbous produce. Buffs maximum health when consumed."
-
     },
-
     {
-
       "type": "thermal:double_crafting_page",
-
       "A.recipe": "thermal:xp_stew",
-
       "text": "An exhilarating eggplant elixir effervescing with exorbitant experience enhancements. Boosts xp gain when consumed."
-
     }
-
   ]
-
 }

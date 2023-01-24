@@ -1,5 +1,5 @@
 {
-  "name": "Bait",
+  "name": "魚餌",
   "icon": "thermal:aquachow",
   "read_by_default": true,
   "category": "thermal:materials",
@@ -7,22 +7,22 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Various types of bait can be used in the $(l:thermal:technology/devices/fisher)Aquatic Entangler$(/l) to boost or alter its fish-catching capabilities."
+      "text": "可以在$(l:thermal:technology/devices/fisher)水產捕撈器$(/l)中使用各種類型的魚餌以增強或改變其捕魚能力。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:aquachow_4",
-      "text": "Aqua-chow is a unique blend of ingredients that fish can't resist; it boosts the natural catching abilities of the entangler."
+      "text": "水產飼料是魚類無法抗拒的獨特成分混合物；它提高了捕撈器的自然捕撈能力。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:deep_aquachow_4",
-      "text": "Benthic Aqua-chow helps the entangler catch stuff from deeper down, improving the chances for items such as pufferfish, kelp, prismarine, ink sacs, sponges, and occasionally even tridents."
+      "text": "底棲水產飼料幫助捕撈器從更深的地方捕撈東西，提高捕撈河豚、海帶、海磷石、墨囊、海綿，偶爾甚至是三叉戟等物品的機率。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:junk_net",
-      "text": "A Junk Net allows the entangler to collect junk items such as string, lily pads, bones, water bottles, and leather. As the adage goes, 'One treasure's trash is another trash man.' Or something like that."
+      "text": "垃圾打撈網可以讓捕撈器收集垃圾物品，例如繩子、荷葉、骨頭、水瓶和皮革。正如諺語所說，\"一個人的垃圾是另一個人的寶藏。\"或類似的東西。"
     }
   ]
 }
