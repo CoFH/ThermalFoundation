@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "用於為自己、生物或其他玩家注入藥水效果。 按 \"$(k:cofh.mode_change_increment)\" 切換自動注射，它會定期為你注射小劑量。它可以用$(l:thermal:technology/potion_fluid)藥水溶液$(/l)填充並在工匠工作台中增強。"
+      "text": "用於為自己、生物或其他玩家注入藥水效果。按 \"$(k:cofh.mode_change_increment)\" 切換自動注射，它會定期為你注射小劑量。它可以用$(l:thermal:technology/potion_fluid)藥水溶液$(/l)填充並在工匠工作台中增強。"
     },
     {
       "type": "thermal:double_crafting_page",

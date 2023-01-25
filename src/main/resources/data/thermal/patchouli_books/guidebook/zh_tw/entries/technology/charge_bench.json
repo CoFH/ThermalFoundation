@@ -13,7 +13,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:charge_bench",
       "title": "能量灌注機",
-      "text": "$(o)古代文獻記載了一台同名機器的存在，它曾經能夠將紅石通量直接注入物品中，而不僅僅是工具。 然而，這似乎違背了所有邏輯。$()"
+      "text": "$(o)據古代文獻記載，有一種與能量灌注機的同名機器一度可以直接將紅石通量注入任何物品，而不僅僅局限於工具。然而，這實在是太離譜了。$()"
     },
     {
       "type": "patchouli:text",

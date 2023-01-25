@@ -13,7 +13,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:dynamo_lapidary",
       "title": "珠寶能源爐",
-      "text": "$(o)Might be a portal to a land of gem-obsessed moon people.$()"
+      "text": "$(o)這可能是通往痴迷寶石星人之地的傳送門。$()"
     },
     {
       "type": "patchouli:text",

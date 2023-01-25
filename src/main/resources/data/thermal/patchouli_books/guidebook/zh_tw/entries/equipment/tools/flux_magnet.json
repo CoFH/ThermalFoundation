@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "通量磁鐵是一種使用紅石通量將附近的物品拉入玩家物品欄的工具。 拿著它右鍵點擊會吸取附近的物品。按 \"$(k:cofh.mode_change_increment)\" 切換自動吸引模式，附近的物品會被自動拉入。它可以在工匠工作台中充能和增強。"
+      "text": "通量磁鐵是一種使用紅石通量將附近的物品拉入玩家物品欄的工具。拿著它右鍵點擊會吸取附近的物品。按 \"$(k:cofh.mode_change_increment)\" 切換自動吸引模式，附近的物品會被自動拉入。它可以在工匠工作台中充能和增強。"
     },
     {
       "type": "thermal:double_crafting_page",

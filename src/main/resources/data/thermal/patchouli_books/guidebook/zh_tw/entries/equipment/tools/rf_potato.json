@@ -12,7 +12,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:tools/rf_potato",
       "title": "馬鈴薯電容",
-      "text": "$(br2)$(o)\"我沒在耍你。這個馬鈴薯只能發出 1.1 伏特的電力，我實在沒那個能量對你說謊了。\""
+      "text": "$(br2)$(o)\"我不騙你，這個馬鈴薯只能發 1.1 伏特的電。還不夠我跟你撒個謊呢。\""
     }
   ]
 } 

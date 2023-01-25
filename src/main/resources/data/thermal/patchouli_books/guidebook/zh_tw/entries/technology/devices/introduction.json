@@ -8,7 +8,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "裝置在它們周圍的方塊上執行各種功能，其中一些可能需要紅石通量。 為了改進或修改其功能的各個方面，裝置接受$(l:thermal:technology/augments/introduction)增強$(/l)。"
+      "text": "裝置在它們周圍的方塊上執行各種功能，其中一些可能需要紅石通量。為了改進或修改其功能的各個方面，裝置接受$(l:thermal:technology/augments/introduction)增強$(/l)。"
     },
     {
       "type": "patchouli:text",
