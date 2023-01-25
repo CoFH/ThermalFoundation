@@ -8,7 +8,7 @@
     {
       "type": "patchouli:text",
       "title": "感應精煉爐",
-      "text": "感應精煉爐是一種將多種物品熔煉在一起，生產合金的機器。它還可以將礦物熔煉成錠和寶石，受$(l:thermal:world/materials/catalysts)催化劑$(/l)影響。冶煉礦石有機會產生富礦渣作為副產物，可用作催化劑或製造$(l:thermal:world/plants/phytogro)植育一號$(/l)。熔煉礫石會產生燧石和爐渣。"
+      "text": "感應精煉爐是一種將多種物品熔煉在一起，生產合金的機器。它還可以將礦物熔煉成錠和寶石，受$(l:thermal:world/materials/catalysts)催化劑$(/l)影響。冶煉礦石有機會產生富礦渣作為副產物，可當作催化劑或製造$(l:thermal:world/plants/phytogro)植育一號$(/l)。熔煉礫石會產生燧石和爐渣。"
     },
     {
       "type": "thermal:double_crafting_page",

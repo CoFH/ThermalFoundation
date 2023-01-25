@@ -386,7 +386,7 @@
   "subtitles.thermal.item.magnet": "磁鐵吸引",
 
   "subtitles.thermal.item.equip_beekeeper": "養蜂人套裝沙沙作響",
-  "subtitles.thermal.item.equip_diving": "潛水套裝叮當作響",
+  "subtitles.thermal.item.equip_diving": "潛水套裝叮噹作響",
   "subtitles.thermal.item.equip_hazmat": "防護套裝沙沙作響",
 
   "subtitles.thermal.misc.tinker": "升級組件安裝",
@@ -441,7 +441,7 @@
   "item.thermal.dynamo_fuel_augment": "多週期泵注器",
   "item.thermal.dynamo_fuel_augment.desc": "提升燃料效率。",
   "item.thermal.dynamo_output_augment": "輔助反應室",
-  "item.thermal.dynamo_output_augment.desc": "以效率降低為代價提升發電功率。",
+  "item.thermal.dynamo_output_augment.desc": "以效率降低為代價提升產能功率。",
   "item.thermal.dynamo_throttle_augment": "激發場限制器",
   "item.thermal.dynamo_throttle_augment.desc": "防止線圈飽和後的紅石通量損失。",
 
@@ -1172,13 +1172,13 @@
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
   "_comment": "========================================================================================================",
 
-  "block.thermal.dynamo_compression.keyword": "引擎 燃料 發電機 能源",
-  "block.thermal.dynamo_disenchantment.keyword": "書 引擎 發電機 能源",
-  "block.thermal.dynamo_gourmand.keyword": "引擎 食物 發電機 能源",
-  "block.thermal.dynamo_lapidary.keyword": "引擎 寶石 發電機 能源",
-  "block.thermal.dynamo_magmatic.keyword": "引擎 發電機 熔岩 能源",
-  "block.thermal.dynamo_numismatic.keyword": "幣 引擎 發電機 能源",
-  "block.thermal.dynamo_stirling.keyword": "木炭 焦炭 引擎 發電機 能源",
+  "block.thermal.dynamo_compression.keyword": "引擎 燃料 能源爐 能源",
+  "block.thermal.dynamo_disenchantment.keyword": "書 引擎 能源爐 能源",
+  "block.thermal.dynamo_gourmand.keyword": "引擎 食物 能源爐 能源",
+  "block.thermal.dynamo_lapidary.keyword": "引擎 寶石 能源爐 能源",
+  "block.thermal.dynamo_magmatic.keyword": "引擎 能源爐 熔岩 能源",
+  "block.thermal.dynamo_numismatic.keyword": "幣 引擎 能源爐 能源",
+  "block.thermal.dynamo_stirling.keyword": "木炭 焦炭 引擎 能源爐 能源",
 
   "block.thermal.machine_bottler.keyword": "桶 裝填 機器 轉置機",
   "block.thermal.machine_brewer.keyword": "釀造器 釀造 機器 藥水",

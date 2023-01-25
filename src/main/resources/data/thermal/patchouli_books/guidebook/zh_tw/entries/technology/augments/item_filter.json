@@ -8,7 +8,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/item_filter_augment",
       "title": "物品篩選器",
-      "text": "物品篩選器增強元件允許機器、裝置或裝備有選擇地接受物品。篩選器可以在獨立的 GUI 中配置，可以通過按住 Shift + 右鍵點擊安裝它的方塊或物品，或通過方塊 GUI 中的標籤來存取。"
+      "text": "物品篩選器增強元件允許機器、裝置或裝備有選擇地接受物品。篩選器可以在獨立的 GUI 中配置，可以藉由按住 Shift + 右鍵點擊安裝它的方塊或物品，或藉由方塊 GUI 中的標籤來存取。"
     },
     {
       "type": "patchouli:text",

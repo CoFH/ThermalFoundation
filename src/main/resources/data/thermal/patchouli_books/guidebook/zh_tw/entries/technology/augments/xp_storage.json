@@ -12,7 +12,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "安裝後，一個類似於 $(l:thermal:equipment/tools/xp_crystal)洞察水晶$(/l)的小圖示將出現在方塊 GUI 的右下角。玩家可以通過點擊此圖示來擷取儲存在機器中的經驗值。"
+      "text": "安裝後，一個類似於 $(l:thermal:equipment/tools/xp_crystal)洞察水晶$(/l)的小圖示將出現在方塊 GUI 的右下角。玩家可以藉由點擊此圖示來擷取儲存在機器中的經驗值。"
     }
   ]
 }
