@@ -1,5 +1,5 @@
 {
-  "name": "貯存塊",
+  "name": "材料貯存",
   "icon": "thermal:invar_block",
   "read_by_default": true,
   "category": "thermal:materials",

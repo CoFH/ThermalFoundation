@@ -1,5 +1,5 @@
 {
-  "name": "Foods",
+  "name": "食物",
   "icon": "thermal:pbj_sandwich",
   "read_by_default": true,
   "flag": "mod:thermal_cultivation",
@@ -8,67 +8,67 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:carrot_cake",
-      "text": "A cake carefully crafted with carrots, containing a copious quantity of carotene. Provides night vision when eaten."
+      "text": "用胡蘿蔔精心製作的蛋糕，含有豐富的胡蘿蔔素。食用時提供夜視效果。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:chocolate_cake",
-      "text": "A delightful, delectable dessert deserving decorous devotion. More satisfying than normal cake."
+      "text": "令人愉悅的美味甜點，值得高雅的奉獻。比普通蛋糕更令人滿意。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:potion_cake",
-      "text": "A decoctive delight! Imbues the consumer with the effects of the potion used to bake it."
+      "text": "一種煎藥的樂趣！向消費者注入用於烘烤它的藥水效果。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:spice_cake",
-      "text": "A satiating, scrumptious sweet synthesized from sadiroot spice. Cleanses negative status effects when eaten."
+      "text": "一種由薩蒂根莖香料合成的令人飽腹的美味甜食。食用時清除負面狀態效果。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:stuffed_pumpkin",
-      "text": "A plump pumpkin packed with plentiful produce. Incredibly filling and there's just so much of it."
+      "text": "一個豐滿的南瓜，裡面裝滿了豐富的農產品。令人難以置信的填充，而且只有這麼多。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:cheese_wheel",
-      "text": "Coagulated cream created by curdling its casein with chymosin. Who doesn't love cheese? Can be split into wedges."
+      "text": "藉由用凝乳酶凝固酪蛋白製成的凝固奶油。誰不喜歡乳酪？可以分切成楔形。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:green_bean_pie",
-      "text": "A vast volume of varied vegetables. A classic harvest-time staple, in pie form."
+      "text": "大量不同的蔬菜。經典的收穫季節主食，呈餡餅狀。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:pbj_sandwich_2",
-      "text": "Gluten grouped by gobs of gooey goodness. If there are any flavors which make a better pairing, they have not yet been discovered."
+      "text": "麩質與黏稠的食物組成。如果任何口味可以更好地搭配，它們還沒有被發現。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:stuffed_pepper",
-      "text": "A pepper packed with parmesan paired with prime meat. Incredibly filling and tasty!"
+      "text": "一種用帕馬森乾酪和上等肉搭配的甜椒。令人難以置信的填充和美味！"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:sushi_maki_8",
-      "text": "Salted seafood surrounded with seaweed and short-grain rice, often served with soy sauce. Nutritious and quick to eat. Don't tell Direwolf20."
+      "text": "用海藻和糙米包裹的鹹海鮮，通常佐以醬油。營養又快。不要告訴 Direwolf20。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:spring_salad",
-      "text": "Synthesized with the spoils of the spring season, sure to put a spring in your step. Boosts jump height when consumed."
+      "text": "用春季的戰利品合成，一定讓你的腳步充滿春天。食用時提升跳躍高度。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:hearty_stew",
-      "text": "A body-boosting broth brewed with bulbous produce. Buffs maximum health when consumed."
+      "text": "一種強身健體的肉湯，使用球形農產品釀造。食用時提升最大生命值。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:xp_stew",
-      "text": "An exhilarating eggplant elixir effervescing with exorbitant experience enhancements. Boosts xp gain when consumed."
+      "text": "一種令人振奮的茄子長生不老藥，帶有過高的體驗增強效果。食用時提高經驗值收穫。"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Crop Storage",
+  "name": "農作物貯存",
   "icon": "thermal:apple_block",
   "read_by_default": true,
   "category": "thermal:plants",
@@ -7,12 +7,12 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "All crops have storage blocks associated with them, just like vanilla wheat and hay bales."
+      "text": "所有農作物都有與之對應的貯存塊，就像原版小麥和乾草捆。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "All crops have storage blocks associated with them, just like vanilla wheat and hay bales. These can be automatically packed/unpacked with the $(l:thermal:technology/machines/press)multiservo press$(/l)."
+      "text": "所有農作物都有與之對應的貯存塊，就像原版小麥和乾草捆。這些可以使用$(l:thermal:technology/machines/press)多驅衝壓機$(/l)自動壓縮/解壓縮。"
     },
     {
       "type": "thermal:double_crafting_page",

@@ -9,24 +9,24 @@
       "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phytogro_2",
-      "text": "Phyto-gro is fertilizer that is densely packed with all the nutrients plants need. It can be directly applied to plants or spread in an area with $(l:thermal:equipment/explosives/phyto_explosives)some explosives$(/l)."
+      "text": "植育一號富含所有植物所需養分的肥料。它可以直接套用在植物上或利用$(l:thermal:equipment/explosives/phyto_explosives)一些炸藥$(/l)散佈在一個區域。"
     },
     {
       "flag": "&!mod:thermal_cultivation,mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phytogro_2",
-      "text": "Phyto-gro is fertilizer that is densely packed with all the nutrients plants need. It can be directly applied to plants or used in machines as a $(l:thermal:world/materials/catalysts)catalyst$(/l)."
+      "text": "它可以直接套用在植物上，也可以當作機器的$(l:thermal:world/materials/catalysts)催化劑$(/l)。"
     },
     {
       "flag": "&mod:thermal_cultivation,mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phytogro_2",
-      "text": "Phyto-gro is fertilizer that is densely packed with all the nutrients plants need. It can be directly applied to plants, spread in an area with $(l:thermal:equipment/explosives/phyto_explosives)some explosives$(/l), or used in machines as a $(l:thermal:world/materials/catalysts)catalyst$(/l)."
+      "text": "植育一號富含所有植物所需養分的肥料。它可以直接套用在植物上，利用$(l:thermal:equipment/explosives/phyto_explosives)一些炸藥$(/l)散佈在一個區域，或當作機器的$(l:thermal:world/materials/catalysts)催化劑$(/l)。"
     },
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phytogro_4",
-      "text": "$(o)Village elders speak of a lost formula of phyto-gro that could be infused with sap and redstone flux in order to improve crop yields far beyond what could be considered natural. Unfortunately, all attempts to recreate it have ended with failure.$()"
+      "text": "$(o)村里的長者談到了一種失傳的植育配方，它可以注入樹汁和紅石通量，以提高農作物產量，遠遠超過自然條件下的產量。不幸的是，所有重建它的嘗試都以失敗告終。$()"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -35,7 +35,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Phyto-soil is dirt infused with phyto-gro. It approximately doubles the growth rate of plants grown on it, which can be further improved to ~5x using a $(l:thermal:technology/devices/soil_infuser)phyto-soil infuser$(/l). Just like normal soil, it must be tilled for crops to grow on it. Unlike normal farmland, tilled phyto-soil cannot be trampled and does not need water nearby to remain hydrated."
+      "text": "植育土是注入了植育一號的泥土。它使上面種植的植物的生長速度大約翻了一倍，使用$(l:thermal:technology/devices/soil_infuser)植育土注能機$(/l)可以進一步提升到約 5 倍。就像普通的土壤一樣，它必須經過耕耘才能在上面生長農作物。與普通農田不同，耕種的植育土不能被踩踏，也不需要附近的水來保持水分。"
     }
   ]
 }

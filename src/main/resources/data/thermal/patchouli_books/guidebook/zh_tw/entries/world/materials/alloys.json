@@ -8,7 +8,7 @@
       "flag": "mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:fire_charge/bronze_ingot_4",
-      "text": "熱力新增各種不同的合金。它們可以在感應精煉爐中直接合金化。或者，它們可以通過將其成分與如上所示的火焰彈組合來合成。"
+      "text": "熱力新增各種不同的合金。它們可以在感應精煉爐中直接合金化。或者，它們可以藉由將其成分與如上所示的火焰彈組合來合成。"
     },
     {
       "flag": "mod:thermal_expansion",
@@ -59,7 +59,7 @@
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
       "title": "合金",
-      "text": "熱力新增各種不同的合金。它們可以通過將其成分與火焰彈組合來合成。"
+      "text": "熱力新增各種不同的合金。它們可以藉由將其成分與火焰彈組合來合成。"
     },
     {
       "flag": "!mod:thermal_expansion",
