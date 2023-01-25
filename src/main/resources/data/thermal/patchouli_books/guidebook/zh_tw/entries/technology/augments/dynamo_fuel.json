@@ -10,7 +10,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/dynamo_fuel_augment",
       "title": "多環泵注器",
-      "text": "多環泵注器將發電機的燃油效率提升 1.1 倍。"
+      "text": "多環泵注器將能源爐的燃油效率提升 1.1 倍。"
     }
   ]
 }

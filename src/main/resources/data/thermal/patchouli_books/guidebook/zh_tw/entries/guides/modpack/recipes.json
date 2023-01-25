@@ -8,7 +8,7 @@
       "type": "patchouli:link",
       "url": "https://minecraft.fandom.com/wiki/Data_pack",
       "link_text": "Minecraft Wiki",
-      "text": "所有機器、裝置、發電機等都使用 JSON 來決定它們的配方和催化劑，這意味著你可以使用資料包來建立和修改配方。或者，熱力具有 CraftTweaker 支持，如果你對此更滿意的話。下方是 Minecraft Wiki 的連結，可以幫助你開始使用資料包。"
+      "text": "所有機器、裝置、能源爐等都使用 JSON 來決定它們的配方和催化劑，這意味著你可以使用資料包來建立和修改配方。或者，熱力具有 CraftTweaker 支持，如果你對此更滿意的話。下方是 Minecraft Wiki 的連結，可以幫助你開始使用資料包。"
     },
     {
       "type": "patchouli:link",
