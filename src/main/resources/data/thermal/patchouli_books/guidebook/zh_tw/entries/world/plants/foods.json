@@ -13,7 +13,7 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:chocolate_cake",
-      "text": "令人愉悅的美味甜點，值得高雅的奉獻。比普通蛋糕更令人滿意。"
+      "text": "細緻入微的點綴，才配得上沁人心脾的美味。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -23,7 +23,7 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:spice_cake",
-      "text": "一種由薩蒂根莖香料合成的令人飽腹的美味甜食。食用時清除負面狀態效果。"
+      "text": "薩蒂根莖做香料，口感甜蜜又芳妙。食用時清除負面狀態效果。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -68,7 +68,7 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:xp_stew",
-      "text": "一種令人振奮的茄子長生不老藥，帶有過高的體驗增強效果。食用時提高經驗值收穫。"
+      "text": "喝下茄子聖水，精神頓時翻倍，睜睜眼蹬蹬腿，升級步入正軌。"
     }
   ]
 }
