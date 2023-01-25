@@ -988,9 +988,9 @@
 
   "attachment.thermal.energy_limiter": "红石通量限流器",
 
-  "block.thermal.energy_duct": "能量导管",
-  "block.thermal.fluid_duct": "流体导管",
-  "block.thermal.fluid_duct_glass": "流体导管（视窗）",
+  "block.thermal.energy_duct": "能量管道",
+  "block.thermal.fluid_duct": "流体管道",
+  "block.thermal.fluid_duct_glass": "流体管道（视窗）",
 
   "block.thermal.energy_distributor": "RF分发接口",
   "block.thermal.fluid_distributor": "流体分发接口",
