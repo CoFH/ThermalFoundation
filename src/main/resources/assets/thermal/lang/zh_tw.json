@@ -984,7 +984,7 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
-"attachment.thermal.energy_limiter": "紅石通量限流器",
+  "attachment.thermal.energy_limiter": "紅石通量限流器",
 
   "block.thermal.energy_duct": "能量導管",
   "block.thermal.fluid_duct": "流體導管",
