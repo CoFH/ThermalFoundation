@@ -988,7 +988,7 @@
 
   "block.thermal.energy_duct": "フラックスダクト",
   "block.thermal.fluid_duct": "流体ダクト",
-  "block.thermal.fluid_duct_glass": "流体ダクト(窓付き)",
+  "block.thermal.fluid_duct_windowed": "流体ダクト(窓付き)",
 
   "block.thermal.energy_distributor": "RF配給インターフェイス",
   "block.thermal.fluid_distributor": "流体配給インターフェイス",

@@ -867,7 +867,9 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
     public void onControlUpdate() {
 
         updateHandlers();
-        callNeighborStateChange();
+        if (level != null) {
+            level.updateNeighborsAt(worldPosition, block());
+        }
         TileControlPacket.sendToClient(this);
     }
     // endregion

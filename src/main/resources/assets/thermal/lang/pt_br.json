@@ -810,7 +810,7 @@
 
   "block.thermal.energy_duct": "Tubo de Fluxo",
   "block.thermal.fluid_duct": "Tubo de Fluido",
-  "block.thermal.fluid_duct_glass": "Tubo de Fluido (Com Janela)",
+  "block.thermal.fluid_duct_windowed": "Tubo de Fluido (Com Janela)",
 
   "block.thermal.energy_distributor": "Interface de Distribuição de RF",
   "block.thermal.fluid_distributor": "Interface de Distribuição de Fluidos",

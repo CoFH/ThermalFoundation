@@ -4,22 +4,19 @@ import cofh.core.client.gui.element.ElementBase;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.ElementTexture;
 import cofh.core.network.packet.server.TileConfigPacket;
+import cofh.core.util.helpers.GuiHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-
-import java.util.Collections;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 import static cofh.lib.util.helpers.StringHelper.format;
-import static cofh.lib.util.helpers.StringHelper.localize;
 
 public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContainer> {
 
@@ -67,147 +64,92 @@ public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContain
     }
 
     // region ELEMENTS
-    @Override
-    public boolean handleElementButtonClick(String buttonName, int mouseButton) {
-
-        int change = 1000;
-        float pitch = 0.7F;
-
-        if (hasShiftDown()) {
-            change *= 10;
-            pitch += 0.1F;
-        }
-        if (hasControlDown()) {
-            change /= 100;
-            pitch -= 0.2F;
-        }
-        if (mouseButton == 1) {
-            change /= 10;
-            pitch -= 0.1F;
-        }
-        int curInput = tile.amountInput;
-        int curOutput = tile.amountOutput;
-
-        switch (buttonName) {
-            case "DecInput" -> {
-                tile.amountInput -= change;
-                pitch -= 0.1F;
-            }
-            case "IncInput" -> {
-                tile.amountInput += change;
-                pitch += 0.1F;
-            }
-            case "DecOutput" -> {
-                tile.amountOutput -= change;
-                pitch -= 0.1F;
-            }
-            case "IncOutput" -> {
-                tile.amountOutput += change;
-                pitch += 0.1F;
-            }
-        }
-        playClickSound(pitch);
-        TileConfigPacket.sendToServer(tile);
-
-        tile.amountInput = curInput;
-        tile.amountOutput = curOutput;
-        return true;
-    }
-
     protected void addButtons() {
 
-        ElementBase decInput = new ElementButton(this, 19, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
+        ElementBase decInput = new ElementButton(this, 19, 56) {
 
-                    if (element.enabled()) {
-                        int change = 1000;
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(new TextComponent(
-                                localize("info.cofh.decrease_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("DecInput")
+                int change = getChangeAmount(mouseButton);
+                float pitch = getPitch(mouseButton);
+                pitch -= 0.1F;
+                playClickSound(pitch);
+
+                int curInput = tile.amountInput;
+                tile.amountInput -= change;
+                TileConfigPacket.sendToServer(tile);
+                tile.amountInput = curInput;
+                return true;
+            }
+        }
+                .setTooltipFactory(GuiHelper::createDecControlTooltip)
                 .setSize(14, 14)
                 .setTexture(TEX_DECREMENT, 42, 14)
                 .setEnabled(() -> tile.amountInput > 0);
 
-        ElementBase incInput = new ElementButton(this, 35, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
+        ElementBase incInput = new ElementButton(this, 35, 56) {
 
-                    if (element.enabled()) {
-                        int change = 1000;
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(new TextComponent(
-                                localize("info.cofh.increase_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("IncInput")
+                int change = getChangeAmount(mouseButton);
+                float pitch = getPitch(mouseButton);
+                pitch += 0.1F;
+                playClickSound(pitch);
+
+                int curInput = tile.amountInput;
+                tile.amountInput += change;
+                TileConfigPacket.sendToServer(tile);
+                tile.amountInput = curInput;
+                return true;
+            }
+        }
+                .setTooltipFactory(GuiHelper::createIncControlTooltip)
                 .setSize(14, 14)
                 .setTexture(TEX_INCREMENT, 42, 14)
                 .setEnabled(() -> tile.amountInput < tile.getMaxInput());
 
-        ElementBase decOutput = new ElementButton(this, 127, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
+        ElementBase decOutput = new ElementButton(this, 127, 56) {
 
-                    if (element.enabled()) {
-                        int change = 1000;
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(new TextComponent(
-                                localize("info.cofh.decrease_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("DecOutput")
+                int change = getChangeAmount(mouseButton);
+                float pitch = getPitch(mouseButton);
+                pitch -= 0.1F;
+                playClickSound(pitch);
+
+                int curInput = tile.amountOutput;
+                tile.amountOutput -= change;
+                TileConfigPacket.sendToServer(tile);
+                tile.amountOutput = curInput;
+                return true;
+            }
+        }
+                .setTooltipFactory(GuiHelper::createDecControlTooltip)
                 .setSize(14, 14)
                 .setTexture(TEX_DECREMENT, 42, 14)
                 .setEnabled(() -> tile.amountOutput > 0);
 
-        ElementBase incOutput = new ElementButton(this, 143, 56)
-                .setTooltipFactory((element, mouseX, mouseY) -> {
+        ElementBase incOutput = new ElementButton(this, 143, 56) {
 
-                    if (element.enabled()) {
-                        int change = 1000;
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-                        if (hasShiftDown()) {
-                            change *= 10;
-                        }
-                        if (hasControlDown()) {
-                            change /= 100;
-                        }
-                        return Collections.singletonList(new TextComponent(
-                                localize("info.cofh.increase_by")
-                                        + " " + format(change)
-                                        + "/" + format(change / 10)));
-                    }
-                    return Collections.emptyList();
-                })
-                .setName("IncOutput")
+                int change = getChangeAmount(mouseButton);
+                float pitch = getPitch(mouseButton);
+                pitch += 0.1F;
+                playClickSound(pitch);
+
+                int curInput = tile.amountOutput;
+                tile.amountOutput += change;
+                TileConfigPacket.sendToServer(tile);
+                tile.amountOutput = curInput;
+                return true;
+            }
+        }
+                .setTooltipFactory(GuiHelper::createIncControlTooltip)
                 .setSize(14, 14)
                 .setTexture(TEX_INCREMENT, 42, 14)
                 .setEnabled(() -> tile.amountOutput < tile.getMaxOutput());

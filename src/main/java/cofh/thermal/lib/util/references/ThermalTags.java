@@ -18,6 +18,9 @@ public class ThermalTags {
 
         public static final TagKey<Block> LOGS_RUBBERWOOD = forgeTag("rubberwood_logs");
 
+        public static final TagKey<Block> DUCTS = thermalTag("ducts");
+        public static final TagKey<Block> DYNAMOS = thermalTag("dynamos");
+        public static final TagKey<Block> MACHINES = thermalTag("machines");
         public static final TagKey<Block> HARDENED_GLASS = thermalTag("glass/hardened");
         public static final TagKey<Block> ROCKWOOL = thermalTag("rockwool");
 
@@ -47,6 +50,9 @@ public class ThermalTags {
         public static final TagKey<Item> MACHINE_DIES = thermalTag("crafting/dies");
         public static final TagKey<Item> MACHINE_CASTS = thermalTag("crafting/casts");
 
+        public static final TagKey<Item> DUCTS = thermalTag("ducts");
+        public static final TagKey<Item> DYNAMOS = thermalTag("dynamos");
+        public static final TagKey<Item> MACHINES = thermalTag("machines");
         public static final TagKey<Item> HARDENED_GLASS = thermalTag("glass/hardened");
         public static final TagKey<Item> ROCKWOOL = thermalTag("rockwool");
 

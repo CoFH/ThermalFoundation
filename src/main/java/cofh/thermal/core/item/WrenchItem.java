@@ -34,6 +34,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static cofh.core.config.CoreServerConfig.returnDismantleDrops;
 import static cofh.core.init.CoreMobEffects.WRENCHED;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 
@@ -75,7 +76,7 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
         if (player.isSecondaryUseActive() && block instanceof IDismantleable && ((IDismantleable) block).canDismantle(world, pos, state, player)) {
             if (Utils.isServerWorld(world)) {
                 BlockHitResult target = new BlockHitResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
-                ((IDismantleable) block).dismantleBlock(world, pos, state, target, player, false);
+                ((IDismantleable) block).dismantleBlock(world, pos, state, target, player, returnDismantleDrops());
             }
             player.swing(context.getHand());
             return true;
