@@ -1,4 +1,4 @@
-package cofh.thermal.lib.tileentity;
+package cofh.thermal.lib.block.entity;
 
 import cofh.core.util.control.IReconfigurableTile;
 import cofh.core.util.control.ITransferControllableTile;
@@ -42,7 +42,7 @@ import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {
+public abstract class Reconfigurable4WayBlockEntity extends AugmentableBlockEntity implements IReconfigurableTile, ITransferControllableTile, IThermalInventory {
 
     protected int inputTracker;
     protected int outputTracker;
@@ -50,7 +50,7 @@ public abstract class ReconfigurableTile4Way extends ThermalTileAugmentable impl
     protected ReconfigControlModule reconfigControl = new ReconfigControlModule(this);
     protected TransferControlModule transferControl = new TransferControlModule(this);
 
-    public ReconfigurableTile4Way(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public Reconfigurable4WayBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
         reconfigControl.setEnabled(() -> reconfigControlFeature);

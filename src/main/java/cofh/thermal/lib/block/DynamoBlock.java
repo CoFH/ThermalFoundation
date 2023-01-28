@@ -25,7 +25,7 @@ import java.util.function.Supplier;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_ALL;
 
-public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterloggedBlock {
+public class DynamoBlock extends TileBlockActive6Way implements SimpleWaterloggedBlock {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -56,7 +56,7 @@ public class TileBlockDynamo extends TileBlockActive6Way implements SimpleWaterl
             Shapes.or(BASE_SHAPE[5], COIL_SHAPE[5])
     };
 
-    public TileBlockDynamo(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
+    public DynamoBlock(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
 
         super(builder, tileClass, blockEntityType);
         this.registerDefaultState(this.stateDefinition.any().setValue(ACTIVE, false).setValue(FACING_ALL, Direction.UP).setValue(WATERLOGGED, false));

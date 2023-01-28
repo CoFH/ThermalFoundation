@@ -3,7 +3,7 @@ package cofh.thermal.lib.client.gui;
 import cofh.core.client.gui.element.ElementEnergyStorage;
 import cofh.core.inventory.container.ContainerCoFH;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.lib.tileentity.DynamoTileBase;
+import cofh.thermal.lib.block.entity.DynamoBlockEntity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -14,11 +14,11 @@ import java.util.List;
 import static cofh.lib.util.Constants.PATH_ELEMENTS;
 import static cofh.lib.util.helpers.StringHelper.DF0;
 
-public class DynamoScreenBase<T extends ContainerCoFH> extends ThermalTileScreenBase<T> {
+public class DynamoScreen<T extends ContainerCoFH> extends AugmentableScreen<T> {
 
-    protected DynamoTileBase tile;
+    protected DynamoBlockEntity tile;
 
-    public DynamoScreenBase(T container, Inventory inv, DynamoTileBase tile, Component titleIn) {
+    public DynamoScreen(T container, Inventory inv, DynamoBlockEntity tile, Component titleIn) {
 
         super(container, inv, tile, titleIn);
         this.tile = tile;

@@ -9,9 +9,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Supplier;
 
-public class TileBlockCell extends TileBlock4Way {
+public class StorageCellBlock extends TileBlock4Way {
 
-    public TileBlockCell(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
+    public StorageCellBlock(Properties builder, Class<?> tileClass, Supplier<BlockEntityType<?>> blockEntityType) {
 
         super(builder, tileClass, blockEntityType);
     }
