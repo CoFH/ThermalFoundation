@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "フィト・ソイル注入機はRFを消費して近くの$(l:thermal:world/plants/phytogro)フィト・ソイル$(/l)に植わった作物の成長を早める装置です。基本は3x3x3の範囲の面積に効果があり、$(l:thermal:technology/augments/area_radius)範囲拡張オーグメント$(/l)7x3x7で最大7x3x7に効果範囲を拡大できます。また、$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)で成長促進効果を強化できます。"
+      "text": "フィト・ソイル注入機はRFを消費して近くの$(l:thermal:world/plants/phytogro)フィト・ソイル$(/l)に植わった作物の成長を早める装置です。基本は3x3x3の範囲の面積に効果があり、$(l:thermal:technology/augments/area_radius)範囲拡張オーグメント$(/l)で最大7x3x7に効果範囲を拡大できます。また、$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)で成長促進効果を強化できます。"
     },
     {
       "type": "thermal:double_crafting_page",
