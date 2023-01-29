@@ -6,7 +6,7 @@ import cofh.core.util.helpers.AugmentableHelper;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperItem;
-import cofh.thermal.core.block.entity.TinkerBenchTile;
+import cofh.thermal.core.block.entity.TinkerBenchBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
@@ -24,7 +24,7 @@ import static cofh.thermal.core.init.TCoreContainers.TINKER_BENCH_CONTAINER;
 
 public class TinkerBenchContainer extends TileContainer {
 
-    public final TinkerBenchTile tile;
+    public final TinkerBenchBlockEntity tile;
 
     protected SlotCoFH tinkerSlot;
     protected List<SlotCoFH> tinkerAugmentSlots = new ArrayList<>(MAX_AUGMENTS);
@@ -40,7 +40,7 @@ public class TinkerBenchContainer extends TileContainer {
     public TinkerBenchContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
         super(TINKER_BENCH_CONTAINER.get(), windowId, world, pos, inventory, player);
-        this.tile = (TinkerBenchTile) world.getBlockEntity(pos);
+        this.tile = (TinkerBenchBlockEntity) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         allowSwap = false;

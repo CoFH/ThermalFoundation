@@ -990,8 +990,13 @@
   "_comment": "========================================================================================================",
 
   "attachment.thermal.energy_limiter": "Redstone Flux Limiter",
+
   "attachment.thermal.fluid_filter": "Fluiduct Filter",
+  "attachment.thermal.fluid_input_filter": "Fluiduct Filter (Input)",
+  "attachment.thermal.fluid_output_filter": "Fluiduct Filter (Output)",
+
   "attachment.thermal.fluid_servo": "Fluiduct Servo",
+
   "attachment.thermal.item_filter": "Itemduct Filter",
   "attachment.thermal.item_servo": "Itemduct Servo",
 
@@ -1026,6 +1031,8 @@
 
   "item.thermal.energy_limiter_attachment": "Attachment: Redstone Flux Limiter",
   "item.thermal.filter_attachment": "Attachment: Filter",
+  "item.thermal.input_filter_attachment": "Attachment: Input Filter",
+  "item.thermal.output_filter_attachment": "Attachment: Output Filter",
   "item.thermal.servo_attachment": "Attachment: Servo",
 
   "_comment": "========================================================================================================",

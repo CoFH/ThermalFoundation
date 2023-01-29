@@ -2,16 +2,15 @@ package cofh.thermal.core.block.entity.storage;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.AugmentDataHelper;
-import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.lib.fluid.FluidHandlerRestrictionWrapper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.fluid.FluidStorageRestrictable;
+import cofh.lib.energy.EnergyHandlerRestrictionWrapper;
+import cofh.lib.energy.EnergyStorageRestrictable;
 import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
+import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
 import cofh.thermal.lib.block.entity.CellBlockEntity;
+import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Inventory;
@@ -23,42 +22,30 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.core.client.renderer.model.ModelUtils.*;
-import static cofh.lib.api.StorageGroup.ACCESSIBLE;
-import static cofh.lib.util.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.lib.util.constants.NBTTags.*;
-import static cofh.thermal.core.init.TCoreTileEntities.FLUID_CELL_TILE;
-import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
-import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
+import static cofh.thermal.core.init.TCoreTileEntities.ENERGY_CELL_TILE;
+import static cofh.thermal.lib.common.ThermalAugmentRules.ENERGY_STORAGE_VALIDATOR;
 
-public class FluidCellTile extends CellBlockEntity implements ITickableTile.IServerTickable {
+public class EnergyCellBlockEntity extends CellBlockEntity implements ITickableTile.IServerTickable {
 
-    public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
+    public static final int BASE_CAPACITY = 1000000;
+    public static final int BASE_RECV = 1000;
+    public static final int BASE_SEND = 1000;
 
-    public static final int BASE_CAPACITY = TANK_MEDIUM * 4;
+    public EnergyCellBlockEntity(BlockPos pos, BlockState state) {
 
-    protected FluidStorageCoFH fluidStorage = new FluidStorageRestrictable(BASE_CAPACITY, fluid -> filter.valid(fluid))
-            .setTransferLimits(() -> amountInput, () -> amountOutput);
+        super(ENERGY_CELL_TILE.get(), pos, state);
 
-    public FluidCellTile(BlockPos pos, BlockState state) {
+        energyStorage = new EnergyStorageRestrictable(BASE_CAPACITY, BASE_RECV, BASE_SEND).setTransferLimits(() -> amountInput, () -> amountOutput);
 
-        super(FLUID_CELL_TILE.get(), pos, state);
-
-        amountInput = BUCKET_VOLUME;
-        amountOutput = BUCKET_VOLUME;
-
-        tankInv.addTank(fluidStorage, ACCESSIBLE);
+        amountInput = energyStorage.getMaxReceive();
+        amountOutput = energyStorage.getMaxExtract();
 
         transferControl.initControl(false, true);
 
@@ -81,7 +68,7 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
             transferOut();
             transferIn();
         }
-        if (Utils.timeCheck() || fluidStorage.getFluidStack().getFluid() != renderFluid.getFluid()) {
+        if (Utils.timeCheck()) {
             updateTrackers(true);
         }
     }
@@ -89,7 +76,7 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
     @Override
     public int getLightValue() {
 
-        return FluidHelper.luminosity(renderFluid);
+        return Math.min(levelTracker, 8);
     }
 
     protected void transferIn() {
@@ -97,15 +84,15 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
         if (!transferControl.getTransferIn()) {
             return;
         }
-        if (amountInput <= 0 || fluidStorage.isFull()) {
+        if (amountInput <= 0 || energyStorage.isFull()) {
             return;
         }
-        for (int i = inputTracker; i < 6 && fluidStorage.getSpace() > 0; ++i) {
+        for (int i = inputTracker; i < 6 && energyStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
                 attemptTransferIn(Direction.from3DDataValue(i));
             }
         }
-        for (int i = 0; i < inputTracker && fluidStorage.getSpace() > 0; ++i) {
+        for (int i = 0; i < inputTracker && energyStorage.getSpace() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isInput()) {
                 attemptTransferIn(Direction.from3DDataValue(i));
             }
@@ -119,15 +106,15 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
         if (!transferControl.getTransferOut()) {
             return;
         }
-        if (amountOutput <= 0 || fluidStorage.isEmpty()) {
+        if (amountOutput <= 0 || energyStorage.isEmpty()) {
             return;
         }
-        for (int i = outputTracker; i < 6 && fluidStorage.getAmount() > 0; ++i) {
+        for (int i = outputTracker; i < 6 && energyStorage.getEnergyStored() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
                 attemptTransferOut(Direction.from3DDataValue(i));
             }
         }
-        for (int i = 0; i < outputTracker && fluidStorage.getAmount() > 0; ++i) {
+        for (int i = 0; i < outputTracker && energyStorage.getEnergyStored() > 0; ++i) {
             if (reconfigControl.getSideConfig(i).isOutput()) {
                 attemptTransferOut(Direction.from3DDataValue(i));
             }
@@ -138,23 +125,32 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
 
     protected void attemptTransferIn(Direction side) {
 
-        FluidHelper.extractFromAdjacent(this, fluidStorage, Math.min(amountInput, fluidStorage.getSpace()), side);
+        BlockEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
+        if (adjTile != null) {
+            Direction opposite = side.getOpposite();
+            int maxTransfer = Math.min(amountInput, energyStorage.getSpace());
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
+                    .ifPresent(e -> {
+                        if (e.canExtract()) {
+                            energyStorage.modify(e.extractEnergy(maxTransfer, false));
+                        }
+                    });
+        }
     }
 
-    // This is used rather than the generic in FluidHelper as it can be optimized somewhat.
     protected void attemptTransferOut(Direction side) {
 
         BlockEntity adjTile = BlockHelper.getAdjacentTileEntity(this, side);
         if (adjTile != null) {
             Direction opposite = side.getOpposite();
-            int maxTransfer = Math.min(amountOutput, fluidStorage.getAmount());
-            adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, opposite)
-                    .ifPresent(e -> fluidStorage.modify(-e.fill(new FluidStack(fluidStorage.getFluidStack(), maxTransfer), EXECUTE)));
+            int maxTransfer = Math.min(amountOutput, energyStorage.getEnergyStored());
+            adjTile.getCapability(ThermalEnergyHelper.getBaseEnergySystem(), opposite)
+                    .ifPresent(e -> energyStorage.modify(-e.receiveEnergy(maxTransfer, false)));
         }
     }
 
     @Override
-    protected boolean keepFluids() {
+    protected boolean keepEnergy() {
 
         return true;
     }
@@ -162,20 +158,20 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
     @Override
     public int getMaxInput() {
 
-        return fluidStorage.getCapacity() / 4;
+        return energyStorage.getMaxReceive();
     }
 
     @Override
     public int getMaxOutput() {
 
-        return fluidStorage.getCapacity() / 4;
+        return energyStorage.getMaxExtract();
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new FluidCellContainer(i, level, worldPosition, inventory, player);
+        return new EnergyCellContainer(i, level, worldPosition, inventory, player);
     }
 
     // TODO: Does this need to exist?
@@ -184,8 +180,8 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
 
         super.setRemoved();
 
-        inputFluidCap.invalidate();
-        outputFluidCap.invalidate();
+        inputEnergyCap.invalidate();
+        outputEnergyCap.invalidate();
     }
 
     @Nonnull
@@ -195,7 +191,6 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
         return new ModelDataMap.Builder()
                 .withInitial(SIDES, reconfigControl().getRawSideConfig())
                 .withInitial(FACING, reconfigControl.getFacing())
-                .withInitial(FLUID, renderFluid)
                 .withInitial(LEVEL, levelTracker)
                 .build();
     }
@@ -204,19 +199,18 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
     protected void updateTrackers(boolean send) {
 
         prevLight = getLightValue();
-        renderFluid = fluidStorage.getFluidStack();
 
-        int curScale = fluidStorage.getAmount() > 0 ? 1 + (int) (fluidStorage.getRatio() * 14) : 0;
+        int curScale = energyStorage.getEnergyStored() > 0 ? 1 + (int) (energyStorage.getRatio() * 14) : 0;
         if (curScale != compareTracker) {
             compareTracker = curScale;
             if (send) {
                 setChanged();
             }
         }
-        if (fluidStorage.isCreative()) {
-            curScale = fluidStorage.isEmpty() ? 10 : 9;
+        if (energyStorage.isCreative()) {
+            curScale = 9;
         } else {
-            curScale = fluidStorage.getAmount() > 0 ? 1 + Math.min((int) (fluidStorage.getRatio() * 8), 7) : 0;
+            curScale = energyStorage.getEnergyStored() > 0 ? 1 + Math.min((int) (energyStorage.getRatio() * 8), 7) : 0;
         }
         if (levelTracker != curScale) {
             levelTracker = curScale;
@@ -230,45 +224,45 @@ public class FluidCellTile extends CellBlockEntity implements ITickableTile.ISer
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && AUG_VALIDATOR.test(item, getAugmentsAsList());
+        return item -> AugmentDataHelper.hasAugmentData(item) && ENERGY_STORAGE_VALIDATOR.test(item, getAugmentsAsList());
     }
     // endregion
 
     // region CAPABILITIES
-    protected LazyOptional<?> inputFluidCap = LazyOptional.empty();
-    protected LazyOptional<?> outputFluidCap = LazyOptional.empty();
+    protected LazyOptional<?> inputEnergyCap = LazyOptional.empty();
+    protected LazyOptional<?> outputEnergyCap = LazyOptional.empty();
 
     @Override
     protected void updateHandlers() {
 
         // Optimization to prevent callback logic as contents may change rapidly.
-        LazyOptional<?> prevFluidCap = fluidCap;
-        LazyOptional<?> prevFluidInputCap = inputFluidCap;
-        LazyOptional<?> prevFluidOutputCap = outputFluidCap;
+        LazyOptional<?> prevEnergyCap = energyCap;
+        LazyOptional<?> prevEnergyInputCap = inputEnergyCap;
+        LazyOptional<?> prevEnergyOutputCap = outputEnergyCap;
 
-        IFluidHandler inputHandler = new FluidHandlerRestrictionWrapper(fluidStorage, true, false);
-        IFluidHandler outputHandler = new FluidHandlerRestrictionWrapper(fluidStorage, false, true);
+        IEnergyStorage inputHandler = new EnergyHandlerRestrictionWrapper(energyStorage, true, false);
+        IEnergyStorage outputHandler = new EnergyHandlerRestrictionWrapper(energyStorage, false, true);
 
-        fluidCap = LazyOptional.of(() -> fluidStorage);
-        inputFluidCap = LazyOptional.of(() -> inputHandler);
-        outputFluidCap = LazyOptional.of(() -> outputHandler);
+        energyCap = LazyOptional.of(() -> energyStorage);
+        inputEnergyCap = LazyOptional.of(() -> inputHandler);
+        outputEnergyCap = LazyOptional.of(() -> outputHandler);
 
-        prevFluidCap.invalidate();
-        prevFluidInputCap.invalidate();
-        prevFluidOutputCap.invalidate();
+        prevEnergyCap.invalidate();
+        prevEnergyInputCap.invalidate();
+        prevEnergyOutputCap.invalidate();
     }
 
     @Override
-    protected <T> LazyOptional<T> getFluidHandlerCapability(@Nullable Direction side) {
+    protected <T> LazyOptional<T> getEnergyCapability(@Nullable Direction side) {
 
         if (side == null) {
-            return super.getFluidHandlerCapability(side);
+            return super.getEnergyCapability(side);
         }
         return switch (reconfigControl.getSideConfig(side)) {
             case SIDE_NONE -> LazyOptional.empty();
-            case SIDE_INPUT -> inputFluidCap.cast();
-            case SIDE_OUTPUT -> outputFluidCap.cast();
-            default -> super.getFluidHandlerCapability(side);
+            case SIDE_INPUT -> inputEnergyCap.cast();
+            case SIDE_OUTPUT -> outputEnergyCap.cast();
+            default -> super.getEnergyCapability(side);
         };
     }
     // endregion

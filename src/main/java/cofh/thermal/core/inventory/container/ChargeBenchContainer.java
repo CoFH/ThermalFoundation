@@ -3,7 +3,7 @@ package cofh.thermal.core.inventory.container;
 import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
-import cofh.thermal.core.block.entity.ChargeBenchTile;
+import cofh.thermal.core.block.entity.ChargeBenchBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,12 +13,12 @@ import static cofh.thermal.core.init.TCoreContainers.CHARGE_BENCH_CONTAINER;
 
 public class ChargeBenchContainer extends TileContainer {
 
-    public final ChargeBenchTile tile;
+    public final ChargeBenchBlockEntity tile;
 
     public ChargeBenchContainer(int windowId, Level world, BlockPos pos, Inventory inventory, Player player) {
 
         super(CHARGE_BENCH_CONTAINER.get(), windowId, world, pos, inventory, player);
-        this.tile = (ChargeBenchTile) world.getBlockEntity(pos);
+        this.tile = (ChargeBenchBlockEntity) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         for (int i = 0; i < 3; ++i) {

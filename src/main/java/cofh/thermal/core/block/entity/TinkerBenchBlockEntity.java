@@ -41,7 +41,7 @@ import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.SIMULATE;
 
-public class TinkerBenchTile extends AugmentableBlockEntity implements ITickableTile.IServerTickable {
+public class TinkerBenchBlockEntity extends AugmentableBlockEntity implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FLUID);
 
@@ -66,7 +66,7 @@ public class TinkerBenchTile extends AugmentableBlockEntity implements ITickable
     //    protected LazyOptional<?> chargeEnergyCap = LazyOptional.empty();
     //    protected LazyOptional<?> tankFluidCap = LazyOptional.empty();
 
-    public TinkerBenchTile(BlockPos pos, BlockState state) {
+    public TinkerBenchBlockEntity(BlockPos pos, BlockState state) {
 
         super(TINKER_BENCH_TILE.get(), pos, state);
 

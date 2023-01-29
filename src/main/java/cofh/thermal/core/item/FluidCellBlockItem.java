@@ -5,7 +5,7 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.api.item.IFluidContainerItem;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.util.helpers.StringHelper;
-import cofh.thermal.core.block.entity.storage.FluidCellTile;
+import cofh.thermal.core.block.entity.storage.FluidCellBlockEntity;
 import cofh.thermal.lib.item.BlockItemAugmentable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -82,7 +82,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
         if (tanks.isEmpty()) {
             CompoundTag tag = new CompoundTag();
             tag.putByte(TAG_TANK, (byte) 0);
-            new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).write(tag);
+            new FluidStorageCoFH(FluidCellBlockEntity.BASE_CAPACITY).write(tag);
             tanks.add(tag);
             blockTag.put(TAG_TANK_INV, tanks);
         }
@@ -115,7 +115,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
         if (resource.isEmpty() || !isFluidValid(container, resource)) {
             return 0;
         }
-        FluidStorageCoFH tank = new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).setCapacity(getCapacity(container)).read(containerTag);
+        FluidStorageCoFH tank = new FluidStorageCoFH(FluidCellBlockEntity.BASE_CAPACITY).setCapacity(getCapacity(container)).read(containerTag);
         if (isCreative(container, FLUID)) {
             if (action.execute()) {
                 tank.setFluidStack(new FluidStack(resource, tank.getCapacity()));
@@ -132,7 +132,7 @@ public class FluidCellBlockItem extends BlockItemAugmentable implements IFluidCo
     public FluidStack drain(ItemStack container, int maxDrain, FluidAction action) {
 
         CompoundTag containerTag = getOrCreateTankTag(container);
-        FluidStorageCoFH tank = new FluidStorageCoFH(FluidCellTile.BASE_CAPACITY).setCapacity(getCapacity(container)).read(containerTag);
+        FluidStorageCoFH tank = new FluidStorageCoFH(FluidCellBlockEntity.BASE_CAPACITY).setCapacity(getCapacity(container)).read(containerTag);
         if (isCreative(container, FLUID)) {
             return new FluidStack(tank.getFluidStack(), maxDrain);
         }
