@@ -1,1 +1,97 @@
-{  "name": "Tree Products",  "icon": "thermal:sawdust",  "read_by_default": true,  "category": "thermal:plants",  "pages": [    {      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",      "type": "thermal:1-1_item_page",      "A.title": "Sap",      "A.item": "thermal:sap_bucket",      "A.text": "A sugary fluid that once carried water and nutrients throughout a $(l:thermal:technology/devices/tree_extractor)dark oak tree$(/l).",      "B.title": "Resin",      "B.item": "thermal:resin_bucket",      "B.text": "A thick, sticky fluid that can be $(l:thermal:technology/devices/tree_extractor)harvested$(/l) from oak, birch, spruce, and acacia trees."    },    {      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",      "type": "thermal:1_item_page",      "title": "Latex",      "item": "thermal:latex_bucket",      "text": "A thick, milky emulsion of polymers that can be $(l:thermal:technology/devices/tree_extractor)harvested$(/l) from jungle trees. Used primarily to make rubber."    },    {      "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",      "type": "thermal:double_crafting_page",      "title": "Rubber",      "A.recipe": "thermal:rubber_from_dandelion",      "B.recipe": "thermal:rubber_from_vine"    },    {      "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",      "type": "2_item_page",      "title": "Rubber",      "item1": "thermal:rubber",      "item2": "thermal:cured_rubber",      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be crafted from vines and dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace."    },    {      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",      "type": "thermal:double_crafting_page",      "title": "Rubber",      "A.recipe": "thermal:rubber_from_dandelion",      "B.recipe": "thermal:rubber_3"    },    {      "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",      "type": "smelting",      "A.recipe": "thermal:smelting/cured_rubber_from_smelting",      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be made by simply letting a latex bucket sit in a crafting bench, or it can be crafted from vines and dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace."    },    {      "flag": "mod:thermal_expansion",      "type": "3_alloy_page",      "title": "Rubber",      "recipe": "thermal:machines/smelter/smelter_cured_rubber",      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be made by simply letting a latex bucket sit in a crafting bench, or it can be crafted from vines/dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace or with sulfur in an induction smelter."    },    {      "flag": "mod:thermal_expansion",      "type": "2-1_item_page",      "A.title": "Sawdust",      "A.item1": "thermal:sawdust",      "A.item2": "thermal:sawdust_block",      "A.text": "A pile of small wood chips produced by $(l:thermal:technology/machines/pulverizer)pulverizing$(/l) logs or $(l:thermal:technology/machines/sawmill)cutting$(/l) them into planks. Is a burnable fuel in block form.",      "B.title": "Syrup",      "B.item": "thermal:syrup_bucket",      "B.text": "A thick, delicious fluid that makes any flapjack misadventures worthwhile. Produced by $(l:thermal:technology/machines/refinery)concentrating$(/l) sap."    },    {      "flag": "mod:thermal_expansion",      "type": "2-1_item_page",      "A.title": "Rosin",      "A.item1": "thermal:rosin",      "A.item2": "thermal:rosin_block",      "A.text": "A solid, $(l:thermal:technology/machines/refinery)refined$(/l) form of resin. Can be used as a burnable fuel.",      "B.title": "Tree Oil",      "B.item": "thermal:tree_oil_bucket",      "B.text": "An essential oil that is produced as a byproduct of $(l:thermal:technology/machines/refinery)refining$(/l) resin. Can be used as fuel in a $(l:thermal:technology/dynamos/compression)compression dynamo$(/l)."    }  ]}
+{
+  "name": "木製品",
+  "icon": "thermal:sawdust",
+  "read_by_default": true,
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+      "type": "thermal:1-1_item_page",
+
+      "A.title": "樹液",
+      "A.item": "thermal:sap_bucket",
+      "A.text": "$(l:thermal:technology/devices/tree_extractor)ダークオークの樹木$(/l)全体に水分と栄養を行き渡らせていた糖分の多い液体です。",
+
+      "B.title": "樹脂",
+      "B.item": "thermal:resin_bucket",
+      "B.text": "濃厚で粘性のある液体で、オーク、白樺、トウヒ、アカシアの樹木から$(l:thermal:technology/devices/tree_extractor)得られます$(/l)。"
+    },
+    {
+      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+      "type": "thermal:1_item_page",
+
+      "title": "ラテックス",
+      "item": "thermal:latex_bucket",
+      "text": "ジャングルの樹木から$(l:thermal:technology/devices/tree_extractor)得られる$(/l)、ポリマーの分散する濃厚な乳液です。主にゴムを作るのに使用されます。"
+    },
+
+    {
+      "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",
+      "type": "thermal:double_crafting_page",
+
+      "title": "Rubber",
+      "A.recipe": "thermal:rubber_from_dandelion",
+      "B.recipe": "thermal:rubber_from_vine"
+    },
+    {
+      "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",
+      "type": "2_item_page",
+
+      "title": "Rubber",
+      "item1": "thermal:rubber",
+      "item2": "thermal:cured_rubber",
+      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be crafted from vines and dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace."
+    },
+
+    {
+      "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+      "type": "thermal:double_crafting_page",
+
+      "title": "Rubber",
+      "A.recipe": "thermal:rubber_from_dandelion",
+      "B.recipe": "thermal:rubber_3"
+    },
+    {
+      "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
+      "type": "smelting",
+
+      "A.recipe": "thermal:smelting/cured_rubber_from_smelting",
+      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be made by simply letting a latex bucket sit in a crafting bench, or it can be crafted from vines and dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace."
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "3_alloy_page",
+      "title": "Rubber",
+      "recipe": "thermal:machines/smelter/smelter_cured_rubber",
+
+      "text": "ラテックスを凝固させて作られる、伸縮性と防水性のある素材です。ラテックス入バケツをクラフトグリッドに置くだけで作れるほか、ツタやタンポポからも作れます。ゴムをかまどで精錬したり、誘導加熱炉で硫黄と共に精錬することで、弾力性や伸縮性を向上できます。"
+    },
+
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "2-1_item_page",
+
+      "A.title": "おがくず",
+      "A.item1": "thermal:sawdust",
+      "A.item2": "thermal:sawdust_block",
+      "A.text": "原木を$(l:thermal:technology/machines/pulverizer)粉砕$(/l)や$(l:thermal:technology/machines/sawmill)板材に製材$(/l)する際に生じる木の細かい欠片です。ブロックに固めて燃料にできます。",
+
+      "B.title": "シロップ",
+      "B.item": "thermal:syrup_bucket",
+      "B.text": "濃厚で甘美な液体で、フラップジャックの冒険を価値あるものにします。樹液を$(l:thermal:technology/machines/refinery)濃縮$(/l)して作られます。"
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "2-1_item_page",
+
+      "A.title": "ロジン",
+      "A.item1": "thermal:rosin",
+      "A.item2": "thermal:rosin_block",
+      "A.text": "固体の、$(l:thermal:technology/machines/refinery)生成された$(/l)樹脂です。燃料として使用できます。",
+
+      "B.title": "ツリーオイル",
+      "B.item": "thermal:tree_oil_bucket",
+      "B.text": "樹脂を$(l:thermal:technology/machines/refinery)精製$(/l)した際に生じる副産物の精油です。$(l:thermal:technology/dynamos/compression)圧縮ダイナモ$(/l)の燃料になります。"
+    }
+  ]
+}
