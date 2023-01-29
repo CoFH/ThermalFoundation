@@ -12,7 +12,7 @@ import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceFisherContainer;
 import cofh.thermal.core.util.managers.device.FisherManager;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -49,7 +49,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceFisherTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
+public class DeviceFisherTile extends DeviceBlockEntity implements ITickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 

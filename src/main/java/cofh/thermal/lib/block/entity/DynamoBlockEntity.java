@@ -1,4 +1,4 @@
-package cofh.thermal.lib.tileentity;
+package cofh.thermal.lib.block.entity;
 
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
@@ -36,7 +36,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DYNAMO_VALIDATOR;
 
-public abstract class DynamoTileBase extends ThermalTileAugmentable implements ITickableTile.IServerTickable {
+public abstract class DynamoBlockEntity extends AugmentableBlockEntity implements ITickableTile.IServerTickable {
 
     protected Direction facing;
 
@@ -49,7 +49,7 @@ public abstract class DynamoTileBase extends ThermalTileAugmentable implements I
     protected int processTick = baseProcessTick;
     protected int minProcessTick = processTick / 10;
 
-    public DynamoTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public DynamoBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), 0, getBaseEnergyXfer()) {

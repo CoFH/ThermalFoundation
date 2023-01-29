@@ -1,4 +1,4 @@
-package cofh.thermal.lib.tileentity;
+package cofh.thermal.lib.block.entity;
 
 import cofh.core.util.helpers.AugmentDataHelper;
 import net.minecraft.core.BlockPos;
@@ -21,9 +21,9 @@ import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_BASE_MOD;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_VALIDATOR;
 
-public abstract class DeviceTileBase extends ThermalTileAugmentable {
+public abstract class DeviceBlockEntity extends AugmentableBlockEntity {
 
-    public DeviceTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public DeviceBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
     }

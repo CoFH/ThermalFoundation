@@ -5,7 +5,7 @@ import cofh.lib.api.block.entity.IAreaEffectTile;
 import cofh.lib.api.block.entity.ITickableTile;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceMagnetBlockerContainer;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -26,7 +26,7 @@ import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceMagnetBlockerTile extends DeviceTileBase implements ITickableTile.IServerTickable, IAreaEffectTile {
+public class DeviceMagnetBlockerTile extends DeviceBlockEntity implements ITickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
     public static final Set<ItemEntity> AFFECTED_ENTITIES = Collections.newSetFromMap(new WeakHashMap<>());

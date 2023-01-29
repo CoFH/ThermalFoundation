@@ -12,7 +12,7 @@ import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DevicePotionDiffuserContainer;
 import cofh.thermal.core.util.managers.device.PotionDiffuserManager;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
@@ -50,7 +50,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_POTION_DIFFUSER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickableTile, IAreaEffectTile {
+public class DevicePotionDiffuserTile extends DeviceBlockEntity implements ITickableTile, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER, TAG_AUGMENT_TYPE_POTION);
 

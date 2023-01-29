@@ -2,7 +2,7 @@ package cofh.thermal.core.block.entity.device;
 
 import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +20,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_HEAT_EXCHANGER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceHeatExchangerTile extends DeviceTileBase implements ITickableTile.IServerTickable {
+public class DeviceHeatExchangerTile extends DeviceBlockEntity implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT);
 

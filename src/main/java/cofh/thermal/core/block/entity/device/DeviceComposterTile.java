@@ -6,7 +6,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceComposterContainer;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -35,7 +35,7 @@ import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_COMPOSTER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraft.world.level.block.ComposterBlock.COMPOSTABLES;
 
-public class DeviceComposterTile extends DeviceTileBase implements ITickableTile.IServerTickable {
+public class DeviceComposterTile extends DeviceBlockEntity implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FILTER);
 
