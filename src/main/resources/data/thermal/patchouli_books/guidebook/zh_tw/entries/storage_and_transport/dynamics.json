@@ -1,5 +1,5 @@
 {
-  "name": "動力在哪裡？",
+  "name": "《熱動力學》在哪裡？",
   "icon": "thermal:iron_gear",
   "read_by_default": true,
   "category": "thermal:storage_and_transport",
@@ -7,28 +7,28 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "動力目前被擱置，因為熱力系列的其他功能正在充實。請耐心等待！以下頁面將有其他推薦的管道模組。"
+      "text": "《熱動力學》目前被擱置，因為熱力系列的其他功能正在充實。請耐心等待！以下頁面將有其他推薦的管道模組。"
     },
     {
       "type": "patchouli:link",
       "title": "XNet",
       "url": "https://www.curseforge.com/minecraft/mc-mods/xnet",
       "link_text": "Curseforge 連結",
-      "text": "XNet是一款功能強大的模組，可以在一根纜線中傳輸物品、流體、紅石通量等。每個網絡都需要一個控制器，藉由它可以設定網絡以控制多個通道上的輸入、輸出、過濾、堆疊大小等。涉及到輕微的學習曲線，但控製程度幾乎是無與倫比的。"
+      "text": "XNet 是一款功能強大的模組，可以在一條線纜中傳輸物品、流體、紅石通量等。每個網絡都需要一個控制器，藉由它可以設定網絡以控制多個頻道上的輸入、輸出、篩選、堆疊大小等。涉及到輕微的學習曲線，但可操作性幾乎是無與倫比的。"
     },
     {
       "type": "patchouli:link",
       "title": "Refined Pipes",
       "url": "https://www.curseforge.com/minecraft/mc-mods/refined-pipes",
       "link_text": "Curseforge 連結",
-      "text": "要獲得更像 1.12 動力的體驗，請嘗試 Refined Pipes。管道和提取器以不同的速度進入不同的層次。對於那些已經熟悉 1.12 動力的人來說，這個模組應該感覺像家一樣。"
+      "text": "要獲得更像 1.12 熱動力學的體驗，請嘗試 Refined Pipes。管道和提取器以不同的速度進入不同的層次。對於那些已經熟悉 1.12 熱動力學的人來說，這個模組應該感覺像家一樣。"
     },
     {
       "type": "patchouli:link",
       "title": "Integrated Tunnels",
       "url": "https://www.curseforge.com/minecraft/mc-mods/integrated-tunnels",
       "link_text": "Curseforge Link",
-      "text": "Integrated Dynamics 是一個非常強大的模組，可以評估關於生物、物品欄等的各種品質。Tunnels 是一個插件，允許網絡也從物品欄中導入/導出項目。兩者相結合，可實現極高的精確度、篩選性和控制性。當心，這個模組比大多數模組更難上手。"
+      "text": "Integrated Dynamics 是一個非常強大的模組，可以評估關於生物、容器等的各種數值。Tunnels 是它的擴充模組，允許網絡從容器中導入/導出項目。兩者相結合，可實現極高的精確度、篩選性和控制性。當心，這個模組比大多數模組更難上手。"
     },
     {
       "type": "patchouli:text",
