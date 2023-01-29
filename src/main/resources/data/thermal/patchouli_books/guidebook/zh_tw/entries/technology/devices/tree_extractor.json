@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "樹汁提取器是一種從相鄰樹木中提取液體的裝置。可選擇性施肥以提高產量。骨粉在 8 個週期內將產量提升 1.5 倍，而$(l:thermal:world/plants/phytogro)植育一號$(/l)則在 16 個週期內提升 2.0 倍。不同的樹產生不同的液體；使用 JEI 查看可用的配方。"
+      "text": "樹汁提取器是一種從相鄰樹木中提取流體的裝置。可選擇性施肥以提高產量。骨粉在 8 個週期內將產量提升 1.5 倍，而$(l:thermal:world/plants/phytogro)植育一號$(/l)則在 16 個週期內提升 2.0 倍。不同的樹產生不同的流體；使用 JEI 查看可用的配方。"
     },
     {
       "type": "thermal:double_crafting_page",

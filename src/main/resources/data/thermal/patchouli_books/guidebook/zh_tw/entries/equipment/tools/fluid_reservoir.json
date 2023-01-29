@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "容納適量的液體並允許分配。按 \"$(k:cofh.mode_change_increment)\" 切換清空/填充模式。潛行時使用以啟用或停用大多數其他手持（或穿戴）液體容器的自動補充。它可以在工匠工作台中填充和增強。"
+      "text": "容納適量的流體並允許分配。按 \"$(k:cofh.mode_change_increment)\" 切換清空/填充模式。潛行時使用以啟用或停用大多數其他手持（或穿戴）流體容器的自動補充。它可以在工匠工作台中填充流體和增強。"
     },
     {
       "type": "thermal:double_crafting_page",

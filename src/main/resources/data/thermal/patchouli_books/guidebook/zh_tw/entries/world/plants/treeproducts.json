@@ -10,11 +10,11 @@
 
       "A.title": "樹汁",
       "A.item": "thermal:sap_bucket",
-      "A.text": "一種含糖液體，曾經在$(l:thermal:technology/devices/tree_extractor)黑橡木$(/l)中攜帶水和養分。",
+      "A.text": "一種含糖流體，曾經在$(l:thermal:technology/devices/tree_extractor)黑橡木$(/l)中攜帶水和養分。",
 
       "B.title": "樹脂",
       "B.item": "thermal:resin_bucket",
-      "B.text": "一種粘稠的液體，可以從橡木、樺木、杉木和相思木中$(l:thermal:technology/devices/tree_extractor)收穫$(/l)。"
+      "B.text": "一種粘稠的流體，可以從橡木、樺木、杉木和相思木中$(l:thermal:technology/devices/tree_extractor)收穫$(/l)。"
     },
     {
       "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
@@ -78,7 +78,7 @@
 
       "B.title": "糖漿",
       "B.item": "thermal:syrup_bucket",
-      "B.text": "一種濃稠可口的液體，讓任何烙餅的不幸遭遇都值得。藉由$(l:thermal:technology/machines/refinery)精煉$(/l)樹汁產生。"
+      "B.text": "一種濃稠可口的流體，讓任何烙餅的不幸遭遇都值得。藉由$(l:thermal:technology/machines/refinery)精煉$(/l)樹汁產生。"
     },
     {
       "flag": "mod:thermal_expansion",
