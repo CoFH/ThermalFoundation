@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "植育土注能機是一種使用紅石通量加速附近$(l:thermal:world/plants/phytogro)植育土$(/l)上農作物生長的裝置。在它的基本型態中，它在周圍注入了一個 3x3x3 的區域，可以使用$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)增強元件擴大到 7x3x7。$(l:thermal:technology/augments/integral_components)整合組件$(/l)增加生長促進效果。"
+      "text": "植育土注能機是一種使用紅石通量加速附近$(l:thermal:world/plants/phytogro)植育土$(/l)上農作物生長的裝置。在它的基本型態中，它在周圍注入了一個 3x3x3 的區域，可以使用$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)增強元件擴大到 7x3x7。$(l:thermal:technology/augments/integral_components)整合元件$(/l)增加生長促進效果。"
     },
     {
       "type": "thermal:double_crafting_page",
@@ -17,7 +17,7 @@
     {
       "type": "patchouli:text",
       "title": "增強相容性",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)"
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)"
     }
   ]
 }

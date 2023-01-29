@@ -25,7 +25,7 @@
     {
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:machine_frame",
-      "text": "這些頁面包含機器和裝置中常用組件的配方。"
+      "text": "這些頁面包含機器和裝置中常用元件的配方。"
     },
     {
       "type": "thermal:double_crafting_page",

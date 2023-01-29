@@ -13,12 +13,12 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:device_rock_gen",
       "title": "岩石擠製機",
-      "text": "最初，它將每秒產生 1 個方塊，但可以使用 $(l:thermal:technology/augments/integral_components)整合組件$(/l)將其增加到每秒 4 個。如果更改了配方，則輸出欄中的任何方塊都將作廢，以便為新配方中的方塊騰出空間。"
+      "text": "最初，它將每秒產生 1 個方塊，但可以使用 $(l:thermal:technology/augments/integral_components)整合元件$(/l)將其增加到每秒 4 個。如果更改了配方，則輸出欄中的任何方塊都將作廢，以便為新配方中的方塊騰出空間。"
     },
     {
       "type": "patchouli:text",
       "title": "增強相容性",
-      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合組件$(/l)"
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)"
     }
   ]
 } 

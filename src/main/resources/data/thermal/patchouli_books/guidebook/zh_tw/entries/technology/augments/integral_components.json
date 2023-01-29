@@ -1,5 +1,5 @@
 {
-  "name": "整合組件",
+  "name": "整合元件",
   "icon": "thermal:upgrade_augment_3",
   "category": "thermal:augments",
   "sortnum": -1,
@@ -11,7 +11,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "例如，$(l:thermal:technology/machines/furnace)紅石熔煉爐$(/l)具有諧振和硬化整合組件和$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)將具有 24 倍的紅石通量儲存、8 倍的紅石通量傳輸和 4 倍的基礎 RF/t。$(br2)硬化、強化和諧振整合組件的縮放比例分別為 2 倍、3 倍和 4 倍。"
+      "text": "例如，$(l:thermal:technology/machines/furnace)紅石熔煉爐$(/l)具有諧振和硬化整合元件和$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)將具有 24 倍的紅石通量儲存、8 倍的紅石通量傳輸和 4 倍的基礎 RF/t。$(br2)硬化、強化和諧振整合元件的縮放比例分別為 2 倍、3 倍和 4 倍。"
     },
     {
       "type": "thermal:double_crafting_page",

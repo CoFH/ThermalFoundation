@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "CoFH 核心新增了擴容，這是一種新的附魔，可以套用於儲存各種東西（例如紅石通量或流體）的方塊和物品。對於每個等級，它都會增加 50% 的容量，在擴容 IV 時最高可增加達 200%。這可與其他修改儲存容量的東西疊加在一起，例如$(l:thermal:technology/augments/introduction)增強元件$(/l)。例如，如果一台機器具有 $(l:thermal:technology/augments/integral_components)諧振整合組件$(/l)且有擴容 IV，它將儲存 12 倍的紅石通量。"
+      "text": "CoFH 核心新增了擴容，這是一種新的附魔，可以套用於儲存各種東西（例如紅石通量或流體）的方塊和物品。對於每個等級，它都會增加 50% 的容量，在擴容 IV 時最高可增加達 200%。這可與其他修改儲存容量的東西疊加在一起，例如$(l:thermal:technology/augments/introduction)增強元件$(/l)。例如，如果一台機器具有 $(l:thermal:technology/augments/integral_components)諧振整合元件$(/l)且有擴容 IV，它將儲存 12 倍的紅石通量。"
     }
   ]
 }

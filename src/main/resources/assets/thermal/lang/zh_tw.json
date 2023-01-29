@@ -389,7 +389,7 @@
   "subtitles.thermal.item.equip_diving": "潛水套裝叮噹作響",
   "subtitles.thermal.item.equip_hazmat": "防護套裝沙沙作響",
 
-  "subtitles.thermal.misc.tinker": "升級組件安裝",
+  "subtitles.thermal.misc.tinker": "升級元件安裝",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Augments",
@@ -492,13 +492,13 @@
   "item.thermal.side_config_augment": "模組設置重構",
   "item.thermal.side_config_augment.desc": "允許重新設定每面的輸入/輸出設定",
 
-  "item.thermal.upgrade_augment_1": "硬化整合組件",
+  "item.thermal.upgrade_augment_1": "硬化整合元件",
   "item.thermal.upgrade_augment_1.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
-  "item.thermal.upgrade_augment_2": "強化整合組件",
+  "item.thermal.upgrade_augment_2": "強化整合元件",
   "item.thermal.upgrade_augment_2.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
-  "item.thermal.upgrade_augment_3": "諧振整合組件",
+  "item.thermal.upgrade_augment_3": "諧振整合元件",
   "item.thermal.upgrade_augment_3.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
-  "item.thermal.upgrade_augment_4": "超諧振整合組件",
+  "item.thermal.upgrade_augment_4": "超諧振整合元件",
   "item.thermal.upgrade_augment_4.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
 
   "item.thermal.xp_storage_augment": "知識濃縮器",
@@ -762,7 +762,7 @@
   "block.thermal.item_cell.keyword": "快取 物品 儲存",
 
   "block.thermal.charge_bench.keyword": "能量 充電器 rf",
-  "block.thermal.tinker_bench.keyword": "組件 充電器 灌注 裝填 注水 升級",
+  "block.thermal.tinker_bench.keyword": "元件 充電器 灌注 裝填 注水 升級",
 
   "block.thermal.chunk_loader.keyword": "區塊 區塊載入器 載入器",
 
@@ -776,45 +776,45 @@
   "block.thermal.device_tree_extractor.keyword": "提取器 乳膠 樹",
   "block.thermal.device_water_gen.keyword": "泵 源 水",
 
-  "item.thermal.area_depth_augment.keyword": "組件",
-  "item.thermal.area_radius_augment.keyword": "組件 電鑽 工具",
+  "item.thermal.area_depth_augment.keyword": "元件",
+  "item.thermal.area_radius_augment.keyword": "元件 電鑽 工具",
 
-  "item.thermal.dynamo_fuel_augment.keyword": "組件 能源爐",
-  "item.thermal.dynamo_output_augment.keyword": "組件 能源爐",
+  "item.thermal.dynamo_fuel_augment.keyword": "元件 能源爐",
+  "item.thermal.dynamo_output_augment.keyword": "元件 能源爐",
 
-  "item.thermal.fluid_tank_augment.keyword": "組件 流體 儲存 容器 儲罐 缸",
-  "item.thermal.fluid_tank_creative_augment.keyword": "組件 創造 流體 儲存 容器 儲罐 缸",
+  "item.thermal.fluid_tank_augment.keyword": "元件 流體 儲存 容器 儲罐 缸",
+  "item.thermal.fluid_tank_creative_augment.keyword": "元件 創造 流體 儲存 容器 儲罐 缸",
 
-  "item.thermal.dual_filter_augment.keyword": "組件 篩選器",
-  "item.thermal.fluid_filter_augment.keyword": "組件 篩選器",
-  "item.thermal.item_filter_augment.keyword": "組件 篩選器",
+  "item.thermal.dual_filter_augment.keyword": "元件 篩選器",
+  "item.thermal.fluid_filter_augment.keyword": "元件 篩選器",
+  "item.thermal.item_filter_augment.keyword": "元件 篩選器",
 
-  "item.thermal.machine_catalyst_augment.keyword": "組件 催化劑 機器",
-  "item.thermal.machine_catalyst_creative_augment.keyword": "組件 催化劑 創造 機器",
-  "item.thermal.machine_cycle_augment.keyword": "組件 機器",
-  "item.thermal.machine_efficiency_augment.keyword": "組件 機器",
-  "item.thermal.machine_efficiency_creative_augment.keyword": "組件 創造 機器",
-  "item.thermal.machine_null_augment.keyword": "組件 機器 垃圾 虛空",
-  "item.thermal.machine_output_augment.keyword": "組件 機器",
-  "item.thermal.machine_speed_augment.keyword": "組件 機器 超頻 速度",
+  "item.thermal.machine_catalyst_augment.keyword": "元件 催化劑 機器",
+  "item.thermal.machine_catalyst_creative_augment.keyword": "元件 催化劑 創造 機器",
+  "item.thermal.machine_cycle_augment.keyword": "元件 機器",
+  "item.thermal.machine_efficiency_augment.keyword": "元件 機器",
+  "item.thermal.machine_efficiency_creative_augment.keyword": "元件 創造 機器",
+  "item.thermal.machine_null_augment.keyword": "元件 機器 垃圾 虛空",
+  "item.thermal.machine_output_augment.keyword": "元件 機器",
+  "item.thermal.machine_speed_augment.keyword": "元件 機器 超頻 速度",
 
-  "item.thermal.potion_amplifier_augment.keyword": "組件 藥水",
-  "item.thermal.potion_duration_augment.keyword": "組件 藥水",
+  "item.thermal.potion_amplifier_augment.keyword": "元件 藥水",
+  "item.thermal.potion_duration_augment.keyword": "元件 藥水",
 
-  "item.thermal.rf_coil_augment.keyword": "組件 能量 rf 儲存",
-  "item.thermal.rf_coil_creative_augment.keyword": "組件 創造 能量 rf 儲存",
-  "item.thermal.rf_coil_storage_augment.keyword": "組件 能量 rf 儲存",
-  "item.thermal.rf_coil_xfer_augment.keyword": "組件 能量 rf 儲存",
+  "item.thermal.rf_coil_augment.keyword": "元件 能量 rf 儲存",
+  "item.thermal.rf_coil_creative_augment.keyword": "元件 創造 能量 rf 儲存",
+  "item.thermal.rf_coil_storage_augment.keyword": "元件 能量 rf 儲存",
+  "item.thermal.rf_coil_xfer_augment.keyword": "元件 能量 rf 儲存",
 
-  "item.thermal.rs_control_augment.keyword": "組件 紅石",
-  "item.thermal.side_config_augment.keyword": "組件 面",
+  "item.thermal.rs_control_augment.keyword": "元件 紅石",
+  "item.thermal.side_config_augment.keyword": "元件 面",
 
-  "item.thermal.upgrade_augment_1.keyword": "組件 整合 升級",
-  "item.thermal.upgrade_augment_2.keyword": "組件 整合 升級",
-  "item.thermal.upgrade_augment_3.keyword": "組件 整合 升級",
-  "item.thermal.upgrade_augment_4.keyword": "組件 整合 升級",
+  "item.thermal.upgrade_augment_1.keyword": "元件 整合 升級",
+  "item.thermal.upgrade_augment_2.keyword": "元件 整合 升級",
+  "item.thermal.upgrade_augment_3.keyword": "元件 整合 升級",
+  "item.thermal.upgrade_augment_4.keyword": "元件 整合 升級",
 
-  "item.thermal.xp_storage_augment.keyword": "組件 經驗 xp",
+  "item.thermal.xp_storage_augment.keyword": "元件 經驗 xp",
 
   "item.thermal.beekeeper_helmet.keyword": "盔甲 頭盔 蜂蜜 蜇 刺叮 叮咬",
   "item.thermal.beekeeper_chestplate.keyword": "盔甲 胸甲 蜂蜜 蜇 刺叮 叮咬",
