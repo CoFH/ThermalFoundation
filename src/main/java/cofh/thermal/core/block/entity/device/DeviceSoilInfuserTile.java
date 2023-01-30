@@ -8,7 +8,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.block.ChargedSoilBlock;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
-import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.block.entity.AugmentableBlockEntity;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -34,7 +34,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_SOIL_INFUSER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceSoilInfuserTile extends ThermalTileAugmentable implements ITickableTile.IServerTickable, IAreaEffectTile {
+public class DeviceSoilInfuserTile extends AugmentableBlockEntity implements ITickableTile.IServerTickable, IAreaEffectTile {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT);
 

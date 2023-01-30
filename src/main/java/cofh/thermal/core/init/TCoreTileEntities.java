@@ -1,10 +1,10 @@
 package cofh.thermal.core.init;
 
-import cofh.thermal.core.block.entity.ChargeBenchTile;
-import cofh.thermal.core.block.entity.TinkerBenchTile;
+import cofh.thermal.core.block.entity.ChargeBenchBlockEntity;
+import cofh.thermal.core.block.entity.TinkerBenchBlockEntity;
 import cofh.thermal.core.block.entity.device.*;
-import cofh.thermal.core.block.entity.storage.EnergyCellTile;
-import cofh.thermal.core.block.entity.storage.FluidCellTile;
+import cofh.thermal.core.block.entity.storage.EnergyCellBlockEntity;
+import cofh.thermal.core.block.entity.storage.FluidCellBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -39,10 +39,10 @@ public class TCoreTileEntities {
     public static final RegistryObject<BlockEntityType<?>> DEVICE_NULLIFIER_TILE = TILE_ENTITIES.register(ID_DEVICE_NULLIFIER, () -> BlockEntityType.Builder.of(DeviceNullifierTile::new, BLOCKS.get(ID_DEVICE_NULLIFIER)).build(null));
     public static final RegistryObject<BlockEntityType<?>> DEVICE_POTION_DIFFUSER_TILE = TILE_ENTITIES.register(ID_DEVICE_POTION_DIFFUSER, () -> BlockEntityType.Builder.of(DevicePotionDiffuserTile::new, BLOCKS.get(ID_DEVICE_POTION_DIFFUSER)).build(null));
 
-    public static final RegistryObject<BlockEntityType<?>> TINKER_BENCH_TILE = TILE_ENTITIES.register(ID_TINKER_BENCH, () -> BlockEntityType.Builder.of(TinkerBenchTile::new, BLOCKS.get(ID_TINKER_BENCH)).build(null));
-    public static final RegistryObject<BlockEntityType<?>> CHARGE_BENCH_TILE = TILE_ENTITIES.register(ID_CHARGE_BENCH, () -> BlockEntityType.Builder.of(ChargeBenchTile::new, BLOCKS.get(ID_CHARGE_BENCH)).build(null));
+    public static final RegistryObject<BlockEntityType<?>> TINKER_BENCH_TILE = TILE_ENTITIES.register(ID_TINKER_BENCH, () -> BlockEntityType.Builder.of(TinkerBenchBlockEntity::new, BLOCKS.get(ID_TINKER_BENCH)).build(null));
+    public static final RegistryObject<BlockEntityType<?>> CHARGE_BENCH_TILE = TILE_ENTITIES.register(ID_CHARGE_BENCH, () -> BlockEntityType.Builder.of(ChargeBenchBlockEntity::new, BLOCKS.get(ID_CHARGE_BENCH)).build(null));
 
-    public static final RegistryObject<BlockEntityType<?>> ENERGY_CELL_TILE = TILE_ENTITIES.register(ID_ENERGY_CELL, () -> BlockEntityType.Builder.of(EnergyCellTile::new, BLOCKS.get(ID_ENERGY_CELL)).build(null));
-    public static final RegistryObject<BlockEntityType<?>> FLUID_CELL_TILE = TILE_ENTITIES.register(ID_FLUID_CELL, () -> BlockEntityType.Builder.of(FluidCellTile::new, BLOCKS.get(ID_FLUID_CELL)).build(null));
+    public static final RegistryObject<BlockEntityType<?>> ENERGY_CELL_TILE = TILE_ENTITIES.register(ID_ENERGY_CELL, () -> BlockEntityType.Builder.of(EnergyCellBlockEntity::new, BLOCKS.get(ID_ENERGY_CELL)).build(null));
+    public static final RegistryObject<BlockEntityType<?>> FLUID_CELL_TILE = TILE_ENTITIES.register(ID_FLUID_CELL, () -> BlockEntityType.Builder.of(FluidCellBlockEntity::new, BLOCKS.get(ID_FLUID_CELL)).build(null));
 
 }

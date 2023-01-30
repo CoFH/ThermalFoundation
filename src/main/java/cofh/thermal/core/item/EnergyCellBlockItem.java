@@ -22,7 +22,7 @@ import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentMa
 import static cofh.lib.api.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.StringHelper.*;
-import static cofh.thermal.core.block.entity.storage.EnergyCellTile.*;
+import static cofh.thermal.core.block.entity.storage.EnergyCellBlockEntity.*;
 
 public class EnergyCellBlockItem extends BlockItemAugmentable implements IEnergyContainerItem {
 

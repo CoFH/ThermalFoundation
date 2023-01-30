@@ -1239,18 +1239,12 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
 
         generateSmeltingAndBlastingRecipes(reg, consumer, reg.get("slag"), rockwool, 0.1F, "rockwool");
 
-        //        ShapelessRecipeBuilder.shapelessRecipe(reg.get(ID_WHITE_ROCKWOOL))
-        //                .addIngredient(rockwool)
-        //                .addIngredient(Tags.Items.DYES_WHITE)
-        //                .addCriterion("has_" + path(rockwool), hasItem(rockwool))
-        //                .build(consumer);
-
         result = reg.get(ID_ORANGE_ROCKWOOL);
         recipeId = this.modid + ":" + folder + "/" + name(result) + "_from_dye";
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_ORANGE)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_MAGENTA_ROCKWOOL);
@@ -1258,7 +1252,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_MAGENTA)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_LIGHT_BLUE_ROCKWOOL);
@@ -1266,7 +1260,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_LIGHT_BLUE)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_YELLOW_ROCKWOOL);
@@ -1274,7 +1268,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_YELLOW)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_LIME_ROCKWOOL);
@@ -1282,7 +1276,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_LIME)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_PINK_ROCKWOOL);
@@ -1290,7 +1284,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_PINK)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_GRAY_ROCKWOOL);
@@ -1298,7 +1292,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_GRAY)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_LIGHT_GRAY_ROCKWOOL);
@@ -1306,7 +1300,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_LIGHT_GRAY)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_CYAN_ROCKWOOL);
@@ -1314,7 +1308,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_CYAN)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_PURPLE_ROCKWOOL);
@@ -1322,7 +1316,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_PURPLE)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_BLUE_ROCKWOOL);
@@ -1330,7 +1324,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_BLUE)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_BROWN_ROCKWOOL);
@@ -1338,7 +1332,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_BROWN)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_GREEN_ROCKWOOL);
@@ -1346,7 +1340,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_GREEN)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_RED_ROCKWOOL);
@@ -1354,7 +1348,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_RED)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
 
         result = reg.get(ID_BLACK_ROCKWOOL);
@@ -1362,7 +1356,7 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(rockwool)
                 .requires(Tags.Items.DYES_BLACK)
-                .unlockedBy("has_" + name(rockwool), has(rockwool))
+                .unlockedBy(getHasName(rockwool), has(rockwool))
                 .save(consumer, recipeId);
     }
 

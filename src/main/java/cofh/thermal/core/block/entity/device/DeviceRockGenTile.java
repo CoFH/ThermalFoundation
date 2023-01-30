@@ -7,7 +7,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceRockGenContainer;
 import cofh.thermal.core.util.managers.device.RockGenManager;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -42,7 +42,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_ROCK_GEN_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceRockGenTile extends DeviceTileBase implements ITickableTile.IServerTickable {
+public class DeviceRockGenTile extends DeviceBlockEntity implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE);
 

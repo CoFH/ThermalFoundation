@@ -10,7 +10,7 @@ import cofh.core.inventory.container.ContainerCoFH;
 import cofh.core.network.packet.server.TileFilterGuiOpenPacket;
 import cofh.core.util.helpers.FilterHelper;
 import cofh.lib.util.helpers.SecurityHelper;
-import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.block.entity.AugmentableBlockEntity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,11 +19,11 @@ import java.util.Collections;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 
-public class ThermalTileScreenBase<T extends ContainerCoFH> extends ContainerScreenCoFH<T> {
+public class AugmentableScreen<T extends ContainerCoFH> extends ContainerScreenCoFH<T> {
 
-    protected ThermalTileAugmentable tile;
+    protected AugmentableBlockEntity tile;
 
-    public ThermalTileScreenBase(T container, Inventory inv, ThermalTileAugmentable tile, Component titleIn) {
+    public AugmentableScreen(T container, Inventory inv, AugmentableBlockEntity tile, Component titleIn) {
 
         super(container, inv, titleIn);
         this.tile = tile;

@@ -6,7 +6,7 @@ import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.ChargeBenchContainer;
-import cofh.thermal.lib.tileentity.ThermalTileAugmentable;
+import cofh.thermal.lib.block.entity.AugmentableBlockEntity;
 import cofh.thermal.lib.util.ThermalEnergyHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -26,7 +26,7 @@ import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.thermal.core.init.TCoreTileEntities.CHARGE_BENCH_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class ChargeBenchTile extends ThermalTileAugmentable implements ITickableTile.IServerTickable {
+public class ChargeBenchBlockEntity extends AugmentableBlockEntity implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_FILTER);
 
@@ -36,7 +36,7 @@ public class ChargeBenchTile extends ThermalTileAugmentable implements ITickable
     protected ItemStorageCoFH[] benchSlots = new ItemStorageCoFH[9];
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
 
-    public ChargeBenchTile(BlockPos pos, BlockState state) {
+    public ChargeBenchBlockEntity(BlockPos pos, BlockState state) {
 
         super(CHARGE_BENCH_TILE.get(), pos, state);
 

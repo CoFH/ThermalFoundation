@@ -1,4 +1,4 @@
-package cofh.thermal.lib.tileentity;
+package cofh.thermal.lib.block.entity;
 
 import cofh.core.util.control.*;
 import cofh.lib.util.helpers.MathHelper;
@@ -22,7 +22,7 @@ import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class CellTileBase extends ThermalTileAugmentable implements IReconfigurableTile, ITransferControllableTile {
+public abstract class CellBlockEntity extends AugmentableBlockEntity implements IReconfigurableTile, ITransferControllableTile {
 
     protected int compareTracker;
     protected int levelTracker;
@@ -38,7 +38,7 @@ public abstract class CellTileBase extends ThermalTileAugmentable implements IRe
     protected ReconfigControlModule reconfigControl = new ReconfigControlModuleLimited(this);
     protected TransferControlModule transferControl = new TransferControlModule(this);
 
-    public CellTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public CellBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
 

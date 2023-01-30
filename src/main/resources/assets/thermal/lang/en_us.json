@@ -942,6 +942,9 @@
   "item.thermal.peanut_butter": "Jar of Peanut Butter",
   "item.thermal.tomato_sauce": "Jar of Tomato Sauce",
 
+  "item.thermal.cooked_eggplant": "Roasted Eggplant",
+  "item.thermal.cooked_mushroom": "Roasted Mushroom",
+
   "item.thermal.cheese_wedge": "Cheese",
   "item.thermal.green_bean_pie": "Green Bean Pie",
   "item.thermal.hearty_stew": "Hearty Stew",
@@ -988,9 +991,15 @@
 
   "attachment.thermal.energy_limiter": "Redstone Flux Limiter",
 
+  "attachment.thermal.fluid_filter": "Fluiduct Filter",
+  "attachment.thermal.fluid_servo": "Fluiduct Servo",
+
+  "attachment.thermal.item_filter": "Itemduct Filter",
+  "attachment.thermal.item_servo": "Itemduct Servo",
+
   "block.thermal.energy_duct": "Fluxduct",
   "block.thermal.fluid_duct": "Fluiduct",
-  "block.thermal.fluid_duct_glass": "Fluiduct (Windowed)",
+  "block.thermal.fluid_duct_windowed": "Fluiduct (Windowed)",
 
   "block.thermal.energy_distributor": "RF Distribution Interface",
   "block.thermal.fluid_distributor": "Fluid Distribution Interface",
@@ -1002,8 +1011,12 @@
   "info.thermal.energy_limiter_attachment.2": "Hold §e§oShift§r and/or §e§oCtrl§r to fine tune amounts.",
 
   "info.thermal.fluid_filter_attachment.0": "Place items containing fluid in slots to add the fluid to the filter list.",
-  "info.thermal.fluid_filter_attachment.1": "Additional options can be used to fine-tune behavior.",
-  "info.thermal.fluid_filter_attachment.2": "Redstone Control can be used to temporarily disable filtering..",
+  "info.thermal.fluid_filter_attachment.1": "Additional options can be used to fine-tune filtering.",
+  "info.thermal.fluid_filter_attachment.2": "Redstone Control can be used to temporarily disable filtering.",
+
+  "info.thermal.fluid_servo_attachment.0": "Place items containing fluid in slots to add the fluid to the filter list.",
+  "info.thermal.fluid_servo_attachment.1": "Additional options can be used to fine-tune filtering and extraction amount.",
+  "info.thermal.fluid_servo_attachment.2": "Redstone Control is used to enable extraction.",
 
   "info.thermal.item_buffer.0": "Restricts quantity and flow of items.",
   "info.thermal.item_buffer.1": "Set desired items and quantities using the left grid.",
@@ -1015,6 +1028,8 @@
 
   "item.thermal.energy_limiter_attachment": "Attachment: Redstone Flux Limiter",
   "item.thermal.filter_attachment": "Attachment: Filter",
+  "item.thermal.input_filter_attachment": "Attachment: Input Filter",
+  "item.thermal.output_filter_attachment": "Attachment: Output Filter",
   "item.thermal.servo_attachment": "Attachment: Servo",
 
   "_comment": "========================================================================================================",

@@ -7,15 +7,15 @@ import cofh.core.item.BlockItemCoFH;
 import cofh.lib.block.*;
 import cofh.thermal.core.block.*;
 import cofh.thermal.core.block.device.TileBlockComposter;
-import cofh.thermal.core.block.entity.ChargeBenchTile;
-import cofh.thermal.core.block.entity.TinkerBenchTile;
+import cofh.thermal.core.block.entity.ChargeBenchBlockEntity;
+import cofh.thermal.core.block.entity.TinkerBenchBlockEntity;
 import cofh.thermal.core.block.entity.device.*;
-import cofh.thermal.core.block.entity.storage.EnergyCellTile;
-import cofh.thermal.core.block.entity.storage.FluidCellTile;
+import cofh.thermal.core.block.entity.storage.EnergyCellBlockEntity;
+import cofh.thermal.core.block.entity.storage.FluidCellBlockEntity;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.EnergyCellBlockItem;
 import cofh.thermal.core.item.FluidCellBlockItem;
-import cofh.thermal.lib.block.TileBlockCell;
+import cofh.thermal.lib.block.StorageCellBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.damagesource.DamageSource;
@@ -297,14 +297,14 @@ public class TCoreBlocks {
 
         IntSupplier storageAugs = () -> ThermalCoreConfig.storageAugments;
 
-        registerAugmentableBlock(ID_TINKER_BENCH, () -> new TileBlockCoFH(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), TinkerBenchTile.class, TINKER_BENCH_TILE), storageAugs, TinkerBenchTile.AUG_VALIDATOR, getFlag(ID_TINKER_BENCH));
-        registerAugmentableBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), ChargeBenchTile.class, CHARGE_BENCH_TILE), storageAugs, ChargeBenchTile.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));
+        registerAugmentableBlock(ID_TINKER_BENCH, () -> new TileBlockCoFH(of(Material.WOOD).sound(SoundType.SCAFFOLDING).strength(2.5F), TinkerBenchBlockEntity.class, TINKER_BENCH_TILE), storageAugs, TinkerBenchBlockEntity.AUG_VALIDATOR, getFlag(ID_TINKER_BENCH));
+        registerAugmentableBlock(ID_CHARGE_BENCH, () -> new TileBlockActive(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), ChargeBenchBlockEntity.class, CHARGE_BENCH_TILE), storageAugs, ChargeBenchBlockEntity.AUG_VALIDATOR, getFlag(ID_CHARGE_BENCH));
 
-        BLOCKS.register(ID_ENERGY_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion(), EnergyCellTile.class, ENERGY_CELL_TILE));
+        BLOCKS.register(ID_ENERGY_CELL, () -> new StorageCellBlock(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion(), EnergyCellBlockEntity.class, ENERGY_CELL_TILE));
         ITEMS.register(ID_ENERGY_CELL, (Supplier<Item>) () -> new EnergyCellBlockItem(BLOCKS.get(ID_ENERGY_CELL), new Item.Properties().tab(THERMAL_DEVICES)).setNumSlots(storageAugs).setAugValidator(ENERGY_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ENERGY_CELL)));
 
-        BLOCKS.register(ID_FLUID_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion(), FluidCellTile.class, FLUID_CELL_TILE));
-        ITEMS.register(ID_FLUID_CELL, (Supplier<Item>) () -> new FluidCellBlockItem(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().tab(THERMAL_DEVICES)).setNumSlots(storageAugs).setAugValidator(FluidCellTile.AUG_VALIDATOR).setShowInGroups(getFlag(ID_FLUID_CELL)));
+        BLOCKS.register(ID_FLUID_CELL, () -> new StorageCellBlock(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).noOcclusion(), FluidCellBlockEntity.class, FLUID_CELL_TILE));
+        ITEMS.register(ID_FLUID_CELL, (Supplier<Item>) () -> new FluidCellBlockItem(BLOCKS.get(ID_FLUID_CELL), new Item.Properties().tab(THERMAL_DEVICES)).setNumSlots(storageAugs).setAugValidator(FluidCellBlockEntity.AUG_VALIDATOR).setShowInGroups(getFlag(ID_FLUID_CELL)));
 
         //        BLOCKS.register(ID_ITEM_CELL, () -> new TileBlockCell(of(Material.METAL).sound(SoundType.LANTERN).strength(2.0F).harvestTool(ToolType.PICKAXE).noOcclusion(), ItemCellTile::new));
         //        ITEMS.register(ID_ITEM_CELL, (Supplier<Item>) () -> new ItemCellBlockItem(BLOCKS.get(ID_ITEM_CELL), new Item.Properties().tab(THERMAL_BLOCKS)).setNumSlots(storageAugs).setAugValidator(ITEM_STORAGE_VALIDATOR).setShowInGroups(getFlag(ID_ITEM_CELL)));

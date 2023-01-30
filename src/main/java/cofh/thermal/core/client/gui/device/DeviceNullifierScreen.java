@@ -3,7 +3,7 @@ package cofh.thermal.core.client.gui.device;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.core.client.gui.element.SimpleTooltip;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
-import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
+import cofh.thermal.lib.client.gui.AugmentableScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +13,7 @@ import static cofh.core.util.helpers.GuiHelper.generatePanelInfo;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 
-public class DeviceNullifierScreen extends ThermalTileScreenBase<DeviceNullifierContainer> {
+public class DeviceNullifierScreen extends AugmentableScreen<DeviceNullifierContainer> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/nullifier.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
