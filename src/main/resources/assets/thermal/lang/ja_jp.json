@@ -942,6 +942,9 @@
   "item.thermal.peanut_butter": "ピーナッツバター入り保存瓶",
   "item.thermal.tomato_sauce": "トマトソース入り保存瓶",
 
+  "item.thermal.cooked_eggplant": "焼きナス",
+  "item.thermal.cooked_mushroom": "焼きマッシュルーム",
+
   "item.thermal.cheese_wedge": "チーズ",
   "item.thermal.green_bean_pie": "サヤインゲンパイ",
   "item.thermal.hearty_stew": "たっぷりシチュー",
@@ -986,6 +989,17 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+  "attachment.thermal.energy_limiter": "レッドストーンフラックスリミッター",
+
+  "attachment.thermal.fluid_filter": "流体ダクトフィルター",
+  "attachment.thermal.fluid_input_filter": "流体ダクトフィルター (流入)",
+  "attachment.thermal.fluid_output_filter": "流体ダクトフィルター (流出)",
+
+  "attachment.thermal.fluid_servo": "流体ダクトサーボ",
+
+  "attachment.thermal.item_filter": "アイテムダクトフィルター",
+  "attachment.thermal.item_servo": "アイテムダクトサーボ",
+
   "block.thermal.energy_duct": "フラックスダクト",
   "block.thermal.fluid_duct": "流体ダクト",
   "block.thermal.fluid_duct_windowed": "流体ダクト(窓付き)",
@@ -995,6 +1009,18 @@
 
   "block.thermal.item_buffer": "物流アイテムバッファ",
 
+  "info.thermal.energy_limiter_attachment.0": "これを通して流れるエネルギー量を制限します。",
+  "info.thermal.energy_limiter_attachment.1": "それぞれの方向へ向かう量をそれぞれ変更できます。",
+  "info.thermal.energy_limiter_attachment.2": "ShiftキーやCtrlキーで入出力量を細かく設定できます。",
+
+  "info.thermal.fluid_filter_attachment.0": "液体を含むアイテムをスロットに置くと、フィルターリストに液体が登録されます。",
+  "info.thermal.fluid_filter_attachment.1": "追加オプションからより細かいフィルター設定を行えます。",
+  "info.thermal.fluid_filter_attachment.2": "レッドストーン制御でフィルター設定を一時的に無効にできます。",
+
+  "info.thermal.fluid_servo_attachment.0": "液体を含むアイテムをスロットに置くと、フィルターリストに液体が登録されます。",
+  "info.thermal.fluid_servo_attachment.1": "追加オプションからより細かいフィルター設定や流出量の微調整を行えます。",
+  "info.thermal.fluid_servo_attachment.2": "レッドストーン制御で流体の流出を有効にできます。",
+
   "info.thermal.item_buffer.0": "アイテムの数と流量を制限します。",
   "info.thermal.item_buffer.1": "左のグリッドで、希望するアイテムとその個数を設定します。",
   "info.thermal.item_buffer.2": "ラッチI/Oは、搬出にはすべてのアイテムが存在する必要があります。",
@@ -1002,6 +1028,12 @@
 
   "info.thermal.item_buffer.mode.0": "I/O: 通常",
   "info.thermal.item_buffer.mode.1": "I/O: ラッチ",
+
+  "item.thermal.energy_limiter_attachment": "アタッチメント: レッドストーンフラックスリミッター",
+  "item.thermal.filter_attachment": "アタッチメント: フィルター",
+  "item.thermal.input_filter_attachment": "アタッチメント: インプットフィルター",
+  "item.thermal.output_filter_attachment": "アタッチメント: アウトプットフィルター",
+  "item.thermal.servo_attachment": "アタッチメント: サーボ",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
