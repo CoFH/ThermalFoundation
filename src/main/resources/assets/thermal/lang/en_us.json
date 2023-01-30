@@ -992,9 +992,6 @@
   "attachment.thermal.energy_limiter": "Redstone Flux Limiter",
 
   "attachment.thermal.fluid_filter": "Fluiduct Filter",
-  "attachment.thermal.fluid_input_filter": "Fluiduct Filter (Input)",
-  "attachment.thermal.fluid_output_filter": "Fluiduct Filter (Output)",
-
   "attachment.thermal.fluid_servo": "Fluiduct Servo",
 
   "attachment.thermal.item_filter": "Itemduct Filter",
