@@ -22,7 +22,7 @@ import static cofh.lib.util.constants.BlockStatePropertiesCoFH.FACING_HORIZONTAL
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.BlockHelper.*;
 
-public abstract class CellBlockEntity extends AugmentableBlockEntity implements IReconfigurableTile, ITransferControllableTile {
+public abstract class StorageCellBlockEntity extends AugmentableBlockEntity implements IReconfigurableTile, ITransferControllableTile {
 
     protected int compareTracker;
     protected int levelTracker;
@@ -38,7 +38,7 @@ public abstract class CellBlockEntity extends AugmentableBlockEntity implements 
     protected ReconfigControlModule reconfigControl = new ReconfigControlModuleLimited(this);
     protected TransferControlModule transferControl = new TransferControlModule(this);
 
-    public CellBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public StorageCellBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
 
@@ -148,6 +148,8 @@ public abstract class CellBlockEntity extends AugmentableBlockEntity implements 
 
         amountInput = MathHelper.clamp(buffer.readInt(), 0, getMaxInput());
         amountOutput = MathHelper.clamp(buffer.readInt(), 0, getMaxOutput());
+
+        markChunkUnsaved();
     }
 
     // CONTROL

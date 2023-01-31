@@ -992,11 +992,9 @@
 
   "attachment.thermal.energy_limiter": "Redstone Flux Limiter",
 
-  "attachment.thermal.fluid_filter": "Fluiduct Filter",
-  "attachment.thermal.fluid_servo": "Fluiduct Servo",
-
-  "attachment.thermal.item_filter": "Itemduct Filter",
-  "attachment.thermal.item_servo": "Itemduct Servo",
+  "attachment.thermal.filter": "Fluiduct Filter",
+  "attachment.thermal.servo": "Fluiduct Servo",
+  "attachment.thermal.turbo_servo": "Fluiduct Turbo-Servo",
 
   "block.thermal.energy_duct": "Fluxduct",
   "block.thermal.fluid_duct": "Fluiduct",
@@ -1016,8 +1014,13 @@
   "info.thermal.fluid_filter_attachment.2": "Redstone Control can be used to temporarily disable filtering.",
 
   "info.thermal.fluid_servo_attachment.0": "Place items containing fluid in slots to add the fluid to the filter list.",
-  "info.thermal.fluid_servo_attachment.1": "Additional options can be used to fine-tune filtering and extraction amount.",
+  "info.thermal.fluid_servo_attachment.1": "Additional options can be used to fine-tune filtering.",
   "info.thermal.fluid_servo_attachment.2": "Redstone Control is used to enable extraction.",
+
+  "info.thermal.fluid_turbo_servo_attachment.0": "A much faster Servo, with limited filtering.",
+  "info.thermal.fluid_turbo_servo_attachment.1": "Place items containing fluid in the Filter slot.",
+  "info.thermal.fluid_turbo_servo_attachment.2": "Additional options can be used to fine-tune filtering and extraction amount.",
+  "info.thermal.fluid_turbo_servo_attachment.3": "Redstone Control is used to enable extraction.",
 
   "info.thermal.item_buffer.0": "Restricts quantity and flow of items.",
   "info.thermal.item_buffer.1": "Set desired items and quantities using the left grid.",
@@ -1029,9 +1032,8 @@
 
   "item.thermal.energy_limiter_attachment": "Attachment: Redstone Flux Limiter",
   "item.thermal.filter_attachment": "Attachment: Filter",
-  "item.thermal.input_filter_attachment": "Attachment: Input Filter",
-  "item.thermal.output_filter_attachment": "Attachment: Output Filter",
   "item.thermal.servo_attachment": "Attachment: Servo",
+  "item.thermal.turbo_servo_attachment": "Attachment: Turbo-Servo",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",

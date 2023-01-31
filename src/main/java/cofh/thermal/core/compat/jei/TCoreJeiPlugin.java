@@ -1,7 +1,6 @@
 package cofh.thermal.core.compat.jei;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.util.constants.ModIds;
 import cofh.thermal.core.client.gui.device.DeviceRockGenScreen;
 import cofh.thermal.core.client.gui.device.DeviceTreeExtractorScreen;
 import cofh.thermal.core.compat.jei.device.RockGenCategory;
@@ -27,6 +26,7 @@ import net.minecraft.world.item.crafting.RecipeManager;
 
 import static cofh.lib.util.Constants.BASE_CHANCE;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.config.ThermalClientConfig.jeiBucketTanks;
@@ -82,7 +82,7 @@ public class TCoreJeiPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
 
-        return new ResourceLocation(ModIds.ID_THERMAL, "core");
+        return new ResourceLocation(ID_THERMAL, "core");
     }
 
     // region HELPERS

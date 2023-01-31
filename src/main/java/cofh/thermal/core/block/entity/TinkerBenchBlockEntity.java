@@ -51,6 +51,8 @@ public class TinkerBenchBlockEntity extends AugmentableBlockEntity implements IT
     protected static final byte REPLENISH = 0;
     protected static final byte AUGMENT = 1;
 
+    protected int numPlayersUsing;
+
     protected ItemStorageCoFH tinkerSlot = new ItemStorageCoFH(1, item -> AugmentableHelper.isAugmentableItem(item) || ThermalEnergyHelper.hasEnergyHandlerCap(item) || FluidHelper.hasFluidHandlerCap(item));
     protected ItemStorageCoFH chargeSlot = new ItemStorageCoFH(1, ThermalEnergyHelper::hasEnergyHandlerCap);
     protected ItemStorageCoFH tankSlot = new ItemStorageCoFH(1, (item) -> FluidHelper.hasFluidHandlerCap(item) || item.getItem() == Items.POTION);
@@ -89,6 +91,18 @@ public class TinkerBenchBlockEntity extends AugmentableBlockEntity implements IT
             chargeEnergy();
             fillFluid();
         }
+    }
+
+    @Override
+    public void addPlayerUsing() {
+
+        ++numPlayersUsing;
+    }
+
+    @Override
+    public void removePlayerUsing() {
+
+        --numPlayersUsing;
     }
 
     public void setPause(boolean pause) {
