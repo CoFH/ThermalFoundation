@@ -234,7 +234,9 @@
   "item.thermal.blizz_spawn_egg": "Blizz Spawn Egg",
 
   "item.thermal.compost": "Compost",
+  "item.thermal.compost.desc": "An organic fertilizer.",
   "item.thermal.detonator": "Remote Detonator",
+  "item.thermal.detonator.desc": "Allows for remote priming and detonation of TNT.",
   "item.thermal.earth_charge": "Earth Charge",
   "item.thermal.ice_charge": "Ice Charge",
   "item.thermal.lightning_charge": "Lightning Charge",
