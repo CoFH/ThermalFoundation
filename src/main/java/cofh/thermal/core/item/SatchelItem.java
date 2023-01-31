@@ -22,6 +22,7 @@ import cofh.thermal.lib.item.InventoryContainerItemAugmentable;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -52,6 +53,7 @@ import static cofh.core.util.helpers.AugmentableHelper.setAttributeFromAugmentSt
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
+import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
 public class SatchelItem extends InventoryContainerItemAugmentable implements IColorableItem, DyeableLeatherItem, IFilterableItem, IMultiModeItem, ISecurableItem, MenuProvider {
 
@@ -115,18 +117,38 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
         int count = eventItem.getItem().getCount();
 
         if (satchelItem.getFilter(container).valid(eventItem.getItem())) {
+            Player player = event.getPlayer();
+            dropExtraItems(container, player);
+
             SimpleItemInv containerInv = satchelItem.getContainerInventory(container);
             eventItem.setItem(InventoryHelper.insertStackIntoInventory(containerInv, eventItem.getItem(), false));
-
             if (eventItem.getItem().getCount() != count) {
                 container.setPopTime(5);
-                Player player = event.getPlayer();
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.2F, ((MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 containerInv.write(satchelItem.getOrCreateInvTag(container));
                 satchelItem.onContainerInventoryChanged(container);
             }
         }
         return eventItem.getItem().getCount() != count;
+    }
+
+    public static void dropExtraItems(ItemStack container, Player player) {
+
+        if (container.getItem() instanceof SatchelItem satchel) {
+            CompoundTag nbt = satchel.getOrCreateInvTag(container);
+            int numSlots = satchel.getContainerSlots(container);
+
+            ListTag list = nbt.getList(TAG_ITEM_INV, TAG_COMPOUND);
+            for (int i = list.size(); i > 0; --i) {
+                CompoundTag slotTag = list.getCompound(i);
+                int slot = slotTag.getByte(TAG_SLOT);
+                if (slot >= numSlots) {
+                    Utils.dropItemStackIntoWorldWithRandomness(ItemStorageCoFH.loadItemStack(slotTag), player.getLevel(), player.position());
+                } else {
+                    return; // This optimization breaks out of the loop early, since slots are always tagged in ascending order.
+                }
+            }
+        }
     }
 
     protected boolean useDelegate(ItemStack stack, Player player, InteractionHand hand) {
@@ -142,6 +164,7 @@ public class SatchelItem extends InventoryContainerItemAugmentable implements IC
                 ChatHelper.sendIndexedChatMessageToPlayer(player, new TranslatableComponent("info.cofh.secure_item"));
                 return false;
             }
+            dropExtraItems(stack, player);
             if (player.isSecondaryUseActive()) {
                 if (FilterHelper.hasFilter(stack) && getFilter(stack) instanceof MenuProvider filter) {
                     FilterHelper.openHeldScreen((ServerPlayer) player, filter);
