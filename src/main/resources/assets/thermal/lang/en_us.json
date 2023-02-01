@@ -1011,6 +1011,10 @@
   "info.thermal.energy_limiter_attachment.1": "Can be configured to allow different amounts in each direction.",
   "info.thermal.energy_limiter_attachment.2": "Hold §e§oShift§r and/or §e§oCtrl§r to fine tune amounts.",
 
+  "info.thermal.filter_attachment.mode.0": "Bidirectional Filtering",
+  "info.thermal.filter_attachment.mode.1": "Outbound (From Duct) Filtering",
+  "info.thermal.filter_attachment.mode.2": "Inbound (To Duct) Filtering",
+
   "info.thermal.fluid_filter_attachment.0": "Place items containing fluid in slots to add the fluid to the filter list.",
   "info.thermal.fluid_filter_attachment.1": "Additional options can be used to fine-tune filtering.",
   "info.thermal.fluid_filter_attachment.2": "Redstone Control can be used to temporarily disable filtering.",
@@ -1020,7 +1024,7 @@
   "info.thermal.fluid_servo_attachment.2": "Redstone Control is used to enable extraction.",
 
   "info.thermal.fluid_turbo_servo_attachment.0": "A much faster Servo, with limited filtering.",
-  "info.thermal.fluid_turbo_servo_attachment.1": "Place items containing fluid in the Filter slot.",
+  "info.thermal.fluid_turbo_servo_attachment.1": "Place items containing fluid in the filter slot.",
   "info.thermal.fluid_turbo_servo_attachment.2": "Additional options can be used to fine-tune filtering and extraction amount.",
   "info.thermal.fluid_turbo_servo_attachment.3": "Redstone Control is used to enable extraction.",
 
