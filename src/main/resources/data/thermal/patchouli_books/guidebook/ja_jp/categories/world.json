@@ -1,6 +1,6 @@
 {
   "name": "ワールド",
-  "description": "金属からモブにいたる、サーマルがワールドに追加する全て。",
+  "description": "金属からモブにいたる、Thermalがワールドに追加する全て。",
   "icon": "thermal:nickel_ore",
   "sortnum": 3
 }
