@@ -9,14 +9,14 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+
+import java.util.List;
 
 import static cofh.core.init.CoreMobEffects.CHILLED;
 import static cofh.core.init.CoreParticles.FROST;
@@ -61,7 +61,15 @@ public class BlizzProjectile extends ElementalProjectile {
                 entity.clearFire();
             }
             if (entity.hurt(BlizzDamageSource.causeDamage(this, getOwner()), getDamage(entity)) && !entity.isInvulnerable() && entity instanceof LivingEntity living) {
-                living.addEffect(new MobEffectInstance(CHILLED.get(), getEffectDuration(entity), getEffectAmplifier(entity), false, false));
+                living.addEffect(new MobEffectInstance(CHILLED.get(), getEffectDuration(living), getEffectAmplifier(living), false, false));
+            }
+        } else if (result.getType() == HitResult.Type.BLOCK) {
+            List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, new AABB(result.location, result.location.add(1, 1, 1)).inflate(effectRadius), EntitySelector.ENTITY_STILL_ALIVE);
+            for (var living : entities) {
+                if (living.isOnFire()) {
+                    living.clearFire();
+                }
+                living.addEffect(new MobEffectInstance(CHILLED.get(), getEffectDuration(living), Math.min(getEffectAmplifier(living) - 1, 0), false, false));
             }
         }
         if (Utils.isServerWorld(level)) {
