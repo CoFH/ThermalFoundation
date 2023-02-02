@@ -1,6 +1,6 @@
 {
   "name": "貢献者",
-  "description": "Brought to you by these lovely people! Thank you to everyone who helped and everyone in the Discord who gave advice and feedback. And the biggest thank you to King, for putting up with us, letting us embark on this project, and for bringing us all this mod for this many years without ever asking for anything in return.",
+  "description": "彼ら素敵な人々の貢献で成り立っております。手伝ってくれた皆様、アドバイスやフィードバックをくれたDiscordの方々、ありがとうございました。そして、私達に我慢を強いてこのプロジェクトに乗り出させ、見返りを求めること無く何年にも渡ってこのModを開発してくれたKing Lemming氏に最大の感謝を。",
   "icon": "minecraft:poppy",
   "parent": "thermal:links",
   "sortnum": 20

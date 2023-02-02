@@ -1,1 +1,22 @@
-{  "name": "Discord",  "icon": "thermal:signalum_gear",  "category": "thermal:links",  "read_by_default": true,  "pages": [    {      "type": "patchouli:link",      "url": "https://discord.com/invite/uRKrnbH",      "link_text": "Discord",      "text": "Having tech issues? More questions? Suggestions? Want a friendly place? Want to be able to know easier when your favorite thermal mods update? Join us on discord :D"    },    {      "type": "patchouli:spotlight",      "item": "thermal:signalum_ingot",      "text": "Fun Fact! Signalum gets its name from its ability to transfer a redstone signal!"    }  ]}
+{
+  "name": "Discord",
+  "icon": "thermal:signalum_gear",
+  "category": "thermal:links",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:link",
+      "url": "https://discord.com/invite/uRKrnbH",
+      "link_text": "Discord",
+      "text": "技術的な問題や多くの質問がおありでしょうか。また、提案したいことがありますか?親身な場所を求めていますか?お気に入りのThermalのModのアップデートをいち早く知りたいですか?そうでしたら、CoFHのDiscordサーバーに参加しましょう!"
+
+
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "thermal:signalum_ingot",
+      "text": "トリビア: シグナルムの名称の由来は、レッドストーン信号を伝達できることからだそうです。"
+    }
+  ]
+
+}

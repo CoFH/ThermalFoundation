@@ -1,1 +1,23 @@
-{  "name": "Hekera",  "icon": "minecraft:oxeye_daisy",  "category": "thermal:contributors",  "read_by_default": true,  "sortnum": 2,  "pages": [    {      "type": "patchouli:spotlight",      "title": "Hekera",      "item": "minecraft:player_head{SkullOwner:'Hekera'}",      "text": "Co-author, rewrote the book a lot. Made the book much fancier with an improved layout, and suffered through many errors. Loves to make fun of Shiny."    },    {      "type": "patchouli:text",      "text": ""    },    {      "type": "patchouli:text",      "text": "5 more minutes, please..."    }  ]}
+{
+  "name": "Hekera",
+  "icon": "minecraft:oxeye_daisy",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Hekera",
+      "item": "minecraft:player_head{SkullOwner:'Hekera'}",
+      "text": "共著者であり、何度も本書を書き直しました。レイアウトの改善を行い、より素敵な本に仕立ててくれましたが、多くのミスに悩まされました。Shinyをからかうのが大好きです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "あと5分だけ…お願い…"
+    }
+  ]
+}
