@@ -9,13 +9,13 @@
       "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phytogro_2",
-      "text": "Phyto-gro is fertilizer that is densely packed with all the nutrients plants need. It can be directly applied to plants or spread in an area with $(l:thermal:equipment/explosives/phyto_explosives)some explosives$(/l)."
+      "text": "フィト・グローは植物に必要な全ての栄養素を高濃度に含んだ肥料です。植物に直接やる、$(l:thermal:equipment/explosives/phyto_explosives)爆弾$(/l)で今範囲に散布するといった用途があります。"
     },
     {
       "flag": "&!mod:thermal_cultivation,mod:thermal_expansion",
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:phytogro_2",
-      "text": "Phyto-gro is fertilizer that is densely packed with all the nutrients plants need. It can be directly applied to plants or used in machines as a $(l:thermal:world/materials/catalysts)catalyst$(/l)."
+      "text": "フィト・グローは植物に必要な全ての栄養素を高濃度に含んだ肥料です。植物に直接やる、$(l:thermal:world/materials/catalysts)触媒$(/l)として機械で使用するといった用途があります。"
     },
     {
       "flag": "&mod:thermal_cultivation,mod:thermal_expansion",

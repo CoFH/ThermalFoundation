@@ -42,7 +42,7 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Hardened glass is blast-resistant glass used in various recipes. It can be lined with various metals to give it different properties. Signalum glass emits a strong redstone signal. Lumium glass emits a strong light. Enderium glass allows you to flex on other players."
+      "text": "強化ガラスは様々なレシピにて使用される耐爆性のあるガラスです。様々な金属で裏打ちして、異なる特性を与えられます。シグナルムガラスは強いレッドストーン信号を発します。ルミウムガラスは強力な光源になります。エンダリウムガラスはエンダーワープを妨害します。"
     },
     {
       "flag": "!mod:thermal_expansion",

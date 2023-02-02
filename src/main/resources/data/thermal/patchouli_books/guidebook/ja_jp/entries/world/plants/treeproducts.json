@@ -29,7 +29,7 @@
       "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",
       "type": "thermal:double_crafting_page",
 
-      "title": "Rubber",
+      "title": "ゴム",
       "A.recipe": "thermal:rubber_from_dandelion",
       "B.recipe": "thermal:rubber_from_vine"
     },
@@ -37,34 +37,34 @@
       "flag": "&!mod:thermal_expansion,!mod:thermal_cultivation",
       "type": "2_item_page",
 
-      "title": "Rubber",
+      "title": "ゴム",
       "item1": "thermal:rubber",
       "item2": "thermal:cured_rubber",
-      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be crafted from vines and dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace."
+      "text": "ラテックスを凝固させて作られる、伸縮性と防水性のある素材です。ツタやタンポポから作れます。ゴムをかまどで精錬することで、弾力性や伸縮性を向上できます。"
     },
 
     {
       "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
       "type": "thermal:double_crafting_page",
 
-      "title": "Rubber",
+      "title": "ゴム",
       "A.recipe": "thermal:rubber_from_dandelion",
       "B.recipe": "thermal:rubber_3"
     },
     {
       "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
-      "type": "smelting",
+      "type": "精錬",
 
       "A.recipe": "thermal:smelting/cured_rubber_from_smelting",
-      "text": "A stretchy, waterproof material derived from the coagulation of latex. It can be made by simply letting a latex bucket sit in a crafting bench, or it can be crafted from vines and dandelions. To improve its resiliance and elasticity, rubber can be vulcanized in a furnace."
+      "text": "ラテックスを凝固させて作られる、伸縮性と防水性のある素材です。ラテックス入りバケツをクラフトグリッドに置くだけで作れるほか、ツタやタンポポからも作れます。ゴムをかまどで精錬することで、弾力性や伸縮性を向上できます。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "3_alloy_page",
-      "title": "Rubber",
+      "title": "ゴム",
       "recipe": "thermal:machines/smelter/smelter_cured_rubber",
 
-      "text": "ラテックスを凝固させて作られる、伸縮性と防水性のある素材です。ラテックス入バケツをクラフトグリッドに置くだけで作れるほか、ツタやタンポポからも作れます。ゴムをかまどで精錬したり、誘導加熱炉で硫黄と共に精錬することで、弾力性や伸縮性を向上できます。"
+      "text": "ラテックスを凝固させて作られる、伸縮性と防水性のある素材です。ラテックス入りバケツをクラフトグリッドに置くだけで作れるほか、ツタやタンポポからも作れます。ゴムをかまどで精錬したり、誘導加熱炉で硫黄と共に精錬することで、弾力性や伸縮性を向上できます。"
     },
 
     {

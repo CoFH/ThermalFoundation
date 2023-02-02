@@ -7,7 +7,7 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Thermal adds storage blocks for all of its $(l:thermal:world/ores)ores$(/l) and $(l:thermal:materials/alloys)alloys$(/l), as well as gunpowder, slag, rich slag, and charcoal. With storage blocks from other mods, Thermal follows a convention where the center item in the crafting recipe determines which mod's storage block to craft. For example, surrounding a Thermal copper ingot with 8 Immersive Engineering copper ingots will craft a Thermal copper block."
+      "text": "Thermalは火薬、鉱滓、上質な鉱滓や木炭と同様に、全ての$(l:thermal:world/ores)鉱物$(/l)や$(l:thermal:materials/alloys)合金$(/l)に保管用ブロックを追加しております。別のModのものと混在して作成する際は、Thermalはクラフトグリッドの中心にあるアイテムによってどのModの保管ブロックを作成するか、という慣習に従います。例えば、Thermalの銅インゴットをImmersive Engineeringの銅インゴット8つで囲んだ場合は、Thermalの銅ブロックがクラフトできます。"
     },
     {
       "flag": "mod:thermal_expansion",

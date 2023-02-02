@@ -58,8 +58,8 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "title": "Alloys",
-      "text": "Thermal adds a variety of different alloys. They can be crafted by combining their constituents with a fire charge."
+      "title": "合金",
+      "text": "Thermalには様々な合金が用意されています。これらは上図のようにファイヤーチャージと共にクラフトして作成できます。"
     },
     {
       "flag": "!mod:thermal_expansion",

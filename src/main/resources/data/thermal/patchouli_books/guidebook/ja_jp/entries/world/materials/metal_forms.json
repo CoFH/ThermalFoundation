@@ -17,12 +17,12 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Dusts can come from crafting ingots with $(l:thermal:equipment/charges/earth_charge)earth charges$(/l) and can be used in recipes (typically alloys) or smelted (metal dusts only). Gears can be crafted using an iron nugget surrounded by 4 ingots/gems of a particular material."
+      "text": "粉は、インゴットと$(l:thermal:equipment/charges/earth_charge)アースチャージ$(/l)とのクラフトで作成でき、普通の合金のレシピや、金属の粉のみを受け付ける精錬での材料となります。歯車は指定のインゴットか宝石4つで鉄塊を囲むレシピでクラフトできます。"
     },
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "粉は、$(l:thermal:technology/machines/pulverizer)粉砕機$(/l)$で作成でき、普通の合金のレシピや、金属の粉のみを受け付ける精錬での材料となります。プレートとコインは$(l:thermal:technology/machines/press)マルチサーボプレス機$(/l)でのみ作成でき、様々なレシピで使用されます。歯車は指定のインゴットか宝石4つで鉄インゴットを囲むレシピでクラフトできるほか、4つのインゴットをマルチサーボプレス機で加工することでも作成できます。"
+      "text": "粉は、$(l:thermal:technology/machines/pulverizer)粉砕機$(/l)$で作成でき、普通の合金のレシピや、金属の粉のみを受け付ける精錬での材料となります。プレートとコインは$(l:thermal:technology/machines/press)マルチサーボプレス機$(/l)でのみ作成でき、様々なレシピで使用されます。歯車は指定のインゴットか宝石4つで鉄塊を囲むレシピでクラフトできるほか、4つのインゴットをマルチサーボプレス機で加工することでも作成できます。"
     }
   ]
 }

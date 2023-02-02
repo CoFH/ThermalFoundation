@@ -7,7 +7,7 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "All crops have storage blocks associated with them, just like vanilla wheat and hay bales."
+      "text": "全ての作物には、バニラの小麦と干草の俵のように、保管ブロックが用意されています。"
     },
     {
       "flag": "mod:thermal_expansion",

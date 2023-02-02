@@ -8,7 +8,8 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "Potion fluid is the fluid form of conventional Minecraft potions. Using a Minecraft potion bottle on a machine, device, or storage block that accepts potion fluids will fill the block with potion fluid and return an empty bottle."
+      "text": "Potion fluid is the fluid form of conventional Minecraft potions. Using a Minecraft potion bottle on a machine, device, or storage block that accepts potion fluids will fill the block with potion fluid and return an empty bottle.",
+      "text": "ポーション液はバニラのMinecraftのポーションの流体版です。ポーション液を扱える機械・装置・ストレージにMinecraftのポーション瓶を使用すると、ブロックへポーション液が移され、空き瓶が返されます。"
     },
     {
       "flag": "mod:thermal_expansion",
