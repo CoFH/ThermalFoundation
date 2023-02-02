@@ -8,7 +8,7 @@
       "type": "patchouli:link",
       "url": "https://minecraft.fandom.com/ja/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%91%E3%83%83%E3%82%AF",
       "link_text": "Minecraft Wiki",
-      "text": "全ての機械・装置・ダイナモなどなどはレシピや触媒の設定にJsonを使用しております。そのため、データパックを用いてレシピの作成や変更が可能です。また、ThermalはCraftTweakerに対応しているため、そちらを使用することもできます。以下はデータパックについてのMinecraft Wikiへのリンクになります。"
+      "text": "全ての機械・装置・ダイナモなどはレシピや触媒の設定にJsonを使用しています。そのため、データパックをからレシピの作成や変更が可能です。また、ThermalはCraftTweakerに対応しているため、そちらを使用することもできます。以下はデータパックについてのMinecraft Wikiへのリンクです。"
     },
     {
       "type": "patchouli:link",
