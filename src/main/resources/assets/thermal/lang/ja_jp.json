@@ -234,7 +234,9 @@
   "item.thermal.blizz_spawn_egg": "ブリーズのスポーンエッグ",
 
   "item.thermal.compost": "堆肥",
+  "item.thermal.compost.desc": "有機質の肥料です。",
   "item.thermal.detonator": "遠隔起爆装置",
+  "item.thermal.detonator.desc": "TNTの遠隔呼び出し・起爆が出来ます。",
   "item.thermal.earth_charge": "アースチャージ",
   "item.thermal.ice_charge": "アイスチャージ",
   "item.thermal.lightning_charge": "ライトニングチャージ",
@@ -942,6 +944,7 @@
   "item.thermal.peanut_butter": "ピーナッツバター入り保存瓶",
   "item.thermal.tomato_sauce": "トマトソース入り保存瓶",
 
+  "item.thermal.cooked_corn": "焼きとうもろこし",
   "item.thermal.cooked_eggplant": "焼きナス",
   "item.thermal.cooked_mushroom": "焼きマッシュルーム",
 
@@ -990,15 +993,9 @@
   "_comment": "========================================================================================================",
 
   "attachment.thermal.energy_limiter": "レッドストーンフラックスリミッター",
-
-  "attachment.thermal.fluid_filter": "流体ダクトフィルター",
-  "attachment.thermal.fluid_input_filter": "流体ダクトフィルター (流入)",
-  "attachment.thermal.fluid_output_filter": "流体ダクトフィルター (流出)",
-
-  "attachment.thermal.fluid_servo": "流体ダクトサーボ",
-
-  "attachment.thermal.item_filter": "アイテムダクトフィルター",
-  "attachment.thermal.item_servo": "アイテムダクトサーボ",
+  "attachment.thermal.filter": "流体ダクトフィルター",
+  "attachment.thermal.servo": "流体ダクトサーボ",
+  "attachment.thermal.turbo_servo": "流体ダクトターボサーボ",
 
   "block.thermal.energy_duct": "フラックスダクト",
   "block.thermal.fluid_duct": "流体ダクト",
@@ -1013,6 +1010,10 @@
   "info.thermal.energy_limiter_attachment.1": "それぞれの方向へ向かう量をそれぞれ変更できます。",
   "info.thermal.energy_limiter_attachment.2": "ShiftキーやCtrlキーで入出力量を細かく設定できます。",
 
+  "info.thermal.filter_attachment.mode.0": "双方向フィルタリング",
+  "info.thermal.filter_attachment.mode.1": "アウトバウンド(ダクトから)フィルタリング",
+  "info.thermal.filter_attachment.mode.2": "インバウンド(ダクトへ)フィルタリング",
+
   "info.thermal.fluid_filter_attachment.0": "液体を含むアイテムをスロットに置くと、フィルターリストに液体が登録されます。",
   "info.thermal.fluid_filter_attachment.1": "追加オプションからより細かいフィルター設定を行えます。",
   "info.thermal.fluid_filter_attachment.2": "レッドストーン制御でフィルター設定を一時的に無効にできます。",
@@ -1020,6 +1021,11 @@
   "info.thermal.fluid_servo_attachment.0": "液体を含むアイテムをスロットに置くと、フィルターリストに液体が登録されます。",
   "info.thermal.fluid_servo_attachment.1": "追加オプションからより細かいフィルター設定や流出量の微調整を行えます。",
   "info.thermal.fluid_servo_attachment.2": "レッドストーン制御で流体の流出を有効にできます。",
+
+  "info.thermal.fluid_turbo_servo_attachment.0": "フィルター項目が少ないがとても早いサーボです。",
+  "info.thermal.fluid_turbo_servo_attachment.1": "液体の入ったアイテムをスロットに置いてフィルタリング設定できます。",
+  "info.thermal.fluid_turbo_servo_attachment.2": "追加オプションからより細かいフィルター設定や流出量の微調整を行えます。",
+  "info.thermal.fluid_turbo_servo_attachment.3": "レッドストーン制御で流体の流出を有効にできます。",
 
   "info.thermal.item_buffer.0": "アイテムの数と流量を制限します。",
   "info.thermal.item_buffer.1": "左のグリッドで、希望するアイテムとその個数を設定します。",
@@ -1031,9 +1037,8 @@
 
   "item.thermal.energy_limiter_attachment": "アタッチメント: レッドストーンフラックスリミッター",
   "item.thermal.filter_attachment": "アタッチメント: フィルター",
-  "item.thermal.input_filter_attachment": "アタッチメント: インプットフィルター",
-  "item.thermal.output_filter_attachment": "アタッチメント: アウトプットフィルター",
   "item.thermal.servo_attachment": "アタッチメント: サーボ",
+  "item.thermal.turbo_servo_attachment": "アタッチメント: ターボサーボ",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
