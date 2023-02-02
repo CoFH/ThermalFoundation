@@ -1,1 +1,35 @@
-{  "name": "Familiar, Answered Queries",  "icon": "minecraft:redstone",  "category": "thermal:guides",  "sortnum": -3,  "read_by_default": true,  "pages": [    {      "type": "patchouli:text",      "text": "Q: Where is Dynamics/pipes?$(br)A: Read $(l:thermal:storage_and_transport/dynamics)this$(/l).$(br2)Q: Where are upgrade kits?$(br)A: Read $(l:thermal:technology/augments/integral_components)this$(/l).$(br2)Q: How can I increase the speed of my machines? $(br)A: Read $(l:thermal:technology/augments/integral_components)this$(/l) and $(l:thermal:technology/augments/machine_speed)this$(/l).$(br2)Q: Do these augments stack?$(br)A: Read $(l:thermal:technology/augments/introduction)this$(/l)."    },    {      "type": "patchouli:text",      "text": "Q: How can I change fluxbore/saw mode? $(br)A: You need to install $(l:thermal:technology/augments/area_radius)radius augments$(/l) in order to adjust the mining radius.$(br2)Q: How do I charge/augment my tools?$(br)A: Read $(l:thermal:technology/tinker_bench)this$(/l).$(br2)Q: Why is my dynamo slowly losing RF?$(br)A: The RF buffer in dynamos is only meant to determine how much to throttle the dynamo. Read $(l:thermal:technology/dynamos/introduction)this$(/l) for more information."    },    {      "type": "patchouli:link",      "url": "https://www.curseforge.com/minecraft/mc-mods/tools-complement",      "link_text": "Tool's Complement",      "text": "Q: Can x mod get support (recipes, etc)?$(br)A: You can request compatibility in our $(l:thermal:links/discord)discord server$(/l)$(br2)Q: Where are the basic tools/weapons/armor from Thermal, like the diamond excavator and electrum bow?$(br)A: They've been moved to separate mod:"    },    {      "type": "patchouli:text",      "text": "Q: What happened to platinum, steel, mana-infused, etc?$(br)A: For various reasons, these were considered unnecessary to include in Thermal Foundation. If some come back, it will be in a separate compatibility mod.$(br2)Q: Why can't I place fluids?$(br)A: Forge fluid API is in shambles currently."    },    {      "type": "patchouli:text",      "text": "Q: How can I modify oregen? $(br)A: The config has options to en/disable oregen, but adjustments to details such as spawn height have not yet been implemented.$(br2)Q: How do I change configs?$(br)A: Configs are now created on a per-save basis; find them in the serverconfigs folder in the save file. You can also set default configs by copying the files from the serverconfigs folder into the defaultconfigs folder and editing them."    },    {      "type": "patchouli:text",      "text": "Q: Where and how can I report a bug? $(br)A: You can ask in our $(l:thermal:links/discord)discord server$(/l). Before reporting, ensure that your mods are up to date and you do not have Optifine installed.$(br2)Q: How can I change recipes?$(br)A: Thermal mods are all data-driven, so you can use datapacks to modify recipes, as shown $(l:thermal:guides/modpack/recipes)here$(/l). Alternatively, the Thermal mods have CraftTweaker support."    }  ]}
+{
+  "name": "身近な質問の回答",
+  "icon": "minecraft:redstone",
+  "category": "thermal:guides",
+  "sortnum": -3,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Q: Dynamicsやパイプはどこへいったの?$(br)A: $(l:thermal:storage_and_transport/dynamics)ここ$(/l)をお読みください。$(br2)Q: アップグレードキットはどこにありますか?$(br)A: $(l:thermal:technology/augments/integral_components)ここ$(/l)をお読みください。$(br2)Q: 機械の処理速度を加速するには?$(br)A: $(l:thermal:technology/augments/integral_components)ここ$(/l)と$(l:thermal:technology/augments/machine_speed)ここ$(/l)をお読みください。$(br2)Q: このオーグメントはスタックできますか?$(br)A: $(l:thermal:technology/augments/introduction)ここ$(/l)をお読みください。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: フラックスボア・フラックスソーのモード変更はどうやるの?$(br)A: 採掘半径の変更には、$(l:thermal:technology/augments/area_radius)範囲拡張オーグメント$(/l)を適用する必要があります。$(br2)Q: 道具の充電やオーグメントの適用はどうやるの?$(br)A: $(l:thermal:technology/tinker_bench)ここ$(/l)をお読みください$(br2)Q: なぜダイナモはゆっくりとRF残量が減るの?$(br)A: ダイナモのRFバッファはあくまでダイナモのスロットル量を決定するためのものです。$(l:thermal:technology/dynamos/introduction)ここ$(/l)で詳細をご確認頂けます。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/tools-complement",
+      "link_text": "tool's Complement",
+      "text": "Q: 〇〇Modのレシピなどに対応してますか?$(br)A: 他のModへの対応は$(l:thermal:links/discord)Discordサーバー$(/l)にて受け付けております。$(br2)Q: ダイヤモンドシャベルやエレクトラムの弓など、Thermalの基本的な道具・武器・道具はどこにありますか?$(br)A: 別のModに分けました:"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: プラチナや鋼鉄、マナを含んだ金属はどうなった?$(br)A: 諸般の事情により、これらはThermal Foundationが追加する必要は無いと判断されました。もし一部が再登場する場合、別の互換性Modにて対応する予定です。$(br2)Q: なんで流体をおけないの?$(br)A: 現在のForge fluid APIがグダグダだからです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: 鉱石生成の変更はできますか? $(br)A: コンフィグには鉱石生成の有効・無効の設定がありますが、生成高度など細部に関する項目は未実装です。$(br2)Q: コンフィグの変更はどうやりますか?$(br)A: コンフィグファイルはワールド毎に作成されます。保存フォルダ内のserverconfigsフォルダにあります。また、serverconfigsからdefaultconfigsフォルダにファイルをコピーして編集することで、デフォルト設定を変更できます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: バグの報告窓口はどこですか?$(br)A: 我々の$(l:thermal:links/discord)Discordサーバー$(/l)にて報告できます。報告する前に、Modが最新であること、Optifineをインストールしていないことをご確認ください。$(br2)Q: レシピは変更できますか?$(br)A: ThermalのModは全てデータドリブンのため、$(l:thermal:guides/modpack/recipes)ここ$(/l)にあるようにデータパックでレシピを変更できます。また、ThermalのModはCraftTweakerに対応しております。"
+    }
+  ]
+}

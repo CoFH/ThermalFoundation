@@ -1,1 +1,38 @@
-{  "name": "Custom Recipes",  "icon": "minecraft:crafting_table",  "category": "thermal:modpack",  "read_by_default": true,  "pages": [    {      "type": "patchouli:link",      "url": "https://minecraft.fandom.com/wiki/Data_pack",      "link_text": "Minecraft Wiki",      "text": "All machines, devices, dynamos, etc use JSONs to determine their recipes and catalysts, meaning you can use datapacks to create and modify recipes. Alternatively, Thermal has CraftTweaker support, if you're more comfortable with that. Below is a link to the Minecraft Wiki to get you started on datapacks."    },    {      "type": "patchouli:link",      "url": "https://github.com/CoFH/ThermalExpansion/blob/main/src/main/resources/data/thermal/recipes/machine/smelter/smelter_gold_ore.json",      "link_text": "Machine Recipe",      "text": "Below is a link to an example of a machine recipe. The first output is always the primary output, while the rest are always secondary outputs. 'count' is an integral value, unaffected by catalysts. 'chance' is a float value, affected by catalysts by default (can be changed by setting 'locked' to true)."    },    {      "type": "patchouli:link",      "url": "https://github.com/CoFH/ThermalExpansion/blob/main/src/main/resources/data/thermal/recipes/machine/pulverizer/pulverizer_catalyst_basalz_powder.json",      "link_text": "Catalyst",      "text": "Below is a link to an example of a Json for adding a catalyst to a machine. The machine, item, and all 4 catalyst multipliers are defined here. For more information on catalysts, read $(l:thermal:world/materials/catalysts)this$(/l)."    },    {      "type": "patchouli:link",      "url": "https://github.com/CoFH/ThermalFoundation/blob/main/src/main/resources/data/thermal/recipes/devices/tree_extractor/tree_extractor_boost_phytogro.json",      "link_text": "Extractor Boost",      "text": "Below is a link to an example of a Json for boosting arboreal extractor output using phyto-gro. It's pretty simple, not much to say here."    },    {      "type": "patchouli:link",      "url": "https://github.com/CoFH/ThermalFoundation/blob/main/src/main/resources/data/thermal/recipes/fuels/compression/compression_refined_fuel.json",      "link_text": "Dynamo Recipe",      "text": "Below is a link to an example of a Json for burning refined fuel in a dynamo. An important limitation to keep in mind is that the energy value must be at least 10k RF!"    }  ]}
+{
+  "name": "レシピのカスタマイズ",
+  "icon": "minecraft:crafting_table",
+  "category": "thermal:modpack",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:link",
+      "url": "https://minecraft.fandom.com/ja/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%91%E3%83%83%E3%82%AF",
+      "link_text": "Minecraft Wiki",
+      "text": "全ての機械・装置・ダイナモなどなどはレシピや触媒の設定にJsonを使用しております。そのため、データパックを用いてレシピの作成や変更が可能です。また、ThermalはCraftTweakerに対応しているため、そちらを使用することもできます。以下はデータパックについてのMinecraft Wikiへのリンクになります。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://github.com/CoFH/ThermalExpansion/blob/1.18.2/src/main/resources/data/thermal/recipes/machines/smelter/smelter_gold_ore.json",
+      "link_text": "機械のレシピ",
+      "text": "以下のリンクは機械のレシピの一例です。最初のアウトプットは常に主産物で、残りは全て副産物となります。\"count\"は整数で触媒の影響を受けません。\"chance\"は小数点数で、デフォルトでは触媒の影響を受けます。(\"locked\"をtrueにすることで、触媒の影響を受けないように変更できます)。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://github.com/CoFH/ThermalExpansion/blob/1.18.2/src/main/resources/data/thermal/recipes/machines/pulverizer/pulverizer_catalyst_basalz_powder.json",
+      "link_text": "触媒",
+      "text": "以下のリンクは機械が使用する触媒をJsonで追加する例です。機械、アイテム、そして触媒に関する4つのパラメータをここで定義しています。触媒の詳細については、$(l:thermal:world/materials/catalysts)ここ$(/l)をご参照ください。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://github.com/CoFH/ThermalFoundation/blob/1.18.2/src/main/resources/data/thermal/recipes/devices/tree_extractor/tree_extractor_boost_phytogro.json",
+      "link_text": "木精抽出機の強化",
+      "text": "以下のリンクはフィト・グローを使用した木精抽出機の強化を定義するJsonの一例です。非常にシンプルなため、特記することはありません。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://github.com/CoFH/ThermalFoundation/blob/1.18.2/src/main/resources/data/thermal/recipes/fuels/compression/compression_refined_fuel.json",
+      "link_text": "ダイナモのレシピ",
+      "text": "以下のリンクは、精製した燃料をダイナモの燃料として扱うためのJsonの例です。注意するべき重要な点は、\"energy\"は最低でも100000でなければならない点です。"
+    }
+  ]
+}
