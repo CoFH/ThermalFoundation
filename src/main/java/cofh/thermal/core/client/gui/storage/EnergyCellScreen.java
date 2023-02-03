@@ -6,7 +6,7 @@ import cofh.core.client.gui.element.ElementTexture;
 import cofh.core.network.packet.server.TileConfigPacket;
 import cofh.core.util.helpers.GuiHelper;
 import cofh.thermal.core.inventory.container.storage.EnergyCellContainer;
-import cofh.thermal.lib.client.gui.CellScreenReconfigurable;
+import cofh.thermal.lib.client.gui.StorageCellScreen;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +18,7 @@ import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 import static cofh.lib.util.helpers.StringHelper.format;
 
-public class EnergyCellScreen extends CellScreenReconfigurable<EnergyCellContainer> {
+public class EnergyCellScreen extends StorageCellScreen<EnergyCellContainer> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/energy_cell.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);

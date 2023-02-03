@@ -1,4 +1,4 @@
-package cofh.thermal.lib.tileentity;
+package cofh.thermal.lib.block.entity;
 
 import cofh.core.block.entity.TileCoFH;
 import cofh.core.item.IAugmentableItem;
@@ -81,7 +81,7 @@ import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.*;
 import static net.minecraft.nbt.Tag.TAG_COMPOUND;
 
-public abstract class ThermalTileAugmentable extends TileCoFH implements MenuProvider, ISecurableTile, IRedstoneControllableTile, IFilterableTile {
+public abstract class AugmentableBlockEntity extends TileCoFH implements MenuProvider, ISecurableTile, IRedstoneControllableTile, IFilterableTile {
 
     protected static final int BASE_ENERGY = 50000;
     protected static final int BASE_PROCESS_TICK = 20;
@@ -102,7 +102,7 @@ public abstract class ThermalTileAugmentable extends TileCoFH implements MenuPro
     public boolean isActive;
     protected FluidStack renderFluid = FluidStack.EMPTY;
 
-    public ThermalTileAugmentable(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+    public AugmentableBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 
         super(tileEntityTypeIn, pos, state);
         redstoneControl.setEnabled(() -> redstoneControlFeature);

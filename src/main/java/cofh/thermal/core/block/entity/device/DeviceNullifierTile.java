@@ -7,7 +7,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.inventory.NullItemStorage;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceNullifierContainer;
-import cofh.thermal.lib.tileentity.DeviceTileBase;
+import cofh.thermal.lib.block.entity.DeviceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +27,7 @@ import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_FILTER;
 import static cofh.thermal.core.init.TCoreTileEntities.DEVICE_NULLIFIER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 
-public class DeviceNullifierTile extends DeviceTileBase {
+public class DeviceNullifierTile extends DeviceBlockEntity {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_FILTER);
 
