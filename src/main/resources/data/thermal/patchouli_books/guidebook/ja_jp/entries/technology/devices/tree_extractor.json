@@ -1,0 +1,23 @@
+{
+  "name": "木精抽出機",
+  "icon": "thermal:device_tree_extractor",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "|mod:thermal_expansion,mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "木精抽出機は樹木に隣接させて液体を集収する装置です。集収量を上げるための肥料が使用できます。骨粉では処理8回の間集収量が1.5倍になり、、$(l:thermal:world/plants/phytogro)フィト・グロー$(/l)では処理16回の間集収量が2倍になります。樹木によって集められる液体は異なります。JEIにてご確認いただけます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_tree_extractor",
+      "title": "木精抽出機"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)"
+    }
+  ]
+}

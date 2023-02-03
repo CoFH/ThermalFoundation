@@ -1,0 +1,74 @@
+{
+  "name": "食料",
+  "icon": "thermal:pbj_sandwich",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:carrot_cake",
+      "text": "ニンジンを使って繊細にクラフトされたケーキで、豊富なカロテンを含有しています。食べると暗視の効果を得ます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:chocolate_cake",
+      "text": "甘美なデザートです。いつものケーキより食べごたえがあります。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_cake",
+      "text": "煎じたかのような嗜好品です。食べると、材料として使用したポーションの効果を得ます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:spice_cake",
+      "text": "サディルートスパイスで作られた満腹になれる美味しいスイーツです。食べるとマイナスのステータス効果を消し去ります。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:stuffed_pumpkin",
+      "text": "沢山の食材を詰め込んだカボチャの詰め物です。尋常ではない食べごたえがあり、とにかく量があります。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:cheese_wheel",
+      "text": "カゼインをキモシンで凝固させたクリームです。チーズが嫌いな人なんて居ないでしょう?クシ状に割り出すことが出来ます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:green_bean_pie",
+      "text": "旬の野菜をふんだんに使った、ボリューミーなパイです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:pbj_sandwich_2",
+      "text": "グルテンはネバネバするうま味の塊です。これと最もよく合うフレーバーはまだ見つかっていません。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:stuffed_pepper",
+      "text": "パルメザンチーズと上質な肉をたっぷり使った、パプリカの肉詰めです。食べごたえも味わいもともにバツグンです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:sushi_maki_8",
+      "text": "塩漬けした魚介類を海苔と短粒種の米で包んだもので、醤油をつけて食べること多い料理です。栄養価が高く、手軽に食べられます。Direwolf20には内緒にね。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:spring_salad",
+      "text": "春の季節に収穫したもので作られたサラダで、あなたの足取りを軽くしてくれるでしょう。食すと跳躍力上昇の効果を得られます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:hearty_stew",
+      "text": "球根の作物から醸造された、体に効くスープです。飲むと体力増強の効果を得られます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:xp_stew",
+      "text": "飲むと法外な量の経験値を得られる、爽快なナスの霊薬です。飲むと経験値がアップします。"
+    }
+  ]
+}

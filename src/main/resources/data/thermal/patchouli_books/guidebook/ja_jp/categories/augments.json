@@ -1,0 +1,7 @@
+{
+  "name": "オーグメント",
+  "description": "装置や道具をアップグレード。",
+  "icon": "thermal:upgrade_augment_3",
+  "parent": "thermal:technology",
+  "sortnum": 4
+}

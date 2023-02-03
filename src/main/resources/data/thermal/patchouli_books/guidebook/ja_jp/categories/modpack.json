@@ -1,0 +1,7 @@
+{
+  "name": "Modpack作者",
+  "description": "Modpackの作成や、楽しむためにThermal作品の様々な要素を変更しますか?ここでは、調整・設定のためにThermalがサポートするクールな方法の全てを紹介します。",
+  "icon": "thermal:wrench",
+  "parent": "thermal:guides",
+  "sortnum": 4
+}

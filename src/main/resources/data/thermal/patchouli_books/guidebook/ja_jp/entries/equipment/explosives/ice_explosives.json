@@ -1,0 +1,24 @@
+{
+  "name": "氷冷爆弾",
+  "icon": "thermal:ice_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "氷冷爆弾は範囲内のブロックを凍結させ、範囲内にいるモブに$(l:thermal:world/mobs/blizz)寒気II$(/l)のステータス効果を与えます。ブロック及びグレネードの爆発半径はそれぞれ9ブロック、5ブロックです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ice_tnt",
+      "B.recipe": "thermal:ice_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ice_tnt_minecart",
+      "title": "氷冷爆弾付きトロッコ"
+    }
+  ]
+}

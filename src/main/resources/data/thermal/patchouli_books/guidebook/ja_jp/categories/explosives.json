@@ -1,0 +1,7 @@
+{
+  "name": "爆発物",
+  "description": "消費ではなく遊ぶためのエンターテイメント。",
+  "icon": "thermal:explosive_grenade",
+  "parent": "thermal:equipment",
+  "sortnum": 4
+}

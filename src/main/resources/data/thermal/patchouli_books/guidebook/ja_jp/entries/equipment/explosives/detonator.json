@@ -1,0 +1,17 @@
+{
+  "name": "遠隔起爆装置",
+  "icon": "thermal:detonator",
+  "read_by_default": true,
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "遠隔起爆装置は最大16個の爆発するブロックを一斉に起爆するために使用されます。はじめに爆発物を全て置き、次に遠隔起爆装置でそれぞれを右クリックします。ライトは少なくとも1つの爆発物の起爆登録が完了したときに黄色に変わります。その後、起爆モードに切り替えるとライトは緑に変わり、このときに右クリックすると登録された全ての爆発物を爆発させることができます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/detonator",
+      "text": "'$(k:cofh.mode_change_increment)'を押してモードを変更"
+    }
+  ]
+}

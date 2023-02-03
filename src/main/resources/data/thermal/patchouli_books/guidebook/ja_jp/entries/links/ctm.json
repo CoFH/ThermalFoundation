@@ -1,0 +1,23 @@
+{
+  "name": "Connected Textures Mod",
+  "icon": "thermal:enderium_gear",
+  "category": "thermal:links",
+  "read_by_default": true,
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:link",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/ctm",
+      "link_text": "CTM",
+      "text": "エンダリウムガラスなどのテクスチャの中には、CTMをインストールすると繋がって綺麗な見た目になるものがあるのをご存知ですか?$(br)知ってた?それは良かったです。$(br)知らなかったって?何をもたもたしてるんですか!?"
+
+
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "thermal:enderium_ingot",
+      "text": "トリビア: エンダリウムの名称の由来は、時空間を歪めるエンダーの特性です。"
+    }
+  ]
+
+}

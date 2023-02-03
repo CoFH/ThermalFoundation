@@ -1,0 +1,28 @@
+{
+  "name": "ベイト",
+  "icon": "thermal:aquachow",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "様々なベイトは、$(l:thermal:technology/devices/fisher)水資源投網機$(/l)にて使用することでそのマシンの漁獲量の向上や漁獲できるアイテムの変えることが出来ます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:aquachow_4",
+      "text": "アクア・チャウは魚にとって魅惑的な成分を独自に配合しています。水資源投網機の基礎漁獲能力を向上させます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:deep_aquachow_4",
+      "text": "深海アクア・チャウはフグ・コンブ・プリズマリン・イカスミ・スポンジ、そしてたまにトライデントといった、深海にあるものを集収するのに役立ちます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:junk_net",
+      "text": "ガラクタ集収網は糸やスイレンの葉、骨、水入り瓶、皮革といったガラクタやゴミのようなアイテムを集められます。格言『ある宝にとってのゴミは、別のゴミにとっては人だ。』にあるように。そんな感じの。"
+    }
+  ]
+}

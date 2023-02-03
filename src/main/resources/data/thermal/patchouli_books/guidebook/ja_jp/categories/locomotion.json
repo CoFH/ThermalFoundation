@@ -1,0 +1,8 @@
+{
+  "name": "移動手段",
+  "description": "「ポッポー」の前の「シュッシュッ」の音は8回が正しい。",
+  "icon": "thermal:lumium_rail",
+  "parent": "thermal:storage_and_transport",
+  "flag": "mod:thermal_locomotion",
+  "sortnum": 4
+}

@@ -1,0 +1,17 @@
+{
+  "name": "洞察に満ちるクリスタル",
+  "icon": "thermal:xp_crystal",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "携帯式の経験値ストレージです！洞察に満ちるクリスタルは、約63レベルに相当する1万の経験値を溜められます。$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すと溜められる経験値を増やせます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/xp_crystal",
+      "title": "洞察に満ちるクリスタル"
+    }
+  ]
+} 

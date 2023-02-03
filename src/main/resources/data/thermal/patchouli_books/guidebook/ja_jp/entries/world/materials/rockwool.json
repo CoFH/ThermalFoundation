@@ -1,0 +1,16 @@
+{
+  "name": "鉱滓と岩綿",
+  "icon": "thermal:slag",
+  "read_by_default": true,
+  "category": "thermal:materials",
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:2_item_page",
+      "title": "鉱滓と岩綿",
+      "item1": "thermal:slag",
+      "item2": "tag:thermal:rockwool",
+      "text": "鉱滓とは、$(l:thermal:technology/machines/smelter)誘導加熱炉$(/l)で砂利を精錬すると出てくる鉱質に富む物質です。岩綿は鉱滓などの鉱物を溶融して炉の中で紡いで作られる繊維状の素材です。通常の羊毛よりも難燃性が高く、また耐爆性も少し高いです。"
+    }
+  ]
+}

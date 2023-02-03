@@ -1,0 +1,16 @@
+{
+  "name": "グレネード",
+  "icon": "thermal:explosive_grenade",
+  "read_by_default": true,
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "グレネードはTNTを小型化し投げられるようにしたものです。爆発半径は5ブロックです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:explosive_grenade_4"
+    }
+  ]
+}

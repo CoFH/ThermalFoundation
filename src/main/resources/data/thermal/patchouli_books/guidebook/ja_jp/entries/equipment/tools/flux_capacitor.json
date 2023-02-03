@@ -1,0 +1,24 @@
+{
+  "name": "RF蓄電池",
+  "icon": "thermal:flux_capacitor",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "RFを保持し、インベントリ内のアイテムへ充電します。充電モードには、ホットバーと装備スロットのみ、インベントリのみ、全スロットの3モードがあります。チェンジモードキーを押して切り替えられます。アイテムへの充電のオンオフを切り替えるには、RF蓄電池を持って右クリックします。また、機械にRFを受け渡すこともできます。鍛冶職人の作業台にて充電とオーグメントの適用が可能です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:flux_capacitor",
+      "title": "Flux Capacitor",
+      "text": "'$(k:cofh.mode_change_increment)'キーを押すとモードを変更できます。$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すとRF容量が拡張されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)"
+    }
+  ]
+}

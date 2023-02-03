@@ -1,0 +1,24 @@
+{
+  "name": "フラックスマグネット",
+  "icon": "thermal:flux_magnet",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "フラックスマグネットはRFを消費して近くのアイテムをプレイヤーのインベントリへ引き寄せる道具です。手に持って右クリックすると、近くに落ちているアイテムを引き寄せます。また、'$(k:cofh.mode_change_increment)'を押すと自動吸引モードを切り替えられ、近くのアイテムを自動で引き寄せてくれるようになります。鍛冶職人の作業台にて充電とオーグメントの適用が可能です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:flux_magnet",
+      "title": "フラックスマグネット",
+      "text": "$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すとRF容量が拡張されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)$(li)$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)"
+    }
+  ]
+}

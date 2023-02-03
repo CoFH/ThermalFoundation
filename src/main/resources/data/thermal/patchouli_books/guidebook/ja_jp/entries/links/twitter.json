@@ -1,0 +1,22 @@
+{
+  "name": "King's Twitter",
+  "icon": "thermal:lumium_gear",
+  "category": "thermal:links",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:link",
+      "url": "https://twitter.com/KingLemmingCoFH",
+      "link_text": "Twitter",
+      "text": "King Lemmingの最新情報が知りたいですか?Twitterで彼のアカウントをフォローしましょう!"
+
+
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "thermal:lumium_ingot",
+      "text": "トリビア: ルミウムの名称の由来はその光り輝く特性です。"
+    }
+  ]
+
+}

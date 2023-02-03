@@ -1,0 +1,18 @@
+{
+  "name": "スロット封",
+  "icon": "thermal:slot_seal",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "スロットをロックし、アイテムが入ることを防ぎます。高度な機械装置同士の物流網構築に役立つでしょう。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slot_seal",
+      "title": "スロット封"
+    }
+  ]
+}

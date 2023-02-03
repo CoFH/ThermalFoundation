@@ -1,0 +1,15 @@
+{
+  "name": "フラックス効率",
+  "icon": "thermal:machine_efficiency_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_efficiency_augment",
+      "title": "フラックス効率",
+      "text": "フラックス効率オーグメントは処理1回にかかるRFを90%に軽減しますが、最大RF使用率も10%減少させます。"
+    }
+  ]
+}

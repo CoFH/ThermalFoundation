@@ -1,0 +1,24 @@
+{
+  "name": "エネルギー充填機",
+  "icon": "thermal:charge_bench",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "エネルギー充填機は一度に最大9つのアイテムの充電ができるブロックです。$(l:thermal:technology/tinker_bench)鍛冶職人の作業台$(/l)との主な違いは、素早い充電と、ホッパーなどを使ってのアイテムの自動搬入出です。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:charge_bench",
+      "title": "エネルギー充填機",
+      "text": "$(o)古文書には、嘗て「レッドストーンフラックス」と呼ばれる機械が存在し、道具のみならずアイテムに直接「レッドストーンフラックス」を注入出来たと記されています。然し、これは汎ゆる論理を否定するものです。$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)"
+    }
+  ]
+}

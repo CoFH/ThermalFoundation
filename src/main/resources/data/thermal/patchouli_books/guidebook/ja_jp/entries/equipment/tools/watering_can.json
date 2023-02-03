@@ -1,0 +1,23 @@
+{
+  "name": "ジョウロ",
+  "icon": "thermal:watering_can",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "作物に水をやって成長を促進できます。鍛冶職人の作業台で水の充填とオーグメントの適用が可能です。範囲拡張オーグメントを適用すると、'$(k:cofh.mode_change_increment)'を押して散水半径を切り替えられるようになります。$(l:thermal:world/holding)容量拡張$(/l)のエンチャントを施すと水容量が拡張されます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:watering_can",
+      "title": "ジョウロ"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)$(li)$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)"
+    }
+  ]
+}

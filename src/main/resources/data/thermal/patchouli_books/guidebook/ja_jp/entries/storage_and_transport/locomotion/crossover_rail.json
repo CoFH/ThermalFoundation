@@ -1,0 +1,18 @@
+{
+  "name": "十字レール",
+  "icon": "thermal:crossover_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "十字レールは直行する2本のレールを干渉することなく交差させられるレールです。十字レールを通過するトロッコは方向を変えることなく進みます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:crossover_rail"
+    }
+  ]
+}

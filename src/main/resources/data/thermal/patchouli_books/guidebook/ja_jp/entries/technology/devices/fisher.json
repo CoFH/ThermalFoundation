@@ -1,0 +1,24 @@
+{
+  "name": "水資源投網機",
+  "icon": "thermal:device_fisher",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "水資源投網機は、水中に設置して受動的に魚を捕獲する装置です。魚を捕獲する頻度は基本的に数分に1回ですが、バイオームや天候、そしてオーグメントの構成によって変動します。$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l) と$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)で捕獲頻度を上昇できます。また、$(l:thermal:world/materials/bait)ベイト$(/l)を使用して捕獲頻度をより上昇させたり、捕獲できるものを変更できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_fisher",
+      "title": "水資源投網機",
+      "text": "また、$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)オーグメントを適用することで、魚一匹捕獲するごとに1～3の経験値が得られるようになります。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/area_radius)範囲拡張$(/l)"
+    }
+  ]
+}

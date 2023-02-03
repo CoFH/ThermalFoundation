@@ -1,0 +1,18 @@
+{
+  "name": "アイテムフィルター",
+  "icon": "thermal:item_filter_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/item_filter_augment",
+      "title": "アイテムフィルター",
+      "text": "アイテムフィルターは機械装置やそれらの一部がアイテム搬入を制限できるようにします。フィルターは機械やアイテムを右クリックするか、機械のGUIタブからアクセスできる別のGUIで設定できます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "フィルターには最大15種類のアイテムを設定できます。許可・拒否やNBTの一致・無視を切り替えられます。"
+    }
+  ]
+}

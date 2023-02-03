@@ -1,0 +1,7 @@
+{
+  "name": "貯蔵と輸送",
+  "description": "ここでは資源やモブなどの物の保管および移動について取り扱います。",
+  "icon": "thermal:fluid_cell",
+  "flag": "|mod:thermal_expansion,mod:thermal_locomotion",
+  "sortnum": 2
+}

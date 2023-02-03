@@ -1,0 +1,15 @@
+{
+  "name": "錬金的増量剤",
+  "icon": "thermal:potion_duration_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/potion_duration_augment",
+      "title": "錬金的増量剤",
+      "text": "錬金的増量剤オーグメントはポーションの持続時間を100%増加させます。即時効果のポーションに対しては効果がありません。"
+    }
+  ]
+}

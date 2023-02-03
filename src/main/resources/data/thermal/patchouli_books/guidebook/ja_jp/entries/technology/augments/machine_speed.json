@@ -1,0 +1,16 @@
+{
+  "name": "フラックス結合増幅器",
+  "icon": "thermal:machine_speed_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_speed_augment",
+      "title": "フラックス結合増幅器",
+      "text": "フラックス結合増幅器オーグメントは最大RF使用率を100%向上させますが、処理1回にかかるRFも1.1倍になります。"
+    }
+  ]
+}

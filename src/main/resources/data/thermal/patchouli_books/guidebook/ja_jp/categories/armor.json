@@ -1,0 +1,8 @@
+{
+  "name": "防具",
+  "flag": "|mod:thermal_innovation,mod:thermal_cultivation",
+  "description": "最先端のファッションからは遅れているかもしれませんが、性能はしっかりしています。",
+  "icon": "thermal:hazmat_boots",
+  "parent": "thermal:equipment",
+  "sortnum": 2
+}

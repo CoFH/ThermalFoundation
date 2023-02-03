@@ -1,0 +1,17 @@
+{
+  "name": "クレセントハンマー",
+  "icon": "thermal:wrench",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "一般的なレンチです。機械装置をShift+右クリックでアイテム化したり、右クリックで回転させることが出来ます。荒らし回っている人を懲らしめるのにも使えます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/wrench",
+      "title": "クレセントハンマー"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "1スタック65個!?",
+  "icon": "thermal:gold_gear",
+  "category": "thermal:technology",
+  "flag": "mod:thermal_expansion",
+  "sortnum": -2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ある種の機械には、特に触媒を使用するものでは大量にアイテムが生産されるものがあります。例えば、1つの材料に対し2.5個アイテムが生成されるレシピがあるとします。最初の2つのアイテムの生成は保証されますが、3つ目のアイテムは50%の確率で生成されます。この場合、機械の生成物スロットがいっぱいになってしまう問題が起こり得ます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "バグではないよ!",
+      "text": "Thermal Expansionでは、こういった生成過多に対応するため、スタックサイズを自由に増加することがあります。"
+    }
+  ]
+}

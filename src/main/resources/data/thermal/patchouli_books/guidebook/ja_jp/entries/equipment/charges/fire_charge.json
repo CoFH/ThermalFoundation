@@ -1,0 +1,17 @@
+{
+  "name": "ファイヤーチャージ",
+  "icon": "minecraft:fire_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ファイヤーチャージはバニラのMinecraftにもとからあるものですが、Thermal作品では新たな用途が追加されています。他の素材とともにクラフトして、いくつかの合金やブロックを作成することができます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "minecraft:fire_charge",
+      "title": "Fire Charge"
+    }
+  ]
+}

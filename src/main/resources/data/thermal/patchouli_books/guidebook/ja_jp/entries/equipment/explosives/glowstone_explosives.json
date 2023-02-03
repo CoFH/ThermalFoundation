@@ -1,0 +1,24 @@
+{
+  "name": "輻射爆弾",
+  "icon": "thermal:glowstone_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "輻射爆弾は爆発時に微細なグロウストーン粒子を空中に散布し、漂うグロウストーン粒子の雲で10秒間周囲を照らします。爆発によってアンデッドモブにダメージを与え炎上させます。ブロック及びグレネードの爆発半径はそれぞれ9ブロック、5ブロックです。$(br2)$(o)要するにこれらはキラキラ爆弾ですね。$()"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:glowstone_tnt",
+      "B.recipe": "thermal:glowstone_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:glowstone_tnt_minecart",
+      "title": "輻射爆弾付きトロッコ"
+    }
+  ]
+}

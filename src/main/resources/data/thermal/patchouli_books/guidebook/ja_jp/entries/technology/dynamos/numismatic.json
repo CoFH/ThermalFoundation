@@ -1,0 +1,23 @@
+{
+  "name": "貨幣ダイナモ",
+  "icon": "thermal:dynamo_numismatic",
+  "category": "thermal:dynamos",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "貨幣ダイナモは$(l:thermal:technology/machines/press)コイン$(/l)からRFを発電します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:dynamo_numismatic",
+      "title": "貨幣ダイナモ"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/dynamo_output)補助反応室$(/l)$(li)$(l:thermal:technology/augments/dynamo_fuel)複循環燃料噴射装置$(/l)"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "テクノロジー",
+  "description": "有識者より: AltとShiftを押しながら機械内の液体やRFゲージをクリックすると、それぞれ液体やRFが破棄されます。",
+  "icon": "thermal:machine_frame",
+  "sortnum": 1
+}
