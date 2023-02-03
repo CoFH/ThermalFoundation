@@ -100,7 +100,7 @@
   "block.thermal.coal_coke_block": "コークスブロック",
   "block.thermal.cured_rubber_block": "硬化ゴムブロック",
   "block.thermal.rich_slag_block": "上質な鉱滓ブロック",
-  "block.thermal.rosin_block": "樹脂ブロック",
+  "block.thermal.rosin_block": "ロジンブロック",
   "block.thermal.rubber_block": "ゴムブロック",
   "block.thermal.sawdust_block": "おがくずブロック",
   "block.thermal.slag_block": "鉱滓ブロック",
@@ -177,7 +177,7 @@
   "info.thermal.xp_crystal.use.sneak": "スニーク中に使用すると、溜め込んだ経験値を取得できます。",
 
   "itemGroup.thermal.blocks": "Thermal Series: ブロック",
-  "itemGroup.thermal.devices": "Thermal Series: 機械",
+  "itemGroup.thermal.devices": "Thermal Series: 機械装置",
   "itemGroup.thermal.foods": "Thermal Series: 作物と食料",
   "itemGroup.thermal.items": "Thermal Series: アイテム",
   "itemGroup.thermal.resources": "Thermal Series: 素材",
@@ -217,7 +217,7 @@
   "item.thermal.coal_coke": "コークス",
   "item.thermal.cured_rubber": "硬化ゴム",
   "item.thermal.rich_slag": "上質な鉱滓",
-  "item.thermal.rosin": "樹脂",
+  "item.thermal.rosin": "ロジン",
   "item.thermal.rubber": "ゴム",
   "item.thermal.slag": "鉱滓",
   "item.thermal.sawdust": "おがくず",
@@ -234,7 +234,9 @@
   "item.thermal.blizz_spawn_egg": "ブリーズのスポーンエッグ",
 
   "item.thermal.compost": "堆肥",
+  "item.thermal.compost.desc": "有機質の肥料です。",
   "item.thermal.detonator": "遠隔起爆装置",
+  "item.thermal.detonator.desc": "TNTの遠隔呼び出し・起爆が出来ます。",
   "item.thermal.earth_charge": "アースチャージ",
   "item.thermal.ice_charge": "アイスチャージ",
   "item.thermal.lightning_charge": "ライトニングチャージ",
@@ -399,18 +401,18 @@
   "info.thermal.augment.attr.Radius": "最大半径",
   "info.thermal.augment.attr.Reach": "最大範囲",
 
-  "info.thermal.augment.attr.BaseMod": "拡縮係数",
+  "info.thermal.augment.attr.BaseMod": "強化係数",
 
   "info.thermal.augment.attr.DynamoEnergy": "燃料効率",
   "info.thermal.augment.attr.DynamoPower": "最大出力",
 
   "info.thermal.augment.attr.FluidMax": "タンク容量",
 
-  "info.thermal.augment.attr.MachineCat": "触媒消費量",
+  "info.thermal.augment.attr.MachineCat": "触媒消費確率",
   "info.thermal.augment.attr.MachineEnergy": "エネルギー消費",
-  "info.thermal.augment.attr.MachinePri": "主生産物",
+  "info.thermal.augment.attr.MachinePri": "主産物量倍率",
   "info.thermal.augment.attr.MachinePower": "基礎充電量",
-  "info.thermal.augment.attr.MachineSec": "副次生産物",
+  "info.thermal.augment.attr.MachineSec": "副産物量倍率",
   "info.thermal.augment.attr.MachineSpeed": "最大充電量",
   "info.thermal.augment.attr.MachineXp": "経験値モディファイアー",
 
@@ -424,7 +426,7 @@
   "info.thermal.augment.type.Dynamo": "ダイナモ",
   "info.thermal.augment.type.Fluid": "流体",
   "info.thermal.augment.type.Filter": "フィルター",
-  "info.thermal.augment.type.Machine": "マシン",
+  "info.thermal.augment.type.Machine": "機械",
   "info.thermal.augment.type.Potion": "ポーション",
   "info.thermal.augment.type.RF": "レッドストーンフラックス",
   "info.thermal.augment.type.Upgrade": "アップグレード",
@@ -459,9 +461,9 @@
 
   "item.thermal.machine_catalyst_augment": "触媒再生室",
   "item.thermal.machine_catalyst_creative_augment": "クリエイティブ触媒再生室",
-  "item.thermal.machine_catalyst_creative_augment.desc": "触媒を消費しません。  ",
+  "item.thermal.machine_catalyst_creative_augment.desc": "触媒を消費しません。",
   "item.thermal.machine_cycle_augment": "周期的処理",
-  "item.thermal.machine_cycle_augment.desc": "作業完了時に、完成品を入力スロットに移動される場合があります。",
+  "item.thermal.machine_cycle_augment.desc": "処理が完了した場合に、生産物が自動的に入力スロットに再投入される場合があります。",
   "item.thermal.machine_efficiency_augment": "フラックス効率",
   "item.thermal.machine_efficiency_augment.desc": "RF使用効率を上昇させますが、処理速度が低下します。",
   "item.thermal.machine_efficiency_creative_augment": "クリエイティブフラックス効率",
@@ -613,7 +615,7 @@
   "info.thermal.charge_bench.1": "アイテムを自動的に搬入搬出できます。",
   "info.thermal.charge_bench.2": "騒音を感じる",
 
-  "info.thermal.tinker_bench.0": "拡充・補充・充電に使える多目的なテーブルです。",
+  "info.thermal.tinker_bench.0": "拡充・充填・充電に使える多目的なテーブルです。",
   "info.thermal.tinker_bench.1": "それぞれのスロットからストレージに充填できます。",
   "info.thermal.tinker_bench.2": "さあいじくり倒そう",
 
@@ -859,8 +861,8 @@
   "block.thermal.amaranth_block": "アマランサスの俵",
   "block.thermal.barley": "大麦",
   "block.thermal.barley_block": "大麦俵",
-  "block.thermal.bell_pepper": "ピーマン",
-  "block.thermal.bell_pepper_block": "ピーマンクレート",
+  "block.thermal.bell_pepper": "パプリカ",
+  "block.thermal.bell_pepper_block": "パプリカクレート",
   "block.thermal.coffee": "コーヒー",
   "block.thermal.coffee_block": "コーヒー袋",
   "block.thermal.corn": "とうもろこし",
@@ -899,8 +901,8 @@
   "item.thermal.amaranth_seeds": "アマランサスの種",
   "item.thermal.barley": "大麦",
   "item.thermal.barley_seeds": "大麦の種",
-  "item.thermal.bell_pepper": "ピーマン",
-  "item.thermal.bell_pepper_seeds": "ピーマンの種",
+  "item.thermal.bell_pepper": "パプリカ",
+  "item.thermal.bell_pepper_seeds": "パプリカの種",
   "item.thermal.coffee": "コーヒーの実",
   "item.thermal.coffee_seeds": "コーヒー豆",
   "item.thermal.corn": "トウモロコシ",
@@ -942,13 +944,17 @@
   "item.thermal.peanut_butter": "ピーナッツバター入り保存瓶",
   "item.thermal.tomato_sauce": "トマトソース入り保存瓶",
 
+  "item.thermal.cooked_corn": "焼きとうもろこし",
+  "item.thermal.cooked_eggplant": "焼きナス",
+  "item.thermal.cooked_mushroom": "焼きマッシュルーム",
+
   "item.thermal.cheese_wedge": "チーズ",
   "item.thermal.green_bean_pie": "サヤインゲンパイ",
   "item.thermal.hearty_stew": "たっぷりシチュー",
   "item.thermal.onion_stew": "タマネギシチュー",
   "item.thermal.pbj_sandwich": "PBJサンド",
   "item.thermal.spring_salad": "スプリングサラダ",
-  "item.thermal.stuffed_pepper": "ピーマンの肉詰め",
+  "item.thermal.stuffed_pepper": "パプリカの肉詰め",
   "item.thermal.sushi_maki": "巻き寿司",
   "item.thermal.xp_stew": "慧眼のシチュー",
 
@@ -986,6 +992,11 @@
   "_comment": "Thermal Dynamics",
   "_comment": "========================================================================================================",
 
+  "attachment.thermal.energy_limiter": "レッドストーンフラックスリミッター",
+  "attachment.thermal.filter": "流体ダクトフィルター",
+  "attachment.thermal.servo": "流体ダクトサーボ",
+  "attachment.thermal.turbo_servo": "流体ダクトターボサーボ",
+
   "block.thermal.energy_duct": "フラックスダクト",
   "block.thermal.fluid_duct": "流体ダクト",
   "block.thermal.fluid_duct_windowed": "流体ダクト(窓付き)",
@@ -995,6 +1006,27 @@
 
   "block.thermal.item_buffer": "物流アイテムバッファ",
 
+  "info.thermal.energy_limiter_attachment.0": "これを通して流れるエネルギー量を制限します。",
+  "info.thermal.energy_limiter_attachment.1": "それぞれの方向へ向かう量をそれぞれ変更できます。",
+  "info.thermal.energy_limiter_attachment.2": "ShiftキーやCtrlキーで入出力量を細かく設定できます。",
+
+  "info.thermal.filter_attachment.mode.0": "双方向フィルタリング",
+  "info.thermal.filter_attachment.mode.1": "アウトバウンド(ダクトから)フィルタリング",
+  "info.thermal.filter_attachment.mode.2": "インバウンド(ダクトへ)フィルタリング",
+
+  "info.thermal.fluid_filter_attachment.0": "液体を含むアイテムをスロットに置くと、フィルターリストに液体が登録されます。",
+  "info.thermal.fluid_filter_attachment.1": "追加オプションからより細かいフィルター設定を行えます。",
+  "info.thermal.fluid_filter_attachment.2": "レッドストーン制御でフィルター設定を一時的に無効にできます。",
+
+  "info.thermal.fluid_servo_attachment.0": "液体を含むアイテムをスロットに置くと、フィルターリストに液体が登録されます。",
+  "info.thermal.fluid_servo_attachment.1": "追加オプションからより細かいフィルター設定や流出量の微調整を行えます。",
+  "info.thermal.fluid_servo_attachment.2": "レッドストーン制御で流体の流出を有効にできます。",
+
+  "info.thermal.fluid_turbo_servo_attachment.0": "フィルター項目が少ないがとても早いサーボです。",
+  "info.thermal.fluid_turbo_servo_attachment.1": "液体の入ったアイテムをスロットに置いてフィルタリング設定できます。",
+  "info.thermal.fluid_turbo_servo_attachment.2": "追加オプションからより細かいフィルター設定や流出量の微調整を行えます。",
+  "info.thermal.fluid_turbo_servo_attachment.3": "レッドストーン制御で流体の流出を有効にできます。",
+
   "info.thermal.item_buffer.0": "アイテムの数と流量を制限します。",
   "info.thermal.item_buffer.1": "左のグリッドで、希望するアイテムとその個数を設定します。",
   "info.thermal.item_buffer.2": "ラッチI/Oは、搬出にはすべてのアイテムが存在する必要があります。",
@@ -1002,6 +1034,11 @@
 
   "info.thermal.item_buffer.mode.0": "I/O: 通常",
   "info.thermal.item_buffer.mode.1": "I/O: ラッチ",
+
+  "item.thermal.energy_limiter_attachment": "アタッチメント: レッドストーンフラックスリミッター",
+  "item.thermal.filter_attachment": "アタッチメント: フィルター",
+  "item.thermal.servo_attachment": "アタッチメント: サーボ",
+  "item.thermal.turbo_servo_attachment": "アタッチメント: ターボサーボ",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",

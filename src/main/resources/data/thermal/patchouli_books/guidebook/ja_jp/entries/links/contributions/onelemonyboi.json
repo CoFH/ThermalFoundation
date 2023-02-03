@@ -1,0 +1,15 @@
+{
+  "name": "OneLemonyBoi",
+  "icon": "minecraft:poppy",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "OneLemonyBoi",
+      "item": "minecraft:player_head{SkullOwner:'OneLemonyBoi'}",
+      "text": "ダイナモのカテゴリや、いくつかのMod対応に貢献してくださりました。"
+    }
+  ]
+}

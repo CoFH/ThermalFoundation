@@ -1,0 +1,7 @@
+{
+  "name": "エレメンタル・チャージ",
+  "description": "四代元素を習得せよ。",
+  "icon": "thermal:lightning_charge",
+  "parent": "thermal:equipment",
+  "sortnum": 3
+}

@@ -1,0 +1,25 @@
+{
+  "name": "フィト・グロー爆弾",
+  "icon": "thermal:phyto_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:explosives",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "フィト・グロー爆弾は、範囲内の全ての作物と草に骨粉効果を与えます。PNTとフィト・グレネードの爆発半径はそれぞれ9ブロックと5ブロックです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phyto_tnt",
+      "B.recipe": "thermal:phyto_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_cultivation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phyto_tnt_minecart",
+      "title": "PNT付きトロッコ"
+    }
+  ]
+}

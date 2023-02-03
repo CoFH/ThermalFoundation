@@ -3,15 +3,15 @@ package cofh.thermal.lib.client.gui;
 import cofh.core.client.gui.element.panel.ConfigPanel;
 import cofh.core.inventory.container.ContainerCoFH;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.lib.block.entity.CellBlockEntity;
+import cofh.thermal.lib.block.entity.StorageCellBlockEntity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
 public class StorageCellScreen<T extends ContainerCoFH> extends AugmentableScreen<T> {
 
-    protected CellBlockEntity tile;
+    protected StorageCellBlockEntity tile;
 
-    public StorageCellScreen(T container, Inventory inv, CellBlockEntity tile, Component titleIn) {
+    public StorageCellScreen(T container, Inventory inv, StorageCellBlockEntity tile, Component titleIn) {
 
         super(container, inv, tile, titleIn);
         this.tile = tile;

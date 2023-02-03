@@ -76,8 +76,10 @@ public class ThermalDeviceConfig implements IBaseConfig {
 
     // region CONFIG VARIABLES
     private Supplier<Integer> deviceTreeExtractorTimeConstant;
+
     private Supplier<Integer> deviceComposterTimeConstant;
     private Supplier<Boolean> deviceComposterParticles;
+
     private Supplier<Integer> deviceFisherTimeConstant;
     private Supplier<Integer> deviceFisherTimeReductionWater;
     private Supplier<Boolean> deviceFisherParticles;

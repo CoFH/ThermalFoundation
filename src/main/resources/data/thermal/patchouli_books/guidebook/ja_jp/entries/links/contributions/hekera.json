@@ -1,0 +1,23 @@
+{
+  "name": "Hekera",
+  "icon": "minecraft:oxeye_daisy",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Hekera",
+      "item": "minecraft:player_head{SkullOwner:'Hekera'}",
+      "text": "共著者であり、何度も本書を書き直しました。レイアウトの改善を行い、より素敵な本に仕立ててくれましたが、多くのミスに悩まされました。Shinyをからかうのが大好きです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "あと5分だけ…お願い…"
+    }
+  ]
+}

@@ -10,8 +10,8 @@ import cofh.core.util.helpers.GuiHelper;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.lib.block.entity.AugmentableBlockEntity;
-import cofh.thermal.lib.block.entity.CellBlockEntity;
 import cofh.thermal.lib.block.entity.Reconfigurable4WayBlockEntity;
+import cofh.thermal.lib.block.entity.StorageCellBlockEntity;
 
 import static cofh.core.util.helpers.RenderHelper.getFluidTexture;
 import static cofh.core.util.helpers.RenderHelper.textureExists;
@@ -114,7 +114,7 @@ public class ThermalGuiHelper {
     // endregion
 
     // region CELL CONFIG
-    public static ElementConditionalLayered createDefaultCellConfigTop(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered createDefaultCellConfigTop(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_top";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
@@ -128,7 +128,7 @@ public class ThermalGuiHelper {
                 .setSize(16, 16);
     }
 
-    public static ElementConditionalLayered createDefaultCellConfigBottom(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered createDefaultCellConfigBottom(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_bottom";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
@@ -142,7 +142,7 @@ public class ThermalGuiHelper {
                 .setSize(16, 16);
     }
 
-    public static ElementConditionalLayered createDefaultCellConfigLeft(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered createDefaultCellConfigLeft(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
@@ -156,7 +156,7 @@ public class ThermalGuiHelper {
                 .setSize(16, 16);
     }
 
-    public static ElementConditionalLayered createDefaultCellConfigRight(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered createDefaultCellConfigRight(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
@@ -170,7 +170,7 @@ public class ThermalGuiHelper {
                 .setSize(16, 16);
     }
 
-    public static ElementConditionalLayered createDefaultCellConfigFace(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered createDefaultCellConfigFace(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
@@ -197,7 +197,7 @@ public class ThermalGuiHelper {
         return ret;
     }
 
-    public static ElementConditionalLayered createDefaultCellConfigBack(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered createDefaultCellConfigBack(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         String specificTexture = ID_THERMAL + ":block/cells/" + cell + "_side";
         String centerTexture = ID_THERMAL + ":block/cells/" + cell + "_center";
@@ -211,7 +211,7 @@ public class ThermalGuiHelper {
                 .setSize(16, 16);
     }
 
-    public static ElementConditionalLayered[] createDefaultCellConfigs(IGuiAccess gui, String cell, CellBlockEntity tile) {
+    public static ElementConditionalLayered[] createDefaultCellConfigs(IGuiAccess gui, String cell, StorageCellBlockEntity tile) {
 
         return new ElementConditionalLayered[]{
                 createDefaultCellConfigTop(gui, cell, tile),
@@ -249,8 +249,8 @@ public class ThermalGuiHelper {
 
         return new ResourcePanel(gui)
                 .setResource(CoreTextures.ICON_ENERGY, "info.cofh.energy", false)
-                .setCurrent(tile::getCurSpeed, "info.cofh.energy_use", "RF/t")
-                .setMax(tile::getMaxSpeed, "info.cofh.energy_max_use", "RF/t")
+                .setCurrent(tile::getCurSpeed, "info.cofh.energy_use", "info.cofh.unit_rf_t")
+                .setMax(tile::getMaxSpeed, "info.cofh.energy_max_use", "info.cofh.unit_rf_t")
                 .setEfficiency(tile::getEfficiency);
     }
 
@@ -258,8 +258,8 @@ public class ThermalGuiHelper {
 
         return new ResourcePanel(gui)
                 .setResource(CoreTextures.ICON_ENERGY, "info.cofh.energy", true)
-                .setCurrent(tile::getCurSpeed, "info.cofh.energy_prod", "RF/t")
-                .setMax(tile::getMaxSpeed, "info.cofh.energy_max_prod", "RF/t")
+                .setCurrent(tile::getCurSpeed, "info.cofh.energy_prod", "info.cofh.unit_rf_t")
+                .setMax(tile::getMaxSpeed, "info.cofh.energy_max_prod", "info.cofh.unit_rf_t")
                 .setEfficiency(tile::getEfficiency);
     }
     // endregion

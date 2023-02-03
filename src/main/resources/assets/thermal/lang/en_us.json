@@ -234,7 +234,9 @@
   "item.thermal.blizz_spawn_egg": "Blizz Spawn Egg",
 
   "item.thermal.compost": "Compost",
+  "item.thermal.compost.desc": "An organic fertilizer.",
   "item.thermal.detonator": "Remote Detonator",
+  "item.thermal.detonator.desc": "Allows for remote priming and detonation of TNT.",
   "item.thermal.earth_charge": "Earth Charge",
   "item.thermal.ice_charge": "Ice Charge",
   "item.thermal.lightning_charge": "Lightning Charge",
@@ -942,6 +944,7 @@
   "item.thermal.peanut_butter": "Jar of Peanut Butter",
   "item.thermal.tomato_sauce": "Jar of Tomato Sauce",
 
+  "item.thermal.cooked_corn": "Roasted Corn on the Cob",
   "item.thermal.cooked_eggplant": "Roasted Eggplant",
   "item.thermal.cooked_mushroom": "Roasted Mushroom",
 
@@ -990,15 +993,9 @@
   "_comment": "========================================================================================================",
 
   "attachment.thermal.energy_limiter": "Redstone Flux Limiter",
-
-  "attachment.thermal.fluid_filter": "Fluiduct Filter",
-  "attachment.thermal.fluid_input_filter": "Fluiduct Filter (Input)",
-  "attachment.thermal.fluid_output_filter": "Fluiduct Filter (Output)",
-
-  "attachment.thermal.fluid_servo": "Fluiduct Servo",
-
-  "attachment.thermal.item_filter": "Itemduct Filter",
-  "attachment.thermal.item_servo": "Itemduct Servo",
+  "attachment.thermal.filter": "Fluiduct Filter",
+  "attachment.thermal.servo": "Fluiduct Servo",
+  "attachment.thermal.turbo_servo": "Fluiduct Turbo-Servo",
 
   "block.thermal.energy_duct": "Fluxduct",
   "block.thermal.fluid_duct": "Fluiduct",
@@ -1013,13 +1010,22 @@
   "info.thermal.energy_limiter_attachment.1": "Can be configured to allow different amounts in each direction.",
   "info.thermal.energy_limiter_attachment.2": "Hold §e§oShift§r and/or §e§oCtrl§r to fine tune amounts.",
 
+  "info.thermal.filter_attachment.mode.0": "Bidirectional Filtering",
+  "info.thermal.filter_attachment.mode.1": "Outbound (From Duct) Filtering",
+  "info.thermal.filter_attachment.mode.2": "Inbound (To Duct) Filtering",
+
   "info.thermal.fluid_filter_attachment.0": "Place items containing fluid in slots to add the fluid to the filter list.",
   "info.thermal.fluid_filter_attachment.1": "Additional options can be used to fine-tune filtering.",
   "info.thermal.fluid_filter_attachment.2": "Redstone Control can be used to temporarily disable filtering.",
 
   "info.thermal.fluid_servo_attachment.0": "Place items containing fluid in slots to add the fluid to the filter list.",
-  "info.thermal.fluid_servo_attachment.1": "Additional options can be used to fine-tune filtering and extraction amount.",
+  "info.thermal.fluid_servo_attachment.1": "Additional options can be used to fine-tune filtering.",
   "info.thermal.fluid_servo_attachment.2": "Redstone Control is used to enable extraction.",
+
+  "info.thermal.fluid_turbo_servo_attachment.0": "A much faster Servo, with limited filtering.",
+  "info.thermal.fluid_turbo_servo_attachment.1": "Place items containing fluid in the filter slot.",
+  "info.thermal.fluid_turbo_servo_attachment.2": "Additional options can be used to fine-tune filtering and extraction amount.",
+  "info.thermal.fluid_turbo_servo_attachment.3": "Redstone Control is used to enable extraction.",
 
   "info.thermal.item_buffer.0": "Restricts quantity and flow of items.",
   "info.thermal.item_buffer.1": "Set desired items and quantities using the left grid.",
@@ -1031,9 +1037,8 @@
 
   "item.thermal.energy_limiter_attachment": "Attachment: Redstone Flux Limiter",
   "item.thermal.filter_attachment": "Attachment: Filter",
-  "item.thermal.input_filter_attachment": "Attachment: Input Filter",
-  "item.thermal.output_filter_attachment": "Attachment: Output Filter",
   "item.thermal.servo_attachment": "Attachment: Servo",
+  "item.thermal.turbo_servo_attachment": "Attachment: Turbo-Servo",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",

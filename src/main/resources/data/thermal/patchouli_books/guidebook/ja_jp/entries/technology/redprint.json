@@ -1,0 +1,17 @@
+{
+  "name": "レッドプリント",
+  "icon": "thermal:redprint",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "レッドプリントを使って機械の設定を簡単にコピー&ペーストできます。設定をレッドプリントに保存するには、空のレッドプリントで設定済みの機械を右クリックするだけです。設定を保存したレッドプリントを他の機械に右クリックすると、その機械へ設定を反映することができます。Shiftキーを押しながら右クリックするとレッドプリントに保存された設定情報が消去されます。機械を、配置と同時に自動で設定を反映するには、レッドプリントをオフハンドに持ちながら設置しましょう。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/redprint",
+      "title": "レッドプリント"
+    }
+  ]
+}

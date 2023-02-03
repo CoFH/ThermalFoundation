@@ -1,0 +1,7 @@
+{
+  "name": "モブ",
+  "description": "水・地・火・雷。四大元素は共存していました。しかし、ネザーが追加されたときに全ては変わってしまいました。他の元素を追加できるのは、CoFHの全Modのマスター、KingLemming氏だけです。",
+  "icon": "thermal:blizz_rod",
+  "parent": "thermal:world",
+  "sortnum": 3
+}

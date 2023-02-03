@@ -1,0 +1,12 @@
+{
+  "name": "容量拡張",
+  "icon": "minecraft:enchanted_book",
+  "read_by_default": true,
+  "category": "thermal:world",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "CoFH Coreは新たなエンチャント、容量拡張を追加します。このエンチャントは内部にインベントリやタンク、RF容量を持つブロックやアイテムに扶養することが出来ます。1レベル毎に元の容量の50%分を、最大レベルIVで元の容量の200%分を更に追加します。この効果は$(l:thermal:technology/augments/introduction)オーグメント$(/l)といった容量を変更するものと重複します。例えば、機械が$(l:thermal:technology/augments/integral_components)レゾナント統合コンポーネント$(/l)が適用済みでかつ容量拡張IVが付与されている場合、元の12倍のRF容量を持つことになるでしょう。"
+    }
+  ]
+}

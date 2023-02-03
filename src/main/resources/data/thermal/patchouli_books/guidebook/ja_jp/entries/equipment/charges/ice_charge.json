@@ -1,0 +1,17 @@
+{
+  "name": "アイスチャージ",
+  "icon": "thermal:ice_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "アイスチャージは、ブロックに雪を積もらせる、水を氷に変える、溶岩を黒曜石に変えることができます。後者2つはクラフトグリッドにてバケツを使って変えることもできます。ディスペンサーを用いて、モブに$(l:thermal:world/mobs/blizz)寒気$(/l)のステータス効果を与え、かつ狭い範囲を凍らせる線形放射物を発射できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ice_charge_3",
+      "title": "Ice Charge"
+    }
+  ]
+}

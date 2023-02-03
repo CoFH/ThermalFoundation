@@ -19,6 +19,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -65,24 +66,31 @@ public class DetonateUtils {
     public static void fire(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         if (!explosive.isInWater()) {
-            AreaUtils.igniteEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
-            AreaUtils.fireTransformSpecial.transformSphere(level, pos, radius, 0.6F, owner);
-            AreaUtils.fireTransform.transformSphere(level, pos, radius, 0.2F, owner);
+            AreaUtils.IGNITE_ENTITIES.applyEffectNearby(level, pos, radius, duration, amplifier);
+            AreaUtils.FIRE_TRANSFORM_SPECIAL.transformSphere(level, pos, radius, 0.6F, owner);
+            AreaUtils.FIRE_TRANSFORM.transformSphere(level, pos, radius, 0.2F, owner);
             makeAreaOfEffectCloud(level, ParticleTypes.FLAME, pos, radius);
         }
     }
 
     public static void ice(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        AreaUtils.iceTransform.transformSphere(level, pos, radius, owner);
-        AreaUtils.chillEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
+        AreaUtils.ICE_TRANSFORM.transformSphere(level, pos, radius, owner);
+        AreaUtils.CHILL_ENTITIES.applyEffectNearby(level, pos, radius, duration, amplifier);
         makeAreaOfEffectCloud(level, (SimpleParticleType) FROST.get(), pos, radius);
     }
 
     public static void earth(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        AreaUtils.earthTransform.transformSphere(level, pos, radius, owner);
-        AreaUtils.sunderEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
+        AreaUtils.EARTH_TRANSFORM.transformSphere(level, pos, radius, owner);
+        AreaUtils.SUNDER_ENTITIES.applyEffectNearby(level, pos, radius, duration, amplifier);
+
+        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, (new AABB(pos.subtract(radius, radius, radius), pos.add(radius, radius, radius))).inflate(1), EntitySelector.ENTITY_STILL_ALIVE);
+        for (var item : items) {
+            if (item.getAge() < 10) {
+                item.setPosRaw(pos.x, pos.y, pos.z);
+            }
+        }
     }
 
     public static void lightning(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
@@ -91,29 +99,29 @@ public class DetonateUtils {
         if (level.canSeeSky(blockPos)) {
             Utils.spawnLightningBolt(level, blockPos, owner);
         }
-        AreaUtils.shockEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
+        AreaUtils.SHOCK_ENTITIES.applyEffectNearby(level, pos, radius, duration, amplifier);
         level.addFreshEntity(new ElectricField(level, pos, radius, 100).setOwner(owner instanceof LivingEntity ? (LivingEntity) owner : null));
     }
 
     public static void ender(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
         if (!explosive.isInWater()) {
-            AreaUtils.enderAirTransform.transformSphere(level, pos, radius, owner);
-            AreaUtils.enderfereEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
+            AreaUtils.ENDER_AIR_TRANSFORM.transformSphere(level, pos, radius, owner);
+            AreaUtils.ENDERFERE_ENTITIES.applyEffectNearby(level, pos, radius, duration, amplifier);
             makeAreaOfEffectCloud(level, ParticleTypes.PORTAL, pos, radius);
         }
     }
 
     public static void glow(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        AreaUtils.glowAirTransform.transformSphere(level, pos, radius, explosive);
-        AreaUtils.glowEntities.applyEffectNearby(level, pos, radius, duration, amplifier);
+        AreaUtils.GLOW_AIR_TRANSFORM.transformSphere(level, pos, radius, explosive);
+        AreaUtils.GLOW_ENTITIES.applyEffectNearby(level, pos, radius, duration, amplifier);
         makeAreaOfEffectCloud(level, ParticleTypes.INSTANT_EFFECT, pos, radius);
     }
 
     public static void redstone(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        AreaUtils.signalAirTransform.transformSphere(level, pos, radius, owner);
+        AreaUtils.SIGNAL_AIR_TRANSFORM.transformSphere(level, pos, radius, owner);
         makeAreaOfEffectCloud(level, DustParticleOptions.REDSTONE, pos, radius);
     }
 
@@ -151,7 +159,7 @@ public class DetonateUtils {
 
     public static void phyto(Level level, Entity explosive, @Nullable Entity owner, Vec3 pos, float radius, int duration, int amplifier) {
 
-        AreaUtils.growPlants.transformSphere(level, pos, radius, owner);
+        AreaUtils.GROW_PLANTS.transformSphere(level, pos, radius, owner);
         for (int i = 0; i < 2; ++i) {
             FertilizerItem.growWaterPlant(level, explosive.blockPosition(), null);
         }

@@ -1,0 +1,31 @@
+{
+  "name": "ハズマットスーツ",
+  "icon": "thermal:hazmat_chestplate",
+  "category": "thermal:armor",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ハズマットスーツは燃焼・落下・状態異常といった危険から身を守ってくれます。完全な防護にはスーツ一式を着用する必要があります。ステータス効果や燃焼を防ぐたびに耐久値が消費されます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:hazmat_fabric",
+      "text": "$(o)Orange sus$()"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/hazmat_helmet",
+      "B.recipe": "thermal:armor/hazmat_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/hazmat_leggings",
+      "B.recipe": "thermal:armor/hazmat_boots"
+    }
+  ]
+}

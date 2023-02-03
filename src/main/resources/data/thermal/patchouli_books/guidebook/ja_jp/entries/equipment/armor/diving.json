@@ -1,0 +1,31 @@
+{
+  "name": "ダイビングスーツ",
+  "icon": "thermal:diving_chestplate",
+  "category": "thermal:armor",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ダイビングスーツを着用すると水中探索が楽になります。より速く泳げ、より長く息が続き、より早く採掘できます"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:diving_fabric",
+      "text": "ダイビングスーツ一式に使われる布素材です。"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/diving_helmet",
+      "B.recipe": "thermal:armor/diving_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/diving_leggings",
+      "B.recipe": "thermal:armor/diving_boots"
+    }
+  ]
+}

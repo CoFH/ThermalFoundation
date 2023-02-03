@@ -1,0 +1,24 @@
+{
+  "name": "灼熱爆弾",
+  "icon": "thermal:fire_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "灼熱爆弾は範囲内をモブもろとも炎上させます。ブロック及びグレネードの爆発半径はそれぞれ9ブロック、5ブロックです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:fire_tnt",
+      "B.recipe": "thermal:fire_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:fire_tnt_minecart",
+      "title": "灼熱爆弾付きトロッコ"
+    }
+  ]
+}

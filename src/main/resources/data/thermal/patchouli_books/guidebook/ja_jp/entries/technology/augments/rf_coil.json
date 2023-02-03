@@ -1,0 +1,14 @@
+{
+  "name": "拡張RFコイル",
+  "icon": "thermal:rf_coil_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/rf_coil_augment",
+      "title": "拡張RFコイル",
+      "text": "拡張RFコイルはRF容量及び入出力量を4倍に増強します。"
+    }
+  ]
+}

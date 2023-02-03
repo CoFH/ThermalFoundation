@@ -1,0 +1,15 @@
+{
+  "name": "Drullkus",
+  "icon": "minecraft:orange_dye",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Drullkus",
+      "item": "minecraft:player_head{SkullOwner:'Drullkus'}",
+      "text": "Patchouliの動作検証に多大な貢献をしてくださりました。また、Thermalシリーズのテクスチャや他の多くのModを手伝っていただきました。彼は自分の仕事がいかに悪いかと自虐するのが大好きです。"
+    }
+  ]
+}

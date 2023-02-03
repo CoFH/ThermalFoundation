@@ -1,0 +1,18 @@
+{
+  "name": "潜水トロッコ",
+  "icon": "thermal:underwater_minecart",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "潜水トロッコは、水中でも$(l:thermal:storage_and_transport/locomotion/prismarinerails)線路上$(/l)をプレイヤー含むエンティティが乗ったまま移動することができます。潜水トロッコに乗っているエンティティは4分間息が続きます。また、水中ではアンデッドモブは炎上せず、ブレイズとエンダーマンはダメージを受け、ゾンビはドラウンドに変化します。水中呼吸のエンチャントを付与でき、1tick毎に空気が消費される確率を減少できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:underwater_minecart"
+    }
+  ]
+}

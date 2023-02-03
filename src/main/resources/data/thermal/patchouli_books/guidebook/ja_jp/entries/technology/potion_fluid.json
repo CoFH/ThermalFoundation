@@ -1,0 +1,24 @@
+{
+  "name": "ポーション液",
+  "icon": "minecraft:potion",
+  "category": "thermal:technology",
+  "flag": "|mod:thermal_expansion,mod:thermal_innovation",
+  "read_by_default": true,
+  "pages": [
+    {
+      "flag": "!mod:thermal_expansion",
+      "type": "patchouli:text",
+      "text": "Potion fluid is the fluid form of conventional Minecraft potions. Using a Minecraft potion bottle on a machine, device, or storage block that accepts potion fluids will fill the block with potion fluid and return an empty bottle.",
+      "text": "ポーション液はバニラのMinecraftのポーションの流体版です。ポーション液を扱える機械・装置・ストレージにMinecraftのポーション瓶を使用すると、ブロックへポーション液が移され、空き瓶が返されます。"
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "patchouli:text",
+      "text": "ポーション液はバニラのMinecraftのポーションの流体版です。ポーション液を扱える機械・装置・ストレージにMinecraftのポーション瓶を使用すると、ブロックへポーション液が移され、空き瓶が返されます。$(l:thermal:technology/machines/brewer)錬金術的醸造機$(/l)でポーションを醸造することにより直接入手できます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "反対に、ポーション液を保持しているブロックに対して空き瓶を使用すると、ポーション瓶を得られます。250mbのポーション液が、バニラのMinecraftのポーション瓶一つに相当します。"
+    }
+  ]
+}

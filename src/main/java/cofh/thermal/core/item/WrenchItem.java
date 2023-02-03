@@ -34,7 +34,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.core.config.CoreServerConfig.returnDismantleDrops;
+import static cofh.core.config.CoreCommonConfig.returnDismantleDrops;
 import static cofh.core.init.CoreMobEffects.WRENCHED;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 

@@ -1,0 +1,31 @@
+{
+  "name": "流体セル",
+  "icon": "thermal:fluid_cell",
+  "category": "thermal:storage",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "流体セルは流体の貯蔵と供給を行えます。流体セルの初期容量は32000mB、初期流量は8000mBです。これはオーグメントを適用することによって拡張できます。一度に貯蔵できる液体は1種類のみです、各面毎に流入出の設定ができ、セルの自動搬入出も設定可能です。また、貯蔵率に比例したコンパレータ出力ができます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:fluid_cell_frame",
+      "B.recipe": "thermal:fluid_cell"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "流体セルの流量は精密な設定が行なえます。GUIでは、RFゲージの両側にそれぞれ流入・流出の流量が表示されます。これらは、「+」と「-」ボタンから手動で、流量の細かな制御を行えます。左クリック・右クリックでそれぞれ50・10RF/tずつ増減できます。Ctrlキーを押しながらクリックで5・1ずつ、Shiftキーを押しながらでは、それぞれ1000・100ずつ増減できます。CtrlとShiftキーを同時に押しながらクリックすると、10000・1000ずつの増減ができます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "流体セルはバケツで右クリックすることによりバケツに汲み出したり、バケツから組み入れることができます。ただし、Forgeでは現在バケツに入れられない流体をバケツに汲み出そうとするとバケツが消滅するバグがあるのでご注意ください。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)"
+    }
+  ]
+} 

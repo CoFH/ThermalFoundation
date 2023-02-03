@@ -1,0 +1,24 @@
+{
+  "name": "火成岩生成器",
+  "icon": "thermal:device_rock_gen",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "火成岩生成器は適切なブロックや水で囲われたときに岩石を無限に生成してくれる装置です。溶岩源および冷却材となるブロックを隣接位する必要があり、また、任意で直下にブロックを置いて生成物を変更することが出来ます。利用できるレシピはJEIにてご確認ください。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_rock_gen",
+      "title": "火成岩生成器",
+      "text": "基本的な生成速度は1秒間に1ブロックですが、$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)によって最大4ブロック毎秒にまで生成速度を強化できます。使用レシピが変更された場合、生成スロットにあるブロックは消滅し、変更後のレシピの生成物に置き換わります。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)"
+    }
+  ]
+} 

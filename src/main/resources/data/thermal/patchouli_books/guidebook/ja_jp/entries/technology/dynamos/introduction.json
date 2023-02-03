@@ -1,0 +1,18 @@
+{
+  "name": "ダイナモとは",
+  "icon": "thermal:iron_gear",
+  "category": "thermal:dynamos",
+  "sortnum": -2,
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ダイナモは様々な種類の燃料からRFを生産します。ダイナモはコイルの面を持っており、発電中は赤く発光します。RFはコイルの面からのみ出力され、燃料はそれ以外の面からのみ搬入を受け付けます。アップグレードをしない限りは、ダイナモの最大出力は40RF/tです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "ダイナモには内部バッファがあります。$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)で強化でき、RFコイルオーグメントでは強化できません。ダイナモはこのバッファ容量に応じて、RF出力と燃料使用量を自動調節します。バッファが空の場合にダイナモは最大効率でRFを生産します。そして、バッファの飽和時は最大の10%の効率でRFを出力し、生産するRFが無駄になるにも関わらず燃料を消費します。バッファに蓄電されたRFは発電中にのみ自動で出力され、発電中でない場合は徐々に減少していきます。"
+    }
+  ]
+}

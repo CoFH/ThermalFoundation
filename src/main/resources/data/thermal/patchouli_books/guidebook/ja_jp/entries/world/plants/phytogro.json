@@ -1,0 +1,41 @@
+{
+  "name": "フィト・グロー",
+  "icon": "thermal:phytogro",
+  "read_by_default": true,
+  "category": "thermal:plants",
+  "flag": "|mod:thermal_cultivation,mod:thermal_expansion",
+  "pages": [
+    {
+      "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_2",
+      "text": "フィト・グローは植物に必要な全ての栄養素を高濃度に含んだ肥料です。植物に直接やる、$(l:thermal:equipment/explosives/phyto_explosives)爆弾$(/l)で今範囲に散布するといった用途があります。"
+    },
+    {
+      "flag": "&!mod:thermal_cultivation,mod:thermal_expansion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_2",
+      "text": "フィト・グローは植物に必要な全ての栄養素を高濃度に含んだ肥料です。植物に直接やる、$(l:thermal:world/materials/catalysts)触媒$(/l)として機械で使用するといった用途があります。"
+    },
+    {
+      "flag": "&mod:thermal_cultivation,mod:thermal_expansion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_2",
+      "text": "フィト・グローは植物に必要な全ての栄養素を高濃度に含んだ肥料です。植物に直接やる、$(l:thermal:equipment/explosives/phyto_explosives)爆弾$(/l)で今範囲に散布する、$(l:thermal:world/materials/catalysts)触媒$(/l)として機械で使用するといった用途があります。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_4",
+      "text": "$(o)村の長老たちは樹液とレッドストーンフラックスを注入し、作物の収穫量を本来より遥かに増強するというフィト・グローの失われたレシピを語る。残念ながらそれを再現するあらゆる試みは全て失敗に終わっている。$()"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phytogro_8",
+      "B.recipe": "thermal:phytosoil"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "フィト・ソイルとは、フィト・グローを注入した土のことです。植わった植物の成長速度を約2倍に加速し、さらに$(l:thermal:technology/devices/soil_infuser)フィト・ソイル注入機$(/l)を使用することにより5倍にまで加速できます。通常の土と同様に作物を植える為には耕す必要があります。通常の耕地とは異なり、耕されたフィト・ソイルはもとに戻ることがなく、近くに水を必要としません。"
+    }
+  ]
+}

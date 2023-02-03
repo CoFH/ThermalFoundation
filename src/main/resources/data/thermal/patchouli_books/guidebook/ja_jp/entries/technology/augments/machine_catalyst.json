@@ -1,0 +1,16 @@
+{
+  "name": "触媒再生室",
+  "icon": "thermal:machine_catalyst_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_catalyst_augment",
+      "title": "触媒再生室",
+      "text": "触媒再生室オーグメントは触媒の消費確率を0.8倍に低減します。ただし、1回の処理ごとにかかるエネルギーが1.25倍に増加します。"
+    }
+  ]
+}

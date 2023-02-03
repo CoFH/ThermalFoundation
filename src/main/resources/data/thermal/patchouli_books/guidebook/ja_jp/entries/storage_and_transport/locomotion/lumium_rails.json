@@ -1,0 +1,28 @@
+{
+  "name": "ルミウムレール",
+  "icon": "thermal:lumium_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ルミウムレールは15の強さで発光する以外は通常のレールと全く同じ機能を有します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_rail",
+      "B.recipe": "thermal:lumium_crossover_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_powered_rail",
+      "B.recipe": "thermal:lumium_activator_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lumium_detector_rail"
+    }
+  ]
+}

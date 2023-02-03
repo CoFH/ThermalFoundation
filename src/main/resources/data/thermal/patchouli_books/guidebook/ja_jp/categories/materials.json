@@ -1,0 +1,7 @@
+{
+  "name": "素材",
+  "description": "サーマルシリーズに必要不可欠な素材。",
+  "icon": "thermal:invar_ingot",
+  "parent": "thermal:world",
+  "sortnum": 1
+}

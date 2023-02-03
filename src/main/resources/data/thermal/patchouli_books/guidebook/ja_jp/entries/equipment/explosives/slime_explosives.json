@@ -1,0 +1,24 @@
+{
+  "name": "スライム爆弾",
+  "icon": "thermal:slime_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "スライム爆弾は範囲内の全てのモブ・プレイヤーをノックバックさせ、スライムで覆って一時的にスライム浸しのステータス効果を与えます。このステータス効果を受けたモブやプレイヤーは、スライムブロックに着地したときと同じように地面で跳ねるようになります。ブロック及びグレネードの爆発半径は9ブロック、5ブロックです。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slime_tnt",
+      "B.recipe": "thermal:slime_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slime_tnt_minecart",
+      "title": "スライム爆弾付きトロッコ"
+    }
+  ]
+}

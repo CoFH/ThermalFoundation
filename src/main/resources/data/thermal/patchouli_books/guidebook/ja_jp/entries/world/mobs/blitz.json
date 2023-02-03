@@ -1,0 +1,32 @@
+{
+  "name": "ブリッツ",
+  "icon": "thermal:blitz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "ブリッツ",
+      "item1": "thermal:blitz_rod",
+      "item2": "thermal:blitz_powder",
+      "item3": "thermal:blitz_spawn_egg",
+      "text": "ブリッツは温暖で乾燥したバイオームにスポーンするモブです。ハート10個分の体力とハート1.5個分の攻撃力があります。ブリッツはまたハート2.5個分のダメージと被雷の効果を与える弾を射出します。ブリッツを倒すとブリッツモートをドロップすることがあり、これを単体でクラフトするか粉砕機でブリッツパウダーにすることができます。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:blitz",
+      "title": "ブリッツ",
+      "text": "被雷: レベル毎に攻撃力をハート3つ分ずつ減少させる。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "挙動",
+      "text": "ブリッツは遠距離から弧を描く弾を射出する臆病なエレメンタルです。相手との距離が24ブロック以内のとき毎秒1発の弾を撃ってきます。それ以上離れると近づいてきますが、20ブロック以内へと近づくと距離を保つよう逃げます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対策",
+      "text": "ブリッツへの簡単な対処法は遠距離攻撃です。また、射出された弾は飛翔時間があるので移動している相手への攻撃は難しいでしょう。"
+    }
+  ]
+}

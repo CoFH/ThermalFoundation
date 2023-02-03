@@ -1,0 +1,23 @@
+{
+  "name": "錬金術的醸造機",
+  "icon": "thermal:machine_brewer",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "錬金術的醸造機はポーションを醸造する機械です。$(l:thermal:technology/potion_fluid)ポーション液$(/l)を瓶なしに直接作ります。材料1つにつきバケツ1杯分、瓶4本分を醸造できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_brewer",
+      "title": "錬金術的醸造機"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対応オーグメント",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)$(li)$(l:thermal:technology/augments/item_filter)アイテムフィルター$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮装置$(/l)$(li)$(l:thermal:technology/augments/rf_coil)拡張RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)安定RFコイル$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)高フラックスRFコイル$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)拡張タンク機構$(/l)$(li)$(l:thermal:technology/augments/machine_speed)フラックス結合増幅器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)フラックス効率$(/l)"
+    }
+  ]
+}

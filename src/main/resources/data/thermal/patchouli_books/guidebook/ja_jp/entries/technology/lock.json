@@ -1,0 +1,17 @@
+{
+  "name": "シグナルム安全錠",
+  "icon": "thermal:lock",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "各種機械・ダイナモ・アイテムのセキュリティパネルを有効化する為に使用します。あなたのものをにあなたのものであり続けるために"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/lock",
+      "title": "シグナルム安全錠"
+    }
+  ]
+}

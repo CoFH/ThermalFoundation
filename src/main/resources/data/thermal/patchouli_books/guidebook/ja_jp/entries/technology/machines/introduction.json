@@ -1,0 +1,36 @@
+{
+  "name": "機械とは",
+  "icon": "thermal:iron_gear",
+  "category": "thermal:machines",
+  "sortnum": -2,
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "機械とは、レッドストーンフラックス(RF)という形の動力を使用してアイテムや流体を処理するものです。この章の別の項目にてそれぞれの機械の機能詳細をご確認いただけます。簡単な説明は装置のGUI上にある折り畳みパネルにて参照できます。アップグレードをしない限りは、機械の最大消費電力は20RF/tです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:thermal:technology/augments/introduction)オーグメント$(/l)を'オーグメント'パネルから適用することにより、機能の様々な点を強化・変更できます。'レッドストーン制御'パネルと'設定'パネルでは、それぞれレッドストーン信号入力による動作設定と機械の各面の設定が行なえます。デフォルト設定では機械はレッドストーン信号にかかわらず動作し、アイテムや流体の搬入出を受け付けない未設定の面設定になっています。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "'設定'パネルではブロック各面が四角で表示されます。クリックすると搬入出設定が切り替わります。青色と橙色はそれぞれ搬入・搬出を表します。矢印ボタンは隣接するインベントリとの自動搬入出を設定します。黒色は搬入出は受け付けるが自動では行わないことを表します。面設定は回収されても保存されます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "'エネルギー'パネルでは現在のRF使用量などのブロックのRF情報を表示します。全ての機械にはRFの最大使用率があり、各レシピにはそれに関連する一定のRFコストが設定されています。この2つの値は$(l:thermal:technology/augments/introduction)オーグメント$(/l)によって変わることもありますが、レシピの処理速度の決定のために分割できます。機械の処理速度向上のために特定の$(l:thermal:technology/augments/machine_speed)オーグメント$(/l)を適用して最大RF消費量を増加させるか、$(l:thermal:world/materials/catalysts)触媒$(/l)を投入して掛かるRFを軽減させることもできます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_frame",
+      "text": "このページでは、機械装置に使われる汎用部品のレシピを紹介します。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_servo",
+      "B.recipe": "thermal:rf_coil"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "アースチャージ",
+  "icon": "thermal:earth_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "アースチャージは土、草、石といった大地のブロックを瞬時に採掘するために使用されます。また、クラフトにてクォーツブロックを4つのネザークォーツにするなど固められたブロックを解体するために使用できます。ディスペンサーを用いて、$(l:thermal:world/mobs/basalz)割れ鎧$(/l)のステータス効果をモブに付与する強力なノックバックを与える線形放射物を発射できます。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:earth_charge_3",
+      "title": "Earth Charge",
+      "text": "$(o)伝説によれば、かつては岩盤をも砕くほどの威力を有していたという$()"
+    }
+  ]
+}

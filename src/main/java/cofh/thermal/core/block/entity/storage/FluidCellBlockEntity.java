@@ -11,7 +11,7 @@ import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.storage.FluidCellContainer;
-import cofh.thermal.lib.block.entity.CellBlockEntity;
+import cofh.thermal.lib.block.entity.StorageCellBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Inventory;
@@ -42,7 +42,7 @@ import static cofh.thermal.core.init.TCoreTileEntities.FLUID_CELL_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class FluidCellBlockEntity extends CellBlockEntity implements ITickableTile.IServerTickable {
+public class FluidCellBlockEntity extends StorageCellBlockEntity implements ITickableTile.IServerTickable {
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
 

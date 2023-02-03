@@ -1,0 +1,44 @@
+{
+  "name": "Dynamicsはどこ?",
+  "icon": "thermal:iron_gear",
+  "read_by_default": true,
+  "category": "thermal:storage_and_transport",
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "DynamicsはThermalシリーズの他の機能の実現のため開発休止中です。しばらくお待ち下さい。次のページではおすすめのパイプModをご紹介します。"
+    },
+    {
+      "type": "patchouli:link",
+      "title": "XNet",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/xnet",
+      "link_text": "Curseforge Link",
+      "text": "XNetは1本のゲーブルでアイテム・流体・RFなどを輸送できる強力なModです。ネットワークにはコントローラーが必須で、それを通してネットワーク設定を行い、複数チャンネルの入出力やフィルタリング、スタックサイズなどを制御できます。若干の学習が必要ですが、その制御の精密さは群を抜いています。"
+    },
+    {
+      "type": "patchouli:link",
+      "title": "Refined Pipes",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/refined-pipes",
+      "link_text": "Curseforge Link",
+      "text": "1.12版のDynamicsにより近いものをお求めの場合は、Refined Pipesをおすすめします。パイプとエクストラクターはそれぞれ速度の異なるティア分けがなされています。1.12版Dynamicsに慣れているプレイヤーにとっては、このModは郷愁を感じられるでしょう。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Integrated Tunnels",
+      "text": "Integrated Dynamicsは、モブやインベントリなどに関する様々な情報を取り扱うことができる非常に強力なModです。Tunnelsはネットワークがインベントリからアイテムを搬入出できるようにもするアドオンです。"
+    },
+    {
+      "type": "patchouli:link",
+      "title": "Integrated Tunnels",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/integrated-tunnels",
+      "link_text": "Curseforge Link",
+      "text": "この2つを組み合わせることによって、極めて正確な、フィルタリング可能な制御が実現できます。しかし、このModは他のものに比べて入手しにくいため注意してください。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "パイプがあるMod",
+      "text": "以下のModは様々な輸送設備を保有していますが、それ以外にも多くの魅力的なコンテンツを追加します。あなたが気に入る物もあるかもしれません。アイテム・流体・エネルギーの輸送$(o)だけ$()を扱うModをお探しであれば、前のページをご参照ください。$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism)Mekanism$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/create)Create$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)Immersive Engineering$()$(li)$(l:https://www.curseforge.com/minecraft/mc-mods/rats)funny rat mod$()"
+    }
+  ]
+}

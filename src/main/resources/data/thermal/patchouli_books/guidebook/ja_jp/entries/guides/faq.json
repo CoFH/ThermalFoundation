@@ -1,0 +1,35 @@
+{
+  "name": "身近な質問の回答",
+  "icon": "minecraft:redstone",
+  "category": "thermal:guides",
+  "sortnum": -3,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Q: Dynamicsやパイプはどこへいったの?$(br)A: $(l:thermal:storage_and_transport/dynamics)ここ$(/l)をお読みください。$(br2)Q: アップグレードキットはどこにありますか?$(br)A: $(l:thermal:technology/augments/integral_components)ここ$(/l)をお読みください。$(br2)Q: 機械の処理速度を加速するには?$(br)A: $(l:thermal:technology/augments/integral_components)ここ$(/l)と$(l:thermal:technology/augments/machine_speed)ここ$(/l)をお読みください。$(br2)Q: このオーグメントはスタックできますか?$(br)A: $(l:thermal:technology/augments/introduction)ここ$(/l)をお読みください。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: フラックスボア・フラックスソーのモード変更はどうやるの?$(br)A: 採掘半径の変更には、$(l:thermal:technology/augments/area_radius)範囲拡張オーグメント$(/l)を適用する必要があります。$(br2)Q: 道具の充電やオーグメントの適用はどうやるの?$(br)A: $(l:thermal:technology/tinker_bench)ここ$(/l)をお読みください$(br2)Q: なぜダイナモはゆっくりとRF残量が減るの?$(br)A: ダイナモのRFバッファはあくまでダイナモのスロットル量を決定するためのものです。$(l:thermal:technology/dynamos/introduction)ここ$(/l)で詳細をご確認頂けます。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/tools-complement",
+      "link_text": "Tool's Complement",
+      "text": "Q: 〇〇Modのレシピなどに対応してますか?$(br)A: 他のModへの対応は$(l:thermal:links/discord)Discordサーバー$(/l)にて受け付けております。$(br2)Q: ダイヤモンドシャベルやエレクトラムの弓など、Thermalの基本的な道具・武器・道具はどこにありますか?$(br)A: 別のModに分けました:"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: プラチナや鋼鉄、マナを含んだ金属はどうなった?$(br)A: 諸般の事情により、これらはThermal Foundationが追加する必要は無いと判断されました。もし一部が再登場する場合、別の互換性Modにて対応する予定です。$(br2)Q: なんで流体をおけないの?$(br)A: 現在のForge fluid APIがグダグダだからです。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: 鉱石生成の変更はできますか? $(br)A: コンフィグには鉱石生成の有効・無効の設定がありますが、生成高度など細部に関する項目は未実装です。$(br2)Q: コンフィグの変更はどうやりますか?$(br)A: コンフィグファイルはワールド毎に作成されます。保存フォルダ内のserverconfigsフォルダにあります。また、serverconfigsからdefaultconfigsフォルダにファイルをコピーして編集することで、デフォルト設定を変更できます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Q: バグの報告窓口はどこですか?$(br)A: 我々の$(l:thermal:links/discord)Discordサーバー$(/l)にて報告できます。報告する前に、Modが最新であること、Optifineをインストールしていないことをご確認ください。$(br2)Q: レシピは変更できますか?$(br)A: ThermalのModは全てデータドリブンのため、$(l:thermal:guides/modpack/recipes)ここ$(/l)にあるようにデータパックでレシピを変更できます。また、ThermalのModはCraftTweakerに対応しております。"
+    }
+  ]
+}

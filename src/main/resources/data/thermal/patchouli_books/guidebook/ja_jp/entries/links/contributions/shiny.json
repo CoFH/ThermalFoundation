@@ -1,0 +1,26 @@
+{
+  "name": "ShinyPorygon",
+  "icon": "minecraft:orange_tulip",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "ShinyPorygon",
+      "item": "minecraft:player_head{SkullOwner:'ShinyPorygon'}",
+      "text": "プロジェクトリーダー、共著者。カテゴリを含む本書の最初の仕事をしました。Discordについて数多くを書き、多くのModサポートファイル(今後も増える予定)を作成し、King Lemming氏に迷惑をかけました。誤情報の拡散者、Hekeraの精神的支柱。"
+    },
+    {
+      "type": "patchouli:empty"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "賢者ダース・レミングの悲劇を聞いたことはありませんか?私はないと思っていました。CoFHのWikiに載ってるようなものではないよ。Discordの伝説ですよ。ダース・レミングはJavaの暗黒卿で、非常に強力でとても賢いので、バグ修正に他のMod開発者をけしかけるためにコードを使う事ができました…彼はJavaの知識を有しており、自分の大切なModが死なないようにすることさえできました。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Javaの暗黒面は幾つかの不自然と思われる能力への道すじです。彼はとても強力になりました…彼が唯一恐れていたのは、RFバランスを失うことでした。そして、無論彼はそうしました。残念なことに、彼は他のMod開発者に知っていること全てを教え、そのMod開発者はRFの使用量を1000倍に増やしたのです。皮肉にも、彼は他のModをパワー不足から救うことは出来ても、自分自身のModを救うことは出来なかったのです。"
+    }
+  ]
+}

@@ -30,12 +30,12 @@ public class CrafterRecipeManager extends AbstractManager implements IManager {
 
     public boolean validItem(ItemStack item, IMachineRecipe recipe) {
 
-        return recipe instanceof CrafterRecipe && ((CrafterRecipe) recipe).validItem(item);
+        return recipe instanceof CrafterRecipe crafterRecipe && crafterRecipe.validItem(item);
     }
 
     public boolean validFluid(FluidStack fluid, IMachineRecipe recipe) {
 
-        return recipe instanceof CrafterRecipe && ((CrafterRecipe) recipe).validFluid(fluid);
+        return recipe instanceof CrafterRecipe crafterRecipe && crafterRecipe.validFluid(fluid);
     }
 
     public CrafterRecipe getRecipe(Recipe<?> recipe) {

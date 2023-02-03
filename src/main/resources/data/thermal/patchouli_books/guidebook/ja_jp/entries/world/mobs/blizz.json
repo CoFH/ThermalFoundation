@@ -1,0 +1,32 @@
+{
+  "name": "ブリーズ",
+  "icon": "thermal:blizz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "ブリーズ",
+      "item1": "thermal:blizz_rod",
+      "item2": "thermal:blizz_powder",
+      "item3": "thermal:blizz_spawn_egg",
+      "text": "ブリーズは寒冷なバイオームにスポーンするモブです。ハート10個分の体力とハート3.5個分の攻撃力があります。ハート2.5個分のダメージと寒気の効果を与える弾を射出します。ブリーズを倒すとブリーズキューブをドロップすることがあり、これを単体でクラフトするか粉砕機でブリーズパウダーにすることができます。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:blizz",
+      "title": "ブリーズ",
+      "text": "寒気: レベル毎に移動速度を30%減少、攻撃感覚を0.4秒増加させます。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "挙動",
+      "text": "ブリーズは相手に弾幕を張る冷淡なエレメンタルです。相手の上空を飛行し、その周囲に弾を撒き降らします。接近すると、相手の上空で円を描くように浮遊します。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "対処",
+      "text": "ブリーズへの簡単な対処法は遠距離攻撃です。近接戦闘ではブリーズと向き合い、ブリーズからの近接攻撃を防ぐ事が重要です。"
+    }
+  ]
+}

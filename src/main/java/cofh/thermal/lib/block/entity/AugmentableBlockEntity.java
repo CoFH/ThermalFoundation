@@ -292,15 +292,6 @@ public abstract class AugmentableBlockEntity extends TileCoFH implements MenuPro
         return super.onActivatedDelegate(world, pos, state, player, hand, result);
     }
 
-    public void markChunkUnsaved() {
-
-        if (this.level != null) {
-            if (this.level.hasChunkAt(this.worldPosition)) {
-                this.level.getChunkAt(this.worldPosition).setUnsaved(true);
-            }
-        }
-    }
-
     protected boolean keepEnergy() {
 
         return ThermalCoreConfig.keepEnergy.get();
@@ -867,10 +858,9 @@ public abstract class AugmentableBlockEntity extends TileCoFH implements MenuPro
     public void onControlUpdate() {
 
         updateHandlers();
-        if (level != null) {
-            level.updateNeighborsAt(worldPosition, block());
-        }
+        callNeighborStateChange();
         TileControlPacket.sendToClient(this);
+        markChunkUnsaved();
     }
     // endregion
 

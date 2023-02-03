@@ -1,0 +1,7 @@
+{
+  "name": "植物",
+  "description": "作物や樹木は、有用な食物や材料を生産します。",
+  "icon": "thermal:rosin",
+  "parent": "thermal:world",
+  "sortnum": 2
+}

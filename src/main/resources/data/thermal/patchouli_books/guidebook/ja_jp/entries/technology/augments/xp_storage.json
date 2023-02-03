@@ -1,0 +1,18 @@
+{
+  "name": "知識濃縮装置",
+  "icon": "thermal:xp_storage_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/xp_storage_augment",
+      "title": "知識濃縮装置",
+      "text": "知識濃縮装置オーグメントは機械装置などから経験値を集められるようにします。最大で2.5kに$(l:thermal:technology/augments/integral_components)統合コンポーネント$(/l)の強化率を乗算した量の経験値を保存できます。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "適用した機械のGUIには$(l:thermal:equipment/tools/xp_crystal)洞察に満ちるクリスタル$(/l)に似たアイコンが右下に表示されます。このアイコンをクリックして、保存された経験値をプレイヤーが回収できます。"
+    }
+  ]
+}

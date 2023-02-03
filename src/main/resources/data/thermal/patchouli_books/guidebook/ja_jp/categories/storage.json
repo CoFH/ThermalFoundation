@@ -1,0 +1,8 @@
+{
+  "name": "貯蔵",
+  "description": "技術的に、その場しのぎのパイプとしてスパムできます。",
+  "icon": "thermal:energy_cell",
+  "parent": "thermal:storage_and_transport",
+  "flag": "mod:thermal_expansion",
+  "sortnum": 1
+}
