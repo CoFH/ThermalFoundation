@@ -7,7 +7,7 @@
     {
       "flag": "!mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "熱力為其所有的$(l:thermal:world/ores)礦物$(/l)和$(l:thermal:materials/alloys)合金$(/l)以及火藥、爐渣、富爐渣和木炭新增了貯存塊。對於其他模組的貯存塊，熱力遵循一個慣例，即製作配方中的中心項目決定要製作哪個模組的貯存塊。例如，用 8 個沉浸工程的銅錠圍繞 1 個熱力的銅錠將製作一個熱力的銅塊。"
+      "text": "熱力為其所有的$(l:thermal:world/ores)礦物$(/l)和$(l:thermal:materials/alloys)合金$(/l)以及火藥、爐渣、富爐渣和木炭新增了貯存塊。對於其他模組的貯存塊，熱力遵循一個慣例，即製作配方中的中心物品決定要製作哪個模組的貯存塊。例如，用 8 個沉浸工程的銅錠圍繞 1 個熱力的銅錠將製作一個熱力的銅塊。"
     },
     {
       "flag": "mod:thermal_expansion",
@@ -17,7 +17,7 @@
     {
       "flag": "mod:thermal_expansion",
       "type": "patchouli:text",
-      "text": "對於其他模組的貯存塊，熱力遵循一個慣例，即製作配方中的中心項目決定要製作哪個模組的貯存塊。例如，用 8 個沉浸工程的銅錠圍繞 1 個熱力的銅錠將製作一個熱力的銅塊。"
+      "text": "對於其他模組的貯存塊，熱力遵循一個慣例，即製作配方中的中心物品決定要製作哪個模組的貯存塊。例如，用 8 個沉浸工程的銅錠圍繞 1 個熱力的銅錠將製作一個熱力的銅塊。"
     },
     {
       "type": "thermal:double_crafting_page",
