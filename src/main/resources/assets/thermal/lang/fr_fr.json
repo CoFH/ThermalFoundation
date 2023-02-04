@@ -469,7 +469,7 @@
   "item.thermal.machine_null_augment": "Cactus Auxiliaire",
   "item.thermal.machine_null_augment.desc": "Détruit les sorties d'objets non primaires.",
   "item.thermal.machine_output_augment": "Tamis de traitement auxiliaire",
-   "item.thermal.machine_output_augment.desc": "Augmente la sortie dans les machines supportés d'objet non primaire.",
+  "item.thermal.machine_output_augment.desc": "Augmente la sortie dans les machines supportés d'objet non primaire.",
   "item.thermal.machine_speed_augment": "Amplificateur de liaison de flux",
   "item.thermal.machine_speed_augment.desc": "Augmente la vitesse du processus mais réduit l'efficacité RF.",
 
