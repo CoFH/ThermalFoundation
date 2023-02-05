@@ -161,7 +161,7 @@
   "info.thermal.redprint.use.sneak": "潛行並使用以清除所複製的設置。",
 
   "info.thermal.satchel.0": "儲存和收集掉落物。可安裝安全鎖。",
-  "info.thermal.satchel.1": "如果安裝了一個物品篩選器, 潛行並使用以打開物品篩選介面。",
+  "info.thermal.satchel.1": "如果安裝了一個物品篩選器，潛行並使用以打開物品篩選介面。",
   "info.thermal.satchel.2": "物品篩選升級僅適用於自動儲存至背包。",
   "info.thermal.satchel.mode.0": "自動儲存：關閉",
   "info.thermal.satchel.mode.1": "自動儲存：開啟",
@@ -176,14 +176,14 @@
   "info.thermal.xp_crystal.use": "使用以將經驗存入水晶。",
   "info.thermal.xp_crystal.use.sneak": "潛行並使用以取回所儲存的經驗。",
 
-  "itemGroup.thermal.blocks": "熱力系列丨方塊",
-  "itemGroup.thermal.devices": "熱力系列丨機器",
-  "itemGroup.thermal.foods": "熱力系列丨作物與食物",
-  "itemGroup.thermal.items": "熱力系列丨物品",
-  "itemGroup.thermal.resources": "熱力系列丨資源",
-  "itemGroup.thermal.tools": "熱力系列丨工具",
+  "itemGroup.thermal.blocks": "熱力系列｜方塊",
+  "itemGroup.thermal.devices": "熱力系列｜機器",
+  "itemGroup.thermal.foods": "熱力系列｜作物與食物",
+  "itemGroup.thermal.items": "熱力系列｜物品",
+  "itemGroup.thermal.resources": "熱力系列｜資源",
+  "itemGroup.thermal.tools": "熱力系列｜工具",
 
-  "item.thermal.redstone_servo": "紅石伺服器",
+  "item.thermal.redstone_servo": "紅石伺服",
   "item.thermal.rf_coil": "紅石通量線圈",
 
   "item.thermal.biocrude_bucket": "生物原油桶",
@@ -234,7 +234,9 @@
   "item.thermal.blizz_spawn_egg": "暴雪使者 生怪蛋",
 
   "item.thermal.compost": "堆肥",
+  "item.thermal.compost.desc": "一種有機肥料。",
   "item.thermal.detonator": "遙控引爆器",
+  "item.thermal.detonator.desc": "允許遠端啟動和引爆 TNT。",
   "item.thermal.earth_charge": "裂岩彈",
   "item.thermal.ice_charge": "瀑冰彈",
   "item.thermal.lightning_charge": "鳴雷彈",
@@ -498,6 +500,7 @@
   "item.thermal.upgrade_augment_2.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
   "item.thermal.upgrade_augment_3": "諧振整合元件",
   "item.thermal.upgrade_augment_3.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
+
   "item.thermal.upgrade_augment_4": "超諧振整合元件",
   "item.thermal.upgrade_augment_4.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
 
@@ -513,6 +516,7 @@
   "block.thermal.device_composter": "批量堆肥器",
   "block.thermal.device_fisher": "水產捕撈器",
   "block.thermal.device_hive_extractor": "蜂箱漏斗",
+  "block.thermal.device_magnet_blocker": "磁性抑製器",
   "block.thermal.device_nullifier": "銷毀器",
   "block.thermal.device_potion_diffuser": "藥水霧化器",
   "block.thermal.device_rock_gen": "岩石擠製機",
@@ -613,12 +617,12 @@
 
   "info.thermal.tinker_bench.0": "集工具增強、裝置充能及流體灌裝於一體的多功能工作站。",
   "info.thermal.tinker_bench.1": "物品欄中僅可放入適用於工匠工作台的物品。",
-  "info.thermal.tinker_bench.2": "修補模式啟動！",
+  "info.thermal.tinker_bench.2": "工匠模式開啟！",
 
   "info.thermal.tinker_bench_mode_augment": "模式：增強",
   "info.thermal.tinker_bench_mode_charge": "模式：充能/灌裝",
 
-  "info.thermal.beekeeper_armor": "保護你免受叮咬傷害。",
+  "info.thermal.beekeeper_armor": "保護你不受叮咬傷害。",
 
   "info.thermal.diving_helmet": "極大增加供氧量。",
 
@@ -940,6 +944,10 @@
   "item.thermal.peanut_butter": "罐裝花生醬",
   "item.thermal.tomato_sauce": "罐裝番茄醬",
 
+  "item.thermal.cooked_corn": "烤玉米棒",
+  "item.thermal.cooked_eggplant": "烤茄子",
+  "item.thermal.cooked_mushroom": "烤蘑菇",
+
   "item.thermal.cheese_wedge": "乳酪",
   "item.thermal.green_bean_pie": "四季豆派",
   "item.thermal.hearty_stew": "豐盛燉菜",
@@ -985,6 +993,9 @@
   "_comment": "========================================================================================================",
 
   "attachment.thermal.energy_limiter": "紅石通量限流器",
+  "attachment.thermal.filter": "流體管道篩選器",
+  "attachment.thermal.servo": "流體管道伺服",
+  "attachment.thermal.turbo_servo": "流體管道渦輪伺服",
 
   "block.thermal.energy_duct": "能量管道",
   "block.thermal.fluid_duct": "流體管道",
@@ -999,21 +1010,35 @@
   "info.thermal.energy_limiter_attachment.1": "可為每個方向設定不同上限。",
   "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
 
+  "info.thermal.filter_attachment.mode.0": "雙向篩選",
+  "info.thermal.filter_attachment.mode.1": "輸出（從管道）篩選",
+  "info.thermal.filter_attachment.mode.2": "輸入（到管道）篩選",
+
   "info.thermal.fluid_filter_attachment.0": "將存有流體的物品放入欄位，以此把對應的流體新增到篩選器清單中。",
-  "info.thermal.fluid_filter_attachment.1": "可用額外選項以精確調整行為。",
+  "info.thermal.fluid_filter_attachment.1": "額外選項可用於微調篩選。",
   "info.thermal.fluid_filter_attachment.2": "紅石控制可用於暫時關閉篩選...",
+
+  "info.thermal.fluid_servo_attachment.0": "將存有流體的物品放入欄位，以此把對應的流體新增到篩選器清單中。",
+  "info.thermal.fluid_servo_attachment.1": "額外選項可用於微調篩選。",
+  "info.thermal.fluid_servo_attachment.2": "紅石控制用於啟用提取。",
+
+  "info.thermal.fluid_turbo_servo_attachment.0": "一種更快的伺服，有限的篩選。",
+  "info.thermal.fluid_turbo_servo_attachment.1": "將存有流體的物品放入篩選欄位。",
+  "info.thermal.fluid_turbo_servo_attachment.2": "額外選項可用於微調篩選和提取數量。",
+  "info.thermal.fluid_turbo_servo_attachment.3": "紅石控制用於啟用提取。",
 
   "info.thermal.item_buffer.0": "限制物品的傳送速率和數量。",
   "info.thermal.item_buffer.1": "使用左側網格來設定所需物品及其數量",
-  "info.thermal.item_buffer.2": "閂鎖模式下，只有所有物品均滿足要求才會輸出。",
+  "info.thermal.item_buffer.2": "閂鎖模式下，只有所有物品均滿足要求才會允許提取。",
   "info.thermal.item_buffer.3": "非常適合用來維持特定物品比例。",
 
   "info.thermal.item_buffer.mode.0": "I/O：正常",
   "info.thermal.item_buffer.mode.1": "I/O：閂鎖",
 
-  "item.thermal.energy_limiter_attachment": "紅石通量限流器",
-  "item.thermal.filter_attachment": "篩選器",
-  "item.thermal.servo_attachment": "伺服器",
+  "item.thermal.energy_limiter_attachment": "附件：紅石通量限流器",
+  "item.thermal.filter_attachment": "附件：篩選器",
+  "item.thermal.servo_attachment": "附件：伺服",
+  "item.thermal.turbo_servo_attachment": "附件：渦輪伺服",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
