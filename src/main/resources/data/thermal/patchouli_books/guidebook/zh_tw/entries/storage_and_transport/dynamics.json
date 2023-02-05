@@ -28,7 +28,7 @@
       "title": "Integrated Tunnels",
       "url": "https://www.curseforge.com/minecraft/mc-mods/integrated-tunnels",
       "link_text": "Curseforge Link",
-      "text": "Integrated Dynamics 是一個非常強大的模組，可以評估關於生物、容器等的各種數值。Tunnels 是它的擴充模組，允許網絡從容器中導入/導出物品。兩者相結合，可實現極高的精確度、篩選性和控制性。當心，這個模組比大多數模組更難上手。"
+      "text": "Integrated Dynamics 是一個非常強大的模組，可以評估關於生物、容器等的各種數值。Tunnels 是它的擴充模組，允許網絡從容器中匯入/匯出物品。兩者相結合，可實現極高的精確度、篩選性和控制性。當心，這個模組比大多數模組更難上手。"
     },
     {
       "type": "patchouli:text",
