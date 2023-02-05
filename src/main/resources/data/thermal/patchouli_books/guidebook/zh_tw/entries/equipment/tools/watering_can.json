@@ -16,7 +16,7 @@
     },
     {
       "type": "patchouli:text",
-      "title": "增強相容性",
+      "title": "增強元件相容性",
       "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)"
     }
   ]
