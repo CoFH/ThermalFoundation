@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[34,)"
+loaderVersion = "[${forge_major_version},)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -7,35 +7,35 @@ license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 modId = "thermal"
 version = "${file.jarVersion}"
 displayName = "Thermal Series"
-updateJSONURL = "https://raw.github.com/cofh/version/master/thermal/update.json"
+updateJSONURL = "https://raw.github.com/cofh/version/main/thermal/update.json"
 displayURL = "https://teamcofh.com/"
 logoFile = "thermal_series.png"
 itemIcon = "thermal:tinker_bench"
 credits = "Team CoFH"
 authors = "King Lemming"
 description = '''
-Parent mod for all Thermal modules. For convenience, packaged alongside Thermal Foundation.
+Parent mod for all Thermal modules.
 
 Contains all of the common components for the Thermal Series, such as materials and basic tools.
 '''
 [[dependencies.thermal]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,1.19)"
+versionRange = "[${mc_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.76,)"
+versionRange = "[${forge_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal]]
 modId = "cofh_core"
 mandatory = true
-versionRange = "[9.2,9.3]"
+versionRange = "[${cofh_core_version}, {$cofh_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -56,28 +56,28 @@ Contains the ores and world generation for the Thermal Series.
 [[dependencies.thermal_foundation]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,1.19)"
+versionRange = "[${mc_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_foundation]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.76,)"
+versionRange = "[${forge_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_foundation]]
 modId = "cofh_core"
 mandatory = true
-versionRange = "[9.2,9.3]"
+versionRange = "[${cofh_core_version}, {$cofh_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_foundation]]
 modId = "thermal"
 mandatory = true
-versionRange = "[9.2,9.3]"
+versionRange = "[${thermal_core_version}, {$thermal_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"
 
