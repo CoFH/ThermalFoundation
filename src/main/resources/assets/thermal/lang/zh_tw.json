@@ -1320,9 +1320,16 @@
   "entity.thermal.redstone_tnt_minecart": "紅石訊號炸藥礦車",
   "entity.thermal.slime_tnt_minecart": "彈力黏著炸藥礦車",
 
-  "entity.thermal.energy_minecart": "通量儲存礦車",
+  "entity.thermal.energy_minecart": "紅石通量礦車",
   "entity.thermal.fluid_minecart": "流體儲罐礦車",
   "entity.thermal.underwater_minecart": "水下礦車",
+  
+  "info.thermal.energy_minecart.0": "儲存紅石通量。",
+  "info.thermal.energy_minecart.1": "使用欄位為礦車充能或將礦車中的能量釋放到物品中。",
+
+  "info.thermal.fluid_minecart.0": "儲存流體。",
+  "info.thermal.fluid_minecart.1": "使用欄位為礦車填充或將礦車中的流體傾卸到物品中。",
+  "info.thermal.fluid_minecart.2": "或者，直接使用鐵桶或類似物品與礦車互動。",
 
   "item.thermal.earth_tnt_minecart": "地岩碎裂炸藥礦車",
   "item.thermal.ender_tnt_minecart": "終界侵擾炸藥礦車",
@@ -1335,7 +1342,7 @@
   "item.thermal.redstone_tnt_minecart": "紅石訊號炸藥礦車",
   "item.thermal.slime_tnt_minecart": "彈力黏著炸藥礦車",
 
-  "item.thermal.energy_minecart": "通量儲存礦車",
+  "item.thermal.energy_minecart": "紅石通量礦車",
   "item.thermal.fluid_minecart": "流體儲罐礦車",
   "item.thermal.underwater_minecart": "水下礦車",
 
