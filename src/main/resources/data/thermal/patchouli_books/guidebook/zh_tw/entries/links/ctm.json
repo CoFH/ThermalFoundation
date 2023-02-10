@@ -9,14 +9,14 @@
       "type": "patchouli:link",
       "url": "https://www.curseforge.com/minecraft/mc-mods/ctm",
       "link_text": "CTM",
-      "text": "你是否知道安裝了 CTM 後，終界合金玻璃等一些材質會連接起來並且看起來很漂亮？你裝了嗎？做得好。你沒有？你在等什麼？！"
+      "text": "你是否知道安裝了 CTM 後，終焉玻璃等一些材質會連接起來並且看起來很漂亮？你裝了嗎？做得好。你沒有？你在等什麼？！"
 
 
     },
     {
       "type": "patchouli:spotlight",
       "item": "thermal:enderium_ingot",
-      "text": "有趣的事實！終界合金因其扭曲時空的終界特性而得名！"
+      "text": "有趣的事實！終焉因其扭曲時空的終界特性而得名！"
     }
   ]
 
