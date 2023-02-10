@@ -4,7 +4,7 @@
   "_comment": "========================================================================================================",
 
   "advancements.thermal.root.title": "熱力系列",
-  "advancements.thermal.root.description": "熱力擴展世界的起點！",
+  "advancements.thermal.root.description": "一個熱力擴展世界的起點！",
   "advancements.thermal.wrench.title": "看起來像個扳手",
   "advancements.thermal.wrench.description": "製作一把新月錘。",
 
@@ -136,13 +136,13 @@
   "fluid.thermal.tree_oil": "樹油",
 
   "info.thermal.catalysts": "催化劑",
-  "info.thermal.energy_mod": "能耗倍數",
-  "info.thermal.primary_mod": "主產物產生倍數",
-  "info.thermal.secondary_mod": "副產物產生倍數",
+  "info.thermal.energy_mod": "能量倍率",
+  "info.thermal.primary_mod": "主產物倍率",
+  "info.thermal.secondary_mod": "副產物倍率",
   "info.thermal.use_chance": "消耗機率",
 
-  "info.thermal.detonator.mode.0": "當前模式：綁定",
-  "info.thermal.detonator.mode.1": "當前模式：引爆",
+  "info.thermal.detonator.mode.0": "模式：綁定",
+  "info.thermal.detonator.mode.1": "模式：引爆",
   "info.thermal.detonator.primed": "綁定至：",
   "info.thermal.detonator.use.0": "使用以將其綁定至 TNT，以準備引爆。",
   "info.thermal.detonator.use.1": "使用以引爆綁定的炸藥。",
@@ -163,8 +163,8 @@
   "info.thermal.satchel.0": "儲存和收集掉落物。可安裝安全鎖。",
   "info.thermal.satchel.1": "如果安裝了一個物品篩選器，潛行並使用以打開物品篩選介面。",
   "info.thermal.satchel.2": "物品篩選升級僅適用於自動儲存至背包。",
-  "info.thermal.satchel.mode.0": "自動儲存：關閉",
-  "info.thermal.satchel.mode.1": "自動儲存：開啟",
+  "info.thermal.satchel.mode.0": "自動儲存已停用",
+  "info.thermal.satchel.mode.1": "自動儲存已啟用",
   "info.thermal.satchel.use": "使用以打開背包。",
   "info.thermal.satchel.use.sneak": "潛行並使用以打開物品篩選介面。",
 
@@ -173,8 +173,8 @@
 
   "info.thermal.xp_crystal.mode.0": "自動收集模式已停用",
   "info.thermal.xp_crystal.mode.1": "自動收集模式已啟用",
-  "info.thermal.xp_crystal.use": "使用以將經驗存入水晶。",
-  "info.thermal.xp_crystal.use.sneak": "潛行並使用以取回所儲存的經驗。",
+  "info.thermal.xp_crystal.use": "使用以將經驗值存入水晶。",
+  "info.thermal.xp_crystal.use.sneak": "潛行並使用以取回所儲存的經驗值。",
 
   "itemGroup.thermal.blocks": "熱力系列｜方塊",
   "itemGroup.thermal.devices": "熱力系列｜機器",
@@ -251,7 +251,7 @@
   "item.thermal.wrench": "新月錘",
   "item.thermal.wrench.desc": "設定、旋轉或拆除特定方塊。其實就是個扳手。",
   "item.thermal.xp_crystal": "洞察水晶",
-  "item.thermal.xp_crystal.desc": "儲存經驗。",
+  "item.thermal.xp_crystal.desc": "儲存經驗值。",
 
   "item.thermal.aquachow": "水產飼料",
   "item.thermal.aquachow.desc": "用於增加§e§o水產捕撈器§r§6的魚類產生量。",
@@ -391,7 +391,7 @@
   "subtitles.thermal.item.equip_diving": "潛水套裝叮噹作響",
   "subtitles.thermal.item.equip_hazmat": "防護套裝沙沙作響",
 
-  "subtitles.thermal.misc.tinker": "升級元件安裝",
+  "subtitles.thermal.misc.tinker": "增強元件安裝",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Augments",
@@ -471,7 +471,7 @@
   "item.thermal.machine_null_augment": "輔助仙人掌",
   "item.thermal.machine_null_augment.desc": "銷毀多餘的副產物。",
   "item.thermal.machine_output_augment": "輔助處理篩",
-  "item.thermal.machine_output_augment.desc": "增加副產物的產生",
+  "item.thermal.machine_output_augment.desc": "增加副產物的產生。",
   "item.thermal.machine_speed_augment": "通量鏈結放大器",
   "item.thermal.machine_speed_augment.desc": "以紅石通量效率降低為代價提升處理速度。",
 
@@ -483,7 +483,7 @@
   "item.thermal.rf_coil_augment": "擴展通量線圈",
 
   "item.thermal.rf_coil_creative_augment": "創造通量線圈",
-  "item.thermal.rf_coil_creative_augment.desc": "功能性無限的紅石通量",
+  "item.thermal.rf_coil_creative_augment.desc": "功能性無限的紅石通量。",
 
   "item.thermal.rf_coil_storage_augment": "穩態通量線圈",
   "item.thermal.rf_coil_xfer_augment": "強導通量線圈",
@@ -505,7 +505,7 @@
   "item.thermal.upgrade_augment_4.desc": "提升基礎屬性。其它升級也可能由此得到進一步增強。",
 
   "item.thermal.xp_storage_augment": "知識濃縮器",
-  "item.thermal.xp_storage_augment.desc": "允許儲存與提取經驗。",
+  "item.thermal.xp_storage_augment.desc": "允許儲存與提取經驗值。",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - External",
@@ -534,7 +534,7 @@
   "block.thermal.charge_bench": "能量灌注機",
   "block.thermal.charge_bench.desc": "用於快速充能多個物品。",
   "block.thermal.tinker_bench": "工匠工作台",
-  "block.thermal.tinker_bench.desc": "用於強化，充能和裝填物品。",
+  "block.thermal.tinker_bench.desc": "用於增強、充能和裝填物品。",
 
   "block.thermal.chunk_loader": "連續錨",
 
@@ -561,15 +561,15 @@
 
   "info.thermal.device_composter.0": "使用有機廢料生產堆肥。",
   "info.thermal.device_composter.1": "不同物品的效能不同。",
-  "info.thermal.device_composter.2": "自然的歸自然。",
+  "info.thermal.device_composter.2": "回歸大自然。",
 
   "info.thermal.device_collector.0": "拾取周圍一定區域內的掉落物。",
   "info.thermal.device_collector.1": "篩選設置可影響拾取行為。",
-  "info.thermal.device_collector.2": "保持地面清潔！",
+  "info.thermal.device_collector.2": "保持地面整潔！",
 
   "info.thermal.device_fisher.0": "捕撈各種水生物。搭配水產飼料使用更可增加產物數量並調節產物種類。",
   "info.thermal.device_fisher.1": "必須浸在水中。",
-  "info.thermal.device_fisher.2": "你的釣魚竿可以一邊兒待著去了。",
+  "info.thermal.device_fisher.2": "釣竿可以收起來了。",
 
   "info.thermal.device_hive_extractor.0": "從蜂箱中提取產物的精密機器。",
   "info.thermal.device_hive_extractor.1": "蜂好，你也好！",
@@ -596,20 +596,20 @@
 
   "info.thermal.device_tree_extractor.0": "從相鄰的樹中提取樹汁。",
   "info.thermal.device_tree_extractor.1": "使用肥料來加速產生速度。",
-  "info.thermal.device_tree_extractor.2": "把斧頭放一放吧。",
+  "info.thermal.device_tree_extractor.2": "放下斧頭吧。",
 
   "info.thermal.device_water_gen.0": "提供大量的水資源。",
   "info.thermal.device_water_gen.1": "需要相鄰的水源以使其正常工作。",
   "info.thermal.device_water_gen.2": "可別淹死了。",
 
   "info.thermal.energy_cell.0": "儲存與傳輸紅石通量。",
-  "info.thermal.energy_cell.1": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+  "info.thermal.energy_cell.1": "按住 §e§oShift§r 鍵和/或 §e§oCtrl§r 鍵來精確調整數值。",
 
   "info.thermal.fluid_cell.0": "儲存與傳輸流體。",
-  "info.thermal.fluid_cell.1": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+  "info.thermal.fluid_cell.1": "按住 §e§oShift§r 鍵和/或 §e§oCtrl§r 鍵來精確調整數值。",
 
   "info.thermal.item_cell.0": "儲存與傳輸物品。",
-  "info.thermal.item_cell.1": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+  "info.thermal.item_cell.1": "按住 §e§oShift§r 鍵和/或 §e§oCtrl§r 鍵來精確調整數值。",
 
   "info.thermal.charge_bench.0": "使用紅石通量對物品進行充能。",
   "info.thermal.charge_bench.1": "可自動化物品輸入與輸出。",
@@ -649,7 +649,7 @@
   "item.thermal.hazmat_boots": "防護靴子",
 
   "item.thermal.drill_head": "鑽頭",
-  "item.thermal.laser_diode": "雷射二極管",
+  "item.thermal.laser_diode": "雷射二極體",
   "item.thermal.saw_blade": "鋸片",
 
   "item.thermal.rf_potato": "馬鈴薯電容",
@@ -762,17 +762,17 @@
   "block.thermal.slime_tnt.keyword": "tnt",
 
   "block.thermal.energy_cell.keyword": "能量 rf 儲存",
-  "block.thermal.fluid_cell.keyword": "流體 儲存 容器 儲罐 缸",
+  "block.thermal.fluid_cell.keyword": "流體 儲存 儲罐",
   "block.thermal.item_cell.keyword": "快取 物品 儲存",
 
   "block.thermal.charge_bench.keyword": "能量 充電器 rf",
-  "block.thermal.tinker_bench.keyword": "元件 充電器 灌注 裝填 注水 升級",
+  "block.thermal.tinker_bench.keyword": "增強 充電器 灌注 裝填 注水 升級",
 
   "block.thermal.chunk_loader.keyword": "區塊 區塊載入器 載入器",
 
   "block.thermal.device_collector.keyword": "收集器 磁鐵",
   "block.thermal.device_fisher.keyword": "自動釣魚機 魚餌 釣魚",
-  "block.thermal.device_hive_extractor.keyword": "蜜蜂 蜂蜜 蜜脾",
+  "block.thermal.device_hive_extractor.keyword": "蜜蜂 蜂蜜 蜂巢",
   "block.thermal.device_nullifier.keyword": "桶 垃圾",
   "block.thermal.device_potion_diffuser.keyword": "藥水",
   "block.thermal.device_rock_gen.keyword": "造石機 鵝卵石",
@@ -780,45 +780,45 @@
   "block.thermal.device_tree_extractor.keyword": "提取器 乳膠 樹",
   "block.thermal.device_water_gen.keyword": "泵 源 水",
 
-  "item.thermal.area_depth_augment.keyword": "元件",
-  "item.thermal.area_radius_augment.keyword": "元件 電鑽 工具",
+  "item.thermal.area_depth_augment.keyword": "增強",
+  "item.thermal.area_radius_augment.keyword": "增強 電鑽 工具",
 
-  "item.thermal.dynamo_fuel_augment.keyword": "元件 能源爐",
-  "item.thermal.dynamo_output_augment.keyword": "元件 能源爐",
+  "item.thermal.dynamo_fuel_augment.keyword": "增強 能源爐",
+  "item.thermal.dynamo_output_augment.keyword": "增強 能源爐",
 
-  "item.thermal.fluid_tank_augment.keyword": "元件 流體 儲存 容器 儲罐 缸",
-  "item.thermal.fluid_tank_creative_augment.keyword": "元件 創造 流體 儲存 容器 儲罐 缸",
+  "item.thermal.fluid_tank_augment.keyword": "增強 流體 儲存 儲罐",
+  "item.thermal.fluid_tank_creative_augment.keyword": "增強 創造 流體 儲存 儲罐",
 
-  "item.thermal.dual_filter_augment.keyword": "元件 篩選器",
-  "item.thermal.fluid_filter_augment.keyword": "元件 篩選器",
-  "item.thermal.item_filter_augment.keyword": "元件 篩選器",
+  "item.thermal.dual_filter_augment.keyword": "增強 篩選器",
+  "item.thermal.fluid_filter_augment.keyword": "增強 篩選器",
+  "item.thermal.item_filter_augment.keyword": "增強 篩選器",
 
-  "item.thermal.machine_catalyst_augment.keyword": "元件 催化劑 機器",
-  "item.thermal.machine_catalyst_creative_augment.keyword": "元件 催化劑 創造 機器",
-  "item.thermal.machine_cycle_augment.keyword": "元件 機器",
-  "item.thermal.machine_efficiency_augment.keyword": "元件 機器",
-  "item.thermal.machine_efficiency_creative_augment.keyword": "元件 創造 機器",
-  "item.thermal.machine_null_augment.keyword": "元件 機器 垃圾 虛空",
-  "item.thermal.machine_output_augment.keyword": "元件 機器",
-  "item.thermal.machine_speed_augment.keyword": "元件 機器 超頻 速度",
+  "item.thermal.machine_catalyst_augment.keyword": "增強 催化劑 機器",
+  "item.thermal.machine_catalyst_creative_augment.keyword": "增強 催化劑 創造 機器",
+  "item.thermal.machine_cycle_augment.keyword": "增強 機器",
+  "item.thermal.machine_efficiency_augment.keyword": "增強 機器",
+  "item.thermal.machine_efficiency_creative_augment.keyword": "增強 創造 機器",
+  "item.thermal.machine_null_augment.keyword": "增強 機器 垃圾 虛空",
+  "item.thermal.machine_output_augment.keyword": "增強 機器",
+  "item.thermal.machine_speed_augment.keyword": "增強 機器 超頻 速度",
 
-  "item.thermal.potion_amplifier_augment.keyword": "元件 藥水",
-  "item.thermal.potion_duration_augment.keyword": "元件 藥水",
+  "item.thermal.potion_amplifier_augment.keyword": "增強 藥水",
+  "item.thermal.potion_duration_augment.keyword": "增強 藥水",
 
-  "item.thermal.rf_coil_augment.keyword": "元件 能量 rf 儲存",
-  "item.thermal.rf_coil_creative_augment.keyword": "元件 創造 能量 rf 儲存",
-  "item.thermal.rf_coil_storage_augment.keyword": "元件 能量 rf 儲存",
-  "item.thermal.rf_coil_xfer_augment.keyword": "元件 能量 rf 儲存",
+  "item.thermal.rf_coil_augment.keyword": "增強 能量 rf 儲存",
+  "item.thermal.rf_coil_creative_augment.keyword": "增強 創造 能量 rf 儲存",
+  "item.thermal.rf_coil_storage_augment.keyword": "增強 能量 rf 儲存",
+  "item.thermal.rf_coil_xfer_augment.keyword": "增強 能量 rf 儲存",
 
-  "item.thermal.rs_control_augment.keyword": "元件 紅石",
-  "item.thermal.side_config_augment.keyword": "元件 面",
+  "item.thermal.rs_control_augment.keyword": "增強 紅石",
+  "item.thermal.side_config_augment.keyword": "增強 面",
 
-  "item.thermal.upgrade_augment_1.keyword": "元件 整合 升級",
-  "item.thermal.upgrade_augment_2.keyword": "元件 整合 升級",
-  "item.thermal.upgrade_augment_3.keyword": "元件 整合 升級",
-  "item.thermal.upgrade_augment_4.keyword": "元件 整合 升級",
+  "item.thermal.upgrade_augment_1.keyword": "增強 套件 升級",
+  "item.thermal.upgrade_augment_2.keyword": "增強 套件 升級",
+  "item.thermal.upgrade_augment_3.keyword": "增強 套件 升級",
+  "item.thermal.upgrade_augment_4.keyword": "增強 套件 升級",
 
-  "item.thermal.xp_storage_augment.keyword": "元件 經驗 xp",
+  "item.thermal.xp_storage_augment.keyword": "增強 經驗值 xp",
 
   "item.thermal.beekeeper_helmet.keyword": "盔甲 頭盔 蜂蜜 蜇 刺叮 叮咬",
   "item.thermal.beekeeper_chestplate.keyword": "盔甲 胸甲 蜂蜜 蜇 刺叮 叮咬",
@@ -983,8 +983,8 @@
   "item.thermal.gunpowder_mushroom_spores.keyword": "火藥",
   "item.thermal.redstone_mushroom.keyword": "紅石",
   "item.thermal.redstone_mushroom_spores.keyword": "紅石",
-  "item.thermal.slime_mushroom.keyword": "史萊姆 黏液",
-  "item.thermal.slime_mushroom_spores.keyword": "史萊姆 黏液",
+  "item.thermal.slime_mushroom.keyword": "史萊姆",
+  "item.thermal.slime_mushroom_spores.keyword": "史萊姆",
 
   "item.thermal.watering_can.keyword": "作物 農場 肥料",
 
@@ -1008,7 +1008,7 @@
 
   "info.thermal.energy_limiter_attachment.0": "限制流經它的能量傳輸速率。",
   "info.thermal.energy_limiter_attachment.1": "可為每個方向設定不同上限。",
-  "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+  "info.thermal.energy_limiter_attachment.2": "按住 §e§oShift§r 鍵和/或 §e§oCtrl§r 鍵來精確調整數值。",
 
   "info.thermal.filter_attachment.mode.0": "雙向篩選",
   "info.thermal.filter_attachment.mode.1": "輸出（從管道）篩選",
@@ -1067,7 +1067,7 @@
   "block.thermal.machine_bottler": "流體灌裝機",
   "block.thermal.machine_brewer": "藥水釀造機",
   "block.thermal.machine_centrifuge": "離心分離機",
-  "block.thermal.machine_chiller": "急速冷凍機",
+  "block.thermal.machine_chiller": "急速冷凝機",
   "block.thermal.machine_crafter": "序列裝配機",
   "block.thermal.machine_crucible": "熔岩爐",
   "block.thermal.machine_crystallizer": "結晶器",
@@ -1082,11 +1082,11 @@
 
   "info.thermal.device_fluid_buffer.0": "儲存與轉移流體。能夠自動輸出。",
   "info.thermal.device_fluid_buffer.1": "流體漏斗！",
-  "info.thermal.device_fluid_buffer.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+  "info.thermal.device_fluid_buffer.2": "按住 §e§oShift§r 鍵和/或 §e§oCtrl§r 鍵來精確調整數值。",
 
   "info.thermal.device_item_buffer.0": "儲存與轉移物品。能夠自動輸出。",
   "info.thermal.device_item_buffer.1": "比漏斗好！不騙你！",
-  "info.thermal.device_item_buffer.2": "按住§e§oShift§r鍵和/或§e§oCtrl§r鍵來精確調整數值。",
+  "info.thermal.device_item_buffer.2": "按住 §e§oShift§r 鍵和/或 §e§oCtrl§r 鍵來精確調整數值。",
 
   "info.thermal.dynamo.throttle": "基於局部回饋調節輸出功率。",
 
@@ -1135,7 +1135,7 @@
 
   "info.thermal.machine_crucible.0": "用高溫將物品熔化/融化為流體。",
   "info.thermal.machine_crucible.1": "在獲取更高級的方塊時非常有用。",
-  "info.thermal.machine_crucible.2": "注意：擺放在幼童與寵物無法觸及處。",
+  "info.thermal.machine_crucible.2": "擺放在幼童與寵物無法觸碰的地方。",
 
   "info.thermal.machine_crystallizer.0": "生長並重構晶體結構。",
   "info.thermal.machine_crystallizer.1": "需要流體和至少一個物品。",
@@ -1149,7 +1149,7 @@
   "info.thermal.machine_insolator.1": "好像算不上是個「有機」農場吧。",
   "info.thermal.machine_insolator.2": "熾熱的光明！",
 
-  "info.thermal.machine_press.0": "對物品進行衝壓成型處理。",
+  "info.thermal.machine_press.0": "對物品進行衝壓變形處理。",
   "info.thermal.machine_press.1": "可以使用衝壓模具來訂製部件形狀。",
   "info.thermal.machine_press.2": "多才多藝，包你滿意！",
 
@@ -1159,7 +1159,7 @@
 
   "info.thermal.machine_pyrolyzer.0": "在高溫下分解固態物質。",
   "info.thermal.machine_pyrolyzer.1": "純化燃料的利器",
-  "info.thermal.machine_pyrolyzer.2": "別動手動腳的。",
+  "info.thermal.machine_pyrolyzer.2": "別亂碰。",
 
   "info.thermal.machine_refinery.0": "將流體精煉為其它材料。",
   "info.thermal.machine_refinery.1": "有些流體在精煉過程中會凝聚出固體產物。",
@@ -1179,9 +1179,9 @@
 
   "item.thermal.press_coin_die": "通貨衝壓模具",
   "item.thermal.press_gear_die": "齒輪衝壓模具",
-  "item.thermal.press_packing_2x2_die": "打包模具（2x2）",
-  "item.thermal.press_packing_3x3_die": "打包模具（3x3）",
-  "item.thermal.press_unpacking_die": "解包模具",
+  "item.thermal.press_packing_2x2_die": "壓縮模具（2x2）",
+  "item.thermal.press_packing_3x3_die": "壓縮模具（3x3）",
+  "item.thermal.press_unpacking_die": "解壓縮模具",
 
   "item.thermal.slot_seal": "欄位擋板",
   "item.thermal.slot_seal.desc": "防止所在欄位被使用。適用於有多個輸入欄的機器。",
@@ -1208,7 +1208,7 @@
   "block.thermal.machine_bottler.keyword": "桶 裝填 機器 轉置機",
   "block.thermal.machine_brewer.keyword": "釀造器 釀造 機器 藥水",
   "block.thermal.machine_centrifuge.keyword": "離心 機器",
-  "block.thermal.machine_chiller.keyword": "冰箱 機器 黑曜石",
+  "block.thermal.machine_chiller.keyword": "冷凍機 機器 黑曜石",
   "block.thermal.machine_crafter.keyword": "裝配 自動合成機 自動合成 合成倉 合成 機器 桌 工作台",
   "block.thermal.machine_crucible.keyword": "機器 熔化",
   "block.thermal.machine_furnace.keyword": "烹飪 熔爐 機器",
@@ -1286,7 +1286,7 @@
 
   "item.thermal.fluid_reservoir.keyword": "灌注 裝填 注水",
   "item.thermal.flux_capacitor.keyword": "電池 充電器 充能器 rf",
-  "item.thermal.flux_drill.keyword": "電鑽 鎬 鍬 工具",
+  "item.thermal.flux_drill.keyword": "電鑽 鎬 鏟 工具",
   "item.thermal.flux_saw.keyword": "斧 工具",
   "item.thermal.potion_infuser.keyword": "藥水",
   "item.thermal.potion_quiver.keyword": "藥水",

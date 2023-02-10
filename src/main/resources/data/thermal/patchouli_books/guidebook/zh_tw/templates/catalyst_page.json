@@ -5,10 +5,10 @@
       "type": "patchouli:tooltip",
       "tooltip": [
         "#A_0_item#->iname",
-        "基本：#A_0_p#x",
-        "次級：#A_0_s#x",
+        "主產物：#A_0_p#x",
+        "副產物：#A_0_s#x",
         "能量：#A_0_e#x",
-        "使用：#A_0_u#%"
+        "消耗：#A_0_u#%"
       ],
       "guard": "#A_0_enable",
       "width": 16,

@@ -1,5 +1,5 @@
 {
-  "name": "急速冷凍機",
+  "name": "急速冷凝機",
   "icon": "thermal:machine_chiller",
   "category": "thermal:machines",
   "read_by_default": true,
@@ -7,7 +7,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "急速冷凍機是一種將水和熔融金屬等液體冷卻並結晶成固體型態的機器。允許各種鑄模以更改最終產物的形狀。"
+      "text": "急速冷凝機是一種將水和熔融金屬等液體冷卻並結晶成固體型態的機器。允許各種鑄模以更改最終產物的形狀。"
     },
     {
       "type": "thermal:double_crafting_page",

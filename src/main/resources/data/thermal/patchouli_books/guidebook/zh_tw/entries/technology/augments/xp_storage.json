@@ -8,7 +8,7 @@
       "type": "thermal:double_crafting_page",
       "A.recipe": "thermal:augments/xp_storage_augment",
       "title": "知識濃縮器",
-      "text": "知識濃縮器增強元件允許機器或裝置從配方或世界中收集經驗。它以 2.5k 經驗值的最大儲存量開始，乘以$(l:thermal:technology/augments/integral_components)整合元件$(/l)提供的縮放比例。"
+      "text": "知識濃縮器增強元件允許機器或裝置從配方或世界中收集經驗值。它以 2.5k 經驗值的最大儲存量開始，乘以$(l:thermal:technology/augments/integral_components)整合元件$(/l)提供的縮放比例。"
     },
     {
       "type": "patchouli:text",
