@@ -234,7 +234,9 @@
   "item.thermal.blizz_spawn_egg": "暴雪人刷怪蛋",
 
   "item.thermal.compost": "堆肥",
+  "item.thermal.compost.desc": "一种有机肥料。",
   "item.thermal.detonator": "遥控起爆器",
+  "item.thermal.detonator.desc": "可以远程引爆TNT。",
   "item.thermal.earth_charge": "裂岩弹",
   "item.thermal.ice_charge": "瀑冰弹",
   "item.thermal.lightning_charge": "鸣雷弹",
@@ -991,9 +993,8 @@
   "_comment": "========================================================================================================",
 
   "attachment.thermal.energy_limiter": "红石通量限流器",
-
-  "attachment.thermal.fluid_filter": "流体管道过滤器",
-  "attachment.thermal.fluid_servo": "流体管道伺服器",
+  "attachment.thermal.filter": "流体管道过滤器",
+  "attachment.thermal.servo": "流体管道伺服器",
   "attachment.thermal.turbo_servo": "流体管道涡轮伺服器",
 
   "block.thermal.energy_duct": "能量管道",
@@ -1008,6 +1009,10 @@
   "info.thermal.energy_limiter_attachment.0": "限制流经它的能量传输速率。",
   "info.thermal.energy_limiter_attachment.1": "可为每个方向配置不同上限。",
   "info.thermal.energy_limiter_attachment.2": "按住§e§oShift§r键和/或§e§oCtrl§r键来精确调整数值。",
+
+  "info.thermal.filter_attachment.mode.0": "双向过滤",
+  "info.thermal.filter_attachment.mode.1": "输出（自管道）过滤",
+  "info.thermal.filter_attachment.mode.2": "输入（对管道）过滤",
 
   "info.thermal.fluid_filter_attachment.0": "将存有流体的物品放入栏位，以此把对应的流体添加到过滤器列表中。",
   "info.thermal.fluid_filter_attachment.1": "可使用额外选项来微调过滤。",
@@ -1030,10 +1035,10 @@
   "info.thermal.item_buffer.mode.0": "I/O：正常",
   "info.thermal.item_buffer.mode.1": "I/O：锁存",
 
-  "item.thermal.energy_limiter_attachment": "连接端：红石通量限流器",
-  "item.thermal.filter_attachment": "连接端：过滤器",
-  "item.thermal.servo_attachment": "连接端：伺服器",
-  "item.thermal.turbo_servo_attachment": "连接端：涡轮伺服器",
+  "item.thermal.energy_limiter_attachment": "连接件：红石通量限流器",
+  "item.thermal.filter_attachment": "连接件：过滤器",
+  "item.thermal.servo_attachment": "连接件：伺服器",
+  "item.thermal.turbo_servo_attachment": "连接件：涡轮伺服器",
 
   "_comment": "========================================================================================================",
   "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
