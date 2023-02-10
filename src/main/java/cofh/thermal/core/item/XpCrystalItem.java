@@ -57,7 +57,7 @@ public class XpCrystalItem extends XpContainerItem implements IMultiModeItem {
     @Override
     public boolean canStoreXp(ItemStack stack) {
 
-        return getMode(stack) <= 0;
+        return getMode(stack) > 0;
     }
     // endregion
 
