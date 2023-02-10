@@ -12,7 +12,7 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.core.util.RegistrationHelper.raw;
-import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.foundation.init.TFndIDs.*;
 
 public class TFndItemModelProvider extends ItemModelProviderCoFH {
 

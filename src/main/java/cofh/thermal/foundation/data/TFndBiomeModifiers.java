@@ -24,8 +24,8 @@ import java.util.Map;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.DatapackHelper.*;
+import static cofh.thermal.foundation.init.TFndIDs.*;
 import static cofh.thermal.lib.FeatureHelper.addFeatureToBiomes;
-import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public final class TFndBiomeModifiers {
 

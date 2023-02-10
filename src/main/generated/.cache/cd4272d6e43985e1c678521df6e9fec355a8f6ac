@@ -1,4 +1,4 @@
-// 1.19.2	2022-11-24T10:36:03.2785713	Thermal Core: Block Tags
+// 1.19.2	2023-02-08T23:53:56.8244078	Thermal Core: Block Tags
 1167ec6861a4ed5516542f0e17adc8d466ff5dbe data/forge/tags/blocks/ores.json
 4961c3cd4c49d52832fe0ac6622307ab41522aae data/forge/tags/blocks/ores/apatite.json
 df8a6fb911f0c1d96ee4937be43fc2724c664449 data/forge/tags/blocks/ores/cinnabar.json
@@ -10,6 +10,7 @@ b0e8094b8a9206b44141663cb6b07deab5181c8a data/forge/tags/blocks/ores/ruby.json
 ff8e221333e640dee84a91787e782b4d1a2d19f5 data/forge/tags/blocks/ores/silver.json
 07853df320c09a3f08cedba6e1ab11e2871af272 data/forge/tags/blocks/ores/sulfur.json
 170dfb9eb1166a7fd2518a98b8cf64ed1018ae25 data/forge/tags/blocks/ores/tin.json
+f1fc487fc34551aed4353d0567e1b02bd7173456 data/forge/tags/blocks/rubberwood_logs.json
 1ad3c1f540d2553f794a6e4f71d121a6a19e91b6 data/forge/tags/blocks/storage_blocks.json
 9d65026dade0e964c11c964f2ec99fb27f4df443 data/forge/tags/blocks/storage_blocks/bronze.json
 781b4bf3ac7e714aea29b6a498f3eadb66d4d6c9 data/forge/tags/blocks/storage_blocks/constantan.json
@@ -26,7 +27,21 @@ aa6c57da8cb3f6b93cf12a331eb8190000333a14 data/forge/tags/blocks/storage_blocks/r
 290b91848f02ffad688f36326abaa194444ee270 data/forge/tags/blocks/storage_blocks/silver.json
 84ba38174cb8807e6de5f0057d76c0c67d3260ec data/forge/tags/blocks/storage_blocks/tin.json
 c5ed82d882191a20c3a9ceea1a7fa7171f056364 data/minecraft/tags/blocks/beacon_base_blocks.json
+f0e683a7bebc95a75725c3cb740845a943b11d48 data/minecraft/tags/blocks/doors.json
+175ff6848b25dc27d36316aa522613c96d2ed6b4 data/minecraft/tags/blocks/fences.json
+25645001409c99c3a077bffedf60d5a8b2a5b755 data/minecraft/tags/blocks/fence_gates.json
+f805c487ffed6ec64dfe7036fa6674565e2eb0cb data/minecraft/tags/blocks/leaves.json
+6284192b0edcca822f34008a06e4bca0ad920939 data/minecraft/tags/blocks/logs.json
 5155b9dc5e53dbd39f43e9103192c86e6f102f7d data/minecraft/tags/blocks/mineable/pickaxe.json
 1fe70309afbe488a558ddd9c499355200b177768 data/minecraft/tags/blocks/mineable/shovel.json
 1d8c95ffb4ad7dbd73bd4776977f52aeea926750 data/minecraft/tags/blocks/needs_iron_tool.json
-0cfe5ae71343bcd8f35d2ed449267d0549d22be4 data/minecraft/tags/blocks/needs_stone_tool.json
+501732553326874ebd7756a0d01cf38b02fc893c data/minecraft/tags/blocks/needs_stone_tool.json
+229f6de9b134242de0f5aaa5a373f5e16b12d0d4 data/minecraft/tags/blocks/non_flammable_wood.json
+11e73a11f5b8ebce122a257415d9ab3258300d9a data/minecraft/tags/blocks/planks.json
+658e20a1bc6d9282777560c285b1ef2aa949b874 data/minecraft/tags/blocks/saplings.json
+c3d82fba51feed55871b22a763d36f3af2e3f773 data/minecraft/tags/blocks/slabs.json
+0c0fa561a1b241c70cf4e10d7f0b791f2898f49d data/minecraft/tags/blocks/stairs.json
+f0e683a7bebc95a75725c3cb740845a943b11d48 data/minecraft/tags/blocks/wooden_doors.json
+175ff6848b25dc27d36316aa522613c96d2ed6b4 data/minecraft/tags/blocks/wooden_fences.json
+c3d82fba51feed55871b22a763d36f3af2e3f773 data/minecraft/tags/blocks/wooden_slabs.json
+0c0fa561a1b241c70cf4e10d7f0b791f2898f49d data/minecraft/tags/blocks/wooden_stairs.json

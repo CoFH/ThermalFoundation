@@ -1,4 +1,4 @@
-// 1.19.2	2022-11-24T10:36:03.2765686	Thermal Foundation: Item Tags
+// 1.19.2	2023-02-08T23:53:56.8274076	Thermal Foundation: Item Tags
 b52c9419ef47405f447242046381a8e5a782159b data/forge/tags/items/coins.json
 b09673145a6750e336c29a181101a49c3a565462 data/forge/tags/items/coins/bronze.json
 192ddc16e1842154bec78cd91c7883a26f81cb87 data/forge/tags/items/coins/constantan.json
@@ -76,6 +76,7 @@ d0302eaa935403371faa2e8ca08f575bed398e9b data/forge/tags/items/raw_materials/lea
 844075d1ccec7628442883209d231dc212f04114 data/forge/tags/items/raw_materials/nickel.json
 e241602c691f3cb7c1220f92afedec00222c1e95 data/forge/tags/items/raw_materials/silver.json
 17c731f0a7cca11e0cf4393a54dc312e95d4665d data/forge/tags/items/raw_materials/tin.json
+f1fc487fc34551aed4353d0567e1b02bd7173456 data/forge/tags/items/rubberwood_logs.json
 1ad3c1f540d2553f794a6e4f71d121a6a19e91b6 data/forge/tags/items/storage_blocks.json
 9d65026dade0e964c11c964f2ec99fb27f4df443 data/forge/tags/items/storage_blocks/bronze.json
 781b4bf3ac7e714aea29b6a498f3eadb66d4d6c9 data/forge/tags/items/storage_blocks/constantan.json
@@ -91,3 +92,16 @@ aa6c57da8cb3f6b93cf12a331eb8190000333a14 data/forge/tags/items/storage_blocks/ru
 7af91e540bbbb4833cee338c70f00a0ecfa99377 data/forge/tags/items/storage_blocks/sapphire.json
 290b91848f02ffad688f36326abaa194444ee270 data/forge/tags/items/storage_blocks/silver.json
 84ba38174cb8807e6de5f0057d76c0c67d3260ec data/forge/tags/items/storage_blocks/tin.json
+f0e683a7bebc95a75725c3cb740845a943b11d48 data/minecraft/tags/items/doors.json
+175ff6848b25dc27d36316aa522613c96d2ed6b4 data/minecraft/tags/items/fences.json
+f805c487ffed6ec64dfe7036fa6674565e2eb0cb data/minecraft/tags/items/leaves.json
+6284192b0edcca822f34008a06e4bca0ad920939 data/minecraft/tags/items/logs.json
+229f6de9b134242de0f5aaa5a373f5e16b12d0d4 data/minecraft/tags/items/non_flammable_wood.json
+11e73a11f5b8ebce122a257415d9ab3258300d9a data/minecraft/tags/items/planks.json
+658e20a1bc6d9282777560c285b1ef2aa949b874 data/minecraft/tags/items/saplings.json
+c3d82fba51feed55871b22a763d36f3af2e3f773 data/minecraft/tags/items/slabs.json
+0c0fa561a1b241c70cf4e10d7f0b791f2898f49d data/minecraft/tags/items/stairs.json
+f0e683a7bebc95a75725c3cb740845a943b11d48 data/minecraft/tags/items/wooden_doors.json
+175ff6848b25dc27d36316aa522613c96d2ed6b4 data/minecraft/tags/items/wooden_fences.json
+c3d82fba51feed55871b22a763d36f3af2e3f773 data/minecraft/tags/items/wooden_slabs.json
+0c0fa561a1b241c70cf4e10d7f0b791f2898f49d data/minecraft/tags/items/wooden_stairs.json

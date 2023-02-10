@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.foundation.init.TFndIDs.*;
 
 public class TFndRecipeProvider extends RecipeProviderCoFH {
 

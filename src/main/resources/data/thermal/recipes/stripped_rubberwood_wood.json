@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "thermal:stripped_rubberwood_log"
+    }
+  },
+  "result": {
+    "item": "thermal:stripped_rubberwood_wood",
+    "count": 3
+  }
+}
