@@ -198,8 +198,6 @@ public class EnergyCellBlockEntity extends StorageCellBlockEntity implements ITi
     @Override
     protected void updateTrackers(boolean send) {
 
-        prevLight = getLightValue();
-
         int curScale = energyStorage.getEnergyStored() > 0 ? 1 + (int) (energyStorage.getRatio() * 14) : 0;
         if (curScale != compareTracker) {
             compareTracker = curScale;

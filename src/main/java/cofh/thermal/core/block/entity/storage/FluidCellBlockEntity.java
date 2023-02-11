@@ -203,8 +203,7 @@ public class FluidCellBlockEntity extends StorageCellBlockEntity implements ITic
     @Override
     protected void updateTrackers(boolean send) {
 
-        prevLight = getLightValue();
-        renderFluid = fluidStorage.getFluidStack();
+        renderFluid = new FluidStack(fluidStorage.getFluidStack(), BUCKET_VOLUME);
 
         int curScale = fluidStorage.getAmount() > 0 ? 1 + (int) (fluidStorage.getRatio() * 14) : 0;
         if (curScale != compareTracker) {
