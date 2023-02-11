@@ -73,10 +73,10 @@ public final class TFndFeatures {
 
         RUBBERWOOD_TREE = FeatureUtils.register("rubberwood_tree", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(BLOCKS.get(ID_RUBBERWOOD_LOG)),
-                new StraightTrunkPlacer(3, 2, 1),
+                new StraightTrunkPlacer(4, 2, 2),
                 BlockStateProvider.simple(BLOCKS.get(ID_RUBBERWOOD_LEAVES)),
                 new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(1, 0, 1))
+                new TwoLayersFeatureSize(1, 1, 2))
                 .ignoreVines()
                 .build());
 

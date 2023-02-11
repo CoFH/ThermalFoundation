@@ -65,6 +65,8 @@
   "block.thermal.stripped_rubberwood_log": "Stripped Rubberwood Log",
   "block.thermal.stripped_rubberwood_wood": "Stripped Rubberwood Wood",
 
+  "entity.thermal.rubberwood_chest_boat": "Boat with Chest",
+
   "item.thermal.raw_lead": "Raw Lead",
   "item.thermal.raw_nickel": "Raw Nickel",
   "item.thermal.raw_silver": "Raw Silver",
@@ -136,5 +138,8 @@
   "item.thermal.invar_gear": "Invar Gear",
   "item.thermal.invar_ingot": "Invar Ingot",
   "item.thermal.invar_nugget": "Invar Nugget",
-  "item.thermal.invar_plate": "Invar Plate"
+  "item.thermal.invar_plate": "Invar Plate",
+
+  "item.thermal.rubberwood_boat": "Rubberwood Boat",
+  "item.thermal.rubberwood_chest_boat": "Rubberwood Boat with Chest"
 }
