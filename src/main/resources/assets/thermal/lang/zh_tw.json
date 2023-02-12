@@ -58,14 +58,14 @@
   "block.thermal.steel_block": "鋼方塊",
   "block.thermal.rose_gold_block": "玫瑰金方塊",
 
-  "block.thermal.enderium_block": "終焉方塊",
+  "block.thermal.enderium_block": "終界合金方塊",
   "block.thermal.lumium_block": "流明方塊",
   "block.thermal.signalum_block": "信素方塊",
 
   "block.thermal.machine_frame": "機器框架",
   "block.thermal.strongbox": "保險箱",
 
-  "block.thermal.enderium_glass": "終焉玻璃",
+  "block.thermal.enderium_glass": "終界合金玻璃",
   "block.thermal.lumium_glass": "流明玻璃",
   "block.thermal.obsidian_glass": "硬化玻璃",
   "block.thermal.signalum_glass": "信素玻璃",
@@ -347,12 +347,12 @@
   "item.thermal.steel_nugget": "鋼粒",
   "item.thermal.steel_plate": "鋼板",
 
-  "item.thermal.enderium_coin": "終焉幣",
-  "item.thermal.enderium_dust": "終焉粉",
-  "item.thermal.enderium_gear": "終焉齒輪",
-  "item.thermal.enderium_ingot": "終焉錠",
-  "item.thermal.enderium_nugget": "終焉粒",
-  "item.thermal.enderium_plate": "終焉板",
+  "item.thermal.enderium_coin": "終界合金幣",
+  "item.thermal.enderium_dust": "終界合金粉",
+  "item.thermal.enderium_gear": "終界合金齒輪",
+  "item.thermal.enderium_ingot": "終界合金錠",
+  "item.thermal.enderium_nugget": "終界合金粒",
+  "item.thermal.enderium_plate": "終界合金板",
 
   "item.thermal.lumium_coin": "流明幣",
   "item.thermal.lumium_dust": "流明粉",

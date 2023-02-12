@@ -50,7 +50,7 @@
       "flag": "mod:thermal_expansion",
       "type": "3_alloy_page",
 
-      "title": "終焉",
+      "title": "終界合金",
       "recipe": "thermal:machines/smelter/smelter_alloy_enderium",
       "text": "以任何頻率共振。"
     },
