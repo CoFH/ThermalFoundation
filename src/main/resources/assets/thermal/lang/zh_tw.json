@@ -412,14 +412,14 @@
 
   "info.thermal.augment.attr.MachineCat": "催化劑用量",
   "info.thermal.augment.attr.MachineEnergy": "處理耗能",
-  "info.thermal.augment.attr.MachinePri": "主產物產生",
+  "info.thermal.augment.attr.MachinePri": "主產物機率",
   "info.thermal.augment.attr.MachinePower": "基礎轉速",
-  "info.thermal.augment.attr.MachineSec": "副產物產生",
+  "info.thermal.augment.attr.MachineSec": "副產物機率",
   "info.thermal.augment.attr.MachineSpeed": "最大轉速",
   "info.thermal.augment.attr.MachineXp": "經驗值",
 
   "info.thermal.augment.attr.PotionAmp": "效果等級",
-  "info.thermal.augment.attr.PotionDur": "效果時長",
+  "info.thermal.augment.attr.PotionDur": "持續期間",
 
   "info.thermal.augment.attr.RFMax": "紅石通量容量",
   "info.thermal.augment.attr.RFXfer": "紅石通量傳輸",
