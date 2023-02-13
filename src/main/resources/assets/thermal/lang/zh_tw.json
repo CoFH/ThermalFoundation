@@ -466,7 +466,7 @@
   "item.thermal.machine_catalyst_creative_augment.desc": "不消耗催化劑。",
   "item.thermal.machine_cycle_augment": "循環處理器",
   "item.thermal.machine_cycle_augment.desc": "裝配產物可循環至輸入欄以進行下一步合成。",
-  "item.thermal.machine_efficiency_augment": "通量效率升級器器",
+  "item.thermal.machine_efficiency_augment": "通量效率升級器",
   "item.thermal.machine_efficiency_augment.desc": "以處理速度降低為代價提升紅石通量效率。",
   "item.thermal.machine_efficiency_creative_augment": "創造通量提效",
   "item.thermal.machine_efficiency_creative_augment.desc": "不消耗能量，處理速度極快。",
