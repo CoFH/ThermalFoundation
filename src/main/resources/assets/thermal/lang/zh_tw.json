@@ -152,7 +152,9 @@
   "info.thermal.lock.use.sneak": "潛行並使用為副手上的物品上鎖。",
 
   "info.thermal.redprint.contents": "內容：",
-  "info.thermal.redprint.unknown": "未知資訊",
+  "info.thermal.redprint.unknown": "不明的資料",
+  "info.thermal.redprint.data.Filter": "篩選器參數",
+  "info.thermal.redprint.data.FilterAttachmentMode": "篩選器附件模式",
   "info.thermal.redprint.data.RSControl": "紅石控制",
   "info.thermal.redprint.data.Sides": "側面設置",
   "info.thermal.redprint.data.Xfer": "傳輸控制",
@@ -778,7 +780,7 @@
   "block.thermal.device_rock_gen.keyword": "造石機 鵝卵石",
   "block.thermal.device_soil_infuser.keyword": "作物 農場 肥料",
   "block.thermal.device_tree_extractor.keyword": "提取器 乳膠 樹",
-  "block.thermal.device_water_gen.keyword": "泵 源 水",
+  "block.thermal.device_water_gen.keyword": "泵浦 源 水",
 
   "item.thermal.area_depth_augment.keyword": "增強",
   "item.thermal.area_radius_augment.keyword": "增強 電鑽 工具",
@@ -840,7 +842,12 @@
   "item.thermal.junk_net.keyword": "魚餌",
 
   "item.thermal.detonator.keyword": "tnt",
+  "item.thermal.lock.keyword": "鎖 安全 安全性",
   "item.thermal.rf_potato.keyword": "電池",
+  "item.thermal.redprint.keyword": "複製 設定 設置",
+  "item.thermal.satchel.keyword": "背包 袋 儲存",
+  "item.thermal.wrench.keyword": "扳手",
+  "item.thermal.xp_crystal.keyword": "經驗值 儲存 xp",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Cultivation",
@@ -1269,7 +1276,7 @@
   "item.thermal.flux_magnet.desc": "紅石通量驅動的物品磁吸工具。",
 
   "item.thermal.flux_pump": "真空移液器",
-  "item.thermal.flux_pump.desc": "紅石通量驅動的流體泵送工具。",
+  "item.thermal.flux_pump.desc": "紅石通量驅動的流體傳輸工具。",
 
   "item.thermal.flux_saw": "通量電鋸",
   "item.thermal.flux_saw.desc": "紅石通量驅動的砍伐工具。",
