@@ -403,7 +403,7 @@
   "info.thermal.augment.attr.Radius": "最大半徑",
   "info.thermal.augment.attr.Reach": "最大範圍",
 
-  "info.thermal.augment.attr.BaseMod": "比例係數",
+  "info.thermal.augment.attr.BaseMod": "增強比例",
 
   "info.thermal.augment.attr.DynamoEnergy": "燃料產能",
   "info.thermal.augment.attr.DynamoPower": "最大輸出",
@@ -413,9 +413,9 @@
   "info.thermal.augment.attr.MachineCat": "催化劑用量",
   "info.thermal.augment.attr.MachineEnergy": "處理耗能",
   "info.thermal.augment.attr.MachinePri": "主產物產生",
-  "info.thermal.augment.attr.MachinePower": "基礎運速",
+  "info.thermal.augment.attr.MachinePower": "基礎轉速",
   "info.thermal.augment.attr.MachineSec": "副產物產生",
-  "info.thermal.augment.attr.MachineSpeed": "最大運速",
+  "info.thermal.augment.attr.MachineSpeed": "最大轉速",
   "info.thermal.augment.attr.MachineXp": "經驗值",
 
   "info.thermal.augment.attr.PotionAmp": "效果等級",
@@ -433,7 +433,7 @@
   "info.thermal.augment.type.RF": "紅石通量",
   "info.thermal.augment.type.Upgrade": "升級",
 
-  "info.thermal.augment.maximized": "不可堆疊；已達最大值。",
+  "info.thermal.augment.maximized": "無法堆疊；已達最大值。",
 
   "item.thermal.area_depth_augment": "軸向範圍擴展",
   "item.thermal.area_radius_augment": "徑向範圍擴展",
@@ -464,9 +464,9 @@
   "item.thermal.machine_catalyst_augment": "催化回收室",
   "item.thermal.machine_catalyst_creative_augment": "創造回收室",
   "item.thermal.machine_catalyst_creative_augment.desc": "不消耗催化劑。",
-  "item.thermal.machine_cycle_augment": "循環處理升級",
+  "item.thermal.machine_cycle_augment": "循環處理器",
   "item.thermal.machine_cycle_augment.desc": "裝配產物可循環至輸入欄以進行下一步合成。",
-  "item.thermal.machine_efficiency_augment": "通量效率升級",
+  "item.thermal.machine_efficiency_augment": "通量效率升級器器",
   "item.thermal.machine_efficiency_augment.desc": "以處理速度降低為代價提升紅石通量效率。",
   "item.thermal.machine_efficiency_creative_augment": "創造通量提效",
   "item.thermal.machine_efficiency_creative_augment.desc": "不消耗能量，處理速度極快。",
