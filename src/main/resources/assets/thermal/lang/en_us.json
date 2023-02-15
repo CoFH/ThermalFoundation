@@ -153,6 +153,8 @@
 
   "info.thermal.redprint.contents": "Contents:",
   "info.thermal.redprint.unknown": "Unknown Data",
+  "info.thermal.redprint.data.Filter": "Filter Parameters",
+  "info.thermal.redprint.data.FilterAttachmentMode": "Filter Attachment Mode",
   "info.thermal.redprint.data.RSControl": "Redstone Control",
   "info.thermal.redprint.data.Sides": "Side Configuration",
   "info.thermal.redprint.data.Xfer": "Transfer Control",
@@ -840,7 +842,12 @@
   "item.thermal.junk_net.keyword": "bait",
 
   "item.thermal.detonator.keyword": "tnt",
+  "item.thermal.lock.keyword": "lock secure security",
   "item.thermal.rf_potato.keyword": "battery",
+  "item.thermal.redprint.keyword": "copy settings",
+  "item.thermal.satchel.keyword": "backpack pouch storage",
+  "item.thermal.wrench.keyword": "wrench",
+  "item.thermal.xp_crystal.keyword": "experience storage xp",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Cultivation",

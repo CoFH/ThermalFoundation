@@ -33,8 +33,6 @@ public abstract class StorageCellBlockEntity extends AugmentableBlockEntity impl
     public int amountInput;
     public int amountOutput;
 
-    protected int prevLight;
-
     protected ReconfigControlModule reconfigControl = new ReconfigControlModuleLimited(this);
     protected TransferControlModule transferControl = new TransferControlModule(this);
 
@@ -210,7 +208,6 @@ public abstract class StorageCellBlockEntity extends AugmentableBlockEntity impl
 
         buffer.writeInt(compareTracker);
         buffer.writeInt(levelTracker);
-        buffer.writeInt(prevLight);
 
         return buffer;
     }
@@ -218,11 +215,11 @@ public abstract class StorageCellBlockEntity extends AugmentableBlockEntity impl
     @Override
     public void handleStatePacket(FriendlyByteBuf buffer) {
 
+        int prevLight = getLightValue();
         super.handleStatePacket(buffer);
 
         compareTracker = buffer.readInt();
         levelTracker = buffer.readInt();
-        prevLight = buffer.readInt();
 
         if (prevLight != getLightValue()) {
             level.getChunkSource().getLightEngine().checkBlock(worldPosition);
