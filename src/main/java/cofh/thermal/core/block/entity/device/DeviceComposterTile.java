@@ -47,7 +47,7 @@ public class DeviceComposterTile extends DeviceBlockEntity implements ITickableT
 
     protected boolean hasInputsCache;
     protected float compostLevel;
-    protected static final float COMPOST_LEVEL_MAX = 8.0F;
+    protected static final float COMPOST_LEVEL_MAX = 7.0F;
 
     protected int processMax = timeConstant;
     protected int process = processMax;

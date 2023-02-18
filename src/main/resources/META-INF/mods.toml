@@ -77,7 +77,6 @@ side = "BOTH"
 [[dependencies.thermal_foundation]]
 modId = "thermal"
 mandatory = true
-versionRange = "[9.2, 9.3]"
 ordering = "AFTER"
 side = "BOTH"
 
