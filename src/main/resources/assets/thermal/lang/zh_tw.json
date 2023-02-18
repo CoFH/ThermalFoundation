@@ -136,7 +136,7 @@
   "fluid.thermal.tree_oil": "樹油",
 
   "info.thermal.catalysts": "催化劑",
-  "info.thermal.energy_mod": "能量倍率",
+  "info.thermal.energy_mod": "耗能倍率",
   "info.thermal.primary_mod": "主產物倍率",
   "info.thermal.secondary_mod": "副產物倍率",
   "info.thermal.use_chance": "消耗機率",
@@ -928,8 +928,8 @@
   "item.thermal.onion_seeds": "洋蔥種子",
   "item.thermal.peanut": "花生",
   "item.thermal.peanut_seeds": "花生種子",
-  "item.thermal.radish": "小蘿蔔",
-  "item.thermal.radish_seeds": "小蘿蔔種子",
+  "item.thermal.radish": "櫻桃蘿蔔",
+  "item.thermal.radish_seeds": "櫻桃蘿蔔種子",
   "item.thermal.rice": "白米",
   "item.thermal.rice_seeds": "水稻種子",
   "item.thermal.sadiroot": "薩蒂根莖",
@@ -961,7 +961,7 @@
   "item.thermal.onion_stew": "洋蔥燉菜",
   "item.thermal.pbj_sandwich": "花生醬果醬三明治",
   "item.thermal.spring_salad": "蔬菜沙拉",
-  "item.thermal.stuffed_pepper": "甜椒塞牛肉",
+  "item.thermal.stuffed_pepper": "甜椒盅",
   "item.thermal.sushi_maki": "壽司卷",
   "item.thermal.xp_stew": "博知燉菜",
 
