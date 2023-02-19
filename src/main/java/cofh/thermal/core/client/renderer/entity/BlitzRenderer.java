@@ -11,7 +11,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
-@OnlyIn (Dist.CLIENT)
 public class BlitzRenderer extends MobRenderer<Blitz, BlitzModel<Blitz>> {
 
     private static final ResourceLocation CALM_TEXTURE = new ResourceLocation(ID_THERMAL, "textures/entity/blitz.png");

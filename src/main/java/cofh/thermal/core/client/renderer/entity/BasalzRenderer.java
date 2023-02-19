@@ -20,7 +20,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
-@OnlyIn (Dist.CLIENT)
 public class BasalzRenderer extends MobRenderer<Basalz, BasalzModel<Basalz>> {
 
     private static final ResourceLocation CALM_TEXTURE = new ResourceLocation(ID_THERMAL, "textures/entity/basalz.png");
