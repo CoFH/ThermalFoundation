@@ -182,7 +182,7 @@ public class Basalz extends Monster {
         return new ItemStack(ITEMS.get("basalz_spawn_egg"));
     }
 
-    @OnlyIn (Dist.CLIENT)
+    
     @Override
     public AABB getBoundingBoxForCulling() {
 

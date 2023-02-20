@@ -196,7 +196,7 @@ public class TCoreBlocks {
 
         registerBlockAndItem(ID_SAWDUST_BLOCK, () -> new FallingBlock(of(Material.WOOD).strength(1.0F, 1.0F).sound(SoundType.SAND)) {
 
-            @OnlyIn (Dist.CLIENT)
+            
             @Override
             public int getDustColor(BlockState state, BlockGetter reader, BlockPos pos) {
 
