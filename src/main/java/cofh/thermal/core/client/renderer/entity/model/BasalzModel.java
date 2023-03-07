@@ -17,7 +17,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Arrays;
 
-@OnlyIn (Dist.CLIENT)
 public class BasalzModel<T extends LivingEntity> extends HierarchicalModel<T> {
 
     public static final ModelLayerLocation BASALZ_LAYER = new ModelLayerLocation(new ResourceLocation("thermal:basalz"), "main");

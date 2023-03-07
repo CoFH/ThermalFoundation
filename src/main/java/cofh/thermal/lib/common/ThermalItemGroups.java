@@ -35,7 +35,6 @@ public class ThermalItemGroups {
         }
 
         @Override
-        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_ENDERIUM_BLOCK));
@@ -52,7 +51,6 @@ public class ThermalItemGroups {
         }
 
         @Override
-        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_TINKER_BENCH));
@@ -69,7 +67,6 @@ public class ThermalItemGroups {
         }
 
         @Override
-        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get("signalum_gear"));
@@ -86,7 +83,6 @@ public class ThermalItemGroups {
         }
 
         @Override
-        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_APPLE_BLOCK));
@@ -103,7 +99,6 @@ public class ThermalItemGroups {
         }
 
         @Override
-        @OnlyIn (Dist.CLIENT)
         public ItemStack makeIcon() {
 
             return new ItemStack(ITEMS.get(ID_WRENCH));
