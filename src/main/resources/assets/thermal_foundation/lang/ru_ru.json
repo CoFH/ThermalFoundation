@@ -1,0 +1,145 @@
+{
+	"_comment": "========================================================================================================",
+	"_comment": "Thermal Foundation",
+	"_comment": "========================================================================================================",
+
+	"block.thermal.apatite_ore": "Апатитовая руда",
+	"block.thermal.cinnabar_ore": "Киноварная руда",
+	"block.thermal.niter_ore": "Селитровая руда",
+	"block.thermal.sulfur_ore": "Серная руда",
+
+	"block.thermal.lead_ore": "Свинцовая руда",
+	"block.thermal.nickel_ore": "Никелевая руда",
+	"block.thermal.silver_ore": "Серебряная руда",
+	"block.thermal.tin_ore": "Оловянная руда",
+
+	"block.thermal.ruby_ore": "Рубиновая руда",
+	"block.thermal.sapphire_ore": "Сапфировая руда",
+
+	"block.thermal.deepslate_apatite_ore": "Апатитоносный глубинный сланец",
+	"block.thermal.deepslate_cinnabar_ore": "Киноварьносный глубинный сланец",
+	"block.thermal.deepslate_niter_ore": "Селитроносный глубинный сланец",
+	"block.thermal.deepslate_sulfur_ore": "Серноносный глубинный сланец",
+
+	"block.thermal.deepslate_lead_ore": "Свинцовоносный глубинный сланец",
+	"block.thermal.deepslate_nickel_ore": "Никеленосный глубинный сланец",
+	"block.thermal.deepslate_silver_ore": "Сереброносный глубинный сланец",
+	"block.thermal.deepslate_tin_ore": "Оловоносный глубинный сланец",
+
+	"block.thermal.deepslate_ruby_ore": "Рубиноносный глубинный сланец",
+	"block.thermal.deepslate_sapphire_ore": "Сапфироносный глубинный сланец",
+
+	"block.thermal.oil_sand": "Битумный песок",
+	"block.thermal.oil_red_sand": "Красный битумный песок",
+
+	"block.thermal.lead_block": "Свинцовый блок",
+	"block.thermal.nickel_block": "Никелевый блок",
+	"block.thermal.silver_block": "Серебряный блок",
+	"block.thermal.tin_block": "Оловянный блок",
+
+	"block.thermal.ruby_block": "Рубиновый блок",
+	"block.thermal.sapphire_block": "Сапфировый блок",
+
+	"block.thermal.bronze_block": "Бронзовый блок",
+	"block.thermal.constantan_block": "Константановый блок",
+	"block.thermal.electrum_block": "Электрумовый блок",
+	"block.thermal.invar_block": "Инварный блок",
+
+	"block.thermal.rubberwood_button": "Кнопка из каучукового дерева",
+	"block.thermal.rubberwood_door": "Дверь из каучукового дерева",
+	"block.thermal.rubberwood_fence": "Забор из каучукового дерева",
+	"block.thermal.rubberwood_fence_gate": "Калитка из каучукового дерева",
+	"block.thermal.rubberwood_leaves": "Листва каучукового дерева",
+	"block.thermal.rubberwood_log": "Бревно каучукового дерева",
+	"block.thermal.rubberwood_planks": "Доски из каучукового дерева",
+	"block.thermal.rubberwood_pressure_plate": "Прижимная плита из каучукового дерева",
+	"block.thermal.rubberwood_sapling": "Саженец каучукового дерева",
+	"block.thermal.rubberwood_slab": "Плита из каучукового дерева",
+	"block.thermal.rubberwood_sign": "Знак из каучукового дерева",
+	"block.thermal.rubberwood_stairs": "Ступеньки из каучукового дерева",
+	"block.thermal.rubberwood_trapdoor": "Люк из каучукового дерева",
+	"block.thermal.rubberwood_wall_sign": "Подвесная табличка из каучукового дерева",
+	"block.thermal.rubberwood_wood": "Каучуковое дерево",
+
+	"block.thermal.potted_rubberwood_sapling": "Саженец каучукового дерева",
+	"block.thermal.stripped_rubberwood_log": "Обтёсанное бревно каучукового дерева",
+	"block.thermal.stripped_rubberwood_wood": "Обтёсанная древесина каучукового дерева",
+
+	"entity.thermal.rubberwood_chest_boat": "Лодка с сундуком",
+
+	"item.thermal.raw_lead": "Рудный свинец",
+	"item.thermal.raw_nickel": "Рудный никель",
+	"item.thermal.raw_silver": "Рудное серебро",
+	"item.thermal.raw_tin": "Рудное олово",
+
+	"item.thermal.lead_coin": "Свинцовая монета",
+	"item.thermal.lead_dust": "Свинцовая пыль",
+	"item.thermal.lead_gear": "Свинцовая шестерня",
+	"item.thermal.lead_ingot": "Свинцовый слиток",
+	"item.thermal.lead_nugget": "Кусочек свинца",
+	"item.thermal.lead_plate": "Свинцовая пластина",
+
+	"item.thermal.nickel_coin": "Никелевая монета",
+	"item.thermal.nickel_dust": "Никелевая пыль",
+	"item.thermal.nickel_gear": "Никелевая шестерня",
+	"item.thermal.nickel_ingot": "Никелевый слиток",
+	"item.thermal.nickel_nugget": "Кусочек никеля",
+	"item.thermal.nickel_plate": "Никелевая пластина",
+
+	"item.thermal.silver_coin": "Серебряная монета",
+	"item.thermal.silver_dust": "Серебряная пыль",
+	"item.thermal.silver_gear": "Серебряная шестерня",
+	"item.thermal.silver_ingot": "Серебряный слиток",
+	"item.thermal.silver_nugget": "Кусочек серебра",
+	"item.thermal.silver_plate": "Серебряная пластина",
+
+	"item.thermal.tin_coin": "Оловянная монета",
+	"item.thermal.tin_dust": "Оловянная пыль",
+	"item.thermal.tin_gear": "Оловянная шестерня",
+	"item.thermal.tin_ingot": "Оловянный слиток",
+	"item.thermal.tin_nugget": "Кусочек олова",
+	"item.thermal.tin_plate": "Оловянная пластина",
+
+	"item.thermal.ruby": "Рубин",
+	"item.thermal.ruby_dust": "Рубиновая пыль",
+	"item.thermal.ruby_gear": "Рубиновая шестерня",
+	"item.thermal.ruby_nugget": "Кусочек рубина",
+	"item.thermal.ruby_plate": "Рубиновая пластина",
+
+	"item.thermal.sapphire": "Сапфир",
+	"item.thermal.sapphire_dust": "Сапфировая пыль",
+	"item.thermal.sapphire_gear": "Сапфировая шестерня",
+	"item.thermal.sapphire_nugget": "Кусочек сапфира",
+	"item.thermal.sapphire_plate": "Сапфировая пластина",
+
+	"item.thermal.bronze_coin": "Бронзовая монета",
+	"item.thermal.bronze_dust": "Бронзовая смесь",
+	"item.thermal.bronze_gear": "Бронзовая шестерня",
+	"item.thermal.bronze_ingot": "Бронзовый слиток",
+	"item.thermal.bronze_nugget": "Кусочек бронзы",
+	"item.thermal.bronze_plate": "Бронзовая пластина",
+
+	"item.thermal.constantan_coin": "Константановая монета",
+	"item.thermal.constantan_dust": "Константановая смесь",
+	"item.thermal.constantan_gear": "Константановая шестерня",
+	"item.thermal.constantan_ingot": "Константановый слиток",
+	"item.thermal.constantan_nugget": "Кусочек константана",
+	"item.thermal.constantan_plate": "Константановая пластина",
+
+	"item.thermal.electrum_coin": "Электрумовая монета",
+	"item.thermal.electrum_dust": "Смесь электрума",
+	"item.thermal.electrum_gear": "Электрумовая шестерня",
+	"item.thermal.electrum_ingot": "Электрумовый слиток",
+	"item.thermal.electrum_nugget": "Кусочек электрума",
+	"item.thermal.electrum_plate": "Электрумовая пластина",
+
+	"item.thermal.invar_coin": "Инварная монета",
+	"item.thermal.invar_dust": "Инварная смесь",
+	"item.thermal.invar_gear": "Инварная шестерня",
+	"item.thermal.invar_ingot": "Инварный слиток",
+	"item.thermal.invar_nugget": "Кусочек инвара",
+	"item.thermal.invar_plate": "Инварная пластина",
+
+	"item.thermal.rubberwood_boat": "Лодка из каучукового дерева",
+	"item.thermal.rubberwood_chest_boat": "Грузовая лодка из каучукового дерева"
+}
