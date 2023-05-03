@@ -199,12 +199,13 @@ public class DetonateUtils {
         float f = Math.min(AreaUtils.HORZ_MAX, blockRadius);
         float maxResistance = 400F * blockRadius * blockRadius;
         float f2 = f * f;
+        Explosion explosion = new Explosion(level, explosive, null, null, explosive.getX(), explosive.getY(), explosive.getZ(), radius * 0.38F, true, explosionsBreakBlocks ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
 
         for (BlockPos iterPos : BlockPos.betweenClosed(blockPos.offset(-f, -f / 2, -f), blockPos.offset(f, f, f))) {
             double distance = iterPos.distToCenterSqr(explosive.position());
             if (distance < f2) {
                 BlockState state = level.getBlockState(iterPos);
-                if (!state.isAir() && state.getBlock().getExplosionResistance(state, level, iterPos, null) < maxResistance - (maxResistance * distance / f2)) {
+                if (!state.isAir() && state.getBlock().getExplosionResistance(state, level, iterPos, explosion) < maxResistance - (maxResistance * distance / f2)) {
                     level.setBlockAndUpdate(iterPos, Blocks.AIR.defaultBlockState());
                 }
             }

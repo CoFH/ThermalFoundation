@@ -14,6 +14,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -75,13 +77,16 @@ public class ChargeBenchBlockEntity extends AugmentableBlockEntity implements IT
     protected void chargeItems() {
 
         for (ItemStorageCoFH benchSlot : benchSlots) {
-            if (!benchSlot.isEmpty()) {
-                if (!energyStorage.isEmpty()) {
-                    int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
-                    benchSlot.getItemStack().getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null).ifPresent(c -> energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false));
+            LazyOptional<? extends IEnergyStorage> lazyOpt = benchSlot.getItemStack().getCapability(ThermalEnergyHelper.getBaseEnergySystem(), null);
+            lazyOpt.ifPresent(c -> {
+                if (c.getEnergyStored() < c.getMaxEnergyStored()) {
+                    isActive = true;
+                    if (!energyStorage.isEmpty()) {
+                        int maxTransfer = Math.min(energyStorage.getMaxExtract(), energyStorage.getEnergyStored());
+                        energyStorage.extractEnergy(c.receiveEnergy(maxTransfer, false), false);
+                    }
                 }
-                isActive = true;
-            }
+            });
         }
     }
 

@@ -1,0 +1,8 @@
+{
+  "type": "thermal:tree_extractor_boost",
+  "ingredient": {
+    "item": "thermal:compost"
+  },
+  "output": 1.5,
+  "cycles": 8
+}
