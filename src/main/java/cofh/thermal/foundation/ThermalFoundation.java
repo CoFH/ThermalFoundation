@@ -1,6 +1,5 @@
 package cofh.thermal.foundation;
 
-import cofh.core.client.renderer.entity.BoatRendererCoFH;
 import cofh.thermal.foundation.data.TFndFeatures;
 import cofh.thermal.foundation.init.TFndBlocks;
 import cofh.thermal.foundation.init.TFndEntities;
@@ -17,13 +16,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_BOAT_LAYER;
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_CHEST_BOAT_LAYER;
-import static cofh.thermal.foundation.init.TFndEntities.RUBBERWOOD_BOAT;
-import static cofh.thermal.foundation.init.TFndEntities.RUBBERWOOD_CHEST_BOAT;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_SAPLING;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 
@@ -69,8 +65,8 @@ public class ThermalFoundation {
 
     private void entityRendererSetup(final EntityRenderersEvent.RegisterRenderers event) {
 
-        event.registerEntityRenderer(RUBBERWOOD_BOAT.get(), (context) -> new BoatRendererCoFH(context, false, ID_THERMAL, "rubberwood", RUBBERWOOD_BOAT_LAYER));
-        event.registerEntityRenderer(RUBBERWOOD_CHEST_BOAT.get(), (context) -> new BoatRendererCoFH(context, true, ID_THERMAL, "rubberwood", RUBBERWOOD_CHEST_BOAT_LAYER));
+        // event.registerEntityRenderer(RUBBERWOOD_BOAT.get(), (context) -> new BoatRendererCoFH(context, false, ID_THERMAL, "rubberwood", RUBBERWOOD_BOAT_LAYER));
+        // event.registerEntityRenderer(RUBBERWOOD_CHEST_BOAT.get(), (context) -> new BoatRendererCoFH(context, true, ID_THERMAL, "rubberwood", RUBBERWOOD_CHEST_BOAT_LAYER));
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
