@@ -347,7 +347,11 @@ public class DevicePotionDiffuserTile extends DeviceBlockEntity implements ITick
 
     protected int getEffectAmplifier(MobEffectInstance effect) {
 
-        return Math.min(MAX_POTION_AMPLIFIER, Math.round(effect.getAmplifier() + potionAmpMod + boostAmplifier));
+        int baseAmp = effect.getAmplifier();
+        if (baseAmp > MAX_POTION_AMPLIFIER) {
+            return baseAmp;
+        }
+        return Math.min(MAX_POTION_AMPLIFIER, Math.round(baseAmp + potionAmpMod + boostAmplifier));
     }
 
     protected int getEffectDuration(MobEffectInstance effect) {

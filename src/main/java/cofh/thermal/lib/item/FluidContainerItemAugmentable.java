@@ -72,7 +72,11 @@ public class FluidContainerItemAugmentable extends FluidContainerItem implements
 
     protected int getEffectAmplifier(MobEffectInstance effect, ItemStack stack) {
 
-        return Math.min(MAX_POTION_AMPLIFIER, Math.round(effect.getAmplifier() + getPotionAmplifierMod(stack)));
+        int baseAmp = effect.getAmplifier();
+        if (baseAmp > MAX_POTION_AMPLIFIER) {
+            return baseAmp;
+        }
+        return Math.min(MAX_POTION_AMPLIFIER, Math.round(baseAmp + getPotionAmplifierMod(stack)));
     }
 
     protected int getEffectDuration(MobEffectInstance effect, ItemStack stack) {
