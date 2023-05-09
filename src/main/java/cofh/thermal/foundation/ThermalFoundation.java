@@ -4,6 +4,8 @@ import cofh.thermal.foundation.data.TFndFeatures;
 import cofh.thermal.foundation.init.TFndBlocks;
 import cofh.thermal.foundation.init.TFndEntities;
 import cofh.thermal.foundation.init.TFndItems;
+import cofh.thermal.foundation.util.TFndProxy;
+import cofh.thermal.foundation.util.TFndProxyClient;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -11,6 +13,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -25,6 +28,8 @@ import static cofh.thermal.lib.common.ThermalFlags.*;
 
 @Mod (ID_THERMAL_FOUNDATION)
 public class ThermalFoundation {
+
+    public static final TFndProxy PROXY = DistExecutor.unsafeRunForDist(() -> TFndProxyClient::new, () -> TFndProxy::new);
 
     public ThermalFoundation() {
 
@@ -65,8 +70,7 @@ public class ThermalFoundation {
 
     private void entityRendererSetup(final EntityRenderersEvent.RegisterRenderers event) {
 
-        // event.registerEntityRenderer(RUBBERWOOD_BOAT.get(), (context) -> new BoatRendererCoFH(context, false, ID_THERMAL, "rubberwood", RUBBERWOOD_BOAT_LAYER));
-        // event.registerEntityRenderer(RUBBERWOOD_CHEST_BOAT.get(), (context) -> new BoatRendererCoFH(context, true, ID_THERMAL, "rubberwood", RUBBERWOOD_CHEST_BOAT_LAYER));
+        PROXY.registerBoatModels(event);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
