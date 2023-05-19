@@ -5,7 +5,6 @@ import cofh.core.item.ItemCoFH;
 import cofh.core.util.helpers.ChatHelper;
 import cofh.lib.api.block.IDismantleable;
 import cofh.lib.api.block.IWrenchable;
-import cofh.lib.util.Utils;
 import cofh.lib.util.helpers.BlockHelper;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
@@ -73,17 +72,15 @@ public class WrenchItem extends ItemCoFH implements IMultiModeItem {
         BlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
 
-        if (player.isSecondaryUseActive() && block instanceof IDismantleable && ((IDismantleable) block).canDismantle(world, pos, state, player)) {
-            if (Utils.isServerWorld(world)) {
-                BlockHitResult target = new BlockHitResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
-                ((IDismantleable) block).dismantleBlock(world, pos, state, target, player, returnDismantleDrops());
-            }
+        if (player.isSecondaryUseActive() && block instanceof IDismantleable dismantleable && dismantleable.canDismantle(world, pos, state, player)) {
+            BlockHitResult target = new BlockHitResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
+            dismantleable.dismantleBlock(world, pos, state, target, player, returnDismantleDrops());
             player.swing(context.getHand());
             return true;
         } else if (!player.isSecondaryUseActive()) {
-            if (block instanceof IWrenchable && ((IWrenchable) block).canWrench(world, pos, state, player)) {
+            if (block instanceof IWrenchable wrenchable && wrenchable.canWrench(world, pos, state, player)) {
                 BlockHitResult target = new BlockHitResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
-                ((IWrenchable) block).wrenchBlock(world, pos, state, target, player);
+                wrenchable.wrenchBlock(world, pos, state, target, player);
                 return true;
             }
             return BlockHelper.attemptRotateBlock(state, world, pos);
