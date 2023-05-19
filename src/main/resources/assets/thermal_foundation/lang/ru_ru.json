@@ -65,7 +65,7 @@
   "block.thermal.stripped_rubberwood_log": "Обтёсанное бревно каучукового дерева",
   "block.thermal.stripped_rubberwood_wood": "Обтёсанная древесина каучукового дерева",
 
-  "entity.thermal.rubberwood_chest_boat": "Лодка с сундуком",
+  "entity.thermal.rubberwood_chest_boat": "Лодка из каучукового дерева с сундуком",
 
   "item.thermal.raw_lead": "Рудный свинец",
   "item.thermal.raw_nickel": "Рудный никель",
@@ -141,5 +141,5 @@
   "item.thermal.invar_plate": "Инварная пластина",
 
   "item.thermal.rubberwood_boat": "Лодка из каучукового дерева",
-  "item.thermal.rubberwood_chest_boat": "Грузовая лодка из каучукового дерева"
+  "item.thermal.rubberwood_chest_boat": "Лодка из каучукового дерева с сундуком"
 }
