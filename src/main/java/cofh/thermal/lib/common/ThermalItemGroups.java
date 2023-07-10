@@ -3,8 +3,6 @@ package cofh.thermal.lib.common;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Comparator;
 

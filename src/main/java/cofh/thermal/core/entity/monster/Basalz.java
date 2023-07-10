@@ -31,8 +31,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -182,7 +180,6 @@ public class Basalz extends Monster {
         return new ItemStack(ITEMS.get("basalz_spawn_egg"));
     }
 
-    
     @Override
     public AABB getBoundingBoxForCulling() {
 
