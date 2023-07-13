@@ -53,7 +53,7 @@
     },
     {
       "flag": "&mod:thermal_cultivation,!mod:thermal_expansion",
-      "type": "精錬",
+      "type": "smelting",
 
       "A.recipe": "thermal:smelting/cured_rubber_from_smelting",
       "text": "ラテックスを凝固させて作られる、伸縮性と防水性のある素材です。ラテックス入りバケツをクラフトグリッドに置くだけで作れるほか、ツタやタンポポからも作れます。ゴムをかまどで精錬することで、弾力性や伸縮性を向上できます。"
