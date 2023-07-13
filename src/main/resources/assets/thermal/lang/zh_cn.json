@@ -153,6 +153,8 @@
 
   "info.thermal.redprint.contents": "复制内容：",
   "info.thermal.redprint.unknown": "未知数据",
+  "info.thermal.redprint.data.Filter": "过滤器参数",
+  "info.thermal.redprint.data.FilterAttachmentMode": "过滤器连接件模式",
   "info.thermal.redprint.data.RSControl": "红石控制",
   "info.thermal.redprint.data.Sides": "侧面配置",
   "info.thermal.redprint.data.Xfer": "传输控制",
@@ -840,7 +842,12 @@
   "item.thermal.junk_net.keyword": "鱼饵",
 
   "item.thermal.detonator.keyword": "tnt",
+  "item.thermal.lock.keyword": "锁 安全",
   "item.thermal.rf_potato.keyword": "电池",
+  "item.thermal.redprint.keyword": "复制 设置 设定",
+  "item.thermal.satchel.keyword": "背包 袋子 存储",
+  "item.thermal.wrench.keyword": "扳手",
+  "item.thermal.xp_crystal.keyword": "经验 存储 xp",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Cultivation",
@@ -1224,11 +1231,11 @@
   "item.thermal.chiller_ingot_cast.keyword": "冷凝器 冷冻机",
   "item.thermal.chiller_rod_cast.keyword": "冷凝器 冷冻机",
 
-  "item.thermal.press_coin_die.keyword": "压",
-  "item.thermal.press_gear_die.keyword": "压",
-  "item.thermal.press_packing_2x2_die.keyword": "压",
-  "item.thermal.press_packing_3x3_die.keyword": "压",
-  "item.thermal.press_unpacking_die.keyword": "压",
+  "item.thermal.press_coin_die.keyword": "模板 模具",
+  "item.thermal.press_gear_die.keyword": "模板 模具",
+  "item.thermal.press_packing_2x2_die.keyword": "模板 模具",
+  "item.thermal.press_packing_3x3_die.keyword": "模板 模具",
+  "item.thermal.press_unpacking_die.keyword": "模板 模具",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Innovation",
