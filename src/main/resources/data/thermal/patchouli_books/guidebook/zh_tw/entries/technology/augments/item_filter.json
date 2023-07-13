@@ -1,0 +1,18 @@
+{
+  "name": "物品篩選器",
+  "icon": "thermal:item_filter_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/item_filter_augment",
+      "title": "物品篩選器",
+      "text": "物品篩選器增強元件允許機器、裝置或裝備有選擇地接受物品。篩選器可以在獨立的 GUI 中配置，可以藉由按住 Shift + 右鍵點擊安裝它的方塊或物品，或藉由方塊 GUI 中的標籤來存取。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "最多可以將 15 個物品新增到過濾器中，並具有在允許/拒絕清單和配對/忽略 NBT 之間切換的選項。"
+    }
+  ]
+}

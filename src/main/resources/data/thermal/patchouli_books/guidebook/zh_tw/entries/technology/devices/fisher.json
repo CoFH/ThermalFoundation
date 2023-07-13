@@ -1,0 +1,24 @@
+{
+  "name": "水產捕撈器",
+  "icon": "thermal:device_fisher",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "水產捕撈器是一種放置在水體中時可以被動捕魚的裝置。它捕魚的速度取決於生物群落、天氣和增強設置，但它的基礎速度是每隔幾分鐘捕撈 1 條魚。$(l:thermal:technology/augments/integral_components)整合元件$(/l)和$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)可以加快速度。它可以選擇使用 $(l:thermal:world/materials/bait)魚餌$(/l)來提升它的速度或改變它捕撈的物品。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_fisher",
+      "title": "水產捕撈器",
+      "text": "如果安裝了$(l:thermal:technology/augments/xp_storage)知識濃縮器$(/l)增強元件，捕撈器還會為每次捕撈（雙關語）1-3 經驗值。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮器$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)"
+    }
+  ]
+}

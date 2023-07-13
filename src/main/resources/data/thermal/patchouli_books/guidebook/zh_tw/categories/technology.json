@@ -1,0 +1,6 @@
+{
+  "name": "技術",
+  "description": "專業提示：Alt + shift + 點擊任何機器中的流體或紅石通量槽都會傾卸它，使流體/紅石通量淨空。",
+  "icon": "thermal:machine_frame",
+  "sortnum": 1
+}

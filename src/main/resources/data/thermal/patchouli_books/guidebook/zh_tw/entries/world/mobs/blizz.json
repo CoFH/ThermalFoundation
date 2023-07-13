@@ -1,0 +1,32 @@
+{
+  "name": "暴雪使者",
+  "icon": "thermal:blizz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "暴雪使者",
+      "item1": "thermal:blizz_rod",
+      "item2": "thermal:blizz_powder",
+      "item3": "thermal:blizz_spawn_egg",
+      "text": "暴雪使者是一種在寒冷生態系中生成的生物。它有 10 顆心，近距離造成 3.5 顆心的傷害。它射出的彈射物造成 2.5 顆心的傷害並套用凍僵效果。它有機率掉落暴雪立方，可以製作或粉碎成暴雪粉。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:blizz",
+      "title": "暴雪使者",
+      "text": "凍僵：每級降低 30% 移動速度和 0.4 秒攻擊速度。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "行為",
+      "text": "暴雪使者是一種冷漠的元素生物，會向它的敵人傾瀉彈射物。它會飛到它的目標上方並在它周圍的區域產生墜落的彈射物。如果足夠近，它會在目標上方盤旋。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "攻略",
+      "text": "對付暴雪使者最簡單的方法是使用遠程武器。在近戰中，最好直接面對暴雪使者並承受傷害以進入近戰範圍。"
+    }
+  ]
+}

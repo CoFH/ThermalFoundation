@@ -1,0 +1,14 @@
+{
+  "name": "穩態通量線圈",
+  "icon": "thermal:rf_coil_storage_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/rf_coil_storage_augment",
+      "title": "穩態通量線圈",
+      "text": "穩態通量線圈將紅石通量儲存提升 6 倍，將紅石通量傳輸提升 2 倍。"
+    }
+  ]
+}

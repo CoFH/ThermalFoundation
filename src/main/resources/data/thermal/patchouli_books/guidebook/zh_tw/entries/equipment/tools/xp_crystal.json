@@ -1,0 +1,33 @@
+{
+
+  "name": "洞察水晶",
+
+  "icon": "thermal:xp_crystal",
+
+  "category": "thermal:tools",
+
+  "read_by_default": true,
+
+  "pages": [
+
+    {
+
+      "type": "patchouli:text",
+
+      "text": "可攜式 XP 儲存空間！洞察水晶可以容納 10K 經驗值，相當於大約 63 級。這可以藉由附魔$(l:thermal:world/holding)擴容$(/l)來增加。"
+
+    },
+
+    {
+
+      "type": "thermal:double_crafting_page",
+
+      "A.recipe": "thermal:tools/xp_crystal",
+
+      "title": "洞察水晶"
+
+    }
+
+  ]
+
+} 

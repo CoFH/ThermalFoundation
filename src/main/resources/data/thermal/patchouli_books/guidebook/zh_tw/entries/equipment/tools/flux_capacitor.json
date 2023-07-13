@@ -1,0 +1,24 @@
+{
+  "name": "通量電容",
+  "icon": "thermal:flux_capacitor",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "在你的物品欄中儲存紅石通量和充能物品。它有 3 種模式，允許你只為快捷欄和盔甲、物品欄或所有東西充能，可使用更改模式按鍵綁定進行切換。要打開和關閉物品充能，請在手持電容器的同時 shift + 右鍵點擊。它也可以用來為機器提供能量。它可以在工匠工作台中充能和增強。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:flux_capacitor",
+      "title": "通量電容",
+      "text": "按 \"$(k:cofh.mode_change_increment)\" 切換模式。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)"
+    }
+  ]
+}

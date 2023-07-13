@@ -1,0 +1,25 @@
+{
+  "name": "植育催熟炸藥",
+  "icon": "thermal:phyto_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:explosives",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "植育催熟炸藥會立即對區域內的所有農作物和草產生骨粉效果。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phyto_tnt",
+      "B.recipe": "thermal:phyto_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_cultivation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:phyto_tnt_minecart",
+      "title": "植育催熟炸藥礦車"
+    }
+  ]
+}

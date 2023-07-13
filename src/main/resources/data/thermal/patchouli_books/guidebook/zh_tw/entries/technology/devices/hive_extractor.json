@@ -1,0 +1,23 @@
+{
+  "name": "蜂箱漏斗",
+  "icon": "thermal:device_hive_extractor",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "蜂箱漏斗是一種放置在蜂箱下時可以提取蜂巢和液體蜂蜜的裝置。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_hive_extractor",
+      "title": "蜂箱漏斗"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "多週期泵注器",
+  "icon": "thermal:dynamo_fuel_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/dynamo_fuel_augment",
+      "title": "多週期泵注器",
+      "text": "多環泵注器將能源爐的燃油效率提升 1.1 倍。"
+    }
+  ]
+}

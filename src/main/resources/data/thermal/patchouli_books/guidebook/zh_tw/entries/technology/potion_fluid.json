@@ -1,0 +1,23 @@
+{
+  "name": "藥水溶液",
+  "icon": "minecraft:potion",
+  "category": "thermal:technology",
+  "flag": "|mod:thermal_expansion,mod:thermal_innovation",
+  "read_by_default": true,
+  "pages": [
+    {
+      "flag": "!mod:thermal_expansion",
+      "type": "patchouli:text",
+      "text": "藥水溶液是傳統 Minecraft 藥水的流體型態。在接受藥水的機器、裝置或儲存方塊上使用 Minecraft 藥水瓶會使用藥水填充方塊並返還一個空瓶。"
+    },
+    {
+      "flag": "mod:thermal_expansion",
+      "type": "patchouli:text",
+      "text": "藥水溶液是傳統 Minecraft 藥水的流體型態。它可以藉由在$(l:thermal:technology/machines/brewer)藥水釀造機$(/l)中釀造藥水直接獲得。在接受藥水的機器、裝置或儲存方塊上使用 Minecraft 藥水瓶會使用藥水填充方塊並返還一個空瓶。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "相對的，在裝有流體藥水的方塊上使用空瓶會填滿瓶子。250mb 的藥水溶液相當於一瓶 Minecraft 藥水。"
+    }
+  ]
+}

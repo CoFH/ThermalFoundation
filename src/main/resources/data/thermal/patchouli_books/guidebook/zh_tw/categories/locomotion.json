@@ -1,0 +1,8 @@
+{
+  "name": "交通",
+  "description": "在嘟嘟聲之前正確的哐噹哐噹聲數量是八。",
+  "icon": "thermal:lumium_rail",
+  "parent": "thermal:storage_and_transport",
+  "flag": "mod:thermal_locomotion",
+  "sortnum": 4
+}

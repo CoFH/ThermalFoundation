@@ -1,0 +1,18 @@
+{
+  "name": "水下礦車",
+  "icon": "thermal:underwater_minecart",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "水下礦車允許包括玩家在內的實體在水下乘坐$(l:thermal:storage_and_transport/locomotion/prismarinerails)鐵軌$(/l)。乘坐水下礦車的實體在窒息前有 4 分鐘的時間。生物仍然會表現得像在水下一樣；不死生物不會燃燒，烈焰使者和終界使者會受到傷害，殭屍會變成沉屍。可以附魔水下呼吸，這會降低每刻消耗空氣的機率。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:underwater_minecart"
+    }
+  ]
+}

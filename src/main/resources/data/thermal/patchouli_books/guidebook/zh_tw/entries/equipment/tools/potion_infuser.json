@@ -1,0 +1,24 @@
+{
+  "name": "藥水注射器",
+  "icon": "thermal:potion_infuser",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "用於為自己、生物或其他玩家注入藥水效果。按 \"$(k:cofh.mode_change_increment)\" 切換自動注射，它會定期為你注射小劑量。它可以用$(l:thermal:technology/potion_fluid)藥水溶液$(/l)填充並在工匠工作台中增強。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_infuser",
+      "title": "藥水注射器",
+      "text": "它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高流體容量。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)煉金放大器$(/l)$(li)$(l:thermal:technology/augments/potion_duration)煉金延時器$(/l)"
+    }
+  ]
+}

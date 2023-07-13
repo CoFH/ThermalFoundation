@@ -1,0 +1,16 @@
+{
+  "name": "催化劑",
+  "icon": "thermal:rich_slag",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "category": "thermal:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "催化劑是選擇性物品，可以消耗以提升某些配方的產量。機器及其催化劑乘數列在下一頁中。配方的主要輸出由「主產物」倍率調整。副輸出由「副產物」倍率調整。每次操作的能量由「能量」倍率調整。最後，催化劑在操作中被消耗的機率由「消耗」表示機率。"
+    },
+    {
+      "type": "thermal:catalyst_page"
+    }
+  ]
+}

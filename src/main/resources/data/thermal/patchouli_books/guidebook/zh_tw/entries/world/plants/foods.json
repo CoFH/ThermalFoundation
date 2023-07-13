@@ -1,0 +1,74 @@
+{
+  "name": "食物",
+  "icon": "thermal:pbj_sandwich",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:carrot_cake",
+      "text": "用胡蘿蔔精心製作的蛋糕，含有豐富的胡蘿蔔素。食用時提供夜視效果。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:chocolate_cake",
+      "text": "細緻入微的點綴，才配得上沁人心脾的美味。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:potion_cake",
+      "text": "一種煎藥的樂趣！向消費者注入用於烘烤它的藥水效果。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:spice_cake",
+      "text": "薩蒂根莖做香料，口感甜蜜又芳妙。食用時清除負面狀態效果。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:stuffed_pumpkin",
+      "text": "一個豐滿的南瓜，裡面裝滿了豐富的農產品。令人難以置信的填充，而且只有這麼多。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:cheese_wheel",
+      "text": "藉由用凝乳酶凝固酪蛋白製成的凝固奶油。誰不喜歡乳酪？可以分切成楔形。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:green_bean_pie",
+      "text": "大量不同的蔬菜。經典的收穫季節主食，呈餡餅狀。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:pbj_sandwich_2",
+      "text": "麩質與黏稠的食物組成。如果任何口味可以更好地搭配，它們還沒有被發現。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:stuffed_pepper",
+      "text": "一種用帕馬森乾酪和上等肉搭配的甜椒。令人難以置信的填充和美味！"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:sushi_maki_8",
+      "text": "用海藻和糙米包裹的鹹海鮮，通常佐以醬油。營養又快。不要告訴 Direwolf20。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:spring_salad",
+      "text": "用春季的戰利品合成，一定讓你的腳步充滿春天。食用時提升跳躍高度。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:hearty_stew",
+      "text": "一種強身健體的肉湯，使用球形農產品釀造。食用時提升最大生命值。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:xp_stew",
+      "text": "喝下茄子聖水，精神頓時翻倍，睜睜眼蹬蹬腿，升級步入正軌。"
+    }
+  ]
+}

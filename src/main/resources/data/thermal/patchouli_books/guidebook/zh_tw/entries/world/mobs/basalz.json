@@ -1,0 +1,32 @@
+{
+  "name": "岩石使者",
+  "icon": "thermal:basalz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "岩石使者",
+      "item1": "thermal:basalz_rod",
+      "item2": "thermal:basalz_powder",
+      "item3": "thermal:basalz_spawn_egg",
+      "text": "岩石使者是一種在貧瘠或多山的生態系中生成的生物。它有 10 顆心，近距離造成 4.0 顆心的傷害。它會製造彈射物，造成 3.0 顆心的傷害並套用割裂效果。它有機率掉落岩石裂骸，可以製作或粉碎成岩石粉。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:basalz",
+      "title": "岩石使者",
+      "text": "割裂：每級降低盔甲效果 25%。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "行為",
+      "text": "岩石使者是一種大膽的元素生物，擅長近戰。它產生 8 個環繞彈射物，擊中任何不幸進入 4 格內的物體。每次命中消耗一枚彈射物。一旦所有彈射物都被消耗掉，岩石使者就會撤退並需要 5 秒才能為另外 8 個彈射物充能。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "攻略",
+      "text": "對付岩石使者最簡單的方法是使用遠程武器。在近戰情況下，即使是全副武裝的玩家也可能難以承受所有 8 個彈射物，因為它們套用割裂效果。最好用一個盾牌吸收所有 8 個彈射物的衝擊，然後趁它脆弱時攻擊岩石使者。或者，將岩石使者引向其他生物以讓他們承受傷害。"
+    }
+  ]
+}

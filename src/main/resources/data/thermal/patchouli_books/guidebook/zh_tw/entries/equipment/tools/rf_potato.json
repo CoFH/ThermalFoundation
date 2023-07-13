@@ -1,0 +1,18 @@
+{
+  "name": "馬鈴薯電容",
+  "icon": "thermal:rf_potato",
+  "category": "thermal:tools",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "儲存和傳輸紅石通量。不能用於為玩家物品欄中的物品充能。它可以被附魔$(l:thermal:world/holding)擴容$(/l)以提高紅石通量容量。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/rf_potato",
+      "title": "馬鈴薯電容",
+      "text": "$(br2)$(o)「我不騙你，這個馬鈴薯只能發 1.1 伏特的電。還不夠我跟你撒個謊呢。」"
+    }
+  ]
+} 

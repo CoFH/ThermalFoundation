@@ -1,0 +1,23 @@
+{
+  "name": "工匠工作台",
+  "icon": "thermal:tinker_bench",
+  "category": "thermal:technology",
+  "sortnum": -1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "工匠工作台是一個可以為工具和方塊充電、填充和套用增強的方塊。它有兩種模式，充能/灌裝和增強，你可以使用 GUI 中物品欄下方的按鈕在這兩種模式之間切換。僅當你切換模式或取出工具/方塊時，增強元件才會完全安裝。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tinker_bench",
+      "title": "工匠工作台"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "防護套裝",
+  "icon": "thermal:hazmat_chestplate",
+  "category": "thermal:armor",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "防護套裝將保護你免受環境危害，例如燃燒、摔落傷害和狀態異常。需要整套防護套裝才能提供全面保護！防止狀態效果和火焰時會消耗耐久度。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:hazmat_fabric",
+      "text": "$(o)橘色可疑$()"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/hazmat_helmet",
+      "B.recipe": "thermal:armor/hazmat_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/hazmat_leggings",
+      "B.recipe": "thermal:armor/hazmat_boots"
+    }
+  ]
+}

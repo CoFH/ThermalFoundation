@@ -1,0 +1,31 @@
+{
+  "name": "潛水套裝",
+  "icon": "thermal:diving_chestplate",
+  "category": "thermal:armor",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "潛水套裝可讓你輕鬆探索水下的深度。讓你在水下游得更快、呼吸更久、挖掘速度更快！"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:diving_fabric",
+      "text": "用在所有潛水裝備上的布料。"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/diving_helmet",
+      "B.recipe": "thermal:armor/diving_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/diving_leggings",
+      "B.recipe": "thermal:armor/diving_boots"
+    }
+  ]
+}

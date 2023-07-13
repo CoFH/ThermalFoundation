@@ -1,0 +1,23 @@
+{
+  "name": "FloofHips",
+  "icon": "minecraft:blue_orchid",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:link",
+      "url": "https://twitter.com/FloofHips",
+      "link_text": "FloofHips 的 Twitter",
+      "text": "創造了許多美麗的熱力系列材質，讓你的眼睛倍感幸福。Floof 還使這本書多次變得更加爵士樂。"
+    },
+    {
+      "type": "patchouli:empty"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["thermal:textures/gui/guidebook/guy.png"],
+      "border": true
+    }
+  ]
+}

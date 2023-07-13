@@ -1,0 +1,40 @@
+{
+  "name": "自定義增強元件",
+  "icon": "minecraft:potato",
+  "category": "thermal:modpack",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "增強系統的建立考量了模組化、可訂製性和靈活性。增強是基於 NBT 的，這意味著你可以藉由修改物品 NBT 來分配你想要的任何修飾詞和值。換句話說，熱力提供的增強元件沒有什麼特別之處——實際上任何物品都可以是增強元件，前提是它具有相關的 NBT 資料。甚至一個馬鈴薯。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "增強分為類型和修飾詞。類型決定了增強元件可以插入到哪些方塊中，也可以影響可堆疊性。請詳閱 $(l:thermal:technology/augments/introduction)增強元件介紹$(/l)以取得更多資訊。如果未指定類型，則不會對增強元件施加任何限制。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "修飾符藉由屬性值配對分配給一個物品，屬性是修飾詞，值是修飾詞的數值。所有的值都是浮點數，即使修飾詞建議它應該是整數（例如藥水強度）。稍後會詳細介紹。"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://github.com/CoFH/CoFHCore/blob/1.18.2/src/main/java/cofh/lib/util/constants/NBTTags.java#L102",
+      "link_text": "Github 連結",
+      "text": "NBT 的一般格式如下： $(br2){AugmentData:$(br){Type:'[augment type]',$(br)[modifier 1]:[float value]f, $(br)[modifier 2]:[float value]f, $(br)[...]}}$(br2)可以在 CoFH 的 Github 中找到可用增強類型和修飾詞的完整清單；連結如下。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "因此，例如，使所有配方的能量為 0 的機器增強的命令（本質上是創造模式的機器增強）如下（點擊以執行命令）：$(br)$(c:/summon minecraft:item ~ ~ ~ {Item:{id:'minecraft:sea_pickle',Count:1b,tag:{AugmentData:{Type:'Machine',MachineEnergy:0.0f}}}})/give $(playername) minecraft:sea_pickle{AugmentData:{Type:'Machine',MachineEnergy:0.0f}} 1$(/c)$(br2)如果有多個修飾詞-值配對具有相同的修飾詞，則最後一個優先採用。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "關於堆疊的註解",
+      "text": "某些修飾詞是不可堆疊的——也就是說，如果同一工具/方塊上的多個增強具有相同的修飾詞，則最高值將會優先採用。這些修飾詞的值帶有底線。可堆疊性是修飾詞類型固有的特性；例如，無論值如何，紅石通量容量始終不可堆疊，而範圍擴展永遠可以堆疊。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "關於浮點數的註解",
+      "text": "如前所述，所有值都以浮點數格式輸入。這會導致與似乎不可或缺的修飾詞進行一些有趣的互動。在這些情況下，增強會將輸入的浮點數顯示為四捨五入到最接近整數的值。但是，工具/方塊的實際行為可能會有所不同，具體取決於修飾詞/值。"
+    }
+  ]
+}

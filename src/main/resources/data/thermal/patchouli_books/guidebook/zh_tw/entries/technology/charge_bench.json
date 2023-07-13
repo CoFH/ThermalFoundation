@@ -1,0 +1,24 @@
+{
+  "name": "能量灌注機",
+  "icon": "thermal:charge_bench",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "能量灌注機是一個可用於一次充能最多 9 個物品的方塊。與$(l:thermal:technology/tinker_bench)工匠工作台$(/l)相比，它的主要優點是充電速度更快，並且可以自動插入和取出物品（例如藉由漏斗）。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:charge_bench",
+      "title": "能量灌注機",
+      "text": "$(o)根據古代文獻記載，有一種與能量灌注機的同名機器一度可以直接將紅石通量注入任何物品，而不僅僅局限於工具。然而，這實在是太離譜了。$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)"
+    }
+  ]
+}

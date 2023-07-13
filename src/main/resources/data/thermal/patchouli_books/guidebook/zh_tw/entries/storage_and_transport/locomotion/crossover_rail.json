@@ -1,0 +1,18 @@
+{
+  "name": "渡線鐵軌",
+  "icon": "thermal:crossover_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "渡線鐵軌允許兩條垂直的軌道相交而不會互相干擾。通過渡線鐵軌的礦車將繼續沿其來自的相同方向行駛。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:crossover_rail"
+    }
+  ]
+}

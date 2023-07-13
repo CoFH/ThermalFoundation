@@ -1,0 +1,32 @@
+{
+  "name": "雷霆使者",
+  "icon": "thermal:blitz_rod",
+  "category": "thermal:mobs",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:3_item_page",
+      "title": "雷霆使者",
+      "item1": "thermal:blitz_rod",
+      "item2": "thermal:blitz_powder",
+      "item3": "thermal:blitz_spawn_egg",
+      "text": "雷霆使者是一種在溫暖、乾燥的生態系中生成的生物。它有10顆心，近距離造成 1.5 顆心的傷害。它會製造彈射物，造成 2.5 顆心的傷害並套用震盪效果。它有機率掉落雷霆沙塵，可以製作或粉碎成雷霆粉。"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "thermal:blitz",
+      "title": "雷霆使者",
+      "text": "震盪：每級減少 3 顆心的攻擊傷害。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "行為",
+      "text": "雷霆使者是一種膽小的元素生物，它會從遠處發射弧形彈射物。如果它距離目標 24 格以內，它會每秒發射一枚彈射物。如果離太遠，它會靠近。如果目標距離小於 20 格，它會逃跑以保持距離。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "攻略",
+      "text": "對付雷霆使者最簡單的方法是使用遠程武器。此外，彈射物有飛行時間，因此它們更難擊中移動/掃射目標。"
+    }
+  ]
+}

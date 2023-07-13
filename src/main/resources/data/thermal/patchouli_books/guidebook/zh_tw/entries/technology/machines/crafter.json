@@ -1,0 +1,24 @@
+{
+  "name": "序列裝配機",
+  "icon": "thermal:machine_crafter",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "序列裝配機是一種可自動合成物品的機器。一旦設定好了合成表上的配方，它將從其內部物品欄中取出物品和液體並進行製作。將流體儲存在內部儲罐中，可以取代那些會需要流體桶的合成配方。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_crafter",
+      "title": "序列裝配機",
+      "text": "請注意，這台機器目前無法防止一種特定成分過度填充！熱動力學附帶批次處理裝置，敬請期待！"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/machine_speed)通量鏈結放大器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)通量效率升級器$(/l)"
+    }
+  ]
+}

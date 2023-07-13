@@ -1,0 +1,24 @@
+{
+  "name": "岩石擠製機",
+  "icon": "thermal:device_rock_gen",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "岩石擠製機是一種在被適當的方塊和流體包圍時會產生無限石頭的裝置。它需要一個相鄰的岩漿源方塊和一個相鄰的冷卻劑方塊；它可以選擇在下面放置一個方塊。有關所有可用的配方，請參閱 JEI。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_rock_gen",
+      "title": "岩石擠製機",
+      "text": "最初，它將每秒產生 1 個方塊，但可以使用 $(l:thermal:technology/augments/integral_components)整合元件$(/l)將其增加到每秒 4 個。如果更改了配方，則輸出欄中的任何方塊都將作廢，以便為新配方中的方塊騰出空間。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)"
+    }
+  ]
+} 

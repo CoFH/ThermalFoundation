@@ -1,0 +1,14 @@
+{
+  "name": "擴容儲罐構造",
+  "icon": "thermal:fluid_tank_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/fluid_tank_augment",
+      "title": "擴容儲罐構造",
+      "text": "擴容儲罐構造將機器、裝置、能源爐或工具中所有流體儲存空間的大小提升 4 倍。"
+    }
+  ]
+}

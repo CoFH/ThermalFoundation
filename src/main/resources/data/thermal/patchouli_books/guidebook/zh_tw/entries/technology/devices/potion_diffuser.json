@@ -1,0 +1,28 @@
+{
+  "name": "藥水霧化器",
+  "icon": "thermal:device_potion_diffuser",
+  "category": "thermal:devices",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "藥水霧化器是一種會定期消耗$(l:thermal:technology/potion_fluid)藥水溶液$(/l)以將藥水效果散播給附近生物的裝置。與普通藥水相比，以這種方式獲得的效果持續時間縮短 1/4。當沒有生物在其影響範圍內時，它會自動停止運作。基本上，霧化器在以它為中心的 9x9x9 區域散播藥水效果，可以使用$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)增強元件擴大到 15x15x15。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:device_potion_diffuser",
+      "title": "藥水霧化器",
+      "text": "試劑，即紅石和螢光石，可以分別以持續時間為代價來增加持續時間和增加效果等級（最高 IV）。單個試劑物品可維持霧化器運作 16 次。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "當由紅石控制時，霧化器會在打開時套用藥水效果，只要它的範圍內有生物。這樣，它會在脈衝時永遠可靠地啟動。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/fluid_tank)擴容儲罐構造$(/l)$(li)$(l:thermal:technology/augments/area_radius)徑向範圍擴展$(/l)$(li)$(l:thermal:technology/augments/potion_amplifier)煉金放大器$(/l)$(li)$(l:thermal:technology/augments/potion_duration)煉金延時器$(/l)"
+    }
+  ]
+} 

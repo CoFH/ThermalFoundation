@@ -1,0 +1,15 @@
+{
+  "name": "Drullkus",
+  "icon": "minecraft:orange_dye",
+  "category": "thermal:contributors",
+  "read_by_default": true,
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Drullkus",
+      "item": "minecraft:player_head{SkullOwner:'Drullkus'}",
+      "text": "就事情的運作方式而言，非常需要 Patchouli 的支援。協助熱力系列材質和許多其他模組。喜歡說自己的作品有多糟糕。"
+    }
+  ]
+}

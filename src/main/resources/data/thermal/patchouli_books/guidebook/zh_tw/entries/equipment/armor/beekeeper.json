@@ -1,0 +1,31 @@
+{
+  "name": "養蜂人套裝",
+  "icon": "thermal:beekeeper_chestplate",
+  "category": "thermal:armor",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "養蜂人套裝可以保護你免受任何可能遇到的刺痛，但要以耐久度為代價。這樣的例子有仙人掌、漿果叢和明顯的蜜蜂蜇傷。請注意，為了受到$(o)全套$()保護，你必須穿上全套防護服！要$(o)飛$()常小心，因為即使是全套套裝，耐久度仍然會被消耗。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:beekeeper_fabric",
+      "text": "用在所有養蜂裝備上的布料。"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/beekeeper_helmet",
+      "B.recipe": "thermal:armor/beekeeper_chestplate"
+
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:armor/beekeeper_leggings",
+      "B.recipe": "thermal:armor/beekeeper_boots"
+    }
+  ]
+}

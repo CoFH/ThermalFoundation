@@ -1,0 +1,7 @@
+{
+  "name": "元素充能",
+  "description": "掌握所有四種元素。",
+  "icon": "thermal:lightning_charge",
+  "parent": "thermal:equipment",
+  "sortnum": 3
+}

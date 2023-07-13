@@ -1,0 +1,24 @@
+{
+  "name": "彈力黏著炸藥",
+  "icon": "thermal:slime_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "彈力黏著炸藥會擊退所有陷入爆炸的生物和玩家，並用史萊姆覆蓋他們，暫時給他們帶來黏著效果。具有這種效果的生物和玩家將能夠在表面上彈跳，就如同他們降落在史萊姆方塊上一樣。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slime_tnt",
+      "B.recipe": "thermal:slime_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:slime_tnt_minecart",
+      "title": "彈力黏著炸藥礦車"
+    }
+  ]
+}

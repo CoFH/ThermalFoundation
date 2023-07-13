@@ -1,0 +1,24 @@
+{
+  "name": "獄火燒夷炸藥",
+  "icon": "thermal:fire_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "獄火燒夷炸藥會點燃一片區域，並點燃其半徑範圍內的生物。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:fire_tnt",
+      "B.recipe": "thermal:fire_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:fire_tnt_minecart",
+      "title": "獄火燒夷炸藥礦車"
+    }
+  ]
+}

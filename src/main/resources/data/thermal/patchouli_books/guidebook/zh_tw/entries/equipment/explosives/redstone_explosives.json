@@ -1,0 +1,24 @@
+{
+  "name": "紅石訊號炸藥",
+  "icon": "thermal:redstone_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "紅石訊號炸藥在爆炸時會產生紅石通量激發場，啟動其影響範圍內的任何紅石元件和裝置。該場域將持續 10 秒。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_tnt",
+      "B.recipe": "thermal:redstone_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:redstone_tnt_minecart",
+      "title": "紅石訊號炸藥礦車"
+    }
+  ]
+}

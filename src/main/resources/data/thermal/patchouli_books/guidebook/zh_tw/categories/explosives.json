@@ -1,0 +1,7 @@
+{
+  "name": "炸藥",
+  "description": "娛樂是用來玩的，不是用來消耗的。",
+  "icon": "thermal:explosive_grenade",
+  "parent": "thermal:equipment",
+  "sortnum": 4
+}

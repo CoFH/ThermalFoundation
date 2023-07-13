@@ -1,0 +1,14 @@
+{
+  "name": "徑向範圍擴展",
+  "icon": "thermal:area_radius_augment",
+  "category": "thermal:augments",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/area_radius_augment",
+      "title": "徑向範圍擴展",
+      "text": "徑向範圍擴展允許你的工具或機器影響其周圍更大的區域。每次擴充都會在每個方向將最大區域增加 1 個方塊。"
+    }
+  ]
+}

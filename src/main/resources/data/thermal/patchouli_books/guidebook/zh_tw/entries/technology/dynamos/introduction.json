@@ -1,0 +1,18 @@
+{
+  "name": "介紹 - 能源爐",
+  "icon": "thermal:iron_gear",
+  "category": "thermal:dynamos",
+  "sortnum": -2,
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "能源爐從各種類型的燃料中產生紅石通量。它們有一個線圈側，由能源爐產能時發光的亮紅色小方塊表示。紅石通量僅從線圈側輸出，燃料從任何其他側接受。在沒有任何升級的情況下，能源爐可產生高達 40 RF/t 的功率。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "能源爐有一個內部緩衝器，可以使用$(l:thermal:technology/augments/integral_components)整合元件$(/l)升級，但不能使用通量線圈增強。能源爐將根據此緩衝區的飽滿程度自動限制其紅石通量輸出和燃料使用。當為空時，能源爐將以其最大紅石通量輸出工作。充滿時，能源爐將以 10% 的輸出工作，即使產生的紅石通量被浪費，也會使用燃料。緩衝器只有在能源爐產能時才會自動輸出，閒置時會逐漸衰減。"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "通量熔煉爐",
+  "icon": "thermal:machine_furnace",
+  "category": "thermal:machines",
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "通量熔煉爐是一種像傳統熔爐一樣熔煉物品的機器。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:machine_furnace",
+      "title": "通量熔煉爐"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "增強元件相容性",
+      "text": "$(li)$(l:thermal:technology/augments/integral_components)整合元件$(/l)$(li)$(l:thermal:technology/augments/item_filter)物品篩選器$(/l)$(li)$(l:thermal:technology/augments/xp_storage)知識濃縮器$(/l)$(li)$(l:thermal:technology/augments/rf_coil)擴展通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_storage)穩態通量線圈$(/l)$(li)$(l:thermal:technology/augments/rf_coil_xfer)強導通量線圈$(/l)$(li)$(l:thermal:technology/augments/machine_speed)通量鏈結放大器$(/l)$(li)$(l:thermal:technology/augments/machine_efficiency)通量效率升級器$(/l)"
+    }
+  ]
+}

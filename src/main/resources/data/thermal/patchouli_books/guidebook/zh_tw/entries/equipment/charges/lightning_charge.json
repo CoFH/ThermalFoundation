@@ -1,0 +1,17 @@
+{
+  "name": "鳴雷彈",
+  "icon": "thermal:lightning_charge",
+  "category": "thermal:charges",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "鳴雷彈可以用來召喚一道閃電。從發射器發射會發射一個線性彈射物，該彈射物將對擊中的生物套用$(l:thermal:world/mobs/blitz)震盪$(/l)效果的線性彈射物。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:lightning_charge_3",
+      "title": "鳴雷彈"
+    }
+  ]
+}

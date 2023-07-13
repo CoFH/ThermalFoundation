@@ -1,0 +1,19 @@
+{
+  "name": "一組有 65 個物品？！",
+  "icon": "thermal:gold_gear",
+  "category": "thermal:technology",
+  "flag": "mod:thermal_expansion",
+  "sortnum": -2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "某些機器的輸出有機率出現，尤其是在使用催化劑時。例如，在一個配方中，每個輸入物品產生 2.5 個輸出物品。雖然前兩個輸出物品是確定的，但第三個輸出物品只有 50% 的機率。當機器的輸出欄填滿時，這可能會導致問題。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "這不是錯誤！",
+      "text": "熱力膨脹藉由簡單地讓堆疊大小隨意增加來容納這些多餘的輸出以解決這個問題。"
+    }
+  ]
+}

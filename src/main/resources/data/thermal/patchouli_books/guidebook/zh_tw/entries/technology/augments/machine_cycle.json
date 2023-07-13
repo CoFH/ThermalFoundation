@@ -1,0 +1,16 @@
+{
+  "name": "循環處理器",
+  "icon": "thermal:machine_cycle_augment",
+  "category": "thermal:augments",
+
+  "read_by_default": true,
+  "flag": "mod:thermal_expansion",
+  "pages": [
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:augments/machine_cycle_augment",
+      "title": "循環處理器",
+      "text": "循環處理器允許機器的有效輸出被回饋到它的輸入欄中。對自動化很有用。"
+    }
+  ]
+}

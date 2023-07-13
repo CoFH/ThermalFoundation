@@ -1,0 +1,24 @@
+{
+  "name": "終界侵擾炸藥",
+  "icon": "thermal:ender_tnt",
+  "read_by_default": true,
+  "flag": "mod:thermal_innovation",
+  "category": "thermal:explosives",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "終界侵擾炸藥會產生持續 10 秒的終界侵擾，將其中的大多數生物/玩家傳送到最多 128 個方塊外的隨機位置。最初的爆炸會造成傷害並阻止終界使者和終界蟎傳送 15 秒。炸藥和手榴彈的爆炸半徑分別為 9 和 5 個方塊。像終界使者一樣，這些炸藥在水下會失去效用！"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ender_tnt",
+      "B.recipe": "thermal:ender_grenade_4"
+    },
+    {
+      "flag": "&mod:thermal_innovation,mod:thermal_locomotion",
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:ender_tnt_minecart",
+      "title": "終界侵擾炸藥礦車"
+    }
+  ]
+}

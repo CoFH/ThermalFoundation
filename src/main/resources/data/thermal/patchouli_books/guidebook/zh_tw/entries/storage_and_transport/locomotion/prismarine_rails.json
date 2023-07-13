@@ -1,0 +1,28 @@
+{
+  "name": "海磷鐵軌",
+  "icon": "thermal:prismarine_rail",
+  "read_by_default": true,
+  "flag": "mod:thermal_locomotion",
+  "category": "thermal:locomotion",
+
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "海磷鐵軌的工作原理與標準鐵軌完全一樣，只是它們是防水的並且可以放置在水下。但是，如果普通礦車中的實體完全淹沒在水中，他們仍會被踢出礦車。這可以藉由使用$(l:thermal:storage_and_transport/locomotion/underwaterminecart)水下礦車$(/l)來防止。海磷鐵軌還會發出 8 級的亮度。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_rail",
+      "B.recipe": "thermal:prismarine_crossover_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_powered_rail",
+      "B.recipe": "thermal:prismarine_activator_rail"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:prismarine_detector_rail"
+    }
+  ]
+}

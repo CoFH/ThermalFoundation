@@ -1,0 +1,165 @@
+{
+  "name": "農作物",
+  "icon": "thermal:barley",
+  "read_by_default": true,
+  "flag": "mod:thermal_cultivation",
+  "category": "thermal:plants",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "熱力農業新增了多種農作物，其種子可以從村民購買。這些農作物可以藉由空手右鍵點擊收穫。蘑菇作物可以種植在$(l:thermal:world/plants/phytogro)植育土$(/l)、菌絲土或灰壤上，但不能以骨粉或植育一號催化。它們仍然受到植育土和$(l:thermal:equipment/tools/watering_can)澆水壺$(/l)生長獎勵的影響。"
+    },
+    {
+      "type": "2-2_item_page",
+      
+      "A.title": "大麥",
+      "A.item1": "thermal:barley",
+      "A.item2": "thermal:barley_seeds",
+      "A.text": "一種穀物，可以磨成麵粉或發芽製成啤酒或威士忌。",
+
+      "B.title": "玉米",
+      "B.item1": "thermal:corn",
+      "B.item2": "thermal:corn_seeds",
+      "B.text": "一種因其多功能性而備受推崇的主食穀物。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "亞麻",
+      "A.item1": "thermal:flax",
+      "A.item2": "thermal:flax_seeds",
+      "A.text": "一種纖維狀植物，可以很輕易地加工成細繩。",
+
+      "B.title": "洋蔥",
+      "B.item1": "thermal:onion",
+      "B.item2": "thermal:onion_seeds",
+      "B.text": "一種球莖蔬菜，通常用於為鹹味菜餚增添風味。讓人流淚。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "櫻桃蘿蔔",
+      "A.item1": "thermal:radish",
+      "A.item2": "thermal:radish_seeds",
+      "A.text": "一種味道濃烈的根菜類蔬菜，通常生吃或蒸熟吃。",
+
+      "B.title": "白米",
+      "B.item1": "thermal:rice",
+      "B.item2": "thermal:rice_seeds",
+      "B.text": "世界上消費最廣泛的主要糧食。辛苦收穫。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "薩蒂根莖",
+      "A.item1": "thermal:sadiroot",
+      "A.item2": "thermal:sadiroot_seeds",
+      "A.text": "一種以其潔淨特性而聞名的藥用香料。具有獨特的香氣。",
+
+      "B.title": "菠菜",
+      "B.item1": "thermal:spinach",
+      "B.item2": "thermal:spinach_seeds",
+      "B.text": "菠菜植物的葉子。使水手增加肌肉質量。"
+    },
+
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "甜椒",
+      "A.item1": "thermal:bell_pepper",
+      "A.item2": "thermal:bell_pepper_seeds",
+      "A.text": "不含辣味的辣椒品種。通常切碎並用在菜餚中。",
+
+      "B.title": "茄子",
+      "B.item1": "thermal:eggplant",
+      "B.item2": "thermal:eggplant_seeds",
+      "B.text": "在許多菜餚中使用的紫色、海綿狀$(l)水果$()。傾向於吸收其他味道。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "四季豆",
+      "A.item1": "thermal:green_bean",
+      "A.item2": "thermal:green_bean_seeds",
+      "A.text": "豆類植物未成熟的種子莢。可單獨食用或與各種菜餚一起烹調。",
+
+      "B.title": "花生",
+      "B.item1": "thermal:peanut",
+      "B.item2": "thermal:peanut_seeds",
+      "B.text": "花生植物的種子。經常被烤、壓榨成油，或磨成花生醬。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "草莓",
+      "A.item1": "thermal:strawberry",
+      "A.item2": "thermal:strawberry_seeds",
+      "A.text": "一種用於各種調味品和甜點的甜紅色水果。",
+
+      "B.title": "番茄",
+      "B.item1": "thermal:tomato",
+      "B.item2": "thermal:tomato_seeds",
+      "B.text": "一種美味的紅色$(l)水果$()經常切片用於菜餚或擠壓成醬汁和湯。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "咖啡",
+      "A.item1": "thermal:coffee",
+      "A.item2": "thermal:coffee_seeds",
+      "A.text": "咖啡樹的果實，其果核可以被烘烤、研磨和釀造，成為模組開發者的命脈。",
+
+      "B.title": "茶葉",
+      "B.item1": "thermal:tea",
+      "B.item2": "thermal:tea_seeds",
+      "B.text": "茶樹的葉子。經常在茶會期間傾倒到海裡。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "啤酒花",
+      "A.item1": "thermal:hops",
+      "A.item2": "thermal:hops_seeds",
+      "A.text": "開花的啤酒花藤的種子球果。用來給啤酒調味。",
+
+      "B.title": "霜凍西瓜",
+      "B.item1": "thermal:frost_melon_slice",
+      "B.item2": "thermal:frost_melon_seeds",
+      "B.text": "藍色品種的西瓜。吃下去之後，摸著爐火都感覺是冰冷的。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "通量蕈",
+      "A.item1": "minecraft:redstone",
+      "A.item2": "thermal:redstone_mushroom_spores",
+      "A.text": "一種淺色蘑菇，成熟時會散發出黏稠的紅石狀乳液。",
+
+      "B.title": "光帽菇",
+      "B.item1": "minecraft:glowstone_dust",
+      "B.item2": "thermal:glowstone_mushroom_spores",
+      "B.text": "一種發光的真菌，在它的傘蓋上會產生一層薄薄的、閃閃發光的金色粉末。"
+    },
+    {
+      "type": "2-2_item_page",
+
+      "A.title": "爆爆菇",
+      "A.item1": "minecraft:gunpowder",
+      "A.item2": "thermal:gunpowder_mushroom_spores",
+      "A.text": "一種脾氣暴躁的蘑菇，在其底部長出爆炸性材料網。",
+
+      "B.title": "史萊蘑",
+      "B.item1": "minecraft:slime_ball",
+      "B.item2": "thermal:slime_mushroom_spores",
+      "B.text": "一種分泌保護性黏液的黏性真菌，可以凝結成球。"
+    },
+    {
+      "type": "2_item_page",
+
+      "title": "莧菜",
+      "item1": "thermal:amaranth",
+      "item2": "thermal:amaranth_seeds",
+      "text": "充滿活力的穀物，富含營養和煉金術特性。"
+    }
+  ]
+}

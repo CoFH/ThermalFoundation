@@ -1,0 +1,17 @@
+{
+  "name": "紅圖",
+  "icon": "thermal:redprint",
+  "category": "thermal:technology",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "紅圖可以輕鬆複製和貼上你的方塊設置！要保存設置，請手持空白紅圖並右鍵點擊已設定的方塊。手持已設定紅圖並右鍵點擊其他的機器以貼上設置。Shift + 右鍵點擊可以清除紅圖。將紅圖放在副手欄中以自動設定放置的方塊。"
+    },
+    {
+      "type": "thermal:double_crafting_page",
+      "A.recipe": "thermal:tools/redprint",
+      "title": "紅圖"
+    }
+  ]
+}
