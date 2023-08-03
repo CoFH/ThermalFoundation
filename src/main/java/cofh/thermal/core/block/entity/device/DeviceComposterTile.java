@@ -4,6 +4,7 @@ import cofh.core.util.helpers.AugmentDataHelper;
 import cofh.lib.api.block.entity.ITickableTile;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
+import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.inventory.container.device.DeviceComposterContainer;
 import cofh.thermal.lib.block.entity.DeviceBlockEntity;
@@ -69,6 +70,8 @@ public class DeviceComposterTile extends DeviceBlockEntity implements ITickableT
         inventory.addSlots(INPUT, 9, item -> filter.valid(item) && COMPOSTABLES.containsKey(item.getItem()));
         inventory.addSlot(outputSlot, OUTPUT);
 
+        xpStorage = new XpStorage(getBaseXpStorage());
+
         addAugmentSlots(ThermalCoreConfig.deviceAugments);
         initHandlers();
     }
@@ -102,6 +105,9 @@ public class DeviceComposterTile extends DeviceBlockEntity implements ITickableT
         while (compostLevel >= COMPOST_LEVEL_MAX && !outputSlot.isFull()) {
             compostLevel -= COMPOST_LEVEL_MAX;
             outputSlot.modify(1);
+            if (xpStorageFeature) {
+                xpStorage.receiveXp(1, false);
+            }
             if (particles) {
                 ((ServerLevel) level).sendParticles(ParticleTypes.COMPOSTER, worldPosition.getX() + 0.5, worldPosition.getY() + 1.5, worldPosition.getZ() + 0.5, 4, 0.1D, 0.0D, 0.1D, 0.02D);
             }
