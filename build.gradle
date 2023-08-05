@@ -15,7 +15,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of("${java_version}")
 sourceSets.main.resources.srcDirs += "src/main/generated"
 
 group = 'com.teamcofh'
-archivesBaseName = "${mod_id}_core"
+archivesBaseName = "${mod_id}_foundation"
 def buildVersion = "${mod_version}." + (System.getenv("BUILD_NUMBER") ?: '0')
 version = "${mc_version}-${buildVersion}"
 
