@@ -1036,8 +1036,9 @@
 
   "info.thermal.item_buffer.0": "Restricts quantity and flow of items.",
   "info.thermal.item_buffer.1": "Set desired items and quantities using the left grid.",
-  "info.thermal.item_buffer.2": "Latch I/O requires all items to be present before extraction is allowed.",
-  "info.thermal.item_buffer.3": "Very useful for maintaining specific item ratios.",
+  "info.thermal.item_buffer.2": "Mouse wheel can be used to fine-tune item quantity.",
+  "info.thermal.item_buffer.3": "Latch I/O requires all items to be present before extraction is allowed.",
+  "info.thermal.item_buffer.4": "Very useful for maintaining specific item ratios.",
 
   "info.thermal.item_buffer.mode.0": "I/O: Normal",
   "info.thermal.item_buffer.mode.1": "I/O: Latch",
