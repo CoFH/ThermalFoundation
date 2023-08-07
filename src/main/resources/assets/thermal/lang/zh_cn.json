@@ -1035,9 +1035,10 @@
   "info.thermal.fluid_turbo_servo_attachment.3": "红石控制可用于开启输出。",
 
   "info.thermal.item_buffer.0": "限制物品的传送速率和数量。",
-  "info.thermal.item_buffer.1": "使用左侧网格来设置所需物品及其数量",
-  "info.thermal.item_buffer.2": "锁存模式下，只有所有物品均满足要求才会输出。",
-  "info.thermal.item_buffer.3": "非常适合用来维持特定物品比例。",
+  "info.thermal.item_buffer.1": "使用左侧网格来设置目标物品及其数量",
+  "info.thermal.item_buffer.2": "使用鼠标滚轮来微调物品数量。",
+  "info.thermal.item_buffer.3": "锁存模式下，只有所有物品均满足要求才会输出。",
+  "info.thermal.item_buffer.4": "非常适合用来维持特定物品比例。",
 
   "info.thermal.item_buffer.mode.0": "I/O：正常",
   "info.thermal.item_buffer.mode.1": "I/O：锁存",
