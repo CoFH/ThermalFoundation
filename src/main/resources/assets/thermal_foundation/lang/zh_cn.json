@@ -1,0 +1,145 @@
+{
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Foundation",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.apatite_ore": "磷灰石矿石",
+  "block.thermal.cinnabar_ore": "朱砂矿石",
+  "block.thermal.niter_ore": "硝石矿石",
+  "block.thermal.sulfur_ore": "硫矿石",
+
+  "block.thermal.lead_ore": "铅矿石",
+  "block.thermal.nickel_ore": "镍矿石",
+  "block.thermal.silver_ore": "银矿石",
+  "block.thermal.tin_ore": "锡矿石",
+
+  "block.thermal.ruby_ore": "红宝石矿石",
+  "block.thermal.sapphire_ore": "蓝宝石矿石",
+
+  "block.thermal.deepslate_apatite_ore": "深层磷灰石矿石",
+  "block.thermal.deepslate_cinnabar_ore": "深层朱砂矿石",
+  "block.thermal.deepslate_niter_ore": "深层硝石矿石",
+  "block.thermal.deepslate_sulfur_ore": "深层硫矿石",
+
+  "block.thermal.deepslate_lead_ore": "深层铅矿石",
+  "block.thermal.deepslate_nickel_ore": "深层镍矿石",
+  "block.thermal.deepslate_silver_ore": "深层银矿石",
+  "block.thermal.deepslate_tin_ore": "深层锡矿石",
+
+  "block.thermal.deepslate_ruby_ore": "深层红宝石矿石",
+  "block.thermal.deepslate_sapphire_ore": "深层蓝宝石矿石",
+
+  "block.thermal.oil_sand": "沥青沙",
+  "block.thermal.oil_red_sand": "沥青红沙",
+
+  "block.thermal.lead_block": "铅块",
+  "block.thermal.nickel_block": "镍块",
+  "block.thermal.silver_block": "银块",
+  "block.thermal.tin_block": "锡块",
+
+  "block.thermal.ruby_block": "红宝石块",
+  "block.thermal.sapphire_block": "蓝宝石块",
+
+  "block.thermal.bronze_block": "青铜块",
+  "block.thermal.constantan_block": "康铜块",
+  "block.thermal.electrum_block": "琥珀金块",
+  "block.thermal.invar_block": "殷钢块",
+
+  "block.thermal.rubberwood_button": "橡胶木按钮",
+  "block.thermal.rubberwood_door": "橡胶木门",
+  "block.thermal.rubberwood_fence": "橡胶木栅栏",
+  "block.thermal.rubberwood_fence_gate": "橡胶木栅栏门",
+  "block.thermal.rubberwood_leaves": "橡胶木树叶",
+  "block.thermal.rubberwood_log": "橡胶原木",
+  "block.thermal.rubberwood_planks": "橡胶木板",
+  "block.thermal.rubberwood_pressure_plate": "橡胶木压力板",
+  "block.thermal.rubberwood_sapling": "橡胶树苗",
+  "block.thermal.rubberwood_slab": "橡胶木台阶",
+  "block.thermal.rubberwood_sign": "橡胶木告示牌",
+  "block.thermal.rubberwood_stairs": "橡胶木楼梯",
+  "block.thermal.rubberwood_trapdoor": "橡胶木活板门",
+  "block.thermal.rubberwood_wall_sign": "墙上的橡胶木告示牌",
+  "block.thermal.rubberwood_wood": "橡胶木",
+
+  "block.thermal.potted_rubberwood_sapling": "橡胶树苗盆栽",
+  "block.thermal.stripped_rubberwood_log": "去皮橡胶原木",
+  "block.thermal.stripped_rubberwood_wood": "去皮橡胶木",
+
+  "entity.thermal.rubberwood_chest_boat": "运输船",
+
+  "item.thermal.raw_lead": "粗铅",
+  "item.thermal.raw_nickel": "粗镍",
+  "item.thermal.raw_silver": "粗银",
+  "item.thermal.raw_tin": "粗锡",
+
+  "item.thermal.lead_coin": "铅币",
+  "item.thermal.lead_dust": "铅粉",
+  "item.thermal.lead_gear": "铅齿轮",
+  "item.thermal.lead_ingot": "铅锭",
+  "item.thermal.lead_nugget": "铅粒",
+  "item.thermal.lead_plate": "铅板",
+
+  "item.thermal.nickel_coin": "镍币",
+  "item.thermal.nickel_dust": "镍粉",
+  "item.thermal.nickel_gear": "镍齿轮",
+  "item.thermal.nickel_ingot": "镍锭",
+  "item.thermal.nickel_nugget": "镍粒",
+  "item.thermal.nickel_plate": "镍板",
+
+  "item.thermal.silver_coin": "银币",
+  "item.thermal.silver_dust": "银粉",
+  "item.thermal.silver_gear": "银齿轮",
+  "item.thermal.silver_ingot": "银锭",
+  "item.thermal.silver_nugget": "银粒",
+  "item.thermal.silver_plate": "银板",
+
+  "item.thermal.tin_coin": "锡币",
+  "item.thermal.tin_dust": "锡粉",
+  "item.thermal.tin_gear": "锡齿轮",
+  "item.thermal.tin_ingot": "锡锭",
+  "item.thermal.tin_nugget": "锡粒",
+  "item.thermal.tin_plate": "锡板",
+
+  "item.thermal.ruby": "红宝石",
+  "item.thermal.ruby_dust": "红宝石粉",
+  "item.thermal.ruby_gear": "红宝石齿轮",
+  "item.thermal.ruby_nugget": "红宝石粒",
+  "item.thermal.ruby_plate": "红宝石板",
+
+  "item.thermal.sapphire": "蓝宝石",
+  "item.thermal.sapphire_dust": "蓝宝石粉",
+  "item.thermal.sapphire_gear": "蓝宝石齿轮",
+  "item.thermal.sapphire_nugget": "蓝宝石粒",
+  "item.thermal.sapphire_plate": "蓝宝石板",
+
+  "item.thermal.bronze_coin": "青铜币",
+  "item.thermal.bronze_dust": "青铜粉",
+  "item.thermal.bronze_gear": "青铜齿轮",
+  "item.thermal.bronze_ingot": "青铜锭",
+  "item.thermal.bronze_nugget": "青铜粒",
+  "item.thermal.bronze_plate": "青铜板",
+
+  "item.thermal.constantan_coin": "康铜币",
+  "item.thermal.constantan_dust": "康铜粉",
+  "item.thermal.constantan_gear": "康铜齿轮",
+  "item.thermal.constantan_ingot": "康铜锭",
+  "item.thermal.constantan_nugget": "康铜粒",
+  "item.thermal.constantan_plate": "康铜板",
+
+  "item.thermal.electrum_coin": "琥珀金币",
+  "item.thermal.electrum_dust": "琥珀金粉",
+  "item.thermal.electrum_gear": "琥珀金齿轮",
+  "item.thermal.electrum_ingot": "琥珀金锭",
+  "item.thermal.electrum_nugget": "琥珀金粒",
+  "item.thermal.electrum_plate": "琥珀金板",
+
+  "item.thermal.invar_coin": "殷钢币",
+  "item.thermal.invar_dust": "殷钢粉",
+  "item.thermal.invar_gear": "殷钢齿轮",
+  "item.thermal.invar_ingot": "殷钢锭",
+  "item.thermal.invar_nugget": "殷钢粒",
+  "item.thermal.invar_plate": "殷钢板",
+
+  "item.thermal.rubberwood_boat": "橡胶木船",
+  "item.thermal.rubberwood_chest_boat": "橡胶木运输船"
+}
