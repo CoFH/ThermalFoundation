@@ -18,6 +18,8 @@ public class TFndIDs {
 
     public static final String ID_OIL_SAND = "oil_sand";
     public static final String ID_OIL_RED_SAND = "oil_red_sand";
+    public static final String ID_RUBBERWOOD_TREE = "rubberwood_tree";
+    public static final String ID_MEGA_RUBBERWOOD_TREE = "mega_rubberwood_tree";
     // endregion
 
     // region BLOCKS
