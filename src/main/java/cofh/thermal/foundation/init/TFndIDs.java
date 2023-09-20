@@ -42,6 +42,8 @@ public class TFndIDs {
     public static final String ID_RUBBERWOOD_WOOD = "rubberwood_wood";
     public static final String ID_STRIPPED_RUBBERWOOD_LOG = "stripped_rubberwood_log";
     public static final String ID_STRIPPED_RUBBERWOOD_WOOD = "stripped_rubberwood_wood";
+
+    public static final String ID_POTTED_RUBBERWOOD_SAPLING = "potted_rubberwood_sapling";
     // endregion
 
     public static final String ID_RUBBERWOOD_BOAT = "rubberwood_boat";

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "thermal:rubberwood_fence_gate"
+          "name": "thermal:stripped_rubberwood_log"
         }
       ],
       "rolls": 1.0

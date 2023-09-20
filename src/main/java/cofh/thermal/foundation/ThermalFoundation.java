@@ -23,6 +23,7 @@ import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_BOAT_LAYER;
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_CHEST_BOAT_LAYER;
+import static cofh.thermal.foundation.init.TFndIDs.ID_POTTED_RUBBERWOOD_SAPLING;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_SAPLING;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 
@@ -96,6 +97,7 @@ public class ThermalFoundation {
         RenderType cutout = RenderType.cutout();
 
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_RUBBERWOOD_SAPLING), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_POTTED_RUBBERWOOD_SAPLING), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get("rubberwood_door"), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get("rubberwood_trapdoor"), cutout);
     }

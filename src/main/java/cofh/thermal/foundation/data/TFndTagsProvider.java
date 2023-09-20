@@ -225,7 +225,6 @@ public class TFndTagsProvider {
 
             // region WOOD
             tag(BlockTags.LEAVES).add(BLOCKS.get("rubberwood_leaves"));
-            tag(BlockTags.LOGS).add(BLOCKS.get(ID_RUBBERWOOD_LOG));
             tag(BlockTags.SAPLINGS).add(BLOCKS.get("rubberwood_sapling"));
 
             tag(BlockTags.DOORS).add(BLOCKS.get("rubberwood_door"));
@@ -235,10 +234,13 @@ public class TFndTagsProvider {
             tag(BlockTags.SLABS).add(BLOCKS.get("rubberwood_slab"));
             tag(BlockTags.STAIRS).add(BLOCKS.get("rubberwood_stairs"));
 
+            tag(BlockTags.WOODEN_BUTTONS).add(BLOCKS.get("rubberwood_button"));
             tag(BlockTags.WOODEN_DOORS).add(BLOCKS.get("rubberwood_door"));
             tag(BlockTags.WOODEN_FENCES).add(BLOCKS.get("rubberwood_fence"));
+            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(BLOCKS.get("rubberwood_pressure_plate"));
             tag(BlockTags.WOODEN_SLABS).add(BLOCKS.get("rubberwood_slab"));
             tag(BlockTags.WOODEN_STAIRS).add(BLOCKS.get("rubberwood_stairs"));
+            tag(BlockTags.WOODEN_TRAPDOORS).add(BLOCKS.get("rubberwood_trapdoor"));
 
             tag(BlockTags.NON_FLAMMABLE_WOOD).add(
                     BLOCKS.get("rubberwood_door"),
@@ -259,6 +261,8 @@ public class TFndTagsProvider {
                     BLOCKS.get(ID_STRIPPED_RUBBERWOOD_LOG),
                     BLOCKS.get(ID_STRIPPED_RUBBERWOOD_WOOD)
             );
+            tag(BlockTags.LOGS).addTag(ThermalTags.Blocks.LOGS_RUBBERWOOD);
+
             // endregion
         }
 

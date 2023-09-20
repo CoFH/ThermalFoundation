@@ -2,6 +2,7 @@ package cofh.thermal.foundation.init;
 
 import cofh.core.item.BlockItemCoFH;
 import cofh.lib.block.OreBlockCoFH;
+import cofh.lib.util.Utils;
 import cofh.thermal.core.util.RegistrationHelper;
 import cofh.thermal.foundation.world.level.block.grower.RubberTreeGrower;
 import com.google.common.collect.ImmutableSet;
@@ -66,6 +67,12 @@ public class TFndBlocks {
             builder.add(BLOCKS.get("rubberwood_sign"));
             builder.add(BLOCKS.get("rubberwood_wall_sign"));
             BlockEntityType.SIGN.validBlocks = builder.build();
+        }
+        // POTTED PLANTS
+        {
+            if (Blocks.FLOWER_POT instanceof FlowerPotBlock) {
+                ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(Utils.getRegistryName(BLOCKS.get(ID_RUBBERWOOD_SAPLING)), BLOCKS.getSup(ID_POTTED_RUBBERWOOD_SAPLING));
+            }
         }
     }
 
@@ -132,6 +139,9 @@ public class TFndBlocks {
         registerBlock(ID_RUBBERWOOD_SAPLING, () -> new SaplingBlock(new RubberTreeGrower(), of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)), ID_THERMAL_FOUNDATION);
         registerBlock(ID_RUBBERWOOD_LEAVES, () -> leaves(SoundType.GRASS), ID_THERMAL_FOUNDATION);
 
+        if (Blocks.FLOWER_POT instanceof FlowerPotBlock) {
+            registerBlock(ID_POTTED_RUBBERWOOD_SAPLING, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOCKS.getSup(ID_RUBBERWOOD_SAPLING), BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
+        }
         registerWoodBlockSet("rubberwood", Material.WOOD, MaterialColor.TERRACOTTA_GREEN, 1.5F, 2.5F, SoundType.WOOD, ID_THERMAL_FOUNDATION);
 
         registerBlockOnly("rubberwood_sign", () -> new StandingSignBlock(of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), RUBBERWOOD));
