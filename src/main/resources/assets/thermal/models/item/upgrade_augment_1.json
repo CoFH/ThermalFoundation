@@ -1,5 +1,5 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "thermal:item/augments/upgrade_augment_1",
     "layer1": "thermal:item/augments/upgrade_augment_1_lights",
