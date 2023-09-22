@@ -140,7 +140,7 @@ public class TFndBlocks {
         registerBlock(ID_RUBBERWOOD_LEAVES, () -> leaves(SoundType.GRASS), ID_THERMAL_FOUNDATION);
 
         if (Blocks.FLOWER_POT instanceof FlowerPotBlock) {
-            registerBlock(ID_POTTED_RUBBERWOOD_SAPLING, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOCKS.getSup(ID_RUBBERWOOD_SAPLING), BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
+            registerBlockOnly(ID_POTTED_RUBBERWOOD_SAPLING, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOCKS.getSup(ID_RUBBERWOOD_SAPLING), BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
         }
         registerWoodBlockSet("rubberwood", Material.WOOD, MaterialColor.TERRACOTTA_GREEN, 1.5F, 2.5F, SoundType.WOOD, ID_THERMAL_FOUNDATION);
 

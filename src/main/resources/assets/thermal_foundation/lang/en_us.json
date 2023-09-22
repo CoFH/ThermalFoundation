@@ -65,6 +65,7 @@
   "block.thermal.stripped_rubberwood_log": "Stripped Rubberwood Log",
   "block.thermal.stripped_rubberwood_wood": "Stripped Rubberwood Wood",
 
+  "entity.thermal.rubberwood_boat": "Boat",
   "entity.thermal.rubberwood_chest_boat": "Boat with Chest",
 
   "item.thermal.raw_lead": "Raw Lead",

@@ -1,6 +1,5 @@
 package cofh.thermal.foundation.data;
 
-import cofh.lib.util.constants.ModIds;
 import com.google.gson.JsonElement;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -20,7 +19,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFolia
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraftforge.common.data.ExistingFileHelper;
