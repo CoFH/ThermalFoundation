@@ -1,0 +1,1 @@
+{  "name": "Ducts",  "description": "How do I move <thing>?",  "icon": "thermal:energy_duct",  "parent": "thermal:storage_and_transport",  "flag": "mod:thermal_dynamics",  "sortnum": 2}
