@@ -163,6 +163,8 @@ public class TFndTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ELECTRUM_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_INVAR_BLOCK));
 
+            tag(BlockTags.MINEABLE_WITH_HOE).add(BLOCKS.get(ID_RUBBERWOOD_LEAVES));
+
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
@@ -242,18 +244,18 @@ public class TFndTagsProvider {
             tag(BlockTags.WOODEN_STAIRS).add(BLOCKS.get("rubberwood_stairs"));
             tag(BlockTags.WOODEN_TRAPDOORS).add(BLOCKS.get("rubberwood_trapdoor"));
 
-            tag(BlockTags.NON_FLAMMABLE_WOOD).add(
-                    BLOCKS.get("rubberwood_door"),
-                    BLOCKS.get("rubberwood_fence"),
-                    BLOCKS.get("rubberwood_fence_gate"),
-                    BLOCKS.get(ID_RUBBERWOOD_LOG),
-                    BLOCKS.get("rubberwood_planks"),
-                    BLOCKS.get("rubberwood_slab"),
-                    BLOCKS.get("rubberwood_stairs"),
-                    BLOCKS.get(ID_RUBBERWOOD_WOOD),
-                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_LOG),
-                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_WOOD)
-            );
+            //            tag(BlockTags.NON_FLAMMABLE_WOOD).add(
+            //                    BLOCKS.get("rubberwood_door"),
+            //                    BLOCKS.get("rubberwood_fence"),
+            //                    BLOCKS.get("rubberwood_fence_gate"),
+            //                    BLOCKS.get(ID_RUBBERWOOD_LOG),
+            //                    BLOCKS.get("rubberwood_planks"),
+            //                    BLOCKS.get("rubberwood_slab"),
+            //                    BLOCKS.get("rubberwood_stairs"),
+            //                    BLOCKS.get(ID_RUBBERWOOD_WOOD),
+            //                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_LOG),
+            //                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_WOOD)
+            //            );
 
             tag(ThermalTags.Blocks.LOGS_RUBBERWOOD).add(
                     BLOCKS.get(ID_RUBBERWOOD_LOG),
@@ -366,7 +368,7 @@ public class TFndTagsProvider {
             copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
             copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
 
-            copy(BlockTags.NON_FLAMMABLE_WOOD, ItemTags.NON_FLAMMABLE_WOOD);
+            // copy(BlockTags.NON_FLAMMABLE_WOOD, ItemTags.NON_FLAMMABLE_WOOD);
             copy(ThermalTags.Blocks.LOGS_RUBBERWOOD, ThermalTags.Items.LOGS_RUBBERWOOD);
 
             tag(ItemTagsCoFH.COINS_LEAD).add(ITEMS.get("lead_coin"));
