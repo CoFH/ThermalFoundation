@@ -1,12 +1,14 @@
 package cofh.thermal.foundation;
 
-import cofh.thermal.foundation.data.TFndFeatures;
+// import cofh.thermal.foundation.data.TFndFeatures;
+
 import cofh.thermal.foundation.init.TFndBlocks;
 import cofh.thermal.foundation.init.TFndEntities;
 import cofh.thermal.foundation.init.TFndItems;
 import cofh.thermal.foundation.util.TFndProxy;
 import cofh.thermal.foundation.util.TFndProxyClient;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -60,13 +62,13 @@ public class ThermalFoundation {
         setFlag(FLAG_RESOURCE_NICKEL, true);
     }
 
-    public static final WoodType RUBBERWOOD = WoodType.create("thermal:rubberwood");
+    // public static final WoodType RUBBERWOOD = WoodType.create("thermal:rubberwood");
 
     // region INITIALIZATION
     private void entityLayerSetup(final EntityRenderersEvent.RegisterLayerDefinitions event) {
 
-        event.registerLayerDefinition(RUBBERWOOD_BOAT_LAYER, () -> BoatModel.createBodyModel(false));
-        event.registerLayerDefinition(RUBBERWOOD_CHEST_BOAT_LAYER, () -> BoatModel.createBodyModel(true));
+        event.registerLayerDefinition(RUBBERWOOD_BOAT_LAYER, BoatModel::createBodyModel);
+        event.registerLayerDefinition(RUBBERWOOD_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
     }
 
     private void entityRendererSetup(final EntityRenderersEvent.RegisterRenderers event) {
@@ -76,18 +78,18 @@ public class ThermalFoundation {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
-        event.enqueueWork(() -> WoodType.register(RUBBERWOOD));
+        // event.enqueueWork(() -> WoodType.register(RUBBERWOOD));
 
         event.enqueueWork(TFndBlocks::setup);
-        event.enqueueWork(TFndFeatures::setup);
+        // event.enqueueWork(TFndFeatures::setup);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
         event.enqueueWork(this::registerRenderLayers);
-        event.enqueueWork(() -> {
-            Sheets.addWoodType(RUBBERWOOD);
-        });
+        //        event.enqueueWork(() -> {
+        //            Sheets.addWoodType(RUBBERWOOD);
+        //        });
     }
     // endregion
 
