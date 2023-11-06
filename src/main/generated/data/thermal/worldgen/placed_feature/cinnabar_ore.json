@@ -1,31 +1,5 @@
 {
-  "feature": {
-    "type": "minecraft:ore",
-    "config": {
-      "discard_chance_on_air_exposure": 0.0,
-      "size": 5,
-      "targets": [
-        {
-          "state": {
-            "Name": "thermal:cinnabar_ore"
-          },
-          "target": {
-            "predicate_type": "minecraft:tag_match",
-            "tag": "minecraft:stone_ore_replaceables"
-          }
-        },
-        {
-          "state": {
-            "Name": "thermal:deepslate_cinnabar_ore"
-          },
-          "target": {
-            "predicate_type": "minecraft:tag_match",
-            "tag": "minecraft:deepslate_ore_replaceables"
-          }
-        }
-      ]
-    }
-  },
+  "feature": "thermal:cinnabar_ore",
   "placement": [
     {
       "type": "thermal:config",
@@ -39,9 +13,6 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:trapezoid",
@@ -52,6 +23,9 @@
           "absolute": -16
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

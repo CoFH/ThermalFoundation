@@ -80,7 +80,6 @@
 //
 //    public static void setup() {
 //
-//
 //        RUBBERWOOD_TREE = FeatureUtils.register(new ResourceLocation(ID_THERMAL, ID_RUBBERWOOD_TREE).toString(), Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
 //                BlockStateProvider.simple(BLOCKS.get(ID_RUBBERWOOD_LOG)),
 //                new StraightTrunkPlacer(4, 2, 2),

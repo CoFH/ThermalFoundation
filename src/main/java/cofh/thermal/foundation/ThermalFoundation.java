@@ -12,6 +12,7 @@ import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -62,7 +63,8 @@ public class ThermalFoundation {
         setFlag(FLAG_RESOURCE_NICKEL, true);
     }
 
-    // public static final WoodType RUBBERWOOD = WoodType.create("thermal:rubberwood");
+    public static final BlockSetType BLOCK_SET_TYPE_RUBBERWOOD = BlockSetType.register(new BlockSetType("thermal:rubberwood"));
+    public static final WoodType WOOD_TYPE_RUBBERWOOD = WoodType.register(new WoodType("thermal:rubberwood", BLOCK_SET_TYPE_RUBBERWOOD));
 
     // region INITIALIZATION
     private void entityLayerSetup(final EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -78,8 +80,6 @@ public class ThermalFoundation {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
-        // event.enqueueWork(() -> WoodType.register(RUBBERWOOD));
-
         event.enqueueWork(TFndBlocks::setup);
         // event.enqueueWork(TFndFeatures::setup);
     }
@@ -87,9 +87,9 @@ public class ThermalFoundation {
     private void clientSetup(final FMLClientSetupEvent event) {
 
         event.enqueueWork(this::registerRenderLayers);
-        //        event.enqueueWork(() -> {
-        //            Sheets.addWoodType(RUBBERWOOD);
-        //        });
+        event.enqueueWork(() -> {
+            Sheets.addWoodType(WOOD_TYPE_RUBBERWOOD);
+        });
     }
     // endregion
 

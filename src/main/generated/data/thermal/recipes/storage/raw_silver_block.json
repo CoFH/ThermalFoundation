@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "tag": "forge:raw_materials/silver"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:raw_silver_block"
-  }
+  },
+  "show_notification": true
 }

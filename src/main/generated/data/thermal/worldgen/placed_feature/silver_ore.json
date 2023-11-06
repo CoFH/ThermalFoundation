@@ -1,31 +1,5 @@
 {
-  "feature": {
-    "type": "minecraft:ore",
-    "config": {
-      "discard_chance_on_air_exposure": 0.0,
-      "size": 8,
-      "targets": [
-        {
-          "state": {
-            "Name": "thermal:silver_ore"
-          },
-          "target": {
-            "predicate_type": "minecraft:tag_match",
-            "tag": "minecraft:stone_ore_replaceables"
-          }
-        },
-        {
-          "state": {
-            "Name": "thermal:deepslate_silver_ore"
-          },
-          "target": {
-            "predicate_type": "minecraft:tag_match",
-            "tag": "minecraft:deepslate_ore_replaceables"
-          }
-        }
-      ]
-    }
-  },
+  "feature": "thermal:silver_ore",
   "placement": [
     {
       "type": "thermal:config",
@@ -39,12 +13,9 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:trapezoid",
+        "type": "minecraft:uniform",
         "max_inclusive": {
           "absolute": 40
         },
@@ -52,6 +23,9 @@
           "absolute": -60
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

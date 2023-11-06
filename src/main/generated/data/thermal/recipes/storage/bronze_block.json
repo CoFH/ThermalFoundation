@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "tag": "forge:ingots/bronze"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:bronze_block"
-  }
+  },
+  "show_notification": true
 }

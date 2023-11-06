@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "tag": "forge:ingots/nickel"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:nickel_gear"
-  }
+  },
+  "show_notification": true
 }

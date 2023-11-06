@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "tag": "forge:ingots/constantan"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:constantan_gear"
-  }
+  },
+  "show_notification": true
 }

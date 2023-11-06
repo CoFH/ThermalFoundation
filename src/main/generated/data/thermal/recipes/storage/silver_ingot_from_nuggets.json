@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "tag": "forge:nuggets/silver"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:silver_ingot"
-  }
+  },
+  "show_notification": true
 }
