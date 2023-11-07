@@ -13,10 +13,6 @@ import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 @Mod.EventBusSubscriber (bus = Mod.EventBusSubscriber.Bus.MOD, modid = ID_THERMAL_FOUNDATION)
 public class TFndDataGen {
 
-    //    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-    //            .add(Registries.FEATURE, context -> context.register(TEST_SETTINGS, NoiseGeneratorSettings.floatingIslands(context)))
-    //            .add(Registries.LEVEL_STEM, DataGeneratorTest::levelStem);
-
     @SubscribeEvent
     public static void gatherData(final GatherDataEvent event) {
 
