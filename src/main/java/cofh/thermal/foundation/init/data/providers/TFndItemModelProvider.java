@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.data.providers;
+package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.data.ItemModelProviderCoFH;
+import cofh.lib.init.data.ItemModelProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;

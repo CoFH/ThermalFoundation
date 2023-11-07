@@ -1,7 +1,7 @@
 package cofh.thermal.foundation.init;
 
-import cofh.core.entity.BoatCoFH;
-import cofh.core.entity.ChestBoatCoFH;
+import cofh.core.common.entity.BoatCoFH;
+import cofh.core.common.entity.ChestBoatCoFH;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.vehicle.Boat;

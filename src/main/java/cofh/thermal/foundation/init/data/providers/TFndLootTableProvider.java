@@ -1,7 +1,7 @@
-package cofh.thermal.foundation.data.providers;
+package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.data.LootTableProviderCoFH;
-import cofh.thermal.foundation.data.tables.TFndBlockLootTables;
+import cofh.lib.init.data.LootTableProviderCoFH;
+import cofh.thermal.foundation.init.data.tables.TFndBlockLootTables;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;

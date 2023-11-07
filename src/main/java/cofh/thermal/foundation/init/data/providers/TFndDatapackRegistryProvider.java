@@ -1,8 +1,8 @@
-package cofh.thermal.foundation.data.providers;
+package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.data.DatapackRegistryProviderCoFH;
-import cofh.thermal.foundation.data.worldgen.TFndBiomeModifiers;
-import cofh.thermal.foundation.data.worldgen.TFndFeatures;
+import cofh.lib.init.data.DatapackRegistryProviderCoFH;
+import cofh.thermal.foundation.init.data.worldgen.TFndBiomeModifiers;
+import cofh.thermal.foundation.init.data.worldgen.TFndFeatures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

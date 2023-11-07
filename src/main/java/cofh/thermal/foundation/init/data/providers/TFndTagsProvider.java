@@ -1,7 +1,7 @@
-package cofh.thermal.foundation.data.providers;
+package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.tags.BlockTagsCoFH;
-import cofh.lib.tags.ItemTagsCoFH;
+import cofh.lib.init.tags.BlockTagsCoFH;
+import cofh.lib.init.tags.ItemTagsCoFH;
 import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

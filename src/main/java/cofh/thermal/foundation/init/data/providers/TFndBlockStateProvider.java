@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.data.providers;
+package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.data.BlockStateProviderCoFH;
+import cofh.lib.init.data.BlockStateProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;

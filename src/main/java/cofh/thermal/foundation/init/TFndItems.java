@@ -1,9 +1,9 @@
 package cofh.thermal.foundation.init;
 
-import cofh.core.entity.BoatCoFH;
-import cofh.core.entity.ChestBoatCoFH;
-import cofh.core.item.BoatItemCoFH;
-import cofh.lib.item.SignItemCoFH;
+import cofh.core.common.entity.BoatCoFH;
+import cofh.core.common.entity.ChestBoatCoFH;
+import cofh.core.common.item.BoatItemCoFH;
+import cofh.lib.common.item.SignItemCoFH;
 import net.minecraft.world.item.Item;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
@@ -13,8 +13,8 @@ import static cofh.thermal.foundation.init.TFndEntities.RUBBERWOOD_BOAT;
 import static cofh.thermal.foundation.init.TFndEntities.RUBBERWOOD_CHEST_BOAT;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_BOAT;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_CHEST_BOAT;
-import static cofh.thermal.lib.common.ThermalCreativeTabs.itemsTab;
-import static cofh.thermal.lib.common.ThermalCreativeTabs.toolsTab;
+import static cofh.thermal.lib.init.ThermalCreativeTabs.itemsTab;
+import static cofh.thermal.lib.init.ThermalCreativeTabs.toolsTab;
 
 public class TFndItems {
 

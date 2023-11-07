@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.event;
+package cofh.thermal.foundation.common.event;
 
-import cofh.thermal.core.config.ThermalCoreConfig;
+import cofh.thermal.core.common.config.ThermalCoreConfig;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.village.WandererTradesEvent;

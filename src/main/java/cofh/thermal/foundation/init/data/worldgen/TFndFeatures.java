@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.data.worldgen;
+package cofh.thermal.foundation.init.data.worldgen;
 
-import cofh.thermal.core.world.ConfigPlacementFilter;
+import cofh.thermal.core.common.world.ConfigPlacementFilter;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;

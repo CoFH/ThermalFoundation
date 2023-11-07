@@ -1,9 +1,9 @@
 package cofh.thermal.foundation.init;
 
-import cofh.core.item.BlockItemCoFH;
-import cofh.lib.block.OreBlockCoFH;
+import cofh.core.common.item.BlockItemCoFH;
+import cofh.lib.common.block.OreBlockCoFH;
 import cofh.lib.util.Utils;
-import cofh.thermal.foundation.world.level.block.grower.RubberTreeGrower;
+import cofh.thermal.foundation.common.world.RubberTreeGrower;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
@@ -22,7 +22,7 @@ import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.foundation.ThermalFoundation.WOOD_TYPE_RUBBERWOOD;
 import static cofh.thermal.foundation.init.TFndIDs.*;
-import static cofh.thermal.lib.common.ThermalCreativeTabs.blocksTab;
+import static cofh.thermal.lib.init.ThermalCreativeTabs.blocksTab;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of;
 import static net.minecraft.world.level.material.MapColor.*;

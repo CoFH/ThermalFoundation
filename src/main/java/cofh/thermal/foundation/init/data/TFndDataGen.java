@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.data;
+package cofh.thermal.foundation.init.data;
 
-import cofh.thermal.foundation.data.providers.*;
+import cofh.thermal.foundation.init.data.providers.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;

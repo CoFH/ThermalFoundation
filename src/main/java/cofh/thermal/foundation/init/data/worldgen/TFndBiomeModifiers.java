@@ -1,4 +1,4 @@
-package cofh.thermal.foundation.data.worldgen;
+package cofh.thermal.foundation.init.data.worldgen;
 
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;

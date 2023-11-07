@@ -1,8 +1,8 @@
-package cofh.thermal.foundation.data.providers;
+package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.data.RecipeProviderCoFH;
-import cofh.lib.tags.ItemTagsCoFH;
-import cofh.thermal.lib.common.ThermalFlags;
+import cofh.lib.init.data.RecipeProviderCoFH;
+import cofh.lib.init.tags.ItemTagsCoFH;
+import cofh.thermal.lib.init.ThermalFlags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;

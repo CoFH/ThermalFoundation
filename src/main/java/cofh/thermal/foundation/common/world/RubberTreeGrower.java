@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.world.level.block.grower;
+package cofh.thermal.foundation.common.world;
 
-import cofh.thermal.foundation.data.worldgen.TFndFeatures;
+import cofh.thermal.foundation.init.data.worldgen.TFndFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;

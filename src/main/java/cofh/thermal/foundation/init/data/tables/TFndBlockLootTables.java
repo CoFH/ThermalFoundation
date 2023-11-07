@@ -1,6 +1,6 @@
-package cofh.thermal.foundation.data.tables;
+package cofh.thermal.foundation.init.data.tables;
 
-import cofh.lib.data.loot.BlockLootSubProviderCoFH;
+import cofh.lib.init.data.loot.BlockLootSubProviderCoFH;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
