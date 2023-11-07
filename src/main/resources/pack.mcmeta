@@ -1,7 +1,8 @@
 {
-    "pack": {
-        "description": "CoFH - Thermal Core/Foundation Resources",
-        "pack_format": 10,
-        "_comment": ""
-    }
+  "pack": {
+    "description": {
+      "translate": "pack.thermal_foundation.description"
+    },
+    "pack_format": 15
+  }
 }
