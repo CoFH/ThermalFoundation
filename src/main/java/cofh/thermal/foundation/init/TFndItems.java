@@ -8,13 +8,13 @@ import net.minecraft.world.item.Item;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.init.registries.ThermalCreativeTabs.itemsTab;
+import static cofh.thermal.core.init.registries.ThermalCreativeTabs.toolsTab;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.foundation.init.TFndEntities.RUBBERWOOD_BOAT;
 import static cofh.thermal.foundation.init.TFndEntities.RUBBERWOOD_CHEST_BOAT;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_BOAT;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_CHEST_BOAT;
-import static cofh.thermal.lib.init.ThermalCreativeTabs.itemsTab;
-import static cofh.thermal.lib.init.ThermalCreativeTabs.toolsTab;
 
 public class TFndItems {
 

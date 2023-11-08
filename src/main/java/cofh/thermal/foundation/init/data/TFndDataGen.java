@@ -26,15 +26,10 @@ public class TFndDataGen {
 
         gen.addProvider(event.includeServer(), new TFndLootTableProvider(output));
         gen.addProvider(event.includeServer(), new TFndRecipeProvider(output));
+        gen.addProvider(event.includeServer(), new TFndDatapackRegistryProvider(output, event.getLookupProvider()));
 
         gen.addProvider(event.includeClient(), new TFndBlockStateProvider(output, exFileHelper));
         gen.addProvider(event.includeClient(), new TFndItemModelProvider(output, exFileHelper));
-
-        //        RegistryOps<JsonElement> regOps = RegistryOps.create(JsonOps.INSTANCE, RegistryAccess.builtinCopy());
-        //
-        //        gen.addProvider(event.includeServer(), TFndFeatures.dataGenFeatures(gen, exFileHelper, regOps));
-        //        gen.addProvider(event.includeServer(), TFndBiomeModifiers.dataGenBiomeModifiers(gen, exFileHelper, regOps));
-        gen.addProvider(event.includeServer(), new TFndDatapackRegistryProvider(output, event.getLookupProvider()));
     }
 
 }

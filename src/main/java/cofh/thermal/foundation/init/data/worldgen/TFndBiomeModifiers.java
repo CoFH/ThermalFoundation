@@ -37,17 +37,16 @@ public class TFndBiomeModifiers {
 
     public static void init(BootstapContext<BiomeModifier> context) {
 
-        var isOverworldTag = context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_OVERWORLD);
         var isBadlandsTag = context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_BADLANDS);
+        var isOverworldTag = context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_OVERWORLD);
 
+        var isBambooJungle = HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.BAMBOO_JUNGLE));
         var isDesert = HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.DESERT));
         var isFlowerForest = HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.FLOWER_FOREST));
-        var isBambooJungle = HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.BAMBOO_JUNGLE));
         var isSparseJungle = HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.SPARSE_JUNGLE));
 
-        HolderSet<Biome> oilSandsBiomes = holderSetIntersection(isOverworldTag, holderSetUnion(isDesert, isBadlandsTag));
-
-        HolderSet<Biome> rubberwoodTreeBiomes = holderSetUnion(isFlowerForest, isBambooJungle, isSparseJungle);
+        var oilSandsBiomes = holderSetIntersection(isOverworldTag, holderSetUnion(isDesert, isBadlandsTag));
+        var rubberwoodTreeBiomes = holderSetUnion(isFlowerForest, isBambooJungle, isSparseJungle);
 
         registerOre(context, APATITE_ORE, isOverworldTag, TFndFeatures.Placed.APATITE_ORE);
         registerOre(context, CINNABAR_ORE, isOverworldTag, TFndFeatures.Placed.CINNABAR_ORE);

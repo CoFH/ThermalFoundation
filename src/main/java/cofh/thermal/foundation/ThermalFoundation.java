@@ -28,7 +28,7 @@ import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_B
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_CHEST_BOAT_LAYER;
 import static cofh.thermal.foundation.init.TFndIDs.ID_POTTED_RUBBERWOOD_SAPLING;
 import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_SAPLING;
-import static cofh.thermal.lib.init.ThermalFlags.*;
+import static cofh.thermal.lib.util.ThermalFlags.*;
 
 @Mod (ID_THERMAL_FOUNDATION)
 public class ThermalFoundation {
