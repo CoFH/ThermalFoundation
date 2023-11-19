@@ -28,6 +28,10 @@
   },
   "placement": [
     {
+      "type": "thermal:config",
+      "config": "oil_sand"
+    },
+    {
       "type": "minecraft:count",
       "count": 2
     },

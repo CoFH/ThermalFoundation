@@ -1,0 +1,6 @@
+{
+  "parent": "cofh_core:block/trapdoor_top",
+  "textures": {
+    "texture": "thermal:block/rubberwood_trapdoor"
+  }
+}

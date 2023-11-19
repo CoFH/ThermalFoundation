@@ -1,0 +1,16 @@
+{
+  "type": "forge:add_features",
+  "biomes": {
+    "type": "forge:or",
+    "values": [
+      "minecraft:flower_forest",
+      "minecraft:bamboo_jungle",
+      "minecraft:sparse_jungle"
+    ]
+  },
+  "features": [
+    "thermal:rubberwood_tree",
+    "thermal:mega_rubberwood_tree"
+  ],
+  "step": "vegetal_decoration"
+}

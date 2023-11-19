@@ -28,6 +28,10 @@
   },
   "placement": [
     {
+      "type": "thermal:config",
+      "config": "cinnabar_ore"
+    },
+    {
       "type": "minecraft:count",
       "count": 1
     },

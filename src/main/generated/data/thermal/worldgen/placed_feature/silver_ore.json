@@ -28,6 +28,10 @@
   },
   "placement": [
     {
+      "type": "thermal:config",
+      "config": "silver_ore"
+    },
+    {
       "type": "minecraft:count",
       "count": 4
     },

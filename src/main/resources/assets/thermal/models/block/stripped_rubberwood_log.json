@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "thermal:block/stripped_rubberwood_log_top",
+    "side": "thermal:block/stripped_rubberwood_log"
+  }
+}

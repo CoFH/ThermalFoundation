@@ -28,6 +28,10 @@
   },
   "placement": [
     {
+      "type": "thermal:config",
+      "config": "niter_ore"
+    },
+    {
       "type": "minecraft:count",
       "count": 2
     },

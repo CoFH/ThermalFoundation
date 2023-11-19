@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "thermal:block/rubberwood_planks"
+  }
+}

@@ -2,10 +2,12 @@ package cofh.thermal.foundation.data;
 
 import cofh.lib.tags.BlockTagsCoFH;
 import cofh.lib.tags.ItemTagsCoFH;
+import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -14,7 +16,7 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.core.util.RegistrationHelper.raw;
-import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.foundation.init.TFndIDs.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
 public class TFndTagsProvider {
@@ -161,8 +163,7 @@ public class TFndTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ELECTRUM_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_INVAR_BLOCK));
 
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_APATITE_BLOCK));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_CINNABAR_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_HOE).add(BLOCKS.get(ID_RUBBERWOOD_LEAVES));
 
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
@@ -222,6 +223,48 @@ public class TFndTagsProvider {
                     BlockTagsCoFH.STORAGE_BLOCKS_RUBY,
                     BlockTagsCoFH.STORAGE_BLOCKS_SAPPHIRE
             );
+            // endregion
+
+            // region WOOD
+            tag(BlockTags.LEAVES).add(BLOCKS.get("rubberwood_leaves"));
+            tag(BlockTags.SAPLINGS).add(BLOCKS.get("rubberwood_sapling"));
+
+            tag(BlockTags.DOORS).add(BLOCKS.get("rubberwood_door"));
+            tag(BlockTags.FENCES).add(BLOCKS.get("rubberwood_fence"));
+            tag(BlockTags.FENCE_GATES).add(BLOCKS.get("rubberwood_fence_gate"));
+            tag(BlockTags.PLANKS).add(BLOCKS.get("rubberwood_planks"));
+            tag(BlockTags.SLABS).add(BLOCKS.get("rubberwood_slab"));
+            tag(BlockTags.STAIRS).add(BLOCKS.get("rubberwood_stairs"));
+
+            tag(BlockTags.WOODEN_BUTTONS).add(BLOCKS.get("rubberwood_button"));
+            tag(BlockTags.WOODEN_DOORS).add(BLOCKS.get("rubberwood_door"));
+            tag(BlockTags.WOODEN_FENCES).add(BLOCKS.get("rubberwood_fence"));
+            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(BLOCKS.get("rubberwood_pressure_plate"));
+            tag(BlockTags.WOODEN_SLABS).add(BLOCKS.get("rubberwood_slab"));
+            tag(BlockTags.WOODEN_STAIRS).add(BLOCKS.get("rubberwood_stairs"));
+            tag(BlockTags.WOODEN_TRAPDOORS).add(BLOCKS.get("rubberwood_trapdoor"));
+
+            //            tag(BlockTags.NON_FLAMMABLE_WOOD).add(
+            //                    BLOCKS.get("rubberwood_door"),
+            //                    BLOCKS.get("rubberwood_fence"),
+            //                    BLOCKS.get("rubberwood_fence_gate"),
+            //                    BLOCKS.get(ID_RUBBERWOOD_LOG),
+            //                    BLOCKS.get("rubberwood_planks"),
+            //                    BLOCKS.get("rubberwood_slab"),
+            //                    BLOCKS.get("rubberwood_stairs"),
+            //                    BLOCKS.get(ID_RUBBERWOOD_WOOD),
+            //                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_LOG),
+            //                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_WOOD)
+            //            );
+
+            tag(ThermalTags.Blocks.LOGS_RUBBERWOOD).add(
+                    BLOCKS.get(ID_RUBBERWOOD_LOG),
+                    BLOCKS.get(ID_RUBBERWOOD_WOOD),
+                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_LOG),
+                    BLOCKS.get(ID_STRIPPED_RUBBERWOOD_WOOD)
+            );
+            tag(BlockTags.LOGS).addTag(ThermalTags.Blocks.LOGS_RUBBERWOOD);
+
             // endregion
         }
 
@@ -309,6 +352,24 @@ public class TFndTagsProvider {
                     ItemTagsCoFH.STORAGE_BLOCKS_RUBY,
                     ItemTagsCoFH.STORAGE_BLOCKS_SAPPHIRE
             );
+
+            copy(BlockTags.LEAVES, ItemTags.LEAVES);
+            copy(BlockTags.LOGS, ItemTags.LOGS);
+            copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
+
+            copy(BlockTags.DOORS, ItemTags.DOORS);
+            copy(BlockTags.FENCES, ItemTags.FENCES);
+            copy(BlockTags.PLANKS, ItemTags.PLANKS);
+            copy(BlockTags.SLABS, ItemTags.SLABS);
+            copy(BlockTags.STAIRS, ItemTags.STAIRS);
+
+            copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
+            copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
+            copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
+            copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
+
+            // copy(BlockTags.NON_FLAMMABLE_WOOD, ItemTags.NON_FLAMMABLE_WOOD);
+            copy(ThermalTags.Blocks.LOGS_RUBBERWOOD, ThermalTags.Items.LOGS_RUBBERWOOD);
 
             tag(ItemTagsCoFH.COINS_LEAD).add(ITEMS.get("lead_coin"));
             tag(ItemTagsCoFH.COINS_NICKEL).add(ITEMS.get("nickel_coin"));

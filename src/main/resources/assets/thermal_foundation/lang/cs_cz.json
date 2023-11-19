@@ -1,0 +1,145 @@
+{
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Foundation",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.apatite_ore": "Apatitová ruda",
+  "block.thermal.cinnabar_ore": "Cinabaritová ruda",
+  "block.thermal.niter_ore": "Ledková ruda",
+  "block.thermal.sulfur_ore": "Sírová ruda",
+
+  "block.thermal.lead_ore": "Olovová ruda",
+  "block.thermal.nickel_ore": "Niklová ruda",
+  "block.thermal.silver_ore": "Stříbrná ruda",
+  "block.thermal.tin_ore": "Cínová ruda",
+
+  "block.thermal.ruby_ore": "Rubínová ruda",
+  "block.thermal.sapphire_ore": "Safírová ruda",
+
+  "block.thermal.deepslate_apatite_ore": "Hlubinná apatitová ruda",
+  "block.thermal.deepslate_cinnabar_ore": "Hlubinná cinabaritová ruda",
+  "block.thermal.deepslate_niter_ore": "Hlubinná ledková ruda",
+  "block.thermal.deepslate_sulfur_ore": "Hlubinná sírová ruda",
+
+  "block.thermal.deepslate_lead_ore": "Hlubinná olovová ruda",
+  "block.thermal.deepslate_nickel_ore": "Hlubinná niklová ruda",
+  "block.thermal.deepslate_silver_ore": "HLubinná stříbrná ruda",
+  "block.thermal.deepslate_tin_ore": "Hlubinná cínová ruda",
+
+  "block.thermal.deepslate_ruby_ore": "Hlubinná rubínová ruda",
+  "block.thermal.deepslate_sapphire_ore": "Hlubinná safírová ruda",
+
+  "block.thermal.oil_sand": "Bituminózní písek",
+  "block.thermal.oil_red_sand": "Bituminózní červený písek",
+
+  "block.thermal.lead_block": "Blok z olova",
+  "block.thermal.nickel_block": "Blok z niklu",
+  "block.thermal.silver_block": "Blok ze stříbra",
+  "block.thermal.tin_block": "Blok z cínu",
+
+  "block.thermal.ruby_block": "Blok z rubínu",
+  "block.thermal.sapphire_block": "Blok ze safíru",
+
+  "block.thermal.bronze_block": "Blok z bronzu",
+  "block.thermal.constantan_block": "Blok z konstantanu",
+  "block.thermal.electrum_block": "Blok z elektra",
+  "block.thermal.invar_block": "Blok z invaru",
+
+  "block.thermal.rubberwood_button": "Gumovníkové tlačítko",
+  "block.thermal.rubberwood_door": "Gumovníkové dveře",
+  "block.thermal.rubberwood_fence": "Gumovníkový plot",
+  "block.thermal.rubberwood_fence_gate": "Gumovníková branka",
+  "block.thermal.rubberwood_leaves": "Gumovníkové listy",
+  "block.thermal.rubberwood_log": "Gumovníkový kmen",
+  "block.thermal.rubberwood_planks": "Gumovníková prkna",
+  "block.thermal.rubberwood_pressure_plate": "Gumovníková nášlapná deska",
+  "block.thermal.rubberwood_sapling": "Sazenice gumovníku",
+  "block.thermal.rubberwood_slab": "Gumovníkový půlblok",
+  "block.thermal.rubberwood_sign": "Gumovníková cedule",
+  "block.thermal.rubberwood_stairs": "Gumovníkové schody",
+  "block.thermal.rubberwood_trapdoor": "Gumovníkový poklop",
+  "block.thermal.rubberwood_wall_sign": "Gumovníková nástěnná cedule",
+  "block.thermal.rubberwood_wood": "Rubberwood Wood",
+
+  "block.thermal.potted_rubberwood_sapling": "Gumovníková sazenice v květináči",
+  "block.thermal.stripped_rubberwood_log": "Oloupaný gumovníkový kmen",
+  "block.thermal.stripped_rubberwood_wood": "Oloupané gumovníkové dřevo",
+
+  "entity.thermal.rubberwood_chest_boat": "Loď s truhlou",
+
+  "item.thermal.raw_lead": "Surové olovo",
+  "item.thermal.raw_nickel": "Surový nikl",
+  "item.thermal.raw_silver": "Surové stříbro",
+  "item.thermal.raw_tin": "Surový cín",
+
+  "item.thermal.lead_coin": "Olovněná mince",
+  "item.thermal.lead_dust": "Olovněný prášek",
+  "item.thermal.lead_gear": "Olovněné ozubené kolo",
+  "item.thermal.lead_ingot": "Olovněný ingot",
+  "item.thermal.lead_nugget": "Olovněný nuget",
+  "item.thermal.lead_plate": "Olovněný plát",
+
+  "item.thermal.nickel_coin": "Niklová mince",
+  "item.thermal.nickel_dust": "Niklový prášek",
+  "item.thermal.nickel_gear": "Niklové ozubené kolo",
+  "item.thermal.nickel_ingot": "Niklový ingot",
+  "item.thermal.nickel_nugget": "Niklový nuget",
+  "item.thermal.nickel_plate": "Niklový plát",
+
+  "item.thermal.silver_coin": "Stříbrná mince",
+  "item.thermal.silver_dust": "Stříbrný prášek",
+  "item.thermal.silver_gear": "Stříbrné ozubené kolo",
+  "item.thermal.silver_ingot": "Stříbrný ingot",
+  "item.thermal.silver_nugget": "Stříbrný nuget",
+  "item.thermal.silver_plate": "Stříbrný plát",
+
+  "item.thermal.tin_coin": "Cínová mince",
+  "item.thermal.tin_dust": "Cínový prášek",
+  "item.thermal.tin_gear": "Cínové ozubené kolo",
+  "item.thermal.tin_ingot": "Cínový ingot",
+  "item.thermal.tin_nugget": "Cínový nuget",
+  "item.thermal.tin_plate": "Cínový plát",
+
+  "item.thermal.ruby": "Rubín",
+  "item.thermal.ruby_dust": "Rubínový prášek",
+  "item.thermal.ruby_gear": "Rubínové ozubené kolo",
+  "item.thermal.ruby_nugget": "Rubínový nuget",
+  "item.thermal.ruby_plate": "Rubínový plát",
+
+  "item.thermal.sapphire": "Safír",
+  "item.thermal.sapphire_dust": "Safírový prášek",
+  "item.thermal.sapphire_gear": "Safírové ozubené kolo",
+  "item.thermal.sapphire_nugget": "Safírový nuget",
+  "item.thermal.sapphire_plate": "Safírový plát",
+
+  "item.thermal.bronze_coin": "Bronzová mince",
+  "item.thermal.bronze_dust": "Bronzový prášek",
+  "item.thermal.bronze_gear": "Bronzové ozubené kolo",
+  "item.thermal.bronze_ingot": "Bronzový ingot",
+  "item.thermal.bronze_nugget": "Bronzový nuget",
+  "item.thermal.bronze_plate": "Bronzový plát",
+
+  "item.thermal.constantan_coin": "Konstantanová mince",
+  "item.thermal.constantan_dust": "Konstantanový prášek",
+  "item.thermal.constantan_gear": "Konstantanové ozubené kolo",
+  "item.thermal.constantan_ingot": "Konstantanový ingot",
+  "item.thermal.constantan_nugget": "Konstantanový nuget",
+  "item.thermal.constantan_plate": "Konstantanový plát",
+
+  "item.thermal.electrum_coin": "Elektrová mince",
+  "item.thermal.electrum_dust": "Elektrový prášek",
+  "item.thermal.electrum_gear": "Elektrové ozubené kolo",
+  "item.thermal.electrum_ingot": "Elektrový ingot",
+  "item.thermal.electrum_nugget": "Elektrový nuget",
+  "item.thermal.electrum_plate": "Elektrový plát",
+
+  "item.thermal.invar_coin": "Invarová mince",
+  "item.thermal.invar_dust": "Invarový prášek",
+  "item.thermal.invar_gear": "Invarové ozubené kolo",
+  "item.thermal.invar_ingot": "Invarový ingot",
+  "item.thermal.invar_nugget": "Invarový nuget",
+  "item.thermal.invar_plate": "Invarový plát",
+
+  "item.thermal.rubberwood_boat": "Gumovníková loď",
+  "item.thermal.rubberwood_chest_boat": "Gumovníková loď s truhlou"
+}
