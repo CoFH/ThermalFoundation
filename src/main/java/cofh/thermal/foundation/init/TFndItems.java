@@ -6,6 +6,7 @@ import cofh.core.common.item.BoatItemCoFH;
 import cofh.lib.common.item.SignItemCoFH;
 import net.minecraft.world.item.Item;
 
+import static cofh.lib.util.Utils.itemProperties;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.init.registries.ThermalCreativeTabs.itemsTab;
@@ -36,9 +37,9 @@ public class TFndItems {
         registerGemSet("ruby", ID_THERMAL_FOUNDATION);
         registerGemSet("sapphire", ID_THERMAL_FOUNDATION);
 
-        toolsTab(250, registerItem(ID_RUBBERWOOD_BOAT, () -> new BoatItemCoFH(RUBBERWOOD_BOAT, BoatCoFH::new, new Item.Properties()).setModId(ID_THERMAL_FOUNDATION)));
-        toolsTab(250, registerItem(ID_RUBBERWOOD_CHEST_BOAT, () -> new BoatItemCoFH(RUBBERWOOD_CHEST_BOAT, ChestBoatCoFH::new, new Item.Properties()).setModId(ID_THERMAL_FOUNDATION)));
-        itemsTab(registerItem("rubberwood_sign", () -> new SignItemCoFH(new Item.Properties().stacksTo(16), BLOCKS.get("rubberwood_sign"), BLOCKS.get("rubberwood_wall_sign")).setModId(ID_THERMAL_FOUNDATION)));
+        toolsTab(250, registerItem(ID_RUBBERWOOD_BOAT, () -> new BoatItemCoFH(RUBBERWOOD_BOAT, BoatCoFH::new, itemProperties()).setModId(ID_THERMAL_FOUNDATION)));
+        toolsTab(250, registerItem(ID_RUBBERWOOD_CHEST_BOAT, () -> new BoatItemCoFH(RUBBERWOOD_CHEST_BOAT, ChestBoatCoFH::new, itemProperties()).setModId(ID_THERMAL_FOUNDATION)));
+        itemsTab(registerItem("rubberwood_sign", () -> new SignItemCoFH(itemProperties().stacksTo(16), BLOCKS.get("rubberwood_sign"), BLOCKS.get("rubberwood_wall_sign")).setModId(ID_THERMAL_FOUNDATION)));
     }
 
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.level.material.PushReaction;
 import java.util.HashMap;
 import java.util.Map;
 
+import static cofh.lib.util.Utils.itemProperties;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -101,10 +102,10 @@ public class TFndBlocks {
         blocksTab(registerBlock(deepslate(ID_SAPPHIRE_ORE), () -> OreBlockCoFH.createDeepslateOre().xp(3, 7), ID_THERMAL_FOUNDATION));
 
         blocksTab(registerBlock(ID_OIL_SAND, () -> new SandBlock(14406560, copy(Blocks.SAND)),
-                () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_SAND), new Item.Properties()).setBurnTime(2400).setModId(ID_THERMAL_FOUNDATION)));
+                () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_SAND), itemProperties()).setBurnTime(2400).setModId(ID_THERMAL_FOUNDATION)));
 
         blocksTab(registerBlock(ID_OIL_RED_SAND, () -> new SandBlock(11098145, copy(Blocks.RED_SAND)),
-                () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), new Item.Properties()).setBurnTime(2400).setModId(ID_THERMAL_FOUNDATION)));
+                () -> new BlockItemCoFH(BLOCKS.get(ID_OIL_RED_SAND), itemProperties()).setBurnTime(2400).setModId(ID_THERMAL_FOUNDATION)));
     }
 
     private static void registerStorage() {
