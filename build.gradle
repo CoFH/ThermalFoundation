@@ -107,10 +107,8 @@ repositories {
 dependencies {
     minecraft "net.neoforged:forge:${mc_version}-${forge_version}"
 
-    // implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}.+")
-    implementation fg.deobf("com.teamcofh:cofh_core:1.19.2-${cofh_core_version}.+")
-    // implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}.+")
-    implementation fg.deobf("com.teamcofh:thermal_core:1.19.2-${thermal_core_version}.+") {
+    implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}.+")
+    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}.+") {
         jarJar.ranged(it, "[${mc_version}-${thermal_core_version},${mc_version}-${thermal_core_max_version}]")
     }
 

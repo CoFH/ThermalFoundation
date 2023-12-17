@@ -4,7 +4,6 @@ import cofh.core.common.entity.BoatCoFH;
 import cofh.core.common.entity.ChestBoatCoFH;
 import cofh.core.common.item.BoatItemCoFH;
 import cofh.lib.common.item.SignItemCoFH;
-import net.minecraft.world.item.Item;
 
 import static cofh.lib.util.Utils.itemProperties;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;

@@ -6,7 +6,6 @@ import cofh.lib.util.Utils;
 import cofh.thermal.foundation.common.world.RubberTreeGrower;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
