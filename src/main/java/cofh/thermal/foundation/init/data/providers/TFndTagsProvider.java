@@ -264,6 +264,16 @@ public class TFndTagsProvider {
             );
             tag(BlockTags.LOGS).addTag(ThermalTags.Blocks.LOGS_RUBBERWOOD);
 
+            tag(BlockTags.STANDING_SIGNS).add(BLOCKS.get("rubberwood_sign"));
+            tag(BlockTags.WALL_SIGNS).add(BLOCKS.get("rubberwood_wall_sign"));
+            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get("rubberwood_sign"));
+            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get("rubberwood_wall_sign"));
+
+            tag(BlockTags.CEILING_HANGING_SIGNS).add(BLOCKS.get("rubberwood_hanging_sign"));
+            tag(BlockTags.WALL_HANGING_SIGNS).add(BLOCKS.get("rubberwood_wall_hanging_sign"));
+            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get("rubberwood_hanging_sign"));
+            tag(BlockTags.MINEABLE_WITH_AXE).add(BLOCKS.get("rubberwood_wall_hanging_sign"));
+
             // endregion
         }
 
@@ -363,6 +373,13 @@ public class TFndTagsProvider {
 
             // copy(BlockTags.NON_FLAMMABLE_WOOD, ItemTags.NON_FLAMMABLE_WOOD);
             copy(ThermalTags.Blocks.LOGS_RUBBERWOOD, ThermalTags.Items.LOGS_RUBBERWOOD);
+
+            tag(ItemTags.SIGNS).add(ITEMS.get("rubberwood_sign"));
+            tag(ItemTags.HANGING_SIGNS).add(ITEMS.get("rubberwood_hanging_sign"));
+
+            tag(ItemTags.BOATS).add(ITEMS.get(ID_RUBBERWOOD_BOAT));
+            tag(ItemTags.BOATS).add(ITEMS.get(ID_RUBBERWOOD_CHEST_BOAT));
+            tag(ItemTags.CHEST_BOATS).add(ITEMS.get(ID_RUBBERWOOD_CHEST_BOAT));
 
             tag(ItemTagsCoFH.COINS_LEAD).add(ITEMS.get("lead_coin"));
             tag(ItemTagsCoFH.COINS_NICKEL).add(ITEMS.get("nickel_coin"));
