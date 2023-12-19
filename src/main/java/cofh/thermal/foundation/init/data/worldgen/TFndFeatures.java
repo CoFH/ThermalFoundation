@@ -32,7 +32,7 @@ import java.util.List;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
-import static cofh.thermal.foundation.init.TFndIDs.*;
+import static cofh.thermal.foundation.init.registries.TFndIDs.*;
 
 public class TFndFeatures {
 

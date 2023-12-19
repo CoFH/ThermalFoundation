@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_SAPLING;
+import static cofh.thermal.foundation.init.registries.TFndIDs.ID_RUBBERWOOD_SAPLING;
 
 @Mod.EventBusSubscriber (modid = ID_THERMAL_FOUNDATION)
 public class TFndCommonSetupEvents {

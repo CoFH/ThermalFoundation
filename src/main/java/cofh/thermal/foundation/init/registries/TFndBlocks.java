@@ -1,4 +1,4 @@
-package cofh.thermal.foundation.init;
+package cofh.thermal.foundation.init.registries;
 
 import cofh.core.common.item.BlockItemCoFH;
 import cofh.lib.common.block.OreBlockCoFH;
@@ -9,6 +9,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -22,7 +23,7 @@ import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.registries.ThermalCreativeTabs.blocksTab;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.foundation.ThermalFoundation.WOOD_TYPE_RUBBERWOOD;
-import static cofh.thermal.foundation.init.TFndIDs.*;
+import static cofh.thermal.foundation.init.registries.TFndIDs.*;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of;
 import static net.minecraft.world.level.material.MapColor.*;
@@ -60,11 +61,17 @@ public class TFndBlocks {
         }
         // SIGN TILE STUFF
         {
-            ImmutableSet.Builder<Block> builder = ImmutableSet.builder();
-            builder.addAll(BlockEntityType.SIGN.validBlocks);
-            builder.add(BLOCKS.get("rubberwood_sign"));
-            builder.add(BLOCKS.get("rubberwood_wall_sign"));
-            BlockEntityType.SIGN.validBlocks = builder.build();
+            ImmutableSet.Builder<Block> signs = ImmutableSet.builder();
+            signs.addAll(BlockEntityType.SIGN.validBlocks);
+            signs.add(BLOCKS.get("rubberwood_sign"));
+            signs.add(BLOCKS.get("rubberwood_wall_sign"));
+            BlockEntityType.SIGN.validBlocks = signs.build();
+
+            ImmutableSet.Builder<Block> hangingSigns = ImmutableSet.builder();
+            hangingSigns.addAll(BlockEntityType.HANGING_SIGN.validBlocks);
+            hangingSigns.add(BLOCKS.get("rubberwood_hanging_sign"));
+            hangingSigns.add(BLOCKS.get("rubberwood_wall_hanging_sign"));
+            BlockEntityType.HANGING_SIGN.validBlocks = hangingSigns.build();
         }
         // POTTED PLANTS
         {
@@ -142,8 +149,11 @@ public class TFndBlocks {
         }
         registerWoodBlockSet("rubberwood", TERRACOTTA_GREEN, 1.5F, 2.5F, SoundType.WOOD, WOOD_TYPE_RUBBERWOOD, ID_THERMAL_FOUNDATION);
 
-        registerBlockOnly("rubberwood_sign", () -> new StandingSignBlock(of().noCollission().strength(1.0F).sound(SoundType.WOOD), WOOD_TYPE_RUBBERWOOD));
-        registerBlockOnly("rubberwood_wall_sign", () -> new WallSignBlock(of().noCollission().strength(1.0F).sound(SoundType.WOOD).lootFrom(BLOCKS.getSup("rubberwood_sign")), WOOD_TYPE_RUBBERWOOD));
+        registerBlockOnly("rubberwood_sign", () -> new StandingSignBlock(of().forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD), WOOD_TYPE_RUBBERWOOD));
+        registerBlockOnly("rubberwood_wall_sign", () -> new WallSignBlock(of().forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD).lootFrom(BLOCKS.getSup("rubberwood_sign")), WOOD_TYPE_RUBBERWOOD));
+
+        registerBlockOnly("rubberwood_hanging_sign", () -> new CeilingHangingSignBlock(of().forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD), WOOD_TYPE_RUBBERWOOD));
+        registerBlockOnly("rubberwood_wall_hanging_sign", () -> new WallHangingSignBlock(of().forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD).lootFrom(BLOCKS.getSup("rubberwood_hanging_sign")), WOOD_TYPE_RUBBERWOOD));
     }
     // endregion
 }

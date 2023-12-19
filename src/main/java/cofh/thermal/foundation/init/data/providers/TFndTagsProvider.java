@@ -21,7 +21,7 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
 import static cofh.thermal.core.util.RegistrationHelper.raw;
-import static cofh.thermal.foundation.init.TFndIDs.*;
+import static cofh.thermal.foundation.init.registries.TFndIDs.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
 public class TFndTagsProvider {

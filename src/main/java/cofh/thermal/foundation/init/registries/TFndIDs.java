@@ -1,4 +1,4 @@
-package cofh.thermal.foundation.init;
+package cofh.thermal.foundation.init.registries;
 
 public class TFndIDs {
 

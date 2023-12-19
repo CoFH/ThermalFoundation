@@ -1,10 +1,8 @@
 package cofh.thermal.foundation;
 
-// import cofh.thermal.foundation.data.TFndFeatures;
-
-import cofh.thermal.foundation.init.TFndBlocks;
-import cofh.thermal.foundation.init.TFndEntities;
-import cofh.thermal.foundation.init.TFndItems;
+import cofh.thermal.foundation.init.registries.TFndBlocks;
+import cofh.thermal.foundation.init.registries.TFndEntities;
+import cofh.thermal.foundation.init.registries.TFndItems;
 import cofh.thermal.foundation.util.TFndProxy;
 import cofh.thermal.foundation.util.TFndProxyClient;
 import net.minecraft.client.model.BoatModel;
@@ -26,8 +24,8 @@ import static cofh.lib.util.constants.ModIds.ID_THERMAL_FOUNDATION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_BOAT_LAYER;
 import static cofh.thermal.foundation.client.model.geom.ModelLayers.RUBBERWOOD_CHEST_BOAT_LAYER;
-import static cofh.thermal.foundation.init.TFndIDs.ID_POTTED_RUBBERWOOD_SAPLING;
-import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_SAPLING;
+import static cofh.thermal.foundation.init.registries.TFndIDs.ID_POTTED_RUBBERWOOD_SAPLING;
+import static cofh.thermal.foundation.init.registries.TFndIDs.ID_RUBBERWOOD_SAPLING;
 import static cofh.thermal.lib.util.ThermalFlags.*;
 
 @Mod (ID_THERMAL_FOUNDATION)
@@ -81,7 +79,6 @@ public class ThermalFoundation {
     private void commonSetup(final FMLCommonSetupEvent event) {
 
         event.enqueueWork(TFndBlocks::setup);
-        // event.enqueueWork(TFndFeatures::setup);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

@@ -49,6 +49,7 @@
   "block.thermal.rubberwood_door": "Rubberwood Door",
   "block.thermal.rubberwood_fence": "Rubberwood Fence",
   "block.thermal.rubberwood_fence_gate": "Rubberwood Fence Gate",
+  "block.thermal.rubberwood_hanging_sign": "Rubberwood Hanging Sign",
   "block.thermal.rubberwood_leaves": "Rubberwood Leaves",
   "block.thermal.rubberwood_log": "Rubberwood Log",
   "block.thermal.rubberwood_planks": "Rubberwood Planks",
@@ -59,6 +60,7 @@
   "block.thermal.rubberwood_stairs": "Rubberwood Stairs",
   "block.thermal.rubberwood_trapdoor": "Rubberwood Trapdoor",
   "block.thermal.rubberwood_wall_sign": "Rubberwood Wall Sign",
+  "block.thermal.rubberwood_wall_hanging_sign": "Rubberwood Wall Hanging Sign",
   "block.thermal.rubberwood_wood": "Rubberwood Wood",
 
   "block.thermal.potted_rubberwood_sapling": "Potted Rubberwood Sapling",

@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.foundation.init.TFndIDs.*;
+import static cofh.thermal.foundation.init.registries.TFndIDs.*;
 import static net.minecraft.data.recipes.RecipeCategory.MISC;
 
 public class TFndRecipeProvider extends RecipeProviderCoFH {

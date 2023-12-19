@@ -1,4 +1,4 @@
-package cofh.thermal.foundation.init;
+package cofh.thermal.foundation.init.registries;
 
 import cofh.core.common.entity.BoatCoFH;
 import cofh.core.common.entity.ChestBoatCoFH;
@@ -8,8 +8,8 @@ import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraftforge.registries.RegistryObject;
 
 import static cofh.thermal.core.ThermalCore.ENTITIES;
-import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_BOAT;
-import static cofh.thermal.foundation.init.TFndIDs.ID_RUBBERWOOD_CHEST_BOAT;
+import static cofh.thermal.foundation.init.registries.TFndIDs.ID_RUBBERWOOD_BOAT;
+import static cofh.thermal.foundation.init.registries.TFndIDs.ID_RUBBERWOOD_CHEST_BOAT;
 
 public class TFndEntities {
 
