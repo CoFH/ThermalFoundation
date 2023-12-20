@@ -1,7 +1,7 @@
 {
   "type": "thermal:sawmill",
   "ingredient": {
-    "tag": "thermal:rubberwood_logs"
+    "tag": "forge:rubberwood_logs"
   },
   "result": [
     {
