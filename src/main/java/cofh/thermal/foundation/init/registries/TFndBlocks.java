@@ -116,33 +116,33 @@ public class TFndBlocks {
 
     private static void registerStorage() {
 
-        blocksTab(registerBlock(raw(ID_TIN_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_LIGHT_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(raw(ID_LEAD_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(raw(ID_SILVER_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_LIGHT_GRAY).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(raw(ID_NICKEL_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_YELLOW).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(raw(ID_TIN_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_LIGHT_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(raw(ID_LEAD_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_BLUE).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(raw(ID_SILVER_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_LIGHT_GRAY).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(raw(ID_NICKEL_BLOCK), () -> new Block(of().mapColor(TERRACOTTA_YELLOW).strength(5.0F, 6.0F).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
 
-        blocksTab(registerBlock(ID_TIN_BLOCK, () -> new Block(of().mapColor(RAW_IRON).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_LEAD_BLOCK, () -> new Block(of().mapColor(COLOR_PURPLE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_SILVER_BLOCK, () -> new Block(of().mapColor(RAW_IRON).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_NICKEL_BLOCK, () -> new Block(of().mapColor(RAW_IRON).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(ID_TIN_BLOCK, () -> new Block(of().mapColor(RAW_IRON).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(ID_LEAD_BLOCK, () -> new Block(of().mapColor(COLOR_PURPLE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(ID_SILVER_BLOCK, () -> new Block(of().mapColor(RAW_IRON).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(10, registerBlock(ID_NICKEL_BLOCK, () -> new Block(of().mapColor(RAW_IRON).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
 
-        blocksTab(registerBlock(ID_BRONZE_BLOCK, () -> new Block(of().mapColor(COLOR_ORANGE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_ELECTRUM_BLOCK, () -> new Block(of().mapColor(GOLD).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_INVAR_BLOCK, () -> new Block(of().mapColor(COLOR_GRAY).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_CONSTANTAN_BLOCK, () -> new Block(of().mapColor(COLOR_ORANGE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(20, registerBlock(ID_BRONZE_BLOCK, () -> new Block(of().mapColor(COLOR_ORANGE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(20, registerBlock(ID_ELECTRUM_BLOCK, () -> new Block(of().mapColor(GOLD).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(20, registerBlock(ID_INVAR_BLOCK, () -> new Block(of().mapColor(COLOR_GRAY).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(20, registerBlock(ID_CONSTANTAN_BLOCK, () -> new Block(of().mapColor(COLOR_ORANGE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
 
-        blocksTab(registerBlock(ID_RUBY_BLOCK, () -> new Block(of().mapColor(COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_SAPPHIRE_BLOCK, () -> new Block(of().mapColor(COLOR_BLUE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(40, registerBlock(ID_RUBY_BLOCK, () -> new Block(of().mapColor(COLOR_RED).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
+        blocksTab(40, registerBlock(ID_SAPPHIRE_BLOCK, () -> new Block(of().mapColor(COLOR_BLUE).strength(5.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()), ID_THERMAL_FOUNDATION));
     }
 
     private static void registerWoodBlocks() {
 
-        blocksTab(registerBlock(ID_RUBBERWOOD_LOG, () -> Blocks.log(TERRACOTTA_GREEN, QUARTZ), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_STRIPPED_RUBBERWOOD_LOG, () -> Blocks.log(TERRACOTTA_GREEN, TERRACOTTA_GREEN), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_RUBBERWOOD_WOOD, () -> new RotatedPillarBlock(of().mapColor(QUARTZ).strength(2.0F).sound(SoundType.WOOD)), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_STRIPPED_RUBBERWOOD_WOOD, () -> new RotatedPillarBlock(of().mapColor(TERRACOTTA_GREEN).strength(2.0F).sound(SoundType.WOOD)), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_RUBBERWOOD_SAPLING, () -> new SaplingBlock(new RubberTreeGrower(), of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)), ID_THERMAL_FOUNDATION));
-        blocksTab(registerBlock(ID_RUBBERWOOD_LEAVES, () -> Blocks.leaves(SoundType.GRASS), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_RUBBERWOOD_LOG, () -> Blocks.log(TERRACOTTA_GREEN, QUARTZ), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_STRIPPED_RUBBERWOOD_LOG, () -> Blocks.log(TERRACOTTA_GREEN, TERRACOTTA_GREEN), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_RUBBERWOOD_WOOD, () -> new RotatedPillarBlock(of().mapColor(QUARTZ).strength(2.0F).sound(SoundType.WOOD)), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_STRIPPED_RUBBERWOOD_WOOD, () -> new RotatedPillarBlock(of().mapColor(TERRACOTTA_GREEN).strength(2.0F).sound(SoundType.WOOD)), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_RUBBERWOOD_SAPLING, () -> new SaplingBlock(new RubberTreeGrower(), of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_RUBBERWOOD_LEAVES, () -> Blocks.leaves(SoundType.GRASS), ID_THERMAL_FOUNDATION));
 
         if (Blocks.FLOWER_POT instanceof FlowerPotBlock) {
             registerBlockOnly(ID_POTTED_RUBBERWOOD_SAPLING, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOCKS.getSup(ID_RUBBERWOOD_SAPLING), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
