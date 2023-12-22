@@ -1,18 +1,18 @@
 {
   "values": [
-    "#forge:storage_blocks/raw_lead",
-    "#forge:storage_blocks/raw_nickel",
-    "#forge:storage_blocks/raw_silver",
-    "#forge:storage_blocks/raw_tin",
-    "#forge:storage_blocks/lead",
-    "#forge:storage_blocks/nickel",
-    "#forge:storage_blocks/silver",
-    "#forge:storage_blocks/tin",
     "#forge:storage_blocks/bronze",
     "#forge:storage_blocks/constantan",
     "#forge:storage_blocks/electrum",
     "#forge:storage_blocks/invar",
+    "#forge:storage_blocks/lead",
+    "#forge:storage_blocks/nickel",
+    "#forge:storage_blocks/raw_lead",
+    "#forge:storage_blocks/raw_nickel",
+    "#forge:storage_blocks/raw_silver",
+    "#forge:storage_blocks/raw_tin",
     "#forge:storage_blocks/ruby",
-    "#forge:storage_blocks/sapphire"
+    "#forge:storage_blocks/sapphire",
+    "#forge:storage_blocks/silver",
+    "#forge:storage_blocks/tin"
   ]
 }

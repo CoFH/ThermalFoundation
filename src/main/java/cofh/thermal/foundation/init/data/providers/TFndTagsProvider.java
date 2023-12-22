@@ -1,7 +1,7 @@
 package cofh.thermal.foundation.init.data.providers;
 
-import cofh.lib.init.tags.BlockTagsCoFH;
 import cofh.lib.init.tags.ItemTagsCoFH;
+import cofh.thermal.foundation.init.registries.TFndTags;
 import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -38,189 +38,165 @@ public class TFndTagsProvider {
         protected void addTags(HolderLookup.Provider pProvider) {
 
             tag(BlockTags.BEACON_BASE_BLOCKS).add(
-                    BLOCKS.get(ID_LEAD_BLOCK),
-                    BLOCKS.get(ID_NICKEL_BLOCK),
-                    BLOCKS.get(ID_SILVER_BLOCK),
-                    BLOCKS.get(ID_TIN_BLOCK),
-
                     BLOCKS.get(ID_BRONZE_BLOCK),
                     BLOCKS.get(ID_CONSTANTAN_BLOCK),
                     BLOCKS.get(ID_ELECTRUM_BLOCK),
                     BLOCKS.get(ID_INVAR_BLOCK),
-
+                    BLOCKS.get(ID_LEAD_BLOCK),
+                    BLOCKS.get(ID_NICKEL_BLOCK),
                     BLOCKS.get(ID_RUBY_BLOCK),
-                    BLOCKS.get(ID_SAPPHIRE_BLOCK)
+                    BLOCKS.get(ID_SAPPHIRE_BLOCK),
+                    BLOCKS.get(ID_SILVER_BLOCK),
+                    BLOCKS.get(ID_TIN_BLOCK)
             );
 
             // region RESOURCES
-            tag(BlockTagsCoFH.ORES_APATITE).add(BLOCKS.get(ID_APATITE_ORE));
-            tag(BlockTagsCoFH.ORES_CINNABAR).add(BLOCKS.get(ID_CINNABAR_ORE));
-            tag(BlockTagsCoFH.ORES_NITER).add(BLOCKS.get(ID_NITER_ORE));
-            tag(BlockTagsCoFH.ORES_SULFUR).add(BLOCKS.get(ID_SULFUR_ORE));
+            tag(TFndTags.Blocks.ORES_APATITE).add(BLOCKS.get(ID_APATITE_ORE));
+            tag(TFndTags.Blocks.ORES_CINNABAR).add(BLOCKS.get(ID_CINNABAR_ORE));
+            tag(TFndTags.Blocks.ORES_LEAD).add(BLOCKS.get(ID_LEAD_ORE));
+            tag(TFndTags.Blocks.ORES_NICKEL).add(BLOCKS.get(ID_NICKEL_ORE));
+            tag(TFndTags.Blocks.ORES_NITER).add(BLOCKS.get(ID_NITER_ORE));
+            tag(TFndTags.Blocks.ORES_RUBY).add(BLOCKS.get(ID_RUBY_ORE));
+            tag(TFndTags.Blocks.ORES_SAPPHIRE).add(BLOCKS.get(ID_SAPPHIRE_ORE));
+            tag(TFndTags.Blocks.ORES_SILVER).add(BLOCKS.get(ID_SILVER_ORE));
+            tag(TFndTags.Blocks.ORES_SULFUR).add(BLOCKS.get(ID_SULFUR_ORE));
+            tag(TFndTags.Blocks.ORES_TIN).add(BLOCKS.get(ID_TIN_ORE));
 
-            tag(BlockTagsCoFH.ORES_LEAD).add(BLOCKS.get(ID_LEAD_ORE));
-            tag(BlockTagsCoFH.ORES_NICKEL).add(BLOCKS.get(ID_NICKEL_ORE));
-            tag(BlockTagsCoFH.ORES_SILVER).add(BLOCKS.get(ID_SILVER_ORE));
-            tag(BlockTagsCoFH.ORES_TIN).add(BLOCKS.get(ID_TIN_ORE));
-
-            tag(BlockTagsCoFH.ORES_RUBY).add(BLOCKS.get(ID_RUBY_ORE));
-            tag(BlockTagsCoFH.ORES_SAPPHIRE).add(BLOCKS.get(ID_SAPPHIRE_ORE));
-
-            tag(BlockTagsCoFH.ORES_APATITE).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
-            tag(BlockTagsCoFH.ORES_CINNABAR).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
-            tag(BlockTagsCoFH.ORES_NITER).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
-            tag(BlockTagsCoFH.ORES_SULFUR).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
-
-            tag(BlockTagsCoFH.ORES_LEAD).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
-            tag(BlockTagsCoFH.ORES_NICKEL).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
-            tag(BlockTagsCoFH.ORES_SILVER).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
-            tag(BlockTagsCoFH.ORES_TIN).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
-
-            tag(BlockTagsCoFH.ORES_RUBY).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
-            tag(BlockTagsCoFH.ORES_SAPPHIRE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
+            tag(TFndTags.Blocks.ORES_APATITE).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
+            tag(TFndTags.Blocks.ORES_CINNABAR).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
+            tag(TFndTags.Blocks.ORES_LEAD).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
+            tag(TFndTags.Blocks.ORES_NICKEL).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
+            tag(TFndTags.Blocks.ORES_NITER).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
+            tag(TFndTags.Blocks.ORES_RUBY).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
+            tag(TFndTags.Blocks.ORES_SAPPHIRE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
+            tag(TFndTags.Blocks.ORES_SILVER).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
+            tag(TFndTags.Blocks.ORES_SULFUR).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
+            tag(TFndTags.Blocks.ORES_TIN).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
 
             tag(Tags.Blocks.ORES).addTags(
-                    BlockTagsCoFH.ORES_APATITE,
-                    BlockTagsCoFH.ORES_CINNABAR,
-                    BlockTagsCoFH.ORES_NITER,
-                    BlockTagsCoFH.ORES_SULFUR,
-
-                    BlockTagsCoFH.ORES_LEAD,
-                    BlockTagsCoFH.ORES_NICKEL,
-                    BlockTagsCoFH.ORES_SILVER,
-                    BlockTagsCoFH.ORES_TIN,
-
-                    BlockTagsCoFH.ORES_RUBY,
-                    BlockTagsCoFH.ORES_SAPPHIRE
+                    TFndTags.Blocks.ORES_APATITE,
+                    TFndTags.Blocks.ORES_CINNABAR,
+                    TFndTags.Blocks.ORES_LEAD,
+                    TFndTags.Blocks.ORES_NICKEL,
+                    TFndTags.Blocks.ORES_NITER,
+                    TFndTags.Blocks.ORES_RUBY,
+                    TFndTags.Blocks.ORES_SAPPHIRE,
+                    TFndTags.Blocks.ORES_SILVER,
+                    TFndTags.Blocks.ORES_SULFUR,
+                    TFndTags.Blocks.ORES_TIN
             );
 
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_APATITE_ORE));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CINNABAR_ORE));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NITER_ORE));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SULFUR_ORE));
-
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_LEAD_ORE));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NICKEL_ORE));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SILVER_ORE));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_TIN_ORE));
-
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NITER_ORE));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RUBY_ORE));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SAPPHIRE_ORE));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SILVER_ORE));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SULFUR_ORE));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_TIN_ORE));
 
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
-
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
-
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_NITER_ORE)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
-
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_APATITE_ORE));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_CINNABAR_ORE));
-
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_LEAD_ORE));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SILVER_ORE));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_NICKEL_ORE));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_TIN_ORE));
-
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_RUBY_ORE));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SAPPHIRE_ORE));
-
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
-
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
-
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_SULFUR_ORE)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
 
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_OIL_SAND));
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BLOCKS.get(ID_OIL_RED_SAND));
+
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_APATITE_ORE));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_CINNABAR_ORE));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_TIN_ORE));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_APATITE_ORE)));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_CINNABAR_ORE)));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(deepslate(ID_TIN_ORE)));
+
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_LEAD_ORE));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_NICKEL_ORE));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_RUBY_ORE));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SAPPHIRE_ORE));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SILVER_ORE));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_LEAD_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_NICKEL_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_RUBY_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_SAPPHIRE_ORE)));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(deepslate(ID_SILVER_ORE)));
             // endregion
 
             // region STORAGE
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
-
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_LEAD_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NICKEL_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SILVER_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_TIN_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_HOE).add(BLOCKS.get(ID_RUBBERWOOD_LEAVES));
 
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_BRONZE_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_CONSTANTAN_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_ELECTRUM_BLOCK));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_INVAR_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_LEAD_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_NICKEL_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RUBY_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SILVER_BLOCK));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_TIN_BLOCK));
 
-            tag(BlockTags.MINEABLE_WITH_HOE).add(BLOCKS.get(ID_RUBBERWOOD_LEAVES));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
+
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_BRONZE_BLOCK));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_TIN_BLOCK));
+            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
 
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
 
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_LEAD_BLOCK));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_NICKEL_BLOCK));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SILVER_BLOCK));
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_TIN_BLOCK));
-
-            tag(BlockTags.NEEDS_STONE_TOOL).add(BLOCKS.get(ID_BRONZE_BLOCK));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_CONSTANTAN_BLOCK));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_ELECTRUM_BLOCK));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_INVAR_BLOCK));
-            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_CONSTANTAN_BLOCK));
-
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_RUBY_BLOCK));
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_LEAD_BLOCK));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_NICKEL_BLOCK));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_RUBY_BLOCK));
             tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
+            tag(BlockTags.NEEDS_IRON_TOOL).add(BLOCKS.get(ID_SILVER_BLOCK));
 
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_RAW_TIN).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
-
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_LEAD).add(BLOCKS.get(ID_LEAD_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_NICKEL).add(BLOCKS.get(ID_NICKEL_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_SILVER).add(BLOCKS.get(ID_SILVER_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_TIN).add(BLOCKS.get(ID_TIN_BLOCK));
-
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_BRONZE).add(BLOCKS.get(ID_BRONZE_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_CONSTANTAN).add(BLOCKS.get(ID_CONSTANTAN_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_ELECTRUM).add(BLOCKS.get(ID_ELECTRUM_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_INVAR).add(BLOCKS.get(ID_INVAR_BLOCK));
-
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_RUBY).add(BLOCKS.get(ID_RUBY_BLOCK));
-            tag(BlockTagsCoFH.STORAGE_BLOCKS_SAPPHIRE).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_BRONZE).add(BLOCKS.get(ID_BRONZE_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_CONSTANTAN).add(BLOCKS.get(ID_CONSTANTAN_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_ELECTRUM).add(BLOCKS.get(ID_ELECTRUM_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_INVAR).add(BLOCKS.get(ID_INVAR_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_LEAD).add(BLOCKS.get(ID_LEAD_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_NICKEL).add(BLOCKS.get(ID_NICKEL_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_RAW_LEAD).add(BLOCKS.get(raw(ID_LEAD_BLOCK)));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL).add(BLOCKS.get(raw(ID_NICKEL_BLOCK)));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_RAW_SILVER).add(BLOCKS.get(raw(ID_SILVER_BLOCK)));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_RAW_TIN).add(BLOCKS.get(raw(ID_TIN_BLOCK)));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_RUBY).add(BLOCKS.get(ID_RUBY_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_SAPPHIRE).add(BLOCKS.get(ID_SAPPHIRE_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_SILVER).add(BLOCKS.get(ID_SILVER_BLOCK));
+            tag(TFndTags.Blocks.STORAGE_BLOCKS_TIN).add(BLOCKS.get(ID_TIN_BLOCK));
 
 
             tag(Tags.Blocks.STORAGE_BLOCKS).addTags(
-                    BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD,
-                    BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL,
-                    BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER,
-                    BlockTagsCoFH.STORAGE_BLOCKS_RAW_TIN,
-
-                    BlockTagsCoFH.STORAGE_BLOCKS_LEAD,
-                    BlockTagsCoFH.STORAGE_BLOCKS_NICKEL,
-                    BlockTagsCoFH.STORAGE_BLOCKS_SILVER,
-                    BlockTagsCoFH.STORAGE_BLOCKS_TIN,
-
-                    BlockTagsCoFH.STORAGE_BLOCKS_BRONZE,
-                    BlockTagsCoFH.STORAGE_BLOCKS_CONSTANTAN,
-                    BlockTagsCoFH.STORAGE_BLOCKS_ELECTRUM,
-                    BlockTagsCoFH.STORAGE_BLOCKS_INVAR,
-
-                    BlockTagsCoFH.STORAGE_BLOCKS_RUBY,
-                    BlockTagsCoFH.STORAGE_BLOCKS_SAPPHIRE
+                    TFndTags.Blocks.STORAGE_BLOCKS_BRONZE,
+                    TFndTags.Blocks.STORAGE_BLOCKS_CONSTANTAN,
+                    TFndTags.Blocks.STORAGE_BLOCKS_ELECTRUM,
+                    TFndTags.Blocks.STORAGE_BLOCKS_INVAR,
+                    TFndTags.Blocks.STORAGE_BLOCKS_LEAD,
+                    TFndTags.Blocks.STORAGE_BLOCKS_NICKEL,
+                    TFndTags.Blocks.STORAGE_BLOCKS_RAW_LEAD,
+                    TFndTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL,
+                    TFndTags.Blocks.STORAGE_BLOCKS_RAW_SILVER,
+                    TFndTags.Blocks.STORAGE_BLOCKS_RAW_TIN,
+                    TFndTags.Blocks.STORAGE_BLOCKS_RUBY,
+                    TFndTags.Blocks.STORAGE_BLOCKS_SAPPHIRE,
+                    TFndTags.Blocks.STORAGE_BLOCKS_SILVER,
+                    TFndTags.Blocks.STORAGE_BLOCKS_TIN
             );
             // endregion
 
@@ -290,70 +266,60 @@ public class TFndTagsProvider {
         @Override
         protected void addTags(HolderLookup.Provider pProvider) {
 
-            copy(BlockTagsCoFH.ORES_APATITE, ItemTagsCoFH.ORES_APATITE);
-            copy(BlockTagsCoFH.ORES_CINNABAR, ItemTagsCoFH.ORES_CINNABAR);
-            copy(BlockTagsCoFH.ORES_NITER, ItemTagsCoFH.ORES_NITER);
-            copy(BlockTagsCoFH.ORES_SULFUR, ItemTagsCoFH.ORES_SULFUR);
-
-            copy(BlockTagsCoFH.ORES_LEAD, ItemTagsCoFH.ORES_LEAD);
-            copy(BlockTagsCoFH.ORES_NICKEL, ItemTagsCoFH.ORES_NICKEL);
-            copy(BlockTagsCoFH.ORES_SILVER, ItemTagsCoFH.ORES_SILVER);
-            copy(BlockTagsCoFH.ORES_TIN, ItemTagsCoFH.ORES_TIN);
-
-            copy(BlockTagsCoFH.ORES_RUBY, ItemTagsCoFH.ORES_RUBY);
-            copy(BlockTagsCoFH.ORES_SAPPHIRE, ItemTagsCoFH.ORES_SAPPHIRE);
+            copy(TFndTags.Blocks.ORES_APATITE, TFndTags.Items.ORES_APATITE);
+            copy(TFndTags.Blocks.ORES_CINNABAR, TFndTags.Items.ORES_CINNABAR);
+            copy(TFndTags.Blocks.ORES_LEAD, TFndTags.Items.ORES_LEAD);
+            copy(TFndTags.Blocks.ORES_NICKEL, TFndTags.Items.ORES_NICKEL);
+            copy(TFndTags.Blocks.ORES_NITER, TFndTags.Items.ORES_NITER);
+            copy(TFndTags.Blocks.ORES_RUBY, TFndTags.Items.ORES_RUBY);
+            copy(TFndTags.Blocks.ORES_SAPPHIRE, TFndTags.Items.ORES_SAPPHIRE);
+            copy(TFndTags.Blocks.ORES_SILVER, TFndTags.Items.ORES_SILVER);
+            copy(TFndTags.Blocks.ORES_SULFUR, TFndTags.Items.ORES_SULFUR);
+            copy(TFndTags.Blocks.ORES_TIN, TFndTags.Items.ORES_TIN);
 
             tag(Tags.Items.ORES).addTags(
-                    ItemTagsCoFH.ORES_APATITE,
-                    ItemTagsCoFH.ORES_CINNABAR,
-                    ItemTagsCoFH.ORES_NITER,
-                    ItemTagsCoFH.ORES_SULFUR,
-
-                    ItemTagsCoFH.ORES_LEAD,
-                    ItemTagsCoFH.ORES_NICKEL,
-                    ItemTagsCoFH.ORES_SILVER,
-                    ItemTagsCoFH.ORES_TIN,
-
-                    ItemTagsCoFH.ORES_RUBY,
-                    ItemTagsCoFH.ORES_SAPPHIRE
+                    TFndTags.Items.ORES_APATITE,
+                    TFndTags.Items.ORES_CINNABAR,
+                    TFndTags.Items.ORES_LEAD,
+                    TFndTags.Items.ORES_NICKEL,
+                    TFndTags.Items.ORES_NITER,
+                    TFndTags.Items.ORES_RUBY,
+                    TFndTags.Items.ORES_SAPPHIRE,
+                    TFndTags.Items.ORES_SILVER,
+                    TFndTags.Items.ORES_SULFUR,
+                    TFndTags.Items.ORES_TIN
             );
 
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_LEAD, ItemTagsCoFH.STORAGE_BLOCKS_RAW_LEAD);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL, ItemTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_SILVER, ItemTagsCoFH.STORAGE_BLOCKS_RAW_SILVER);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_RAW_TIN, ItemTagsCoFH.STORAGE_BLOCKS_RAW_TIN);
-
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_LEAD, ItemTagsCoFH.STORAGE_BLOCKS_LEAD);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_NICKEL, ItemTagsCoFH.STORAGE_BLOCKS_NICKEL);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_SILVER, ItemTagsCoFH.STORAGE_BLOCKS_SILVER);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_TIN, ItemTagsCoFH.STORAGE_BLOCKS_TIN);
-
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_BRONZE, ItemTagsCoFH.STORAGE_BLOCKS_BRONZE);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_CONSTANTAN, ItemTagsCoFH.STORAGE_BLOCKS_CONSTANTAN);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_ELECTRUM, ItemTagsCoFH.STORAGE_BLOCKS_ELECTRUM);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_INVAR, ItemTagsCoFH.STORAGE_BLOCKS_INVAR);
-
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_RUBY, ItemTagsCoFH.STORAGE_BLOCKS_RUBY);
-            copy(BlockTagsCoFH.STORAGE_BLOCKS_SAPPHIRE, ItemTagsCoFH.STORAGE_BLOCKS_SAPPHIRE);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_BRONZE, TFndTags.Items.STORAGE_BLOCKS_BRONZE);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_CONSTANTAN, TFndTags.Items.STORAGE_BLOCKS_CONSTANTAN);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_ELECTRUM, TFndTags.Items.STORAGE_BLOCKS_ELECTRUM);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_INVAR, TFndTags.Items.STORAGE_BLOCKS_INVAR);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_LEAD, TFndTags.Items.STORAGE_BLOCKS_LEAD);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_NICKEL, TFndTags.Items.STORAGE_BLOCKS_NICKEL);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_RAW_LEAD, TFndTags.Items.STORAGE_BLOCKS_RAW_LEAD);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_RAW_NICKEL, TFndTags.Items.STORAGE_BLOCKS_RAW_NICKEL);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_RAW_SILVER, TFndTags.Items.STORAGE_BLOCKS_RAW_SILVER);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_RAW_TIN, TFndTags.Items.STORAGE_BLOCKS_RAW_TIN);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_RUBY, TFndTags.Items.STORAGE_BLOCKS_RUBY);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_SAPPHIRE, TFndTags.Items.STORAGE_BLOCKS_SAPPHIRE);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_SILVER, TFndTags.Items.STORAGE_BLOCKS_SILVER);
+            copy(TFndTags.Blocks.STORAGE_BLOCKS_TIN, TFndTags.Items.STORAGE_BLOCKS_TIN);
 
             tag(Tags.Items.STORAGE_BLOCKS).addTags(
-                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_LEAD,
-                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_NICKEL,
-                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_SILVER,
-                    ItemTagsCoFH.STORAGE_BLOCKS_RAW_TIN,
-
-                    ItemTagsCoFH.STORAGE_BLOCKS_LEAD,
-                    ItemTagsCoFH.STORAGE_BLOCKS_NICKEL,
-                    ItemTagsCoFH.STORAGE_BLOCKS_SILVER,
-                    ItemTagsCoFH.STORAGE_BLOCKS_TIN,
-
-                    ItemTagsCoFH.STORAGE_BLOCKS_BRONZE,
-                    ItemTagsCoFH.STORAGE_BLOCKS_CONSTANTAN,
-                    ItemTagsCoFH.STORAGE_BLOCKS_ELECTRUM,
-                    ItemTagsCoFH.STORAGE_BLOCKS_INVAR,
-
-                    ItemTagsCoFH.STORAGE_BLOCKS_RUBY,
-                    ItemTagsCoFH.STORAGE_BLOCKS_SAPPHIRE
+                    TFndTags.Items.STORAGE_BLOCKS_BRONZE,
+                    TFndTags.Items.STORAGE_BLOCKS_CONSTANTAN,
+                    TFndTags.Items.STORAGE_BLOCKS_ELECTRUM,
+                    TFndTags.Items.STORAGE_BLOCKS_INVAR,
+                    TFndTags.Items.STORAGE_BLOCKS_LEAD,
+                    TFndTags.Items.STORAGE_BLOCKS_NICKEL,
+                    TFndTags.Items.STORAGE_BLOCKS_RAW_LEAD,
+                    TFndTags.Items.STORAGE_BLOCKS_RAW_NICKEL,
+                    TFndTags.Items.STORAGE_BLOCKS_RAW_SILVER,
+                    TFndTags.Items.STORAGE_BLOCKS_RAW_TIN,
+                    TFndTags.Items.STORAGE_BLOCKS_RUBY,
+                    TFndTags.Items.STORAGE_BLOCKS_SAPPHIRE,
+                    TFndTags.Items.STORAGE_BLOCKS_SILVER,
+                    TFndTags.Items.STORAGE_BLOCKS_TIN
             );
 
             copy(BlockTags.LEAVES, ItemTags.LEAVES);

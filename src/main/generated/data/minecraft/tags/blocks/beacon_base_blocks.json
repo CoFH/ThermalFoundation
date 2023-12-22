@@ -1,14 +1,14 @@
 {
   "values": [
-    "thermal:lead_block",
-    "thermal:nickel_block",
-    "thermal:silver_block",
-    "thermal:tin_block",
     "thermal:bronze_block",
     "thermal:constantan_block",
     "thermal:electrum_block",
     "thermal:invar_block",
+    "thermal:lead_block",
+    "thermal:nickel_block",
     "thermal:ruby_block",
-    "thermal:sapphire_block"
+    "thermal:sapphire_block",
+    "thermal:silver_block",
+    "thermal:tin_block"
   ]
 }

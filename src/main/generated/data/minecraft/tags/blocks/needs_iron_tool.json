@@ -1,25 +1,25 @@
 {
   "values": [
     "thermal:lead_ore",
-    "thermal:silver_ore",
     "thermal:nickel_ore",
     "thermal:ruby_ore",
     "thermal:sapphire_ore",
+    "thermal:silver_ore",
     "thermal:deepslate_lead_ore",
-    "thermal:deepslate_silver_ore",
     "thermal:deepslate_nickel_ore",
     "thermal:deepslate_ruby_ore",
     "thermal:deepslate_sapphire_ore",
+    "thermal:deepslate_silver_ore",
     "thermal:raw_lead_block",
     "thermal:raw_nickel_block",
     "thermal:raw_silver_block",
-    "thermal:lead_block",
-    "thermal:nickel_block",
-    "thermal:silver_block",
+    "thermal:constantan_block",
     "thermal:electrum_block",
     "thermal:invar_block",
-    "thermal:constantan_block",
+    "thermal:lead_block",
+    "thermal:nickel_block",
     "thermal:ruby_block",
-    "thermal:sapphire_block"
+    "thermal:sapphire_block",
+    "thermal:silver_block"
   ]
 }
