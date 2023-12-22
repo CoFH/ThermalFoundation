@@ -59,6 +59,8 @@ public class ThermalFoundation {
         setFlag(FLAG_RESOURCE_LEAD, true);
         setFlag(FLAG_RESOURCE_SILVER, true);
         setFlag(FLAG_RESOURCE_NICKEL, true);
+
+        setFlag(FLAG_RESOURCE_RUBBERWOOD, true);
     }
 
     public static final BlockSetType BLOCK_SET_TYPE_RUBBERWOOD = BlockSetType.register(new BlockSetType("thermal:rubberwood"));

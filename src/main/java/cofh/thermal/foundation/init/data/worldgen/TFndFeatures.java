@@ -1,6 +1,7 @@
 package cofh.thermal.foundation.init.data.worldgen;
 
 import cofh.thermal.core.common.world.ConfigPlacementFilter;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -14,7 +15,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
@@ -52,6 +55,8 @@ public class TFndFeatures {
 
         public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBERWOOD_TREE = createKey("rubberwood_tree");
         public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_RUBBERWOOD_TREE = createKey("mega_rubberwood_tree");
+
+        public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_RUBBERWOOD = createKey("trees_rubberwood");
 
         public static void init(BootstapContext<ConfiguredFeature<?, ?>> context) {
 
@@ -104,6 +109,12 @@ public class TFndFeatures {
                     new TwoLayersFeatureSize(1, 1, 2))
                     .ignoreVines()
                     .build());
+
+            HolderGetter<PlacedFeature> placedFeatureHolderGetter = context.lookup(Registries.PLACED_FEATURE);
+
+            Holder<PlacedFeature> rubberwood = placedFeatureHolderGetter.getOrThrow(Placed.RUBBERWOOD_TREE_CHECKED);
+            Holder<PlacedFeature> megaRubberwood = placedFeatureHolderGetter.getOrThrow(Placed.MEGA_RUBBERWOOD_TREE_CHECKED);
+            FeatureUtils.register(context, TREES_RUBBERWOOD, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(megaRubberwood, 0.1F)), rubberwood));
         }
 
         // region HELPERS
@@ -128,11 +139,9 @@ public class TFndFeatures {
 
         public static final ResourceKey<PlacedFeature> OIL_SAND = createKey("oil_sand");
 
-        public static final ResourceKey<PlacedFeature> RUBBERWOOD_TREE_CHECKED = createKey("rubberwood_tree_checked");
-        public static final ResourceKey<PlacedFeature> MEGA_RUBBERWOOD_TREE_CHECKED = createKey("mega_rubberwood_tree_checked");
-
-        public static final ResourceKey<PlacedFeature> RUBBERWOOD_TREE = createKey("rubberwood_tree");
-        public static final ResourceKey<PlacedFeature> MEGA_RUBBERWOOD_TREE = createKey("mega_rubberwood_tree");
+        public static final ResourceKey<PlacedFeature> RUBBERWOOD_TREE_CHECKED = createKey("rubberwood_tree");
+        public static final ResourceKey<PlacedFeature> MEGA_RUBBERWOOD_TREE_CHECKED = createKey("mega_rubberwood_tree");
+        public static final ResourceKey<PlacedFeature> TREES_RUBBERWOOD_PLACED = createKey("trees_rubberwood");
 
         public static void init(BootstapContext<PlacedFeature> context) {
 
@@ -153,8 +162,7 @@ public class TFndFeatures {
             context.register(RUBBERWOOD_TREE_CHECKED, checkTree(features, Configured.RUBBERWOOD_TREE, ID_RUBBERWOOD_SAPLING));
             context.register(MEGA_RUBBERWOOD_TREE_CHECKED, checkTree(features, Configured.MEGA_RUBBERWOOD_TREE, ID_RUBBERWOOD_SAPLING));
 
-            context.register(RUBBERWOOD_TREE, placedTree(features, Configured.RUBBERWOOD_TREE, 2, 0.25F, 2));
-            context.register(MEGA_RUBBERWOOD_TREE, placedTree(features, Configured.MEGA_RUBBERWOOD_TREE, 1, 0.1F, 1));
+            context.register(TREES_RUBBERWOOD_PLACED, placedTree(features, Configured.TREES_RUBBERWOOD, "rubberwood_trees", 0, 0.25F, 1));
         }
 
         // region HELPERS
@@ -193,10 +201,10 @@ public class TFndFeatures {
             return new PlacedFeature(getter.getOrThrow(feature), List.of(PlacementUtils.filteredByBlockSurvival(BLOCKS.getSup(sapling).get())));
         }
 
-        public static PlacedFeature placedTree(HolderGetter<ConfiguredFeature<?, ?>> getter, ResourceKey<ConfiguredFeature<?, ?>> tree, int count, float chance, int extra) {
+        public static PlacedFeature placedTree(HolderGetter<ConfiguredFeature<?, ?>> getter, ResourceKey<ConfiguredFeature<?, ?>> tree, String name, int count, float chance, int extra) {
 
             return registerPlacedFeature(getter, tree,
-                    // new ConfigPlacementFilter(name),
+                    new ConfigPlacementFilter(name),
                     PlacementUtils.countExtra(count, chance, extra),
                     InSquarePlacement.spread(),
                     SurfaceWaterDepthFilter.forMaxDepth(0),

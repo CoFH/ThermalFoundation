@@ -8,12 +8,6 @@
       "minecraft:sparse_jungle"
     ]
   },
-  "features": {
-    "type": "forge:or",
-    "values": [
-      "thermal:rubberwood_tree",
-      "thermal:mega_rubberwood_tree"
-    ]
-  },
+  "features": "thermal:trees_rubberwood",
   "step": "vegetal_decoration"
 }

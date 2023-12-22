@@ -48,6 +48,8 @@ public class TFndBiomeModifiers {
         var oilSandsBiomes = holderSetIntersection(isOverworldTag, holderSetUnion(isDesert, isBadlandsTag));
         var rubberwoodTreeBiomes = holderSetUnion(isFlowerForest, isBambooJungle, isSparseJungle);
 
+        var rubberwoodTrees = HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(TFndFeatures.Placed.TREES_RUBBERWOOD_PLACED));
+
         registerOre(context, APATITE_ORE, isOverworldTag, TFndFeatures.Placed.APATITE_ORE);
         registerOre(context, CINNABAR_ORE, isOverworldTag, TFndFeatures.Placed.CINNABAR_ORE);
         registerOre(context, NITER_ORE, isOverworldTag, TFndFeatures.Placed.NITER_ORE);
@@ -60,12 +62,7 @@ public class TFndBiomeModifiers {
 
         registerOre(context, OIL_SAND, oilSandsBiomes, TFndFeatures.Placed.OIL_SAND);
 
-        var treeRubberwood = HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(TFndFeatures.Placed.RUBBERWOOD_TREE));
-        var treeMegaRubberwood = HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(TFndFeatures.Placed.MEGA_RUBBERWOOD_TREE));
-
-        context.register(RUBBERWOOD_TREES, new AddFeaturesBiomeModifier(rubberwoodTreeBiomes,
-                holderSetUnion(treeRubberwood, treeMegaRubberwood),
-                VEGETAL_DECORATION));
+        context.register(RUBBERWOOD_TREES, new AddFeaturesBiomeModifier(rubberwoodTreeBiomes, rubberwoodTrees, VEGETAL_DECORATION));
     }
 
     // region HELPERS
