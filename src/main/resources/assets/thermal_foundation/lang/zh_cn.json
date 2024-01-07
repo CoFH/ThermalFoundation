@@ -65,6 +65,7 @@
   "block.thermal.stripped_rubberwood_log": "去皮橡胶原木",
   "block.thermal.stripped_rubberwood_wood": "去皮橡胶木",
 
+  "entity.thermal.rubberwood_boat": "船",
   "entity.thermal.rubberwood_chest_boat": "运输船",
 
   "item.thermal.raw_lead": "粗铅",
