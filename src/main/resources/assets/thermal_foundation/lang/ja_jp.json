@@ -49,6 +49,7 @@
   "block.thermal.rubberwood_door": "ゴムノキのドア",
   "block.thermal.rubberwood_fence": "ゴムノキのフェンス",
   "block.thermal.rubberwood_fence_gate": "ゴムノキのフェンスゲート",
+  "block.thermal.rubberwood_hanging_sign": "ゴムノキの吊り看板",
   "block.thermal.rubberwood_leaves": "ゴムノキの葉",
   "block.thermal.rubberwood_log": "ゴムノキの原木",
   "block.thermal.rubberwood_planks": "ゴムノキの板材",
@@ -59,11 +60,15 @@
   "block.thermal.rubberwood_stairs": "ゴムノキの階段",
   "block.thermal.rubberwood_trapdoor": "ゴムノキのトラップドア",
   "block.thermal.rubberwood_wall_sign": "壁につけられたゴムノキの看板",
+  "block.thermal.rubberwood_wall_hanging_sign": "壁につけられたゴムノキの吊り看板",
   "block.thermal.rubberwood_wood": "ゴムノキの木",
 
   "block.thermal.potted_rubberwood_sapling": "植えられたゴムノキの苗木",
   "block.thermal.stripped_rubberwood_log": "樹皮を剥いだゴムノキの原木",
   "block.thermal.stripped_rubberwood_wood": "樹皮を剥いだゴムノキの木",
+
+  "entity.thermal.rubberwood_boat": "ボート",
+  "entity.thermal.rubberwood_chest_boat": "チェスト付きのボート",
 
   "item.thermal.raw_lead": "鉛の原石",
   "item.thermal.raw_nickel": "ニッケルの原石",
@@ -136,5 +141,8 @@
   "item.thermal.invar_gear": "インバーの歯車",
   "item.thermal.invar_ingot": "インバーインゴット",
   "item.thermal.invar_nugget": "インバー塊",
-  "item.thermal.invar_plate": "インバーのプレート"
+  "item.thermal.invar_plate": "インバーのプレート",
+
+  "item.thermal.rubberwood_boat": "ゴムノキのボート",
+  "item.thermal.rubberwood_chest_boat": "チェスト付きのゴムノキのボート"
 }
