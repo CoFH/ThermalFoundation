@@ -1,0 +1,14 @@
+{
+  "values": [
+    "thermal:deepslate_apatite_ore",
+    "thermal:deepslate_cinnabar_ore",
+    "thermal:deepslate_lead_ore",
+    "thermal:deepslate_nickel_ore",
+    "thermal:deepslate_niter_ore",
+    "thermal:deepslate_ruby_ore",
+    "thermal:deepslate_sapphire_ore",
+    "thermal:deepslate_silver_ore",
+    "thermal:deepslate_sulfur_ore",
+    "thermal:deepslate_tin_ore"
+  ]
+}
