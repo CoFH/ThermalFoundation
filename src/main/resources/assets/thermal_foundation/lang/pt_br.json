@@ -1,0 +1,148 @@
+{
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Foundation",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.apatite_ore": "Minério de apatita",
+  "block.thermal.cinnabar_ore": "Minério de cinábrio",
+  "block.thermal.niter_ore": "Minério de salitre",
+  "block.thermal.sulfur_ore": "Minério de enxofre",
+
+  "block.thermal.lead_ore": "Minério de chumbo",
+  "block.thermal.nickel_ore": "Minério de níquel",
+  "block.thermal.silver_ore": "Minério de prata",
+  "block.thermal.tin_ore": "Minério de estanho",
+
+  "block.thermal.ruby_ore": "Minério de rubi",
+  "block.thermal.sapphire_ore": "Minério de safira",
+
+  "block.thermal.deepslate_apatite_ore": "Minério de apatita de ardósia",
+  "block.thermal.deepslate_cinnabar_ore": "Minério de cinábrio de ardósia",
+  "block.thermal.deepslate_niter_ore": "Minério de salitre de ardósia",
+  "block.thermal.deepslate_sulfur_ore": "Minério de enxofre de ardósia",
+
+  "block.thermal.deepslate_lead_ore": "Minério de chumbo de ardósia",
+  "block.thermal.deepslate_nickel_ore": "Minério de níquel de ardósia",
+  "block.thermal.deepslate_silver_ore": "Minério de prata de ardósia",
+  "block.thermal.deepslate_tin_ore": "Minério de estanho de ardósia",
+
+  "block.thermal.deepslate_ruby_ore": "Minério de rubi de ardósia",
+  "block.thermal.deepslate_sapphire_ore": "Minério de safira de ardósia",
+
+  "block.thermal.oil_sand": "Area betuminosa",
+  "block.thermal.oil_red_sand": "Area vermelha betuminosa",
+
+  "block.thermal.lead_block": "Bloco de chumbo",
+  "block.thermal.nickel_block": "Bloco de níquel",
+  "block.thermal.silver_block": "Bloco de prata",
+  "block.thermal.tin_block": "Bloco de estanho",
+
+  "block.thermal.ruby_block": "Bloco de rubi",
+  "block.thermal.sapphire_block": "Bloco de safira",
+
+  "block.thermal.bronze_block": "Bloco de bronze",
+  "block.thermal.constantan_block": "Bloco de constantan",
+  "block.thermal.electrum_block": "Bloco de electro",
+  "block.thermal.invar_block": "Bloco de invar",
+
+  "block.thermal.rubberwood_button": "Botão de seringueira",
+  "block.thermal.rubberwood_door": "Porta de seringueira",
+  "block.thermal.rubberwood_fence": "Cerca de seringueira",
+  "block.thermal.rubberwood_fence_gate": "Portão de seringueira",
+  "block.thermal.rubberwood_hanging_sign": "Placa suspensa de seringueira",
+  "block.thermal.rubberwood_leaves": "Folhas de seringueira",
+  "block.thermal.rubberwood_log": "Tronco de seringueira",
+  "block.thermal.rubberwood_planks": "Tábuas de seringueira",
+  "block.thermal.rubberwood_pressure_plate": "Placa de presão de seringueira",
+  "block.thermal.rubberwood_sapling": "Muda de seringueira",
+  "block.thermal.rubberwood_slab": "Laje de seringueira",
+  "block.thermal.rubberwood_sign": "Placa de seringueira",
+  "block.thermal.rubberwood_stairs": "Escadas de seringueira",
+  "block.thermal.rubberwood_trapdoor": "Alçapão de seringueira",
+  "block.thermal.rubberwood_wall_sign": "Placa de seringueira",
+  "block.thermal.rubberwood_wall_hanging_sign": "Placa suspensa de seringueira",
+  "block.thermal.rubberwood_wood": "Madeira de seringueira",
+
+  "block.thermal.potted_rubberwood_sapling": "Muda de seringueira envasada",
+  "block.thermal.stripped_rubberwood_log": "Tronco de seringueira descascado",
+  "block.thermal.stripped_rubberwood_wood": "Madeira de seringueira descascada",
+
+  "entity.thermal.rubberwood_boat": "Bote de seringueira",
+  "entity.thermal.rubberwood_chest_boat": "Bote de seringueira com báu",
+
+  "item.thermal.raw_lead": "Chumbo bruto",
+  "item.thermal.raw_nickel": "Níquel bruto",
+  "item.thermal.raw_silver": "Prata bruto",
+  "item.thermal.raw_tin": "Estanho bruto",
+
+  "item.thermal.lead_coin": "Moeda de chumbo",
+  "item.thermal.lead_dust": "Pó de chumbo",
+  "item.thermal.lead_gear": "Engrenagem de chumbo",
+  "item.thermal.lead_ingot": "Barra de chumbo",
+  "item.thermal.lead_nugget": "Pepita de chumbo",
+  "item.thermal.lead_plate": "Placa de chumbo",
+
+  "item.thermal.nickel_coin": "Moeda de níquel",
+  "item.thermal.nickel_dust": "Pó de níquel",
+  "item.thermal.nickel_gear": "Engrenagem de níquel",
+  "item.thermal.nickel_ingot": "Barra de níquel",
+  "item.thermal.nickel_nugget": "Pepita de níquel",
+  "item.thermal.nickel_plate": "Placa de níquel",
+
+  "item.thermal.silver_coin": "Moeda de prata",
+  "item.thermal.silver_dust": "Pó de prata",
+  "item.thermal.silver_gear": "Engrenagem de prata",
+  "item.thermal.silver_ingot": "Barra de prata",
+  "item.thermal.silver_nugget": "Pepita de prata",
+  "item.thermal.silver_plate": "Placa de prata",
+
+  "item.thermal.tin_coin": "Moeda de estanho",
+  "item.thermal.tin_dust": "Pó de estanho",
+  "item.thermal.tin_gear": "Engrenagem de estanho",
+  "item.thermal.tin_ingot": "Barra de estanho",
+  "item.thermal.tin_nugget": "Pepita de estanho",
+  "item.thermal.tin_plate": "Placa de estanho",
+
+  "item.thermal.ruby": "Rubi",
+  "item.thermal.ruby_dust": "Pó de rubi",
+  "item.thermal.ruby_gear": "Engrenagem de rubi",
+  "item.thermal.ruby_nugget": "Pepita de rubi",
+  "item.thermal.ruby_plate": "Placa de rubi",
+
+  "item.thermal.sapphire": "safira",
+  "item.thermal.sapphire_dust": "Pó de safira",
+  "item.thermal.sapphire_gear": "Engrenagem de safira",
+  "item.thermal.sapphire_nugget": "Pepita de safira",
+  "item.thermal.sapphire_plate": "Placa de safira",
+
+  "item.thermal.bronze_coin": "Moeda de bronze",
+  "item.thermal.bronze_dust": "Pó de bronze",
+  "item.thermal.bronze_gear": "Engrenagem de bronze",
+  "item.thermal.bronze_ingot": "Barra de bronze",
+  "item.thermal.bronze_nugget": "Pepita de bronze",
+  "item.thermal.bronze_plate": "Placa de bronze",
+
+  "item.thermal.constantan_coin": "Moeda de constantan",
+  "item.thermal.constantan_dust": "Pó de constantan",
+  "item.thermal.constantan_gear": "Engrenagem de constantan",
+  "item.thermal.constantan_ingot": "Barra de constantan",
+  "item.thermal.constantan_nugget": "Pepita de constantan",
+  "item.thermal.constantan_plate": "Placa de constantan",
+
+  "item.thermal.electrum_coin": "Moeda de electro",
+  "item.thermal.electrum_dust": "Pó de electro",
+  "item.thermal.electrum_gear": "Engrenagem de electro",
+  "item.thermal.electrum_ingot": "Barra de electro",
+  "item.thermal.electrum_nugget": "Pepita de electro",
+  "item.thermal.electrum_plate": "Placa de electro",
+
+  "item.thermal.invar_coin": "Moeda de invar",
+  "item.thermal.invar_dust": "Pó de invar",
+  "item.thermal.invar_gear": "Engrenagem de invar",
+  "item.thermal.invar_ingot": "Barra de invar",
+  "item.thermal.invar_nugget": "Pepita de invar",
+  "item.thermal.invar_plate": "Placa de invar",
+
+  "item.thermal.rubberwood_boat": "Bote de seringueira",
+  "item.thermal.rubberwood_chest_boat": "Bote de seringueira com baú"
+}
