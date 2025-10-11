@@ -1,0 +1,153 @@
+{
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Foundation",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.apatite_ore": "Mineral de apatita",
+  "block.thermal.cinnabar_ore": "Mineral de cinabrio",
+  "block.thermal.niter_ore": "Mineral de nitrato",
+  "block.thermal.sulfur_ore": "Mineral de azufre",
+
+  "block.thermal.lead_ore": "Mineral de plomo",
+  "block.thermal.nickel_ore": "Mineral de níquel",
+  "block.thermal.silver_ore": "Mineral de plata",
+  "block.thermal.tin_ore": "Mineral de estaño",
+
+  "block.thermal.ruby_ore": "Mineral de rubí",
+  "block.thermal.sapphire_ore": "Mineral de zafiro",
+
+  "block.thermal.deepslate_apatite_ore": "Mineral de apatita de pizarra profunda",
+  "block.thermal.deepslate_cinnabar_ore": "Mineral de cinabrio de pizarra profunda",
+  "block.thermal.deepslate_niter_ore": "Mineral de nitrato de pizarra profunda",
+  "block.thermal.deepslate_sulfur_ore": "Mineral de azufre de pizarra profunda",
+
+  "block.thermal.deepslate_lead_ore": "Mineral de plomo de pizarra profunda",
+  "block.thermal.deepslate_nickel_ore": "Mineral de níquel de pizarra profunda",
+  "block.thermal.deepslate_silver_ore": "Mineral de plata de pizarra profunda",
+  "block.thermal.deepslate_tin_ore": "Mineral de estaño de pizarra profunda",
+
+  "block.thermal.deepslate_ruby_ore": "Mineral de rubí de pizarra profunda",
+  "block.thermal.deepslate_sapphire_ore": "Mineral de zafiro de pizarra profunda",
+
+  "block.thermal.oil_sand": "Arena bituminosa",
+  "block.thermal.oil_red_sand": "Arena bituminosa roja",
+
+  "block.thermal.raw_lead_block": "Bloque de plomo en bruto",
+  "block.thermal.raw_nickel_block": "Bloque de níquel en bruto",
+  "block.thermal.raw_silver_block": "Bloque de plata en bruto",
+  "block.thermal.raw_tin_block": "Bloque de estaño en bruto",
+
+  "block.thermal.lead_block": "Bloque de plomo",
+  "block.thermal.nickel_block": "Bloque de níquel",
+  "block.thermal.silver_block": "Bloque de plata",
+  "block.thermal.tin_block": "Bloque de estaño",
+
+  "block.thermal.ruby_block": "Bloque de rubí",
+  "block.thermal.sapphire_block": "Bloque de zafiro",
+
+  "block.thermal.bronze_block": "Bloque de bronce",
+  "block.thermal.constantan_block": "Bloque de constantán",
+  "block.thermal.electrum_block": "Bloque de electrum",
+  "block.thermal.invar_block": "Bloque de invar",
+
+  "block.thermal.rubberwood_button": "Botón de madera de caucho",
+  "block.thermal.rubberwood_door": "Puerta de madera de caucho",
+  "block.thermal.rubberwood_fence": "Valla de madera de caucho",
+  "block.thermal.rubberwood_fence_gate": "Puerta de valla de madera de caucho",
+  "block.thermal.rubberwood_hanging_sign": "Letrero colgante de madera de caucho",
+  "block.thermal.rubberwood_leaves": "Hojas de madera de caucho",
+  "block.thermal.rubberwood_log": "Tronco de madera de caucho",
+  "block.thermal.rubberwood_planks": "Tablones de madera de caucho",
+  "block.thermal.rubberwood_pressure_plate": "Placa de presión de madera de caucho",
+  "block.thermal.rubberwood_sapling": "Brote de madera de caucho",
+  "block.thermal.rubberwood_slab": "Losa de madera de caucho",
+  "block.thermal.rubberwood_sign": "Letrero de madera de caucho",
+  "block.thermal.rubberwood_stairs": "Escaleras de madera de caucho",
+  "block.thermal.rubberwood_trapdoor": "Trampilla de madera de caucho",
+  "block.thermal.rubberwood_wall_sign": "Letrero de pared de madera de caucho",
+  "block.thermal.rubberwood_wall_hanging_sign": "Letrero colgante de pared de madera de caucho",
+  "block.thermal.rubberwood_wood": "Madera de caucho",
+
+  "block.thermal.potted_rubberwood_sapling": "Brote de madera de caucho en maceta",
+  "block.thermal.stripped_rubberwood_log": "Tronco de madera de caucho sin corteza",
+  "block.thermal.stripped_rubberwood_wood": "Madera de caucho sin corteza",
+
+  "entity.thermal.rubberwood_boat": "Barco",
+  "entity.thermal.rubberwood_chest_boat": "Barco con cofre",
+
+  "item.thermal.raw_lead": "Plomo en bruto",
+  "item.thermal.raw_nickel": "Níquel en bruto",
+  "item.thermal.raw_silver": "Plata en bruto",
+  "item.thermal.raw_tin": "Estaño en bruto",
+
+  "item.thermal.lead_coin": "Moneda de plomo",
+  "item.thermal.lead_dust": "Polvo de plomo",
+  "item.thermal.lead_gear": "Engranaje de plomo",
+  "item.thermal.lead_ingot": "Lingote de plomo",
+  "item.thermal.lead_nugget": "Pepita de plomo",
+  "item.thermal.lead_plate": "Placa de plomo",
+
+  "item.thermal.nickel_coin": "Moneda de níquel",
+  "item.thermal.nickel_dust": "Polvo de níquel",
+  "item.thermal.nickel_gear": "Engranaje de níquel",
+  "item.thermal.nickel_ingot": "Lingote de níquel",
+  "item.thermal.nickel_nugget": "Pepita de níquel",
+  "item.thermal.nickel_plate": "Placa de níquel",
+
+  "item.thermal.silver_coin": "Moneda de plata",
+  "item.thermal.silver_dust": "Polvo de plata",
+  "item.thermal.silver_gear": "Engranaje de plata",
+  "item.thermal.silver_ingot": "Lingote de plata",
+  "item.thermal.silver_nugget": "Pepita de plata",
+  "item.thermal.silver_plate": "Placa de plata",
+
+  "item.thermal.tin_coin": "Moneda de estaño",
+  "item.thermal.tin_dust": "Polvo de estaño",
+  "item.thermal.tin_gear": "Engranaje de estaño",
+  "item.thermal.tin_ingot": "Lingote de estaño",
+  "item.thermal.tin_nugget": "Pepita de estaño",
+  "item.thermal.tin_plate": "Placa de estaño",
+
+  "item.thermal.ruby": "Rubí",
+  "item.thermal.ruby_dust": "Rubí en polvo",
+  "item.thermal.ruby_gear": "Engranaje de rubí",
+  "item.thermal.ruby_nugget": "Pepita de rubí",
+  "item.thermal.ruby_plate": "Placa de rubí",
+
+  "item.thermal.sapphire": "Zafiro",
+  "item.thermal.sapphire_dust": "Zafiro en polvo",
+  "item.thermal.sapphire_gear": "Engranaje de zafiro",
+  "item.thermal.sapphire_nugget": "Pepita de zafiro",
+  "item.thermal.sapphire_plate": "Placa de zafiro",
+
+  "item.thermal.bronze_coin": "Moneda de bronce",
+  "item.thermal.bronze_dust": "Mezcla de bronce",
+  "item.thermal.bronze_gear": "Engranaje de bronce",
+  "item.thermal.bronze_ingot": "Lingote de bronce",
+  "item.thermal.bronze_nugget": "Pepita de bronce",
+  "item.thermal.bronze_plate": "Placa de bronce",
+
+  "item.thermal.constantan_coin": "Moneda de constantán",
+  "item.thermal.constantan_dust": "Mezcla de constantán",
+  "item.thermal.constantan_gear": "Engranaje de constantán",
+  "item.thermal.constantan_ingot": "Lingote de constantán",
+  "item.thermal.constantan_nugget": "Pepita de constantán",
+  "item.thermal.constantan_plate": "Placa de constantán",
+
+  "item.thermal.electrum_coin": "Moneda de electrum",
+  "item.thermal.electrum_dust": "Mezcla de electrum",
+  "item.thermal.electrum_gear": "Engranaje de electrum",
+  "item.thermal.electrum_ingot": "Lingote de electrum",
+  "item.thermal.electrum_nugget": "Pepita de electrum",
+  "item.thermal.electrum_plate": "Placa de electrum",
+
+  "item.thermal.invar_coin": "Moneda de invar",
+  "item.thermal.invar_dust": "Mezcla de invar",
+  "item.thermal.invar_gear": "Engranaje de invar",
+  "item.thermal.invar_ingot": "Lingote de invar",
+  "item.thermal.invar_nugget": "Pepita de invar",
+  "item.thermal.invar_plate": "Placa de invar",
+
+  "item.thermal.rubberwood_boat": "Barco de madera de caucho",
+  "item.thermal.rubberwood_chest_boat": "Barco de madera de caucho con cofre"
+}
